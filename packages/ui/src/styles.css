@@ -207,5 +207,13 @@
 }
 
 .profile-card {
-  @apply rounded-3xl border-none bg-[var(--academy-card-dark)] p-3 font-bold text-white;
+  @apply max-w-sm rounded-[83px] border-none bg-[var(--academy-card-dark)] p-3 font-bold text-white;
+}
+
+.profile-card .title {
+  @apply w-full text-2xl font-semibold leading-normal;
+}
+
+.profile-card .description {
+  @apply w-full text-xl font-normal leading-normal;
 }

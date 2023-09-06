@@ -19,7 +19,7 @@ const sampleMenus = [
 ];
 
 const meta = {
-  title: "UI/SideBar",
+  title: "Layout/SideBar",
   component: SideBarComponent,
   argTypes: {
     menus: {

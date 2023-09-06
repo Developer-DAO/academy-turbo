@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { UserStatsCard as UserStatsCardComponent } from "./UserStatsCard";
 
 const meta = {
-  title: "UI/UserStatsCard",
+  title: "Cards/UserStatsCard",
   component: UserStatsCardComponent,
 } satisfies Meta<typeof UserStatsCardComponent>;
 
