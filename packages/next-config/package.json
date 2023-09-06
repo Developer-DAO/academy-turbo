@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "name": "next-config",
+  "version": "0.0.0",
+  "devDependencies": {
+    "@next/bundle-analyzer": "13.4.12",
+    "next-compose-plugins": "^2.2.1",
+    "next-pwa": "^5.6.0"
+  }
+}

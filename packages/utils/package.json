@@ -1,0 +1,33 @@
+{
+  "private": true,
+  "name": "utils",
+  "version": "0.0.0",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": [
+      "./src/*.ts",
+      "./src/*/index.ts"
+    ]
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./src/*",
+        "./src/*/index"
+      ]
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf .swc .turbo coverage dist",
+    "dev": "pnpm build --watch",
+    "build": "tsc --noEmit",
+    "test:unit": "jest --ci --coverage",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "jest-config": "workspace:*",
+    "typescript-config": "workspace:*"
+  }
+}

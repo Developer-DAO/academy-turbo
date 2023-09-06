@@ -1,0 +1,41 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "globalEnv": ["CI", "NODE_ENV"],
+  "pipeline": {
+    "clean": {
+      "cache": false
+    },
+    "dev": {
+      "cache": false,
+      "dependsOn": ["^build"],
+      "persistent": true
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "env": ["ANALYZE", "GITHUB_REPOSITORY"],
+      "outputs": [".next/**", "dist/**"]
+    },
+    "storybook:dev": {
+      "cache": false,
+      "dependsOn": ["^build"],
+      "persistent": true
+    },
+    "storybook:build": {
+      "dependsOn": ["^build"],
+      "outputs": ["storybook-static/**"]
+    },
+    "test:e2e": {
+      "cache": false,
+      "dependsOn": ["^build"]
+    },
+    "test:unit": {
+      "cache": false,
+      "dependsOn": ["^build"]
+    },
+    "coupling-graph": {
+      "cache": false,
+      "dependsOn": ["^build"]
+    }
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "folders": [
+    { "path": "apps/website-ssr", "name": "apps/website-ssr" },
+    { "path": "apps/website", "name": "apps/website" },
+    { "path": "packages/ui", "name": "packages/ui" },
+    { "path": "packages/utils", "name": "packages/utils" },
+    { "path": "packages/eslint-config-custom", "name": "packages/eslint-config-custom" },
+    { "path": "packages/jest-config", "name": "packages/jest-config" },
+    { "path": "packages/next-config", "name": "packages/next-config" },
+    { "path": "packages/playwright-config", "name": "packages/playwright-config" },
+    { "path": "packages/storybook-config", "name": "packages/storybook-config" },
+    { "path": "packages/tailwindcss-config", "name": "packages/tailwindcss-config" },
+    { "path": "packages/typescript-config", "name": "packages/typescript-config" },
+    { "path": ".", "name": "root" }
+  ],
+  "extensions": {
+    "recommendations": [
+      "bradlc.vscode-tailwindcss",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode"
+    ]
+  },
+  "settings": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.rulers": [{ "column": 100 }],
+    "editor.tabSize": 2,
+    "files.associations": {
+      "*.css": "tailwindcss"
+    },
+    "files.exclude": {
+      ".cache/": true,
+      ".next/": true,
+      ".swc/": true,
+      ".turbo/": true,
+      "coverage/": true,
+      "dist/": true,
+      "e2e-report/": true,
+      "e2e-results/": true,
+      "node_modules/": true,
+      "out/": true,
+      "storybook-static/": true,
+      ".eslintcache": true
+    },
+    "javascript.preferences.importModuleSpecifier": "non-relative",
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "typescript.tsdk": "root/node_modules/typescript/lib",
+    "workbench.editor.labelFormat": "medium"
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "clean",
+        "type": "shell",
+        "command": "pnpm clean",
+        "problemMatcher": [],
+        "group": "none",
+        "options": {
+          "cwd": "${workspaceFolder:root}"
+        }
+      },
+      {
+        "label": "dev",
+        "type": "shell",
+        "command": "pnpm dev",
+        "problemMatcher": [],
+        "group": "none",
+        "options": {
+          "cwd": "${workspaceFolder:root}"
+        }
+      },
+      {
+        "label": "build",
+        "type": "shell",
+        "command": "pnpm build",
+        "problemMatcher": [],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "options": {
+          "cwd": "${workspaceFolder:root}"
+        }
+      },
+      {
+        "label": "start",
+        "type": "shell",
+        "command": "pnpm start",
+        "problemMatcher": [],
+        "group": "none",
+        "options": {
+          "cwd": "${workspaceFolder:root}"
+        }
+      },
+      {
+        "label": "storybook:dev",
+        "type": "shell",
+        "command": "pnpm storybook:dev",
+        "problemMatcher": [],
+        "group": "none",
+        "options": {
+          "cwd": "${workspaceFolder:root}"
+        }
+      },
+      {
+        "label": "storybook:build",
+        "type": "shell",
+        "command": "pnpm storybook:build",
+        "problemMatcher": [],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "options": {
+          "cwd": "${workspaceFolder:root}"
+        }
+      },
+      {
+        "label": "test:unit",
+        "type": "shell",
+        "command": "pnpm test:unit",
+        "problemMatcher": [],
+        "group": {
+          "kind": "test",
+          "isDefault": true
+        },
+        "options": {
+          "cwd": "${workspaceFolder:root}"
+        }
+      },
+      {
+        "label": "test:e2e",
+        "type": "shell",
+        "command": "pnpm test:e2e",
+        "problemMatcher": [],
+        "group": "test",
+        "options": {
+          "cwd": "${workspaceFolder:root}"
+        }
+      },
+      {
+        "label": "lint",
+        "type": "shell",
+        "command": "pnpm lint",
+        "problemMatcher": [],
+        "group": "none",
+        "options": {
+          "cwd": "${workspaceFolder:root}"
+        }
+      },
+      {
+        "label": "fix",
+        "type": "shell",
+        "command": "pnpm fix",
+        "problemMatcher": [],
+        "group": "none",
+        "options": {
+          "cwd": "${workspaceFolder:root}"
+        }
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Debug unit test (apps/website-ssr)",
+        "runtimeExecutable": "pnpm",
+        "runtimeArgs": ["test:unit", "${file}"],
+        "cwd": "${workspaceFolder:apps/website-ssr}"
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Debug unit test (apps/website)",
+        "runtimeExecutable": "pnpm",
+        "runtimeArgs": ["test:unit", "${file}"],
+        "cwd": "${workspaceFolder:apps/website}"
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Debug unit test (packages/ui)",
+        "runtimeExecutable": "pnpm",
+        "runtimeArgs": ["test:unit", "${file}"],
+        "cwd": "${workspaceFolder:packages/ui}"
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Debug unit test (packages/utils)",
+        "runtimeExecutable": "pnpm",
+        "runtimeArgs": ["test:unit", "${file}"],
+        "cwd": "${workspaceFolder:packages/utils}"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "name": "website",
+  "version": "0.0.0",
+  "scripts": {
+    "clean": "rm -rf .lighthouseci .next .swc .turbo coverage dist e2e-report e2e-results out storybook-static",
+    "dev": "next dev --port 3002",
+    "build": "next build",
+    "lint": "next lint",
+    "test:e2e": "playwright test",
+    "test:unit": "jest --ci --coverage",
+    "test:watch": "jest --watch",
+    "storybook:dev": "storybook dev --quiet --port 6002",
+    "storybook:build": "storybook build",
+    "coupling-graph": "npx madge --extensions js,jsx,ts,tsx,css,md,mdx ./ --exclude '.next|tailwind.config.js|reset.d.ts|prettier.config.js|postcss.config.js|playwright.config.ts|next.config.js|next-env.d.ts|instrumentation.ts|e2e/|README.md|.storybook/|.eslintrc.js' --image graph.svg"
+  },
+  "dependencies": {
+    "@headlessui/react": "1.7.15",
+    "clsx": "2.0.0",
+    "next": "13.4.12",
+    "next-themes": "0.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "ui": "workspace:*",
+    "utils": "workspace:*"
+  },
+  "devDependencies": {
+    "jest-config": "workspace:*",
+    "lighthouse-config": "workspace:*",
+    "next-config": "workspace:*",
+    "playwright-config": "workspace:*",
+    "storybook-config": "workspace:*",
+    "tailwindcss-config": "workspace:*",
+    "typescript-config": "workspace:*"
+  }
+}

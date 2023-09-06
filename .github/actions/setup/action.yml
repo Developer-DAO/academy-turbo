@@ -1,0 +1,34 @@
+name: Setup
+description: "Install required dependencies and build site"
+
+inputs:
+  node-version:
+    description: "Node version"
+    required: true
+    default: "18"
+  pnpm-version:
+    description: "pnpm version"
+    required: true
+    default: "8"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: ${{ inputs.pnpm-version }}
+    - name: Set up Node ${{ inputs.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: "pnpm"
+    - name: Install dependencies
+      run: pnpm install
+      shell: bash
+    - name: Install Playwright browsers
+      run: pnpm playwright install --with-deps
+      shell: bash
+    - name: Install Lighthouse globally
+      run: npm install -g @lhci/cli
+      shell: bash
