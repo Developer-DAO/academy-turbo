@@ -27,11 +27,14 @@ class MyDocument extends Document {
             content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
           />
 
-          <meta name="Turbo Monorepo" content="Turbo Monorepo" />
+          <meta name="Developer DAO Academy" content="Developer DAO Academy" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-          <meta name="apple-mobile-web-app-title" content="Turbo Monorepo" />
-          <meta name="description" content="Turbo Monorepo Template" />
+          <meta name="apple-mobile-web-app-title" content="Developer DAO Academy" />
+          <meta
+            name="description"
+            content="Academy is an open-source education platform created by the Developer DAO."
+          />
           <meta name="format-detection" content="telephone=no" />
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="msapplication-TileColor" content="#2B5797" />

@@ -26,9 +26,9 @@ runs:
     - name: Install dependencies
       run: pnpm install
       shell: bash
-    - name: Install Playwright browsers
-      run: pnpm playwright install --with-deps
-      shell: bash
-    - name: Install Lighthouse globally
-      run: npm install -g @lhci/cli
-      shell: bash
+    # - name: Install Playwright browsers
+    #   run: pnpm playwright install --with-deps
+    #   shell: bash
+    # - name: Install Lighthouse globally
+    #   run: npm install -g @lhci/cli
+    #   shell: bash

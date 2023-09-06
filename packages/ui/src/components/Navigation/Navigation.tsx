@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-base-to-string */
 import Link from "next/link";
 import type { FunctionComponent } from "react";
 

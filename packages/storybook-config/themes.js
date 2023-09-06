@@ -1,8 +1,8 @@
 import { create } from "@storybook/theming";
 
 const commonOptions = {
-  brandTitle: "Turbo Monorepo — Storybook",
-  brandUrl: "https://myopic.design/",
+  brandTitle: "D_D Academy — Storybook",
+  brandUrl: "https://example.com/",
   brandTarget: "_blank",
 };
 

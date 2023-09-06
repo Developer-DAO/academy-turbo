@@ -4,9 +4,9 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "Turbo Monorepo",
-  "short_name": "Turbo Monorepo",
-  "description": "Turbo Monorepo Template",
+  "name": "Developer DAO Academy",
+  "short_name": "Developer DAO Academy",
+  "description": "Academy is an open-source education platform created by the Developer DAO.",
   "icons": [
     {
       "src": "/icon-192x192.png",

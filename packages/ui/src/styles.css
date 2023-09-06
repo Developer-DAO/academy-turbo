@@ -1,3 +1,211 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700;900&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=clash-display@400,700,500,600&display=swap");
+
+@font-face {
+  font-family: "BTTF";
+  src: url("./font/BTTF.ttf") format("truetype");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+
+    /* DD Academy */
+
+    --font-family: "Poppins", sans;
+    --font-future: "BTTF", "Poppins", sans;
+    --font-zen-kaku: "Zen Kaku Gothic Antique", sans-serif;
+    --font-clash-display: "Clash Display", sans-serif;
+
+    --academy-dark: #5656564d;
+
+    --academy-button-dark: rgba(86, 86, 86, 0.3);
+
+    --academy-gradient-start: rgba(46, 46, 46, 0.4);
+    --academy-gradient-end: rgba(42, 42, 42, 0.4);
+
+    --academy-card-dark: #1c1c1c;
+    --academy-card-border-dark: #6c6c6c;
+
+    --academy-bg-dark: #060606;
+
+    --gray-white: #e9e9e9 44%, #ffffff 0%, #ffffff 13%;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+    font-family: var(--font-family);
+    background: var(--academy-bg-dark);
+  }
+}
+
+.gradient-blur {
+  background: linear-gradient(
+    318deg,
+    var(--academy-gradient-start) 0%,
+    var(--academy-gradient-end) 100%
+  );
+  backdrop-filter: blur(27px);
+}
+
+.gradient-border {
+  @apply rounded-3xl border-2  bg-origin-border;
+  border-image: linear-gradient(
+      318deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%
+    )
+    1;
+}
+
+.dd-nft {
+  @apply relative py-6 pr-6;
+  background:
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
+    url("/D_D_NFT_image.png"),
+    var(--academy-bg-dark) -406.375px -146px / 219.132% 181.543% no-repeat;
+  box-shadow: 0px 4px 35px 0px rgba(0, 0, 0, 0.25);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.main {
+  @apply mx-auto max-w-screen-2xl;
+}
+
+.top-nav {
+  @apply h-[62px] rounded-[51px] border-2 border-[var(--academy-dark)] px-4 py-6;
+}
+
+.top-nav .nav {
+  @apply h-10 gap-2 rounded-3xl border border-transparent bg-[var(--academy-button-dark)] py-2 backdrop-blur-sm;
+}
+
+.top-nav .typography {
+  @apply text-sm font-semibold leading-normal text-white transition-colors;
+}
+
+.top-nav .typography:hover {
+  @apply bg-white text-black;
+}
+
+.text-swagger {
+  @apply text-center text-lg leading-[91%] tracking-[1px] transition-colors;
+  font-family: var(--font-future);
+}
+
+.academy-grid {
+  @apply grid h-screen grid-cols-1 text-white  md:grid-cols-2;
+}
+
+.academy-grid .academy-grid-col-1 {
+  @apply flex flex-col items-center justify-between px-4 py-6 text-center;
+}
+
+.academy-grid .text-swagger-large {
+  @apply text-swagger mb-12 mt-10 h-full uppercase;
+}
+
+.badge {
+  @apply items-center justify-center rounded-full p-2 text-sm font-semibold leading-normal text-white backdrop-blur-sm;
+  font-family: var(--font-clash-display);
+}
+
+.track {
+  @apply gradient-blur max-w-xs rounded-[51px] border-none shadow-sm;
+}
+
+.track .gray-badge {
+  @apply badge w-20 border border-[#5050504A] bg-[var(--academy-dark)] hover:bg-[#5050504A];
+}
+
+.track .title {
+  @apply w-full text-xl font-bold leading-5 text-[#D8D8D8];
+  font-family: var(--font-clash-display);
+}
+
+.track .description {
+  @apply w-full text-xs font-normal leading-4 text-white opacity-60;
+  font-family: var(--font-zen-kaku);
+}
+
+.profile-card {
+  @apply rounded-3xl border-none bg-[var(--academy-card-dark)] p-3 font-bold text-white;
+}

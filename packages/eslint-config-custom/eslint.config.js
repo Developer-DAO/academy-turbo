@@ -69,7 +69,11 @@ module.exports = {
     babelOptions: {
       presets: [require.resolve("next/babel")],
     },
-    project: ["./apps/*/tsconfig.json", "./packages/*/tsconfig.json"],
+    project: [
+      "./apps/*/tsconfig.json",
+      // "./apps/examples/*/tsconfig.json",
+      "./packages/*/tsconfig.json",
+    ],
     tsconfigRootDir: resolve(__dirname, "../.."),
   },
 };

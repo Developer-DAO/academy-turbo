@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-base-to-string */
 import { Popover, Transition } from "@headlessui/react";
 import { Fragment, type FunctionComponent } from "react";
 

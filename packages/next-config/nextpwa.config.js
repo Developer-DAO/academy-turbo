@@ -21,7 +21,7 @@ module.exports = ({ basePath }) => {
 
   return withPlugins(
     [
-      [withBundleAnalyzer({ enabled: process.env.ANALYZE })],
+      [withBundleAnalyzer({ enabled: !!process.env.ANALYZE })],
       withPWA({
         dest: "public",
         disable: process.env.NODE_ENV === "development",
