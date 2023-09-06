@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { TrackCard as TrackCardComponent } from "./TrackCard";
 
 const meta = {
-  title: "UI/TrackCard",
+  title: "Cards/TrackCard",
   component: TrackCardComponent,
   argTypes: {
     imgSrc: {

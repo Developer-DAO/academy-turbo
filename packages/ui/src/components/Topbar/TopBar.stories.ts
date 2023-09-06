@@ -22,7 +22,7 @@ const sampleMenus: NavItem[] = [
 ];
 
 const meta = {
-  title: "UI/TopBar",
+  title: "Layout/TopBar",
   component: TopBarComponent,
   argTypes: {
     menus: {
