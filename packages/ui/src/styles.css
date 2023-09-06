@@ -207,7 +207,7 @@
 }
 
 .profile-card {
-  @apply max-w-sm rounded-3xl border-none bg-[var(--academy-card-dark)] p-3 font-bold text-white;
+  @apply max-w-sm rounded-[83px] border-none bg-[var(--academy-card-dark)] p-3 font-bold text-white;
 }
 
 .profile-card .title {
