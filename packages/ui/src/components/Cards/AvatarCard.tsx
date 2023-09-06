@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { Link } from "lucide-react";
 import Image from "next/image";
 import type { FC } from "react";
