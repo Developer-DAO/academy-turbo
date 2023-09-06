@@ -1,7 +1,6 @@
 {
   "folders": [
-    { "path": "apps/website-ssr", "name": "apps/website-ssr" },
-    { "path": "apps/website", "name": "apps/website" },
+    { "path": "apps/academy", "name": "apps/academy" },
     { "path": "packages/ui", "name": "packages/ui" },
     { "path": "packages/utils", "name": "packages/utils" },
     { "path": "packages/eslint-config-custom", "name": "packages/eslint-config-custom" },
@@ -170,10 +169,10 @@
       {
         "type": "node",
         "request": "launch",
-        "name": "Debug unit test (apps/website-ssr)",
+        "name": "Debug unit test (apps/academy)",
         "runtimeExecutable": "pnpm",
         "runtimeArgs": ["test:unit", "${file}"],
-        "cwd": "${workspaceFolder:apps/website-ssr}"
+        "cwd": "${workspaceFolder:apps/academy}"
       },
       {
         "type": "node",
