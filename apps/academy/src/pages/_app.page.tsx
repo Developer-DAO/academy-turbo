@@ -21,6 +21,7 @@ import { publicProvider } from "wagmi/providers/public";
 
 import { Layout } from "@/components/Layout";
 import { env } from "@/env.mjs";
+import { api } from "@/utils/api";
 
 import SEO from "../next-seo.config";
 const { chains, publicClient } = configureChains([polygonMumbai], [publicProvider()]);
@@ -60,7 +61,7 @@ type AppPropsWithLayout<P> = AppProps<P> & {
   Component: NextPageWithLayout<P>;
 };
 
-export default function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session }>) {
+function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session }>) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
@@ -78,3 +79,5 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout<{ ses
     </WagmiConfig>
   );
 }
+
+export default api.withTRPC(MyApp);
