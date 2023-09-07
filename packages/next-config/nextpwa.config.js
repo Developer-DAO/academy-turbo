@@ -16,7 +16,7 @@ module.exports = ({ basePath }) => {
     basePath,
     pageExtensions: ["page.tsx", "page.ts", "page.jsx", "page.js"],
     reactStrictMode: true,
-    transpilePackages: ["ui", "utils"],
+    transpilePackages: ["ui", "utils", "database"],
   };
 
   return withPlugins(

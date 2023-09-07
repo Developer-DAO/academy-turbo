@@ -1,39 +1,44 @@
-import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import Head from "next/head";
+import type { ReactElement } from "react";
 import { Container } from "ui";
 
-export default function Home({ pwa }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+import PageSeoLayout from "@/components/PageSeoLayout";
+import type { NextPageWithLayout } from "@/pages/_app.page";
+import { api } from "@/utils/api";
+
+const Home: NextPageWithLayout = () => {
+  const {
+    data: ExampleHelloData,
+    isLoading: ExampleHelloIsLoading,
+    // refetch: ExampleHelloRefetch,
+  } = api.example.hello.useQuery({
+    text: "Hello World",
+  });
+
+  console.log({ ExampleHelloData, ExampleHelloIsLoading });
+
   return (
-    <>
-      <Head>
-        <title>Turbo Monorepo — Website SSR</title>
-        <meta
-          name="description"
-          content="Replacement for EKS. (Still doesn't support ISO timestamps.)"
-        />
-      </Head>
-
-      <Container>
-        <main className="pb-8 pt-16 sm:pt-24">
-          <h1 className="mx-auto text-center text-6xl font-extrabold text-neutral-900 dark:text-white sm:text-7xl lg:text-8xl">
-            Website SSR
-            <span className="block bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text py-8 text-transparent">
-              Turbo Monorepo
-            </span>
-          </h1>
-          <div className="mx-auto mt-5 flex max-w-xl justify-center md:mt-8">
-            {`SSR Working ? ${pwa ? "SSR ON!" : "Not Working - Something went wrong?"}`}
-          </div>
-        </main>
-      </Container>
-    </>
+    <Container>
+      <main className="pb-8 pt-16 sm:pt-24">
+        <h1 className="mx-auto text-center text-6xl font-extrabold text-neutral-900 dark:text-white sm:text-7xl lg:text-8xl">
+          Website SSR
+          <span className="block bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text py-8 text-transparent">
+            Turbo Monorepo
+          </span>
+        </h1>
+      </main>
+    </Container>
   );
-}
-
-export const getServerSideProps: GetServerSideProps<{
-  pwa: boolean;
-}> = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  return { props: { pwa: true } };
 };
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <PageSeoLayout
+      title="Dapp Page" // DEV_NOTE: This is for the next-seo per page config
+      description="A page for your dapp." // DEV_NOTE: This is for the next-seo per page config
+    >
+      {page}
+    </PageSeoLayout>
+  );
+};
+
+export default Home;

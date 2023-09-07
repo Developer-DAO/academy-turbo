@@ -1,19 +1,30 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
-  "globalEnv": ["CI", "NODE_ENV"],
+  "globalEnv": [
+    "CI",
+    "NODE_ENV",
+    "NEXT_PUBLIC_WALLET_CONNECT_ID",
+    "NEXT_PUBLIC_VERCEL_URL",
+    "VERCEL_URL"
+  ],
   "pipeline": {
     "clean": {
       "cache": false
     },
     "dev": {
       "cache": false,
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "^db:generate"],
       "persistent": true
     },
     "build": {
-      "dependsOn": ["^build"],
-      "env": ["ANALYZE", "GITHUB_REPOSITORY"],
+      "dependsOn": ["^build", "^db:generate"],
+      "env": [
+        "ANALYZE",
+        "GITHUB_REPOSITORY",
+        "NEXT_PUBLIC_WALLET_CONNECT_ID",
+        "NEXT_PUBLIC_VERCEL_URL"
+      ],
       "outputs": [".next/**", "dist/**"]
     },
     "storybook:dev": {
@@ -36,6 +47,12 @@
     "coupling-graph": {
       "cache": false,
       "dependsOn": ["^build"]
+    },
+    "db:generate": {
+      "cache": false
+    },
+    "db:push": {
+      "cache": false
     }
   }
 }
