@@ -217,3 +217,13 @@
 .profile-card .description {
   @apply w-full text-xl font-normal leading-normal;
 }
+
+.btf {
+  @apply rounded-3xl border-none bg-[#44AF96] uppercase;
+  font-family: var(--font-future);
+}
+
+.bmtf {
+  @apply text-2xl;
+  font-family: var(--font-future);
+}
