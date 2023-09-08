@@ -9,7 +9,8 @@
     "db:generate": "pnpm with-env prisma generate",
     "db:push": "pnpm with-env prisma db push --skip-generate",
     "dev": "pnpm with-env prisma studio --port 5556",
-    "with-env": "dotenv -e ../../.env.local --"
+    "with-env": "dotenv -e ../../.env.local --",
+    "postinstall": "pnpm run db:generate"
   },
   "dependencies": {
     "@prisma/client": "^5.2.0"
