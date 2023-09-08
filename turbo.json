@@ -6,7 +6,10 @@
     "NODE_ENV",
     "NEXT_PUBLIC_WALLET_CONNECT_ID",
     "NEXT_PUBLIC_VERCEL_URL",
-    "VERCEL_URL"
+    "VERCEL_URL",
+    "NEXTAUTH_SECRET",
+    "POSTGRES_PRISMA_URL",
+    "POSTGRES_URL_NON_POOLING"
   ],
   "pipeline": {
     "clean": {

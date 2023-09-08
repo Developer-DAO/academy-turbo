@@ -29,5 +29,4 @@ module.exports = ({ basePath }) => {
     ],
     config,
   );
-  // return withPWA(config);
 };

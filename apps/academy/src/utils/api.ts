@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { httpBatchLink, loggerLink } from "@trpc/client";
-import { createTRPCNext } from "@trpc/next";
+import { type CreateTRPCNext, createTRPCNext } from "@trpc/next";
 import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 
 import type { AppRouter } from "@/server/api/root";
@@ -9,12 +7,13 @@ import { transformer } from "@/server/transformer";
 
 const getBaseUrl = () => {
   if (typeof window !== "undefined") return ""; // browser should use relative url
-  if (process.env.VERCEL_URL != undefined) return `https://${process.env.VERCEL_URL}`; // SSR should use vercel url
+  if (process.env["VERCEL_URL"] != undefined) return `https://${process.env["VERCEL_URL"]}`; // SSR should use vercel url
 
   return `http://localhost:3000`; // dev SSR should use localhost
 };
 
-export const api = createTRPCNext<AppRouter>({
+// TODO: DEV: enhance the `api` type avoiding the need to cast to any
+export const api: CreateTRPCNext<AppRouter, any, any> = createTRPCNext<AppRouter>({
   config() {
     return {
       transformer,
