@@ -12,8 +12,6 @@ import { SiweMessage } from "siwe";
 
 import { env } from "@/env.mjs";
 
-console.log({ secret: env.NEXTAUTH_SECRET });
-
 // Types
 // ========================================================
 /**
