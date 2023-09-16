@@ -10,6 +10,7 @@ import { ledgerWallet, trustWallet, zerionWallet } from "@rainbow-me/rainbowkit/
 import { RainbowKitSiweNextAuthProvider } from "@rainbow-me/rainbowkit-siwe-next-auth";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import type { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { DefaultSeo } from "next-seo";
@@ -24,9 +25,12 @@ import { env } from "@/env.mjs";
 import { api } from "@/utils/api";
 
 import SEO from "../next-seo.config";
+
 const { chains, publicClient } = configureChains([polygonMumbai], [publicProvider()]);
 
 const projectId = env.NEXT_PUBLIC_WALLET_CONNECT_ID;
+
+console.log({ projectId });
 
 const { wallets } = getDefaultWallets({
   appName: "D_D Academy",
@@ -61,7 +65,7 @@ type AppPropsWithLayout<P> = AppProps<P> & {
   Component: NextPageWithLayout<P>;
 };
 
-function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session }>) {
+function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session | null }>) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
@@ -71,6 +75,12 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session }
           <RainbowKitProvider chains={chains} initialChain={polygonMumbai}>
             <ThemeProvider attribute="class">
               <DefaultSeo {...SEO} />
+              <Head>
+                <meta
+                  name="viewport"
+                  content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+                />
+              </Head>
               <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
             </ThemeProvider>
           </RainbowKitProvider>
