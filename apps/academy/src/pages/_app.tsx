@@ -30,8 +30,6 @@ const { chains, publicClient } = configureChains([polygonMumbai], [publicProvide
 
 const projectId = env.NEXT_PUBLIC_WALLET_CONNECT_ID;
 
-console.log({ projectId });
-
 const { wallets } = getDefaultWallets({
   appName: "D_D Academy",
   projectId,
