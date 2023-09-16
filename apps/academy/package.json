@@ -3,8 +3,8 @@
   "name": "academy",
   "version": "0.0.0",
   "scripts": {
-    "clean": "rm -rf .lighthouseci .next .swc .turbo coverage dist e2e-report e2e-results out storybook-static",
-    "dev": "next dev --port 3001",
+    "clean": "rm -rf .lighthouseci .next .swc .turbo coverage dist e2e-report e2e-results out storybook-static node_modules analyze",
+    "dev": "next dev --port 3000",
     "build": "next build",
     "lint": "next lint",
     "test:e2e": "playwright test",
@@ -35,8 +35,8 @@
     "superjson": "^1.13.1",
     "ui": "workspace:*",
     "utils": "workspace:*",
-    "viem": "^1.10.4",
-    "wagmi": "^1.4.1",
+    "viem": "^1.10.14",
+    "wagmi": "^1.4.2",
     "zod": "^3.22.2"
   },
   "devDependencies": {

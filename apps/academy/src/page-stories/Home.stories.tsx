@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import Home from "@/pages/index.page";
+import Home from "@/pages/index";
 
 const meta: Meta<typeof Home> = {
   component: Home,

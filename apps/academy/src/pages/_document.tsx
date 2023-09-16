@@ -6,7 +6,7 @@ import Document, {
   Main,
   NextScript,
 } from "next/document";
-import { getCspContent } from "utils";
+// import { getCspContent } from "utils";
 
 class MyDocument extends Document {
   static override async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
@@ -16,16 +16,12 @@ class MyDocument extends Document {
   }
 
   override render() {
-    const csp = getCspContent(NextScript.getInlineScriptSource(this.props));
+    // const csp = getCspContent(NextScript.getInlineScriptSource(this.props));
 
     return (
       <Html lang="en">
         <Head>
-          <meta httpEquiv="Content-Security-Policy" content={csp} />
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
-          />
+          {/* <meta httpEquiv="Content-Security-Policy" content={csp} /> */}
 
           <meta name="Developer DAO Academy" content="Developer DAO Academy" />
           <meta name="apple-mobile-web-app-capable" content="yes" />

@@ -5,5 +5,6 @@ export * from "./Footer";
 export * from "./Header";
 export * from "./Icons";
 export * from "./Logo";
+export * from "./Navigation";
 export * from "./SideBar";
 export * from "./Topbar";
