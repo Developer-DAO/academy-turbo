@@ -1,6 +1,7 @@
 const { resolve } = require("node:path");
 
 module.exports = {
+  // ignorePatterns: ["../../apps/examples/**/*"],
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
