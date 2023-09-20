@@ -1,5 +1,6 @@
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { FunctionComponent } from "react";
-import { Header } from "ui";
+import { Container, Navigation } from "ui";
 
 const links = {
   leftLinks: [
@@ -7,29 +8,19 @@ const links = {
     { children: "Testimonials", href: "#testimonials", variant: "text" },
     { children: "Pricing", href: "#pricing", variant: "text" },
   ],
-  rightLinks: [
-    {
-      children: "Sign\u00a0in",
-      className: "hidden xs:block",
-      classNameMobile: "block xs:hidden",
-      href: "/signin",
-      variant: "text",
-    },
-    {
-      children: (
-        <span>
-          Get{"\u00a0"}started<span className="hidden lg:inline">{"\u00a0"}today</span>
-        </span>
-      ),
-      classNameMobile: "hidden",
-      href: "/signup",
-      variant: "primary",
-    },
-  ],
+  rightLinks: [],
 } as const;
 
 const PageHeader: FunctionComponent = () => {
-  return <Header {...links} />;
+  // return <Header {...links} />;
+  return (
+    <header className="py-10">
+      <Container>
+        <Navigation {...links} />
+        <ConnectButton />
+      </Container>
+    </header>
+  );
 };
 
 export { PageHeader as Header };

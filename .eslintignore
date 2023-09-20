@@ -11,3 +11,5 @@ out/
 storybook-static/
 *.js
 apps/examples/
+packages/database/client/
+packages/database/prisma/seed.ts

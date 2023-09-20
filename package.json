@@ -56,5 +56,8 @@
     "turbo": "1.10.11",
     "typescript": "5.1.6"
   },
-  "packageManager": "pnpm@8.6.10"
+  "packageManager": "pnpm@8.6.10",
+  "prisma": {
+    "schema": "packages/database/prisma/schema.prisma"
+  }
 }
