@@ -25,3 +25,6 @@ storybook-static/
 **/public/worker-*.js.map
 
 **/analyze/
+
+# Prisma generated client
+packages/database/client/
