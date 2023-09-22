@@ -6,6 +6,11 @@
   src: url("./font/BTTF.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "andale-mono-regular";
+  src: url("./font/ANDALEMO.ttf") format("truetype");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -47,6 +52,7 @@
 
     --font-family: "Poppins", sans;
     --font-future: "BTTF", "Poppins", sans;
+    --font-andale-mono: "andale-mono-regular", sans-serif;
     --font-zen-kaku: "Zen Kaku Gothic Antique", sans-serif;
     --font-clash-display: "Clash Display", sans-serif;
 
@@ -62,7 +68,9 @@
 
     --academy-bg-dark: #060606;
 
-    --gray-white: #e9e9e9 44%, #ffffff 0%, #ffffff 13%;
+    --gray-white: #e9e9e970;
+
+    --agency-solid: linear-gradient(89deg, #ee4295 0%, #ffad80 100%);
   }
 
   .dark {
@@ -150,8 +158,13 @@
   @apply mx-auto max-w-screen-2xl;
 }
 
+.button-rounded {
+  @apply rounded-3xl p-6 text-xl font-normal leading-normal;
+  font-family: var(--font-future);
+}
+
 .top-nav {
-  @apply h-[62px] rounded-[51px] border-2 border-[var(--academy-dark)] px-4 py-6;
+  @apply h-[62px] min-w-[547px] rounded-[51px] border-2 border-[var(--academy-dark)] px-4 py-6;
 }
 
 .top-nav .nav {
@@ -204,6 +217,36 @@
 .track .description {
   @apply w-full text-xs font-normal leading-4 text-white opacity-60;
   font-family: var(--font-zen-kaku);
+}
+
+.banner {
+  @apply gradient-blur m-2 flex min-h-[500px] w-full items-center justify-between rounded-[51px];
+  @apply max-w-screen-2xl gap-6 border-none border-[var(--gray-white)] p-2 shadow-sm md:p-4 lg:p-7;
+}
+
+.banner .title {
+  @apply max-w-md text-center text-4xl font-normal leading-normal tracking-wide text-white;
+  font-family: var(--font-future);
+}
+
+.banner .description {
+  @apply min-h-[187px] max-w-3xl text-center text-2xl font-light leading-normal text-white;
+  font-family: var(--font-family);
+}
+
+.terminal-text {
+  @apply text-left text-xs font-normal leading-5 text-[#e1e4e84a] md:text-sm;
+  font-family: var(--font-andale-mono);
+}
+
+.terminal-text .line {
+  @apply flex gap-2 md:gap-4;
+}
+
+.terminal-text .agency-solid {
+  @apply bg-clip-text text-[var(--agency-solid)];
+  --webkit-background-clip: text;
+  --webkit-text-fill-color: transparent;
 }
 
 .profile-card {

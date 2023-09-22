@@ -66,6 +66,7 @@ module.exports = {
         future: "var(--font-future)",
         "clash-display": "var(--font-clash-display)",
         "zen-kaku": "var(--font-zen-kaku)",
+        andale: "var(--font-andale-mono)",
         sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],
       },
       keyframes: {

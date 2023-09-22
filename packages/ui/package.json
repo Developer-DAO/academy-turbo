@@ -48,5 +48,8 @@
     "tailwind-merge": "^1.14.0",
     "tailwindcss-config": "workspace:*",
     "typescript-config": "workspace:*"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.0.2"
   }
 }
