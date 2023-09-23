@@ -2,7 +2,7 @@ import NextLink from "next/link";
 import type { FC } from "react";
 
 import { Button } from "../ui/button";
-import { Card, CardContent, CardHeader,CardTitle } from "../ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 export interface PartnerBannerProps {
   href: string;

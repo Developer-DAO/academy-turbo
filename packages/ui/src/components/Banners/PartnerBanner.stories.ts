@@ -1,6 +1,4 @@
 /* eslint-disable storybook/no-title-property-in-meta */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { PartnerBanner as PartnerBannerComponent } from "./PartnerBanner";
