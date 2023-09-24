@@ -27,158 +27,104 @@ export const LearnWeb3Banner: FC<PartnerBannerProps> = ({ href }) => {
           </Button>
         </CardContent>
       </div>
-      <div className="ml-0 lg:ml-auto">
-        <CardContent className="terminal-text">
-          <div className="line">
-            <div>
-              <span>1</span>
-            </div>
-            <div className="text-white">
-              <p>
-                <span className="text-[#F97583]">
-                  function&nbsp;
-                  <span className="text-[#e65a9e]">
-                    <span className="agency-solid">submitVote</span>
-                  </span>
-                </span>
-                (
-              </p>
-              <p>
-                <span className="text-[#FF39F7]">
-                  uint256&nbsp;
-                  <span className="text-[#e65a9e]">
-                    <span className="agency-solid">proposalIndex</span>
-                  </span>
-                </span>
-                ,
-              </p>
-              <p>
-                <span className="text-[#FF39F7]">
-                  uint8&nbsp;
-                  <span className="text-[#e65a9e]">
-                    <span className="agency-solid">uintVote</span>
-                  </span>
-                </span>
-              </p>
-            </div>
+      <CardContent className="terminal-text">
+        <div className="line">
+          <div>1</div>
+          <div className="text-white">
+            <p>
+              <span className="text-[#F97583]">function submitVote</span>(
+            </p>
+            <p>
+              <span className="text-[#FF39F7]">
+                uint256 <span className="text-[#e65a9e]">proposalIndex</span>{" "}
+              </span>
+              ,
+            </p>
+            <p>
+              <span className="text-[#FF39F7]">
+                uint8 <span className="text-[#e65a9e]">uintVote</span>
+              </span>
+            </p>
           </div>
-          <div className="line">
-            <div>
-              <span>2</span>
-            </div>
-            <div className="text-white">
-              <p>
-                )
-                <span className="text-[#F97583]">
-                  public <span className="text-[#BE2D61]">nonReentrant onlyDelegate</span>
-                </span>
-                &#123;
-              </p>
-            </div>
+        </div>
+        <div className="line">
+          <div>2</div>
+          <div className="text-white">
+            <p>
+              )
+              <span className="text-[#F97583]">
+                public <span className="text-[#BE2D61]">nonReentrant onlyDelegate</span>
+              </span>
+              &#123;
+            </p>
           </div>
-          <div className="line">
-            <div>
-              <span>3</span>
-            </div>
-            <div>
-              <p className="pl-6">
-                <span className="text-[#FF39F7]">
-                  address&nbsp;
-                  <span className="text-[#e65a9e]">
-                    <span className="agency-solid">memberAddress</span> =
-                  </span>
-                </span>
-              </p>
-              <p className="pl-12 text-white">
-                memberAddress[<span className="text-[#79B8FF]">msg</span>.sender];
-              </p>
-            </div>
+        </div>
+        <div className="line">
+          <div>3</div>
+          <div className="text-white">
+            <p className="pl-6">
+              <span className="text-[#FF39F7]">address&nbsp;</span>
+              <span className="text-[#e65a9e]">member Address</span> =
+            </p>
+            <p className="pl-12">
+              memberAddress[<span className="text-[#79B8FF]">msg</span>.sender];
+            </p>
           </div>
-          <div className="line">
-            <div>
-              <span>4</span>
-            </div>
-            <div className="text-white">
-              <p className="pl-6">
-                <span className="text-[#FF39F7]">
-                  Member&nbsp;
-                  <span className="text-[#F97583]">
-                    storage&nbsp;
-                    <span className="text-[#e65a9e]">
-                      <span className="agency-solid">member&nbsp;</span>
-                    </span>
-                  </span>
-                </span>
-                = members[memberAddress];
-              </p>
-            </div>
+        </div>
+        <div className="line">
+          <div>4</div>
+          <div>
+            <p className="pl-6 text-white md:whitespace-nowrap">
+              <span className="text-[#FF39F7]">Member&nbsp;</span>
+              <span className="text-[#e65a9e]">storage member</span> = members[memberAddress];
+            </p>
           </div>
-          <div className="line">
-            <div>
-              <span>5</span>
-            </div>
-            <div className="text-white">
-              <p className="pl-6">
-                <span className="text-[#F97583]">require</span>
-                (proposalIndex&nbsp;<span className="text-[#F97583]">&lt;&nbsp;</span>
-                proposalQueue.length,
-              </p>
-              <p className="pl-12">
-                <span className="text-[#9ECBFF]">&quot;proposal does not exist&quot;</span>);
-              </p>
-            </div>
+        </div>
+        <div className="line">
+          <div>5</div>
+          <div className="text-white">
+            <p className="pl-6">
+              <span className="text-[#F97583]">require</span>
+              (proposalIndex <span className="text-[#F97583]">&lt;&nbsp;</span>
+              proposalQueue.length,
+            </p>
+            <p className="pl-12">
+              <span className="text-[#9ECBFF]">&quot;proposal does not exist&quot;</span>);
+            </p>
           </div>
-          <div className="line">
-            <div>
-              <span>6</span>
-            </div>
-            <div>
-              <p className="pl-6">
-                <span className="text-[#FF39F7]">
-                  Proposal&nbsp;
-                  <span className="text-[#F97583]">
-                    storage&nbsp;
-                    <span className="text-[#e65a9e]">
-                      <span className="agency-solid">proposal&nbsp;</span>
-                    </span>
-                  </span>
-                </span>
-                =
-              </p>
-              <p className="pl-12 text-white">proposals[proposalQueue[proposalIndex]];</p>
-            </div>
+        </div>
+        <div className="line">
+          <div>6</div>
+          <div className="text-white">
+            <p className="pl-6">
+              <span className="text-[#FF39F7]">Proposal&nbsp;</span>
+              <span className="text-[#e65a9e]">storage proposal</span> =
+            </p>
+            <p className="pl-12">proposals&#91;proposalQueue&#91; proposalIndex &#93;&#93;;</p>
           </div>
-          <div className="line">
-            <div>
-              <span>7</span>
-            </div>
-            <div className="text-white">
-              <p className="pl-6">
-                <span className="text-[#F97583]">require</span>
-                (uintVote&nbsp;<span className="text-[#F97583]">&lt;&nbsp;</span>
-                <span className="text-[#9ECBFF]">3, &quot;must be less than 3&quot;</span>);
-              </p>
-            </div>
+        </div>
+        <div className="line">
+          <div>7</div>
+          <div className="text-white md:whitespace-nowrap">
+            <p className="pl-6">
+              <span className="text-[#F97583]">require</span>
+              (uintVote&nbsp;<span className="text-[#F97583]">&lt;&nbsp;</span>
+              <span className="text-[#9ECBFF]">3, &quot;must be less than 3&quot;</span>);
+            </p>
           </div>
-          <div className="line">
-            <div>
-              <span>8</span>
-            </div>
-            <div>
-              <p className="pl-6 text-white">
-                <span className="text-[#FF39F7]">
-                  Vote&nbsp;
-                  <span className="text-[#e65a9e]">
-                    <span className="agency-solid">vote</span> =&nbsp;
-                  </span>
-                </span>
-                <span className="text-[#B392F0]">Vote</span>(uintVote);
-              </p>
-              <p className="pl-3 text-white">...</p>
-            </div>
+        </div>
+        <div className="line">
+          <div>8</div>
+          <div>
+            <p className="pl-6 text-white">
+              <span className="text-[#FF39F7]">Vote&nbsp;</span>
+              <span className="text-[#e65a9e]">vote</span> =&nbsp;
+              <span className="text-[#B392F0]">Vote</span>(uintVote);
+            </p>
+            <p className="pl-3 text-white">...</p>
           </div>
-        </CardContent>
-      </div>
+        </div>
+      </CardContent>
     </Card>
   );
 };

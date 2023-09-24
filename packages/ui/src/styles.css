@@ -3,12 +3,17 @@
 
 @font-face {
   font-family: "BTTF";
+  font-style: normal;
+  font-weight: 400;
   src: url("./font/BTTF.ttf") format("truetype");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "andale-mono-regular";
+  font-style: normal;
   src: url("./font/ANDALEMO.ttf") format("truetype");
+  font-display: swap;
 }
 
 @tailwind base;
@@ -70,7 +75,7 @@
 
     --gray-white: #e9e9e970;
 
-    --agency-solid: linear-gradient(89deg, #ee4295 0%, #ffad80 100%);
+    --agency-solid: linear-gradient(89deg, #e65a9e 0%, #ffad80 100%);
   }
 
   .dark {
@@ -235,18 +240,12 @@
 }
 
 .terminal-text {
-  @apply text-left text-xs font-normal leading-5 text-[#e1e4e84a] md:text-sm;
+  @apply ml-0 p-1 text-left text-xs font-normal leading-5 text-[#e1e4e84a] md:text-sm lg:ml-auto;
   font-family: var(--font-andale-mono);
 }
 
 .terminal-text .line {
   @apply flex gap-2 md:gap-4;
-}
-
-.terminal-text .agency-solid {
-  @apply bg-clip-text text-[var(--agency-solid)];
-  --webkit-background-clip: text;
-  --webkit-text-fill-color: transparent;
 }
 
 .profile-card {
