@@ -38,6 +38,8 @@ model User {
   createdAt        DateTime           @default(now())
   accounts         Account[]
   CompletedQuizzes CompletedQuizzes[]
+  ongoingLessons   OngoingLesson[]
+  
 }
 
 model CompletedQuizzes {
@@ -54,4 +56,34 @@ model Lessons {
   id        String   @id @default(cuid())
   lessonNumber Int   @unique @default(autoincrement())
   quizFileName      String
+  subTopics SubTopics[]
+  ongoingLessons OngoingLesson[]
+}
+
+model SubTopics {
+  id String @id @default(cuid())
+  subTopicNumber Int @unique @default(autoincrement())
+  subTopicFileName String
+  lessonId String
+  lesson Lessons @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  subTopicStatus SubTopicStatus[]
+}
+
+model OngoingLesson {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  lessonId  String
+  lesson    Lessons  @relation(fields: [lessonId], references: [id])
+  subTopics SubTopicStatus[]
+  @@unique([userId, lessonId]) 
+}
+
+model SubTopicStatus {
+  id             String  @id @default(cuid())
+  subTopicId     String
+  subTopic       SubTopics @relation(fields: [subTopicId], references: [id])
+  ongoingLesson OngoingLesson @relation(fields: [ongoingLessonId], references: [id])
+  ongoingLessonId String
+  completed      Boolean
 }
