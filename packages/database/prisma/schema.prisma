@@ -39,12 +39,11 @@ model User {
   accounts         Account[]
   CompletedQuizzes CompletedQuizzes[]
   ongoingLessons   OngoingLesson[]
-  
 }
 
 model CompletedQuizzes {
   id        String   @id @default(cuid())
-  lesson    String
+  lessonId  String
   userId    String
   completed Boolean  @default(false)
   createdAt DateTime @default(now())
@@ -75,15 +74,14 @@ model OngoingLesson {
   user      User     @relation(fields: [userId], references: [id])
   lessonId  String
   lesson    Lessons  @relation(fields: [lessonId], references: [id])
-  subTopics SubTopicStatus[]
-  @@unique([userId, lessonId]) 
-}
+  startedAt DateTime @default(now())
+  finishedAt DateTime
+} 
 
 model SubTopicStatus {
   id             String  @id @default(cuid())
+  userId         String
   subTopicId     String
   subTopic       SubTopics @relation(fields: [subTopicId], references: [id])
-  ongoingLesson OngoingLesson @relation(fields: [ongoingLessonId], references: [id])
-  ongoingLessonId String
-  completed      Boolean
+  completed      Boolean @default(false)
 }
