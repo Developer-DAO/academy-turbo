@@ -1,22 +1,31 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { FunctionComponent } from "react";
-import { Container, Navigation } from "ui";
+import { Container, type NavItem, TopBar } from "ui";
 
-const links = {
-  leftLinks: [
-    { children: "Features", href: "#features", variant: "text" },
-    { children: "Testimonials", href: "#testimonials", variant: "text" },
-    { children: "Pricing", href: "#pricing", variant: "text" },
-  ],
-  rightLinks: [],
-} as const;
+const sampleMenus: NavItem[] = [
+  {
+    name: "Fundamentals",
+    href: "/",
+    icon: "clarity_blocks",
+  },
+  {
+    name: "Tracks",
+    href: "/",
+    icon: "vector",
+  },
+  {
+    name: "Community",
+    href: "/",
+    icon: "dd_logo",
+  },
+];
 
 const PageHeader: FunctionComponent = () => {
   // return <Header {...links} />;
   return (
     <header className="py-10">
-      <Container>
-        <Navigation {...links} />
+      <Container className="flex justify-between">
+        <TopBar menus={sampleMenus} />
         <ConnectButton />
       </Container>
     </header>

@@ -1,4 +1,4 @@
-import "@/styles.css";
+import "ui/styles.css";
 import "@rainbow-me/rainbowkit/styles.css";
 
 import {

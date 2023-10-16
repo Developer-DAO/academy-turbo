@@ -1,7 +1,8 @@
 import type { FunctionComponent, PropsWithChildren } from "react";
 
+import { Header } from "@/components/Header";
+
 import { Footer } from "./Footer";
-import { Header } from "./Header";
 
 export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
   return (
