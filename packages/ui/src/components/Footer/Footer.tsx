@@ -1,25 +1,31 @@
 import Link from "next/link";
-import type { FunctionComponent } from "react";
 
 import { Icons } from "../Icons";
 
-export interface SocialLinks {
+interface SocialLinks {
   alt?: string;
   href: string;
   icon: string;
 }
 
-export interface FooterLinks {
+interface FooterLinks {
   name: string;
   href: string;
 }
 
-export interface FooterProps {
-  links: readonly FooterLinks[];
-  socials: readonly SocialLinks[];
-}
+const links: readonly FooterLinks[] = [
+  { name: "Academy", href: "https://academy.developerdao.com" },
+  { name: "Feedback", href: "#Feedbacks" },
+  { name: "Newsletter", href: "#Newsletter" },
+];
 
-export const Footer: FunctionComponent<FooterProps> = ({ links, socials }) => {
+const socials: readonly SocialLinks[] = [
+  { alt: "Github", href: "https://github.com/Developer-DAO", icon: "github_circle" },
+  { alt: "Twitter", href: "https://x.com/devdao_academy", icon: "twitter_circle" },
+  { alt: "Mirror", href: "#mirror.xyz", icon: "mirror_circle" },
+];
+
+export const Footer = () => {
   return (
     <footer>
       <div className="footer">
