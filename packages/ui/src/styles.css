@@ -4,7 +4,6 @@
 @font-face {
   font-family: "BTTF";
   font-style: normal;
-  font-weight: 400;
   src: url("./font/BTTF.ttf") format("truetype");
   font-display: swap;
 }
@@ -160,16 +159,16 @@
 }
 
 .main {
-  @apply mx-auto max-w-screen-2xl;
+  @apply container mx-auto max-w-screen-2xl;
 }
 
 .button-rounded {
-  @apply rounded-3xl p-6 text-xl font-normal leading-normal;
+  @apply rounded-3xl p-6 text-xl font-normal;
   font-family: var(--font-future);
 }
 
 .top-nav {
-  @apply h-[62px] min-w-[547px] rounded-[51px] border-2 border-[var(--academy-dark)] px-4 py-6;
+  @apply h-[62px] w-min rounded-[51px] border-2 border-[var(--academy-dark)] px-4 py-6;
 }
 
 .top-nav .nav {
@@ -258,4 +257,15 @@
 
 .profile-card .description {
   @apply w-full text-xl font-normal leading-normal;
+}
+
+.footer {
+  @apply flex h-56 flex-col items-center border-t sm:flex-row-reverse sm:justify-between;
+  @apply border-black text-black dark:border-white dark:text-white;
+  @apply text-sm font-semibold;
+}
+
+.footer nav,
+.footer div {
+  @apply flex h-20 items-center gap-x-6 divide-black dark:divide-white;
 }
