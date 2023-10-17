@@ -14,7 +14,7 @@ interface FooterLinks {
 }
 
 const links: readonly FooterLinks[] = [
-  { name: "Academy", href: "https://academy.developerdao.com" },
+  { name: "Academy", href: "/" },
   { name: "Feedback", href: "#Feedbacks" },
   { name: "Newsletter", href: "#Newsletter" },
 ];
