@@ -1,6 +1,7 @@
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { FunctionComponent } from "react";
-import { Container, type NavItem, TopBar } from "ui";
+import { type NavItem, TopBar } from "ui";
+
+import { ConnectButton } from "@/components/ConnectButton";
 
 const sampleMenus: NavItem[] = [
   {
@@ -23,11 +24,9 @@ const sampleMenus: NavItem[] = [
 const PageHeader: FunctionComponent = () => {
   // return <Header {...links} />;
   return (
-    <header className="py-10">
-      <Container className="flex justify-between">
-        <TopBar menus={sampleMenus} />
-        <ConnectButton />
-      </Container>
+    <header className="main-container flex items-center justify-between py-10">
+      <TopBar menus={sampleMenus} />
+      <ConnectButton />
     </header>
   );
 };
