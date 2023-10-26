@@ -65,7 +65,7 @@ const academyLightTheme = merge(
   {
     colors: {
       accentColor: "var(--button-secondary-dark);",
-      modalBackground: "var(--gray-white);",
+      // modalBackground: "var(--gray-white);",
       modalBackdrop: "gradient-neutral",
     },
     fonts: {
