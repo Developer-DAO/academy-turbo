@@ -14,7 +14,7 @@ interface FooterLinks {
 }
 
 const links: readonly FooterLinks[] = [
-  { name: "Academy", href: "/" },
+  { name: "Academy", href: "https://academy.developerdao.com" },
   { name: "Feedback", href: "#Feedbacks" },
   { name: "Newsletter", href: "#Newsletter" },
 ];
@@ -28,7 +28,7 @@ const socials: readonly SocialLinks[] = [
 export const Footer = () => {
   return (
     <footer>
-      <div className="footer">
+      <div className="footer main-container">
         <nav aria-label="social">
           {socials.map((social) => {
             const Icon = Icons[social.icon];

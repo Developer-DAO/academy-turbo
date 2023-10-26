@@ -22,7 +22,7 @@ export const LearnWeb3Banner: FC<HomePageBannerProps> = ({ href }) => {
           </p>
         </CardContent>
         <CardContent className=" flex justify-center">
-          <Button asChild className="button-rounded bg-[#44AF96] text-black">
+          <Button asChild className="button-rounded text-black">
             <NextLink href={href}>get started</NextLink>
           </Button>
         </CardContent>

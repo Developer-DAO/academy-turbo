@@ -24,8 +24,8 @@ export const PartnerBanner: FC<PartnerBannerProps> = ({ href /** imgSrc*/ }) => 
           </p>
         </CardContent>
         <CardContent className=" flex justify-center">
-          <Button asChild className="button-rounded bg-[#44AF96] text-black">
-            <NextLink href={href}>reach out</NextLink>
+          <Button asChild className="button-rounded text-black">
+            <NextLink href={href}>reach out!</NextLink>
           </Button>
         </CardContent>
       </div>

@@ -54,7 +54,7 @@
 
     /* DD Academy */
 
-    --font-family: "Poppins", sans;
+    --font-poppins: "Poppins", sans;
     --font-future: "BTTF", "Poppins", sans;
     --font-andale-mono: "andale-mono-regular", sans-serif;
     --font-zen-kaku: "Zen Kaku Gothic Antique", sans-serif;
@@ -75,6 +75,22 @@
     --gray-white: #e9e9e970;
 
     --agency-solid: linear-gradient(89deg, #e65a9e 0%, #ffad80 100%);
+    --agency-blur: linear-gradient(
+      318deg,
+      var(--academy-gradient-start) 0%,
+      var(--academy-gradient-end) 100%
+    );
+    --agency-neutral: linear-gradient(
+      324deg,
+      rgba(0, 0, 0, 0.4) 6.96%,
+      rgba(42, 42, 42, 0.4) 93.77%
+    );
+
+    --button-secondary: #44af96;
+    --button-secondary-dark: #44af9670;
+
+    --button-accent: #ffad80;
+    --button-accent-dark: #ffad8070;
   }
 
   .dark {
@@ -120,55 +136,32 @@
     font-feature-settings:
       "rlig" 1,
       "calt" 1;
-    font-family: var(--font-family);
+    font-family: var(--font-poppins);
     background: var(--academy-bg-dark);
   }
 }
 
+.main-container {
+  @apply container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
 .gradient-blur {
-  background: linear-gradient(
-    318deg,
-    var(--academy-gradient-start) 0%,
-    var(--academy-gradient-end) 100%
-  );
+  background: var(--agency-blur);
   backdrop-filter: blur(27px);
 }
 
-.gradient-border {
-  @apply rounded-3xl border-2  bg-origin-border;
-  border-image: linear-gradient(
-      318deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.3) 50%,
-      rgba(255, 255, 255, 0.3) 50%,
-      rgba(255, 255, 255, 0) 100%
-    )
-    1;
-}
-
-.dd-nft {
-  @apply relative py-6 pr-6;
-  background:
-    linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
-    url("/D_D_NFT_image.png"),
-    var(--academy-bg-dark) -406.375px -146px / 219.132% 181.543% no-repeat;
-  box-shadow: 0px 4px 35px 0px rgba(0, 0, 0, 0.25);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-
-.main {
-  @apply container mx-auto max-w-screen-2xl;
+.gradient-neutral {
+  background: var(--agency-neutral);
+  backdrop-filter: blur(27px);
 }
 
 .button-rounded {
-  @apply rounded-3xl p-6 text-xl font-normal;
+  @apply rounded-3xl bg-[var(--button-secondary)] p-5 text-xl font-normal;
   font-family: var(--font-future);
 }
 
 .top-nav {
-  @apply h-[62px] w-min rounded-[51px] border-2 border-[var(--academy-dark)] px-4 py-6;
+  @apply h-[62px] w-min max-w-lg rounded-[51px] border-2 border-[var(--academy-dark)] px-4 py-6;
 }
 
 .top-nav .nav {
@@ -181,23 +174,6 @@
 
 .top-nav .typography:hover {
   @apply bg-white text-black;
-}
-
-.text-swagger {
-  @apply text-center text-lg leading-[91%] tracking-[1px] transition-colors;
-  font-family: var(--font-future);
-}
-
-.academy-grid {
-  @apply grid h-screen grid-cols-1 text-white  md:grid-cols-2;
-}
-
-.academy-grid .academy-grid-col-1 {
-  @apply flex flex-col items-center justify-between px-4 py-6 text-center;
-}
-
-.academy-grid .text-swagger-large {
-  @apply text-swagger mb-12 mt-10 h-full uppercase;
 }
 
 .badge {
@@ -235,7 +211,7 @@
 
 .banner .description {
   @apply min-h-[187px] max-w-3xl text-center text-2xl font-light leading-normal text-white;
-  font-family: var(--font-family);
+  font-family: var(--font-poppins);
 }
 
 .terminal-text {
@@ -262,7 +238,7 @@
 .footer {
   @apply flex h-56 flex-col items-center border-t sm:flex-row-reverse sm:justify-between;
   @apply border-black text-black dark:border-white dark:text-white;
-  @apply text-sm font-semibold;
+  @apply px-0 text-sm font-semibold;
 }
 
 .footer nav,
