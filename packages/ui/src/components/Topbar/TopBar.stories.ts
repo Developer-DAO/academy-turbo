@@ -1,3 +1,4 @@
+/* eslint-disable storybook/no-title-property-in-meta */
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { type NavItem, TopBar as TopBarComponent } from "./TopBar";

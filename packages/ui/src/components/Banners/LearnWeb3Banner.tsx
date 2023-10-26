@@ -4,11 +4,11 @@ import type { FC } from "react";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
-export interface HomePageBannerProps {
+export interface PartnerBannerProps {
   href: string;
 }
 
-export const LearnWeb3Banner: FC<HomePageBannerProps> = ({ href }) => {
+export const LearnWeb3Banner: FC<PartnerBannerProps> = ({ href }) => {
   return (
     <Card className="banner flex-col lg:flex-row-reverse">
       <div>

@@ -4,9 +4,9 @@ import type { FC } from "react";
 
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import type { HomePageBannerProps } from "./LearnWeb3Banner";
 
-export interface PartnerBannerProps extends HomePageBannerProps {
+export interface PartnerBannerProps {
+  href: string;
   imgSrc: string;
 }
 
