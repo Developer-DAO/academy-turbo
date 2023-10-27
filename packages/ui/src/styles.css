@@ -142,7 +142,7 @@
 }
 
 .main-container {
-  @apply container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  @apply container mx-auto max-w-7xl;
 }
 
 .gradient-blur {
@@ -200,7 +200,7 @@
 }
 
 .banner {
-  @apply gradient-blur m-2 flex min-h-[500px] w-full items-center justify-between rounded-[51px];
+  @apply gradient-blur flex min-h-[500px] w-full items-center justify-between rounded-[51px];
   @apply max-w-screen-2xl gap-6 border-none border-[var(--gray-white)] p-2 shadow-sm md:p-4 lg:p-7;
 }
 
