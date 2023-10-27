@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "BTTF";
+  font-style: normal;
+  src: url("./font/BTTF.ttf") format("truetype");
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --font-future: "BTTF", "Poppins", sans;
+  }
+}
+
 .text-bttf {
   @apply text-center text-lg leading-[91%] tracking-[1px] transition-colors;
   font-family: var(--font-future);
