@@ -16,7 +16,7 @@
 }
 
 .text-bttf {
-  @apply text-center text-lg leading-[91%] tracking-[1px] transition-colors;
+  @apply text-center leading-[91%] tracking-[1px] transition-colors;
   font-family: var(--font-future);
 }
 
