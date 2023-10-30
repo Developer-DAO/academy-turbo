@@ -26,6 +26,7 @@ import { polygonMumbai } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 
 import { Layout } from "@/components/Layout";
+import { TracksLayout } from "@/components/TracksLayout";
 import { env } from "@/env.mjs";
 import { api } from "@/utils/api";
 
@@ -130,7 +131,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session |
                     content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
                   />
                 </Head>
-                <Component {...pageProps} />
+                <TracksLayout>
+                  <Component {...pageProps} />
+                </TracksLayout>
               </ThemeProvider>
             </RainbowKitProvider>
           </RainbowKitSiweNextAuthProvider>
