@@ -26,6 +26,6 @@ type Story = StoryObj<typeof meta>;
 export const PartnerBanner: Story = {
   args: {
     href: "",
-    imgSrc: "",
+    imgSrc: "https://images.unsplash.com/photo-1487260211189-670c54da558d",
   },
 };
