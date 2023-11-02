@@ -24,7 +24,7 @@ const sampleMenus: NavItem[] = [
 const TracksHeader: FunctionComponent = () => {
   // return <Header {...links} />;
   return (
-    <header className="flex w-full items-center py-10">
+    <header className="flex w-full items-center pt-10 md:px-5 lg:px-0 lg:pr-20 xl:pr-5">
       <div className="flex flex-1 items-center justify-center">
         <TopBar menus={sampleMenus} />
       </div>
