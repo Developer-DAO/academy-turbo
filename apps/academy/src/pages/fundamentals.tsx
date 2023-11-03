@@ -22,9 +22,9 @@ bg-[url('/fundamental-bg.jpeg')] bg-cover bg-no-repeat object-center pt-[300px] 
         <div />
       </div>
       <div className="h-full lg:fixed lg:right-0 lg:top-20 lg:h-screen lg:w-1/2">
-        <div className="flex min-h-screen w-full flex-1 flex-col space-y-10 overflow-y-scroll bg-black px-8 pb-28 lg:max-h-screen">
-          <div className="flex w-full justify-center px-8 pb-10">
-            <div className="grid w-fit justify-center gap-x-10 gap-y-8 pb-8 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+        <div className="flex min-h-screen w-full flex-1 flex-col space-y-10 overflow-y-scroll bg-black px-8 pb-14 lg:max-h-screen lg:pb-28">
+          <div className="flex w-full justify-center md:px-8 lg:pb-10">
+            <div className="grid w-fit justify-center gap-5 sm:grid-cols-2 md:gap-x-10 md:gap-y-8 lg:grid-cols-1 lg:pb-8 xl:grid-cols-2">
               {trackCards.map((trackCard, index) => (
                 <TrackCard key={index} imgSrc={trackCard.imgSrc} />
               ))}

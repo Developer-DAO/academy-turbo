@@ -3,7 +3,6 @@
 .next/
 .swc/
 .turbo/
-.vscode/
 coverage/
 dist/
 e2e-report/
