@@ -14,10 +14,13 @@ const Fundamentals: FC = () => {
 bg-[url('/fundamental-bg.jpeg')] bg-cover bg-no-repeat object-center pt-[300px] md:pt-[325px] lg:fixed lg:inset-y-0 lg:w-1/2"
       >
         <div>
-          <h2 className="text-bttf text-5xl text-white">Fundamentals</h2>
+          <h2 className="text-bttf text-3xl text-white sm:text-5xl">Fundamentals</h2>
         </div>
-        <div>
-          <p className="text-3xl font-bold text-white">Nail the basics and then take on a track.</p>
+        <div className="md:hidden" />
+        <div className="flex justify-center">
+          <p className="max-w-[275px] text-center text-2xl font-bold text-white sm:max-w-xs sm:text-3xl md:max-w-full">
+            Nail the basics and then take on a track.
+          </p>
         </div>
         <div />
       </div>

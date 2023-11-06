@@ -39,7 +39,7 @@ const renderSubmenus = (submenus: SubNavItem[]): JSX.Element[] | undefined => {
   ));
 };
 
-const renderMenus = ({ menus }: TopBarProps): JSX.Element[] | undefined => {
+export const renderMenus = ({ menus }: TopBarProps): JSX.Element[] | undefined => {
   return menus.map((menuItem, key) => (
     <TopBarItem
       name={menuItem.name}
@@ -51,7 +51,7 @@ const renderMenus = ({ menus }: TopBarProps): JSX.Element[] | undefined => {
   ));
 };
 
-const TopBarItem: FC<NavItem> = ({ name, icon, href, subnavs }) => {
+export const TopBarItem: FC<NavItem> = ({ name, icon, href, subnavs }) => {
   const Icon = icon !== undefined ? Icons[icon] : null;
   return (
     <NavigationMenuItem>
