@@ -12,7 +12,7 @@ export interface TrackCardProps {
 
 const TrackCard: FC<TrackCardProps> = ({ imgSrc }) => {
   return (
-    <Card className="track">
+    <Card className="track !bg-none">
       <Image
         src={imgSrc}
         alt="eth_family"
