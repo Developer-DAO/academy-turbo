@@ -35,14 +35,14 @@ export const ConnectButton = () => {
             {!connected ? (
               <Button
                 onClick={openConnectModal}
-                className="button-rounded hover:bg-[var(--button-secondary-dark)]"
+                className="button-rounded z-20 hover:bg-[var(--button-secondary-dark)]"
               >
                 Connect
               </Button>
             ) : chain.unsupported ? (
               <Button
                 onClick={openChainModal}
-                className="button-rounded hover:bg-[var(--button-accent-dark)]"
+                className="button-rounded z-20 hover:bg-[var(--button-accent-dark)]"
               >
                 Switch Network
               </Button>
@@ -53,7 +53,7 @@ export const ConnectButton = () => {
                   alt="account avatar"
                   width={50}
                   height={50}
-                  className="rounded-full border-2 border-black p-0 opacity-80 shadow-sm"
+                  className="z-20 rounded-full border-2 border-black p-0 opacity-80 shadow-sm"
                 />
               </button>
             )}

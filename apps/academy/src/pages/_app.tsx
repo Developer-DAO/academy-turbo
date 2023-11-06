@@ -15,6 +15,7 @@ import merge from "lodash.merge";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import type { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { DefaultSeo } from "next-seo";
@@ -25,6 +26,7 @@ import { polygonMumbai } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 
 import { Layout } from "@/components/Layout";
+import { TracksLayout } from "@/components/TracksLayout";
 import { env } from "@/env.mjs";
 import { api } from "@/utils/api";
 
@@ -100,7 +102,45 @@ type AppPropsWithLayout<P> = AppProps<P> & {
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session | null }>) {
+  const router = useRouter();
   const getLayout = Component.getLayout ?? ((page) => page);
+
+  // If the current route is '/fundamentals', don't use the Layout
+  if (router.pathname === "/fundamentals") {
+    return (
+      <WagmiConfig config={wagmiConfig}>
+        <SessionProvider refetchInterval={0} session={pageProps.session}>
+          <RainbowKitSiweNextAuthProvider>
+            <RainbowKitProvider
+              chains={chains}
+              initialChain={polygonMumbai}
+              appInfo={{
+                appName: "Developer DAO Academy",
+                learnMoreUrl: "https://academy.developerdao.com",
+              }}
+              theme={{
+                lightMode: academyLightTheme,
+                darkMode: academyDarkTheme,
+              }}
+            >
+              <ThemeProvider attribute="class">
+                <DefaultSeo {...SEO} />
+                <Head>
+                  <meta
+                    name="viewport"
+                    content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
+                  />
+                </Head>
+                <TracksLayout>
+                  <Component {...pageProps} />
+                </TracksLayout>
+              </ThemeProvider>
+            </RainbowKitProvider>
+          </RainbowKitSiweNextAuthProvider>
+        </SessionProvider>
+      </WagmiConfig>
+    );
+  }
 
   return (
     <WagmiConfig config={wagmiConfig}>
