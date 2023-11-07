@@ -10,24 +10,8 @@ export interface HomePageBannerProps {
 
 export const LearnWeb3Banner: FC<HomePageBannerProps> = ({ href }) => {
   return (
-    <Card className="banner flex-col lg:flex-row-reverse">
-      <div>
-        <CardHeader className="flex-row justify-center">
-          <CardTitle className="title">LEARN WEB3</CardTitle>
-        </CardHeader>
-        <CardContent className="description">
-          <p>
-            DeveloperDAO Academy offers learning resources to help you learn how to build web3
-            technologies.
-          </p>
-        </CardContent>
-        <CardContent className=" flex justify-center">
-          <Button asChild className="button-rounded text-black">
-            <NextLink href={href}>get started</NextLink>
-          </Button>
-        </CardContent>
-      </div>
-      <CardContent className="terminal-text">
+    <Card className="banner flex-col lg:flex-row">
+      <div className="terminal-text">
         <div className="line">
           <div>1</div>
           <div className="text-white">
@@ -124,7 +108,23 @@ export const LearnWeb3Banner: FC<HomePageBannerProps> = ({ href }) => {
             <p className="pl-3 text-white">...</p>
           </div>
         </div>
-      </CardContent>
+      </div>
+      <div>
+        <CardHeader className="flex-row justify-center">
+          <CardTitle className="title">LEARN WEB3</CardTitle>
+        </CardHeader>
+        <CardContent className="description max-w-xl">
+          <p>
+            DeveloperDAO Academy offers learning resources to help you learn how to build web3
+            technologies.
+          </p>
+        </CardContent>
+        <div className="flex justify-center">
+          <Button asChild className="button-rounded text-black">
+            <NextLink href={href}>get started!</NextLink>
+          </Button>
+        </div>
+      </div>
     </Card>
   );
 };

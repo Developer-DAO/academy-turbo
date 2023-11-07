@@ -200,8 +200,8 @@
 }
 
 .banner {
-  @apply gradient-blur flex min-h-[500px] w-full items-center justify-between rounded-[51px];
-  @apply max-w-screen-2xl gap-6 border-none border-[var(--gray-white)] p-2 shadow-sm md:p-4 lg:p-7;
+  @apply gradient-neutral flex min-h-[500px] w-full items-center justify-between rounded-[51px];
+  @apply max-w-screen-2xl gap-x-6 gap-y-10 border-none border-[var(--gray-white)] p-2 shadow-sm md:p-4 lg:p-7;
 }
 
 .banner .title {
@@ -210,12 +210,12 @@
 }
 
 .banner .description {
-  @apply min-h-[187px] max-w-3xl text-center text-2xl font-light leading-normal text-white;
+  @apply min-h-[187px] text-center text-2xl font-light leading-normal text-white;
   font-family: var(--font-poppins);
 }
 
 .terminal-text {
-  @apply ml-0 p-1 text-left text-xs font-normal leading-5 text-[#e1e4e84a] md:text-sm lg:ml-auto;
+  @apply mx-0 p-1 text-left text-xs font-normal leading-5 text-[#e1e4e84a] md:text-sm lg:mx-auto;
   font-family: var(--font-andale-mono);
 }
 
