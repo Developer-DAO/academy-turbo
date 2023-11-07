@@ -26,7 +26,7 @@ const Home: NextPageWithLayout = () => {
       </div>
       <div className="main-container space-y-16 py-16">
         <LearnWeb3Banner href="" />
-        <PartnerBanner href="" imgSrc="" />
+        <PartnerBanner href="" imgSrc="/DD_NFT_avatar.png" />
       </div>
     </main>
   );

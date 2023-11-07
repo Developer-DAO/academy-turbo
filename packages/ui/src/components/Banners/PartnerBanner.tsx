@@ -32,30 +32,24 @@ export const PartnerBanner: FC<PartnerBannerProps> = ({ href, imgSrc }) => {
       </div>
       <div className=" m-auto max-w-lg">
         <div className="flex flex-row items-center gap-x-6">
-          <Image
-            src={imgSrc}
-            width={100}
-            height={100}
-            alt="partner"
-            className="w-30 h-14 rounded-full"
-          />
-          <div className="h-20 border" />
+          <Image src={imgSrc} width={150} height={150} alt="partner" className="rounded-full" />
+          <div className="h-28 border" />
           <div className=" flex flex-wrap gap-6">
             {[
-              "https://zerion.io/blog/content/images/2023/03/Zerion-Blog.png",
-              "https://upload.wikimedia.org/wikipedia/commons/2/24/Polygon_blockchain_logo.png",
-              "https://moonbeam.network/wp-content/uploads/2022/06/pocket-logo.png",
-              "https://altcoinsbox.com/wp-content/uploads/2023/03/the-graph-logo-300x300.webp",
-              "https://global.discourse-cdn.com/standard11/uploads/scroll2/original/2X/3/3bc70fd653f9c50abbb41b7568e549535f768fcc.png",
-              "https://seeklogo.com/images/A/api3-logo-7A7D29C8F6-seeklogo.com.png",
+              "/partners/Zerion.png",
+              "/partners/Polygon.png",
+              "/partners/pocket.png",
+              "/partners/the-graph.webp",
+              "/partners/scroll.png",
+              "/partners/api3.png",
             ].map((e, i) => (
               <Image
                 key={i}
                 src={e}
-                width={100}
-                height={100}
+                width={200}
+                height={50}
                 alt="partner"
-                className="max-w-30 h-auto max-h-12 w-auto"
+                className="h-auto max-h-12 w-auto"
               />
             ))}
           </div>
