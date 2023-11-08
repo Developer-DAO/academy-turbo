@@ -30,18 +30,16 @@ export const PartnerBanner: FC<PartnerBannerProps> = ({ href, imgSrc }) => {
           </Button>
         </div>
       </div>
-      <div className=" m-auto max-w-lg">
+      <div className=" m-auto max-w-sm">
         <div className="flex flex-row items-center gap-x-6">
-          <Image src={imgSrc} width={150} height={150} alt="partner" className="rounded-full" />
+          <Image src={imgSrc} width={120} height={120} alt="partner" className="rounded-full" />
           <div className="h-28 border" />
           <div className=" flex flex-wrap gap-6">
             {[
-              "/partners/Zerion.png",
-              "/partners/Polygon.png",
-              "/partners/pocket.png",
-              "/partners/the-graph.webp",
-              "/partners/scroll.png",
-              "/partners/api3.png",
+              "/partners/zerion.png",
+              "/partners/polygon-logo.png",
+              "/partners/pokt.png",
+              "/partners/api3-logo.png",
             ].map((e, i) => (
               <Image
                 key={i}
@@ -49,7 +47,7 @@ export const PartnerBanner: FC<PartnerBannerProps> = ({ href, imgSrc }) => {
                 width={200}
                 height={50}
                 alt="partner"
-                className="h-auto max-h-12 w-auto"
+                className="h-auto max-h-10 w-auto"
               />
             ))}
           </div>
