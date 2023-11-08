@@ -15,6 +15,13 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Death Star";
+  font-style: normal;
+  src: url("./font/DeathStar.otf") format("opentype");
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -59,6 +66,7 @@
     --font-andale-mono: "andale-mono-regular", sans-serif;
     --font-zen-kaku: "Zen Kaku Gothic Antique", sans-serif;
     --font-clash-display: "Clash Display", sans-serif;
+    --font-death-star: "Death Star", sans-serif;
 
     --academy-dark: #5656564d;
 
@@ -181,6 +189,11 @@
 
 .top-nav .typography:hover {
   @apply bg-white text-black;
+}
+
+.mobile-nav-item {
+  @apply mx-6 mb-6 border-b pb-2 text-left text-xl font-normal text-white;
+  font-family: var(--font-death-star);
 }
 
 .badge {
