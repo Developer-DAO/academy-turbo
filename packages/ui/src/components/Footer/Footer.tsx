@@ -27,8 +27,8 @@ const socials: readonly SocialLinks[] = [
 
 export const Footer = () => {
   return (
-    <footer>
-      <div className="footer main-container">
+    <footer className="main-container">
+      <div className="footer">
         <nav aria-label="social">
           {socials.map((social) => {
             const Icon = Icons[social.icon];

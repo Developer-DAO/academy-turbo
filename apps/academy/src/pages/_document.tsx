@@ -41,7 +41,7 @@ class MyDocument extends Document {
           <link rel="manifest" href="/manifest.json" />
           <link rel="shortcut icon" href="/favicon.ico" />
         </Head>
-        <body className="bg-neutral-50 dark:bg-neutral-900">
+        <body className="var(--academy-bg-dark)">
           <Main />
           <NextScript />
         </body>
