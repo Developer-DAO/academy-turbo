@@ -8,11 +8,11 @@
 }
 
 .academy-grid {
-  @apply mx-auto grid h-screen max-h-[1024px] max-w-screen-2xl  grid-cols-1 text-white md:grid-cols-2;
+  @apply mx-auto grid h-screen max-h-[1024px] max-w-screen-2xl grid-rows-2 text-white md:grid-cols-2;
 }
 
 .academy-grid .academy-grid-col-1 {
-  @apply my-auto space-y-12 lg:pt-24;
+  @apply order-2 my-auto h-full space-y-12 md:order-1 lg:pt-24;
 }
 
 .academy-grid .text-bttf-lg {
@@ -24,7 +24,7 @@
 }
 
 .dd-nft {
-  @apply relative hidden py-6 pr-6 md:flex md:justify-end;
+  @apply relative order-1 h-full max-h-[1024px] py-6 md:order-2 lg:h-screen;
   background:
     linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
     url("/D_D_NFT_image.png"),

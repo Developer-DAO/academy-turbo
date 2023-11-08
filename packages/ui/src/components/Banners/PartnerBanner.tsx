@@ -14,7 +14,7 @@ export interface PartnerBannerProps extends HomePageBannerProps {
 export const PartnerBanner: FC<PartnerBannerProps> = ({ href, imgSrc }) => {
   return (
     <Card className="banner flex-col-reverse lg:flex-row">
-      <div>
+      <div className="mb-16">
         <CardHeader className="flex-row justify-center">
           <CardTitle className="title">Partner with D_D Academy</CardTitle>
         </CardHeader>
@@ -30,11 +30,11 @@ export const PartnerBanner: FC<PartnerBannerProps> = ({ href, imgSrc }) => {
           </Button>
         </div>
       </div>
-      <div className=" m-auto max-w-sm">
-        <div className="flex flex-row items-center gap-x-6">
+      <div className="mx-8 mt-8 max-w-sm md:m-auto">
+        <div className="flex flex-col items-center gap-x-6 md:flex-row">
           <Image src={imgSrc} width={120} height={120} alt="partner" className="rounded-full" />
-          <div className="h-28 border" />
-          <div className=" flex flex-wrap gap-6">
+          <div className="separator" />
+          <div className=" flex flex-wrap items-center justify-center gap-6 md:justify-normal">
             {[
               "/partners/zerion.png",
               "/partners/polygon-logo.png",

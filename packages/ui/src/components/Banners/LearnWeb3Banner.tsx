@@ -11,7 +11,7 @@ export interface HomePageBannerProps {
 export const LearnWeb3Banner: FC<HomePageBannerProps> = ({ href }) => {
   return (
     <Card className="banner flex-col lg:flex-row">
-      <div className="terminal-text">
+      <div className="terminal-text mt-8">
         <div className="line">
           <div>1</div>
           <div className="text-white">
@@ -109,7 +109,7 @@ export const LearnWeb3Banner: FC<HomePageBannerProps> = ({ href }) => {
           </div>
         </div>
       </div>
-      <div>
+      <div className="mb-16">
         <CardHeader className="flex-row justify-center">
           <CardTitle className="title">LEARN WEB3</CardTitle>
         </CardHeader>

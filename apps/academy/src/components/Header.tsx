@@ -1,5 +1,5 @@
 import type { FunctionComponent } from "react";
-import { type NavItem, TopBar } from "ui";
+import { type NavItem, SideBar, TopBar } from "ui";
 
 import { ConnectButton } from "@/components/ConnectButton";
 
@@ -24,9 +24,14 @@ const sampleMenus: NavItem[] = [
 const PageHeader: FunctionComponent = () => {
   // return <Header {...links} />;
   return (
-    <header className="main-container absolute left-0 right-0 top-0 z-50 flex items-center justify-between py-10">
-      <TopBar menus={sampleMenus} />
+    <header className="main-container absolute left-0 right-0 top-0 z-50 flex items-center justify-between py-10 md:flex-row-reverse">
       <ConnectButton />
+      <div className="flex lg:hidden">
+        <SideBar menus={sampleMenus} />
+      </div>
+      <div className="hidden lg:flex">
+        <TopBar menus={sampleMenus} />
+      </div>
     </header>
   );
 };

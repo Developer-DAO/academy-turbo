@@ -24,7 +24,7 @@ export const ConnectButton = () => {
 
         if (!ready) {
           return (
-            <Button className="button-rounded" disabled>
+            <Button className="connect-button" disabled>
               loading
             </Button>
           );
@@ -35,14 +35,14 @@ export const ConnectButton = () => {
             {!connected ? (
               <Button
                 onClick={openConnectModal}
-                className="button-rounded hover:bg-[var(--button-secondary-dark)]"
+                className="connect-button hover:bg-[var(--button-secondary-dark)]"
               >
                 Connect
               </Button>
             ) : chain.unsupported ? (
               <Button
                 onClick={openChainModal}
-                className="button-rounded hover:bg-[var(--button-accent-dark)]"
+                className="connect-button hover:bg-[var(--button-accent-dark)]"
               >
                 Switch Network
               </Button>
