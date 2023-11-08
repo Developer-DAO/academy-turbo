@@ -9,20 +9,31 @@ const Home: NextPageWithLayout = () => {
     <main>
       <div className="academy-grid">
         <div className="academy-grid-col-1">
-          <div className="text-bttf-lg">
-            <h1>learn</h1>
-            <h1>web3 __</h1>
-            <h1>with</h1>
-            <h1>frens</h1>
+          <div className="hidden justify-center md:flex">
+            <div className="text-bttf-lg">
+              <h1>learn</h1>
+              <h1>web3 __</h1>
+              <h1>with</h1>
+              <h1>frens</h1>
+            </div>
           </div>
           <div className="description max-w-lg">
             <p>Become a web3 developer with DeveloperDAO.</p>
           </div>
-          <div className="flex w-full items-center justify-center">
+          <div className="hidden w-full items-center justify-center md:flex">
             <Icons.scroll className="h-16 w-16" />
           </div>
         </div>
-        <div className="dd-nft" />
+        <div className="dd-nft">
+          <div className="flex h-full items-end justify-center md:hidden">
+            <div className="text-bttf-lg">
+              <h1>learn</h1>
+              <h1>web3 __</h1>
+              <h1>with</h1>
+              <h1>frens</h1>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="main-container space-y-16 py-16">
         <LearnWeb3Banner href="" />

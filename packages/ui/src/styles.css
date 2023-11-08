@@ -230,7 +230,7 @@
 }
 
 .banner .description {
-  @apply min-h-[187px] text-center text-2xl font-light leading-normal text-white;
+  @apply min-h-[187px] text-center text-xl font-light leading-normal text-white md:text-2xl;
   font-family: var(--font-poppins);
 }
 

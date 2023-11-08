@@ -113,7 +113,7 @@ export const LearnWeb3Banner: FC<HomePageBannerProps> = ({ href }) => {
         <CardHeader className="flex-row justify-center">
           <CardTitle className="title">LEARN WEB3</CardTitle>
         </CardHeader>
-        <CardContent className="description max-w-xl">
+        <CardContent className="description max-w-xl p-1">
           <p>
             DeveloperDAO Academy offers learning resources to help you learn how to build web3
             technologies.

@@ -18,7 +18,7 @@ export const PartnerBanner: FC<PartnerBannerProps> = ({ href, imgSrc }) => {
         <CardHeader className="flex-row justify-center">
           <CardTitle className="title">Partner with D_D Academy</CardTitle>
         </CardHeader>
-        <CardContent className="description max-w-2xl">
+        <CardContent className="description max-w-2xl p-1 pb-12 md:pb-1">
           <p>
             Developer DAO is a community of thousands of web3 builders creating a better internet.
             Join us and help educate the next generation of developers.
