@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "ui/styles.css";
 
 .text-bttf {
   @apply leading-[91%] tracking-[1px] transition-colors;
@@ -8,26 +6,25 @@
 }
 
 .academy-grid {
-  @apply mx-auto grid h-screen max-h-[1024px] max-w-screen-2xl  grid-cols-1 text-white md:grid-cols-2;
+  @apply mx-auto flex max-w-screen-2xl flex-col-reverse text-white md:flex-row;
 }
-
 .academy-grid .academy-grid-col-1 {
-  @apply my-auto space-y-12 lg:pt-24;
+  @apply mb-28 mt-16 flex h-auto max-h-[1024px] w-full flex-col justify-center space-y-8 md:mb-0 md:h-screen md:w-1/2;
 }
 
 .academy-grid .text-bttf-lg {
-  @apply text-bttf mb-16 text-center text-6xl lg:text-8xl;
+  @apply text-bttf mb-6 text-center text-5xl lg:text-8xl;
 }
 
 .academy-grid .academy-grid-col-1 .description {
-  @apply mx-auto text-center text-2xl font-light;
+  @apply mx-auto text-center text-xl font-light md:text-2xl;
 }
 
 .dd-nft {
-  @apply relative hidden py-6 pr-6 md:flex md:justify-end;
+  @apply h-screen max-h-[547px] w-full  md:max-h-[1024px] md:w-1/2;
   background:
     linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
-    url("/D_D_NFT_image.png"),
+    url("/dd_nft_image.png"),
     var(--academy-bg-dark) -406.375px -146px / 219.132% 181.543% no-repeat;
   box-shadow: 0px 4px 35px 0px rgba(0, 0, 0, 0.25);
   background-repeat: no-repeat;

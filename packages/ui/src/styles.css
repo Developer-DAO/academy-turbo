@@ -15,6 +15,13 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Death Star";
+  font-style: normal;
+  src: url("./font/DeathStar.otf") format("opentype");
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -59,6 +66,7 @@
     --font-andale-mono: "andale-mono-regular", sans-serif;
     --font-zen-kaku: "Zen Kaku Gothic Antique", sans-serif;
     --font-clash-display: "Clash Display", sans-serif;
+    --font-death-star: "Death Star", sans-serif;
 
     --academy-dark: #5656564d;
 
@@ -155,9 +163,16 @@
   backdrop-filter: blur(27px);
 }
 
-.button-rounded {
-  @apply rounded-3xl bg-[var(--button-secondary)] p-5 text-xl font-normal;
+.button-rounded-sm {
+  @apply rounded-3xl bg-[var(--button-secondary)] font-normal;
   font-family: var(--font-future);
+}
+.button-rounded {
+  @apply button-rounded-sm p-5 text-xl;
+}
+
+.connect-button {
+  @apply button-rounded-sm p-2 text-sm  md:p-3 md:text-lg lg:p-5 lg:text-xl;
 }
 
 .top-nav {
@@ -174,6 +189,11 @@
 
 .top-nav .typography:hover {
   @apply bg-white text-black;
+}
+
+.mobile-nav-item {
+  @apply mx-6 mb-6 border-b pb-2 text-left text-xl font-normal text-white;
+  font-family: var(--font-death-star);
 }
 
 .badge {
@@ -205,17 +225,21 @@
 }
 
 .banner .title {
-  @apply max-w-md text-center text-4xl font-normal leading-normal tracking-wide text-white;
+  @apply max-w-[220px] text-center text-4xl font-normal leading-normal tracking-wide text-white md:max-w-md;
   font-family: var(--font-future);
 }
 
 .banner .description {
-  @apply min-h-[187px] text-center text-2xl font-light leading-normal text-white;
+  @apply min-h-[187px] text-center text-xl font-light leading-normal text-white md:text-2xl;
   font-family: var(--font-poppins);
 }
 
+.banner div .separator {
+  @apply mb-6 mt-4 h-1 w-28 border-r-0 border-t md:my-0 md:h-28 md:w-0 md:border-r md:border-t-0;
+}
+
 .terminal-text {
-  @apply mx-0 p-1 text-left text-xs font-normal leading-5 text-[#e1e4e84a] md:text-sm lg:mx-auto;
+  @apply mx-4 p-1 text-left text-xs font-normal leading-5 text-[#e1e4e84a] md:text-sm lg:mx-auto;
   font-family: var(--font-andale-mono);
 }
 
@@ -236,12 +260,12 @@
 }
 
 .footer {
-  @apply flex h-56 flex-col items-center border-t sm:flex-row-reverse sm:justify-between;
-  @apply border-black text-black dark:border-white dark:text-white;
-  @apply px-0 text-sm font-semibold;
+  @apply flex min-h-[224px] flex-col items-center gap-y-8 border-t sm:flex-row-reverse sm:justify-between;
+  @apply border-white text-white;
+  @apply px-0 py-8 text-xs font-semibold md:text-sm;
 }
 
 .footer nav,
 .footer div {
-  @apply flex h-20 items-center gap-x-6 divide-black dark:divide-white;
+  @apply flex items-center gap-x-6 divide-white;
 }

@@ -29,7 +29,7 @@ export const Footer = () => {
   return (
     <footer className="main-container">
       <div className="footer">
-        <nav aria-label="social">
+        <nav aria-label="social" className="px-4">
           {socials.map((social) => {
             const Icon = Icons[social.icon];
             return (
@@ -39,20 +39,20 @@ export const Footer = () => {
             );
           })}
         </nav>
-        <nav aria-label="quick links" className="divide-x">
+        <nav aria-label="quick links" className="h-20 divide-x">
           {links.map((link) => (
             <Link
               href={link.href}
-              className="group inline-flex h-full items-center pl-6"
+              className="group inline-flex h-full items-center pl-4 md:pl-6"
               key={link.href}
             >
               {link.name}
             </Link>
           ))}
         </nav>
-        <div className="divide-x">
+        <div className="flex flex-col gap-y-6 divide-x-0 divide-y md:flex-row md:divide-x md:divide-y-0">
           <Icons.dd_logo className="h-32 w-40" />
-          <p className="max-w-xs pl-6 text-start">
+          <p className="max-w-xs py-6 pl-6 text-start md:py-0">
             Developer DAO Foundation © 2023 Website content licensed under&emsp;
             <Link href="https://creativecommons.org/licenses/by-nc/4.0/" className="underline">
               CC BY-NC 4.0
