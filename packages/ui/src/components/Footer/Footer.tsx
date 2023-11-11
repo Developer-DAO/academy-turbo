@@ -27,19 +27,24 @@ const socials: readonly SocialLinks[] = [
 
 export const Footer = () => {
   return (
-    <footer>
+    <footer className="flex flex-col items-center pt-12">
       <div className="footer main-container">
         <nav aria-label="social">
           {socials.map((social) => {
             const Icon = Icons[social.icon];
             return (
-              <Link aria-label={social.alt} href={social.href} className="group" key={social.href}>
+              <Link
+                aria-label={social.alt}
+                href={social.href}
+                className="group mt-16"
+                key={social.href}
+              >
                 {Icon ? <Icon /> : null}
               </Link>
             );
           })}
         </nav>
-        <nav aria-label="quick links" className="divide-x">
+        <nav aria-label="quick links" className="mt-16 divide-x">
           {links.map((link) => (
             <Link
               href={link.href}
@@ -50,9 +55,10 @@ export const Footer = () => {
             </Link>
           ))}
         </nav>
-        <div className="divide-x">
-          <Icons.dd_logo className="h-32 w-40" />
-          <p className="max-w-xs pl-6 text-start">
+        <div className="flex flex-col items-center px-5 pb-20 pt-6">
+          <Icons.dd_logo className="h-32 w-40 shrink-0" />
+          <hr className="-mr-5 mt-2.5 min-h-[1px] w-full self-stretch bg-white" />
+          <p className="-mr-5 mt-2.5 max-w-xs ">
             Developer DAO Foundation © 2023 Website content licensed under&emsp;
             <Link href="https://creativecommons.org/licenses/by-nc/4.0/" className="underline">
               CC BY-NC 4.0

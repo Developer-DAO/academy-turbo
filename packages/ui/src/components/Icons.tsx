@@ -21,6 +21,7 @@ interface DDIcons {
   github_circle: (props: LucideProps) => JSX.Element;
   twitter_circle: (props: LucideProps) => JSX.Element;
   mirror_circle: (props: LucideProps) => JSX.Element;
+  track_tick: (props: LucideProps) => JSX.Element;
 }
 
 export const Icons: DDIcons = {
@@ -287,6 +288,21 @@ export const Icons: DDIcons = {
           strokeWidth="4"
         />
       </g>
+    </svg>
+  ),
+  track_tick: (props: LucideProps) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      width="18"
+      height="14"
+      viewBox="0 0 18 14"
+      fill="none"
+    >
+      <path
+        d="M18 1.99984L6 13.9998L0.5 8.49984L1.91 7.08984L6 11.1698L16.59 0.589844L18 1.99984Z"
+        fill="#44AF96"
+      />
     </svg>
   ),
 };
