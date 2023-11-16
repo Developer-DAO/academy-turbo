@@ -27,9 +27,9 @@ const socials: readonly SocialLinks[] = [
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col items-center pt-12">
-      <div className="footer main-container">
-        <nav aria-label="social">
+    <footer className="main-container">
+      <div className="footer">
+        <nav aria-label="social" className="px-4">
           {socials.map((social) => {
             const Icon = Icons[social.icon];
             return (
@@ -44,21 +44,20 @@ export const Footer = () => {
             );
           })}
         </nav>
-        <nav aria-label="quick links" className="mt-16 divide-x">
+        <nav aria-label="quick links" className="h-20 divide-x">
           {links.map((link) => (
             <Link
               href={link.href}
-              className="group inline-flex h-full items-center pl-6"
+              className="group inline-flex h-full items-center pl-4 md:pl-6"
               key={link.href}
             >
               {link.name}
             </Link>
           ))}
         </nav>
-        <div className="flex flex-col items-center px-5 pb-20 pt-6">
-          <Icons.dd_logo className="h-32 w-40 shrink-0" />
-          <hr className="-mr-5 mt-2.5 min-h-[1px] w-full self-stretch bg-white" />
-          <p className="-mr-5 mt-2.5 max-w-xs ">
+        <div className="flex flex-col gap-y-6 divide-x-0 divide-y md:flex-row md:divide-x md:divide-y-0">
+          <Icons.dd_logo className="h-32 w-40" />
+          <p className="max-w-xs py-6 pl-6 text-start md:py-0">
             Developer DAO Foundation © 2023 Website content licensed under&emsp;
             <Link href="https://creativecommons.org/licenses/by-nc/4.0/" className="underline">
               CC BY-NC 4.0
