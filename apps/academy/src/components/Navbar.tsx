@@ -24,15 +24,15 @@ export default function Navbar() {
           />
         </Link>
       </div>
-      <div className="lg:mr-20 lg:flex lg:w-[98px] lg:max-w-full lg:justify-between lg:gap-5">
+      <div className="lg:mr-20 lg:flex lg:w-[98px] lg:max-w-full lg:items-center lg:justify-center lg:gap-5">
         <Image
           src="/ph_moon-light.png"
           alt="moon"
-          width={22}
-          height={22}
-          className="hidden lg:inline-block"
+          width={25}
+          height={25}
+          className="hidden lg:inline-block lg:rounded-full lg:border lg:border-white"
         />
-        <Avatar className="h-8 w-8 lg:h-11 lg:w-11">
+        <Avatar className="h-8 w-8 lg:h-14 lg:w-14">
           <AvatarImage src="/DD_NFT_avatar.png" />
           <AvatarFallback>DD</AvatarFallback>
         </Avatar>
