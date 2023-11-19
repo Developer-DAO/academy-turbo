@@ -11,8 +11,14 @@ export default function TrackDetails() {
         </h1>
         <div className="ml-16 mt-7 h-px w-72 border border-white lg:w-[90%]"></div>
       </section>
-      <CreatedBy />
-      <AboutCourse />
+      <div className="flex flex-col lg:flex-row lg:justify-between lg:pt-24">
+        <div className="order-first lg:order-last">
+          <CreatedBy />
+        </div>
+        <div className="order-last lg:order-first">
+          <AboutCourse />
+        </div>
+      </div>
       <Topic />
       <Topic />
     </main>
