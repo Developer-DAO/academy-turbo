@@ -4,7 +4,7 @@ import Topic from "@/components/Topic";
 
 export default function TrackDetails() {
   return (
-    <main className="pt-14 text-white">
+    <main className="pt-32 text-white">
       <section className="text-center">
         <h1 className="font-future text-3xl lg:text-8xl">
           WTRO TO <br /> ETHEREUM
