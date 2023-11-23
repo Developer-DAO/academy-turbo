@@ -14,7 +14,7 @@ const sampleMenus: NavItem[] = [
   },
   {
     name: "Tracks",
-    href: "/",
+    href: "/track/1", // hardcoded trackID for now. For the sake of using the dynamic route - 23 nov 2023
     icon: "vector",
   },
   {
@@ -29,20 +29,7 @@ const PageHeader: FunctionComponent = () => {
   const { pathname } = router;
 
   return (
-    <header className="main-container absolute left-0 right-0 top-0 z-50 flex items-center justify-between md:flex-row-reverse">
-      <ConnectButton />
-      <div className="flex lg:hidden">
-        <SideBar
-          menus={[
-            ...sampleMenus,
-            {
-              name: "Get In Touch",
-              href: "/",
-              icon: "dd_logo",
-            },
-          ]}
-        />
-      </div>
+    <header className="main-container absolute left-0 right-0 top-0 z-50 flex items-center justify-between pt-6 md:flex-row md:pt-0">
       <div className="hidden lg:flex ">
         {pathname === "/" ? (
           <div className="mt-14">
@@ -72,6 +59,20 @@ const PageHeader: FunctionComponent = () => {
           </div>
         )}
       </div>
+
+      <div className="flex lg:hidden">
+        <SideBar
+          menus={[
+            ...sampleMenus,
+            {
+              name: "Get In Touch",
+              href: "/",
+              icon: "dd_logo",
+            },
+          ]}
+        />
+      </div>
+      <ConnectButton />
     </header>
   );
 };

@@ -1,3 +1,5 @@
+// Component not used anymore - code implemented on Header Component 23 nov 2023
+
 import Image from "next/image";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "ui/components/ui/avatar";
