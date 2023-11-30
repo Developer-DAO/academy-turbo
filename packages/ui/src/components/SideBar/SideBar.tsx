@@ -2,7 +2,7 @@ import NextLink from "next/link";
 import type { FC } from "react";
 
 import { Icons } from "../Icons";
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
 
 interface SubNavItem {
   name: string;
@@ -30,9 +30,9 @@ const SideBar: FC<SideBarProps> = ({ menus }) => {
         <div className="gap-4 pt-12">
           {menus.map((menu, key) => (
             <div key={key} className="mobile-nav-item">
-              <NextLink href={menu.href} legacyBehavior passHref>
-                {menu.name}
-              </NextLink>
+              <SheetClose asChild>
+                <NextLink href={menu.href}>{menu.name}</NextLink>
+              </SheetClose>
             </div>
           ))}
         </div>

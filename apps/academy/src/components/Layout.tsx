@@ -1,12 +1,12 @@
 import type { FunctionComponent, PropsWithChildren } from "react";
 import { Footer } from "ui";
 
-import Navbar from "@/components/Navbar";
+import { Header } from "@/components/Header";
 
 export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
   return (
     <>
-      <Navbar />
+      <Header />
       {children}
       <Footer />
     </>
