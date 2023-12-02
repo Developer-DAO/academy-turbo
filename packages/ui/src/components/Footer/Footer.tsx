@@ -33,7 +33,12 @@ export const Footer = () => {
           {socials.map((social) => {
             const Icon = Icons[social.icon];
             return (
-              <Link aria-label={social.alt} href={social.href} className="group" key={social.href}>
+              <Link
+                aria-label={social.alt}
+                href={social.href}
+                className="group mt-16"
+                key={social.href}
+              >
                 {Icon ? <Icon /> : null}
               </Link>
             );
