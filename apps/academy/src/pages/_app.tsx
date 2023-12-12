@@ -1,6 +1,7 @@
 import "@/styles.css";
 import "@rainbow-me/rainbowkit/styles.css";
 
+import { MDXProvider } from "@mdx-js/react";
 import {
   connectorsForWallets,
   darkTheme,
@@ -24,6 +25,7 @@ import { polygonMumbai } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 
 import { Layout } from "@/components/Layout";
+import Components from "@/components/mdx/Components";
 import { env } from "@/env.mjs";
 import { api } from "@/utils/api";
 
@@ -125,7 +127,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session |
                   content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
                 />
               </Head>
-              <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
+              <MDXProvider components={Components}>
+                <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
+              </MDXProvider>
             </ThemeProvider>
           </RainbowKitProvider>
         </RainbowKitSiweNextAuthProvider>

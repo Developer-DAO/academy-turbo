@@ -23,6 +23,8 @@ interface DDIcons {
   twitter_circle: (props: LucideProps) => JSX.Element;
   mirror_circle: (props: LucideProps) => JSX.Element;
   track_tick: (props: LucideProps) => JSX.Element;
+  help_circle: (props: LucideProps) => JSX.Element;
+  copy_icon: (props: LucideProps) => JSX.Element;
 }
 
 export const Icons: DDIcons = {
@@ -322,6 +324,43 @@ export const Icons: DDIcons = {
         d="M18 1.99984L6 13.9998L0.5 8.49984L1.91 7.08984L6 11.1698L16.59 0.589844L18 1.99984Z"
         fill="#44AF96"
       />
+    </svg>
+  ),
+  help_circle: (props: LucideProps) => (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="lucide lucide-help-circle"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+      <path d="M12 17h.01" />
+    </svg>
+  ),
+  copy_icon: (props: LucideProps) => (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="lucide lucide-copy"
+    >
+      <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
     </svg>
   ),
 };
