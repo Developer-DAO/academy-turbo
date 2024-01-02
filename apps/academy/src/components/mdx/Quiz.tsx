@@ -1,24 +1,20 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-// import {
-//   Box,
-//   VStack,
-//   Text,
-//   Button,
-//   Modal,
-//   ModalOverlay,
-//   ModalContent,
-//   ModalHeader,
-//   ModalFooter,
-//   ModalBody,
-//   ModalCloseButton,
-//   useToast,
-// } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { Button } from "ui";
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogTitle,
+  DialogTrigger,
+  useToast,
+} from "ui";
 
 import { useAppContext } from "@/contexts/AppContext";
-// import { getCorrectAnswersIndexes, haveSameElements } from "@/utils/QuizHelpers";
 import { api } from "@/utils/api";
+import { getCorrectAnswersIndexes, haveSameElements } from "@/utils/QuizHelpers";
 
 export interface QuizProps {
   quiz: string;
@@ -41,87 +37,88 @@ interface Quiz {
 
 type Answers = Record<string, number[]>;
 
-const Quiz = (/* props: QuizProps */): JSX.Element => {
+const Quiz = (props: QuizProps): JSX.Element => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-var-requires
-  // const quiz: Quiz = require(`@/quizzes/${props.quiz}.json`);
-  const [_showQuiz, setShowQuiz] = useState(false);
-  const [_currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [_answers, setAnswers] = useState<Answers>({});
-  const [_correctAnswers, setCorrectAnswers] = useState<number[] | null>(null);
-  // const toast = useToast();
-  const { refetchCompletedQuizzesAll, allLessonsData: _allLessonsData } = useAppContext();
+  const quiz: Quiz = require(`@/quizzes/${props.quiz}.json`);
+  const [showQuiz, setShowQuiz] = useState(false);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [answers, setAnswers] = useState<Answers>({});
+  const [correctAnswers, setCorrectAnswers] = useState<number[] | null>(null);
+  const { toast } = useToast();
+  const { refetchCompletedQuizzesAll, allLessonsData } = useAppContext();
 
-  // const nextQuestion = () => {
-  //   setCurrentQuestionIndex(currentQuestionIndex + 1);
-  // };
+  const nextQuestion = () => {
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
+  };
 
-  // const previousQuestion = () => {
-  //   setCurrentQuestionIndex(currentQuestionIndex - 1);
-  // };
+  const previousQuestion = () => {
+    setCurrentQuestionIndex(currentQuestionIndex - 1);
+  };
 
-  // const previousButtonVisibility = () => {
-  //   return currentQuestionIndex === 0 ? "hidden" : "visible";
-  // };
+  const previousButtonVisibility = () => {
+    return currentQuestionIndex === 0 ? "hidden" : "visible";
+  };
 
-  // const nextButtonVisibility = () => {
-  //   return currentQuestionIndex + 1 == quiz.questions.length ? "hidden" : "visible";
-  // };
+  const nextButtonVisibility = () => {
+    return currentQuestionIndex + 1 == quiz.questions.length ? "hidden" : "visible";
+  };
 
-  // const selectAnswer = (answerIndex: number) => {
-  //   const newAnswers: Answers = { ...answers };
+  const selectAnswer = (answerIndex: number) => {
+    const newAnswers: Answers = { ...answers };
 
-  //   if (newAnswers[currentQuestionIndex]?.includes(answerIndex)) {
-  //     newAnswers[currentQuestionIndex.toString()] = newAnswers[currentQuestionIndex]?.filter(
-  //       (a) => a !== answerIndex,
-  //     ) as number[];
-  //   } else {
-  //     newAnswers[currentQuestionIndex.toString()] = [
-  //       ...(answers[currentQuestionIndex] || []),
-  //       answerIndex,
-  //     ];
-  //   }
+    if (
+      newAnswers !== undefined &&
+      Object.keys(newAnswers).length > 0 &&
+      currentQuestionIndex !== undefined &&
+      newAnswers[currentQuestionIndex]!.includes(answerIndex)
+    ) {
+      newAnswers[currentQuestionIndex.toString()] = newAnswers[currentQuestionIndex]!.filter(
+        (a) => a !== answerIndex,
+      ) ;
+    } else {
+      newAnswers[currentQuestionIndex.toString()] = [
+        ...(answers[currentQuestionIndex] || []),
+        answerIndex,
+      ];
+    }
 
-  //   setAnswers(newAnswers);
-  // };
+    setAnswers(newAnswers);
+  };
 
-  // const getQuestionBackground = (optionIndex: number) => {
-  //   if (
-  //     correctAnswers &&
-  //     correctAnswers.indexOf(currentQuestionIndex) !== -1 &&
-  //     quiz.questions[currentQuestionIndex]?.options[optionIndex]?.correct &&
-  //     answers[currentQuestionIndex]?.includes(optionIndex)
-  //   ) {
-  //     return "green.500";
-  //   }
+  const getQuestionBackground = (optionIndex: number) => {
+    if (
+      correctAnswers !== null &&
+      correctAnswers !== undefined &&
+      correctAnswers.includes(currentQuestionIndex) &&
+      quiz.questions[currentQuestionIndex]?.options[optionIndex]?.correct !== undefined &&
+      quiz.questions[currentQuestionIndex]?.options[optionIndex]?.correct === true &&
+      answers[currentQuestionIndex]?.includes(optionIndex) === true
+    ) {
+      return "green.500";
+    }
 
-  //   if (answers[currentQuestionIndex]?.includes(optionIndex)) {
-  //     return "yellow.600";
-  //   }
-  //   return "gray.600";
-  // };
+    return "gray.600";
+  };
 
-  // const quizNotAnswered = () => {
-  // toast({
-  //   title: "Quiz not answered",
-  //   description: "Please answer all the questions",
-  //   status: "warning",
-  //   duration: 9000,
-  //   isClosable: true,
-  // });
-  // };
+  const quizNotAnswered = () => {
+    toast({
+      title: "Quiz not answered",
+      description: "Please answer all the questions",
+      duration: 9000,
+    });
+  };
 
-  // const quizFailedToast = (_wrongAnswersCounter: number) => {
-  // toast({
-  //   title: "Quiz failed",
-  //   description: `You have ${wrongAnswersCounter} wrong answers :(`,
-  //   status: "error",
-  //   duration: 9000,
-  //   isClosable: true,
-  // });
-  // };
+  const quizFailedToast = (wrongAnswersCounter: number) => {
+    toast({
+      title: "Quiz failed",
+      description: `You have ${wrongAnswersCounter} wrong answers :(`,
+      variant: "destructive",
+      duration: 9000,
+    });
+  };
 
   // - Add
-  const { /* mutate: quizzesAddMutate, */ isLoading: _quizzesAddIsLoading } =
+  const { mutate: quizzesAddMutate, isLoading: quizzesAddIsLoading } =
     api.completedQuizzes.add.useMutation({
       onSuccess: async () => {
         refetchCompletedQuizzesAll && (await refetchCompletedQuizzesAll());
@@ -131,55 +128,53 @@ const Quiz = (/* props: QuizProps */): JSX.Element => {
 
   const quizSuccessToast = () => {
     cancelQuiz();
-    // toast({
-    //   title: "Amazing!",
-    //   description: "You have passed the lesson!",
-    //   status: "success",
-    //   duration: 9000,
-    //   isClosable: true,
-    // });
+    toast({
+      title: "Amazing!",
+      description: "You have passed the lesson!",
+      duration: 9000,
+    });
   };
 
-  // const submit = () => {
-  //   if (quiz.questions.length != Object.keys(answers).length) {
-  //     return quizNotAnswered();
-  //   }
+  const submit = () => {
+    if (quiz.questions.length != Object.keys(answers).length) {
+      quizNotAnswered(); return;
+    }
 
-  //   let wrongAnswersCounter = 0;
+    let wrongAnswersCounter = 0;
 
-  //   const newCorrectAnswers: number[] = [];
+    const newCorrectAnswers: number[] = [];
 
-  //   quiz.questions.forEach((question, index) => {
-  //     const correctAnswersIndexes = getCorrectAnswersIndexes(question);
+    quiz.questions.forEach((question, index) => {
+      const correctAnswersIndexes = getCorrectAnswersIndexes(question);
 
-  //     if (!haveSameElements(answers[index]!, correctAnswersIndexes)) {
-  //       wrongAnswersCounter++;
-  //       return;
-  //     }
+      if (!haveSameElements(answers[index]!, correctAnswersIndexes)) {
+        wrongAnswersCounter++;
+        return;
+      }
 
-  //     newCorrectAnswers.push(index);
-  //   });
+      newCorrectAnswers.push(index);
+    });
 
-  //   setCorrectAnswers(newCorrectAnswers);
+    setCorrectAnswers(newCorrectAnswers);
 
-  //   if (wrongAnswersCounter >= 1) {
-  //     return quizFailedToast(wrongAnswersCounter);
-  //   }
+    if (wrongAnswersCounter >= 1) {
+      quizFailedToast(wrongAnswersCounter); return;
+    }
 
-  //   // return quizSuccessToast();
+    // return quizSuccessToast();
 
-  //   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-  //   const lessonIdToSave: string = allLessonsData?.find(
-  //     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  //     (lesson) => lesson.quizFileName === `${props.quiz}.json`,
-  //   )?.id;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+    const lessonIdToSave: string = allLessonsData.find(
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      (lesson) => lesson.quizFileName === `${props.quiz}.json`,
+    )?.id;
 
-  //   if (lessonIdToSave === undefined) return console.error("Lesson not found");
+    if (lessonIdToSave === undefined) { console.error("Lesson not found"); return; }
 
-  //   return quizzesAddMutate({
-  //     lesson: lessonIdToSave,
-  //   });
-  // };
+    quizzesAddMutate({
+      lesson: lessonIdToSave,
+    });
+  };
 
   const cancelQuiz = () => {
     setAnswers({});
@@ -192,74 +187,69 @@ const Quiz = (/* props: QuizProps */): JSX.Element => {
     <>
       <Button
         className="mx-auto flex bg-yellow-600 text-white"
-        // colorScheme="yellow"
-        // backgroundColor="yellow.600"
-        // color="white"
-        // display="flex"
-        // margin="auto"
-
-        onClick={() => { setShowQuiz(true); }}
+        onClick={() => {
+          setShowQuiz(true);
+        }}
       >
         Take quiz
       </Button>
 
-      {/* <Modal closeOnOverlayClick={false} isOpen={showQuiz} onClose={cancelQuiz}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>{quiz.title}</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody pb={6}>
-            <VStack spacing={4} background="gray.900" padding="6" borderRadius="md">
-              <Text fontWeight="bold" w="100%">
-                {quiz.questions[currentQuestionIndex]!.question}
-              </Text>
+      <Dialog open={showQuiz} onOpenChange={cancelQuiz}>
+        <DialogOverlay />
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{quiz.title}</DialogTitle>
+          </DialogHeader>
+          <DialogTrigger />
+          <DialogDescription className="pb-6">
+            <div className="flex flex-col gap-4 rounded-md bg-gray-900 p-6">
+              <span className="bold w-full">{quiz.questions[currentQuestionIndex]!.question}</span>
               {quiz.questions[currentQuestionIndex]!.options.map((o, index) => {
                 return (
-                  <Box
-                    w="100%"
-                    borderRadius="md"
-                    background={getQuestionBackground(index)}
-                    padding="3"
-                    cursor="pointer"
-                    onClick={() => selectAnswer(index)}
+                  <div
+                    className={`w-full cursor-pointer rounded-md p-3 bg-${getQuestionBackground(
+                      index,
+                    )}`}
+                    onClick={() => { selectAnswer(index); }}
                     key={index}
                   >
                     {o.answer}
-                  </Box>
+                  </div>
                 );
               })}
-              <Box display="flex" justifyContent="space-between" w="100%" alignItems="center">
-                <Text w="100%">{`Question ${currentQuestionIndex + 1}/${
+              <div className="just flex w-full items-center">
+                <span className="w-full">{`Question ${currentQuestionIndex + 1}/${
                   quiz.questions.length
-                }`}</Text>
-                <Box w="100%" display="flex">
-                  <Button mx="2" visibility={previousButtonVisibility()} onClick={previousQuestion}>
+                }`}</span>
+                <div className="flex w-full">
+                  <Button
+                    className={`mx-2 ${previousButtonVisibility()}`}
+                    onClick={previousQuestion}
+                  >
                     {"< Previous"}
                   </Button>
-                  <Button visibility={nextButtonVisibility()} onClick={nextQuestion}>
+                  <Button className={`${nextButtonVisibility()}`} onClick={nextQuestion}>
                     {"Next >"}
                   </Button>
-                </Box>
-              </Box>
-            </VStack>
-          </ModalBody>
+                </div>
+              </div>
+            </div>
+          </DialogDescription>
 
-          <ModalFooter>
-            <Button mx="1" colorScheme="red" backgroundColor="red.600" onClick={cancelQuiz}>
+          <DialogFooter>
+            <Button className="mx-1 flex bg-red-400 text-white" onClick={cancelQuiz}>
               Cancel
             </Button>
             <Button
-              mx="1"
-              colorScheme="green"
-              backgroundColor="green.400"
+              className="mx-1 flex bg-green-400 text-white"
               onClick={submit}
               isLoading={quizzesAddIsLoading}
             >
               Submit
             </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal> */}
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </>
   );
 };

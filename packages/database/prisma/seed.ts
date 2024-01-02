@@ -1,5 +1,6 @@
-import { PrismaClient } from "../client";
+// import { PrismaClient } from "../client";
 // import { hash } from "bcryptjs";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
