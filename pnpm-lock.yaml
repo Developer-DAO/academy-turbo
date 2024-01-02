@@ -171,9 +171,18 @@ importers:
       '@mdx-js/react':
         specifier: ^3.0.0
         version: 3.0.0(@types/react@18.2.16)(react@18.2.0)
+      '@next/bundle-analyzer':
+        specifier: 13.4.12
+        version: 13.4.12
       '@next/mdx':
         specifier: ^14.0.4
         version: 14.0.4(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.0)
+      '@prisma/nextjs-monorepo-workaround-plugin':
+        specifier: ^5.3.1
+        version: 5.3.1
+      '@types/mdx':
+        specifier: ^2.0.10
+        version: 2.0.10
       '@types/react-syntax-highlighter':
         specifier: ^15.5.11
         version: 15.5.11
@@ -183,15 +192,24 @@ importers:
       lighthouse-config:
         specifier: workspace:*
         version: link:../../packages/lighthouse-config
+      next-compose-plugins:
+        specifier: ^2.2.1
+        version: 2.2.1
       next-config:
         specifier: workspace:*
         version: link:../../packages/next-config
+      next-pwa:
+        specifier: ^5.6.0
+        version: 5.6.0(@babel/core@7.22.15)(esbuild@0.18.20)(next@13.4.12)(webpack@5.88.2)
       playwright-config:
         specifier: workspace:*
         version: link:../../packages/playwright-config
       react-syntax-highlighter:
         specifier: ^15.5.0
         version: 15.5.0(react@18.2.0)
+      remark-frontmatter:
+        specifier: ^5.0.0
+        version: 5.0.0
       storybook-config:
         specifier: workspace:*
         version: link:../../packages/storybook-config
@@ -273,9 +291,18 @@ importers:
 
   packages/next-config:
     devDependencies:
+      '@mdx-js/loader':
+        specifier: ^3.0.0
+        version: 3.0.0(webpack@5.88.2)
+      '@mdx-js/react':
+        specifier: ^3.0.0
+        version: 3.0.0(@types/react@18.2.16)(react@18.2.0)
       '@next/bundle-analyzer':
         specifier: 13.4.12
         version: 13.4.12
+      '@next/mdx':
+        specifier: ^14.0.4
+        version: 14.0.4(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.0)
       '@prisma/nextjs-monorepo-workaround-plugin':
         specifier: ^5.3.1
         version: 5.3.1
@@ -285,6 +312,9 @@ importers:
       next-pwa:
         specifier: ^5.6.0
         version: 5.6.0(@babel/core@7.22.15)(esbuild@0.18.20)(next@13.4.12)(webpack@5.88.2)
+      remark-frontmatter:
+        specifier: ^5.0.0
+        version: 5.0.0
 
   packages/playwright-config: {}
 
@@ -2702,7 +2732,7 @@ packages:
       '@types/estree': 1.0.1
       '@types/estree-jsx': 1.0.3
       '@types/hast': 3.0.3
-      '@types/mdx': 2.0.7
+      '@types/mdx': 2.0.10
       collapse-white-space: 2.1.0
       devlop: 1.1.0
       estree-util-build-jsx: 3.0.1
@@ -2742,7 +2772,7 @@ packages:
       '@types/react': '>=16'
       react: '>=16'
     dependencies:
-      '@types/mdx': 2.0.7
+      '@types/mdx': 2.0.10
       '@types/react': 18.2.16
       react: 18.2.0
     dev: true
@@ -6012,7 +6042,11 @@ packages:
   /@types/mdast@4.0.3:
     resolution: {integrity: sha512-LsjtqsyF+d2/yFOYaN22dHZI1Cpwkrj+g06G8+qtUKlhovPW89YhqSnfKtMbkgmEtYpH2gydRNULd6y8mciAFg==}
     dependencies:
-      '@types/unist': 2.0.8
+      '@types/unist': 3.0.2
+    dev: true
+
+  /@types/mdx@2.0.10:
+    resolution: {integrity: sha512-Rllzc5KHk0Al5/WANwgSPl1/CwjqCy+AZrGd78zuK+jO9aDM6ffblZ+zIjgPNAaEBmlO0RYDvLNh7wD0zKVgEg==}
     dev: true
 
   /@types/mdx@2.0.7:
@@ -9332,6 +9366,11 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
+  /escape-string-regexp@5.0.0:
+    resolution: {integrity: sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==}
+    engines: {node: '>=12'}
+    dev: true
+
   /escodegen@2.1.0:
     resolution: {integrity: sha512-2NlIDTwUWJN0mRPQOdtQBzbUHvdGY2P1VXSyU83Q3xKxM7WHX2Ql8dKq782Q9TgQUNOLEzEYu9bzLNj1q88I5w==}
     engines: {node: '>=6.0'}
@@ -9997,6 +10036,12 @@ packages:
 
   /fault@1.0.4:
     resolution: {integrity: sha512-CJ0HCB5tL5fYTEA7ToAq5+kTwd++Borf1/bifxd9iT70QcXr4MRrO3Llf8Ifs70q+SJcGHFtnIE/Nw6giCtECA==}
+    dependencies:
+      format: 0.2.2
+    dev: true
+
+  /fault@2.0.1:
+    resolution: {integrity: sha512-WtySTkS4OKev5JtpHXnib4Gxiurzh5NCGvWrFaZ34m6JehfTUhKZvn9njTfw48t6JumVQOmrKqpmGcdwxnhqBQ==}
     dependencies:
       format: 0.2.2
     dev: true
@@ -11868,7 +11913,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 20.5.9
+      '@types/node': 18.17.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: true
@@ -12538,6 +12583,19 @@ packages:
       - supports-color
     dev: true
 
+  /mdast-util-frontmatter@2.0.1:
+    resolution: {integrity: sha512-LRqI9+wdgC25P0URIJY9vwocIzCcksduHQ9OF2joxQoyTNVduwLAFUzjoopuRJbJAReaKrNQKAZKL3uCMugWJA==}
+    dependencies:
+      '@types/mdast': 4.0.3
+      devlop: 1.1.0
+      escape-string-regexp: 5.0.0
+      mdast-util-from-markdown: 2.0.0
+      mdast-util-to-markdown: 2.1.0
+      micromark-extension-frontmatter: 2.0.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /mdast-util-mdx-expression@2.0.0:
     resolution: {integrity: sha512-fGCu8eWdKUKNu5mohVGkhBXCXGnOTLuFqOvGMvdikr+J1w7lDJgxThOKpwRWzzbyXAU2hhSwsmssOY4yTokluw==}
     dependencies:
@@ -12719,6 +12777,15 @@ packages:
       micromark-util-normalize-identifier: 2.0.0
       micromark-util-resolve-all: 2.0.0
       micromark-util-subtokenize: 2.0.0
+      micromark-util-symbol: 2.0.0
+      micromark-util-types: 2.0.0
+    dev: true
+
+  /micromark-extension-frontmatter@2.0.0:
+    resolution: {integrity: sha512-C4AkuM3dA58cgZha7zVnuVxBhDsbttIMiytjgsM2XbHAB2faRVaHRle40558FBN+DJcrLNCoqG5mlrpdU4cRtg==}
+    dependencies:
+      fault: 2.0.1
+      micromark-util-character: 2.0.1
       micromark-util-symbol: 2.0.0
       micromark-util-types: 2.0.0
     dev: true
@@ -14954,6 +15021,17 @@ packages:
       mdast-util-definitions: 4.0.0
       space-separated-tokens: 1.1.5
       unist-util-visit: 2.0.3
+    dev: true
+
+  /remark-frontmatter@5.0.0:
+    resolution: {integrity: sha512-XTFYvNASMe5iPN0719nPrdItC9aU0ssC4v14mH1BCi1u0n1gAocqcujWUrByftZTbLhRtiKRyjYTSIOcr69UVQ==}
+    dependencies:
+      '@types/mdast': 4.0.3
+      mdast-util-frontmatter: 2.0.1
+      micromark-extension-frontmatter: 2.0.0
+      unified: 11.0.4
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /remark-mdx@3.0.0:

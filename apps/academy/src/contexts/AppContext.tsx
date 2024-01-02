@@ -1,21 +1,21 @@
 import { createContext, useContext } from "react";
 
-import type { Fundamental,Project } from "@/interfaces";
+import type { Fundamental, Project } from "@/interfaces";
 
 interface AppContextInterface {
   completedQuizzesIds: string[];
   projects: Project[];
   fundamentals: Fundamental[];
-  // allLessonsData: any[];
-  // refetchCompletedQuizzesAll?: () => Promise<any>;
+  allLessonsData: any[];
+  refetchCompletedQuizzesAll?: () => Promise<any>;
 }
 
 export const AppContext = createContext<AppContextInterface>({
   completedQuizzesIds: [],
   projects: [],
   fundamentals: [],
-  // allLessonsData: [],
-  // refetchCompletedQuizzesAll: () => Promise.resolve(),
+  allLessonsData: [],
+  refetchCompletedQuizzesAll: async () => Promise.resolve(),
 });
 
 AppContext.displayName = "AcademyAppContext";
