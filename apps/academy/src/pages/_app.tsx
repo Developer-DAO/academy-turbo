@@ -26,6 +26,7 @@ import { publicProvider } from "wagmi/providers/public";
 
 import { Layout } from "@/components/Layout";
 import Components from "@/components/mdx/Components";
+import { AppContextProvider } from "@/contexts/AppContextProvider";
 import { env } from "@/env.mjs";
 import { api } from "@/utils/api";
 
@@ -128,7 +129,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session |
                 />
               </Head>
               <MDXProvider components={Components}>
-                <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
+                <AppContextProvider>
+                  <Layout>{getLayout(<Component {...pageProps} />)}</Layout>{" "}
+                </AppContextProvider>
               </MDXProvider>
             </ThemeProvider>
           </RainbowKitProvider>

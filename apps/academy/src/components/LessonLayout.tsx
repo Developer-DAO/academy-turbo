@@ -18,7 +18,7 @@ export default function LessonLayout({ children }: { children: React.ReactNode }
           <AboutCourse />
         </div>
       </div>
-      {children}
+      <div className="px-20">{children}</div>
     </main>
   );
 }
