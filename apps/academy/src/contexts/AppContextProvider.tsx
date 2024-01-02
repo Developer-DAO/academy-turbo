@@ -57,7 +57,7 @@ export function AppContextProvider({ children }: PropsInterface) {
       const completedIds: string[] = completedQuizzesAllData.map(
         (quiz: any) => quiz.lesson as string,
       ); // DEV_NOTE: the -lesson- field now is the lessonId
-      if (completedIds !== completedQuizzesIds) setCompletedQuizzesIds(completedIds );
+      if (completedIds !== completedQuizzesIds) setCompletedQuizzesIds(completedIds);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [completedQuizzesAllData]);
@@ -67,7 +67,6 @@ export function AppContextProvider({ children }: PropsInterface) {
 
     const lessonsFormatResult: FormatedLessonInterface = lessonsData.reduce(
       (acc: any, curr: any) => {
-        // @ts-expect-error this error is because of the reduce function
         if (acc[curr.path] === undefined) acc[curr.path] = [];
 
         acc[curr.path].push(curr);
