@@ -1,9 +1,9 @@
-// import { PrismaClient } from "./client";
+import { PrismaClient } from "./client";
 
-import { PrismaClient } from "@prisma/client";
+// import { PrismaClient } from "@prisma/client";
 
-export * from "@prisma/client";
-// export * from "./client"; // testing because how prisma works in a monorepo changed many things
+// export * from "@prisma/client";
+export * from "./client"; // testing because how prisma works in a monorepo changed many things
 
 // const globalForPrisma = globalThis as { prisma?: PrismaClient };
 const globalForPrisma = globalThis as unknown as {

@@ -1,7 +1,7 @@
 import { completedQuizzesRouter } from "@/server/api/routers/completedquizzes";
 import { lessonsRouter } from "@/server/api/routers/lessons";
 import { createTRPCRouter } from "@/server/api/trpc";
-
+export * from "database";
 /**
  * This is the primary router for your server.
  *
