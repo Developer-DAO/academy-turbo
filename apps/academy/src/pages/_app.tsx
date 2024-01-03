@@ -20,6 +20,7 @@ import { SessionProvider } from "next-auth/react";
 import { DefaultSeo } from "next-seo";
 import { ThemeProvider } from "next-themes";
 import type { ReactElement, ReactNode } from "react";
+import { Toaster } from "ui";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { polygonMumbai } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
@@ -130,7 +131,8 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session |
               </Head>
               <MDXProvider components={Components}>
                 <AppContextProvider>
-                  <Layout>{getLayout(<Component {...pageProps} />)}</Layout>{" "}
+                  <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
+                  <Toaster />
                 </AppContextProvider>
               </MDXProvider>
             </ThemeProvider>
