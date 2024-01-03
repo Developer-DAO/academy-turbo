@@ -1,16 +1,5 @@
-// import { ArrowRightIcon } from "@chakra-ui/icons";
-// import {
-//   Drawer,
-//   DrawerBody,
-//   DrawerHeader,
-//   DrawerOverlay,
-//   DrawerContent,
-//   DrawerCloseButton,
-//   useDisclosure,
-//   Button,
-// } from "@chakra-ui/react";
 import { useState } from "react";
-import { Button,Drawer, DrawerContent, DrawerHeader, DrawerOverlay, DrawerTrigger } from "ui";
+import { Button, Drawer, DrawerContent, DrawerHeader, DrawerOverlay, DrawerTrigger } from "ui";
 
 export interface SideDrawerProps {
   buttonText: string;
@@ -20,8 +9,12 @@ export interface SideDrawerProps {
 
 const SideDrawer = (props: SideDrawerProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
-  const onClose = () => { setIsOpen(false); };
-  const onOpen = () => { setIsOpen(true); };
+  const onClose = () => {
+    setIsOpen(false);
+  };
+  const onOpen = () => {
+    setIsOpen(true);
+  };
 
   const { buttonText, title } = props;
   const drawerTitle = title !== undefined ? title : buttonText;
@@ -48,7 +41,11 @@ const SideDrawer = (props: SideDrawerProps): JSX.Element => {
           className="h-screen" /* backdropFilter="auto" backdropInvert="10%" backdropBlur="3px" */
         />
         <DrawerContent className="bg-[#00000f] px-4 pb-8">
-          <DrawerTrigger onClick={() => { setIsOpen(!isOpen); }} />
+          <DrawerTrigger
+            onClick={() => {
+              setIsOpen(!isOpen);
+            }}
+          />
           <DrawerHeader className="bg-yellow-300 text-3xl">{drawerTitle}</DrawerHeader>
           <DrawerContent>{props.children}</DrawerContent>
         </DrawerContent>
