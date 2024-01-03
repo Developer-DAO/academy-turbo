@@ -9,7 +9,8 @@ import Quiz from "@/components/mdx/Quiz";
 
 const Components = {
   code: (props: any) => {
-    const [, language] = props.className.match(/language-(\w+)/) ?? [];
+    const [, language] =
+      props.className !== undefined ? props.className.match(/language-(\w+)/) : [];
 
     if (language !== undefined) {
       return (
