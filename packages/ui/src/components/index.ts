@@ -11,5 +11,6 @@ export * from "./SideBar";
 export * from "./Topbar";
 export * from "./ui/badge";
 export * from "./ui/dialog";
+export * from "./ui/drawer";
 export * from "./ui/toaster";
 export * from "./ui/use-toast";

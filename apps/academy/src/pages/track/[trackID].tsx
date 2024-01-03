@@ -16,7 +16,7 @@ export default function TrackDetails() {
           <CreatedBy />
         </div>
         <div className="order-last lg:order-first">
-          <AboutCourse />
+          <AboutCourse lessonDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam in facilisis viverra, nisi massa dignissim diam, sed ultrices nisl nisl vitae dolor. Sed euismod, diam in facilisis viverra, nisi massa dignissim diam, sed ultrices nisl nisl vitae dolor." />
         </div>
       </div>
       <Topic />

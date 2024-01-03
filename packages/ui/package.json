@@ -51,7 +51,8 @@
     "storybook-config": "workspace:*",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-config": "workspace:*",
-    "typescript-config": "workspace:*"
+    "typescript-config": "workspace:*",
+    "vaul": "^0.8.0"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.4",
