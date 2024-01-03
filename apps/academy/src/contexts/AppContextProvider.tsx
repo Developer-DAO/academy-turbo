@@ -101,8 +101,8 @@ export function AppContextProvider({ children }: PropsInterface) {
         )?.id;
 
         const completed =
-          currentLessonId !== undefined
-            ? completedQuizzesIds.includes(currentLessonId as string)
+          currentLessonId !== undefined && completedQuizzesIds.includes(currentLessonId)
+            ? true
             : false; // DEV_NOTE: if the lesson is not found, it is not completed
         return { ...lesson, completed };
       });
@@ -134,8 +134,8 @@ export function AppContextProvider({ children }: PropsInterface) {
         )?.id;
 
         const completed =
-          currentLessonId !== undefined
-            ? completedQuizzesIds.includes(currentLessonId as string)
+          currentLessonId !== undefined && completedQuizzesIds.includes(currentLessonId)
+            ? true
             : false; // DEV_NOTE: if the lesson is not found, it is not completed
         return { ...lesson, completed };
       });

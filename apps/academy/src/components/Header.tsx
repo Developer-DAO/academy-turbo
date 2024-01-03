@@ -14,7 +14,7 @@ const sampleMenus: NavItem[] = [
   },
   {
     name: "Tracks",
-    href: "/track/1", // hardcoded trackID for now. For the sake of using the dynamic route - 23 nov 2023
+    href: "/intro-to-ethereum/1", // hardcoded trackID for now. For the sake of using the dynamic route - 23 nov 2023
     icon: "vector",
   },
   {
