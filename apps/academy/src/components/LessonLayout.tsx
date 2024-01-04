@@ -26,7 +26,9 @@ export default function LessonLayout({
           <AboutCourse lessonDescription={lessonDescription} />
         </div>
       </div>
-      <div className="px-20">{children}</div>
+      <div className="font-clash-display px-36 pt-16 text-xl font-medium tracking-wider	">
+        {children}
+      </div>
     </main>
   );
 }
