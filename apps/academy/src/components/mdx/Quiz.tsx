@@ -74,7 +74,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
     ) {
       newAnswers[currentQuestionIndex.toString()] = newAnswers[currentQuestionIndex]!.filter(
         (a) => a !== answerIndex,
-      ) ;
+      );
     } else {
       newAnswers[currentQuestionIndex.toString()] = [
         ...(answers[currentQuestionIndex] || []),
@@ -137,7 +137,8 @@ const Quiz = (props: QuizProps): JSX.Element => {
 
   const submit = () => {
     if (quiz.questions.length != Object.keys(answers).length) {
-      quizNotAnswered(); return;
+      quizNotAnswered();
+      return;
     }
 
     let wrongAnswersCounter = 0;
@@ -158,7 +159,8 @@ const Quiz = (props: QuizProps): JSX.Element => {
     setCorrectAnswers(newCorrectAnswers);
 
     if (wrongAnswersCounter >= 1) {
-      quizFailedToast(wrongAnswersCounter); return;
+      quizFailedToast(wrongAnswersCounter);
+      return;
     }
 
     // return quizSuccessToast();
@@ -169,7 +171,10 @@ const Quiz = (props: QuizProps): JSX.Element => {
       (lesson) => lesson.quizFileName === `${props.quiz}.json`,
     )?.id;
 
-    if (lessonIdToSave === undefined) { console.error("Lesson not found"); return; }
+    if (lessonIdToSave === undefined) {
+      console.error("Lesson not found");
+      return;
+    }
 
     quizzesAddMutate({
       lesson: lessonIdToSave,
@@ -196,21 +201,30 @@ const Quiz = (props: QuizProps): JSX.Element => {
 
       <Dialog open={showQuiz} onOpenChange={cancelQuiz}>
         <DialogOverlay />
-        <DialogContent>
+        <DialogContent className="bg-[#1C1C1C]">
           <DialogHeader>
-            <DialogTitle>{quiz.title}</DialogTitle>
+            <DialogTitle className="font-poppins text-base font-bold leading-9	text-white	">
+              {quiz.title} <br />
+              <span className="w-full">{`Question ${currentQuestionIndex + 1}/${
+                quiz.questions.length
+              }`}</span>
+            </DialogTitle>
           </DialogHeader>
           <DialogTrigger />
           <DialogDescription className="pb-6">
             <div className="flex flex-col gap-4 rounded-md bg-gray-900 p-6">
-              <span className="bold w-full">{quiz.questions[currentQuestionIndex]!.question}</span>
+              <span className="font-clash-display w-full text-2xl font-bold leading-6	 text-white">
+                {quiz.questions[currentQuestionIndex]!.question}
+              </span>
               {quiz.questions[currentQuestionIndex]!.options.map((o, index) => {
                 return (
                   <div
                     className={`w-full cursor-pointer rounded-md p-3 bg-${getQuestionBackground(
                       index,
                     )}`}
-                    onClick={() => { selectAnswer(index); }}
+                    onClick={() => {
+                      selectAnswer(index);
+                    }}
                     key={index}
                   >
                     {o.answer}
@@ -218,9 +232,6 @@ const Quiz = (props: QuizProps): JSX.Element => {
                 );
               })}
               <div className="just flex w-full items-center">
-                <span className="w-full">{`Question ${currentQuestionIndex + 1}/${
-                  quiz.questions.length
-                }`}</span>
                 <div className="flex w-full">
                   <Button
                     className={`mx-2 ${previousButtonVisibility()}`}
