@@ -1,5 +1,7 @@
 import { PrismaClient } from "./client";
 
+// import { PrismaClient } from "@prisma/client";
+
 // export * from "@prisma/client";
 export * from "./client"; // testing because how prisma works in a monorepo changed many things
 
