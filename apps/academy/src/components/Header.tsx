@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import type { FunctionComponent } from "react";
-import { Button,type NavItem, SideBar, TopBar } from "ui";
+import { Button, type NavItem, SideBar, TopBar } from "ui";
 
 import { ConnectButton } from "@/components/ConnectButton";
 
@@ -30,15 +30,17 @@ const PageHeader: FunctionComponent = () => {
   return (
     <header className="main-container absolute left-0 right-0 top-0 z-50 flex items-center justify-between pt-6 md:flex-row md:pt-0">
       <div className="hidden lg:flex ">
-        {pathname === "/" ? (
-          <div className="mt-14">
+        {pathname === "/" || pathname === "/tracks" ? (
+          <div className="mt-10">
             <TopBar menus={sampleMenus} />
           </div>
         ) : (
           <div className="mt-7 flex items-center justify-around gap-36 text-white lg:mt-8 lg:flex lg:justify-between lg:gap-5 lg:self-stretch">
             <div className="lg:ml-8 lg:flex lg:basis-[0%] lg:flex-col lg:items-stretch">
               <Button
-                onClick={() => { router.back(); }}
+                onClick={() => {
+                  router.back();
+                }}
                 variant="text"
                 className="flex flex-col text-white hover:text-black"
               >
@@ -75,7 +77,9 @@ const PageHeader: FunctionComponent = () => {
           ]}
         />
       </div>
-      <ConnectButton />
+      <div className="mt-10">
+        <ConnectButton />
+      </div>
     </header>
   );
 };

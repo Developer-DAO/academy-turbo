@@ -32,24 +32,23 @@ export const PartnerBanner: FC<PartnerBannerProps> = ({ href, imgSrc }) => {
       </div>
       <div className="mx-8 mt-8 max-w-sm md:m-auto">
         <div className="flex flex-col items-center gap-x-6 md:flex-row">
-          <Image src={imgSrc} width={120} height={120} alt="partner" className="rounded-full" />
+          <Image src={imgSrc} width={250} height={250} alt="partner" className="rounded-full" />
           <div className="separator" />
-          <div className=" flex flex-wrap items-center justify-center gap-6 md:justify-normal">
-            {[
-              "/partners/zerion.png",
-              "/partners/polygon-logo.png",
-              "/partners/pokt.png",
-              "/partners/api3-logo.png",
-            ].map((e, i) => (
-              <Image
-                key={i}
-                src={e}
-                width={200}
-                height={50}
-                alt="partner"
-                className="h-auto max-h-10 w-auto"
-              />
-            ))}
+          <div className=" flex flex-wrap items-center justify-center gap-10 md:justify-normal">
+            {["/partners/pokt.png", "/partners/zerion.png", "/partners/api3-logo.png"].map(
+              (logoPath, i) => (
+                <Image
+                  key={i}
+                  src={logoPath}
+                  width={200}
+                  height={50}
+                  alt="partner"
+                  className={`h-auto max-h-14 w-auto ${i === 0 ? "mb-3 pl-2" : ""} ${
+                    i === 2 ? "max-h-20" : ""
+                  }`}
+                />
+              ),
+            )}
           </div>
         </div>
       </div>

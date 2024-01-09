@@ -42,25 +42,25 @@ This monorepo includes a few apps and packages.
 Run the following command:
 
 ```
-npx degit markkos89/turbo-monorepo-template my-monorepo
-cd my-monorepo
+git clone https://github.com/Developer-DAO/academy-turbo
+cd academy-turbo
 pnpm install
 ```
 
 ### Develop Next.js
 
-If you want to start `apps/website-ssr` and `apps/website` in development mode, and watch for changes in `packages/ui`, run at the root:
+If you want to start `apps/academy` in development mode, and watch for changes in `packages/ui`, run at the root:
 
 ```
-pnpm dev
+pnpm dev --filter academy
 ```
 
 ### Build Next.js
 
-If you want to build `apps/website-ssr` and `apps/website` for production, run at the root:
+If you want to build `apps/academy` for production, run at the root:
 
 ```
-pnpm build
+pnpm build --filter academy
 ```
 
 If you want to see an analysis of the generated bundles, specify the `ANALYZE` environment variable:

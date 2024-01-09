@@ -202,7 +202,7 @@
 }
 
 .track {
-  @apply gradient-blur max-w-xs rounded-[51px] border-none shadow-sm;
+  @apply max-w-xs rounded-[51px] border-none shadow-sm;
 }
 
 .track .gray-badge {
@@ -235,7 +235,7 @@
 }
 
 .banner div .separator {
-  @apply mb-6 mt-4 h-1 w-28 border-r-0 border-t md:my-0 md:h-28 md:w-0 md:border-r md:border-t-0;
+  @apply mb-6 mt-4 h-3 w-28 border-r-0 border-t md:my-0 md:h-32 md:w-0 md:border-r md:border-t-0;
 }
 
 .terminal-text {

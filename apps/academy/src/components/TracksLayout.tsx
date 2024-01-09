@@ -8,6 +8,7 @@ interface TracksLayoutProps {
   trackAuthor: string;
   trackAuthorDescription: string;
   trackAuthorTwitter: string;
+  tags: string[];
 }
 
 export default function TracksLayout({
@@ -17,6 +18,7 @@ export default function TracksLayout({
   trackAuthor,
   trackAuthorDescription,
   trackAuthorTwitter,
+  tags,
 }: TracksLayoutProps) {
   return (
     <main className="pt-32 text-white">
@@ -26,7 +28,7 @@ export default function TracksLayout({
       </section>
       <div className="flex-col justify-start lg:pt-24">
         <div className="">
-          <AboutCourse lessonDescription={trackDescription} />
+          <AboutCourse lessonDescription={trackDescription} tags={tags} />
         </div>
         <div className="text-left ">
           <TrackAuthor
