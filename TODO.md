@@ -5,3 +5,7 @@
 - lesson's page: fix the mdx components (/component/mdx/Components.tsx)
 - remove overflow on tracksPage
 - remove polygon logo from partners
+- social buttons have incorrect vertical alignment (from wolovim - github, twitter and mirror logos)
+- lists (bullet points) on mdx is not being rendered correctly
+- headers lacks of some padding (maybe bottom padding)
+- wallet integration must be checked (markkos89)
