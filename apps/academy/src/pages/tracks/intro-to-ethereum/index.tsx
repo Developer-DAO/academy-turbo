@@ -42,6 +42,7 @@ const IntroToEthereumPage = () => {
         trackAuthor="wolovim"
         trackAuthorDescription="wolovim is a Full Stack Python Developer at the Ethereum Foundation."
         trackAuthorTwitter="@wolovim.eth"
+        tags={["Beginner", "Web3", "Eth"]}
       >
         <div className="flex w-full gap-10 p-20">
           {tracksArray.map((track, idx) => (

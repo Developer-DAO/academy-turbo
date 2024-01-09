@@ -1,0 +1,5 @@
+- trackpage: add half-width image
+- trackpage: we can try add another track
+- intro-to-ethereum page: more length in the track description
+- tracks/lessons card: add the border from figma (static and :hover border)
+- lesson's page: fix the mdx components (/component/mdx/Components.tsx)
