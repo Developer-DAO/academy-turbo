@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { TrackCard } from "ui";
 
@@ -12,6 +13,7 @@ const IntroToEthereumPage = () => {
       description:
         "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
       tags: ["Beginner", "Web3", "DeFi"],
+      path: "/tracks/intro-to-ethereum/1",
     },
     {
       title: "Intro to Ethereum Part II.",
@@ -20,6 +22,7 @@ const IntroToEthereumPage = () => {
       description:
         "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
       tags: ["Beginner", "Web3", "DeFi"],
+      path: "/tracks/intro-to-ethereum/1",
     },
     {
       title: "Intro to Ethereum Part III.",
@@ -28,6 +31,7 @@ const IntroToEthereumPage = () => {
       description:
         "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
       tags: ["Beginner", "Web3", "DeFi"],
+      path: "/tracks/intro-to-ethereum/1",
     },
   ];
   return (
@@ -38,14 +42,15 @@ const IntroToEthereumPage = () => {
       >
         <div className="flex w-full gap-10 p-20">
           {tracksArray.map((track, idx) => (
-            <TrackCard
-              key={idx}
-              imgSrc={track.imgPath}
-              tags={track.tags}
-              title={track.title}
-              author={track.author}
-              description={track.description}
-            />
+            <Link href={track.path} key={idx}>
+              <TrackCard
+                imgSrc={track.imgPath}
+                tags={track.tags}
+                title={track.title}
+                author={track.author}
+                description={track.description}
+              />
+            </Link>
           ))}
         </div>
       </LessonLayout>

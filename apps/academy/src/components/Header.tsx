@@ -14,7 +14,7 @@ const sampleMenus: NavItem[] = [
   },
   {
     name: "Tracks",
-    href: "/intro-to-ethereum/1", // hardcoded trackID for now. For the sake of using the dynamic route - 23 nov 2023
+    href: "/tracks", // hardcoded trackID for now. For the sake of using the dynamic route - 23 nov 2023
     icon: "vector",
   },
   {
@@ -40,6 +40,7 @@ const PageHeader: FunctionComponent = () => {
             <div className="lg:ml-8 lg:flex lg:basis-[0%] lg:flex-col lg:items-stretch">
               <h2 className="font-future lg:text-2xl">Back</h2>
               <Link href="/">
+                {/* router.back() */}
                 <Image
                   src={"/back.png"}
                   alt="turn back"
