@@ -8,9 +8,13 @@ import { Separator } from "../ui/separator";
 
 export interface TrackCardProps {
   imgSrc: string;
+  tags: string[];
+  title: string;
+  author: string;
+  description: string;
 }
 
-const TrackCard: FC<TrackCardProps> = ({ imgSrc }) => {
+const TrackCard: FC<TrackCardProps> = ({ imgSrc, tags, title, description, author }) => {
   return (
     <Card className="track">
       <Image
@@ -20,11 +24,11 @@ const TrackCard: FC<TrackCardProps> = ({ imgSrc }) => {
         height={20}
         className="h-36 w-full bg-cover bg-no-repeat"
       />
-      <div className="mr-3 mt-4 flex justify-end">
-        <Badge className="gray-badge">Nov 22</Badge>
-      </div>
+      {/* <div className="mr-3 mt-4 flex justify-end"> */}
+      {/* <Badge className="gray-badge">Nov 22</Badge> */}
+      {/* </div> */}
       <div className="mt-2 flex w-full gap-x-3 px-1">
-        {["Web3", "DeFi"].map((tag, i) => (
+        {tags.map((tag, i) => (
           <Badge key={i} className="gray-badge">
             {tag}
           </Badge>
@@ -32,13 +36,10 @@ const TrackCard: FC<TrackCardProps> = ({ imgSrc }) => {
       </div>
       <CardHeader className="space-y-4 pb-10">
         <div>
-          <CardTitle className="title">Intro to Ethereum</CardTitle>
-          <CardTitle className="title">By X</CardTitle>
+          <CardTitle className="title">{title}</CardTitle>
+          <CardTitle className="title">By {author}</CardTitle>
         </div>
-        <CardDescription className="description">
-          Foundry is a blazing fast, portable and modular toolkit for Ethereum application
-          development written in Rust.
-        </CardDescription>
+        <CardDescription className="description">{description}</CardDescription>
         <Separator className="opacity-10" />
       </CardHeader>
     </Card>

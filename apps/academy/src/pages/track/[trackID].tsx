@@ -1,5 +1,5 @@
 import AboutCourse from "@/components/AboutCourse";
-import CreatedBy from "@/components/CreatedBy";
+// import CreatedBy from "@/components/CreatedBy";
 import Topic from "@/components/Topic";
 
 export default function TrackDetails() {
@@ -12,9 +12,7 @@ export default function TrackDetails() {
         <div className="ml-16 mt-7 h-px w-72 border border-white lg:w-[90%]"></div>
       </section>
       <div className="flex flex-col lg:flex-row lg:justify-between lg:pt-24">
-        <div className="order-first lg:order-last">
-          <CreatedBy />
-        </div>
+        <div className="order-first lg:order-last">{/* <CreatedBy /> */}</div>
         <div className="order-last lg:order-first">
           <AboutCourse lessonDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam in facilisis viverra, nisi massa dignissim diam, sed ultrices nisl nisl vitae dolor. Sed euismod, diam in facilisis viverra, nisi massa dignissim diam, sed ultrices nisl nisl vitae dolor." />
         </div>
