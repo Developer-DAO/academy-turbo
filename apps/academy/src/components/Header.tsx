@@ -31,7 +31,7 @@ const PageHeader: FunctionComponent = () => {
     <header className="main-container absolute left-0 right-0 top-0 z-50 flex items-center justify-between pt-6 md:flex-row md:pt-0">
       <div className="hidden lg:flex ">
         {pathname === "/" || pathname === "/tracks" ? (
-          <div className="mt-14">
+          <div className="mt-10">
             <TopBar menus={sampleMenus} />
           </div>
         ) : (
@@ -77,7 +77,9 @@ const PageHeader: FunctionComponent = () => {
           ]}
         />
       </div>
-      <ConnectButton />
+      <div className="mt-10">
+        <ConnectButton />
+      </div>
     </header>
   );
 };
