@@ -4,3 +4,4 @@
 - tracks/lessons card: add the border from figma (static and :hover border)
 - lesson's page: fix the mdx components (/component/mdx/Components.tsx)
 - remove overflow on tracksPage
+- remove polygon logo from partners
