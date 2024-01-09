@@ -1,0 +1,56 @@
+import React from "react";
+import { TrackCard } from "ui";
+
+import LessonLayout from "@/components/LessonLayout";
+
+const IntroToEthereumPage = () => {
+  const tracksArray = [
+    {
+      title: "Intro to Ethereum Part I.",
+      author: "wolovim",
+      imgPath: "/image16.png",
+      description:
+        "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+      tags: ["Beginner", "Web3", "DeFi"],
+    },
+    {
+      title: "Intro to Ethereum Part II.",
+      author: "wolovim",
+      imgPath: "/image16.png",
+      description:
+        "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+      tags: ["Beginner", "Web3", "DeFi"],
+    },
+    {
+      title: "Intro to Ethereum Part III.",
+      author: "wolovim",
+      imgPath: "/image16.png",
+      description:
+        "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+      tags: ["Beginner", "Web3", "DeFi"],
+    },
+  ];
+  return (
+    <div className="relative mx-60 mb-40 mt-40 flex  ">
+      <LessonLayout
+        lessonTitle="A Developer's Guide to Ethereum"
+        lessonDescription="Introduction to Ethereum with web3.py and Python."
+      >
+        <div className="flex w-full gap-10 p-20">
+          {tracksArray.map((track, idx) => (
+            <TrackCard
+              key={idx}
+              imgSrc={track.imgPath}
+              tags={track.tags}
+              title={track.title}
+              author={track.author}
+              description={track.description}
+            />
+          ))}
+        </div>
+      </LessonLayout>
+    </div>
+  );
+};
+
+export default IntroToEthereumPage;
