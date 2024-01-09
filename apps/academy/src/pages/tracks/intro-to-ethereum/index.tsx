@@ -39,9 +39,9 @@ const IntroToEthereumPage = () => {
       <TracksLayout
         trackTitle="A Developer's Guide to Ethereum"
         trackDescription="Introduction to Ethereum with web3.py and Python."
-        trackAuthor="Dave C"
-        trackAuthorDescription="Dave C is a Full Stack Python Developer at the Ethereum Foundation."
-        trackAuthorTwitter="@DaveC.eth"
+        trackAuthor="wolovim"
+        trackAuthorDescription="wolovim is a Full Stack Python Developer at the Ethereum Foundation."
+        trackAuthorTwitter="@wolovim.eth"
       >
         <div className="flex w-full gap-10 p-20">
           {tracksArray.map((track, idx) => (
