@@ -1,37 +1,30 @@
 import { Avatar, AvatarFallback, AvatarImage } from "ui/components/ui/avatar";
 
-interface CreatedByProps {
+interface TrackAuthorProps {
   author: string;
-  authorPosition: string;
+  authorDescription: string;
   authorTwitter: string;
-  createdDate: string;
 }
 
-export default function CreatedBy({
+export default function TrackAuthor({
   author,
-  authorPosition,
+  authorDescription,
   authorTwitter,
-  createdDate,
-}: CreatedByProps) {
+}: TrackAuthorProps) {
   return (
     <section className="grid place-items-start pt-6 text-sm lg:mx-16 lg:text-xl">
-      <div className="flex w-full">
-        <p className="text-left">Created by:</p>
-        <Avatar className="ml-6 h-16 w-16">
+      <p className="text-left">Created by:</p>
+      <div className="flex flex-col items-center lg:flex-row lg:items-start lg:gap-4">
+        <Avatar className="mt-7 h-16 w-16">
           <AvatarImage src="/azuki.png" />
           <AvatarFallback>Avatar</AvatarFallback>
         </Avatar>
-        <div className="ml-6 flex flex-col items-center lg:flex-row lg:items-start lg:gap-4">
-          <article className="font-light">
-            <p>
-              {author} @ {authorPosition}
-            </p>
-            <p>{createdDate}</p>
-            <p>Twitter {authorTwitter}</p>
-          </article>
-        </div>
+        <article className="mt-7 font-light">
+          <p>{author}</p>
+          <p>{authorDescription}</p>
+          <p>Twitter {authorTwitter}</p>
+        </article>
       </div>
-
       {/* <div className="mt-4">
         <div className="mr-2 inline-flex h-8 w-14 items-center justify-center gap-2 rounded-3xl border border-neutral-600 border-opacity-30 bg-yellow-400 bg-opacity-40 p-2 backdrop-blur-md">
           <div className="font-['Clash Display'] text-center text-sm font-semibold text-white">

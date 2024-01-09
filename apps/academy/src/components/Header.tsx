@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import type { FunctionComponent } from "react";
-import { type NavItem, SideBar, TopBar } from "ui";
+import { Button,type NavItem, SideBar, TopBar } from "ui";
 
 import { ConnectButton } from "@/components/ConnectButton";
 
@@ -14,7 +13,7 @@ const sampleMenus: NavItem[] = [
   },
   {
     name: "Tracks",
-    href: "/intro-to-ethereum/1", // hardcoded trackID for now. For the sake of using the dynamic route - 23 nov 2023
+    href: "/tracks", // hardcoded trackID for now. For the sake of using the dynamic route - 23 nov 2023
     icon: "vector",
   },
   {
@@ -38,8 +37,12 @@ const PageHeader: FunctionComponent = () => {
         ) : (
           <div className="mt-7 flex items-center justify-around gap-36 text-white lg:mt-8 lg:flex lg:justify-between lg:gap-5 lg:self-stretch">
             <div className="lg:ml-8 lg:flex lg:basis-[0%] lg:flex-col lg:items-stretch">
-              <h2 className="font-future lg:text-2xl">Back</h2>
-              <Link href="/">
+              <Button
+                onClick={() => { router.back(); }}
+                variant="text"
+                className="flex flex-col text-white hover:text-black"
+              >
+                <h2 className="font-future lg:text-2xl">Back</h2>
                 <Image
                   src={"/back.png"}
                   alt="turn back"
@@ -54,7 +57,7 @@ const PageHeader: FunctionComponent = () => {
                   height={35}
                   className="hidden lg:block lg:rotate-180"
                 />
-              </Link>
+              </Button>
             </div>
           </div>
         )}
