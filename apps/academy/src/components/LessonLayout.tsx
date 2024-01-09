@@ -4,7 +4,6 @@ import CreatedBy from "@/components/CreatedBy";
 interface LessonLayoutProps {
   children: React.ReactNode;
   lessonTitle: string;
-  lessonDescription: string;
 }
 
 export default function LessonLayout({ children, lessonTitle }: LessonLayoutProps) {
