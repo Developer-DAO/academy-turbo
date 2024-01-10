@@ -1,28 +1,54 @@
 import Link from "next/link";
 
 import { Icons } from "../Icons";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 
 interface SocialLinks {
   alt?: string;
   href: string;
   icon: string;
+  tooltipText: string;
 }
 
 interface FooterLinks {
   name: string;
   href: string;
+  tooltipText: string;
 }
 
 const links: readonly FooterLinks[] = [
-  { name: "Academy", href: "https://academy.developerdao.com" },
-  { name: "Feedback", href: "#Feedbacks" },
-  { name: "Newsletter", href: "#Newsletter" },
+  { name: "Academy", href: "https://academy.developerdao.com", tooltipText: "D_D Academy website" },
+  {
+    name: "Feedback",
+    href: "https://github.com/Developer-DAO/academy-turbo/issues/new/choose",
+    tooltipText: "Send us feedback, create an issue!",
+  },
+  {
+    name: "Newsletter",
+    href: "https://developerdao.substack.com/",
+    tooltipText: "Developer DAO Substack",
+  },
 ];
 
 const socials: readonly SocialLinks[] = [
-  { alt: "Github", href: "https://github.com/Developer-DAO", icon: "github_circle" },
-  { alt: "Twitter", href: "https://x.com/devdao_academy", icon: "twitter_circle" },
-  { alt: "Mirror", href: "#mirror.xyz", icon: "mirror_circle" },
+  {
+    alt: "Github",
+    href: "https://github.com/Developer-DAO/academy-turbo",
+    icon: "github_circle",
+    tooltipText: "D_D Academy Github Repository",
+  },
+  {
+    alt: "Twitter",
+    href: "https://x.com/devdao_academy",
+    icon: "twitter_circle",
+    tooltipText: "D_D Academy on x.com",
+  },
+  {
+    alt: "D_D Blog",
+    href: "https://blog.developerdao.com",
+    icon: "mirror_circle",
+    tooltipText: "Developer DAO Blog",
+  },
 ];
 
 export const Footer = () => {
@@ -33,21 +59,39 @@ export const Footer = () => {
           {socials.map((social) => {
             const Icon = Icons[social.icon];
             return (
-              <Link aria-label={social.alt} href={social.href} className="group" key={social.href}>
-                {Icon ? <Icon /> : null}
-              </Link>
+              <TooltipProvider delayDuration={30} key={social.href}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <a aria-label={social.alt} href={social.href} className="group" target="_blank">
+                      {Icon ? <Icon /> : null}
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{social.tooltipText}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             );
           })}
         </nav>
         <nav aria-label="quick links" className="h-20 divide-x">
           {links.map((link) => (
-            <Link
-              href={link.href}
-              className="group inline-flex h-full items-center pl-4 md:pl-6"
-              key={link.href}
-            >
-              {link.name}
-            </Link>
+            <TooltipProvider delayDuration={30} key={link.href}>
+              <Tooltip>
+                <TooltipTrigger>
+                  <a
+                    href={link.href}
+                    className="group inline-flex h-full items-center pl-4 md:pl-6"
+                    target="_blank"
+                  >
+                    {link.name}
+                  </a>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{link.tooltipText}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           ))}
         </nav>
         <div className="flex flex-col gap-y-6 divide-x-0 divide-y md:flex-row md:divide-x md:divide-y-0">

@@ -18,7 +18,7 @@ const sampleMenus: NavItem[] = [
   },
   {
     name: "Community",
-    href: "/",
+    href: "https://handbook.developerdao.com/",
     icon: "dd_logo",
   },
 ];
