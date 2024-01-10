@@ -7,6 +7,8 @@ author: "ropats16"
 ---
 
 import LessonLayout from "../../../components/LessonLayout";
+import Callout from "../../../components/mdx/Callout";
+import SideDrawer from "../../../components/mdx/SideDrawer";
 
     {/* title="Connect your Smart Contract to a Front End Application" */}
     {/* description="Learn to seamlessly integrate your smart contracts with a user friendly front-end interface, utilising web3 libraries. With engaging quizzes along the way." */}
@@ -69,9 +71,6 @@ public goods. We love open source at Developer_DAO. And public goods are gooood!
 <br />
 
 ## Tools to get the job done
-
-{/_ upgrades to descriptions are welcome. I/we might need to move the actual URLs down into
-the tutorial if really needed. For now, they avoid that potential rabbit hole scenario while here _/}
 
 - [nextJS](https://nextjs.org/) - a React framework for building a full-stack
   app
@@ -143,12 +142,6 @@ cd frontend
 ---
 
 ## The Front-end
-
-{/_ We need more of an intro than the following 'The Main Application' as to what
-app.js is and subsequently we should do the same for index.js (when we get to
-that section). A little hint of what index.js is here would help - we could use
-a prediction question to aid with/actually perform this task before this
-section: _/}
 
 For users to easily interact with our smart contract and mint the NFTs we must
 provide an interface. A simple process that is easily accessible. Let's start by
@@ -589,8 +582,6 @@ own `mintToken` function that calls the `mint` function from WAGMI within it.
 The `usePrepareContractWrite` hook also work better with the
 `usePrepareContractWrite` hook as explained on
 [wagmi docs](https://wagmi.sh/react/hooks/useContractWrite#prepared-usage).
-{/_ add more explanations maybe explaining how they work together and why we need
-it to perform better the UX _/}
 
 ```jsx
 // WAGMI useContractWrite hook...
@@ -611,9 +602,6 @@ const mintToken = async (e) => {
 
 // function Home() code...
 ```
-
-{/_ if we can avoid the following link, that would be great. I think at a later stage
-after this MVP, we can come back and create a few side-drawers for these hooks: _/}
 
 - We pass in `e` as an argument so that we can pick the amount of ETH associated
   with a particular Tier. This is passed to the mint function using the
