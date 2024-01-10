@@ -52,7 +52,60 @@ model CompletedQuizzes {
 
 model Lessons {
   id        String   @id @default(cuid())
+
   projectLessonNumber Int?   @unique 
   fundamentalLessonName String?
+
   quizFileName      String
+  lessonTitle String
+  authors String[]
+  imgPath String
+  lessonDescription String
+  lessonPath String
+  tags TagsOnLessons[]
+
+  track Tracks @relation(fields: [trackId], references: [id], onDelete: NoAction)
+  trackId String
+}
+  
+  model Tags {
+  id String @id @default(cuid())
+  tagName String
+  tagDescription String?
+  lessons TagsOnLessons[]
+  tracks TagsOnTracks[]
+}
+
+model TagsOnLessons {
+  id String @default(cuid())
+  lesson       Lessons     @relation(fields: [lessonId], references: [id])
+  lessonId     String // relation scalar field (used in the `@relation` attribute above)
+  tag   Tags @relation(fields: [tagId], references: [id])
+  tagId String // relation scalar field (used in the `@relation` attribute above)
+  assignedAt DateTime @default(now())
+  @@id([lessonId, tagId])
+}
+
+
+
+model Tracks {
+  id String @id @default(cuid())
+  trackName String
+  trackTitle String
+  authors String[]
+  imgPath String
+  trackDescription String
+  tags TagsOnTracks[]
+  trackPath String
+  lessons Lessons[]
+}
+
+model TagsOnTracks {
+  id String @default(cuid())
+  track       Tracks     @relation(fields: [trackId], references: [id])
+  trackId     String // relation scalar field (used in the `@relation` attribute above)
+  tag   Tags @relation(fields: [tagId], references: [id])
+  tagId String // relation scalar field (used in the `@relation` attribute above)
+  assignedAt DateTime @default(now())
+  @@id([trackId, tagId])
 }

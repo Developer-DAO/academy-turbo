@@ -22,8 +22,8 @@ async function main() {
   //   },
   // });
   // console.log({ newLesson });
-  // const deletedCompletedLog = await prisma.completedQuizzes.deleteMany({});
-  // console.log({ deletedCompletedLog });
+  const deletedCompletedLog = await prisma.user.deleteMany({});
+  console.log({ deletedCompletedLog });
   // const completed2 = await prisma.completedQuizzes.create({
   //   data: {
   //     userId: "cll3hcuim00001wujlay766tk",

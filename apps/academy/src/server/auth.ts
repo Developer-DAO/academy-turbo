@@ -49,14 +49,16 @@ export const authOptions: (ctxReq: CtxOrReq) => NextAuthOptions = ({
   req?: CtxOrReq["req"];
 }) => ({
   callbacks: {
-    session: ({ session, token }) =>
-      ({
+    session: ({ session, token }) => {
+      console.log({ session, token });
+      return {
         ...session,
         user: {
           ...session.user,
           id: token.sub,
         },
-      }) as Session & { user: { id: string } },
+      } as Session & { user: { id: string } };
+    },
   },
   session: { strategy: "jwt" },
   secret: env.NEXTAUTH_SECRET != undefined ? env.NEXTAUTH_SECRET : "", // in case you want pass this along for other functionality
@@ -89,9 +91,9 @@ export const authOptions: (ctxReq: CtxOrReq) => NextAuthOptions = ({
             JSON.parse(credentials?.message ?? "{}") as Partial<SiweMessage>,
           );
 
-          if (req?.headers === undefined) throw new Error("No headers");
+          // if (req?.headers === undefined) throw new Error("No headers");
 
-          const nonce = await getCsrfToken({ req: { headers: req.headers } });
+          const nonce = await getCsrfToken({ req: { headers: req?.headers || {} } });
 
           if (nonce === undefined) throw new Error("No nonce");
 
