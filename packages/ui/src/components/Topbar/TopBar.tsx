@@ -55,12 +55,19 @@ const TopBarItem: FC<NavItem> = ({ name, icon, href, subnavs }) => {
   const Icon = icon !== undefined ? Icons[icon] : null;
   return (
     <NavigationMenuItem>
-      <NextLink href={href} legacyBehavior passHref>
-        <NavigationMenuLink className={`typography nav ${navigationMenuTriggerStyle()}`}>
+      {name === "Community" ? (
+        <a target="_blank" href={href} className={`typography nav ${navigationMenuTriggerStyle()}`}>
           {Icon ? <Icon /> : null}
           {name}
-        </NavigationMenuLink>
-      </NextLink>
+        </a>
+      ) : (
+        <NextLink href={href} legacyBehavior passHref>
+          <NavigationMenuLink className={`typography nav ${navigationMenuTriggerStyle()}`}>
+            {Icon ? <Icon /> : null}
+            {name}
+          </NavigationMenuLink>
+        </NextLink>
+      )}
       {subnavs ? renderSubmenus(subnavs) : null}
     </NavigationMenuItem>
   );
