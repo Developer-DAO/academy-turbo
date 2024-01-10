@@ -12,6 +12,8 @@
 - headers lacks of some padding (maybe bottom padding)
 - wallet integration must be checked (markkos89)
 
+- fix Warm-up questions sidedrawer component (styling and placement)
+
 #### Links that are missing:
 
 - ~~feedback button ~~ (Added new links @Markkos89)
