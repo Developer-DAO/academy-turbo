@@ -7,7 +7,7 @@ import { useAppContext } from "@/contexts/AppContext";
 
 import Quiz from "./Quiz";
 
-interface QuizStatusCheckerTye {
+export interface QuizStatusCheckerTye {
   quiz: string;
 }
 
