@@ -14,32 +14,32 @@ const TracksPage = () => {
       trackPath: "/tracks/intro-to-ethereum",
     },
     {
-      title: "Intro to Ethereum Part I, II & III.",
-      author: "wolovim",
+      title: "NFT track Part I, II & III.",
+      author: "piablo",
       imgPath: "/image16.png",
       description:
         "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
       tags: ["Beginner", "Web3", "DeFi"],
-      trackPath: "/tracks/intro-to-ethereum",
+      trackPath: "/tracks/nft-solidity",
     },
-    {
-      title: "Intro to Ethereum Part I, II & III.",
-      author: "wolovim",
-      imgPath: "/image16.png",
-      description:
-        "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
-      tags: ["Beginner", "Web3", "DeFi"],
-      trackPath: "/tracks/intro-to-ethereum",
-    },
-    {
-      title: "Intro to Ethereum Part I, II & III.",
-      author: "wolovim",
-      imgPath: "/image16.png",
-      description:
-        "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
-      tags: ["Beginner", "Web3", "DeFi"],
-      trackPath: "/tracks/intro-to-ethereum",
-    },
+    // {
+    //   title: "Intro to Ethereum Part I, II & III.",
+    //   author: "wolovim",
+    //   imgPath: "/image16.png",
+    //   description:
+    //     "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+    //   tags: ["Beginner", "Web3", "DeFi"],
+    //   trackPath: "/tracks/intro-to-ethereum",
+    // },
+    // {
+    //   title: "Intro to Ethereum Part I, II & III.",
+    //   author: "wolovim",
+    //   imgPath: "/image16.png",
+    //   description:
+    //     "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+    //   tags: ["Beginner", "Web3", "DeFi"],
+    //   trackPath: "/tracks/intro-to-ethereum",
+    // },
   ];
   return (
     // <div className="relative mx-60 mb-40 mt-40 flex  ">

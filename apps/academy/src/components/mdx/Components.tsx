@@ -5,6 +5,7 @@ import { CopyToClipboard } from "@/components/CopyToClipboard";
 import Callout from "@/components/mdx/Callout";
 import Question from "@/components/mdx/Question";
 import Quiz from "@/components/mdx/Quiz";
+import QuizStatusChecker from "@/components/mdx/QuizStatusChecker";
 import SideDrawer from "@/components/mdx/SideDrawer";
 
 const Components = {
@@ -36,6 +37,7 @@ const Components = {
   img: (props: any) => <img apply="mdx.image" className="m-0" alt="" {...props} />,
   SideDrawer,
   Callout,
+  QuizStatusChecker,
   Quiz,
   Question,
 };
