@@ -1,7 +1,7 @@
 #### MVP release TODOs
 
 - ~~trackpage: add half-width image~~
-- trackpage: we can try add another track
+- ~~trackpage: we can try add/import another track~~ (@markkos89 Added NFT track)
 - intro-to-ethereum page: more length in the track description (to wolovim)
 - ~~tracks/lessons card: add the border from figma (static and :hover border)~~
 - lesson's page: fix the mdx components (/component/mdx/Components.tsx)
@@ -14,6 +14,6 @@
 
 #### Links that are missing:
 
-- feedback button
-- newsletter button
-- mirror.xyz button
+- ~~feedback button ~~ (Added new links @Markkos89)
+- ~~newsletter button~~ (Added new links @Markkos89)
+- ~~mirror.xyz button~~ (Added new links @Markkos89)
