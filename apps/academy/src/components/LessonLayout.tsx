@@ -4,9 +4,20 @@ import CreatedBy from "@/components/CreatedBy";
 interface LessonLayoutProps {
   children: React.ReactNode;
   lessonTitle: string;
+  author: string;
+  authorPosition: string;
+  authorTwitter: string;
+  createdDate: string;
 }
 
-export default function LessonLayout({ children, lessonTitle }: LessonLayoutProps) {
+export default function LessonLayout({
+  children,
+  lessonTitle,
+  author,
+  authorPosition,
+  authorTwitter,
+  createdDate,
+}: LessonLayoutProps) {
   return (
     <main className="pt-32 text-white">
       <section className="text-center">
@@ -19,10 +30,10 @@ export default function LessonLayout({ children, lessonTitle }: LessonLayoutProp
         </div> */}
         <div className="text-left ">
           <CreatedBy
-            author="wolovim"
-            authorPosition="Ethereum Foundation"
-            authorTwitter="@wolovim.eth"
-            createdDate="August 15, 2023"
+            author={author}
+            authorPosition={authorPosition}
+            authorTwitter={authorTwitter}
+            createdDate={createdDate}
           />
         </div>
       </div>
