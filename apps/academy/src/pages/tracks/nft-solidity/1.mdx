@@ -9,6 +9,8 @@ icons: ["npm", "solidity", "hardhat", "openzeppelin", "ethereum", "etherscan", "
 import LessonLayout from "../../../components/LessonLayout";
 import SideDrawer from "../../../components/mdx/SideDrawer";
 import Question from "../../../components/mdx/Question";
+import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
+import Callout from "../../../components/mdx/Callout";
 
 <LessonLayout
    lessonTitle="Multi Tiered NFTs: A User-Friendly Guide to Building ERC721 Collections"
@@ -1039,7 +1041,7 @@ file like so:
 PRIVATE_KEY=f8abc629b...
 ```
 
-<Callout emoji="💡" size="md" variant="info">
+<Callout emoji="💡">
   Also, make sure you have a line that says `.env` in the `.gitignore` file in your root folder. If
   this file doesn't exist, create it and add that line! This makes sure we don't accidentally upload
   our `.env` file to our public repositories by mistake.
@@ -1188,7 +1190,7 @@ three NFTs of your own, which you so diligently minted, the artist that you are!
 <br />
 <br />
 
-<QuizStatusChecker quiz="quiz-lesson-3" />
+<QuizStatusChecker quiz="data/quizzes/nft-solidity/quiz-nft-solidity-3" />
 
 <br />
 <br />

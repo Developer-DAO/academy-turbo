@@ -1,0 +1,17 @@
+{
+  "question": "Which steps are needed to write a basic smart contract?",
+  "options": [
+    {
+      "answer": "Use a code editor to write a smart contract",
+      "correct": true
+    },
+    {
+      "answer": "Create a project template",
+      "correct": true
+    },
+    {
+      "answer": "Install dependencies",
+      "correct": true
+    }
+  ]
+}
