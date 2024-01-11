@@ -10,7 +10,8 @@
     "db:push": "pnpm with-env prisma db push --skip-generate",
     "dev": "pnpm with-env prisma studio --port 5556",
     "with-env": "dotenv -e ../../.env.local --",
-    "postinstall": "pnpm run db:generate"
+    "postinstall": "pnpm run db:generate",
+    "db:seed": "npx prisma db seed"
   },
   "dependencies": {
     "@prisma/client": "^5.2.0"
@@ -21,5 +22,8 @@
     "prisma": "^5.2.0",
     "typescript": "^5.0.4",
     "typescript-config": "workspace:*"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
 }

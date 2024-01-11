@@ -1,6 +1,8 @@
 import withPlugins from "next-compose-plugins";
 import withBundleAnalyzer from "@next/bundle-analyzer";
 import { PrismaPlugin } from "@prisma/nextjs-monorepo-workaround-plugin";
+// const { PrismaPlugin } = require("@prisma/nextjs-monorepo-workaround-plugin");
+
 import withPWA from "next-pwa";
 import remarkFrontmatter from "remark-frontmatter";
 import nextMDX from "@next/mdx";
@@ -18,6 +20,7 @@ const withMDX = nextMDX({
 /** @type {import('next').NextConfig} */
 const config = {
   // basePath,
+  reactStrictMode: true,
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   reactStrictMode: true,
   transpilePackages: ["ui", "utils", "database"],

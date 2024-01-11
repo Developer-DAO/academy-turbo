@@ -1,5 +1,5 @@
-import React /*, { useState, type Dispatch, type SetStateAction } */ from "react";
-import { Button } from "ui";
+import React, { type Dispatch, type SetStateAction, useState } from "react";
+import { Button, useToast } from "ui";
 
 export interface QuestionProps {
   question: string;
@@ -15,22 +15,23 @@ interface Question {
   ];
 }
 
-const Question = (/* props: QuestionProps */): JSX.Element => {
+const Question = (props: QuestionProps): JSX.Element => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-var-requires
-  // const question: Question = require(`@/utils/questions/${props.question}.json`);
-  // const [optionsSelected, setOptionsSelected]: [number[], Dispatch<SetStateAction<number[]>>] =
-  // useState([-1]);
-  // const toast = useToast();
+  const question: Question = require(`@/data/questions/${props.question}.json`);
+  const [optionsSelected, setOptionsSelected]: [number[], Dispatch<SetStateAction<number[]>>] =
+    useState([-1]);
+  const { toast } = useToast();
 
-  // const selectAnswer = (optionIndex: number) => {
-  //   if (optionsSelected.includes(optionIndex)) {
-  //     return setOptionsSelected(optionsSelected.filter((o) => o !== optionIndex));
-  //   }
+  const selectAnswer = (optionIndex: number) => {
+    if (optionsSelected.includes(optionIndex)) {
+      setOptionsSelected(optionsSelected.filter((o) => o !== optionIndex));
+      return;
+    }
 
-  //   setOptionsSelected(
-  //     [...optionsSelected, optionIndex].filter((o) => o !== -1), // Remove the -1 of the state initialization
-  //   );
-  // };
+    setOptionsSelected(
+      [...optionsSelected, optionIndex].filter((o) => o !== -1), // Remove the -1 of the state initialization
+    );
+  };
 
   // const getOptionBackground = (optionIndex: number) => {
   //   if (optionsSelected.includes(optionIndex)) {
@@ -39,18 +40,30 @@ const Question = (/* props: QuestionProps */): JSX.Element => {
   //   return "gray.600";
   // };
 
-  // const quizNotAnswered = () => {
-  // toast({
-  //   title: "No answer selected",
-  //   description: "Choose an answer!",
-  //   status: "warning",
-  //   duration: 9000,
-  //   isClosable: true,
-  // });
-  // alert("No answer selected");
-  // };
+  const quizNotAnswered = () => {
+    toast({
+      title: "No answer selected",
+      description: "Choose an answer!",
+      duration: 9000,
+      variant: "default",
+    });
+    // toast({
+    //   title: "No answer selected",
+    //   description: "Choose an answer!",
+    //   status: "warning",
+    //   duration: 9000,
+    //   isClosable: true,
+    // });
+    alert("No answer selected");
+  };
 
   const quizFailedToast = () => {
+    toast({
+      title: "Wrong answer",
+      description: "Try again fren",
+      duration: 9000,
+      variant: "destructive",
+    });
     // toast({
     //   title: "Wrong answer",
     //   description: `Try again fren`,
@@ -62,6 +75,12 @@ const Question = (/* props: QuestionProps */): JSX.Element => {
   };
 
   const quizSuccessToast = () => {
+    toast({
+      title: "Correct answer!",
+      description: "Let's gooooooo",
+      duration: 9000,
+      variant: "default",
+    });
     // toast({
     //   title: "Correct answer!",
     //   description: "Let's goooo",
@@ -73,22 +92,26 @@ const Question = (/* props: QuestionProps */): JSX.Element => {
   };
 
   const submit = () => {
-    // if (optionsSelected.includes(-1)) {
-    //   return quizNotAnswered();
-    // }
-    //  const correctAnswers = question.options.filter((o) => o.correct).length;
+    if (optionsSelected.includes(-1)) {
+      quizNotAnswered();
+      return;
+    }
+    const correctAnswers = question.options.filter((o) => o.correct).length;
 
-    const success = true;
-    //  let correctAnswersCount = 0;
+    let success = true;
+    let correctAnswersCount = 0;
 
-    //  optionsSelected.forEach((o) => {
-    //   if (!question.options[o]?.correct) success = false;
-    //    correctAnswersCount++;
-    // });
+    optionsSelected.forEach((o) => {
+      if (question.options[o]?.correct === false) success = false;
+      correctAnswersCount++;
+    });
 
-    // if (correctAnswers !== correctAnswersCount) success = false;
+    if (correctAnswers !== correctAnswersCount) success = false;
 
-    if (success) { quizSuccessToast(); return; }
+    if (success) {
+      quizSuccessToast();
+      return;
+    }
 
     quizFailedToast();
   };
@@ -96,17 +119,19 @@ const Question = (/* props: QuestionProps */): JSX.Element => {
   return (
     <div className="mt-7 space-x-4 rounded-md bg-gray-900 p-6">
       <h2 className="w-full text-left font-bold">{"question.question"}</h2>
-      {/* {question.options.map((o, index) => {
+      {question.options.map((o, index) => {
         return (
           <div
             className="mt-3 w-full cursor-pointer rounded-md bg-gray-600 p-3"
-            onClick={() => selectAnswer(index)}
+            onClick={() => {
+              selectAnswer(index);
+            }}
             key={index}
           >
             {o.answer}
           </div>
         );
-      })} */}
+      })}
       <Button className="mx-1 mt-7 self-start bg-green-400" onClick={submit}>
         Submit
       </Button>

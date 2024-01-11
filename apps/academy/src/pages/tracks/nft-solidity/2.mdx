@@ -5,9 +5,17 @@ icons: ["solidity", "hardhat", "openzeppelin"]
 ---
 
 import LessonLayout from "../../../components/LessonLayout";
+import SideDrawer from "../../../components/mdx/SideDrawer";
+import Question from "../../../components/mdx/Question";
+import Callout from "../../../components/mdx/Callout";
+import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
 
 <LessonLayout
-   lessonTitle="Smart Contracts: Automated Testing and Test-Driven Development (TDD)"
+  lessonTitle="Smart Contracts: Automated Testing and Test-Driven Development (TDD)"
+  author="piablo"
+  authorPosition="D_D Academy"
+  authorTwitter="@elpiablooo.eth"
+  createdDate="August 15, 2023"
 >
 
 ## About this lesson
@@ -315,7 +323,7 @@ describe("TierNFT", function () {
 });
 ```
 
-<Callout emoji="💡" size="md" variant="info">
+<Callout emoji="💡">
   Before we walk through, let's make sure everything is working correctly. Run the tests using `npm
   test` and you should see these two initial tests pass. **This is an important milestone! You
   created your first tests and they now pass.**
@@ -323,7 +331,7 @@ describe("TierNFT", function () {
 
 Now let's walk through the test code we've pasted in and explain what it does.
 
-<Callout emoji="💡" size="md" variant="info">
+<Callout emoji="💡">
   `expect()` from the Chai library is used to test various conditions. There are many examples in
   this lesson.
 </Callout>
@@ -387,7 +395,7 @@ it("set proper collection symbol", async function () {
 They each call a method and verify the results. "Is the contract name really
 TierNFT?" "Is the contract symbol really Tier?"
 
-<Callout emoji="💡" size="md" variant="info">
+<Callout emoji="💡">
   You'll notice a lot of `await` statements. That's because most of these calls are asynchronous.
   Without `await` the program would keep going without waiting for the result. You may want to take
   a detour and learn more about what those do, but for now, think of them as basically waiting for
@@ -479,7 +487,7 @@ Our new `describe` section shown below will replace that line that says
 
 {/* The sentence in the callout below is a bit messy. Could do with an update */}
 
-<Callout emoji="💡" size="md" variant="info">
+<Callout emoji="💡">
   Make sure you keep that last line `})` which is the very end of the block of code that holds
   **all** of the `describe` blocks you're adding in this whole lesson.
 </Callout>
@@ -525,9 +533,7 @@ describe("mint", async () => {
 });
 ```
 
-<Callout emoji="💡" size="md" variant="info">
-  Run the tests using `npm test`
-</Callout>
+<Callout emoji="💡">Run the tests using `npm test`</Callout>
 
 These tests introduce additional code that are helpful when testing contracts.
 
@@ -600,9 +606,7 @@ describe("withdrawal", async () => {
 });
 ```
 
-<Callout emoji="💡" size="md" variant="info">
-  Run the tests using `npm test`
-</Callout>
+<Callout emoji="💡">Run the tests using `npm test`</Callout>
 
 You'll see similar patterns from the previous `mint()` tests. Here are a couple
 of additional highlights:
@@ -821,7 +825,7 @@ contract TierNFT is ERC721, Ownable {
 
 Ok, here are some tests for these helpers!
 
-<Callout emoji="💡" size="md" variant="info">
+<Callout emoji="💡">
   Since an SVG is basically a bunch of strings, you'll notice all these tests are nearly simple
   single lines -- but they're comparing the results with long strings that eventually make up the
   final SVG.
@@ -904,9 +908,7 @@ Ok, here are some tests for these helpers!
     })
 ```
 
-<Callout emoji="💡" size="md" variant="info">
-  Run the tests using `npm test`
-</Callout>
+<Callout emoji="💡">Run the tests using `npm test`</Callout>
 
 The final test is an example mentioned earlier about adding a test before
 refactoring with helper methods. It checks that the initial `tokenURI()` method
@@ -957,7 +959,7 @@ With TDD:
 
 <br />
 <br />
-<QuizStatusChecker quiz="quiz-lesson-4" />
+<QuizStatusChecker quiz="data/quizzes/nft-solidity/quiz-nft-solidity-4" />
 <br />
 <br />
 
