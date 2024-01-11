@@ -1,4 +1,4 @@
-import React, { type Dispatch, type SetStateAction,useState } from "react";
+import React, { type Dispatch, type SetStateAction, useState } from "react";
 import { Button, useToast } from "ui";
 
 export interface QuestionProps {
@@ -17,14 +17,15 @@ interface Question {
 
 const Question = (props: QuestionProps): JSX.Element => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-var-requires
-  const question: Question = require(`@/utils/questions/${props.question}.json`);
+  const question: Question = require(`@/data/questions/${props.question}.json`);
   const [optionsSelected, setOptionsSelected]: [number[], Dispatch<SetStateAction<number[]>>] =
     useState([-1]);
   const { toast } = useToast();
 
   const selectAnswer = (optionIndex: number) => {
     if (optionsSelected.includes(optionIndex)) {
-      setOptionsSelected(optionsSelected.filter((o) => o !== optionIndex)); return;
+      setOptionsSelected(optionsSelected.filter((o) => o !== optionIndex));
+      return;
     }
 
     setOptionsSelected(
@@ -92,7 +93,8 @@ const Question = (props: QuestionProps): JSX.Element => {
 
   const submit = () => {
     if (optionsSelected.includes(-1)) {
-      quizNotAnswered(); return;
+      quizNotAnswered();
+      return;
     }
     const correctAnswers = question.options.filter((o) => o.correct).length;
 
@@ -121,7 +123,9 @@ const Question = (props: QuestionProps): JSX.Element => {
         return (
           <div
             className="mt-3 w-full cursor-pointer rounded-md bg-gray-600 p-3"
-            onClick={() => { selectAnswer(index); }}
+            onClick={() => {
+              selectAnswer(index);
+            }}
             key={index}
           >
             {o.answer}
