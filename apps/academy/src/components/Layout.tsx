@@ -11,6 +11,7 @@ export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
     <>
       <Header />
       <main className="">{children}</main>
+      {/* {children} */}
       {pathname !== "/tracks" ? <Footer /> : null}
     </>
   );

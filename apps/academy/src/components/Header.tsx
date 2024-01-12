@@ -35,7 +35,7 @@ const PageHeader: FunctionComponent = () => {
             <TopBar menus={sampleMenus} />
           </div>
         ) : (
-          <div className="mt-7 flex items-center justify-around gap-36 text-white lg:mt-8 lg:flex lg:justify-between lg:gap-5 lg:self-stretch">
+          <div className="mt-16 flex items-center justify-around gap-36 text-white lg:mt-8 lg:flex lg:justify-between lg:gap-5 lg:self-stretch">
             <div className="lg:ml-8 lg:flex lg:basis-[0%] lg:flex-col lg:items-stretch">
               <Button
                 onClick={() => {
