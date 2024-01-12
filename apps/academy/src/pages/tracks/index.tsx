@@ -22,6 +22,14 @@ const TracksPage = () => {
       tags: ["Beginner", "Web3", "DeFi"],
       trackPath: "/tracks/nft-solidity",
     },
+    {
+      title: "ERC-20 Solidity Track",
+      author: "_7i7o, piablo",
+      imgPath: "/image16.png",
+      description: "Need description for this track",
+      tags: ["Beginner", "ERC-20", "Foundry"],
+      trackPath: "/tracks/erc-20-solidity",
+    },
     // {
     //   title: "Intro to Ethereum Part I, II & III.",
     //   author: "wolovim",

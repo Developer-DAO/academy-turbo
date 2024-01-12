@@ -11,7 +11,7 @@ export default function AboutCourse({ lessonDescription, tags }: AboutCourseProp
         {tags.map((tag, idx) => (
           <div
             key={idx}
-            className={`mr-2 inline-flex h-8 w-20 items-center justify-center gap-2 rounded-3xl border border-neutral-600 border-opacity-30 ${
+            className={`w-26 mr-2 inline-flex h-8 items-center justify-center gap-2 rounded-3xl border border-neutral-600 border-opacity-30 ${
               idx % 3 === 0 ? "bg-[#FF0000]" : idx % 2 === 0 ? "bg-[#FAFF00]" : "bg-[#00F0FF]"
             } bg-opacity-40 p-2 backdrop-blur-md`}
           >
