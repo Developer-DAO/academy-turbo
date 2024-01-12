@@ -12,14 +12,14 @@ export default function TrackAuthor({
   authorTwitter,
 }: TrackAuthorProps) {
   return (
-    <section className="grid place-items-start pt-6 text-sm lg:mx-16 lg:text-xl">
-      <p className="text-left">Created by:</p>
+    <section className="mx-6 grid place-items-start pt-3 text-sm lg:mx-16 lg:pt-6 lg:text-xl">
+      <p className="pl-2 text-left">Created by:</p>
       <div className="flex flex-col items-center lg:flex-row lg:items-start lg:gap-4">
-        <Avatar className="mt-7 h-16 w-16">
+        <Avatar className="h-10 w-10 lg:mt-7 lg:h-16 lg:w-16">
           <AvatarImage src="/azuki.png" />
           <AvatarFallback>Avatar</AvatarFallback>
         </Avatar>
-        <article className="mt-7 font-light">
+        <article className="mb-4 mt-2 gap-2 font-light lg:mt-7">
           <p>{author}</p>
           <p>{authorDescription}</p>
           <p>Twitter {authorTwitter}</p>

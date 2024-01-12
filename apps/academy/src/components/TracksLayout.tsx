@@ -21,12 +21,12 @@ export default function TracksLayout({
   tags,
 }: TracksLayoutProps) {
   return (
-    <main className="pt-32 text-white">
+    <main className="pt-24 text-white lg:pt-32">
       <section className="text-center">
         <h1 className="font-future text-3xl lg:text-8xl">{trackTitle}</h1>
-        <div className="ml-16 mt-7 h-px w-72 border border-white lg:w-[90%]"></div>
+        <div className="mt-7 border border-white lg:ml-16 lg:h-px lg:w-[90%]"></div>
       </section>
-      <div className="flex-col justify-start lg:pt-24">
+      <div className="flex flex-col justify-start lg:pt-24">
         <div className="">
           <AboutCourse lessonDescription={trackDescription} tags={tags} />
         </div>
@@ -38,7 +38,7 @@ export default function TracksLayout({
           />
         </div>
       </div>
-      <div className="font-clash-display px-36 pt-16 text-xl font-medium tracking-wider	">
+      <div className="font-clash-display font-medium tracking-wider lg:px-36 lg:pt-16 lg:text-xl	">
         {children}
       </div>
     </main>
