@@ -16,8 +16,8 @@ export interface TrackCardProps {
 
 const TrackCard: FC<TrackCardProps> = ({ imgSrc, tags, title, description, author }) => {
   return (
-    <div className="rounded-[51px] bg-gradient-to-r from-[#E9E9E9] via-black to-[#E9E9E9] p-0.5">
-      <Card className="track bg-black hover:bg-zinc-900">
+    <div className="min-h-[26rem] rounded-[51px] bg-gradient-to-r from-[#E9E9E9] via-black to-[#E9E9E9] p-0.5">
+      <Card className="track min-h-[26rem] bg-black hover:bg-zinc-900">
         <Image
           src={imgSrc}
           alt="eth_family"
@@ -28,7 +28,7 @@ const TrackCard: FC<TrackCardProps> = ({ imgSrc, tags, title, description, autho
         {/* <div className="mr-3 mt-4 flex justify-end"> */}
         {/* <Badge className="gray-badge">Nov 22</Badge> */}
         {/* </div> */}
-        <div className="mt-2 flex w-full gap-x-3 px-1">
+        <div className="ml-2 mt-2 flex w-full gap-x-1 p-1 px-1 text-xs">
           {tags.map((tag, i) => (
             <Badge key={i} className="gray-badge">
               {tag}
