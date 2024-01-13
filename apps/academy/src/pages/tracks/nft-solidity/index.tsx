@@ -35,7 +35,7 @@ const IntroToEthereumPage = () => {
     },
   ];
   return (
-    <div className="relative mx-60 mb-40 mt-40 flex">
+    <div className="relative m-10 flex lg:mx-60 lg:mb-40 lg:mt-40">
       <TracksLayout
         trackTitle="NFT Track"
         trackDescription="Multi Tiered NFTs: A User-Friendly Guide to Building ERC721 Collections"
@@ -44,7 +44,7 @@ const IntroToEthereumPage = () => {
         trackAuthorTwitter="@_7i7o.eth"
         tags={["Beginner", "Web3", "Eth"]}
       >
-        <div className="flex w-full gap-10 p-20">
+        <div className="mt-14 flex flex-col gap-8 lg:w-full lg:flex-row lg:gap-10 lg:p-20">
           {tracksArray.map((track, idx) => (
             <Link href={track.path} key={idx}>
               <TrackCard
