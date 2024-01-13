@@ -7,7 +7,7 @@ export default function AboutCourse({ lessonDescription, tags }: AboutCourseProp
   return (
     <article className="px-7 pt-14 lg:ml-16 lg:w-[42rem] lg:p-0 ">
       <h2 className="text-2xl font-bold lg:text-3xl">About This Course</h2>
-      <div className="mt-4">
+      <div className="mt-4 flex flex-col gap-2 lg:flex-row">
         {tags.map((tag, idx) => (
           <div
             key={idx}
@@ -15,7 +15,7 @@ export default function AboutCourse({ lessonDescription, tags }: AboutCourseProp
               idx % 3 === 0 ? "bg-[#FF0000]" : idx % 2 === 0 ? "bg-[#FAFF00]" : "bg-[#00F0FF]"
             } bg-opacity-40 p-2 backdrop-blur-md`}
           >
-            <div className="font-['Clash Display'] p-4 text-center text-sm font-semibold text-white">
+            <div className="font-['Clash Display'] p-4 text-center text-xs font-semibold text-white lg:text-sm">
               {tag}
             </div>
           </div>
