@@ -5,7 +5,7 @@ import { TrackCard } from "ui";
 import TracksLayout from "@/components/TracksLayout";
 
 const IntroToEthereumPage = () => {
-  const tracksArray = [
+  const lessonsArray = [
     {
       title: "Introduction to Smart Contract Development with Solidity",
       author: "_7i7o, piablo", // ["_7i7o", "piablo"],
@@ -63,7 +63,7 @@ const IntroToEthereumPage = () => {
         tags={["Beginner", "Elementary", "Web3", "NFT", "Solidity", "JavaScript", "Hardhat"]}
       >
         <div className="flex w-full gap-10 p-20">
-          {tracksArray.map((track, idx) => (
+          {lessonsArray.map((track, idx) => (
             <Link href={track.path} key={idx}>
               <TrackCard
                 imgSrc={track.imgPath}

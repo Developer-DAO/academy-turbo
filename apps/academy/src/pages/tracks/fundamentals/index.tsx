@@ -5,7 +5,7 @@ import { TrackCard } from "ui";
 import TracksLayout from "@/components/TracksLayout";
 
 const IntroToEthereumPage = () => {
-  const tracksArray = [
+  const lessonsArray = [
     {
       title: "Navigating in a CLI for beginners.",
       author: "authors",
@@ -13,7 +13,7 @@ const IntroToEthereumPage = () => {
       description:
         "Learn the basics of using a console/terminal/shell for Ubuntu, Mac and Windows WSL.",
       tags: ["Beginner", "Web3", "DeFi"],
-      path: "/tracks/intro-to-ethereum/1",
+      path: "/tracks/fundamentals/cli_lesson",
     },
     {
       title: "Code Editors (IDEs).",
@@ -21,7 +21,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description: "Popular Code Editors (IDEs).",
       tags: ["Beginner", "Web3", "DeFi"],
-      path: "/tracks/intro-to-ethereum/1",
+      path: "/tracks/fundamentals/code-editors",
     },
     {
       title: "Connecting to a Network via RPC.",
@@ -29,7 +29,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description: "Connecting to Networks via RPC.",
       tags: ["Beginner", "Web3", "DeFi"],
-      path: "/tracks/intro-to-ethereum/1",
+      path: "/tracks/fundamentals/connect-with-rpc",
     },
     {
       title: "Decentralized Storage with Arweave and IPFS/Filecoin",
@@ -37,7 +37,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description: "Overview on decentralized storage protocols.",
       tags: ["Beginner", "Web3", "DeFi"],
-      path: "/tracks/intro-to-ethereum/1",
+      path: "/tracks/fundamentals/decentralized-storage",
     },
     {
       title: "Install NPM Using NVM.",
@@ -45,7 +45,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description: "Installing NPM Using NVM for WSL2, MacOS and Ubuntu.",
       tags: ["Beginner", "Web3", "DeFi"],
-      path: "/tracks/intro-to-ethereum/1",
+      path: "/tracks/fundamentals/install-npm",
     },
     {
       title: "NFT Hosting on OpenSea and Rarible.",
@@ -53,7 +53,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description: "Hosted NFT Collections.",
       tags: ["Beginner", "Web3", "DeFi"],
-      path: "/tracks/intro-to-ethereum/1",
+      path: "/tracks/fundamentals/nft-hosting",
     },
     {
       title: "OpenZeppelin.",
@@ -61,7 +61,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description: "Overview of OpenZeppelin Contracts.",
       tags: ["Beginner", "Web3", "DeFi"],
-      path: "/tracks/intro-to-ethereum/1",
+      path: "/tracks/fundamentals/open_zeppelin",
     },
     {
       title: "Testnets mini-lesson.",
@@ -69,7 +69,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description: "Test, test, test, testnets.",
       tags: ["Beginner", "Web3", "DeFi"],
-      path: "/tracks/intro-to-ethereum/1",
+      path: "/tracks/fundamentals/testnets",
     },
     {
       title: "ERC Token Standards.",
@@ -77,7 +77,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description: "Overview and use cases of ERC tokens.",
       tags: ["Beginner", "Web3", "DeFi"],
-      path: "/tracks/intro-to-ethereum/1",
+      path: "/tracks/fundamentals/token-standards",
     },
     {
       title: "Introduction to web3 wallets.",
@@ -85,7 +85,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description: "Overview of wallet use cases and setting up environment.",
       tags: ["Beginner", "Web3", "DeFi"],
-      path: "/tracks/intro-to-ethereum/1",
+      path: "/tracks/fundamentals/wallets",
     },
   ];
   return (
@@ -99,7 +99,7 @@ const IntroToEthereumPage = () => {
         tags={["Beginner", "Web3", "Eth"]}
       >
         <div className="mt-14 flex flex-col gap-8 lg:w-full lg:gap-10 lg:p-20">
-          {tracksArray.map((track, idx) => (
+          {lessonsArray.map((track, idx) => (
             <Link href={track.path} key={idx}>
               <TrackCard
                 imgSrc={track.imgPath}
