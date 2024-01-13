@@ -9,12 +9,19 @@ const Fundamentals: FC = () => {
 
   return (
     <div className="flex min-h-screen w-full flex-col space-y-10 bg-black lg:flex-row">
+      {/* Start */}
       <div
         className="flex h-full min-h-screen flex-1 flex-col items-center justify-between 
-bg-[url('/fundamental-bg.jpeg')] bg-cover bg-no-repeat object-center pt-[300px] md:pt-[325px] lg:fixed lg:inset-y-0 lg:w-1/2"
+pt-[250px] md:pt-[325px] lg:fixed lg:inset-y-0 lg:w-1/2"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/fundamental-bg.jpeg')`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          objectPosition: "center",
+        }}
       >
         <div>
-          <h2 className="text-bttf text-3xl text-white sm:text-5xl">Fundamentals</h2>
+          <h2 className="text-bttf text-2xl text-white sm:text-5xl">Fundamentals</h2>
         </div>
         <div className="md:hidden" />
         <div className="flex justify-center">
@@ -24,6 +31,7 @@ bg-[url('/fundamental-bg.jpeg')] bg-cover bg-no-repeat object-center pt-[300px] 
         </div>
         <div />
       </div>
+      {/* End */}
       <div className="h-full lg:fixed lg:right-0 lg:top-20 lg:h-screen lg:w-1/2">
         <div className="flex min-h-screen w-full flex-1 flex-col space-y-10 overflow-y-scroll bg-black px-8 pb-14 lg:max-h-screen lg:pb-28">
           <div className="flex w-full justify-center md:px-8 lg:pb-10">

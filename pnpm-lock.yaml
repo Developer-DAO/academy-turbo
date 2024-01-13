@@ -149,6 +149,9 @@ importers:
       siwe:
         specifier: ^2.1.4
         version: 2.1.4(ethers@6.7.1)
+      solid:
+        specifier: link:@heroicons/react/24/solid
+        version: link:@heroicons/react/24/solid
       superjson:
         specifier: ^1.13.1
         version: 1.13.1

@@ -35,6 +35,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "siwe": "^2.1.4",
+    "solid": "link:@heroicons/react/24/solid",
     "superjson": "^1.13.1",
     "ui": "workspace:*",
     "utils": "workspace:*",
