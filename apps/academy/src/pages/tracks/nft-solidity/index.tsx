@@ -53,7 +53,7 @@ const IntroToEthereumPage = () => {
     },
   ];
   return (
-    <div className="relative mx-60 mb-40 mt-40 flex">
+    <div className="relative m-10 flex lg:mx-60 lg:mb-40 lg:mt-40">
       <TracksLayout
         trackTitle="NFT Track"
         trackDescription="This ERC-721 NFT track will take you as a being a complete beginner, not only learning the basics of Solidity, but have you building a series of meaningful, real-world, NFT projects, with some nifty approaches on how to code them. You'll enhance your skills along the way, by creating your own Test Driven Development suite to ensure your smart contracts are safe to deploy to a live blockchain. And finally you'll be creating a tasteful front-end interface so your users can mint your ERC-721 tokens in their desired tier. All in all, a rewarding coding journey."
@@ -62,7 +62,7 @@ const IntroToEthereumPage = () => {
         trackAuthorTwitter="@_7i7o.eth"
         tags={["Beginner", "Elementary", "Web3", "NFT", "Solidity", "JavaScript", "Hardhat"]}
       >
-        <div className="flex w-full gap-10 p-20">
+        <div className="mt-14 flex flex-col gap-8 lg:w-full lg:flex-row lg:gap-10 lg:p-20">
           {lessonsArray.map((track, idx) => (
             <Link href={track.path} key={idx}>
               <TrackCard
