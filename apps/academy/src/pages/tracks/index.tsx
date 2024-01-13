@@ -14,12 +14,11 @@ const TracksPage = () => {
       trackPath: "/tracks/intro-to-ethereum",
     },
     {
-      title: "NFT track Part I, II & III.",
-      author: "piablo",
+      title: "NFT track Part I, II, III, IV & V.",
+      author: "7i7o, piablo, brianfive, georgemac510, ropats16, meowy, ",
       imgPath: "/image16.png",
-      description:
-        "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
-      tags: ["Beginner", "Web3", "DeFi"],
+      description: "Multi Tiered NFTs: A User-Friendly Guide to Building ERC721 Collections",
+      tags: ["Beginner", "Elementary", "Web3", "NFT", "Solidity", "JavaScript", "Hardhat"],
       trackPath: "/tracks/nft-solidity",
     },
     {

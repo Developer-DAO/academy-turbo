@@ -7,13 +7,31 @@ import TracksLayout from "@/components/TracksLayout";
 const IntroToEthereumPage = () => {
   const tracksArray = [
     {
+      title: "Introduction to Smart Contract Development with Solidity",
+      author: "_7i7o, piablo", // ["_7i7o", "piablo"],
+      imgPath: "/image16.png",
+      description:
+        "Beginner-friendly. Create your first Solidity smart contract and learn the fundamentals of blockchain development. Checkpoint quizzes included.",
+      tags: ["Beginner", "Remix", "Web3", "ERC-20"],
+      path: "/tracks/nft-solidity/1",
+    },
+    {
+      title: "Crafting a Basic NFT: A Step-by-Step ERC721 Tutorial for Beginners",
+      author: "_7i7o, piablo", // ["_7i7o", "piablo"],
+      imgPath: "/image16.png",
+      description:
+        "Use pro developer tools  and libraries to create and host your first ERC721 NFT, for real world professional projects. Checkpoint quizzes included.",
+      tags: ["Beginner", "Web3", "NFT", "Solidity", "JavaScript"],
+      path: "/tracks/nft-solidity/2",
+    },
+    {
       title: "TierNFTs.",
       author: "_7i7o, meowy, piablo", // ["_7i7o", "meowy", "piablo"],
       imgPath: "/image16.png",
       description:
         "Create your first ERC721 tiered NFT collection with an array of dev tools with probing quizzes along the way. Adapt your project for professional use cases.",
-      tags: ["Beginner", "Web3", "NFT"],
-      path: "/tracks/nft-solidity/1",
+      tags: ["Beginner", "Web3", "NFT", "Solidity", "JavaScript"],
+      path: "/tracks/nft-solidity/3",
     },
     {
       title: "Write Automated Tests for your TierNFT.",
@@ -21,8 +39,8 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description:
         "Learn Test Driven Development from the best. A crucial skill for Solidity developers. A necessity in blockchain eco-systems. Your automated tests keep us safe.",
-      tags: ["Beginner", "Web3", "NFT"],
-      path: "/tracks/nft-solidity/1",
+      tags: ["Elementary", "Web3", "NFT", "Testing", "Solidity", "JavaScript"],
+      path: "/tracks/nft-solidity/4",
     },
     {
       title: "Connect your Smart Contract to a Front End Application.",
@@ -30,19 +48,19 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description:
         "Learn to seamlessly integrate your smart contracts with a user friendly front-end interface, utilising web3 libraries. With engaging quizzes along the way.",
-      tags: ["Beginner", "Web3", "NFT"],
-      path: "/tracks/nft-solidity/1",
+      tags: ["Elementary", "Web3", "NFT", "Front-end", "Solidity", "JavaScript"],
+      path: "/tracks/nft-solidity/5",
     },
   ];
   return (
     <div className="relative mx-60 mb-40 mt-40 flex">
       <TracksLayout
         trackTitle="NFT Track"
-        trackDescription="Multi Tiered NFTs: A User-Friendly Guide to Building ERC721 Collections"
-        trackAuthor="_7i7o, meowy, piablo, georgemac510, mveve"
+        trackDescription="This ERC-721 NFT track will take you as a being a complete beginner, not only learning the basics of Solidity, but have you building a series of meaningful, real-world, NFT projects, with some nifty approaches on how to code them. You'll enhance your skills along the way, by creating your own Test Driven Development suite to ensure your smart contracts are safe to deploy to a live blockchain. And finally you'll be creating a tasteful front-end interface so your users can mint your ERC-721 tokens in their desired tier. All in all, a rewarding coding journey."
+        trackAuthor="7i7o, piablo, brianfive, georgemac510, ropats16, meowy, mveve"
         trackAuthorDescription="Authors are active Developer DAO members"
         trackAuthorTwitter="@_7i7o.eth"
-        tags={["Beginner", "Web3", "Eth"]}
+        tags={["Beginner", "Elementary", "Web3", "NFT", "Solidity", "JavaScript", "Hardhat"]}
       >
         <div className="flex w-full gap-10 p-20">
           {tracksArray.map((track, idx) => (
