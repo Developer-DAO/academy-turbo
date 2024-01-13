@@ -5,6 +5,15 @@ import { TrackCard } from "ui";
 const TracksPage = () => {
   const tracksArray = [
     {
+      title: "Fundamentals.",
+      author: "authorName",
+      imgPath: "/image16.png",
+      description:
+        "This is the Fundamentals track's description space, it should explain in three or four lines which topics it contains and maybe something else.",
+      tags: ["Beginner", "cmd", "nvm", "npm", "Testnets", "Token standards"],
+      trackPath: "/tracks/fundamentals",
+    },
+    {
       title: "Intro to Ethereum Part I, II & III.",
       author: "wolovim",
       imgPath: "/image16.png",
@@ -38,33 +47,8 @@ const TracksPage = () => {
     //   tags: ["Beginner", "Web3", "DeFi"],
     //   trackPath: "/tracks/intro-to-ethereum",
     // },
-    // {
-    //   title: "Intro to Ethereum Part I, II & III.",
-    //   author: "wolovim",
-    //   imgPath: "/image16.png",
-    //   description:
-    //     "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
-    //   tags: ["Beginner", "Web3", "DeFi"],
-    //   trackPath: "/tracks/intro-to-ethereum",
-    // },
   ];
   return (
-    // <div className="relative mx-60 mb-40 mt-40 flex  ">
-    //   <div className="w-[50%] border text-white">TracksPage Background Image</div>
-    //   <div className="w-[50%] p-20">
-    //     {tracksArray.map((track, idx) => (
-    //       <Link href="/tracks/intro-to-ethereum" key={idx}>
-    //         <TrackCard
-    //           imgSrc={track.imgPath}
-    //           tags={track.tags}
-    //           title={track.title}
-    //           author={track.author}
-    //           description={track.description}
-    //         />
-    //       </Link>
-    //     ))}
-    //   </div>
-    // </div>
     <div className="flex h-full max-h-screen w-full flex-col space-y-10 overflow-hidden bg-black lg:flex-row">
       <div
         className="flex h-full flex-1 flex-col items-center justify-between 
