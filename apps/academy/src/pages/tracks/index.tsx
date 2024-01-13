@@ -10,7 +10,7 @@ const TracksPage = () => {
       imgPath: "/image16.png",
       description:
         "This is the Fundamentals track's description space, it should explain in three or four lines which topics it contains and maybe something else.",
-      tags: ["Beginner", "cmd", "nvm", "npm", "Testnets", "Token standards"],
+      tags: ["Beginner", "Testnets", "Token standards"],
       trackPath: "/tracks/fundamentals",
     },
     {
