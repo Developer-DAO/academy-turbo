@@ -24,11 +24,11 @@ export default function LessonLayout({
         <h1 className="font-future text-3xl lg:text-8xl">{lessonTitle}</h1>
         <div className="ml-16 mt-7 h-px w-72 border border-white lg:w-[90%]"></div>
       </section>
-      <div className="flex-col justify-start lg:pt-24">
+      <div className="mx-3 flex-col justify-start pt-4 lg:pt-24">
         {/* <div className="">
           <AboutCourse lessonDescription={lessonDescription} />
         </div> */}
-        <div className="text-left ">
+        <div className="pl-6 text-left ">
           <CreatedBy
             author={author}
             authorPosition={authorPosition}
@@ -37,7 +37,7 @@ export default function LessonLayout({
           />
         </div>
       </div>
-      <div className="font-clash-display px-36 pt-16 text-xl font-medium tracking-wider	">
+      <div className="font-clash-display px-10 pt-12 text-xl font-medium tracking-wider lg:px-36 lg:pt-16	">
         {children}
       </div>
     </main>

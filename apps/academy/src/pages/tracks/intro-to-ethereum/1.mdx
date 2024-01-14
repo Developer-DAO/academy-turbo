@@ -7,6 +7,8 @@ icons: ["ethereum", "etherscan"]
 import LessonLayout from "../../../components/LessonLayout";
 import Callout from "../../../components/mdx/Callout";
 import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
+import SideDrawer from "../../../components/mdx/SideDrawer";
+import Question from "../../../components/mdx/Question";
 
 <LessonLayout
    lessonTitle="A Developer's Guide to Ethereum, Pt. 1"
@@ -125,6 +127,16 @@ w3.eth.get_block('latest')
 # send a transaction:
 w3.eth.send_transaction({'from': ..., 'to': ..., 'value': ...})
 ```
+
+<SideDrawer buttonText="Did you get all that?" title="Comprehension Check">
+  <Question question="eth-intro-1/2-checkin/Q1" />
+  <Question question="eth-intro-1/2-checkin/Q2" />
+  <Question question="eth-intro-1/2-checkin/Q3" />
+  <Question question="eth-intro-1/2-checkin/Q4" />
+  <Question question="eth-intro-1/2-checkin/Q5" />
+  <Question question="eth-intro-1/2-checkin/Q6" />
+</SideDrawer>
+<br />
 
 ### **Installation**
 
@@ -259,6 +271,17 @@ use this tester provider is as simple as:
 ```python
 In [4]: w3 = Web3(Web3.EthereumTesterProvider())
 ```
+
+Before we move on, does all that make sense? Test yourself:
+
+<SideDrawer buttonText="Keeping up? Test yourself." title="Comprehension Check">
+  <Question question="eth-intro-1/3-checkin/Q1" />
+  <Question question="eth-intro-1/3-checkin/Q2" />
+  <Question question="eth-intro-1/3-checkin/Q3" />
+  <Question question="eth-intro-1/3-checkin/Q4" />
+  <Question question="eth-intro-1/3-checkin/Q5" />
+</SideDrawer>
+<br />
 
 Now you’re ready to surf the chain! That’s not a thing people say. I just made
 that up. Let’s take a quick tour.
@@ -411,10 +434,7 @@ the tune of 21000 wei.
   quickly you'd like a transaction to be processed.
 </Callout>
 
-{" "}
-
-<QuizStatusChecker quiz="data/intro-to-ethereum/quiz-eth-intro-1" />
-
+<QuizStatusChecker quiz="quiz-eth-intro-1" />
 ### **And breathe**
 
 This seems as good a place as any to take a break. The rabbit hole continues on,

@@ -5,7 +5,7 @@ import { TrackCard } from "ui";
 import TracksLayout from "@/components/TracksLayout";
 
 const IntroToEthereumPage = () => {
-  const tracksArray = [
+  const lessonsArray = [
     {
       title: "Intro to Ethereum Part I.",
       author: "wolovim",
@@ -44,8 +44,8 @@ const IntroToEthereumPage = () => {
         trackAuthorTwitter="@wolovim.eth"
         tags={["Beginner", "Web3", "Eth"]}
       >
-        <div className="mt-14 flex flex-col gap-8 lg:w-full lg:gap-10 lg:p-20">
-          {tracksArray.map((track, idx) => (
+        <div className="mt-14 flex flex-col gap-8 lg:grid lg:w-full lg:grid-cols-3 lg:gap-10 lg:p-20">
+          {lessonsArray.map((track, idx) => (
             <Link href={track.path} key={idx}>
               <TrackCard
                 imgSrc={track.imgPath}
