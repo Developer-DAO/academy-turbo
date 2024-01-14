@@ -15,7 +15,7 @@ const config: DefaultSeoProps = {
       {
         url:
           process.env["NEXT_PUBLIC_VERCEL_URL"] !== undefined
-            ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/landing-page-screenshot.png`
+            ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/homepage-seo-screenshot.png`
             : "",
         alt: "Developer DAO Academy",
         type: "image/png",

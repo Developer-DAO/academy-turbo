@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { Button, Drawer, DrawerContent, DrawerHeader, DrawerOverlay, DrawerTrigger } from "ui";
+import {
+  Button,
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerTrigger,
+} from "ui";
 
 export interface SideDrawerProps {
   buttonText: string;
@@ -21,31 +29,39 @@ const SideDrawer = (props: SideDrawerProps): JSX.Element => {
 
   return (
     <>
-      <Button
-        onClick={onOpen}
-        aria-label="Open Drawer"
-        // variant="ghost"
-        className={`mt-4 break-words bg-gray-700 text-sm font-bold h-[${
-          buttonText.length > 30 ? "3.75rem" : "2.5rem"
-        }`}
-        // height={[`${buttonText.length > 30 ? "3.75rem" : "2.5rem"}`, "2.5rem"]}
-        // style={{
-        //   wordWrap: "break-word",
-        // }}
-        // rightIcon={<ArrowRightIcon />}
-      >
-        {buttonText}
-      </Button>
       <Drawer open={isOpen} /* placement="right" */ onClose={onClose} /* size="xl" */>
+        <DrawerTrigger asChild>
+          <Button
+            onClick={onOpen}
+            aria-label="Open Drawer"
+            // variant="ghost"
+            className={`mt-4 break-words bg-gray-700 text-sm font-bold h-[${
+              buttonText.length > 30 ? "3.75rem" : "2.5rem"
+            }`}
+            // height={[`${buttonText.length > 30 ? "3.75rem" : "2.5rem"}`, "2.5rem"]}
+            // style={{
+            //   wordWrap: "break-word",
+            // }}
+            // rightIcon={<ArrowRightIcon />}
+          >
+            {buttonText}
+          </Button>
+        </DrawerTrigger>
         <DrawerOverlay
           className="h-screen" /* backdropFilter="auto" backdropInvert="10%" backdropBlur="3px" */
         />
         <DrawerContent className="bg-[#00000f] px-4 pb-8">
-          <DrawerTrigger
-            onClick={() => {
-              setIsOpen(!isOpen);
-            }}
-          />
+          <DrawerClose asChild>
+            <Button
+              onClick={onClose}
+              aria-label="Close Drawer"
+              className={`mt-4 break-words bg-gray-700 text-sm font-bold h-[${
+                buttonText.length > 30 ? "3.75rem" : "2.5rem"
+              }`}
+            >
+              Close
+            </Button>
+          </DrawerClose>
           <DrawerHeader className="bg-yellow-300 text-3xl">{drawerTitle}</DrawerHeader>
           <DrawerContent>{props.children}</DrawerContent>
         </DrawerContent>
