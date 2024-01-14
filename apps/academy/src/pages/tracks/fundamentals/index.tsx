@@ -91,9 +91,9 @@ const IntroToEthereumPage = () => {
   return (
     <div className="relative m-10 flex lg:mx-60 lg:mb-40 lg:mt-40">
       <TracksLayout
-        trackTitle="Fundamentals Track"
+        trackTitle="Web3 Fundamentals Track"
         trackDescription="Fundamentals track page description space, could be oriented to describe better the topics that it contains among other relevating stuff about the different tools/services/programming languages and/or frameworks used or mentioned."
-        trackAuthor="authros"
+        trackAuthor=""
         trackAuthorDescription="authors here is a Full Stack Python Developer at the Ethereum Foundation."
         trackAuthorTwitter="@authors.eth"
         tags={["Beginner", "Web3", "Eth"]}

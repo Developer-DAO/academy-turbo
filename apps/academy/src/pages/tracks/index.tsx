@@ -5,7 +5,7 @@ import { TrackCard } from "ui";
 const TracksPage = () => {
   const tracksArray = [
     {
-      title: "Fundamentals.",
+      title: "Web3 Fundamentals",
       author: "authorName",
       imgPath: "/image16.png",
       description:
@@ -14,17 +14,16 @@ const TracksPage = () => {
       trackPath: "/tracks/fundamentals",
     },
     {
-      title: "Intro to Ethereum Part I, II & III.",
+      title: "Intro to Ethereum Part I, II & III",
       author: "wolovim",
       imgPath: "/image16.png",
-      description:
-        "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+      description: "Introduction to Ethereum with web3.py and Python.",
       tags: ["Beginner", "Web3", "DeFi"],
       trackPath: "/tracks/intro-to-ethereum",
     },
     {
-      title: "NFT track Part I, II, III, IV & V.",
-      author: "7i7o, piablo, brianfive, georgemac510, ropats16, meowy, ",
+      title: "NFT track Part I-V",
+      author: "7i7o, piablo, georgemac510, brianfive, ropats16, meowy, mveve",
       imgPath: "/image16.png",
       description: "Multi Tiered NFTs: A User-Friendly Guide to Building ERC721 Collections",
       tags: ["Beginner", "Elementary", "Web3", "NFT", "Solidity", "JavaScript", "Hardhat"],

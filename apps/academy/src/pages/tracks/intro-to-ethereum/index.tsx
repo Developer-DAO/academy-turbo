@@ -7,29 +7,26 @@ import TracksLayout from "@/components/TracksLayout";
 const IntroToEthereumPage = () => {
   const lessonsArray = [
     {
-      title: "Intro to Ethereum Part I.",
+      title: "A Developer's Guide to Ethereum, Pt.1",
       author: "wolovim",
       imgPath: "/image16.png",
-      description:
-        "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+      description: "Introduction to Ethereum with web3.py and Python",
       tags: ["Beginner", "Web3", "DeFi"],
       path: "/tracks/intro-to-ethereum/1",
     },
     {
-      title: "Intro to Ethereum Part II.",
+      title: "A Developer's Guide to Ethereum, Pt.2",
       author: "wolovim",
       imgPath: "/image16.png",
-      description:
-        "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+      description: "Introduction to Ethereum with web3.py and Python.",
       tags: ["Beginner", "Web3", "DeFi"],
       path: "/tracks/intro-to-ethereum/1",
     },
     {
-      title: "Intro to Ethereum Part III.",
+      title: "A Developer's Guide to Ethereum, Pt.3",
       author: "wolovim",
       imgPath: "/image16.png",
-      description:
-        "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+      description: "Introduction to Ethereum with web3.py and Python.",
       tags: ["Beginner", "Web3", "DeFi"],
       path: "/tracks/intro-to-ethereum/1",
     },

@@ -34,7 +34,7 @@ const IntroToEthereumPage = () => {
       path: "/tracks/nft-solidity/3",
     },
     {
-      title: "Write Automated Tests for your TierNFT.",
+      title: "Smart Contracts: Automated Testing and Test-Driven Development (TDD)",
       author: "brianfive, piablo",
       imgPath: "/image16.png",
       description:
@@ -57,7 +57,7 @@ const IntroToEthereumPage = () => {
       <TracksLayout
         trackTitle="NFT Track"
         trackDescription="This ERC-721 NFT track will take you as a being a complete beginner, not only learning the basics of Solidity, but have you building a series of meaningful, real-world, NFT projects, with some nifty approaches on how to code them. You'll enhance your skills along the way, by creating your own Test Driven Development suite to ensure your smart contracts are safe to deploy to a live blockchain. And finally you'll be creating a tasteful front-end interface so your users can mint your ERC-721 tokens in their desired tier. All in all, a rewarding coding journey."
-        trackAuthor="7i7o, piablo, brianfive, georgemac510, ropats16, meowy, mveve"
+        trackAuthor="7i7o, piablo, georgemac510, brianfive, ropats16, meowy, mveve"
         trackAuthorDescription="Authors are active Developer DAO members"
         trackAuthorTwitter="@_7i7o.eth"
         tags={["Beginner", "Elementary", "Web3", "NFT", "Solidity", "JavaScript", "Hardhat"]}
