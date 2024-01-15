@@ -56,5 +56,8 @@
     "tailwindcss-config": "workspace:*",
     "typescript-config": "workspace:*",
     "vaul": "^0.8.0"
+  },
+  "dependencies": {
+    "@radix-ui/react-alert-dialog": "^1.0.5"
   }
 }
