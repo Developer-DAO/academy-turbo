@@ -9,7 +9,7 @@ const TracksPage = () => {
       author: "authorName",
       imgPath: "/image16.png",
       description:
-        "There is a lot more to Web3 than blockchains and smart contracts. This track provides resources and insights on various fundamental tooling and infrastructure needed for the magic you create in your projects to be become a reality.",
+        "There is a lot more to Web3 than blockchains and smart contracts. This track provides resources and insights on various fundamental tooling and infrastructure needed for the magic you create in your projects to become a reality.",
       tags: ["Beginner", "Testnets", "Token standards"],
       trackPath: "/tracks/fundamentals",
     },
