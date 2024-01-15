@@ -16,11 +16,11 @@ const IntroToEthereumPage = () => {
       path: "/tracks/erc-20-solidity/1",
     },
     {
-      title: "Write Automated Tests for your TierNFT.",
+      title: "Your own ERC-20 Token: A Step-by-Step Guide using Foundry",
       author: "_7i7o, piablo",
       imgPath: "/image16.png",
       description:
-        "Learn Test Driven Development from the best. A crucial skill for Solidity developers. A necessity in blockchain eco-systems. Your automated tests keep us safe.",
+        "Foundry demystified: ERC-20 token creation for beginners. Probing quizzes throughout. Grasp the fundamentals and empower yourself to build and customize.",
       tags: ["Beginner", "Web3", "ERC-20"],
       path: "/tracks/erc-20-solidity/2",
     },
