@@ -8,6 +8,7 @@ import LessonLayout from "../../../components/LessonLayout";
 import Callout from "../../../components/mdx/Callout";
 import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
 import SideDrawer from "../../../components/mdx/SideDrawer";
+import LessonInfoModal from "../../../components/mdx/LessonInfoModal";
 import Question from "../../../components/mdx/Question";
 
 <LessonLayout
@@ -128,14 +129,14 @@ w3.eth.get_block('latest')
 w3.eth.send_transaction({'from': ..., 'to': ..., 'value': ...})
 ```
 
-<SideDrawer buttonText="Did you get all that?" title="Comprehension Check">
+<LessonInfoModal buttonText="Did you get all that?" title="Comprehension Check">
   <Question question="eth-intro-1/2-checkin/Q1" />
   <Question question="eth-intro-1/2-checkin/Q2" />
   <Question question="eth-intro-1/2-checkin/Q3" />
   <Question question="eth-intro-1/2-checkin/Q4" />
   <Question question="eth-intro-1/2-checkin/Q5" />
   <Question question="eth-intro-1/2-checkin/Q6" />
-</SideDrawer>
+</LessonInfoModal>
 <br />
 
 ### **Installation**
