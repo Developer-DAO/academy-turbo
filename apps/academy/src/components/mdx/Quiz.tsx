@@ -14,7 +14,7 @@ import {
 
 import { useAppContext } from "@/contexts/AppContext";
 import { api } from "@/utils/api";
-import { getCorrectAnswersIndexes, haveSameElements } from "@/utils/QuizHelpers";
+import { getCorrectAnswersIndexes, haveSameElements, toLetters } from "@/utils/QuizHelpers";
 
 export interface QuizProps {
   quiz: string;
@@ -43,7 +43,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
   const [showQuiz, setShowQuiz] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
-  const [correctAnswers, setCorrectAnswers] = useState<number[] | null>(null);
+  const [_correctAnswers, setCorrectAnswers] = useState<number[] | null>(null);
   const { toast } = useToast();
   const { refetchCompletedQuizzesAll, allLessonsData } = useAppContext();
 
@@ -64,6 +64,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
   };
 
   const selectAnswer = (answerIndex: number) => {
+    console.log({ answerIndex });
     const newAnswers: Answers = { ...answers };
 
     if (
@@ -85,20 +86,20 @@ const Quiz = (props: QuizProps): JSX.Element => {
     setAnswers(newAnswers);
   };
 
-  const getQuestionBackground = (optionIndex: number) => {
-    if (
-      correctAnswers !== null &&
-      correctAnswers !== undefined &&
-      correctAnswers.includes(currentQuestionIndex) &&
-      quiz.questions[currentQuestionIndex]?.options[optionIndex]?.correct !== undefined &&
-      quiz.questions[currentQuestionIndex]?.options[optionIndex]?.correct === true &&
-      answers[currentQuestionIndex]?.includes(optionIndex) === true
-    ) {
-      return "green.500";
-    }
+  // const getQuestionBackground = (optionIndex: number) => {
+  //   if (
+  //     correctAnswers !== null &&
+  //     correctAnswers !== undefined &&
+  //     correctAnswers.includes(currentQuestionIndex) &&
+  //     quiz.questions[currentQuestionIndex]?.options[optionIndex]?.correct !== undefined &&
+  //     quiz.questions[currentQuestionIndex]?.options[optionIndex]?.correct === true &&
+  //     answers[currentQuestionIndex]?.includes(optionIndex) === true
+  //   ) {
+  //     return "green.500";
+  //   }
 
-    return "gray.600";
-  };
+  //   return "gray.600";
+  // };
 
   const quizNotAnswered = () => {
     toast({
@@ -190,44 +191,48 @@ const Quiz = (props: QuizProps): JSX.Element => {
 
   return (
     <>
-      <Button
-        className="mx-auto flex bg-yellow-600 text-white"
-        onClick={() => {
-          setShowQuiz(true);
-        }}
-      >
-        Take quiz
-      </Button>
-
+      <div className="w-full text-center">
+        <Button
+          className="mx-auto flex bg-yellow-600 text-white"
+          onClick={() => {
+            setShowQuiz(true);
+          }}
+        >
+          Take quiz
+        </Button>
+      </div>
       <Dialog open={showQuiz} onOpenChange={cancelQuiz}>
         <DialogOverlay />
-        <DialogContent className="bg-[#1C1C1C]">
+        <DialogContent className="rounded-lg border-black bg-[#1C1C1C]">
           <DialogHeader>
-            <DialogTitle className="font-poppins text-base font-bold leading-9	text-white	">
-              {quiz.title} <br />
-              <span className="w-full">{`Question ${currentQuestionIndex + 1}/${
-                quiz.questions.length
-              }`}</span>
+            <DialogTitle /* className="font-poppins text-base font-bold leading-9 text-white	lg:text-xl"*/
+            >
+              <DialogTrigger className="w-full text-right text-[#44AF96]">X</DialogTrigger>
+              <span className="font-clash-display text-base font-bold leading-9 text-white lg:text-3xl">
+                {quiz.title}
+              </span>
+              <br />
+              <span className="font-poppins w-full text-base font-normal text-white	">{`Question ${
+                currentQuestionIndex + 1
+              }/${quiz.questions.length}`}</span>
             </DialogTitle>
           </DialogHeader>
-          <DialogTrigger />
+
           <DialogDescription className="pb-6">
-            <div className="flex flex-col gap-4 rounded-md bg-gray-900 p-6">
+            <div className="flex flex-col gap-4 rounded-md bg-[#242424] p-6">
               <span className="font-clash-display w-full text-2xl font-bold leading-6	 text-white">
                 {quiz.questions[currentQuestionIndex]!.question}
               </span>
               {quiz.questions[currentQuestionIndex]!.options.map((o, index) => {
                 return (
                   <div
-                    className={`w-full cursor-pointer rounded-md p-3 bg-${getQuestionBackground(
-                      index,
-                    )}`}
+                    className={`font-clash-display w-full cursor-pointer rounded-3xl bg-[#303030]	p-3	text-lg font-bold text-[#F9F9F9]`}
                     onClick={() => {
                       selectAnswer(index);
                     }}
                     key={index}
                   >
-                    {o.answer}
+                    {`${toLetters(index + 1)}. ${o.answer}`}
                   </div>
                 );
               })}
@@ -248,13 +253,14 @@ const Quiz = (props: QuizProps): JSX.Element => {
           </DialogDescription>
 
           <DialogFooter>
-            <Button className="mx-1 flex bg-red-400 text-white" onClick={cancelQuiz}>
+            <Button className="mx-1 flex bg-red-400 text-white" variant="text" onClick={cancelQuiz}>
               Cancel
             </Button>
             <Button
-              className="mx-1 flex bg-green-400 text-white"
+              className="rounded-full bg-[#636363] text-white"
               onClick={submit}
               isLoading={quizzesAddIsLoading}
+              variant="text"
             >
               Submit
             </Button>
