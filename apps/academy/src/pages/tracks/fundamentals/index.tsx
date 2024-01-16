@@ -101,7 +101,7 @@ const IntroToEthereumPage = () => {
     <div className="relative m-10 flex lg:mx-60 lg:mb-40 lg:mt-40">
       <TracksLayout
         trackTitle="Web3 Fundamentals Track"
-        trackDescription="There is a lot more to Web3 than blockchains and smart contracts. This track provides resources and insights on various fundamental tooling and infrastructure needed for the magic you create in your projects to be become a reality."
+        trackDescription="Access our Web3 Fundamentals offering, providing vital tools, infrastructure insights, and core concepts essential for developers. Cover CLI basics, NPM setup, wallet nuances, RPC connectivity, testnet significance, OpenZeppelin contracts, ERC token standards, decentralized storage protocols, preferred IDEs, and NFT hosting. Fundamental skills for practical project development."
         trackAuthor="elPiablo, georgemac510"
         trackAuthorDescription="The authors have a wealth of knowledge in the field of education and pedagogy"
         trackAuthorTwitter="@GeorgeMac510, @Skruffster"

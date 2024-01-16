@@ -6,7 +6,7 @@ const TracksPage = () => {
   const tracksArray = [
     {
       title: "Web3 Fundamentals",
-      author: "authorName",
+      author: "georgemac510, elPiablo",
       imgPath: "/image16.png",
       description:
         "There is a lot more to Web3 than blockchains and smart contracts. This track provides resources and insights on various fundamental tooling and infrastructure needed for the magic you create in your projects to become a reality.",
@@ -14,10 +14,11 @@ const TracksPage = () => {
       trackPath: "/tracks/fundamentals",
     },
     {
-      title: "Intro to Ethereum Part I, II & III",
+      title: "A Developer's Guide to Ethereum, Part I, II & III",
       author: "wolovim",
       imgPath: "/image16.png",
-      description: "Introduction to Ethereum with web3.py and Python.",
+      description:
+        "Introduction to Ethereum with web3.py and Python. Grasp blockchain basics, Ethereum's decentralization, and smart contracts with practical insights. Code included for hands-on learning.",
       tags: ["Beginner", "Web3", "DeFi"],
       trackPath: "/tracks/intro-to-ethereum",
     },
@@ -25,7 +26,8 @@ const TracksPage = () => {
       title: "NFT track Part I-V",
       author: "7i7o, piablo, georgemac510, brianfive, ropats16, meowy, mveve",
       imgPath: "/image16.png",
-      description: "Multi Tiered NFTs: A User-Friendly Guide to Building ERC721 Collections",
+      description:
+        "Get stuck right into Solidity and on to the NFT train. You'll be building your own tiered ERC-721 token sets, creating a Test Driven Development suite, hosting your files on Web3 storage, and creating on your own front-end dApp. The full-stack-track.",
       tags: ["Beginner", "Elementary", "Web3", "NFT", "Solidity", "JavaScript", "Hardhat"],
       trackPath: "/tracks/nft-solidity",
     },
@@ -33,7 +35,8 @@ const TracksPage = () => {
       title: "ERC-20 Solidity Track",
       author: "_7i7o, piablo",
       imgPath: "/image16.png",
-      description: "Need description for this track",
+      description:
+        "Start with Solidity basics, or move straight on to creating an ERC-20 token using the Foundry development toolchain. Later, we'll explore more advanced concepts with real-world use cases, and best practices for creating and managing blockchain assets",
       tags: ["Beginner", "ERC-20", "Foundry"],
       trackPath: "/tracks/erc-20-solidity",
     },
