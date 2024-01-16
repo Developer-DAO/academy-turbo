@@ -10,7 +10,8 @@ const IntroToEthereumPage = () => {
       title: "A Developer's Guide to Ethereum, Pt.1",
       author: "wolovim",
       imgPath: "/image16.png",
-      description: "Introduction to Ethereum with web3.py and Python",
+      description:
+        "Dive into Ethereum basics with web3.py and Python. Simulate a node, read blocks, check balances, and send transactions. Focus on concepts, not final products, with included code.",
       tags: ["Beginner", "Web3", "DeFi"],
       path: "/tracks/intro-to-ethereum/1",
     },
@@ -18,7 +19,8 @@ const IntroToEthereumPage = () => {
       title: "A Developer's Guide to Ethereum, Pt.2",
       author: "wolovim",
       imgPath: "/image16.png",
-      description: "Introduction to Ethereum with web3.py and Python.",
+      description:
+        "Explore Ethereum's core — blockchain, decentralization, and ether. Build on Part 1, grasping implications for developers. Practical insights and code provided for understanding.",
       tags: ["Beginner", "Web3", "DeFi"],
       path: "/tracks/intro-to-ethereum/1",
     },
@@ -26,7 +28,8 @@ const IntroToEthereumPage = () => {
       title: "A Developer's Guide to Ethereum, Pt.3",
       author: "wolovim",
       imgPath: "/image16.png",
-      description: "Introduction to Ethereum with web3.py and Python.",
+      description:
+        "From blockchain fundamentals to accounts and now smart contracts. Unveil the programmable, decentralized world with practical insights and code.",
       tags: ["Beginner", "Web3", "DeFi"],
       path: "/tracks/intro-to-ethereum/1",
     },
@@ -35,7 +38,7 @@ const IntroToEthereumPage = () => {
     <div className="relative m-10 flex lg:mx-60 lg:mb-40 lg:mt-40">
       <TracksLayout
         trackTitle="A Developer's Guide to Ethereum"
-        trackDescription="Introduction to Ethereum with web3.py and Python."
+        trackDescription="Begin your journey with A Developer's Guide to Ethereum, leveraging web3.py and Python. Explore blockchain essentials, Ethereum's decentralized realm, and learn about smart contracts with practical insights. The series blends theory and hands-on learning, providing code to reinforce understanding. Ideal for developers transitioning to Ethereum through a Python lens."
         trackAuthor="wolovim"
         trackAuthorDescription="wolovim is a Full Stack Python Developer at the Ethereum Foundation."
         trackAuthorTwitter="@wolovim.eth"
