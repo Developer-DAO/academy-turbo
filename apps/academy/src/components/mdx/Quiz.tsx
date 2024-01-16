@@ -189,6 +189,12 @@ const Quiz = (props: QuizProps): JSX.Element => {
     setCurrentQuestionIndex(0);
   };
 
+  const isSelectedAnswer = (currentQuestionIndex: number, answerIndex: number): boolean => {
+    console.log({ currentQuestionIndex, answerIndex });
+    console.log({ answers });
+    return false;
+  };
+
   return (
     <>
       <div className="w-full text-center">
@@ -226,7 +232,14 @@ const Quiz = (props: QuizProps): JSX.Element => {
               {quiz.questions[currentQuestionIndex]!.options.map((o, index) => {
                 return (
                   <div
-                    className={`font-clash-display w-full cursor-pointer rounded-3xl bg-[#303030]	p-3	text-lg font-bold text-[#F9F9F9]`}
+                    className={`font-clash-display w-full cursor-pointer rounded-3xl bg-[#303030] ${
+                      isSelectedAnswer(
+                        currentQuestionIndex,
+                        index, // TODO: this is WIP. This method should validate if the current answer option is already selected and paint the border color accordingly
+                      )
+                        ? "" // TODO: if it's true, then will add the border color for selected option from figma [#721F79]
+                        : "" // TODO: if it's false, then will not add any other styling and the quotes should be blank as is
+                    }	p-3	text-lg font-bold text-[#F9F9F9]`}
                     onClick={() => {
                       selectAnswer(index);
                     }}

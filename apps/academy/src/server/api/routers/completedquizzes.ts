@@ -17,7 +17,7 @@ export const completedQuizzesRouter = createTRPCRouter({
     .mutation(async ({ input, ctx }) => {
       return await ctx.prisma.completedQuizzes.create({
         data: {
-          lesson: input.lesson,
+          lessonId: input.lesson,
           userId: ctx.session.user.id,
           completed: true,
         },
