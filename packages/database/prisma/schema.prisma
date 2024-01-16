@@ -42,7 +42,8 @@ model User {
 
 model CompletedQuizzes {
   id        String   @id @default(cuid())
-  lesson    String
+  lesson   Lessons @relation(fields: [lessonId], references: [id])
+  lessonId    String
   userId    String
   completed Boolean  @default(false)
   createdAt DateTime @default(now())
@@ -52,10 +53,8 @@ model CompletedQuizzes {
 
 model Lessons {
   id        String   @id @default(cuid())
-
   projectLessonNumber Int?   @unique 
   fundamentalLessonName String?
-
   quizFileName      String
   lessonTitle String
   authors String[]
@@ -63,9 +62,9 @@ model Lessons {
   lessonDescription String
   lessonPath String
   tags TagsOnLessons[]
-
   track Tracks @relation(fields: [trackId], references: [id], onDelete: NoAction)
   trackId String
+  completedQuizzes CompletedQuizzes[]
 }
   
   model Tags {
