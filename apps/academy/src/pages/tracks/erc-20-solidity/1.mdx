@@ -9,6 +9,7 @@ import Callout from "../../../components/mdx/Callout";
 import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
 import SideDrawer from "../../../components/mdx/SideDrawer";
 import Question from "../../../components/mdx/Question";
+import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
 
 <LessonLayout
    lessonTitle="Introduction to Smart Contract Development with Solidity" 
@@ -48,11 +49,11 @@ blockchain, well not at first. Hang on!
 Let's pause here for a couple questions to give you a taste of what's to come
 and give yourself a chance to test what you already know.
 
-<SideDrawer buttonText="Warm-up Questions" title="Warm-up Questions">
+<LessonQuestionsModal buttonText="Warm-up Questions" title="Warm-up Questions">
   <Question question="lesson-1/intro-Q1" />
   <Question question="lesson-1/intro-Q2" />
   <Question question="lesson-1/intro-Q3" />
-</SideDrawer>
+</LessonQuestionsModal>
 <br />
 
 How was that? No stress if the answers didn't come naturally. We're here to fill
@@ -253,12 +254,15 @@ folders in our workspace. We want to start fresh. Create a new folder named
 
 The extension `.sol` is used for files in the Solidity language.
 
-<SideDrawer buttonText="Checkpoint Questions" title="Blockchain and Solidity Smart Contracts">
+<LessonQuestionsModal
+  buttonText="Checkpoint Questions"
+  title="Blockchain and Solidity Smart Contracts"
+>
   <Question question="lesson-1/tooling-Q1" />
   <Question question="lesson-1/tooling-Q2" />
   <Question question="lesson-1/tooling-Q3" />
   <Question question="lesson-1/tooling-Q4" />
-</SideDrawer>
+</LessonQuestionsModal>
 <br />
 
 Well done! Now, go touch some grass! ⌛😊
@@ -503,12 +507,12 @@ small amount of eth, since we are using the Ethereum blockchain. As we progress
 on our learning journey we will hear a lot more about gas and fees, but that’s
 also for future lessons.
 
-<SideDrawer buttonText="Checkpoint Questions" title="Variables and Functions">
+<LessonQuestionsModal buttonText="Checkpoint Questions" title="Variables and Functions">
   <Question question="lesson-1/varsFunctions-Q1" />
   <Question question="lesson-1/varsFunctions-Q2" />
   <Question question="lesson-1/varsFunctions-Q3" />
   <Question question="lesson-1/varsFunctions-Q4" />
-</SideDrawer>
+</LessonQuestionsModal>
 <br />
 
 Go touch some grass and set the pomodoro when you return ⌛😊
@@ -643,12 +647,12 @@ on these in future lessons, so no worries!
 
 </SideDrawer>
 
-<SideDrawer buttonText="Checkpoint Questions" title="All about Events">
+<LessonQuestionsModal buttonText="Checkpoint Questions" title="All about Events">
   <Question question="lesson-1/events-Q1" />
   <Question question="lesson-1/events-Q2" />
   <Question question="lesson-1/events-Q3" />
   {/* <Question question="events-Q4" />  */}
-</SideDrawer>
+</LessonQuestionsModal>
 <br />
 
 Go touch some grass ⌛😊

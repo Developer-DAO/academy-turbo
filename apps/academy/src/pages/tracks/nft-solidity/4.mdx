@@ -5,7 +5,7 @@ icons: ["solidity", "hardhat", "openzeppelin"]
 ---
 
 import LessonLayout from "../../../components/LessonLayout";
-import SideDrawer from "../../../components/mdx/SideDrawer";
+import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
 import Question from "../../../components/mdx/Question";
 import Callout from "../../../components/mdx/Callout";
 import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
@@ -46,13 +46,13 @@ while. 🌱 Embrace the process.
 
 Let's raise the sails to catch the wind of what's to come:
 
-<SideDrawer buttonText="Warm-up Questions" title="Check out Your Previous Knowledge">
+<LessonQuestionsModal buttonText="Warm-up Questions" title="Check out Your Previous Knowledge">
   <Question question="lesson-4/1-intro/Q1" />
   <Question question="lesson-4/1-intro/Q2" />
   <Question question="lesson-4/1-intro/Q3" />
   <Question question="lesson-4/1-intro/Q4" />
   <Question question="lesson-4/1-intro/Q5" />
-</SideDrawer>
+</LessonQuestionsModal>
 
 And set sail . . .
 
@@ -242,13 +242,13 @@ module.exports = {
 };
 ```
 
-<SideDrawer buttonText="Checkpoint Questions" title="Understanding our Environment">
+<LessonQuestionsModal buttonText="Checkpoint Questions" title="Understanding our Environment">
   <Question question="lesson-4/2-get-set-up/Q1" />
   <Question question="lesson-4/2-get-set-up/Q2" />
   <Question question="lesson-4/2-get-set-up/Q3" />
   <Question question="lesson-4/2-get-set-up/Q4" />
   <Question question="lesson-4/2-get-set-up/Q5" />
-</SideDrawer>
+</LessonQuestionsModal>
 ⌛ Pomodoro? 😊 🌱
 
 ## What do we want to test on our TierNFT contract?
@@ -446,13 +446,13 @@ failure looks like:
       +Anita
 ```
 
-<SideDrawer buttonText="Checkpoint Questions" title="General Testing Concepts">
+<LessonQuestionsModal buttonText="Checkpoint Questions" title="General Testing Concepts">
   <Question question="lesson-4/3-general-concepts/Q1" />
   <Question question="lesson-4/3-general-concepts/Q2" />
   <Question question="lesson-4/3-general-concepts/Q3" />
   <Question question="lesson-4/3-general-concepts/Q4" />
   <Question question="lesson-4/3-general-concepts/Q5" />
-</SideDrawer>
+</LessonQuestionsModal>
 
 ### Let's add tests for mint()
 
@@ -625,13 +625,16 @@ of additional highlights:
   breaks our rule of one expect per test, but as long as the test is kept
   simple, we can choose what makes sense for what we're trying to test.
 
-<SideDrawer buttonText="Checkpoint Questions" title="Cross-checking Logic from Tests to Contract">
+<LessonQuestionsModal
+  buttonText="Checkpoint Questions"
+  title="Cross-checking Logic from Tests to Contract"
+>
   <Question question="lesson-4/4-mint-withdraw/Q1" />
   <Question question="lesson-4/4-mint-withdraw/Q2" />
   <Question question="lesson-4/4-mint-withdraw/Q3" />
   <Question question="lesson-4/4-mint-withdraw/Q4" />
   <Question question="lesson-4/4-mint-withdraw/Q5" />
-</SideDrawer>
+</LessonQuestionsModal>
 ⌛ Pomodoro? 😊 🌱
 
 ### Testing tokenURI()
@@ -917,13 +920,13 @@ while refactoring to make sure we didn't break things along the way, and it's
 helpful at the end to ensure the `tokenURI()` method continues to work without
 fail when code changes.
 
-<SideDrawer buttonText="Checkpoint Questions" title="Refactoring Code and Testing SVG">
+<LessonQuestionsModal buttonText="Checkpoint Questions" title="Refactoring Code and Testing SVG">
   <Question question="lesson-4/5-SVG-test/Q1" />
   <Question question="lesson-4/5-SVG-test/Q2" />
   <Question question="lesson-4/5-SVG-test/Q3" />
   <Question question="lesson-4/5-SVG-test/Q4" />
   <Question question="lesson-4/5-SVG-test/Q5" />
-</SideDrawer>
+</LessonQuestionsModal>
 
 ## Food for Thought
 

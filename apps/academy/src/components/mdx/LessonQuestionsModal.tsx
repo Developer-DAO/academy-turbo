@@ -10,7 +10,7 @@ import {
 
 interface Props {
   buttonText: string;
-  title: string;
+  title?: string;
   children: React.ReactNode;
 }
 
@@ -28,7 +28,9 @@ export default function LessonQuestionsModal({ buttonText, title, children }: Pr
             </div>
             {title}
           </DialogTitle>
-          <DialogDescription className="bg-[#1C1C1C]">{children}</DialogDescription>
+          <DialogDescription className={`bg-[#1C1C1C] ${title === undefined ? "text-white" : ""}`}>
+            {children}
+          </DialogDescription>
         </DialogHeader>
       </DialogContent>
     </Dialog>
