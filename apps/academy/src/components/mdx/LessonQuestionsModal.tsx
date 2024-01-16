@@ -4,6 +4,7 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
+  DialogOverlay,
   DialogTitle,
   DialogTrigger,
 } from "ui";
@@ -20,6 +21,7 @@ export default function LessonQuestionsModal({ buttonText, title, children }: Pr
       <DialogTrigger className="my-3 flex rounded-2xl bg-yellow-600 p-2 font-semibold	text-white">
         {buttonText}
       </DialogTrigger>
+      <DialogOverlay />
       <DialogContent className="mb-20 mt-10 max-h-screen overflow-y-auto border-0 bg-[#1C1C1C] lg:w-fit">
         <DialogHeader>
           <DialogTitle className="font-clash-display m-2 text-2xl font-bold text-white">
