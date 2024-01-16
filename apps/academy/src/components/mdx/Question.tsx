@@ -1,6 +1,8 @@
 import React, { type Dispatch, type SetStateAction, useState } from "react";
 import { Button, useToast } from "ui";
 
+import { toLetters } from "@/utils/QuizHelpers";
+
 export interface QuestionProps {
   question: string;
 }
@@ -54,7 +56,7 @@ const Question = (props: QuestionProps): JSX.Element => {
     //   duration: 9000,
     //   isClosable: true,
     // });
-    alert("No answer selected");
+    // alert("No answer selected");
   };
 
   const quizFailedToast = () => {
@@ -71,7 +73,7 @@ const Question = (props: QuestionProps): JSX.Element => {
     //   duration: 9000,
     //   isClosable: true,
     // });
-    alert("Wrong answer");
+    // alert("Wrong answer");
   };
 
   const quizSuccessToast = () => {
@@ -88,7 +90,7 @@ const Question = (props: QuestionProps): JSX.Element => {
     //   duration: 9000,
     //   isClosable: true,
     // });
-    alert("Correct answer!");
+    // alert("Correct answer!");
   };
 
   const submit = () => {
@@ -117,22 +119,26 @@ const Question = (props: QuestionProps): JSX.Element => {
   };
 
   return (
-    <div className="mt-7 space-x-4 rounded-md bg-gray-900 p-6">
-      <h2 className="w-full text-left font-bold">{"question.question"}</h2>
+    <div className="mb-5 space-x-4 rounded-md bg-[#242424] p-6 text-white">
+      <h2 className="w-full text-left font-semibold	">{question.question}</h2>
       {question.options.map((o, index) => {
         return (
           <div
-            className="mt-3 w-full cursor-pointer rounded-md bg-gray-600 p-3"
+            className="font-clash-display mt-3 w-full cursor-pointer rounded-md bg-[#1C1C1C] p-3 text-left font-semibold text-white"
             onClick={() => {
               selectAnswer(index);
             }}
             key={index}
           >
-            {o.answer}
+            {`${toLetters(index + 1)}. ${o.answer}`}
           </div>
         );
       })}
-      <Button className="mx-1 mt-7 self-start bg-green-400" onClick={submit}>
+      <Button
+        variant="text"
+        className="mx-1 mt-7 self-start rounded-3xl border-0 bg-[#721F79]"
+        onClick={submit}
+      >
         Submit
       </Button>
     </div>
