@@ -8,7 +8,7 @@ author: "ropats16"
 
 import LessonLayout from "../../../components/LessonLayout";
 import Callout from "../../../components/mdx/Callout";
-import SideDrawer from "../../../components/mdx/SideDrawer";
+import LessonInformationalModal from "../../../components/mdx/LessonInformationalModal";
 
 {/* title="Lesson 5: Connecting to a Front-end" */}
 
@@ -326,7 +326,7 @@ styling from the side drawer below, into our file. This is some default styling
 created for the application, which you can play around with themes,
 responsiveness, etc., if needed.
 
-<SideDrawer buttonText="Code for default style">
+<LessonInformationalModal buttonText="Code for default style" title="Code for default style">
 
 ```jsx
 export default function Home() {
@@ -422,7 +422,7 @@ const modalButton = {
 };
 ```
 
-</SideDrawer>
+</LessonInformationalModal>
 <br/>
 
 Moving onto imports.
@@ -778,7 +778,7 @@ Now our preview should look like this once a wallet is connected:
 wallet's profile on `https://testnets.opensea.io/YOUR_WALLET_ADDRESS`. Refer to
 the following side drawer for the code written till now if stuck somewhere.
 
-<SideDrawer buttonText="Code so far for index.js">
+<LessonInformationalModal buttonText="Code so far for index.js" title="Code so far for index.js">
 
 ```jsx
 import Head from "next/head";
@@ -990,7 +990,7 @@ const modalButton = {
 };
 ```
 
-</SideDrawer>
+</LessonInformationalModal>
 <br/>
 
 Take a breather and stretch yourself before we do the last bit of coding.
@@ -1191,7 +1191,7 @@ The final modal should look like this:
 
 If you are stuck somewhere, please refer to the code side drawer below.
 
-<SideDrawer buttonText="Final Code for index.js">
+<LessonInformationalModal buttonText="Final Code for index.js" title="Final Code for index.js">
 
 ```jsx
 import Head from "next/head";
@@ -1487,7 +1487,7 @@ const modalButton = {
 };
 ```
 
-</SideDrawer>
+</LessonInformationalModal>
 <br/>
 <br/>
 

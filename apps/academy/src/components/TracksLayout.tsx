@@ -21,13 +21,13 @@ export default function TracksLayout({
   tags,
 }: TracksLayoutProps) {
   return (
-    <main className="pt-24 text-white lg:pt-32">
+    <main className="pt-24 text-white">
       <section className="text-center">
         <h1 className="font-future text-3xl lg:text-8xl">{trackTitle}</h1>
         <div className="mt-7 border border-white lg:ml-16 lg:h-px lg:w-[90%]"></div>
       </section>
       <div className="flex flex-col justify-start lg:pt-24">
-        <div className="">
+        <div className="w-full">
           <AboutCourse lessonDescription={trackDescription} tags={tags} />
         </div>
         <div className="text-left ">

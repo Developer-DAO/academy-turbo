@@ -16,6 +16,7 @@ import SideDrawer from "../../../components/mdx/SideDrawer";
 import Question from "../../../components/mdx/Question";
 import Callout from "../../../components/mdx/Callout";
 import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
+import LessonInformationalModal from "../../../components/mdx/LessonInformationalModal";
 
 <LessonLayout
    lessonTitle="Crafting a Basic NFT: A Step-by-Step ERC721 Tutorial for Beginners" 
@@ -197,7 +198,7 @@ We run the `npx hardhat` command to generate a basic project:
   Quit
 ```
 
-<SideDrawer buttonText="What on Earth is Hardhat?">
+<LessonInformationalModal buttonText="What on Earth is Hardhat?" title="What on Earth is Hardhat?">
   Since we’re flying to Jupiter, we need safety apparel! And that’s what Hardhat is. It provides a blockchain for us along the way, where we can have lots of ETH in our wallet, and we can waste as much as we want, and get hit on the head with
   asteroids without getting any scars.
   
@@ -209,7 +210,7 @@ We run the `npx hardhat` command to generate a basic project:
 Hardhat is simply a set of tools that includes a local mini blockchain that can
 run on your machine.
 
-</SideDrawer>
+</LessonInformationalModal>
 
 We choose `Create a Javascript project` and Hardhat will create an example
 project for us. It will give us 3 prompts for options. Choosing the defaults is
@@ -559,7 +560,7 @@ We propose a _choose your own adventure_ for this part of the project:
   <Question question="lesson-2/4-nft-id/Q5" />
 </LessonQuestionsModal>
 
-<SideDrawer buttonText="Longer Path (learn about JSON and IPFS)">
+<LessonInformationalModal buttonText="Longer Path (learn about JSON and IPFS)" title="Longer Path (learn about JSON and IPFS)">
 ## JSON
 Go touch some grass, and set your pomodoro when you get back ⌛😊
 
@@ -701,7 +702,7 @@ the files), for we will use it in our next step.
 <br/>
 p.s. Good for you for taking on this extra adventure! 🧙🏾
 <br/><br/>
-</SideDrawer>
+</LessonInformationalModal>
 
 ## Deploy! Back to Solidity... kind of...
 

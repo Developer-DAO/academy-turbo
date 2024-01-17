@@ -9,7 +9,7 @@ icons: ["solidity", "foundry", "openzeppelin", "ethereum", "etherscan"]
 import LessonLayout from "../../../components/LessonLayout";
 import Callout from "../../../components/mdx/Callout";
 import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
-import SideDrawer from "../../../components/mdx/SideDrawer";
+import LessonInformationalModal from "../../../components/mdx/LessonInformationalModal";
 import Question from "../../../components/mdx/Question";
 import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
 
@@ -101,7 +101,7 @@ among others, has created an implementation we can inherit to create our own
 tokens easily. Here is a quick overview of what a contract needs in order to be
 called an ERC-20 Token contract:
 
-<SideDrawer buttonText="More info on the ERC-20 Standard">
+<LessonInformationalModal buttonText="More info on the ERC-20 Standard" title="More info on the ERC-20 Standard">
 
 To achieve the functionality needed for an ERC-20 token, the standard requires
 us to implement some methods and events.
@@ -126,7 +126,7 @@ event Approval(address indexed _owner, address indexed _spender, uint256 _value)
 You can check the details in the full EIP-20 titled
 [ERC-20: Token Standard](https://eips.ethereum.org/EIPS/eip-20#token)
 
-</SideDrawer>
+</LessonInformationalModal>
 
 ## Let's code, but first...
 
@@ -543,7 +543,7 @@ only for intruders!
 
 Congratulations! We have built a fully functioning token!
 
-<SideDrawer buttonText="Here's my final Solidity code">
+<LessonInformationalModal buttonText="Here's my final Solidity code" title="Here's my final Solidity code">
 
 Here we have our fully functioning house, I mean... token:
 
@@ -578,7 +578,7 @@ contract MyToken is ERC20, AccessControl {
 }
 ```
 
-</SideDrawer>
+</LessonInformationalModal>
 
 Given that we have our house completed, you might want to add some personalized
 detail to it, like special furniture, wall paint, or make it a smart home.

@@ -16,8 +16,8 @@ export interface TrackCardProps {
 
 const TrackCard: FC<TrackCardProps> = ({ imgSrc, tags, title, description, author }) => {
   return (
-    <div className="min-h-[26rem] rounded-[51px] bg-gradient-to-r from-[#E9E9E9] via-black to-[#E9E9E9] p-0.5">
-      <Card className="track min-h-[26rem] bg-black hover:bg-zinc-900">
+    <div className="min-h-[30rem] rounded-[51px] bg-gradient-to-r from-[#E9E9E9] via-black to-[#E9E9E9] p-0.5">
+      <Card className="track min-h-[30rem] rounded-[51px] bg-black hover:bg-zinc-900">
         <Image
           src={imgSrc}
           alt="eth_family"
