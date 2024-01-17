@@ -12,16 +12,16 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description:
         "Beginner-friendly. Create your first Solidity smart contract and learn the fundamentals of blockchain development. Checkpoint quizzes included.",
-      tags: ["Beginner", "Solidiy", "Remix"],
+      tags: ["Entry", "Solidiy", "Remix"],
       path: "/tracks/nft-solidity/1",
     },
     {
-      title: "Crafting a Basic NFT: A Step-by-Step ERC721 Tutorial for Beginners",
+      title: "Crafting a Basic NFT: A Step-by-Step ERC-721 Tutorial for Beginners",
       author: "_7i7o, piablo", // ["_7i7o", "piablo"],
       imgPath: "/image16.png",
       description:
-        "Use pro developer tools  and libraries to create and host your first ERC721 NFT, for real world professional projects. Checkpoint quizzes included.",
-      tags: ["Beginner", "NFT", "Solidity"],
+        "Use pro developer tools  and libraries to create and host your first ERC-721 NFT, for real world professional projects. Checkpoint quizzes included.",
+      tags: ["Entry", "ERC-721", "Solidity"],
       path: "/tracks/nft-solidity/2",
     },
     {
@@ -29,8 +29,8 @@ const IntroToEthereumPage = () => {
       author: "_7i7o, meowy, piablo", // ["_7i7o", "meowy", "piablo"],
       imgPath: "/image16.png",
       description:
-        "Create your first ERC721 tiered NFT collection with an array of dev tools with probing quizzes along the way. Adapt your project for professional use cases.",
-      tags: ["Beginner", "NFT", "Solidity"],
+        "Create your first ERC-721 tiered NFT collection with an array of dev tools with probing quizzes along the way. Adapt your project for professional use cases.",
+      tags: ["Entry", "Tier-NFT", "SVG"],
       path: "/tracks/nft-solidity/3",
     },
     {
@@ -39,7 +39,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description:
         "Learn Test Driven Development from the best. A crucial skill for Solidity developers. A necessity in blockchain eco-systems. Your automated tests keep us safe.",
-      tags: ["Elementary", "NFT", "Testing"],
+      tags: ["Explorer", "JS", "Testing"],
       path: "/tracks/nft-solidity/4",
     },
     {
@@ -48,7 +48,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description:
         "Learn to seamlessly integrate your smart contracts with a user friendly front-end interface, utilising web3 libraries. With engaging quizzes along the way.",
-      tags: ["Elementary", "NFT", "JavaScript"],
+      tags: ["Explorer", "UI", "JS"],
       path: "/tracks/nft-solidity/5",
     },
   ];
@@ -60,7 +60,18 @@ const IntroToEthereumPage = () => {
         trackAuthor="7i7o, piablo, georgemac510, brianfive, ropats16, meowy, mveve"
         trackAuthorDescription="Authors are active Developer DAO members"
         trackAuthorTwitter="@_7i7o.eth"
-        tags={["Beginner", "Elementary", "Web3", "NFT", "Solidity", "JavaScript", "Hardhat"]}
+        tags={[
+          "Entry",
+          "Remix",
+          "Explorer",
+          "Web3",
+          "Full Stack",
+          "Solidity",
+          "JavaScript",
+          "TDD-Testing",
+          "Web3-Storage",
+          "NFT-Hosting",
+        ]}
       >
         <div className="mt-14 flex flex-col gap-8 lg:grid lg:w-full lg:grid-cols-3 lg:gap-10 lg:p-20">
           {lessonsArray.map((track, idx) => (

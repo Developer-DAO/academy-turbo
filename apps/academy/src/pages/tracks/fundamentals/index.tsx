@@ -12,7 +12,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description:
         "Whether you call your CLI a Linux terminal, Mac console, or Windows command prompt, you'll learn navigation, file handling, and essential commands for efficient development",
-      tags: ["Beginner", "CLI", "Bash"],
+      tags: ["Entry", "CLI", "Bash"],
       path: "/tracks/fundamentals/cli_lesson",
     },
     {
@@ -21,7 +21,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description:
         "A step-by-step guide for setting up NPM using NVM on Linux, MacOS, and WSL2. Choose your OS and configure Node.js for streamlined development",
-      tags: ["Beginner", "Node", "Bash"],
+      tags: ["Entry", "Node", "Bash"],
       path: "/tracks/fundamentals/install-npm",
     },
     {
@@ -106,7 +106,17 @@ const IntroToEthereumPage = () => {
         trackAuthor="elPiablo, georgemac510"
         trackAuthorDescription="The authors have a wealth of knowledge in the field of education and pedagogy"
         trackAuthorTwitter="@GeorgeMac510, @Skruffster"
-        tags={["Beginner", "Web3", "Eth"]}
+        tags={[
+          "Entry",
+          "Explorer",
+          "Infra",
+          "Blockchain",
+          "Back-end",
+          "Front-end",
+          "Bash",
+          "RPC",
+          "Node",
+        ]}
       >
         <div className="mt-14 flex flex-col gap-8 lg:grid lg:w-full lg:grid-cols-3 lg:gap-10 lg:p-20">
           {lessonsArray.map((track, idx) => (

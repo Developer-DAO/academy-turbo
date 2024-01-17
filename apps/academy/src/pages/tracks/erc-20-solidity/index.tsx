@@ -33,7 +33,7 @@ const IntroToEthereumPage = () => {
         trackAuthor="_7i7o, piablo"
         trackAuthorDescription="Authors are active Developer DAO members"
         trackAuthorTwitter="@_7i7o.eth, @Skruffster"
-        tags={["Beginner", "Solidity", "ERC-20", "Foundry", "DeFi", "DAOs"]}
+        tags={["Beginner", "Solidity", "ERC-20", "Foundry", "DeFi"]}
       >
         <div className="mt-14 flex flex-col gap-8 lg:grid lg:w-full lg:grid-cols-3 lg:gap-10 lg:p-20">
           {lessonsArray.map((track, idx) => (

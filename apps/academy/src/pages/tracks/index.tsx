@@ -10,7 +10,7 @@ const TracksPage = () => {
       imgPath: "/image16.png",
       description:
         "There is a lot more to Web3 than blockchains and smart contracts. This track provides resources and insights on various fundamental tooling and infrastructure needed for the magic you create in your projects to become a reality.",
-      tags: ["Beginner", "Testnets", "Token standards"],
+      tags: ["Infra", "Web3", "CLI"],
       trackPath: "/tracks/fundamentals",
     },
     {
@@ -19,7 +19,7 @@ const TracksPage = () => {
       imgPath: "/image16.png",
       description:
         "Introduction to Ethereum with web3.py and Python. Grasp blockchain basics, Ethereum's decentralization, and smart contracts with practical insights. Code included for hands-on learning.",
-      tags: ["Beginner", "Web3", "DeFi"],
+      tags: ["Entry", "Blockchain", "Ethereum"],
       trackPath: "/tracks/intro-to-ethereum",
     },
     {
@@ -28,7 +28,7 @@ const TracksPage = () => {
       imgPath: "/image16.png",
       description:
         "Get stuck right into Solidity and on to the NFT train. You'll be building your own tiered ERC-721 token sets, creating a Test Driven Development suite, hosting your files on Web3 storage, and creating on your own front-end dApp. The full-stack-track.",
-      tags: ["Beginner", "NFT", "Solidity"],
+      tags: ["Entry", "Explorer", "ERC-721"],
       trackPath: "/tracks/nft-solidity",
     },
     {
@@ -37,7 +37,7 @@ const TracksPage = () => {
       imgPath: "/image16.png",
       description:
         "Start with Solidity basics, or move straight on to creating an ERC-20 token using the Foundry development toolchain. Later, we'll explore more advanced concepts with real-world use cases, and best practices for creating and managing blockchain assets",
-      tags: ["Beginner", "ERC-20", "Foundry"],
+      tags: ["Entry", "ERC-20", "Foundry"],
       trackPath: "/tracks/erc-20-solidity",
     },
     // {
