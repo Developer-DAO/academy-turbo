@@ -62,7 +62,7 @@ bg-[url('/fundamental-bg.jpeg')] bg-cover bg-no-repeat object-center pt-[300px] 
         <div className="md:hidden" />
         <div className="flex justify-center">
           <p className="max-w-[275px] text-center text-xl font-bold text-white sm:max-w-xs md:max-w-full lg:text-2xl">
-            DeveloperDAO learning tracks are designed <br /> to get you from 0 to 1.
+            Developer DAO learning tracks are designed <br /> to get you from 0 to 1.
           </p>
         </div>
         <div />
