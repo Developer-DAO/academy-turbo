@@ -15,6 +15,8 @@ import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
 import SideDrawer from "../../../components/mdx/SideDrawer";
 import Question from "../../../components/mdx/Question";
 import Callout from "../../../components/mdx/Callout";
+import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
+import LessonInformationalModal from "../../../components/mdx/LessonInformationalModal";
 
 <LessonLayout
    lessonTitle="Crafting a Basic NFT: A Step-by-Step ERC721 Tutorial for Beginners" 
@@ -53,13 +55,16 @@ backbone or foundation for almost any future NFT project.
 But let's pause quickly to see what you already know and give you a flavour of
 what's to come. First, did you set your pomodoro? ⌛😊
 
-<SideDrawer buttonText="Warm-up Questions" title="Some previous knowledge, some prediction">
+<LessonQuestionsModal
+  buttonText="Warm-up Questions"
+  title="Some previous knowledge, some prediction"
+>
   <Question question="lesson-2/1-intro/Q1" />
   <Question question="lesson-2/1-intro/Q2" />
   <Question question="lesson-2/1-intro/Q3" />
   <Question question="lesson-2/1-intro/Q4" />
   <Question question="lesson-2/1-intro/Q5" />
-</SideDrawer>
+</LessonQuestionsModal>
 How did you find that? No worries if the answers didn't come easily. We're here to fill in the gaps!{" "}
 
 ![thatd.be.great.jpeg](/assets/lessons/2/img_1.jpeg)
@@ -193,7 +198,7 @@ We run the `npx hardhat` command to generate a basic project:
   Quit
 ```
 
-<SideDrawer buttonText="What on Earth is Hardhat?">
+<LessonInformationalModal buttonText="What on Earth is Hardhat?" title="What on Earth is Hardhat?">
   Since we’re flying to Jupiter, we need safety apparel! And that’s what Hardhat is. It provides a blockchain for us along the way, where we can have lots of ETH in our wallet, and we can waste as much as we want, and get hit on the head with
   asteroids without getting any scars.
   
@@ -205,7 +210,7 @@ We run the `npx hardhat` command to generate a basic project:
 Hardhat is simply a set of tools that includes a local mini blockchain that can
 run on your machine.
 
-</SideDrawer>
+</LessonInformationalModal>
 
 We choose `Create a Javascript project` and Hardhat will create an example
 project for us. It will give us 3 prompts for options. Choosing the defaults is
@@ -272,13 +277,16 @@ npm install @openzeppelin/contracts
   <OpenZeppelin />
 </SideDrawer>
 
-<SideDrawer buttonText="Checkpoint Questions" title="Creating a Robust Development Environment">
+<LessonQuestionsModal
+  buttonText="Checkpoint Questions"
+  title="Creating a Robust Development Environment"
+>
   <Question question="lesson-2/2-tools-environment/Q1" />
   <Question question="lesson-2/2-tools-environment/Q2" />
   <Question question="lesson-2/2-tools-environment/Q3" />
   <Question question="lesson-2/2-tools-environment/Q4" />
   <Question question="lesson-2/2-tools-environment/Q5" />
-</SideDrawer>
+</LessonQuestionsModal>
 <br />
 
 ## Let’s start coding!
@@ -398,13 +406,13 @@ We made our `totalSupply` variable `private` and it will store the exact number
 of NFTs that have been minted. In the next step we will use this variable to
 identify each new NFT that’s created.
 
-<SideDrawer buttonText="Checkpoint Questions" title="Solidity and Contracts in Context">
+<LessonQuestionsModal buttonText="Checkpoint Questions" title="Solidity and Contracts in Context">
   <Question question="lesson-2/3-sol-erc/Q1" />
   <Question question="lesson-2/3-sol-erc/Q2" />
   <Question question="lesson-2/3-sol-erc/Q3" />
   <Question question="lesson-2/3-sol-erc/Q4" />
   <Question question="lesson-2/3-sol-erc/Q5" />
-</SideDrawer>
+</LessonQuestionsModal>
 Don't forget the pomodoro ⌛😊
 <br />
 
@@ -541,15 +549,18 @@ We propose a _choose your own adventure_ for this part of the project:
   take the winding road and learn a little about the standard used to identify
   NFTs and a solution to store files in a decentralized way.
 
-<SideDrawer buttonText="Checkpoint Questions" title="Creating NFT ID with the Power of Inheritence">
+<LessonQuestionsModal
+  buttonText="Checkpoint Questions"
+  title="Creating NFT ID with the Power of Inheritence"
+>
   <Question question="lesson-2/4-nft-id/Q1" />
   <Question question="lesson-2/4-nft-id/Q2" />
   <Question question="lesson-2/4-nft-id/Q3" />
   <Question question="lesson-2/4-nft-id/Q4" />
   <Question question="lesson-2/4-nft-id/Q5" />
-</SideDrawer>
+</LessonQuestionsModal>
 
-<SideDrawer buttonText="Longer Path (learn about JSON and IPFS)">
+<LessonInformationalModal buttonText="Longer Path (learn about JSON and IPFS)" title="Longer Path (learn about JSON and IPFS)">
 ## JSON
 Go touch some grass, and set your pomodoro when you get back ⌛😊
 
@@ -681,17 +692,17 @@ learning.
 Have your json files folder IPFS link saved (the full link, that links to all
 the files), for we will use it in our next step.
 
-<SideDrawer buttonText="Checkpoint Questions" title="Web3 File Storage and Good Practices">
-      <Question question="lesson-2/5-sidedrawer-json-ipfs/Q1" />
-      <Question question="lesson-2/5-sidedrawer-json-ipfs/Q2" />
-      <Question question="lesson-2/5-sidedrawer-json-ipfs/Q3" />
-      <Question question="lesson-2/5-sidedrawer-json-ipfs/Q4" />
-      <Question question="lesson-2/5-sidedrawer-json-ipfs/Q5" />
-</SideDrawer>
+<LessonQuestionsModal buttonText="Checkpoint Questions" title="Web3 File Storage and Good Practices">
+  <Question question="lesson-2/5-sidedrawer-json-ipfs/Q1" />
+  <Question question="lesson-2/5-sidedrawer-json-ipfs/Q2" />
+  <Question question="lesson-2/5-sidedrawer-json-ipfs/Q3" />
+  <Question question="lesson-2/5-sidedrawer-json-ipfs/Q4" />
+  <Question question="lesson-2/5-sidedrawer-json-ipfs/Q5" />
+</LessonQuestionsModal>
 <br/>
 p.s. Good for you for taking on this extra adventure! 🧙🏾
 <br/><br/>
-</SideDrawer>
+</LessonInformationalModal>
 
 ## Deploy! Back to Solidity... kind of...
 
@@ -826,13 +837,16 @@ Let's run the script again and see what it tells us! Here's my output:
 We got the URI of the token, right? So, now we know we can deploy it, and mint
 to a real blockchain!
 
-<SideDrawer buttonText="Checkpoint Questions" title="Testing our Configurations with Scripts">
+<LessonQuestionsModal
+  buttonText="Checkpoint Questions"
+  title="Testing our Configurations with Scripts"
+>
   <Question question="lesson-2/6-scripts-compile/Q1" />
   <Question question="lesson-2/6-scripts-compile/Q2" />
   <Question question="lesson-2/6-scripts-compile/Q3" />
   <Question question="lesson-2/6-scripts-compile/Q4" />
   <Question question="lesson-2/6-scripts-compile/Q5" />
-</SideDrawer>
+</LessonQuestionsModal>
 <br />
 Set your pomodoro ⌛😊
 
@@ -943,13 +957,13 @@ Please, if you are already a developer, and you plan to use Git to store your
 project, don't store your `hardhat.config.js` on it, because you will have your
 private key there.
 
-<SideDrawer buttonText="Checkpoint Questions" title="Adopting Wise Developer Practices">
+<LessonQuestionsModal buttonText="Checkpoint Questions" title="Adopting Wise Developer Practices">
   <Question question="lesson-2/7-connect-real-world/Q1" />
   <Question question="lesson-2/7-connect-real-world/Q2" />
   <Question question="lesson-2/7-connect-real-world/Q3" />
   <Question question="lesson-2/7-connect-real-world/Q4" />
   <Question question="lesson-2/7-connect-real-world/Q5" />
-</SideDrawer>
+</LessonQuestionsModal>
 <br />
 
 Ok. We are ready, let's deploy to the Sepolia testnet!

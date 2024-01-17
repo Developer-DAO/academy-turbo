@@ -121,21 +121,21 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session |
               darkMode: academyDarkTheme,
             }}
           >
-            <ThemeProvider attribute="class">
-              <DefaultSeo {...SEO} />
-              <Head>
-                <meta
-                  name="viewport"
-                  content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
-                />
-              </Head>
-              <MDXProvider components={Components}>
+            <MDXProvider components={Components}>
+              <ThemeProvider attribute="class">
+                <DefaultSeo {...SEO} />
+                <Head>
+                  <meta
+                    name="viewport"
+                    content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
+                  />
+                </Head>
                 <AppContextProvider>
                   <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
                   <Toaster />
                 </AppContextProvider>
-              </MDXProvider>
-            </ThemeProvider>
+              </ThemeProvider>
+            </MDXProvider>
           </RainbowKitProvider>
         </RainbowKitSiweNextAuthProvider>
       </SessionProvider>

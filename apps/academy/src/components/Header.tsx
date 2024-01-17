@@ -7,7 +7,7 @@ import { ConnectButton } from "@/components/ConnectButton";
 
 const sampleMenus: NavItem[] = [
   {
-    name: "Fundamentals",
+    name: "Homepage",
     href: "/",
     icon: "clarity_blocks",
   },

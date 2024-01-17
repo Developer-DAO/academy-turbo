@@ -3,6 +3,8 @@ import dracula from "react-syntax-highlighter/dist/cjs/styles/prism/dracula";
 
 import { CopyToClipboard } from "@/components/CopyToClipboard";
 import Callout from "@/components/mdx/Callout";
+import LessonInformationalModal from "@/components/mdx/LessonInformationalModal";
+import LessonQuestionsModal from "@/components/mdx/LessonQuestionsModal";
 import Question from "@/components/mdx/Question";
 import Quiz from "@/components/mdx/Quiz";
 import QuizStatusChecker from "@/components/mdx/QuizStatusChecker";
@@ -40,6 +42,8 @@ const Components = {
   QuizStatusChecker,
   Quiz,
   Question,
+  LessonQuestionsModal,
+  LessonInformationalModal,
 };
 
 export default Components;

@@ -7,7 +7,7 @@ icons: ["ethereum", "etherscan"]
 import LessonLayout from "../../../components/LessonLayout";
 import Callout from "../../../components/mdx/Callout";
 import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
-import SideDrawer from "../../../components/mdx/SideDrawer";
+import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
 import Question from "../../../components/mdx/Question";
 
 <LessonLayout
@@ -128,14 +128,14 @@ w3.eth.get_block('latest')
 w3.eth.send_transaction({'from': ..., 'to': ..., 'value': ...})
 ```
 
-<SideDrawer buttonText="Did you get all that?" title="Comprehension Check">
+<LessonQuestionsModal buttonText="Did you get all that?" title="Comprehension Check">
   <Question question="eth-intro-1/2-checkin/Q1" />
   <Question question="eth-intro-1/2-checkin/Q2" />
   <Question question="eth-intro-1/2-checkin/Q3" />
   <Question question="eth-intro-1/2-checkin/Q4" />
   <Question question="eth-intro-1/2-checkin/Q5" />
   <Question question="eth-intro-1/2-checkin/Q6" />
-</SideDrawer>
+</LessonQuestionsModal>
 <br />
 
 ### **Installation**
@@ -274,13 +274,13 @@ In [4]: w3 = Web3(Web3.EthereumTesterProvider())
 
 Before we move on, does all that make sense? Test yourself:
 
-<SideDrawer buttonText="Keeping up? Test yourself." title="Comprehension Check">
+<LessonQuestionsModal buttonText="Keeping up? Test yourself." title="Comprehension Check">
   <Question question="eth-intro-1/3-checkin/Q1" />
   <Question question="eth-intro-1/3-checkin/Q2" />
   <Question question="eth-intro-1/3-checkin/Q3" />
   <Question question="eth-intro-1/3-checkin/Q4" />
   <Question question="eth-intro-1/3-checkin/Q5" />
-</SideDrawer>
+</LessonQuestionsModal>
 <br />
 
 Now you’re ready to surf the chain! That’s not a thing people say. I just made

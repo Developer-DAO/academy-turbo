@@ -9,8 +9,9 @@ icons: ["solidity", "foundry", "openzeppelin", "ethereum", "etherscan"]
 import LessonLayout from "../../../components/LessonLayout";
 import Callout from "../../../components/mdx/Callout";
 import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
-import SideDrawer from "../../../components/mdx/SideDrawer";
+import LessonInformationalModal from "../../../components/mdx/LessonInformationalModal";
 import Question from "../../../components/mdx/Question";
+import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
 
 <LessonLayout
    lessonTitle="Your own ERC-20 Token: A Step-by-Step Guide using Foundry" 
@@ -51,13 +52,13 @@ By the end of this lesson you will have created your own ERC-20 token, and you
 will be able to change its properties in any way you need. But before we go any
 further, let's check-in and see what building blocks you have already.
 
-<SideDrawer buttonText="Warm-up Questions" title="Check out Your Previous Knowledge">
+<LessonQuestionsModal buttonText="Warm-up Questions" title="Check out Your Previous Knowledge">
   <Question question="lesson-6/1-intro/Q1" />
   <Question question="lesson-6/1-intro/Q2" />
   <Question question="lesson-6/1-intro/Q3" />
   <Question question="lesson-6/1-intro/Q4" />
   <Question question="lesson-6/1-intro/Q5" />
-</SideDrawer>
+</LessonQuestionsModal>
 
 We hope that was a little eye-opener for what's to come!
 
@@ -100,7 +101,7 @@ among others, has created an implementation we can inherit to create our own
 tokens easily. Here is a quick overview of what a contract needs in order to be
 called an ERC-20 Token contract:
 
-<SideDrawer buttonText="More info on the ERC-20 Standard">
+<LessonInformationalModal buttonText="More info on the ERC-20 Standard" title="More info on the ERC-20 Standard">
 
 To achieve the functionality needed for an ERC-20 token, the standard requires
 us to implement some methods and events.
@@ -125,7 +126,7 @@ event Approval(address indexed _owner, address indexed _spender, uint256 _value)
 You can check the details in the full EIP-20 titled
 [ERC-20: Token Standard](https://eips.ethereum.org/EIPS/eip-20#token)
 
-</SideDrawer>
+</LessonInformationalModal>
 
 ## Let's code, but first...
 
@@ -313,13 +314,16 @@ rm src/*
 rm test/*
 ```
 
-<SideDrawer buttonText="Checkpoint Questions" title="Foundations of our contract with Foundry">
+<LessonQuestionsModal
+  buttonText="Checkpoint Questions"
+  title="Foundations of our contract with Foundry"
+>
   <Question question="lesson-6/2-foundry/Q1" />
   <Question question="lesson-6/2-foundry/Q2" />
   <Question question="lesson-6/2-foundry/Q3" />
   <Question question="lesson-6/2-foundry/Q4" />
   <Question question="lesson-6/2-foundry/Q5" />
-</SideDrawer>
+</LessonQuestionsModal>
 
 Everything's ready, so let's go ahead and start coding Solidity.
 
@@ -457,13 +461,16 @@ transaction because that's required by the ERC-20 standard.
 
 We have now created doors to our house, but we haven't put locks in them!
 
-<SideDrawer buttonText="Checkpoint Questions" title="Laying out the basics of the contract">
+<LessonQuestionsModal
+  buttonText="Checkpoint Questions"
+  title="Laying out the basics of the contract"
+>
   <Question question="lesson-6/3-create-contract/Q1" />
   <Question question="lesson-6/3-create-contract/Q2" />
   <Question question="lesson-6/3-create-contract/Q3" />
   <Question question="lesson-6/3-create-contract/Q4" />
   <Question question="lesson-6/3-create-contract/Q5" />
-</SideDrawer>
+</LessonQuestionsModal>
 
 ## Lock the Door!
 
@@ -536,7 +543,7 @@ only for intruders!
 
 Congratulations! We have built a fully functioning token!
 
-<SideDrawer buttonText="Here's my final Solidity code">
+<LessonInformationalModal buttonText="Here's my final Solidity code" title="Here's my final Solidity code">
 
 Here we have our fully functioning house, I mean... token:
 
@@ -571,7 +578,7 @@ contract MyToken is ERC20, AccessControl {
 }
 ```
 
-</SideDrawer>
+</LessonInformationalModal>
 
 Given that we have our house completed, you might want to add some personalized
 detail to it, like special furniture, wall paint, or make it a smart home.
@@ -626,13 +633,16 @@ can find and fix them. If you can't fix them, you can go into our forum and try
 to ask our community for help by explaining your error, the console output and
 your configuration (OS, version, Foundry and Solidity version, etc.)
 
-<SideDrawer buttonText="Checkpoint Questions" title="Defining permissions for use of our contract">
+<LessonQuestionsModal
+  buttonText="Checkpoint Questions"
+  title="Defining permissions for use of our contract"
+>
   <Question question="lesson-6/4-define-roles/Q1" />
   <Question question="lesson-6/4-define-roles/Q2" />
   <Question question="lesson-6/4-define-roles/Q3" />
   <Question question="lesson-6/4-define-roles/Q4" />
   <Question question="lesson-6/4-define-roles/Q5" />
-</SideDrawer>
+</LessonQuestionsModal>
 
 ### Register your house in the Real Estate Register
 
@@ -806,13 +816,13 @@ By filtering through the information, we can pay attention to the second line,
 where the tool tells us the address of the deployed contract:
 `0xec870005029ED5595F146f6AAAe699b442065b72`.
 
-<SideDrawer buttonText="Checkpoint Questions" title="Deploying with Foundry">
+<LessonQuestionsModal buttonText="Checkpoint Questions" title="Deploying with Foundry">
   <Question question="lesson-6/5-deployment/Q1" />
   <Question question="lesson-6/5-deployment/Q2" />
   <Question question="lesson-6/5-deployment/Q3" />
   <Question question="lesson-6/5-deployment/Q4" />
   <Question question="lesson-6/5-deployment/Q5" />
-</SideDrawer>
+</LessonQuestionsModal>
 
 ## Querying the Block Explorer
 
