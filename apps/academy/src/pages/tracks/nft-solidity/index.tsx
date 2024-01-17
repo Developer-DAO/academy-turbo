@@ -12,7 +12,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description:
         "Beginner-friendly. Create your first Solidity smart contract and learn the fundamentals of blockchain development. Checkpoint quizzes included.",
-      tags: ["Beginner", "Remix", "Web3", "ERC-20"],
+      tags: ["Beginner", "Remix", "ERC-20"],
       path: "/tracks/nft-solidity/1",
     },
     {
@@ -21,7 +21,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description:
         "Use pro developer tools  and libraries to create and host your first ERC721 NFT, for real world professional projects. Checkpoint quizzes included.",
-      tags: ["Beginner", "Web3", "NFT", "Solidity", "JavaScript"],
+      tags: ["Beginner", "NFT", "Solidity"],
       path: "/tracks/nft-solidity/2",
     },
     {
@@ -30,7 +30,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description:
         "Create your first ERC721 tiered NFT collection with an array of dev tools with probing quizzes along the way. Adapt your project for professional use cases.",
-      tags: ["Beginner", "Web3", "NFT", "Solidity", "JavaScript"],
+      tags: ["Beginner", "NFT", "Solidity"],
       path: "/tracks/nft-solidity/3",
     },
     {
@@ -39,7 +39,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description:
         "Learn Test Driven Development from the best. A crucial skill for Solidity developers. A necessity in blockchain eco-systems. Your automated tests keep us safe.",
-      tags: ["Elementary", "Web3", "NFT", "Testing", "Solidity", "JavaScript"],
+      tags: ["Elementary", "NFT", "Testing"],
       path: "/tracks/nft-solidity/4",
     },
     {
@@ -48,7 +48,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description:
         "Learn to seamlessly integrate your smart contracts with a user friendly front-end interface, utilising web3 libraries. With engaging quizzes along the way.",
-      tags: ["Elementary", "Web3", "NFT", "Front-end", "Solidity", "JavaScript"],
+      tags: ["Elementary", "NFT", "JavaScript"],
       path: "/tracks/nft-solidity/5",
     },
   ];

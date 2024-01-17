@@ -28,9 +28,9 @@ const TrackCard: FC<TrackCardProps> = ({ imgSrc, tags, title, description, autho
         {/* <div className="mr-3 mt-4 flex justify-end"> */}
         {/* <Badge className="gray-badge">Nov 22</Badge> */}
         {/* </div> */}
-        <div className="ml-2 mt-2 flex w-full gap-x-1 p-1 px-1 text-xs">
+        <div className="ml-2 mt-2 flex w-full items-center justify-start gap-x-1 text-xs ">
           {tags.map((tag, i) => (
-            <Badge key={i} className="gray-badge">
+            <Badge key={i} className="gray-badge min-w-fit p-2 text-xs">
               {tag}
             </Badge>
           ))}

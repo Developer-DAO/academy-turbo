@@ -28,7 +28,7 @@ const TracksPage = () => {
       imgPath: "/image16.png",
       description:
         "Get stuck right into Solidity and on to the NFT train. You'll be building your own tiered ERC-721 token sets, creating a Test Driven Development suite, hosting your files on Web3 storage, and creating on your own front-end dApp. The full-stack-track.",
-      tags: ["Beginner", "Elementary", "Web3", "NFT", "Solidity", "JavaScript", "Hardhat"],
+      tags: ["Beginner", "NFT", "Solidity"],
       trackPath: "/tracks/nft-solidity",
     },
     {
@@ -57,19 +57,19 @@ const TracksPage = () => {
 bg-[url('/fundamental-bg.jpeg')] bg-cover bg-no-repeat object-center pt-[300px]  lg:fixed lg:inset-y-0 lg:h-screen lg:w-1/2"
       >
         <div>
-          <h2 className="text-bttf text-3xl text-white sm:text-5xl">Fundamentals</h2>
+          <h2 className="text-bttf text-3xl text-white sm:text-5xl">Tracks</h2>
         </div>
         <div className="md:hidden" />
         <div className="flex justify-center">
           <p className="max-w-[275px] text-center text-xl font-bold text-white sm:max-w-xs md:max-w-full lg:text-2xl">
-            Nail the basics and then take on a track.
+            DeveloperDAO learning tracks are designed <br /> to get you from 0 to 1.
           </p>
         </div>
         <div />
       </div>
       <div className="flex-0 flex lg:fixed lg:right-0 lg:top-20 lg:h-screen lg:w-1/2">
-        <div className="relative flex max-h-screen w-full flex-1 flex-row  space-y-10 overflow-y-scroll bg-black px-8 pb-14 lg:pb-28">
-          <div className="flex w-full justify-center md:px-8 lg:pb-10">
+        <div className="relative flex max-h-screen w-full flex-1 flex-row space-y-10 overflow-y-scroll bg-black px-8 pb-14 lg:mb-40 lg:pb-28">
+          <div className="flex w-full justify-center md:px-8 lg:mb-10 lg:pb-10">
             <div className="grid w-fit justify-center gap-5 sm:grid-cols-2 md:gap-x-10 md:gap-y-8 lg:grid-cols-1 lg:pb-8 xl:grid-cols-2">
               {tracksArray.map((track, idx) => (
                 <Link href={track.trackPath} key={idx}>
