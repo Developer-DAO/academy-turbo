@@ -17,7 +17,7 @@ export const contributors: ContributorLookup = {
     moreInfoUrl: "https://brianfive.xyz",
     avatarUrl: "https://brianfive.xyz/profile.png",
     about:
-      "Brian has been a member of the DeveloperDAO since November 2021, and enjoys building Web3 user experiences and smart contracts. Also active with Next.js, React and Serverless.",
+      "Brian has been a member of the Developer DAO since November 2021, and enjoys building Web3 user experiences and smart contracts. Also active with Next.js, React and Serverless.",
   },
   piablo: {
     displayName: "piablo",
@@ -38,7 +38,7 @@ export const contributors: ContributorLookup = {
     displayName: "7i7o",
     moreInfoUrl: "https://github.com/7i7o",
     avatarUrl: "https://avatars.githubusercontent.com/u/84824996?v=4",
-    about: "7i7o has been a member of the DeveloperDAO since October 2021.",
+    about: "7i7o has been a member of the Developer DAO since October 2021.",
   },
   mveve: {
     displayName: "mveve",

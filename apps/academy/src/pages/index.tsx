@@ -18,7 +18,7 @@ const Home: NextPageWithLayout = () => {
             </div>
           </div>
           <div className="description max-w-lg">
-            <p>Become a web3 developer with DeveloperDAO.</p>
+            <p>Become a web3 developer with Developer DAO.</p>
           </div>
           <div className="hidden w-full items-center justify-center md:flex">
             <Icons.scroll className="h-16 w-16" />
@@ -47,7 +47,7 @@ Home.getLayout = function getLayout(page: ReactElement) {
   return (
     <PageSeoLayout
       title="Developer DAO Academy" // DEV_NOTE: This is for the next-seo per page config
-      description="Become a web3 developer with DeveloperDAO." // DEV_NOTE: This is for the next-seo per page config
+      description="Become a web3 developer with Developer DAO." // DEV_NOTE: This is for the next-seo per page config
     >
       {page}
     </PageSeoLayout>
