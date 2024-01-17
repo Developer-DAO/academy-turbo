@@ -12,7 +12,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description:
         "Dive into Ethereum basics with web3.py and Python. Simulate a node, read blocks, check balances, and send transactions. Focus on concepts, not final products, with included code.",
-      tags: ["Beginner", "Web3", "DeFi"],
+      tags: ["Entry", "Eth", "Block"],
       path: "/tracks/intro-to-ethereum/1",
     },
     {
@@ -21,7 +21,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description:
         "Explore Ethereum's core — blockchain, decentralization, and ether. Build on Part 1, grasping implications for developers. Practical insights and code provided for understanding.",
-      tags: ["Beginner", "Web3", "DeFi"],
+      tags: ["Entry", "Accounts", "Signing"],
       path: "/tracks/intro-to-ethereum/1",
     },
     {
@@ -30,7 +30,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description:
         "From blockchain fundamentals to accounts and now smart contracts. Unveil the programmable, decentralized world with practical insights and code.",
-      tags: ["Beginner", "Web3", "DeFi"],
+      tags: ["Entry", "OSS", "Contract"],
       path: "/tracks/intro-to-ethereum/1",
     },
   ];
@@ -42,7 +42,7 @@ const IntroToEthereumPage = () => {
         trackAuthor="wolovim"
         trackAuthorDescription="wolovim is a Full Stack Python Developer at the Ethereum Foundation."
         trackAuthorTwitter="@wolovim.eth"
-        tags={["Beginner", "Web3", "Eth"]}
+        tags={["Entry", "Open Source", "Blockchain", "Ethereum", "Python", "Web3.py", "Node"]}
       >
         <div className="mt-14 flex flex-col gap-8 lg:grid lg:w-full lg:grid-cols-3 lg:gap-10 lg:p-20">
           {lessonsArray.map((track, idx) => (

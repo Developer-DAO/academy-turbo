@@ -12,7 +12,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description:
         "Beginner-friendly. Create your first Solidity smart contract and learn the fundamentals of blockchain development. Checkpoint quizzes included.",
-      tags: ["Beginner", "Web3", "ERC-20"],
+      tags: ["Beginner", "Solidiy", "Remix"],
       path: "/tracks/erc-20-solidity/1",
     },
     {
@@ -21,7 +21,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description:
         "Foundry demystified: ERC-20 token creation for beginners. Probing quizzes throughout. Grasp the fundamentals and empower yourself to build and customize.",
-      tags: ["Beginner", "Web3", "ERC-20"],
+      tags: ["Beginner", "ERC-20", "Foundry"],
       path: "/tracks/erc-20-solidity/2",
     },
   ];
@@ -33,7 +33,7 @@ const IntroToEthereumPage = () => {
         trackAuthor="_7i7o, piablo"
         trackAuthorDescription="Authors are active Developer DAO members"
         trackAuthorTwitter="@_7i7o.eth, @Skruffster"
-        tags={["Beginner", "Web3", "Eth", "Solidity", "ERC-20", "Foundry"]}
+        tags={["Beginner", "Solidity", "ERC-20", "Foundry", "DeFi"]}
       >
         <div className="mt-14 flex flex-col gap-8 lg:grid lg:w-full lg:grid-cols-3 lg:gap-10 lg:p-20">
           {lessonsArray.map((track, idx) => (
