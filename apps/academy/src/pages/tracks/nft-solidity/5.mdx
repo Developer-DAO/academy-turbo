@@ -2,13 +2,16 @@
 i18n: "smart-contracts"
 title: Connecting to a Front-end
 description: Connect your smart contract to a UI for people to interact with.
-icons: ["rainbowkit", "wagmi", "ethers"]
+icons: ["rainbowkit", "wagmi", "viem"]
 author: "ropats16"
 ---
 
 import LessonLayout from "../../../components/LessonLayout";
-import Callout from "../../../components/mdx/Callout";
+import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
 import LessonInformationalModal from "../../../components/mdx/LessonInformationalModal";
+import Question from "../../../components/mdx/Question";
+import Callout from "../../../components/mdx/Callout";
+import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
 
 {/* title="Lesson 5: Connecting to a Front-end" */}
 
@@ -54,6 +57,17 @@ And using the provided _hooks_ from _WAGMI_, we can check the connection to the
 wallet and call functions from our smart contract through the front-end.
 RainbowKit and WAGMI are just another couple of shining examples of open source
 public goods. We love open source at Developer_DAO. And public goods are gooood!
+
+<LessonQuestionsModal
+  buttonText="Warm-up Questions"
+  title="Some previous knowledge, some prediction"
+>
+  <Question question="lesson-5/1-intro/Q1" />
+  <Question question="lesson-5/1-intro/Q2" />
+  <Question question="lesson-5/1-intro/Q3" />
+  <Question question="lesson-5/1-intro/Q4" />
+  <Question question="lesson-5/1-intro/Q5" />
+</LessonQuestionsModal>
 
 ## Let's breakdown the lesson
 

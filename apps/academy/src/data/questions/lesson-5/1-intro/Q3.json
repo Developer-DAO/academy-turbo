@@ -1,0 +1,18 @@
+{
+  "question": "?",
+  "options": [
+    {
+      "answer": "x"
+    },
+    {
+      "answer": "y"
+    },
+    {
+      "answer": "z"
+    },
+    {
+      "answer": "-1",
+      "correct": true
+    }
+  ]
+}
