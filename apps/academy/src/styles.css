@@ -31,3 +31,19 @@
   background-size: cover;
   background-position: center;
 }
+
+.modal-content {
+  @apply max-h-screen overflow-auto bg-[#1C1C1C];
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    @apply rounded-full bg-transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-[#3A3939];
+  }
+}

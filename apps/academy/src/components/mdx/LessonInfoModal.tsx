@@ -31,9 +31,9 @@ const LessonInfoModal = (props: LessonInfoModalProps): JSX.Element => {
           {buttonText}
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent>
+      <AlertDialogContent className="modal-content">
         <AlertDialogHeader>
-          <AlertDialogTitle>{title}</AlertDialogTitle>
+          <AlertDialogTitle className="text-white">{title}</AlertDialogTitle>
           <AlertDialogDescription>{props.children}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
