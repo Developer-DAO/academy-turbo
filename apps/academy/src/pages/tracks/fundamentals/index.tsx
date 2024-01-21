@@ -4,7 +4,7 @@ import { TrackCard } from "ui";
 
 import TracksLayout from "@/components/TracksLayout";
 
-const IntroToEthereumPage = () => {
+const FundamentalsTrackPage = () => {
   const lessonsArray = [
     {
       title: "Command Line Interface (CLI) Basics: A Beginners Guide",
@@ -99,7 +99,7 @@ const IntroToEthereumPage = () => {
   ];
 
   return (
-    <div className="relative m-10 flex lg:mx-60 lg:mb-40 lg:mt-40">
+    <div className="relative m-10 flex lg:mx-auto lg:max-w-screen-lg">
       <TracksLayout
         trackTitle="Web3 Fundamentals Track"
         trackDescription="Access our Web3 Fundamentals offering, providing vital tools, infrastructure insights, and core concepts essential for developers. Cover CLI basics, NPM setup, wallet nuances, RPC connectivity, testnet significance, OpenZeppelin contracts, ERC token standards, decentralized storage protocols, preferred IDEs, and NFT hosting. Fundamental skills for practical project development."
@@ -118,7 +118,7 @@ const IntroToEthereumPage = () => {
           "Node",
         ]}
       >
-        <div className="mt-14 flex flex-col gap-8 lg:grid lg:w-full lg:grid-cols-3 lg:gap-10 lg:p-20">
+        <div className="mt-14 flex flex-col gap-8 lg:grid lg:w-full lg:grid-cols-3 lg:gap-10">
           {lessonsArray.map((track, idx) => (
             <Link href={track.path} key={idx}>
               <TrackCard
@@ -136,4 +136,4 @@ const IntroToEthereumPage = () => {
   );
 };
 
-export default IntroToEthereumPage;
+export default FundamentalsTrackPage;

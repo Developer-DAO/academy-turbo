@@ -30,7 +30,7 @@ export default function TracksLayout({
         <div className="w-full">
           <AboutCourse lessonDescription={trackDescription} tags={tags} />
         </div>
-        <div className="text-left ">
+        <div className="text-left">
           <TrackAuthor
             author={trackAuthor}
             authorDescription={trackAuthorDescription}
@@ -38,7 +38,7 @@ export default function TracksLayout({
           />
         </div>
       </div>
-      <div className="font-clash-display font-medium tracking-wider lg:px-36 lg:pt-16 lg:text-xl	">
+      <div className="font-clash-display font-medium tracking-wider lg:pt-16 lg:text-xl">
         {children}
       </div>
     </main>

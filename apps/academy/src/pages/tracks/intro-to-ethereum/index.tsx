@@ -35,7 +35,7 @@ const IntroToEthereumPage = () => {
     },
   ];
   return (
-    <div className="relative m-10 flex lg:mx-60 lg:mb-40 lg:mt-40">
+    <div className="relative m-10 flex lg:mx-auto lg:max-w-screen-lg">
       <TracksLayout
         trackTitle="A Developer's Guide to Ethereum"
         trackDescription="Begin your journey with A Developer's Guide to Ethereum, leveraging web3.py and Python. Explore blockchain essentials, Ethereum's decentralized realm, and learn about smart contracts with practical insights. The series blends theory and hands-on learning, providing code to reinforce understanding. Ideal for developers transitioning to Ethereum through a Python lens."
@@ -44,7 +44,7 @@ const IntroToEthereumPage = () => {
         trackAuthorTwitter="@wolovim.eth"
         tags={["Entry", "Open Source", "Blockchain", "Ethereum", "Python", "Web3.py", "Node"]}
       >
-        <div className="mt-14 flex flex-col gap-8 lg:grid lg:w-full lg:grid-cols-3 lg:gap-10 lg:p-20">
+        <div className="mt-14 flex flex-col gap-8 lg:grid lg:w-full lg:grid-cols-3 lg:gap-10">
           {lessonsArray.map((track, idx) => (
             <Link href={track.path} key={idx}>
               <TrackCard
