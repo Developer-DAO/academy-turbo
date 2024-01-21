@@ -14,7 +14,7 @@ export interface TrackCardProps {
   description: string;
 }
 
-const TrackCard: FC<TrackCardProps> = ({ imgSrc, tags, title, description, author }) => {
+const TrackCard: FC<TrackCardProps> = ({ imgSrc, tags, title, description }) => {
   return (
     <div className="min-h-[30rem] rounded-[51px] bg-gradient-to-r from-[#E9E9E9] via-black to-[#E9E9E9] p-0.5">
       <Card className="track min-h-[30rem] rounded-[51px] bg-black hover:bg-zinc-900">
@@ -36,10 +36,7 @@ const TrackCard: FC<TrackCardProps> = ({ imgSrc, tags, title, description, autho
           ))}
         </div>
         <CardHeader className="space-y-4 pb-10">
-          <div>
-            <CardTitle className="title">{title}</CardTitle>
-            <CardTitle className="title">By {author}</CardTitle>
-          </div>
+          <CardTitle className="title">{title}</CardTitle>
           <CardDescription className="description">{description}</CardDescription>
           <Separator className="opacity-10" />
         </CardHeader>
