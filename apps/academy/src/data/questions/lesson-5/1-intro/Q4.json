@@ -1,17 +1,17 @@
 {
-  "question": "Which address does the `msg.sender` variable represent in Solidity?",
+  "question": "How does a web browser function in the front-end of a Web3 app?",
   "options": [
     {
-      "answer": "The contract owner"
+      "answer": "It writes HTML code"
     },
     {
-      "answer": "The Ethereum smart contract"
+      "answer": "It manages databases"
     },
     {
-      "answer": "The Ethereum network"
+      "answer": "It manages blockchain transactions"
     },
     {
-      "answer": "The caller of the current function",
+      "answer": "It renders smart contract data on the webpage",
       "correct": true
     }
   ]

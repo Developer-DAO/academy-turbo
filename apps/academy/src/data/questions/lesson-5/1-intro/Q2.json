@@ -1,18 +1,19 @@
 {
-  "question": "What is Hardhat?",
+  "question": "Which keywords in JavaScript are commonly used to handle promises, and ensure their proper execution after being settled?",
   "options": [
     {
-      "answer": "A set of tools that includes a local test blockchain that can run on your machine",
+      "answer": "`async`",
       "correct": true
     },
     {
-      "answer": "A code editor in the browser "
+      "answer": "`promise`"
     },
     {
-      "answer": "A security patch for most Linux operating systems"
+      "answer": "`defer`"
     },
     {
-      "answer": "Safety apparel for space travel "
+      "answer": "`await`",
+      "correct": true
     }
   ]
 }

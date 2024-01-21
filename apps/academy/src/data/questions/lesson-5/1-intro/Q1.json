@@ -1,23 +1,15 @@
 {
-  "question": "What can NFTs do? Multiple answers possible.",
+  "question": "What is npm?",
   "options": [
     {
-      "answer": "Give access to a DAO",
+      "answer": "A Node.js module that provides a blockchain for running smart contracts"
+    },
+    {
+      "answer": "'Node Permissionless Management' guarantees RPC connection to the blockchain, keeping it censorship resistant"
+    },
+    {
+      "answer": "A package manager for Node.js",
       "correct": true
-    },
-    {
-      "answer": "Do the dishes"
-    },
-    {
-      "answer": "Represent a concert ticket",
-      "correct": true
-    },
-    {
-      "answer": "Point to the storage of an album",
-      "correct": true
-    },
-    {
-      "answer": "Be spoofed by another contract"
     }
   ]
 }
