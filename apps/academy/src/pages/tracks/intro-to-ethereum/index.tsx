@@ -22,7 +22,7 @@ const IntroToEthereumPage = () => {
       description:
         "Explore Ethereum's core — blockchain, decentralization, and ether. Build on Part 1, grasping implications for developers. Practical insights and code provided for understanding.",
       tags: ["Entry", "Accounts", "Signing"],
-      path: "/tracks/intro-to-ethereum/1",
+      path: "/tracks/intro-to-ethereum/2",
     },
     {
       title: "A Developer's Guide to Ethereum, Pt.3",
@@ -31,7 +31,7 @@ const IntroToEthereumPage = () => {
       description:
         "From blockchain fundamentals to accounts and now smart contracts. Unveil the programmable, decentralized world with practical insights and code.",
       tags: ["Entry", "OSS", "Contract"],
-      path: "/tracks/intro-to-ethereum/1",
+      path: "/tracks/intro-to-ethereum/3",
     },
   ];
   return (
