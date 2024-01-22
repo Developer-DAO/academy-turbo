@@ -53,7 +53,7 @@ For handling wallet connections to our application, we'll be introducing you to 
 And using the provided _hooks_ from _WAGMI_, we can check the connection to the
 wallet and call functions from our smart contract through the front-end.
 RainbowKit and WAGMI are just another couple of shining examples of open source
-public goods. We love open source at Developer_DAO. And public goods are gooood!
+public goods. We love open source at Developer DAO. And public goods are gooood!
 
 ## Let's breakdown the lesson
 
@@ -129,20 +129,26 @@ Ok to proceed? (y) y
 ✔ Would you like to use `src/` directory? … Yes
 ✔ Would you like to use App Router? (recommended) … Yes
 ✔ Would you like to customize the default import alias (@/*)? … Yes
+✔ What import alias would you like configured? … @/*
 Creating a new Next.js app in ((path)):/developerdao/frontend.
 ```
 
-Once the setup is complete, we open the `frontend` directory and get cracking:
+Once the setup is complete, we open the `frontend` directory and get cracking.
+Try running `npm run dev` to see if everything is working as expected.
 
 ```bash
 cd frontend
+npm run dev
 ```
+
+You'll see a message that says which url to view your site at.
+It should say <strong>http://localhost:3000</strong>
 
 <br />
 
 ---
 
-## The Front-end
+## The Frontend
 
 For users to easily interact with our smart contract and mint the NFTs we must
 provide an interface. A simple process that is easily accessible. Let's start by
@@ -156,8 +162,8 @@ Install RainbowKit and its dependencies:
 npm install @rainbow-me/rainbowkit wagmi viem
 ```
 
-To get this setup we need to start working on the `_app.js` file in the
-`/frontend/pages` directory. The file should look something like this from our
+To get this setup we need to start working on the `page.js` file in the
+`/frontend/src/app` directory. The file should look something like this from our
 initial setup.
 
 ```jsx
