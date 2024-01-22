@@ -149,6 +149,33 @@
   }
 }
 
+.h1 {
+  @apply my-8 text-4xl font-bold;
+}
+
+.h2 {
+  @apply my-6 text-3xl font-bold;
+}
+
+.h3 {
+  @apply my-6 text-2xl font-bold;
+}
+
+.h4 {
+  @apply my-6 text-xl font-bold;
+}
+
+.ul {
+  @apply my-4 ml-4 list-inside list-disc;
+}
+
+.inline-code {
+  font-family: "Courier New", monospace;
+  background-color: #1c1c1c;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
 .main-container {
   @apply container mx-auto max-w-7xl;
 }
