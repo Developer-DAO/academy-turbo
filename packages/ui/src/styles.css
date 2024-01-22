@@ -247,7 +247,7 @@
 }
 
 .banner {
-  @apply gradient-neutral flex min-h-[500px] w-full items-center justify-between rounded-[51px];
+  @apply gradient-neutral flex w-full items-start justify-between rounded-[51px];
   @apply max-w-screen-2xl gap-x-6 gap-y-10 border-none border-[var(--gray-white)] p-2 shadow-sm md:p-4 lg:p-7;
 }
 
@@ -257,7 +257,7 @@
 }
 
 .banner .description {
-  @apply min-h-[187px] text-center text-xl font-light leading-normal text-white md:text-2xl;
+  @apply mb-8 text-center text-xl font-light leading-normal text-white md:text-2xl;
   font-family: var(--font-poppins);
 }
 
@@ -266,7 +266,7 @@
 }
 
 .terminal-text {
-  @apply mx-4 p-1 text-left text-xs font-normal leading-5 text-[#e1e4e84a] md:text-sm lg:mx-auto;
+  @apply mx-4 py-8 text-left text-xs font-normal leading-5 text-[#e1e4e84a] md:text-sm lg:mx-auto;
   font-family: var(--font-andale-mono);
 }
 

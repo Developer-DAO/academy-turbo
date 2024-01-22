@@ -14,14 +14,14 @@ export interface PartnerBannerProps extends HomePageBannerProps {
 export const PartnerBanner: FC<PartnerBannerProps> = ({ href, imgSrc }) => {
   return (
     <Card className="banner flex-col-reverse lg:flex-row">
-      <div className="mb-16">
+      <div className="mb-8">
         <CardHeader className="flex-row justify-center">
           <CardTitle className="title">Partner with D_D Academy</CardTitle>
         </CardHeader>
         <CardContent className="description max-w-2xl p-1 pb-12 md:pb-1">
           <p>
-            Developer DAO is a community of thousands of web3 builders creating a better internet.
-            Join us and help educate the next generation of developers.
+            Developer DAO is a community of builders creating a better internet. Help us educate the
+            next generation.
           </p>
         </CardContent>
         <div className=" flex justify-center">

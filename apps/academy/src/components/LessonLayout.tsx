@@ -28,7 +28,7 @@ export default function LessonLayout({
         {/* <div className="">
           <AboutCourse lessonDescription={lessonDescription} />
         </div> */}
-        <div className="pl-6 text-left ">
+        <div className="pl-6 text-left">
           <CreatedBy
             author={author}
             authorPosition={authorPosition}
