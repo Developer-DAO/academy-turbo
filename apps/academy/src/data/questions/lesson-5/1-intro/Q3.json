@@ -1,0 +1,18 @@
+{
+  "question": "What is the main purpose of CSS in the front-end of an application?",
+  "options": [
+    {
+      "answer": "Defining the structure of a webpage"
+    },
+    {
+      "answer": "Handling server requests"
+    },
+    {
+      "answer": "Managing database connections"
+    },
+    {
+      "answer": "Styling and formatting webpage elements",
+      "correct": true
+    }
+  ]
+}

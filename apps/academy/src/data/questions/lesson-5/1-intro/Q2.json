@@ -1,0 +1,19 @@
+{
+  "question": "Which keywords in JavaScript are commonly used to handle promises, and ensure their proper execution after being settled?",
+  "options": [
+    {
+      "answer": "`async`",
+      "correct": true
+    },
+    {
+      "answer": "`promise`"
+    },
+    {
+      "answer": "`defer`"
+    },
+    {
+      "answer": "`await`",
+      "correct": true
+    }
+  ]
+}
