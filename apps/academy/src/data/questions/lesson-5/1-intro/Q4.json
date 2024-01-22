@@ -1,17 +1,18 @@
 {
-  "question": "How does a web browser function in the front-end of a Web3 app?",
+  "question": "What is the front-end of a web3 application responsible for?",
   "options": [
     {
-      "answer": "It writes HTML code"
+      "answer": "Rendering HTML code from the dApp",
+      "correct": true
     },
     {
-      "answer": "It manages databases"
+      "answer": "Connecting to the database"
     },
     {
-      "answer": "It manages blockchain transactions"
+      "answer": "Signing blockchain transactions"
     },
     {
-      "answer": "It renders smart contract data on the webpage",
+      "answer": "Rendering responses of smart contract functions on the webpage",
       "correct": true
     }
   ]
