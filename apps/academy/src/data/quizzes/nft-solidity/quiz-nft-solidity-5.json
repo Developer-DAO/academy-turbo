@@ -1,0 +1,92 @@
+{
+  "title": "Quiz: Lesson 5",
+  "questions": [
+    {
+      "question": "In the lesson, what is the purpose of creating a new sub-directory named frontend?",
+      "options": [
+        {
+          "answer": "To confuse learners"
+        },
+        {
+          "answer": "To maintain good coding practices",
+          "correct": true
+        },
+        {
+          "answer": "To hide code from the compiler"
+        },
+        {
+          "answer": "To speed up the development process"
+        }
+      ]
+    },
+    {
+      "question": "What is RainbowKit kit used for in our dApp setup?",
+      "options": [
+        {
+          "answer": "It’s responsible for the database management"
+        },
+        {
+          "answer": "It tracks the blockchain transactions"
+        },
+        {
+          "answer": "It's a testing framework"
+        },
+        {
+          "answer": "It's a library for wallet management",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "Why is the useEffect hook used in the _app.js file?",
+      "options": [
+        {
+          "answer": "To fix the hook if its code breaks"
+        },
+        {
+          "answer": "To expose the code from RainbowKit"
+        },
+        {
+          "answer": "To automatically update the contract's Solidity version when there's a breaking change"
+        },
+        {
+          "answer": "To manage changes and side effects from its own functions",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "We talk about the TierABI in the lesson. What is it?",
+      "options": [
+        {
+          "answer": "A React library that let’s us mint our NFT in tiers"
+        },
+        {
+          "answer": "A way to let a smart contract communicate outside of itself",
+          "correct": true
+        },
+        {
+          "answer": "A programming language"
+        },
+        {
+          "answer": "A styling tool for stacking designs on the user interface"
+        }
+      ]
+    },
+    {
+      "question": "What did we need to get from the the WalletConnectCloud?",
+      "options": [
+        {
+          "answer": "A personal API key for connecting the dApp to the RPC node"
+        },
+        {
+          "answer": "A project ID",
+          "correct": true
+        },
+        {
+          "answer": "A connection to cloud storage for the NFTs"
+        }
+      ]
+    }
+  ]
+}
