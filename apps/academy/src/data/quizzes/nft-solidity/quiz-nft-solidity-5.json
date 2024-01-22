@@ -2,7 +2,7 @@
   "title": "Quiz: Lesson 5",
   "questions": [
     {
-      "question": "In the lesson, what is the purpose of creating a new sub-directory named frontend?",
+      "question": "In the lesson, what is the purpose of creating a new sub-directory named `frontend`?",
       "options": [
         {
           "answer": "To confuse learners"
@@ -38,7 +38,7 @@
       ]
     },
     {
-      "question": "Why is the useEffect hook used in the _app.js file?",
+      "question": "Why is the `useEffect` hook used in the pages.js file?",
       "options": [
         {
           "answer": "To fix the hook if its code breaks"
@@ -56,7 +56,7 @@
       ]
     },
     {
-      "question": "We talk about the TierABI in the lesson. What is it?",
+      "question": "We talk about the `TierABI` in the lesson. What is it?",
       "options": [
         {
           "answer": "A React library that let’s us mint our NFT in tiers"
@@ -85,6 +85,99 @@
         },
         {
           "answer": "A connection to cloud storage for the NFTs"
+        }
+      ]
+    },
+    {
+      "question": "Why do we create a custom `mintToken` function?",
+      "options": [
+        {
+          "answer": "To handle error messages"
+        },
+        {
+          "answer": "To be able to style the token’s image dynamically when minting"
+        },
+        {
+          "answer": "To interact with the mint function from WAGMI and manage minting transaction values",
+          "correct": true
+        },
+        {
+          "answer": "To enable the minting button"
+        }
+      ]
+    },
+    {
+      "question": "In the rendering part of the code, why do we use a ternary operator?",
+      "options": [
+        {
+          "answer": "To disable the minting buttons"
+        },
+        {
+          "answer": "To enable the minting buttons"
+        },
+        {
+          "answer": "To display the NFT options based on user connection",
+          "correct": true
+        },
+        {
+          "answer": "To render the user’s ENS name, if they have one"
+        }
+      ]
+    },
+    {
+      "question": "After minting the NFTs, where can users check their wallet's profile?",
+      "options": [
+        {
+          "answer": "On the TierNFT website"
+        },
+        {
+          "answer": "On OpenSea",
+          "correct": true
+        },
+        {
+          "answer": "In the /public/nfts directory"
+        },
+        {
+          "answer": "In the `useEffect` hook"
+        }
+      ]
+    },
+    {
+      "question": "What is the primary function of the `mintToken` function in the lesson?",
+      "options": [
+        {
+          "answer": "To dynamically set minting prices"
+        },
+        {
+          "answer": "To facilitate wallet connections"
+        },
+        {
+          "answer": "To log transaction details for minted NFTs"
+        },
+        {
+          "answer": "To handle conditional rendering of NFT cards"
+        },
+        {
+          "answer": "To initiate the minting process for NFTs",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "How is error handling enhanced in the `mintToken` function?",
+      "options": [
+        {
+          "answer": "With a big, red, digital, teacher’s pen"
+        },
+        {
+          "answer": "By using a `catch` statement",
+          "correct": true
+        },
+        {
+          "answer": "By disabling mint buttons if the user doesn’t have enough to mint those tokens"
+        },
+        {
+          "answer": "By slowing down the minting process"
         }
       ]
     }
