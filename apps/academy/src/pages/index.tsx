@@ -14,7 +14,7 @@ const Home: NextPageWithLayout = () => {
               <h1>learn</h1>
               <h1>web3 __</h1>
               <h1>with</h1>
-              <h1>frens</h1>
+              <h1>friends</h1>
             </div>
           </div>
           <div className="description max-w-lg">
@@ -30,14 +30,17 @@ const Home: NextPageWithLayout = () => {
               <h1>learn</h1>
               <h1>web3 __</h1>
               <h1>with</h1>
-              <h1>frens</h1>
+              <h1>friends</h1>
             </div>
           </div>
         </div>
       </div>
       <div className="main-container space-y-16 py-16">
-        <LearnWeb3Banner href="" />
-        <PartnerBanner href="" imgSrc="/DD_NFT_avatar.png" />
+        <LearnWeb3Banner href="/tracks" />
+        <PartnerBanner
+          href="https://airtable.com/appDMMIARfSeiovpk/shrZExypPetXEx6Ox"
+          imgSrc="/DD_NFT_avatar.png"
+        />
       </div>
     </main>
   );

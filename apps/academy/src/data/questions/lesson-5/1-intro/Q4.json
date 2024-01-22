@@ -1,0 +1,19 @@
+{
+  "question": "What is the front-end of a web3 application responsible for?",
+  "options": [
+    {
+      "answer": "Rendering HTML code from the dApp",
+      "correct": true
+    },
+    {
+      "answer": "Connecting to the database"
+    },
+    {
+      "answer": "Signing blockchain transactions"
+    },
+    {
+      "answer": "Rendering responses of smart contract functions on the webpage",
+      "correct": true
+    }
+  ]
+}

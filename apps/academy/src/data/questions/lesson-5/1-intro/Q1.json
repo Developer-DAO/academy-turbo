@@ -1,0 +1,15 @@
+{
+  "question": "What is npm?",
+  "options": [
+    {
+      "answer": "A Node.js module that provides a blockchain for running smart contracts"
+    },
+    {
+      "answer": "'Node Permissionless Management' guarantees RPC connection to the blockchain, keeping it censorship resistant"
+    },
+    {
+      "answer": "A package manager for Node.js",
+      "correct": true
+    }
+  ]
+}
