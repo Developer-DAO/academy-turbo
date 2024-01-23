@@ -5,7 +5,7 @@
       "question": "In the lesson, what is the purpose of creating a new sub-directory named `frontend`?",
       "options": [
         {
-          "answer": "To confuse learners"
+          "answer": "To speed up the development process"
         },
         {
           "answer": "To maintain good coding practices",
@@ -13,14 +13,11 @@
         },
         {
           "answer": "To hide code from the compiler"
-        },
-        {
-          "answer": "To speed up the development process"
         }
       ]
     },
     {
-      "question": "What is RainbowKit kit used for in our dApp setup?",
+      "question": "RainbowKit kit is used in our dApp setup. What is it?",
       "options": [
         {
           "answer": "It’s responsible for the database management"
@@ -50,7 +47,7 @@
           "answer": "To automatically update the contract's Solidity version when there's a breaking change"
         },
         {
-          "answer": "To manage changes and side effects from its own functions",
+          "answer": "To manage changes and side effects from its own functions in the hook",
           "correct": true
         }
       ]
@@ -91,9 +88,6 @@
     {
       "question": "Why do we create a custom `mintToken` function?",
       "options": [
-        {
-          "answer": "To handle error messages"
-        },
         {
           "answer": "To be able to style the token’s image dynamically when minting"
         },
@@ -178,6 +172,107 @@
         },
         {
           "answer": "By slowing down the minting process"
+        }
+      ]
+    },
+    {
+      "question": "How does a modal enhance value for users of a Web3 app?",
+      "options": [
+        {
+          "answer": "It modifies contract state"
+        },
+        {
+          "answer": "It displays contract ABI code"
+        },
+        {
+          "answer": "It provides an overlay for focused interaction",
+          "correct": true
+        },
+        {
+          "answer": "It manages wallet connections"
+        }
+      ]
+    },
+    {
+      "question": "Why do we use the `refetchTokenData` function in the `mintToken` function?",
+      "options": [
+        {
+          "answer": "To display a loading message"
+        },
+        {
+          "answer": "To update the `latestNFTMinted` variable"
+        },
+        {
+          "answer": "To update the `tokenData` after minting has succeeded",
+          "correct": true
+        },
+        {
+          "answer": "To verify user connection"
+        }
+      ]
+    },
+    {
+      "question": "What triggers the display of the modal in the `mintToken` function?",
+      "options": [
+        {
+          "answer": "Setting `isMinting` to true"
+        },
+        {
+          "answer": "Setting `modalShow` to true",
+          "correct": true
+        },
+        {
+          "answer": "Updating the `latestNFTMinted` variable"
+        }
+      ]
+    },
+    {
+      "question": "How come we can read the value of a Solidity variable on our front-end?",
+      "options": [
+        {
+          "answer": "The `useEffect` hook updates a string to fetch it"
+        },
+        {
+          "answer": "When the value of `totalSupply` equals `tokenID`, it becomes possible"
+        },
+        {
+          "answer": "The variable is defined with `external` visibility"
+        },
+        {
+          "answer": "The variable is defined with the `public` keyword",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "Which of the following shows on our modal footer?",
+      "options": [
+        {
+          "answer": "Join Developer_DAO"
+        },
+        {
+          "answer": "View on Polygonscan",
+          "correct": true
+        },
+        {
+          "answer": "Close",
+          "correct": true
+        },
+        {
+          "answer": "State of modal is false"
+        },
+        {
+          "answer": "View on OpenSea",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "Which of the following 'should' show on our modal?",
+      "options": [
+        {
+          "answer": "Join Developer_DAO!",
+          "correct": true
         }
       ]
     }
