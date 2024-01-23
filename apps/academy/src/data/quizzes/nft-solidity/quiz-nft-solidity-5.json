@@ -71,7 +71,7 @@
       ]
     },
     {
-      "question": "What did we need to get from the the WalletConnectCloud?",
+      "question": "What did we need to get from the WalletConnectCloud?",
       "options": [
         {
           "answer": "A personal API key for connecting the dApp to the RPC node"
@@ -248,7 +248,7 @@
       "question": "Which of the following shows on our modal footer?",
       "options": [
         {
-          "answer": "Join Developer_DAO"
+          "answer": "Join Developer DAO"
         },
         {
           "answer": "View on Polygonscan",
@@ -271,7 +271,7 @@
       "question": "Which of the following 'should' show on our modal?",
       "options": [
         {
-          "answer": "Join Developer_DAO!",
+          "answer": "Join Developer DAO!",
           "correct": true
         }
       ]
