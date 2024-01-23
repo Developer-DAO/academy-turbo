@@ -17,7 +17,7 @@ import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
 
 <LessonLayout
   lessonTitle="Connect your Smart Contract to a Front End Application."
-  author="piablo"
+  author="ropats16"
   authorPosition="D_D Academy"
   authorTwitter="@ropats16"
   createdDate="September 22, 2022"
@@ -67,15 +67,15 @@ For handling wallet connections to our application, we'll be introducing you to 
 And using the provided _hooks_ from _WAGMI_, we can check the connection to the
 wallet and call functions from our smart contract through the front-end.
 RainbowKit and WAGMI are just another couple of shining examples of open source
-public goods. We love open source at Developer_DAO. And public goods are gooood!
+public goods. We love open source at Developer DAO. And public goods are gooood!
 
 ## Let's breakdown the lesson
 
 {/* We could do with a oneliner for each to  describe what index.js and app.js are for */}
 
 - Set up our development environment with TierNFT project
-- Initialise a nextJS app
-- Install RainbowKit, WAGMI and Ethers to create main application
+- Initialise a Next.js app
+- Install RainbowKit and WAGMI to create main application
 - Import dependencies
   {/* - "a main entry point for displaying ..." needs a clearer definition */}
 - Create an Index page as main entry point for displaying the app content.
@@ -87,7 +87,7 @@ public goods. We love open source at Developer_DAO. And public goods are gooood!
 
 ## Tools to get the job done
 
-- [nextJS](https://nextjs.org/) - a React framework for building a full-stack
+- [Next.js](https://nextjs.org/) - a React framework for building a full-stack
   app
 - [RainbowKit](https://www.rainbowkit.com/docs/introduction) - a React library
   for out-of-the-box wallet management
@@ -143,14 +143,20 @@ Ok to proceed? (y) y
 ✔ Would you like to use `src/` directory? … Yes
 ✔ Would you like to use App Router? (recommended) … Yes
 ✔ Would you like to customize the default import alias (@/*)? … Yes
+✔ What import alias would you like configured? … @/*
 Creating a new Next.js app in ((path)):/developerdao/frontend.
 ```
 
-Once the setup is complete, we open the `frontend` directory and get cracking:
+Once the setup is complete, we open the `frontend` directory and get cracking.
+Try running `npm run dev` to see if everything is working as expected.
 
 ```bash
 cd frontend
+npm run dev
 ```
+
+You'll see a message that says which url to view your site at.
+It should say <strong>http://localhost:3000</strong>
 
 <br />
 
@@ -164,14 +170,14 @@ creating a way to handle wallet connections.
 
 ### The Main Application
 
-Install RainbowKit and it's dependencies:
+Install RainbowKit and its dependencies:
 
 ```bash
 npm install @rainbow-me/rainbowkit wagmi viem
 ```
 
-To get this setup we need to start working on the `_app.js` file in the
-`/frontend/pages` directory. The file should look something like this from our
+To get this setup we need to start working on the `page.js` file in the
+`/frontend/src/app` directory. The file should look something like this from our
 initial setup.
 
 ```jsx
@@ -314,7 +320,7 @@ Now that we have our application setup, we can edit the Index Page.
 Notice that we are using the `page folder routing` in our app, which give us an
 `index.js` page in the `/frontend/pages` directory. This file work as our
 homepage at the root level, in our url will be `htpp://localhost:3000/` by
-default and it's code should look like this after deleting all the _children_
+default and its code should look like this after deleting all the _children_
 within the `<main>` element and completely deleting the `<footer>`.
 
 ```jsx
@@ -510,7 +516,7 @@ We will revisit these state variables later to see their implementation.
 
 ### Header
 
-We need a `<header>` that displays our application name and let's us connect our
+We need a `<header>` that displays our application name and lets us connect our
 wallet.
 
 ```jsx
@@ -579,7 +585,7 @@ export default function Home() {
 ```
 
 The [`useContractWrite`](https://wagmi.sh/docs/hooks/useContractWrite) hook from
-WAGMI let's us pass in the contract address, contract ABI and the function name
+WAGMI lets us pass in the contract address, contract ABI and the function name
 to return a JavaScript function (that we have called `mint`) that can interact
 with our smart contract and trigger a `write` function in it.
 
@@ -724,12 +730,12 @@ Let's see what is happening in each NFT Card by taking `Tier 0` as an example.
 ```
 
 - We start off by displaying the NFT Tier name.
-- A nextJS `Image` element renders a preview of the NFT Image. Earlier, we saved
-  our images in the `/public/nfts` folder. A nextJS app automatically detects
+- A Next.js `Image` element renders a preview of the NFT Image. Earlier, we saved
+  our images in the `/public/nfts` folder. A Next.js app automatically detects
   content from the `/public` directory so we can directly reference the source
   as `/nfts/0_basic.svg`. We also need to pass in the width and height
   explicitly.
-- A `button` element let's us first set the minting price choosen and then it
+- A `button` element lets us first set the minting price choosen and then it
   calls the `mintToken` function `onClick` and we send the value associated with
   the button to that function so that it can be used to mint the specific tier
   of NFT in the `<button>` element. Make sure you pass in the right value for
