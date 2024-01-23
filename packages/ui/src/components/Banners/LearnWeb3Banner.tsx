@@ -11,7 +11,7 @@ export interface HomePageBannerProps {
 export const LearnWeb3Banner: FC<HomePageBannerProps> = ({ href }) => {
   return (
     <Card className="banner flex-col lg:flex-row">
-      <div className="terminal-text mt-8">
+      <div className="terminal-text">
         <div className="line">
           <div>1</div>
           <div className="text-white">
@@ -109,15 +109,12 @@ export const LearnWeb3Banner: FC<HomePageBannerProps> = ({ href }) => {
           </div>
         </div>
       </div>
-      <div className="mb-16">
+      <div className="py-8">
         <CardHeader className="flex-row justify-center">
           <CardTitle className="title">LEARN WEB3</CardTitle>
         </CardHeader>
         <CardContent className="description max-w-xl p-1">
-          <p>
-            Developer DAO Academy offers learning resources to help you learn how to build web3
-            technologies.
-          </p>
+          <p>Developer DAO offers learning resources to help you build with web3 technologies.</p>
         </CardContent>
         <div className="flex justify-center">
           <Button asChild className="button-rounded text-black">

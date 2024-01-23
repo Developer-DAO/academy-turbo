@@ -1,0 +1,18 @@
+{
+  "question": "You're going to be using NextJS in your app. Which of the following are true about NextJS?",
+  "options": [
+    {
+      "answer": "It's a bridge that connects your dApp (decentralised app) to a Web3 wallet"
+    },
+    {
+      "answer": "It a React library for out-of-the-box wallet management"
+    },
+    {
+      "answer": "It's a React framework for building a full-stack app",
+      "correct": true
+    },
+    {
+      "answer": "It's an RPC provider that lets our dApp connect to the blockchain"
+    }
+  ]
+}

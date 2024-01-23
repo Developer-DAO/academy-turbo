@@ -13,7 +13,7 @@ const sampleMenus: NavItem[] = [
   },
   {
     name: "Tracks",
-    href: "/tracks", // hardcoded trackID for now. For the sake of using the dynamic route - 23 nov 2023
+    href: "/tracks",
     icon: "vector",
   },
   {
