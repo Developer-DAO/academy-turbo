@@ -1,4 +1,4 @@
-import localFont from "@next/font/local";
+import localFont from "next/font/local";
 import { useRouter } from "next/router";
 import type { FunctionComponent, PropsWithChildren } from "react";
 import { Footer } from "ui";

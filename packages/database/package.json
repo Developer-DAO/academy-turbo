@@ -22,8 +22,5 @@
     "prisma": "^5.2.0",
     "typescript": "^5.0.4",
     "typescript-config": "workspace:*"
-  },
-  "prisma": {
-    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
 }

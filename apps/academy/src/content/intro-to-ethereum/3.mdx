@@ -1,5 +1,5 @@
 ---
-title: A Developer's Guide to Ethereum, Pt. 3
+title: A Developer's Guide to Ethereum, Pt. 3
 description: Introduction to Ethereum with web3.py and Python.
 icons: ["ethereum"]
 ---
@@ -8,10 +8,10 @@ import { LessonHeader } from "../../../components/mdx/LessonHeader";
 import Layout from "../../../components/Layout";
 
 <Layout
-    title="A Developer's Guide to Ethereum, Pt. 3"
+    title="A Developer's Guide to Ethereum, Pt. 3"
     description="Introduction to Ethereum with web3.py and Python."
 >
-<LessonHeader title="A Developer's Guide to Ethereum, Pt. 3" />
+<LessonHeader title="A Developer's Guide to Ethereum, Pt. 3" />
 
 Welcome to Part 3 in the saga! Part 1 covered blockchain fundamentals. Part 2 continued on to examine Ethereum accounts and how they enable participation in the network. Part 3 will build on those concepts with the introduction of smart contracts.
 
@@ -21,7 +21,7 @@ The Ethereum blockchain has a great deal of value flowing through it. In the pre
 
 Let's start with a simple definition: a **smart contract** is code (i.e., a computer program) deployed to the blockchain. As for the buzzword name, _contract_ conveys the relative permanence of these programs as they determine how assets can change hands and _smart_ is a nod to their programmability. For brevity, they're commonly referred to as just contracts, so we'll do the same in this lesson.
 
-It may be helpful to think of contracts and individual accounts as the two types of actors within this system. With their programmed instructions, contracts can interact with the blockchain in much the same way as individual accounts: by sending and receiving ether or by interacting with other contracts. Contracts can go a step further by managing some internal state – a concept we'll explore shortly.
+It may be helpful to think of contracts and individual accounts as the two types of actors within this system. With their programmed instructions, contracts can interact with the blockchain in much the same way as individual accounts: by sending and receiving ether or by interacting with other contracts. Contracts can go a step further by managing some internal state - a concept we'll explore shortly.
 
 <Callout emoji="💡" size="md" variant="info">
   Note: Over the years, individual accounts have been described in a variety of ways. **Externally
@@ -102,7 +102,7 @@ Tools like web3.py offer slightly more human-friendly ways to go about this. One
 
 <Callout emoji="💡" size="md" variant="info">
   **Note**: ABI stands for **Application Binary Interface**. An ABI is a machine-readable data blob
-  that conveys how a contract can be interacted with – which functions are available and expected
+  that conveys how a contract can be interacted with - which functions are available and expected
   data types. It's some JSON that you pass into an Ethereum library (e.g., web3.py, ethers.js,
   etc.), so that it can provide you with a human-friendly interface. Does the name make sense now?
   An ABI communicates the interface for your application's bytecode.

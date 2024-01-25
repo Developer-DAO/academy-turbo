@@ -1,5 +1,5 @@
 ---
-title: A Developer's Guide to Ethereum, Pt. 2
+title: A Developer's Guide to Ethereum, Pt. 2
 description: Introduction to Ethereum with web3.py and Python.
 icons: ["ethereum"]
 ---
@@ -8,10 +8,10 @@ import { LessonHeader } from "../../../components/mdx/LessonHeader";
 import Layout from "../../../components/Layout";
 
 <Layout
-    title="A Developer's Guide to Ethereum, Pt. 2" 
+    title="A Developer's Guide to Ethereum, Pt. 2" 
     description="Introduction to Ethereum with web3.py and Python." 
 >
-<LessonHeader title="A Developer's Guide to Ethereum, Pt. 2" />
+<LessonHeader title="A Developer's Guide to Ethereum, Pt. 2" />
 
 Welcome back! In the first installment of this series we covered a lot of ground
 while interacting with a simulated Ethereum network. At this point, you should
@@ -141,7 +141,7 @@ In [8]: tx_hash = w3.eth.send_transaction({
 
 This transaction will execute immediately, but some important details are hidden from view. web3.py is smart enough to know that `EthereumTesterProvider` is managing `acct_one` and that we're using a test environment. For our convenience, `acct_one` is "unlocked", meaning transactions from the account are approved (signed) by default.
 
-So, what does a transaction look like if not from an unlocked account? To find out, let's send some ether from `acct_two` – an account not managed by `EthereumTesterProvider`. This more manual process takes three steps: 1) specify the transaction details, 2) sign the transaction, then 3) broadcast the transaction to the network.
+So, what does a transaction look like if not from an unlocked account? To find out, let's send some ether from `acct_two` - an account not managed by `EthereumTesterProvider`. This more manual process takes three steps: 1) specify the transaction details, 2) sign the transaction, then 3) broadcast the transaction to the network.
 
 ```python
 # 1) manually build a transaction
@@ -247,7 +247,7 @@ So, we can create Ethereum accounts with surprising ease: offline and separate f
 
 ### Permanent passwords
 
-A harsh reality of this world is that there are no password recovery services for basic account types. If you lose your private key and recovery phrase, you can kiss that account goodbye. Such is the double-edged sword of true ownership. App developers have an ethical obligation to onboard and educate Ethereum newcomers on this reality. (Note: social recovery wallets may improve this user experience and "account abstraction" is one related research effort – topics for another lesson.)
+A harsh reality of this world is that there are no password recovery services for basic account types. If you lose your private key and recovery phrase, you can kiss that account goodbye. Such is the double-edged sword of true ownership. App developers have an ethical obligation to onboard and educate Ethereum newcomers on this reality. (Note: social recovery wallets may improve this user experience and "account abstraction" is one related research effort - topics for another lesson.)
 
 ### Onboarding challenges
 

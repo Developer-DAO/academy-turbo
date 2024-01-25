@@ -14,9 +14,15 @@
  *
  * These allow you to access things when processing a request, like the database, the session, etc.
  */
+import type { PrismaClient } from "@prisma/client";
 import type { CreateNextContextOptions } from "@trpc/server/adapters/next";
 import { prisma } from "database";
 import type { Session } from "next-auth";
+
+export type TrpcCreateNextContextOptions = CreateNextContextOptions & {
+  prisma: PrismaClient;
+  session: Session | null;
+};
 
 import { getServerAuthSession } from "@/server/auth";
 

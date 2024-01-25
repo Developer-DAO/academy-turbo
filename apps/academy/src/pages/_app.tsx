@@ -106,23 +106,23 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session |
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <SessionProvider refetchInterval={0} session={pageProps.session}>
-        <RainbowKitSiweNextAuthProvider>
-          <RainbowKitProvider
-            chains={chains}
-            initialChain={polygonMumbai}
-            appInfo={{
-              appName: "Developer DAO Academy",
-              learnMoreUrl: "https://academy.developerdao.com",
-            }}
-            theme={{
-              lightMode: academyLightTheme,
-              darkMode: academyDarkTheme,
-            }}
-          >
-            <MDXProvider components={Components}>
-              <ThemeProvider attribute="class">
+    <MDXProvider components={Components}>
+      <ThemeProvider attribute="class">
+        <WagmiConfig config={wagmiConfig}>
+          <SessionProvider refetchInterval={0} session={pageProps.session}>
+            <RainbowKitSiweNextAuthProvider>
+              <RainbowKitProvider
+                chains={chains}
+                initialChain={polygonMumbai}
+                appInfo={{
+                  appName: "Developer DAO Academy",
+                  learnMoreUrl: "https://academy.developerdao.com",
+                }}
+                theme={{
+                  lightMode: academyLightTheme,
+                  darkMode: academyDarkTheme,
+                }}
+              >
                 <DefaultSeo {...SEO} />
                 <Head>
                   <meta
@@ -134,12 +134,12 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session |
                   <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
                   <Toaster />
                 </AppContextProvider>
-              </ThemeProvider>
-            </MDXProvider>
-          </RainbowKitProvider>
-        </RainbowKitSiweNextAuthProvider>
-      </SessionProvider>
-    </WagmiConfig>
+              </RainbowKitProvider>
+            </RainbowKitSiweNextAuthProvider>
+          </SessionProvider>
+        </WagmiConfig>
+      </ThemeProvider>
+    </MDXProvider>
   );
 }
 

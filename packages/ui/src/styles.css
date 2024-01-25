@@ -229,11 +229,12 @@
 }
 
 .track {
-  @apply max-w-xs rounded-[51px] border-none shadow-sm;
+  @apply gradient-blur h-[406px] max-w-[285px] rounded-[51px] border-none shadow-sm hover:bg-zinc-900;
+  @apply ring-[2px] ring-inset ring-[#E9E9E930] ring-offset-0;
 }
 
 .track .gray-badge {
-  @apply badge w-20 border border-[#5050504A] bg-[var(--academy-dark)] hover:bg-[#5050504A];
+  @apply badge max-h-7 w-[70px] min-w-fit border border-[#5050504A] text-xs hover:bg-[#5050504A];
 }
 
 .track .title {
@@ -289,7 +290,7 @@
 .footer {
   @apply flex min-h-[224px] flex-col items-center gap-y-8 border-t sm:flex-row-reverse sm:justify-between;
   @apply border-white text-white;
-  @apply px-0 py-8 text-xs font-semibold md:text-sm;
+  @apply mt-20 px-0 py-8 text-xs font-semibold md:text-sm;
 }
 
 .footer nav,

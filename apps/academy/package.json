@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@headlessui/react": "1.7.15",
-    "@next/font": "^14.1.0",
     "@rainbow-me/rainbowkit": "^1.0.10",
     "@rainbow-me/rainbowkit-siwe-next-auth": "^0.3.0",
     "@t3-oss/env-nextjs": "^0.6.1",
@@ -61,8 +60,5 @@
     "storybook-config": "workspace:*",
     "tailwindcss-config": "workspace:*",
     "typescript-config": "workspace:*"
-  },
-  "prisma": {
-    "schema": "../../packages/database/prisma/schema.prisma"
   }
 }
