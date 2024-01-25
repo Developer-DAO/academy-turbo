@@ -95,9 +95,6 @@ importers:
       '@headlessui/react':
         specifier: 1.7.15
         version: 1.7.15(react-dom@18.2.0)(react@18.2.0)
-      '@next/font':
-        specifier: ^14.1.0
-        version: 14.1.0(next@13.4.12)
       '@rainbow-me/rainbowkit':
         specifier: ^1.0.10
         version: 1.0.10(@types/react@18.2.16)(react-dom@18.2.0)(react@18.2.0)(viem@1.10.14)(wagmi@1.4.2)
@@ -2896,14 +2893,6 @@ packages:
     resolution: {integrity: sha512-6rhK9CdxEgj/j1qvXIyLTWEaeFv7zOK8yJMulz3Owel0uek0U9MJCGzmKgYxM3aAUBo3gKeywCZKyQnJKto60A==}
     dependencies:
       glob: 7.1.7
-    dev: false
-
-  /@next/font@14.1.0(next@13.4.12):
-    resolution: {integrity: sha512-9hJ7bEYDI7UGQ1a++5zRD3F2VUu9NIaK5Hro/uL9bvFFs6b0Cy1OdLtLQHCIQE7sSMt8Rbu4VtcbnlubsseelA==}
-    peerDependencies:
-      next: '*'
-    dependencies:
-      next: 13.4.12(@babel/core@7.22.15)(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /@next/mdx@14.0.4(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.0):
