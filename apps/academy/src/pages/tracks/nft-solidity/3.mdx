@@ -1034,13 +1034,12 @@ can get tokens for multiple testnets.
 
 Take your time to understand the **good practices for developers** in this section. Before we deploy, we need to add a `.env` file to our root folder to make sure we are **not pushing and therefore exposing our private keys in public repositories**.
 
-For your wallet's private key, the most sensitive data of the project, you need
-to open Metamask. Click on the three dots next to your _Account Name_, and then
-on _Account Details_, click on _Show Private Key_. It will ask for your Metamask
-password, the one you use to log in to your wallet each session, not your seed
-phrase. It also shows you a warning to 'Never disclose this key'. Confirm and
-you'll be able to copy your private key. Add your private key into the `.env`
-file like so:
+To get your private key, the most sensitive data of the project, click on the
+following: Zerion browser icon => settings ⚙️ => Manage Wallets => choose the
+wallet you need => next, don't click on Recovery Phrase, but choose your wallet from
+the Wallets option => Private Key. Then enter your password, and copy the private key
+to clipboard for use. Remember to never disclose this key! Now you can add your private
+key into the `.env` file like so:
 
 ```bash
 PRIVATE_KEY=f8abc629b...
