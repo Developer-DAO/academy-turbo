@@ -14,25 +14,25 @@ const TracksPage = () => {
       trackPath: "/tracks/fundamentals",
     },
     {
-      title: "A Developer's Guide to Ethereum, Part I, II & III",
+      title: "A Developer's Guide to Ethereum",
       author: "wolovim",
       imgPath: "/image16.png",
       description:
-        "Introduction to Ethereum with web3.py and Python. Grasp blockchain basics, Ethereum's decentralization, and smart contracts with practical insights. Code included for hands-on learning.",
+        "An accessible introduction to Ethereum via web3.py and Python. Grasp blockchain basics, Ethereum's decentralization, and smart contracts with practical insights. Code included for hands-on learning.",
       tags: ["Entry", "Blockchain", "Ethereum"],
       trackPath: "/tracks/intro-to-ethereum",
     },
     {
-      title: "NFT track Part I-V",
+      title: "Build a Tiered NFT",
       author: "7i7o, piablo, georgemac510, brianfive, ropats16, meowy, mveve",
       imgPath: "/image16.png",
       description:
-        "Get stuck right into Solidity and on to the NFT train. You'll be building your own tiered ERC-721 token sets, creating a Test Driven Development suite, hosting your files on Web3 storage, and creating on your own front-end dApp. The full-stack-track.",
+        "After a gentle introduction to Solidity, you'll be building your own tiered ERC-721 token sets using test-driven development, hosting your files on Web3 storage, and creating on your own front-end dApp. The full-stack-track.",
       tags: ["Entry", "Explorer", "ERC-721"],
       trackPath: "/tracks/nft-solidity",
     },
     {
-      title: "ERC-20 Solidity Track",
+      title: "Build a Fungible Token",
       author: "_7i7o, piablo",
       imgPath: "/image16.png",
       description:
@@ -40,15 +40,6 @@ const TracksPage = () => {
       tags: ["Entry", "ERC-20", "Foundry"],
       trackPath: "/tracks/erc-20-solidity",
     },
-    // {
-    //   title: "Intro to Ethereum Part I, II & III.",
-    //   author: "wolovim",
-    //   imgPath: "/image16.png",
-    //   description:
-    //     "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
-    //   tags: ["Beginner", "Web3", "DeFi"],
-    //   trackPath: "/tracks/intro-to-ethereum",
-    // },
   ];
   return (
     <div className="flex h-full w-full flex-col space-y-10 overflow-hidden bg-black lg:h-screen lg:max-h-screen lg:flex-row">

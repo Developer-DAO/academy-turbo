@@ -38,7 +38,7 @@ const IntroToEthereumPage = () => {
     <div className="relative m-10 flex lg:mx-auto lg:max-w-screen-lg">
       <TracksLayout
         trackTitle="A Developer's Guide to Ethereum"
-        trackDescription="Begin your journey with A Developer's Guide to Ethereum, leveraging web3.py and Python. Explore blockchain essentials, Ethereum's decentralized realm, and learn about smart contracts with practical insights. The series blends theory and hands-on learning, providing code to reinforce understanding. Ideal for developers transitioning to Ethereum through a Python lens."
+        trackDescription="An accessible introduction to Ethereum via web3.py and Python. Grasp blockchain basics, Ethereum's decentralization, and smart contracts with practical insights. Code included for hands-on learning, but no programming expertise required."
         trackAuthor="wolovim"
         trackAuthorDescription="wolovim is a Full Stack Python Developer at the Ethereum Foundation."
         trackAuthorTwitter="@wolovim.eth"

@@ -28,7 +28,7 @@ const IntroToEthereumPage = () => {
   return (
     <div className="relative m-10 flex lg:mx-auto lg:max-w-screen-lg">
       <TracksLayout
-        trackTitle="ERC-20 Solidity Track"
+        trackTitle="Build a Fungible Token"
         trackDescription="Learn to create ERC-20 tokens using Foundry, progressing from the basics to advanced customisation. We will be exploring, testing, real-world applications, security practices, and the role of tokens in decentralised ecosystems. From DeFi to DAO's and everything in between, thanks to its simplicity, but versatility, the ERC-20 is going nowhere. Start with Solidity, or dive directly into token creation — empowering you to contribute to blockchain projects."
         trackAuthor="_7i7o, piablo"
         trackAuthorDescription="Authors are active Developer DAO members"
