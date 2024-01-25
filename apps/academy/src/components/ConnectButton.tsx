@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import localFont from "@next/font/local";
 import { ConnectButton as RainbowkitConnectButton } from "@rainbow-me/rainbowkit";
 import Image from "next/image";
@@ -35,14 +34,14 @@ export const ConnectButton = () => {
 
         return (
           <>
-            {!connected ? (
+            {connected !== true ? (
               <Button
                 onClick={openConnectModal}
                 className={`connect-button ${bttf.className} hover:bg-[var(--button-secondary-dark)]`}
               >
                 Connect
               </Button>
-            ) : chain.unsupported ? (
+            ) : chain.unsupported === true ? (
               <Button
                 onClick={openChainModal}
                 className={`connect-button ${bttf.className} hover:bg-[var(--button-secondary-dark)]`}
