@@ -67,7 +67,7 @@ module.exports = {
         "clash-display": "var(--font-clash-display)",
         "zen-kaku": "var(--font-zen-kaku)",
         andale: "var(--font-andale-mono)",
-        "death-star": "var(--font-death-star)",
+        deathstar: "var(--font-deathstar)",
         sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],
       },
       keyframes: {
