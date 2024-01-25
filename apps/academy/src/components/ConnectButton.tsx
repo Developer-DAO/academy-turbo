@@ -41,7 +41,7 @@ export const ConnectButton = () => {
               >
                 Connect
               </Button>
-            ) : chain.unsupported === true ? (
+            ) : chain?.unsupported === true ? (
               <Button
                 onClick={openChainModal}
                 className={`connect-button ${bttf.className} hover:bg-[var(--button-secondary-dark)]`}
