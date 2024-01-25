@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["*", "../../../../../packages/database/node_modules/@prisma/client/runtime/library"]
     }
   },
   "include": ["next-env.d.ts", "src", "e2e"],

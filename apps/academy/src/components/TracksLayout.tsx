@@ -38,7 +38,7 @@ export default function TracksLayout({
           />
         </div>
       </div>
-      <div className="font-clash-display font-medium tracking-wider lg:pt-16 lg:text-xl">
+      <div className="font-clash-display min-h-[50rem] font-medium tracking-wider lg:pt-16 lg:text-xl">
         {children}
       </div>
     </main>

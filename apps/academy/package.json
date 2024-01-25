@@ -61,8 +61,5 @@
     "storybook-config": "workspace:*",
     "tailwindcss-config": "workspace:*",
     "typescript-config": "workspace:*"
-  },
-  "prisma": {
-    "schema": "../../packages/database/prisma/schema.prisma"
   }
 }

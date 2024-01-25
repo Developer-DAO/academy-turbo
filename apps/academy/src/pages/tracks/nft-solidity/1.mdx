@@ -361,13 +361,13 @@ contract WAGMI {
     The type of each variable in Solidity needs to be specified. In addition, types can interact with each other in expressions containing operators (eg. comparing values).
 
     - **Value Types**: Store their own data. These are the basic data types provided by solidity. Some value types are as follows:
-        - **Boolean:** This data type accepts only two values True or False.
-        - **Integer:** This data type is used to store integer (a number without fractions) values, `int` and `uint` are used to declare *signed* and *unsigned integers* respectively.
-        - **Address:** Address hold a 20-byte value which represents the size of an Ethereum address. An address can be used to get balance or to transfer a balance.
-        - **Bytes and Strings:** Bytes are used to store a fixed-sized character set while the string is used to store the character set equal to or more than a byte. The length of bytes is from 1 to 32, while the string has a dynamic length. Byte has an advantage that it uses less gas, so better to use when we know the length of data.
+        - **Boolean:** This data type accepts only two values True or False.
+        - **Integer:** This data type is used to store integer (a number without fractions) values, `int` and `uint` are used to declare *signed* and *unsigned integers* respectively.
+        - **Address:** Address hold a 20-byte value which represents the size of an Ethereum address. An address can be used to get balance or to transfer a balance.
+        - **Bytes and Strings:** Bytes are used to store a fixed-sized character set while the string is used to store the character set equal to or more than a byte. The length of bytes is from 1 to 32, while the string has a dynamic length. Byte has an advantage that it uses less gas, so better to use when we know the length of data.
     - **Reference Types**: Store the location of the data. They don’t share the data directly.
-        - **Arrays:** An array is a group of variables of the same data type in which a variable has a particular location known as an index. By using the index location, the desired variable can be accessed. The array size can be of fixed or dynamic size.
-        - **Struct:** Solidity allows users to create and define their own type in the form of structures. The structure is a group of different types even though it’s not possible to contain a member of its own type. The structure is a reference type variable which can contain both value types and reference types.
+        - **Arrays:** An array is a group of variables of the same data type in which a variable has a particular location known as an index. By using the index location, the desired variable can be accessed. The array size can be of fixed or dynamic size.
+        - **Struct:** Solidity allows users to create and define their own type in the form of structures. The structure is a group of different types even though it’s not possible to contain a member of its own type. The structure is a reference type variable which can contain both value types and reference types.
     - **Mapping Type**: Stores the data in a key-value pair where a key can be any value types. It is like a hash table or dictionary as in any other programming language, where data can be retrieved by key.
 
     ### Visibility of State Variables
