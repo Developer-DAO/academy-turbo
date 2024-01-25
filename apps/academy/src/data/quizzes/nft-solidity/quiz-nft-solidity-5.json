@@ -1,0 +1,280 @@
+{
+  "title": "Quiz: Lesson 5",
+  "questions": [
+    {
+      "question": "In the lesson, what is the purpose of creating a new sub-directory named `frontend`?",
+      "options": [
+        {
+          "answer": "To speed up the development process"
+        },
+        {
+          "answer": "To maintain good coding practices",
+          "correct": true
+        },
+        {
+          "answer": "To hide code from the compiler"
+        }
+      ]
+    },
+    {
+      "question": "RainbowKit kit is used in our dApp setup. What is it?",
+      "options": [
+        {
+          "answer": "It’s responsible for the database management"
+        },
+        {
+          "answer": "It tracks the blockchain transactions"
+        },
+        {
+          "answer": "It's a testing framework"
+        },
+        {
+          "answer": "It's a library for wallet management",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "Why is the `useEffect` hook used in the pages.js file?",
+      "options": [
+        {
+          "answer": "To fix the hook if its code breaks"
+        },
+        {
+          "answer": "To expose the code from RainbowKit"
+        },
+        {
+          "answer": "To automatically update the contract's Solidity version when there's a breaking change"
+        },
+        {
+          "answer": "To manage changes and side effects from its own functions in the hook",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "We talk about the `TierABI` in the lesson. What is it?",
+      "options": [
+        {
+          "answer": "A React library that let’s us mint our NFT in tiers"
+        },
+        {
+          "answer": "A way to let a smart contract communicate outside of itself",
+          "correct": true
+        },
+        {
+          "answer": "A programming language"
+        },
+        {
+          "answer": "A styling tool for stacking designs on the user interface"
+        }
+      ]
+    },
+    {
+      "question": "What did we need to get from the WalletConnectCloud?",
+      "options": [
+        {
+          "answer": "A personal API key for connecting the dApp to the RPC node"
+        },
+        {
+          "answer": "A project ID",
+          "correct": true
+        },
+        {
+          "answer": "A connection to cloud storage for the NFTs"
+        }
+      ]
+    },
+    {
+      "question": "Why do we create a custom `mintToken` function?",
+      "options": [
+        {
+          "answer": "To be able to style the token’s image dynamically when minting"
+        },
+        {
+          "answer": "To interact with the mint function from WAGMI and manage minting transaction values",
+          "correct": true
+        },
+        {
+          "answer": "To enable the minting button"
+        }
+      ]
+    },
+    {
+      "question": "In the rendering part of the code, why do we use a ternary operator?",
+      "options": [
+        {
+          "answer": "To disable the minting buttons"
+        },
+        {
+          "answer": "To enable the minting buttons"
+        },
+        {
+          "answer": "To display the NFT options based on user connection",
+          "correct": true
+        },
+        {
+          "answer": "To render the user’s ENS name, if they have one"
+        }
+      ]
+    },
+    {
+      "question": "After minting the NFTs, where can users check their wallet's profile?",
+      "options": [
+        {
+          "answer": "On the TierNFT website"
+        },
+        {
+          "answer": "On OpenSea",
+          "correct": true
+        },
+        {
+          "answer": "In the /public/nfts directory"
+        },
+        {
+          "answer": "In the `useEffect` hook"
+        }
+      ]
+    },
+    {
+      "question": "What is the primary function of the `mintToken` function in the lesson?",
+      "options": [
+        {
+          "answer": "To dynamically set minting prices"
+        },
+        {
+          "answer": "To facilitate wallet connections"
+        },
+        {
+          "answer": "To log transaction details for minted NFTs"
+        },
+        {
+          "answer": "To handle conditional rendering of NFT cards"
+        },
+        {
+          "answer": "To initiate the minting process for NFTs",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "How is error handling enhanced in the `mintToken` function?",
+      "options": [
+        {
+          "answer": "With a big, red, digital, teacher’s pen"
+        },
+        {
+          "answer": "By using a `catch` statement",
+          "correct": true
+        },
+        {
+          "answer": "By disabling mint buttons if the user doesn’t have enough to mint those tokens"
+        },
+        {
+          "answer": "By slowing down the minting process"
+        }
+      ]
+    },
+    {
+      "question": "How does a modal enhance value for users of a Web3 app?",
+      "options": [
+        {
+          "answer": "It modifies contract state"
+        },
+        {
+          "answer": "It displays contract ABI code"
+        },
+        {
+          "answer": "It provides an overlay for focused interaction",
+          "correct": true
+        },
+        {
+          "answer": "It manages wallet connections"
+        }
+      ]
+    },
+    {
+      "question": "Why do we use the `refetchTokenData` function in the `mintToken` function?",
+      "options": [
+        {
+          "answer": "To display a loading message"
+        },
+        {
+          "answer": "To update the `latestNFTMinted` variable"
+        },
+        {
+          "answer": "To update the `tokenData` after minting has succeeded",
+          "correct": true
+        },
+        {
+          "answer": "To verify user connection"
+        }
+      ]
+    },
+    {
+      "question": "What triggers the display of the modal in the `mintToken` function?",
+      "options": [
+        {
+          "answer": "Setting `isMinting` to true"
+        },
+        {
+          "answer": "Setting `modalShow` to true",
+          "correct": true
+        },
+        {
+          "answer": "Updating the `latestNFTMinted` variable"
+        }
+      ]
+    },
+    {
+      "question": "How come we can read the value of a Solidity variable on our front-end?",
+      "options": [
+        {
+          "answer": "The `useEffect` hook updates a string to fetch it"
+        },
+        {
+          "answer": "When the value of `totalSupply` equals `tokenID`, it becomes possible"
+        },
+        {
+          "answer": "The variable is defined with `external` visibility"
+        },
+        {
+          "answer": "The variable is defined with the `public` keyword",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "Which of the following shows on our modal footer?",
+      "options": [
+        {
+          "answer": "Join Developer DAO"
+        },
+        {
+          "answer": "View on Polygonscan",
+          "correct": true
+        },
+        {
+          "answer": "Close",
+          "correct": true
+        },
+        {
+          "answer": "State of modal is false"
+        },
+        {
+          "answer": "View on OpenSea",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "Which of the following 'should' show on our modal?",
+      "options": [
+        {
+          "answer": "Join Developer DAO!",
+          "correct": true
+        }
+      ]
+    }
+  ]
+}

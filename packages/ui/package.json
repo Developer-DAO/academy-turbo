@@ -56,5 +56,8 @@
     "tailwindcss-config": "workspace:*",
     "typescript-config": "workspace:*",
     "vaul": "^0.8.0"
+  },
+  "dependencies": {
+    "@next/font": "^14.1.0"
   }
 }
