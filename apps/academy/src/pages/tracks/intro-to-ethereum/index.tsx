@@ -7,7 +7,7 @@ import TracksLayout from "@/components/TracksLayout";
 const IntroToEthereumPage = () => {
   const lessonsArray = [
     {
-      title: "A Developer's Guide to Ethereum, Pt.1",
+      title: "A Developer's Guide to Ethereum, Pt. 1",
       author: "wolovim",
       imgPath: "/image16.png",
       description:
@@ -16,7 +16,7 @@ const IntroToEthereumPage = () => {
       path: "/tracks/intro-to-ethereum/1",
     },
     {
-      title: "A Developer's Guide to Ethereum, Pt.2",
+      title: "A Developer's Guide to Ethereum, Pt. 2",
       author: "wolovim",
       imgPath: "/image16.png",
       description:
@@ -25,7 +25,7 @@ const IntroToEthereumPage = () => {
       path: "/tracks/intro-to-ethereum/2",
     },
     {
-      title: "A Developer's Guide to Ethereum, Pt.3",
+      title: "A Developer's Guide to Ethereum, Pt. 3",
       author: "wolovim",
       imgPath: "/image16.png",
       description:
