@@ -117,7 +117,7 @@ We'll be using:
 - a console
 - an IDE
 - optional: a Pinata account for web3 storage of content
-- a web3 wallet for testing
+- a Web3 wallet for testing
 - some test ETH
 - an API key from an RPC provider
   - optional: an account for that provider
@@ -878,7 +878,7 @@ hardhat.config.js
 In order to deploy to a real testnet we'll need:
 
 - An Ethereum wallet that can connect to Sepolia.
-  [Metamask](https://metamask.io/) is often used
+  [Download Zerion here](https://devdao.to/get-zerion) as a good example
 - Some Sepolia-ETH. You can ask for some in a faucet, it's free, although some
   are faster than others! Options: [#1](https://sepoliafaucet.com/),
   [#2](https://testnet-faucet.com/sepolia/),
@@ -950,12 +950,12 @@ your own values for Hardhat to communicate correctly to the network.
 
 We have already gone through how to get your API KEY.
 
-For your wallet's private key, the most sensitive data of the project, you need
-to open Metamask, click on the three dots next to your _Account Name_, and then
-on _Account Details_, then click on _Export Private Key_. It will ask for your
-Metamask password - the one you use to open it, NOT your seed phrase. It also
-issues a warning to 'Never disclose this key'. Confirm and you'll be able to
-copy your private key. Paste it in to our `hardhat.config.js`
+To get your private key, the most sensitive data of the project, click on the
+following: Zerion browser icon => settings ⚙️ => Manage Wallets => choose the
+wallet you need => next, don't click on Recovery Phrase, but choose your wallet from
+the Wallets option => Private Key. Then enter your password, and copy the private key
+to clipboard for use. Remember to never disclose this key! Now we can
+paste it in to our `hardhat.config.js`
 
 Please, if you are already a developer, and you plan to use Git to store your
 project, don't store your `hardhat.config.js` on it, because you will have your
