@@ -106,17 +106,7 @@ const FundamentalsTrackPage = () => {
         trackAuthor="elPiablo, georgemac510"
         trackAuthorDescription="The authors have a wealth of knowledge in the field of education and pedagogy"
         trackAuthorTwitter="@GeorgeMac510, @Skruffster"
-        tags={[
-          "Entry",
-          "Explorer",
-          "Infra",
-          "Blockchain",
-          "Back-end",
-          "Front-end",
-          "Bash",
-          "RPC",
-          "Node",
-        ]}
+        tags={["Entry", "Explorer", "Infra", "Blockchain", "Back-end", "Front-end", "Bash", "RPC"]}
       >
         <div className="mt-14 flex flex-col gap-8 lg:grid lg:w-full lg:grid-cols-3 lg:gap-10">
           {lessonsArray.map((track, idx) => (
