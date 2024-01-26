@@ -64,7 +64,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
   };
 
   const selectAnswer = (answerIndex: number) => {
-    console.log({ answerIndex });
+    console.log({ currentQuestionIndex, answerIndex });
     const newAnswers: Answers = { ...answers };
 
     if (
@@ -82,7 +82,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
         answerIndex,
       ];
     }
-
+    console.log({ newAnswers });
     setAnswers(newAnswers);
   };
 
@@ -190,9 +190,18 @@ const Quiz = (props: QuizProps): JSX.Element => {
   };
 
   const isSelectedAnswer = (currentQuestionIndex: number, answerIndex: number): boolean => {
-    console.log({ currentQuestionIndex, answerIndex });
-    console.log({ answers });
-    return false;
+    // console.log({ currentQuestionIndex, answerIndex });
+    // console.log({ answers });
+    if (
+      answers[currentQuestionIndex] !== undefined &&
+      answers[currentQuestionIndex]?.includes(answerIndex) === true
+    ) {
+      console.log("true ", currentQuestionIndex, answerIndex);
+      return true;
+    } else {
+      console.log("false");
+      return false;
+    }
   };
 
   return (
@@ -232,12 +241,12 @@ const Quiz = (props: QuizProps): JSX.Element => {
               {quiz.questions[currentQuestionIndex]!.options.map((o, index) => {
                 return (
                   <div
-                    className={`font-clash-display w-full cursor-pointer rounded-3xl bg-[#303030] ${
+                    className={`font-clash-display m-2 w-full cursor-pointer rounded-3xl bg-[#303030] ${
                       isSelectedAnswer(
                         currentQuestionIndex,
                         index, // TODO: this is WIP. This method should validate if the current answer option is already selected and paint the border color accordingly
                       )
-                        ? "" // TODO: if it's true, then will add the border color for selected option from figma [#721F79]
+                        ? "border-2 border-[#44AF96]" // TODO: if it's true, then will add the border color for selected option from figma [#721F79]
                         : "" // TODO: if it's false, then will not add any other styling and the quotes should be blank as is
                     }	p-3	text-lg font-bold text-[#F9F9F9]`}
                     onClick={() => {
