@@ -55,7 +55,7 @@ export const ConnectButton = () => {
                   alt="account avatar"
                   width={50}
                   height={50}
-                  className="rounded-full border-2 border-black p-0 opacity-80 shadow-sm"
+                  className="border-3 rounded-full border-black object-cover p-0 opacity-80 shadow-sm hover:h-14 hover:w-14 hover:border-amber-400"
                 />
               </button>
             )}
