@@ -1,0 +1,602 @@
+import LessonLayout from "../../../components/LessonLayout";
+import Callout from "../../../components/mdx/Callout";
+import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
+import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
+import Question from "../../../components/mdx/Question";
+
+<LessonLayout
+   lessonTitle="Python Smart Contract Development for Beginners, Pt. 1"
+   author="Raza"
+   authorPosition="Scroll"
+   authorTwitter="razacodes"
+   createdDate="January 28, 2024"
+>
+
+# Intro
+
+Welcome to the Python Smart Contract Development series, where you will learn how to build, deploy, test and interact with Smart Contracts, using only Python. Don’t learn a new language, use your existing skills to build in Web3 today!
+
+![Screenshot 2024-01-14 at 16.44.00.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/02fff761-4b22-4d80-bcac-e05d5bdbeac7/b2503faa-a73c-4cd6-87dd-37e9aa815e9a/Screenshot_2024-01-14_at_16.44.00.png)
+
+# Vyper vs Solidity
+
+<Callout emoji="💡">
+  TLDR: Using Python in the web3 space allows you to build, test, and deploy smart contracts
+  efficiently without switching languages, making it easier to transition to other stacks like
+  Solidity later, as many fundamentals are similar.
+</Callout>
+
+If you’re new to web3 you might have heard or read about another language, `Solidity`. We wont dive into the details, but as of now there are trade-offs between Solidity and Vyper. Essentially you can still do the same, but your programs will be structured slightly different.
+
+Here’s the thing. As a Solidity developer, you can have a stack where you, build, test, deploy your smart contracts all using Solidity.
+
+With this stack you can do the same! But using Python. The power of this lies in the simplicity. You dont have to switch between languages to test, build and deploy. What’s even more awesome, is that by learning this stack, it will take very little effort to switch to a solidity stack. As a lot of the fundamentals remain unchanged.
+
+## Virtual environment
+
+<Callout emoji="💡">
+  💡 TLDR - Create a virtual environment `python3 -m venv ./myv` Activate it: `source
+  ./myv/bin/activate`
+</Callout>
+
+As pythonista’s we like to keep a clean pc. So we create a virtual environment to install dependencies. A virtual environment is like creating a folder, where we can install software and build our projects. If we want to use specific versions of our software or something went wrong. We can just delete the virtual environment and create a new one very easily.
+
+Here’s a visual of what a virtual environment represents. In practise it means, we create a folder with some scripts. Activate the virtual environment using a script and that’s it. If you want to know more check out the [docs.](https://docs.python.org/3/library/venv.html#creating-virtual-environments)
+
+Let’s spin up a virtual environment. If you run into issues creating a virtual environment, you might need to `pip install` the necessary library. However as of Python version 3.3, the `venv` module should be included by default.
+
+```bash
+python3 -m venv ./myv
+```
+
+The command above creates a virtual environment named `myv`. You can give it whatever name you want. Activate the virtual environment by running:
+
+```bash
+source ./myv/bin/activate
+```
+
+## Install Dependencies
+
+It’s time to do thing…the thing we love. Start installing all the Python Libraries we need.
+
+```bash
+pip install vyper eth-ape web3 ape-vyper
+```
+
+### Vyper
+
+A programming language for writing smart contracts, known for its simplicity and security-focused design. Now…this language is Pythonic. Which means there are some slight changes, but I promise, you will get used to it no time. `I'm horrible at learning new languages`. So trust me…i can do it…you can do it.
+
+![Screenshot 2024-01-14 at 17.07.11.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/02fff761-4b22-4d80-bcac-e05d5bdbeac7/63c2cb5f-88e0-42eb-b859-6449302df7a9/Screenshot_2024-01-14_at_17.07.11.png)
+
+### Ape
+
+A comprehensive toolkit for developing, testing, and deploying smart contracts, making the whole process smoother.
+
+### Ape-Vyper Plugin
+
+An extension for the Ape toolkit that integrates Vyper, letting you easily develop and manage Vyper smart contracts.
+
+![Screenshot 2024-01-14 at 17.09.50.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/02fff761-4b22-4d80-bcac-e05d5bdbeac7/d270df72-2985-4702-af1d-a00e552f4bd0/Screenshot_2024-01-14_at_17.09.50.png)
+
+### Web3.py
+
+A Python library for interacting with the Ethereum blockchain, allowing you to connect to and perform transactions.
+
+![Screenshot 2024-01-14 at 17.14.37.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/02fff761-4b22-4d80-bcac-e05d5bdbeac7/cda6a46f-dd2e-43db-898b-8f9482c2fbfb/Screenshot_2024-01-14_at_17.14.37.png)
+
+### Foundry & Anvil
+
+We will run the tests on a local blockchain called `anvil`. The easiest way to run this, is by installing foundry. Follow the steps [here to install foundry](https://book.getfoundry.sh/getting-started/installation), which will also install anvil.
+
+## Create a project with Ape
+
+Apeworkx is like a super tool for building apps on the blockchain. It makes the tricky job of working with smart contracts a lot easier, opening up the world of blockchain to more developers. The BEST thing of it all. We get to use Python. Our favourite language.
+
+Let’s get right into it.
+
+So next up inside any folder you want, create an `ape` project. First lets create and navigate to a new folder
+
+```bash
+mkdir hello_world
+cd hello_world
+```
+
+Then use the following command to create a new ape project
+
+```bash
+ape init
+```
+
+You will be prompted for a name for your project. I named mine `hello`
+
+## Your first Vyper Smart Contract
+
+So Vyper is `pythonic` , which means it’s very similar to python, with a few differences in syntax and the way the language operates. Rest assured, these are small adjustments. Let’s start nice and easy with a hello world contract. It has a variable with hello world and one function to set the value of the variable when we deploy the contract.
+
+```python
+# Define the version
+# @version ^0.3.0
+
+# Create a string variable that can store maximum 100 characters
+greet: public(String[100])
+
+#Define the visibility with a decorator
+@external
+
+#This is the constructor that sets the value of the variable greet
+#upon deploying the smart contract
+def __init__():
+    self.greet = "Hello World"
+
+def changeGreet(_greeting: String[100):
+	#set greet to new greeting
+		self.greet = _greeting
+```
+
+Before we compile and deploy, let’s take a closer look.
+
+### Vyper Contract
+
+A Vyper contract looks similar to a Python Class. A Python Class is a template where you can define set of custom data structures and functions that can be re-used. A Vyper contract uses a structure similar to a Python Class. As we write up our contract, we will notice the slight differences.
+
+### **Variable**
+
+First is our variable. The structure of defining a variable is as follows:
+
+```python
+<NAME>:<VISIBILITY>(<TYPE>)
+```
+
+So in our case we have a string named `greet` . Anyone can see this variable once we deploy our contract on chain, because it has the visibility public.
+
+### **Strings**
+
+Now…strings are special in Vyper. The number 100 defined inside our string refers to the amount of characters we can store in there. This only applies to strings. Here’s an example when you define a number or a boolean.
+
+```python
+#STRING  greet:public(String[100])
+#INTEGER fav_num: public(uint256)
+#BOOLEAN flag:public(bool)
+```
+
+### **The Visibility Decorator**
+
+So what is this `@external` that we’re using. In Vyper we can define who can see and interact with our function. There are 2 visibility types for functions `internal` and `external`. Above every function we can use a decorator (just like you’re used too in Python)
+
+`external` functions can only be called via transactions and not internally. They are typically part of the contract's public interface. They are used to expose functionalities that you want to make available to other users and contracts, like transferring tokens, querying balances, or interacting with other contracts.
+
+`internal` functions can only be called within the contract or its derivatives and not via transactions. So this feature is useful for functions that are meant to be part of the contract's internal logic and should not be exposed as part of the contract's interface to the outside world. For example, a function that calculates an intermediate result, which is only relevant within the contract.
+
+In our case we’re using the `@external` for our constructor, but what is a constructor. Next chapter.
+
+![Screenshot 2024-01-14 at 17.22.57.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/02fff761-4b22-4d80-bcac-e05d5bdbeac7/d6fd4048-636a-4756-b45a-8cf4403bbca6/Screenshot_2024-01-14_at_17.22.57.png)
+
+### **Constructors in Vyper**
+
+If you’re coming from Solidity, you’re familiar with constructors, just the syntax is different.
+
+For newcomers, the constructor is a special function that only runs when a contract is being deployed. That’s it. After that no one can call it.
+
+Constructors are typically handy for setting the owner of the contract, or pre-defining a token supply and a bunch of other stuff.
+
+A constructor is always typed like this:
+
+```python
+def __init__():
+    ...
+```
+
+### **The ‘self’ keyword**
+
+You’ve seen this before in Python. Self refers to the instance of a cCass. Over here it refers to the contract. So when setting the value of a global or state variable, we write it out like this:
+
+```python
+self.greet = "Hello World"
+```
+
+It's similar to how **`this`** is used in other programming languages like Solidity, Java, or C++.
+
+Cool, lets compile and deploy this basic contract. Before we can deploy, we’ll need an account to deploy from. Let’s set that up.
+
+# **Create an account**
+
+When we deploy, we need to pass our `private keys`. There are a couple of ways to do it:
+
+1. Pass your private keys through the terminal - **Only do this with dummy accounts**
+2. Use a `.env` file - **Only use this for dev environments**
+3. Encrypt your key through the terminal - **Best practise**
+
+Now, the risk with a `.env` file is that you might commit it to Github and then your `private key` becomes public. We don’t want that.
+
+Best practise is to pass it through the terminal and encrypt it. Ape allows this natively, so we’re going to use this method. Run the following command to get a list of accounts
+
+```bash
+ape accounts list
+```
+
+run the following command to create a new account
+
+```bash
+ape accounts import <NAME>
+```
+
+So as an example
+
+```bash
+ape accounts import scrollsepolia
+```
+
+You will be prompted to pass your private key and then a password. Don’t forget this password (duhh). Run `ape accounts -list` to double check your account got added.
+
+# **Compile and Deploy**
+
+First we need to compile our contract. Compiling a contract means translating the human-readable source code of a smart contract (written in a programming language like Solidity, Vyper, etc.) into machine-readable bytecode that can be executed on the Ethereum Virtual Machine (EVM) or other blockchain platforms. Make sure you have the ape-vyper plugin installed. Run:
+
+```bash
+ape compile
+```
+
+This generate a file in the .build necessary to deploy our contract. Next step is to deploy our contract!
+
+### **Deploy script**
+
+Now we can deploy directly from the CLI, but it’s better to do it with a script. We have more control and it’s best practise.
+
+```python
+from ape import accounts, project
+
+def main():
+      # Initialize deployer account and print balance
+    dev_account = accounts.load("scrollsep")
+    print(f'The account balance is: {dev_account.balance / 1e18} ETH')
+     # Deploy the smart contract and print a message
+    kw = {
+        'type': 0
+    }
+    dev_account.deploy(project.hello, **kw)
+    print("Contract deployed!")
+```
+
+The only thing I want to highlight, is this part
+
+```python
+kw = {
+        'type': 0
+    }
+```
+
+We’re passing a keyword argument with type:0. Now…there is a reason. For some chains running it like this will work:
+
+```python
+dev_account.deploy(project.hello)
+```
+
+So without the keyword argument. The reason we’re passing the `kw`, is due to the fact that some chains do not support EIP 1559 transactions. There are different type of transactions. If you’re curious, click here. If you believe me, go ahead and continue.
+
+Run the following command to deploy your smart contract
+
+```bash
+ape run scripts/deploy.py --network <RPC URL>
+```
+
+Here’s my example deploying it to Scroll Sepolia test-net
+
+```bash
+ape run scripts/deploy.py --network https://sepolia-rpc.scroll.io/
+```
+
+Now we could further optimise, by preventing to pass an rpc-url directly. We’re going to do this in the next article.
+
+You will be asked if you want to sign the transaction, say yes. Then pass your password to unlock the account and you will be asked if you want to leave your account unlocked. I always say no.
+
+Congratulations, you’ve deployed your first Vyper Smart Contract!
+
+Done!
+
+# **Interact with your smart contract**
+
+We deployed our smart contract. Great. Now we can use **[web3.py](http://web3.py/)** to interact with our smart contract. Go ahead and create a file called `hello_**[contract.py](http://contract.py/)**`. This is the full code of our contract:
+
+```python
+# Importing necessary libraries
+import json            # Importing the json library for handling JSON data
+from web3 import Web3  # Importing Web3 from the web3.py library
+
+# Specify the URL of the blockchain node you want to connect to
+rpc_url = "https://sepolia-rpc.scroll.io/"
+# Creating a Web3 instance and connecting to the Ethereum blockchain using the specified node
+web3 = Web3(Web3.HTTPProvider(rpc_url))
+
+# ABI (Application Binary Interface) for the smart contract
+# This is a JSON string that describes how to interact with the contract
+abi = json.loads('[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"greet","outputs":[{"name":"","type":"string"}],"stateMutability":"view","type":"function"}]')
+
+# The Ethereum address of the deployed smart contract
+address = "0x268d4A9c3Ba20C938B9f3Db634786aB93628A7Cb"
+
+# Creating a contract object using the Web3 instance, contract address, and ABI
+# This object will be used to interact with the smart contract
+contract = web3.eth.contract(address=address, abi=abi)
+
+# Calling the 'greet' function of the contract
+# Since 'greet' is a public variable, it can be accessed as a function
+# This call does not make any changes to the blockchain, it just reads data
+greet_value = contract.functions.greet().call()
+
+# Printing the value obtained from the smart contract
+print("Greet value:", greet_value)
+
+```
+
+## Prepping before we start
+
+Before we start, make sure you have anvil running in a different terminal and deployed a contract. If you deployed a contract and then shut down the terminal, the script won’t work. The script is interacting with the contract that you deployed. When you close the terminal with anvil, you lose all your local deployments.
+
+In your directory `.build` inside a `.json` file you can find the abi. My contract is named `hello` so the file is named `hello.json`.
+
+This json has one huge object (everything between squarely brackets), you need only the abi part. This is what mine looks like:
+
+```python
+abi = json.loads('[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"greet","outputs":[{"name":"","type":"string"}],"stateMutability":"view","type":"function"}]')
+
+```
+
+Check out the Github, if you want to know what exact part I took from my `hello.json`.
+
+In your terminal, you can find your smart contract address. You will need to pass that here
+
+```python
+# The Ethereum address of the deployed smart contract
+address = "0x268d4A9c3Ba20C938B9f3Db634786aB93628A7Cb"
+```
+
+Our variable `greet` has a visibility of `public` , so it’s `call-able`, like this:
+
+```python
+greet_value = contract.functions.greet().call()
+```
+
+To run this script, in your terminal run
+
+```bash
+python hello_contract.py
+```
+
+The output should look something like this
+
+```bash
+Greet value: Hello World
+```
+
+# **Bonus**
+
+Now…if you’re like me and your terminal is sometimes just a bit of a mess and you just want your contract address written somewhere. Then I got some good news. You can adjust your deploy script to look like this
+
+```python
+from ape import accounts, project
+from datetime import datetime
+def main():
+    contract_name = "hello"
+      # Initialize deployer account and print balance
+    dev_account = accounts.load("scrollsep")
+    print(f'The account balance is: {dev_account.balance / 1e18} ETH')
+     # Deploy the smart contract and print a message
+    kw = {
+        'type': 0
+    }
+    contract_class = getattr(project, contract_name)
+    deployed_contract = dev_account.deploy(contract_class, **kw)
+    print("Contract deployed!")
+
+        contract_address = deployed_contract.address
+    # Get the current timestamp
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # Write the contract name, address, and timestamp to a file
+    with open("deployed_contracts.txt", "a") as file:
+        file.write(f"{current_time}: {contract_name} - Address: {contract_address}\n")
+
+    print(f"{contract_name} address {contract_address} recorded with timestamp.")
+```
+
+We define the contract name first at the top of the deploy script
+
+```python
+contract_name = "hello"
+```
+
+Then you need to use the `getattr` function to dynamically access an attribute (in this case, the contract) based on a string variable.
+
+```python
+contract_class = getattr(project, contract_name)
+```
+
+Now we can deploy the contract using the following line
+
+```python
+deployed_contract = dev_account.deploy(contract_class, **kw)
+```
+
+Here’s where we write the name, date and contract address to a text file
+
+```python
+ # Write the contract name, address, and timestamp to a file
+    with open("deployed_contracts.txt", "a") as file:
+        file.write(f"{current_time}: {contract_name} - Address: {contract_address}\n")
+```
+
+# Time to Test Test Test
+
+Testing is annoying. I know. But starting early makes you comfortable with the setup. You know where the test files are and you know how the code is built up. Trust me…the more you do it, the less annoying it becomes.
+
+Luckily our contract is super simple. So we can focus on setting up our tests and then write our first test function!
+
+## Create a Test File
+
+Head over to the folder `tests` and create a new python file. The name of the file should always start with `test`. Common practise is to include the contract name. I named my file `test_hello.py`.
+
+## Writing super awesome tests
+
+### The anatomy of a Test Function
+
+Before we write tests, let’s check-out the anatomy of a test-function. If we look at the [Ape docs](https://docs.apeworx.io/ape/stable/userguides/testing.html#test-pattern), we can see that tests have 3 parts:
+
+→ Set-up
+
+→ Invocation
+
+→ Assertion
+
+Side note: this might sound familiar to Solidity courses where a structure of the 3 A’s is adhered:
+
+→ Arrange
+
+→ Act
+
+→ Assert
+
+Below you’ll find a visual. This is how we structure our test-functions.
+
+**ADD VISUAL OVERHERE**
+
+## Setup the Test File
+
+First we need to import the necessary libraries
+
+```python
+from ape import accounts, project
+```
+
+### Writing our first test functions
+
+We have 2 functions in our contract that we need a test for, the constructor and `set_greet()` function. For the constructor we need to check if the initial value has been set correct. For the `set_greet` function, we need to set a new greeting and assert (check) if the result is equal to what we set the new greeting too.
+
+### Test Function 1 - Test Initial Greeting
+
+This is the complete test function:
+
+```python
+def test_greet_initialization():
+    test_account = accounts.load("anviltest")
+    # Deploy the contract
+    contract = project.hello.deploy(sender=test_account)
+
+    # Check if the greet variable is initialized correctly
+    assert contract.greet() == "Hello World", "greet variable not initialized correctly"
+```
+
+Let’s break it down!
+
+**Step 1: Load Your Anvil Account**
+
+In your Ape script, start by loading your preferred Ape account using Ape's **`accounts.load`** function. This account will be used to deploy the contract and send transactions. Replace **`"anviltest"`** with the alias of your Ape account:
+
+```python
+# Load your preferred Ethereum account
+test_account = accounts.load("anviltest")
+```
+
+**Step 2: Deploy Your Vyper Smart Contract**
+
+Next, deploy your Vyper smart contract using Ape. You'll need to specify the contract's name (replace **`'hello'`** with the actual name of your contract):
+
+```python
+# Deploy your Vyper contract
+contract = test_account.deploy(project.hello)
+```
+
+This step deploys your contract to the Anvil network, and **`contract`** will represent the deployed contract instance.
+
+**Step 3: Verify the Initialization of `greet`**
+
+Now, you want to verify if the **`greet`** variable is initialized correctly. You can do this by checking its initial value. Add an assertion to ensure that it matches the expected initial value:
+
+```python
+assert contract.greet() == "Hello World", "greet variable not initialized correctly"
+```
+
+This assertion checks if the **`greet`** variable is set to **`"Hello World"`** as expected. If it's not, the test will fail with the specified error message.
+
+**Step 4: Run the Test**
+
+Now, you can run your test script with the command `ape test --network ::foundry -s`. This spins up a local anvil chain, specifically for this test. If you have anvil running in a separate terming, this command will throw an error. Either close anvil or run the following command to run the test `ape test --network http://localhost:8545 -s`. Make sure to pass the address where anvil is running.
+
+If everything is set up correctly and the **`greet`** variable is initialized as expected, the test should pass.
+
+Awesome, let’s write the test for the next function.
+
+### Test Function 2 - Set New Greeting
+
+**Step 1: Load Your Anvil Account**
+
+In your Ape Python script, start by loading your preferred account using Ape's `accounts.load` function. This account will be used to deploy the contract and send transactions. Replace `"anvil0"` with the alias of your Ape account:
+
+```python
+from ape import accounts
+
+# Load your preferred Ethereum account
+deployer = accounts.load("anvil0")
+```
+
+**Step 2: Deploy Your Vyper Smart Contract**
+
+Next, deploy your Vyper smart contract using Ape. You'll need to specify the contract's name (replace `'your_contract_name'` with the actual name of your contract):
+
+```python
+from ape import project
+
+# Deploy your Vyper contract
+contract = deployer.deploy(project.your_contract_name)
+```
+
+This step deploys your contract to the Anvil network, and `contract` will represent the deployed contract instance.
+
+**Step 3: Define the New Greeting Message**
+
+Now, define the new greeting message that you want to set using the `set_greet` function. For example:
+
+```python
+new_greet = "Hello, Ape!"
+```
+
+Replace `"Hello, Ape!"` with the desired greeting message.
+
+**Step 4: Call the `set_greet` Function**
+
+Call the `set_greet` function of your Vyper contract to update the greeting message. Make sure to specify the `sender` as the `deployer` account to sign the transaction:
+
+```python
+contract.set_greet(new_greet, sender=deployer)
+```
+
+This line of code sends a transaction to the Anvil network to execute the `set_greet` function with the new greeting message.
+
+**Step 5: Verify the Updated Greeting**
+
+To ensure that the `set_greet` function has updated the greeting message successfully, use an assertion to check the `greet` variable in the contract:
+
+```python
+assert contract.greet() == new_greet
+```
+
+This assertion confirms that the `greet` variable now holds the new greeting message you set.
+
+**Step 6: Run the Test**
+
+Now, you can run your test script. If everything is set up correctly and the `set_greet` function works as expected, the test should pass. Run the following command:
+
+```python
+ape test --network ::foundry -s
+```
+
+The `-s` flag allows you to use your account to sign the message.
+
+That’s it! You’ve mastered the basics of testing with Ape. Pat yourself on the back, this is no small feat!
+
+# Conclusion
+
+xxx
+
+![Screenshot 2024-01-14 at 16.44.16.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/02fff761-4b22-4d80-bcac-e05d5bdbeac7/c5bb3287-1d2b-4427-aef5-e20476017d7d/Screenshot_2024-01-14_at_16.44.16.png)
+
+</LessonLayout>
