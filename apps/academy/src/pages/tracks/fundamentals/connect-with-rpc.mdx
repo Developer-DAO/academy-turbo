@@ -15,41 +15,46 @@ import LessonLayout from "../../../components/LessonLayout";
    createdDate="August 15, 2022"
 >
 
-## RPCs
-
 # to-do's:
 
 ## change text and images Ropsten > Sepolia; Metamask > Zerion; Other RPCs to POKT https://devdao.to/grove-perk
+
+## a wee intro here before getting stuck in
+
+i.e web2 - what is it. web3 - what is it. RPCs sub-topic will connect these two dots
+
+## RPCs
 
 **Remote Procedure Call (RPC)** could be classified as a type of API
 (application programming interface) that allows for developers to run code that
 can be executed on servers remotely. In plain English, an RPC call is how a dApp
 communicates with the blockchain or accesses other information from remote
 servers. In this section, we will concern ourselves with RPC calls to the
-blockchain via _Zerion_ to Ethereum testnets such as _Ropsten_ and RPC
-endpoint providers such as _Infura_, _Alchemy_, _Chainstack_, and _Ankr_.
+blockchain via the Zerion wallet to Ethereum testnets such as Sepolia and an RPC
+endpoint provider such as POKT Network.
 
 ### Connecting to a Testnet with Zerion
 
 When opening up the Zerion browser extension, we can connect to the various
-testnets by clicking on the pull-down menu as seen below and chose your desired
-testnet network:
+testnets as seen below by clicking on the extension's icon, the Settings gear ⚙️ wheel, choosing Networks, and selecting your desired
+test network:
 
-![Ropsten Test Network](/assets/lessons/connect-with-rpc/networks4.png)
+![Testnets on Zerion](/assets/lessons/connect-with-rpc/test-networks-zerion.png)
 
-If you are trying to view a given network’s RPC connection information or add a
-network, it can be accessed in the Zerion extension by clicking on the
-Hamburger(round multi-color icon above) > Settings > Networks. In my case, I am
-connected to the Ropsten testnet, so its Network Name, RPC URL, Chain ID,
-Currency Symbol, and Block Explorer URL are shown below:
+If you are trying to view a given network’s RPC connection information, it can be accessed by clicking on the arrow to the right of the network name. In
+my case, I am connected to the Sepolia testnet, so its Network Name, RPC URL, Chain ID,
+Currency Symbol, Decimals and Block Explorer URL are shown below:
 
-![Ropsten RPC Metamask](/assets/lessons/connect-with-rpc/ropsten-RPC-metamask.png)
+![Sepolia Network info Zerion](/assets/lessons/connect-with-rpc/sepolia-network-info-zerion.png)
 
 ### Add a Network
 
-A new network can be added in Zerion by clicking on the **Add a network**
-button and adding the 5 data inputs seen in the image above given in your
-tutorial or other source.
+A new network can be added in Zerion by clicking on the **Add Network**
+button. Then add the 6 data inputs for your chosen network, similar to the Sepolia example in the image above. These should be given in your tutorial, if you're working from one.
+
+An alternative way of adding network choices is through Chainlist. You can find it [here](https://chainlist.org/). It's quite self-explanatory, but be sure to check ☑️ the **Include Testnets** option. Chainlist is a rich source of RPC statistics for EVM's (Ethereum Virtual Machine).
+
+### Add a Network with Chainlist
 
 ### Connecting a dApp through an RPC Endpoint Provider
 
