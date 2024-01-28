@@ -36,39 +36,71 @@ endpoint provider such as POKT Network.
 ### Connecting to a Testnet with Zerion
 
 When opening up the Zerion browser extension, we can connect to the various
-testnets as seen below by clicking on the extension's icon, the Settings gear ⚙️ wheel, choosing Networks, and selecting your desired
-test network:
+testnets as seen below by clicking on the extension's icon, the Settings gear ⚙️ wheel,
+choosing Networks, and selecting your desired test network:
 
 ![Testnets on Zerion](/assets/lessons/connect-with-rpc/test-networks-zerion.png)
 
-If you are trying to view a given network’s RPC connection information, it can be accessed by clicking on the arrow to the right of the network name. In
-my case, I am connected to the Sepolia testnet, so its Network Name, RPC URL, Chain ID,
-Currency Symbol, Decimals and Block Explorer URL are shown below:
+If you are trying to view a given network’s RPC connection information, it can be accessed
+by clicking on the arrow to the right of the network name. In my case, I am connected to
+the Sepolia testnet. You can see its Network Name, RPC URL, Chain ID, Currency Symbol, Decimals and
+Block Explorer URL shown below:
 
 ![Sepolia Network info Zerion](/assets/lessons/connect-with-rpc/sepolia-network-info-zerion.png)
 
 ### Add a Network
 
-A new network can be added in Zerion by clicking on the **Add Network**
-button. Then add the 6 data inputs for your chosen network, similar to the Sepolia example in the image above. These should be given in your tutorial, if you're working from one.
+A lot of networks are already pre-loaded in the wallet, otherwise any new network's
+details should be given in, e.g. a tutorial that you're working from. A new
+network can be added in Zerion by clicking on the **Add Network** button. Then
+add the 6 data inputs for your chosen network, similar to the Sepolia example in the
+image above.
 
-An alternative way of adding network choices is through Chainlist. You can find it [here](https://chainlist.org/). It's quite self-explanatory, but be sure to check ☑️ the **Include Testnets** option. Chainlist is a rich source of RPC statistics for EVM's (Ethereum Virtual Machine).
+<br />
 
-### Add a Network with Chainlist
+An alternative way of adding network choices is through
+[the Chainlist website here](https://chainlist.org/). It's quite self-explanatory,
+but be sure to check ☑️ the **Include Testnets** option. Chainlist is a rich source
+of RPC statistics for EVM's (Ethereum Virtual Machine).
+
+<br />
 
 ### Connecting a dApp through an RPC Endpoint Provider
 
 In blockchain development, it is necessary to connect your dApp to the
 blockchain to deploy smart contracts and interact with the deployed contract.
 This can be done by either running your own blockchain node such as GETH or
-accessing the blockchain through an RPC endpoint service such as Infura,
-Alchemy, Chainstack, Ankr, etc. Connecting through node providers is much easier
-than running your own node.
+accessing the blockchain through an RPC endpoint service. There are many nowadays.
+Connecting through a node provider is much easier than running your own node.
 
-By using a node provider, it is quick, easy and
-**FREE** to open an account and get access to RPC endpoints of many different
-testnets including Sepolia Ethereum, Polygon Mumbai, Optimism Kovan and Solana
-Devnet. The websites for the aforementioned RPC endpoint providers can be found
+<br />
+By using a node provider, it is quick and easy, and usually free to open an account that will get you
+access to RPC endpoints of many different testnets including Sepolia Ethereum, Polygon Mumbai, Optimistic
+Goerli and Scroll Sepolia.
+<br />
+We're going to look at POKT Network, a decentralized RPC base layer that operates as an ecosystem of
+providers, as opposed to a monolithic RPC company. Its network's diverse ecosystem of web3 node operators
+ensures uptime, therefore resilience.
+<br />
+If you're a Developer DAO member, you should be aware of some of the "D_D Perks" for Web3 we have. Let's
+take advantage of one of those, and get you hooked up with Grove, one of the _Gateways_ built on top
+of POKT Network's RPC baselayer. [Click here for Grove.](https://devdao.to/grove-perk)
+
+<br />
+Are you not yet a member of Developer DAO? There is no time like the present. If accessing an RPC Gateway
+is a more pressing priority, [choose Nodies, another Gateway from POKT](https://www.nodies.app/) and
+set up an account for yourself.
+
+### Important Security Notes
+
+**It is super important to always double-check the website URL you are clicking
+on and the pop-up message in Zerion, when connecting your wallet. If you are on
+the wrong website and you allow access to your Zerion wallet, you may be allowing
+hackers access to it. You don't want that. Always double-check! At Developer DAO
+Academy, we strongly advise using a separate browser profile and wallet for
+development. Be safe!**
+
+{/\* The websites for the aforementioned RPC endpoint providers can be found
 below:
 
 - **Infura**: [**https://infura.io/**](https://infura.io/) Click on the **SIGN
@@ -83,6 +115,6 @@ below:
 **IT IS SUPER IMPORTANT TO ALWAYS DOUBLE-CHECK THE WEBSITE URL YOU ARE CLICKING
 ON AND THE POP-UP MESSAGE IN Zerion WHEN CONNECTING YOUR WALLET. IF YOU ARE ON
 THE WRONG WEBSITE AND YOU ALLOW ACCESS TO YOUR Zerion WALLET, YOU MAY BE
-ALLOWING HACKERS ACCESS TO YOUR WALLET. BE SAFE!! ALWAYS DOUBLE-CHECK!!**
+ALLOWING HACKERS ACCESS TO YOUR WALLET. BE SAFE!! ALWAYS DOUBLE-CHECK!!** \*/}
 
 </LessonLayout>
