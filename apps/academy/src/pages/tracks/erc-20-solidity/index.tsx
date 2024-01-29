@@ -12,7 +12,7 @@ const IntroToEthereumPage = () => {
       imgPath: "/image16.png",
       description:
         "Beginner-friendly. Create your first Solidity smart contract and learn the fundamentals of blockchain development. Checkpoint quizzes included.",
-      tags: ["Beginner", "Solidiy", "Remix"],
+      tags: ["Beginner", "Solidity", "Remix"],
       path: "/tracks/erc-20-solidity/1",
     },
     {
