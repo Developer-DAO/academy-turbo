@@ -169,6 +169,10 @@
   @apply my-4;
 }
 
+.mdx-a {
+  @apply underline;
+}
+
 .ul {
   @apply my-4 ml-4 list-inside list-disc;
 }
