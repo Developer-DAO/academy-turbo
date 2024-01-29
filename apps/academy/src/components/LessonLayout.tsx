@@ -37,7 +37,7 @@ export default function LessonLayout({
           />
         </div>
       </div>
-      <div className="font-clash-display px-10 pt-12 text-xl font-medium tracking-wider lg:px-36 lg:pt-16	">
+      <div className="font-poppins px-10 pt-12 text-xl font-medium tracking-wider lg:px-36 lg:pt-16">
         {children}
       </div>
     </main>
