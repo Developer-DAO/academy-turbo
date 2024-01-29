@@ -150,23 +150,36 @@
 }
 
 .h1 {
-  @apply my-8 text-4xl font-bold;
+  @apply my-8 text-4xl font-semibold;
+  font-family: var(--font-clash-display);
 }
 
 .h2 {
-  @apply my-6 text-3xl font-bold;
+  @apply my-6 text-3xl font-semibold;
+  font-family: var(--font-clash-display);
 }
 
 .h3 {
-  @apply my-6 text-2xl font-bold;
+  @apply my-6 text-2xl font-semibold;
+  font-family: var(--font-clash-display);
 }
 
 .h4 {
-  @apply my-6 text-xl font-bold;
+  @apply my-6 text-xl font-semibold;
+  font-family: var(--font-clash-display);
+}
+
+.mdx-p {
+  @apply my-4 font-light;
+  font-family: var(--font-poppins);
+}
+
+.mdx-a {
+  @apply underline;
 }
 
 .ul {
-  @apply my-4 ml-4 list-inside list-disc;
+  @apply my-4 ml-4 list-inside list-disc font-light;
 }
 
 .inline-code {

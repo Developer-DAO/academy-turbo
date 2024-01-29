@@ -22,7 +22,7 @@ export default function LessonQuestionsModal({ buttonText, title, children }: Pr
         {buttonText}
       </DialogTrigger>
       <DialogOverlay />
-      <DialogContent className="mb-20 mt-10 max-h-screen overflow-y-auto border-0 bg-[#1C1C1C] lg:w-fit">
+      <DialogContent className="mb-32 mt-10 max-h-screen overflow-y-auto border-0 bg-[#1C1C1C] lg:min-w-[50%] ">
         <DialogHeader>
           <DialogTitle className="font-clash-display m-2 text-2xl font-bold text-white">
             <div className="w-full text-right text-[#44AF96]">

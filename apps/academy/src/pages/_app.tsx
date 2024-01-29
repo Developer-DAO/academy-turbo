@@ -9,7 +9,7 @@ import {
   lightTheme,
   RainbowKitProvider,
 } from "@rainbow-me/rainbowkit";
-import { ledgerWallet, trustWallet, zerionWallet } from "@rainbow-me/rainbowkit/wallets";
+import { zerionWallet } from "@rainbow-me/rainbowkit/wallets";
 import { RainbowKitSiweNextAuthProvider } from "@rainbow-me/rainbowkit-siwe-next-auth";
 import merge from "lodash.merge";
 import type { NextPage } from "next";
@@ -44,15 +44,11 @@ const { wallets } = getDefaultWallets({
 });
 
 const connectors = connectorsForWallets([
-  ...wallets,
   {
-    groupName: "Other",
-    wallets: [
-      zerionWallet({ projectId, chains }),
-      trustWallet({ projectId, chains }),
-      ledgerWallet({ projectId, chains }),
-    ],
+    groupName: "D_D Preferred Partner",
+    wallets: [zerionWallet({ projectId, chains })],
   },
+  ...wallets,
 ]);
 
 const wagmiConfig = createConfig({
