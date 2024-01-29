@@ -25,10 +25,12 @@ In the era of Web1, information retrieval was basic and primarily one-directiona
 content through technologies like HTTP (Hypertext Transfer Protocol), and the data fetching process was
 relatively straightforward.
 
-Then came Web2, and with it development, a paradigm shift occured, introducing a
+Then came our now familiar Web2, and with it development, a paradigm shift occured, introducing a
 new era of interactivity, user-generated content, and the social web. Technologies
 like AJAX (Asynchronous JavaScript and XML) still play a crucial role in enabling
 dynamic, asynchronous function **calls** between the user's browser and the server.
+
+### The Rise of Web3
 
 The protocols used in Web1, including HTTP, still form the backbone of communication, but the way data
 is managed and controlled has become more centralised, primarily through the social media, search and
@@ -36,11 +38,10 @@ online retail giants, whose underlying structure often relies on centralised ser
 gave cause for concern in a lot of quarters, and the result is the ever-evolving decentralised web, a.k.a.
 Web3.
 
-{/* ### The Rise of Web3 */}
 Now, in the epoch of Web3, we witness a transformative phase. Web3 transcends these aforementioned
 structures, emphasising decentralisation, trustless systems, and blockchain technology. We are going
 to help you get set up with one integral aspect of this evolution for your Web3 development needs —
-the Remote Procedure Call (RPC).{" "}
+the Remote Procedure Call (RPC).
 
 ## RPCs
 
@@ -52,7 +53,7 @@ servers. In this section, we will concern ourselves with RPC calls to the
 blockchain via the Zerion wallet to Ethereum testnets such as Sepolia, and an RPC
 endpoint provider such as POKT Network.
 
-### Connecting to a Testnet with Zerion
+## Connecting to a Testnet with Zerion
 
 When opening up the Zerion browser extension, we can connect to the various
 testnets as seen below by clicking on the extension's icon, the Settings gear ⚙️
@@ -76,49 +77,68 @@ add the 6 data inputs for your chosen network, similar to the Sepolia example in
 image above.
 
 An alternative way of adding network choices is through
-[the Chainlist website here](https://chainlist.org/). It's quite self-explanatory,
+[Chainlist](https://chainlist.org/)'s website. It's quite self-explanatory,
 but be sure to check ☑️ the **Include Testnets** option. Chainlist is a rich source
 of RPC statistics for EVM's (Ethereum Virtual Machine).
 
-### Connecting a dApp through an RPC Endpoint Provider
-
-{/\* - KEMP: Grove has a free tier which you can see on their pricing page, what seems to be breaking the flow here is the process to redeem benefits as it assumes users are already DAO member which in most cases is likely not to be true.
-
-- Suggest updating the language to recommend Grove or Nodies, and then adding a note to say if you're a developer dao member you can get a discount for these services here - and provide a link to the benefits page here.
-
-- Consider breaking up sections a little further by either using bullet points or more sub-headings. There is a lot of text in this block below, might be worth adding section like:
-  "What RPC to use" or "Recommended RPCs"
-  the bullet point approach on the last version of this lesson here I personally find easier to read. \*/}
+## Connecting a dApp through an RPC Endpoint Provider
 
 In blockchain development, it is necessary to connect your dApp to the
 blockchain to deploy smart contracts and interact with the deployed contract.
 This can be done by either running your own blockchain node such as GETH or
-accessing the blockchain through an RPC endpoint service. There are many nowadays.
-Connecting through a node provider is much easier than running your own node.
+accessing the blockchain through an RPC endpoint service. Connecting through
+one of these node providers is much easier than running your own node.
 
-By using a node provider, it is quick and easy, and usually free to open an account that will get you
-access to RPC endpoints of many different testnets including Sepolia Ethereum, Polygon Mumbai, Optimistic
-Goerli and Scroll Sepolia.
+By using a node provider, it is quick and easy, and usually free to open an
+account that will get you access to RPC endpoints of many different testnets
+including Sepolia Ethereum, Polygon Mumbai, Optimistic Goerli and Scroll Sepolia.
 
-We're going to look at POKT Network, a decentralised RPC base layer that operates as an ecosystem of
-providers, as opposed to a monolithic RPC company. Its network's diverse ecosystem of web3 node operators
-ensures uptime, therefore resilience.
+### Which RPC should I use?
 
-If you're a Developer DAO member, you are hopefully aware of some of the "D*D Perks" for Web3 we have.
-Let's take advantage of one of those, and get you hooked up with Grove, one of the \_Gateways* built on
-top of POKT Network's RPC baselayer. [Click here for Grove](https://devdao.to/grove-perk).
+There are many node providers nowadays, and you might recognise some names
+such as Ankr, Alchemy, and Infura among others. We're going to look at POKT Network,
+a decentralised RPC base layer that operates as an ecosystem of providers,
+as opposed to a monolithic RPC company. Its network's diverse ecosystem of
+web3 node operators ensures uptime, therefore resilience. We
+recommend choosing from one of the _Gateways_ built on top of POKT Network's
+RPC baselayer:
 
-Are you not yet a member of Developer DAO? There is no time like the present 😁. If accessing an RPC
-Gateway is a more pressing priority, choose [Nodies, another Gateway from POKT](https://www.nodies.app/)
-and easily set up an account for yourself.
+- [Grove](https://www.grove.city/)
+- [Nodies](https://www.nodies.app/)
+
+With both, you can sign up with email, or Github, and proceed to 'create an
+application/project' to get your app's ID keys - don't worry, you don't have to write
+code for an application! 😁 You can use your key to gain access to
+many blockchain networks, e.g. by coding, configuring and deploying your smart contracts.
+
+### Are you a Developer DAO member?
+
+If you're a Developer DAO member, you are hopefully aware of some of the
+"Developer DAO Perks" for Web3 we have. Let's take advantage of one of
+those, and get you hooked up with Grove:
+
+- for D_D Grove Perks deForm click [here](https://devdao.to/grove-perk)
+- connect and sign with your D4R NFT/$CODE 400+ wallet
+- register with your email
+- check your email for your Perks and further instructions
+- choose the development wallet to use with the Perks
+
+Are you not yet a member of Developer DAO? There is no time like the present 😁
 
 ### Important Security Notes
 
-**It is super important to always double-check the website URL you are clicking
-on and the pop-up message in Zerion, when connecting your wallet. If you are on
-the wrong website and you allow access to your Zerion wallet, you may be allowing
+It is super important to always double-check the website URL you are clicking
+on and any pop-up messages in Zerion, when connecting your wallet. If you are on
+the wrong website and you allow access to your wallet, you may actually be allowing
 hackers access to it. You don't want that. Always double-check! At Developer DAO
 Academy, we strongly advise using a separate browser profile and wallet for
-development. Be safe!**
+development. Be safe!
+
+### Outro
+
+We hope you now have enough insights on connecting to testnets and RPC endpoint
+providers, and that you're equipped to navigate the decentralised web in your
+development journey. Whether you're a seasoned Developer DAO member or just starting
+out, stay curious, stay secure, and keep building this dynamic digital wonderworld.
 
 </LessonLayout>
