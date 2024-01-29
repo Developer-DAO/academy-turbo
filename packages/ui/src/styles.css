@@ -165,6 +165,14 @@
   @apply my-6 text-xl font-bold;
 }
 
+.mdx-p {
+  @apply my-4;
+}
+
+.mdx-a {
+  @apply underline;
+}
+
 .ul {
   @apply my-4 ml-4 list-inside list-disc;
 }

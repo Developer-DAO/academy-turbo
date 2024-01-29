@@ -95,7 +95,18 @@ export const Footer = () => {
           ))}
         </nav>
         <div className="flex flex-col gap-y-6 divide-x-0 divide-y md:flex-row md:divide-x md:divide-y-0">
-          <Icons.dd_logo className="h-32 w-40" />
+          <TooltipProvider delayDuration={30}>
+            <Tooltip>
+              <TooltipTrigger>
+                <a href="https://www.developerdao.com/" about="_blank">
+                  <Icons.dd_logo className="h-32 w-40" />
+                </a>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Developer DAO Website</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           <p className="max-w-xs py-6 pl-6 text-start md:py-0">
             Developer DAO Foundation © 2023 Website content licensed under&emsp;
             <Link href="https://creativecommons.org/licenses/by-nc/4.0/" className="underline">
@@ -103,7 +114,7 @@ export const Footer = () => {
             </Link>
             . Website code is licensed under&emsp;
             <Link
-              href="https://github.com/Developer-DAO/academy/blob/main/LICENSE"
+              href="https://github.com/Developer-DAO/academy-turbo/blob/main/LICENSE"
               className="underline"
             >
               MIT
