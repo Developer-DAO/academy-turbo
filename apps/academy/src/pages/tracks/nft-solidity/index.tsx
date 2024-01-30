@@ -4,7 +4,7 @@ import { TrackCard } from "ui";
 
 import TracksLayout from "@/components/TracksLayout";
 
-const IntroToEthereumPage = () => {
+const NftSolidityTrackPage = () => {
   const lessonsArray = [
     {
       title: "Introduction to Smart Contract Development with Solidity",
@@ -80,4 +80,4 @@ const IntroToEthereumPage = () => {
   );
 };
 
-export default IntroToEthereumPage;
+export default NftSolidityTrackPage;
