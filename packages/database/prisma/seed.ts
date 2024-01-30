@@ -16,84 +16,39 @@ async function main() {
   //   },
   // });
   // console.log({ user });
-
-  const newLesson = await prisma.lessons.create({
-    data: {
-      lessonTitle: "Introduction to Smart Contract Development with Solidity",
-      lessonDescription:
-        "Beginner-friendly. Create your first Solidity smart contract and learn the fundamentals of blockchain development. Checkpoint quizzes included.",
-      imgPath: "/image16.png",
-      lessonPath: "/tracks/nft-solidity/1",
-      quizFileName: "nft-solidity/quiz-nft-solidity-1",
-      trackId: "clrzjah6u00001w2ndxrq8dou",
-    },
-  });
-
-  console.log({ newLesson });
-
-  const newLesson2 = await prisma.lessons.create({
-    data: {
-      lessonTitle: "Crafting a Basic NFT: A Step-by-Step ERC-721 Tutorial for Beginners",
-      lessonDescription:
-        "Use pro developer tools  and libraries to create and host your first ERC-721 NFT, for real world professional projects. Checkpoint quizzes included.",
-      imgPath: "/image16.png",
-      lessonPath: "nft-solidity/quiz-nft-solidity-2",
-      quizFileName: "intro-to-ethereum/quiz-eth-intro-2",
-      trackId: "clrzjah6u00001w2ndxrq8dou",
-    },
-  });
-
-  console.log({ newLesson2 });
-
-  const newLesson3 = await prisma.lessons.create({
-    data: {
-      lessonTitle: "TierNFTs",
-      lessonDescription:
-        "Create your first ERC-721 tiered NFT collection with an array of dev tools with probing quizzes along the way. Adapt your project for professional use cases.",
-      imgPath: "/image16.png",
-      lessonPath: "/tracks/nft-solidity/3",
-      quizFileName: "nft-solidity/quiz-nft-solidity-3",
-      trackId: "clrzjah6u00001w2ndxrq8dou",
-    },
-  });
-
-  console.log({ newLesson3 });
-
-  const newLesson4 = await prisma.lessons.create({
-    data: {
-      lessonTitle: "Smart Contracts: Automated Testing and Test-Driven Development (TDD)",
-      lessonDescription:
-        "Learn Test Driven Development from the best. A crucial skill for Solidity developers. A necessity in blockchain eco-systems. Your automated tests keep us safe.",
-      imgPath: "/image16.png",
-      lessonPath: "/tracks/nft-solidity/4",
-      quizFileName: "nft-solidity/quiz-nft-solidity-4",
-      trackId: "clrzjah6u00001w2ndxrq8dou",
-    },
-  });
-
-  console.log({ newLesson4 });
-
-  const newLesson5 = await prisma.lessons.create({
-    data: {
-      lessonTitle: "Connect your Smart Contract to a Front End Application",
-      lessonDescription:
-        "Learn to seamlessly integrate your smart contracts with a user friendly front-end interface, utilising web3 libraries. With engaging quizzes along the way.",
-      imgPath: "/image16.png",
-      lessonPath: "/tracks/nft-solidity/5",
-      quizFileName: "nft-solidity/quiz-nft-solidity-5",
-      trackId: "clrzjah6u00001w2ndxrq8dou",
-    },
-  });
-
-  console.log({ newLesson5 });
-
-  // const newTag = await prisma.tags.create({
+  // const newLesson = await prisma.lessons.create({
   //   data: {
-  //     tagName: "Python",
-  //     tagDescription: "Python",
+  //     lessonTitle: "Introduction to Smart Contract Development with Solidity",
+  //     lessonDescription:
+  //       "Beginner-friendly. Create your first Solidity smart contract and learn the fundamentals of blockchain development. Checkpoint quizzes included.",
+  //     imgPath: "/image16.png",
+  //     lessonPath: "/tracks/nft-solidity/1",
+  //     quizFileName: "nft-solidity/quiz-nft-solidity-1",
+  //     trackId: "clrzjah6u00001w2ndxrq8dou",
   //   },
   // });
-  // console.log(newTag);
+  // console.log({ newLesson });
+  // const newTagOnTracks = await prisma.tagsOnTracks.create({
+  //   data: {
+  //     tagId: "clrzv8iyi00001wm0eewbxc4b",
+  //     trackId: "clrzjah6u00001w2ndxrq8dou",
+  //   },
+  // });
+  // console.log({ newTagOnTracks });
+  const newTagsOnLesson = await prisma.tagsOnLessons.create({
+    data: {
+      lessonId: "clrzkw6sp00091wtu66sggity",
+      tagId: "clrzjqdet00031wm1tu55ohp7",
+    },
+  });
+  console.log({ newTagsOnLesson });
+  // const newTag = await prisma.tags.create({
+  //   data: {
+  //     tagName: "UI",
+  //     tagDescription: "UI",
+  //   },
+  // });
+  // console.log({ newTag });
   // const updatedTag = await prisma.tags.update({
   //   where: {
   //     id: "clrziyukf00001w75gtwlvhas",

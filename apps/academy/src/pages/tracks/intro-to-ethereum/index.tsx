@@ -4,7 +4,7 @@ import { TrackCard } from "ui";
 
 import TracksLayout from "@/components/TracksLayout";
 
-const IntroToEthereumPage = () => {
+const IntroToEthereumTrackPage = () => {
   const lessonsArray = [
     {
       title: "A Developer's Guide to Ethereum, Pt. 1",
@@ -62,4 +62,4 @@ const IntroToEthereumPage = () => {
   );
 };
 
-export default IntroToEthereumPage;
+export default IntroToEthereumTrackPage;
