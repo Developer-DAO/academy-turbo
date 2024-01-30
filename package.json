@@ -22,7 +22,8 @@
     "fix:prettier": "prettier --plugin-search-dir=. --write .",
     "fix": "run-s fix:*",
     "prepare": "husky install",
-    "analyze": "cross-env ANALYZE=true pnpm build"
+    "analyze": "cross-env ANALYZE=true pnpm build",
+    "prisma:seed": "npx prisma db seed"
   },
   "lint-staged": {
     "*": "prettier --ignore-unknown --write",
@@ -54,11 +55,13 @@
     "prettier": "3.0.0",
     "prettier-plugin-tailwindcss": "0.4.1",
     "storybook": "7.1.1",
+    "ts-node": "^10.9.2",
     "turbo": "1.10.11",
     "typescript": "5.1.6"
   },
   "packageManager": "pnpm@8.6.10",
   "prisma": {
-    "schema": "packages/database/prisma/schema.prisma"
+    "schema": "packages/database/prisma/schema.prisma",
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} packages/database/prisma/seed.ts"
   }
 }
