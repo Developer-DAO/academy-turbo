@@ -12,7 +12,6 @@ import TokenStandards from "../fundamentals/token-standards.mdx";
 import DecentralizedStorage from "../fundamentals/decentralized-storage.mdx";
 import LessonLayout from "../../../components/LessonLayout";
 import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
-import SideDrawer from "../../../components/mdx/SideDrawer";
 import Question from "../../../components/mdx/Question";
 import Callout from "../../../components/mdx/Callout";
 import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
@@ -139,13 +138,13 @@ using `npm`, the package manager from Node, and its command `npx`that allows us
 to run or execute a package or one of its scripts. If you are comfortable with
 another package manager, feel free to use it.
 
-<SideDrawer title=" " buttonText="Getting Started with the Command Line Interface">
+<LessonInformationalModal title=" " buttonText="Getting Started with the Command Line Interface">
   <CliLesson />
-</SideDrawer>
+</LessonInformationalModal>
 
-<SideDrawer title=" " buttonText="How to install NPM on your system">
+<LessonInformationalModal title=" " buttonText="How to install NPM on your system">
   <InstallNpm />
-</SideDrawer>
+</LessonInformationalModal>
 
 Let’s create and navigate into a D_D Academy projects folder, then create a
 folder for our NFT project and `cd` into that too:
@@ -274,9 +273,9 @@ npm install @openzeppelin/contracts
   Open Zeppelin developed a lot of standard contracts that are super powerful, widely used and fully
   tested and audited.
 </Callout>
-<SideDrawer buttonText="More on Open Zeppelin">
+<LessonInformationalModal buttonText="More on Open Zeppelin" title="">
   <OpenZeppelin />
-</SideDrawer>
+</LessonInformationalModal>
 
 <LessonQuestionsModal
   buttonText="Checkpoint Questions"
@@ -330,9 +329,9 @@ a lot of requirements to meet. For example NFTs should have a numbered ID,
 functions to transfer them, and the ability to approve others as delegates to
 transfer them, etc.
 
-<SideDrawer title=" " buttonText="More about Token Standards">
+<LessonInformationalModal title=" " buttonText="More about Token Standards">
   <TokenStandards />
-</SideDrawer>
+</LessonInformationalModal>
 
 All of it is pretty much for our project, but luckily OpenZeppelin has developed
 a lot of contracts that implement these standards and more. They are widely used
@@ -626,9 +625,9 @@ For a one line explanation, nothing better than quoting the docs: “**IPFS is a
 distributed system for storing and accessing files, websites, applications, and
 data**”
 
-<SideDrawer buttonText="More on Decentralized Storage" title="&nbsp;">
+<LessonInformationalModal buttonText="More on Decentralized Storage" title="&nbsp;">
   <DecentralizedStorage />
-</SideDrawer>
+</LessonInformationalModal>
 
 It runs on top of a network of nodes that replicate the data being uploaded. A
 computer that downloads a file using IPFS, also shares that file with others for
