@@ -21,7 +21,7 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
     if (allLessonsData.length && completedQuizzesIds.length) {
       const actualLessonId: string = allLessonsData.find(
         (lesson) => lesson.quizFileName === `${quiz}.json`,
-      )?.id;
+      )!.id;
 
       if (actualLessonId === undefined) return;
 
