@@ -105,7 +105,7 @@ const FundamentalsTrackPage = () => {
         trackDescription="Access our Web3 Fundamentals offering, providing vital tools, infrastructure insights, and core concepts essential for developers. Cover CLI basics, NPM setup, wallet nuances, RPC connectivity, testnet significance, OpenZeppelin contracts, ERC token standards, decentralized storage protocols, preferred IDEs, and NFT hosting. Fundamental skills for practical project development."
         trackAuthor="elPiablo, georgemac510"
         trackAuthorDescription="The authors have a wealth of knowledge in the field of education and pedagogy"
-        trackAuthorTwitter="@GeorgeMac510, @Skruffster"
+        trackAuthorTwitter="GeorgeMac510, Skruffster"
         tags={["Entry", "Explorer", "Infra", "Blockchain", "Back-end", "Front-end", "Bash", "RPC"]}
       >
         <div className="mt-14 flex flex-col gap-8 lg:grid lg:w-full lg:grid-cols-3 lg:gap-10">

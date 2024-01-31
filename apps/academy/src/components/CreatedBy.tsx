@@ -8,6 +8,20 @@ interface CreatedByProps {
 }
 
 export default function CreatedBy({ author, authorTwitter }: CreatedByProps) {
+  // mvp: if multiple authors, split by comma and map to multiple links
+  const handles = authorTwitter.split(", ");
+  const twitterLinks = handles.map((handle, idx) => (
+    <a
+      key={idx}
+      className="pr-2 underline"
+      href={`https://x.com/${handle}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      @{handle}
+    </a>
+  ));
+
   return (
     <section className="grid place-items-start pt-6 text-sm lg:mx-16 lg:text-xl">
       <div className="flex w-full">
@@ -19,14 +33,7 @@ export default function CreatedBy({ author, authorTwitter }: CreatedByProps) {
         <div className="ml-6 flex flex-col items-center lg:flex-row lg:items-start lg:gap-4">
           <article className="font-light">
             <p className="font-bold">{author}</p>
-            <a
-              className="underline"
-              href={`https://x.com/${authorTwitter}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              @{authorTwitter}
-            </a>
+            {twitterLinks}
           </article>
         </div>
       </div>

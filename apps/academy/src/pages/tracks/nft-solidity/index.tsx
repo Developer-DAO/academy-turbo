@@ -8,7 +8,7 @@ const NftSolidityTrackPage = () => {
   const lessonsArray = [
     {
       title: "Introduction to Smart Contract Development with Solidity",
-      author: "_7i7o, piablo", // ["_7i7o", "piablo"],
+      author: "7i7o, piablo", // ["_7i7o", "piablo"],
       imgPath: "/image16.png",
       description:
         "Beginner-friendly. Create your first Solidity smart contract and learn the fundamentals of blockchain development. Checkpoint quizzes included.",
@@ -17,7 +17,7 @@ const NftSolidityTrackPage = () => {
     },
     {
       title: "Crafting a Basic NFT: A Step-by-Step ERC-721 Tutorial for Beginners",
-      author: "_7i7o, piablo", // ["_7i7o", "piablo"],
+      author: "7i7o, piablo", // ["_7i7o", "piablo"],
       imgPath: "/image16.png",
       description:
         "Use pro developer tools  and libraries to create and host your first ERC-721 NFT, for real world professional projects. Checkpoint quizzes included.",
@@ -26,7 +26,7 @@ const NftSolidityTrackPage = () => {
     },
     {
       title: "TierNFTs.",
-      author: "_7i7o, meowy, piablo", // ["_7i7o", "meowy", "piablo"],
+      author: "7i7o, meowy, piablo", // ["_7i7o", "meowy", "piablo"],
       imgPath: "/image16.png",
       description:
         "Create your first ERC-721 tiered NFT collection with an array of dev tools with probing quizzes along the way. Adapt your project for professional use cases.",
@@ -59,7 +59,7 @@ const NftSolidityTrackPage = () => {
         trackDescription="This ERC-721 NFT track will take you from complete beginner to building a series of meaningful, real-world, NFT projects. You'll enhance your skills along the way by using test-driven development to gain confidence that your smart contracts are safe to deploy to a live blockchain. And finally you'll be creating a tasteful front-end interface so your users can mint your ERC-721 tokens in their desired tier. All in all, a rewarding coding journey."
         trackAuthor="7i7o, piablo, georgemac510, brianfive, ropats16, meowy, mveve"
         trackAuthorDescription="Authors are active Developer DAO members"
-        trackAuthorTwitter="@_7i7o.eth"
+        trackAuthorTwitter="7i7o"
         tags={["Entry", "Remix", "Explorer", "Full Stack", "Solidity", "JavaScript"]}
       >
         <div className="mt-14 flex flex-col gap-8 lg:grid lg:w-full lg:grid-cols-3 lg:gap-10">

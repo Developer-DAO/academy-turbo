@@ -11,6 +11,20 @@ export default function TrackAuthor({
   authorDescription,
   authorTwitter,
 }: TrackAuthorProps) {
+  // mvp: if multiple authors, split by comma and map to multiple links
+  const handles = authorTwitter.split(", ");
+  const twitterLinks = handles.map((handle, idx) => (
+    <a
+      key={idx}
+      className="pr-2 underline"
+      href={`https://x.com/${handle}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      @{handle}
+    </a>
+  ));
+
   return (
     <div className="w-full px-7 pt-14 lg:w-full lg:p-0">
       <section className="grid place-items-start pt-3 text-sm lg:pt-6 lg:text-xl">
@@ -23,14 +37,7 @@ export default function TrackAuthor({
           <article className="mb-4 mt-2 gap-2 font-light lg:mt-7">
             <p className="font-bold">{author}</p>
             <p>{authorDescription}</p>
-            <a
-              className="underline"
-              href={`https://x.com/${authorTwitter}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              @{authorTwitter}
-            </a>
+            {twitterLinks}
           </article>
         </div>
       </section>
