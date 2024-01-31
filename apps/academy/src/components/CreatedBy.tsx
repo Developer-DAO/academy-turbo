@@ -7,12 +7,7 @@ interface CreatedByProps {
   createdDate: string;
 }
 
-export default function CreatedBy({
-  author,
-  authorPosition,
-  authorTwitter,
-  createdDate,
-}: CreatedByProps) {
+export default function CreatedBy({ author, authorTwitter }: CreatedByProps) {
   return (
     <section className="grid place-items-start pt-6 text-sm lg:mx-16 lg:text-xl">
       <div className="flex w-full">
@@ -23,11 +18,15 @@ export default function CreatedBy({
         </Avatar>
         <div className="ml-6 flex flex-col items-center lg:flex-row lg:items-start lg:gap-4">
           <article className="font-light">
-            <p>
-              {author} @ {authorPosition}
-            </p>
-            <p>{createdDate}</p>
-            <p>Twitter {authorTwitter}</p>
+            <p className="font-bold">{author}</p>
+            <a
+              className="underline"
+              href={`https://x.com/${authorTwitter}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @{authorTwitter}
+            </a>
           </article>
         </div>
       </div>
