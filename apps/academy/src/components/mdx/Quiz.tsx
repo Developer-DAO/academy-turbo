@@ -169,7 +169,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
     // return quizSuccessToast();
 
     const lessonIdToSave: string =
-      allLessonsData.find((lesson) => lesson.quizFileName === `${props.quiz}.json`).id || "";
+      allLessonsData.find((lesson) => lesson.quizFileName === `${props.quiz}.json`)!.id || "";
 
     if (lessonIdToSave === undefined || lessonIdToSave === "") {
       console.error("Lesson not found");
