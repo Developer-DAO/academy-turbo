@@ -35,13 +35,22 @@ async function main() {
   //   },
   // });
   // console.log({ newTagOnTracks });
-  const newTagsOnLesson = await prisma.tagsOnLessons.create({
+  const updatedTrack = await prisma.tracks.update({
+    where: {
+      id: "clrzj8e6k00001wpj0djgt19b",
+    },
     data: {
-      lessonId: "clrzkw6sp00091wtu66sggity",
-      tagId: "clrzjqdet00031wm1tu55ohp7",
+      trackPath: "/tracks/intro-to-ethereum",
     },
   });
-  console.log({ newTagsOnLesson });
+  console.log({ updatedTrack });
+  // const newTagsOnLesson = await prisma.tagsOnLessons.create({
+  //   data: {
+  //     lessonId: "clrzkw6sp00091wtu66sggity",
+  //     tagId: "clrzjqdet00031wm1tu55ohp7",
+  //   },
+  // });
+  // console.log({ newTagsOnLesson });
   // const newTag = await prisma.tags.create({
   //   data: {
   //     tagName: "UI",
