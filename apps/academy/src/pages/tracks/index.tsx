@@ -33,7 +33,7 @@ const TracksPage = () => {
     },
     {
       title: "Build a Fungible Token",
-      author: "_7i7o, piablo",
+      author: "7i7o, piablo",
       imgPath: "/image16.png",
       description:
         "Start with Solidity basics, or move straight on to creating an ERC-20 token using the Foundry development toolchain. Later, we'll explore more advanced concepts with real-world use cases, and best practices for creating and managing blockchain assets",

@@ -30,7 +30,7 @@ export default function TracksLayout({
         <div className="w-full">
           <AboutCourse lessonDescription={trackDescription} tags={tags} />
         </div>
-        <div className="text-left">
+        <div className="w-full">
           <TrackAuthor
             author={trackAuthor}
             authorDescription={trackAuthorDescription}
