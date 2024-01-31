@@ -7,7 +7,6 @@ import { useAppContext } from "@/contexts/AppContext";
 
 const TracksPage = () => {
   const { allTracksData } = useAppContext();
-  console.log({ allTracksData });
   // const tracksArray = [
   //   {
   //     title: "Web3 Fundamentals",

@@ -35,15 +35,16 @@ async function main() {
   //   },
   // });
   // console.log({ newTagOnTracks });
-  const updatedTrack = await prisma.tracks.update({
+  const updatedLesson = await prisma.lessons.update({
     where: {
-      id: "clrzj8e6k00001wpj0djgt19b",
+      id: "clrzkw4o000031wtue0zs7su3",
     },
     data: {
-      trackPath: "/tracks/intro-to-ethereum",
+      quizFileName: "nft-solidity/quiz-nft-solidity-2",
+      trackId: "clrzj9pul00001wwrecf2lvgf",
     },
   });
-  console.log({ updatedTrack });
+  console.log({ updatedLesson });
   // const newTagsOnLesson = await prisma.tagsOnLessons.create({
   //   data: {
   //     lessonId: "clrzkw6sp00091wtu66sggity",

@@ -10,7 +10,7 @@ export interface TrackCardProps {
   imgSrc: string;
   tags: string[];
   title: string;
-  author: string;
+  author: string | string[];
   description: string;
 }
 
