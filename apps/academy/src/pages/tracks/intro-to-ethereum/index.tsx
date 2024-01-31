@@ -53,8 +53,8 @@ const IntroToEthereumTrackPage = () => {
         trackTitle="A Developer's Guide to Ethereum"
         trackDescription="An accessible introduction to Ethereum via web3.py and Python. Grasp blockchain basics, Ethereum's decentralization, and smart contracts with practical insights. Code included for hands-on learning, but no programming expertise required."
         trackAuthor="wolovim"
-        trackAuthorDescription="wolovim is a Full Stack Python Developer at the Ethereum Foundation."
-        trackAuthorTwitter="@wolovim.eth"
+        trackAuthorDescription="Full-stack developer on the Ethereum Foundation's Python tooling team, helping to maintain web3.py, py-evm, and related open source libraries."
+        trackAuthorTwitter="wolovim"
         tags={["Entry", "Open Source", "Blockchain", "Ethereum", "Python", "Web3.py", "Node"]}
       >
         <div className="mt-14 flex flex-col gap-8 lg:grid lg:w-full lg:grid-cols-3 lg:gap-10">
