@@ -876,14 +876,14 @@ hardhat.config.js
 In order to deploy to a real testnet we'll need:
 
 - An Ethereum wallet that can connect to Sepolia.
-  [Download Zerion here](https://devdao.to/get-zerion) as a good example
+  [Zerion](https://devdao.to/get-zerion) is a good example
 - Some Sepolia-ETH. You can ask for some in a faucet, it's free, although some
   are faster than others! Options: [#1](https://sepoliafaucet.com/),
   [#2](https://testnet-faucet.com/sepolia/),
   [#3](https://faucet.quicknode.com/ethereum/sepolia)
-- An API Key from an Ethereum RPC Node Provider
-  ([Alchemy](https://www.alchemy.com/), [Infura](https://infura.io/),
-  [Ankr](https://rpc.ankr.com/eth_sepolia)
+- An API Key from an Ethereum RPC Node Provider, e.g.
+  [Grove](https://www.grove.city/), [Nodies](https://www.nodies.app/)
+  - If you're a Developer_DAO member, check out [D_D Grove Perks](https://devdao.to/grove-perk)
 - A minor change in the Hardhat configuration file
 
 First and foremost, **security**. We are exploring new grounds, experimenting,
@@ -907,9 +907,7 @@ tokens for developing.
 
 We need to inform Hardhat which node we are using to connect to the blockchain
 network. Once you have your wallet funded with test ETH, you'll need sign up for
-one of the Ethereum RPC Node Providers. Alchemy and Infura are the most used.
-And Ankr has a 'community endpoint' which doesn't require a dedicated sign up,
-to list a few options.
+an Ethereum RPC Node Providers. We mentioned a few earlier.
 
 After signing up, you'll be asked to create an App. Be sure to select the
 Sepolia network there. When the app is created, you'll see a 'View Key' button,
@@ -927,7 +925,7 @@ require("@nomicfoundation/hardhat-toolbox");
 
 const WALLET_PRIVATE_KEY = "YOUR-PRIVATE-KEY-DONT-SHARE";
 
-const RPC_API_KEY = "YOUR-API-KEY-FROM-INFURA-OR-ALCHEMY";
+const RPC_API_KEY = "YOUR-RPC-URL-FROM-YOUR-RPC-PROVIDER";
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
