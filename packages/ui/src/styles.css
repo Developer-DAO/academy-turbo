@@ -178,8 +178,12 @@
   @apply underline;
 }
 
-.ul {
+.mdx-ul {
   @apply my-4 ml-4 list-inside list-disc font-light;
+}
+
+.mdx-ol {
+  @apply my-4 ml-4 list-inside list-decimal font-light;
 }
 
 .inline-code {
