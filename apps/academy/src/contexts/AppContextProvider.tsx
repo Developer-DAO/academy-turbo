@@ -83,7 +83,12 @@ export function AppContextProvider({ children }: PropsInterface) {
     void fetchFromDirs();
   }, []);
 
-  // - Get All lessons to get the Id's
+  // - Get All Tracks data
+  const { data: allTracksData } = api.tracks.getAll.useQuery(undefined, {
+    refetchOnWindowFocus: false,
+  });
+
+  // - Get All lessons data
   const { data: allLessonsData } = api.lessons.getAll.useQuery(undefined, {
     refetchOnWindowFocus: false,
   });
@@ -162,6 +167,7 @@ export function AppContextProvider({ children }: PropsInterface) {
         fundamentals,
         allLessonsData: allLessonsData !== undefined ? allLessonsData : [],
         refetchCompletedQuizzesAll,
+        allTracksData: allTracksData !== undefined ? allTracksData : [],
       }}
     >
       {children}

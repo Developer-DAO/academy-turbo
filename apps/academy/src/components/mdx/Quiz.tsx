@@ -71,6 +71,8 @@ const Quiz = (props: QuizProps): JSX.Element => {
       newAnswers !== undefined &&
       Object.keys(newAnswers).length > 0 &&
       currentQuestionIndex !== undefined &&
+      newAnswers[currentQuestionIndex] !== undefined &&
+      newAnswers[currentQuestionIndex]!.length > 0 &&
       newAnswers[currentQuestionIndex]!.includes(answerIndex)
     ) {
       newAnswers[currentQuestionIndex.toString()] = newAnswers[currentQuestionIndex]!.filter(
@@ -166,13 +168,10 @@ const Quiz = (props: QuizProps): JSX.Element => {
 
     // return quizSuccessToast();
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-    const lessonIdToSave: string = allLessonsData.find(
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      (lesson) => lesson.quizFileName === `${props.quiz}.json`,
-    )?.id;
+    const lessonIdToSave: string =
+      allLessonsData.find((lesson) => lesson.quizFileName === `${props.quiz}.json`)!.id || "";
 
-    if (lessonIdToSave === undefined) {
+    if (lessonIdToSave === undefined || lessonIdToSave === "") {
       console.error("Lesson not found");
       return;
     }
@@ -189,10 +188,15 @@ const Quiz = (props: QuizProps): JSX.Element => {
     setCurrentQuestionIndex(0);
   };
 
-  const isSelectedAnswer = (currentQuestionIndex: number, answerIndex: number): boolean => {
-    console.log({ currentQuestionIndex, answerIndex });
-    console.log({ answers });
-    return false;
+  const isSelectedAnswer = (answerIndex: number): string => {
+    if (
+      answers[currentQuestionIndex] !== undefined &&
+      answers[currentQuestionIndex]?.includes(answerIndex) === true
+    ) {
+      return "border-2 border-[#44AF96]";
+    } else {
+      return "";
+    }
   };
 
   return (
@@ -232,14 +236,9 @@ const Quiz = (props: QuizProps): JSX.Element => {
               {quiz.questions[currentQuestionIndex]!.options.map((o, index) => {
                 return (
                   <div
-                    className={`font-clash-display w-full cursor-pointer rounded-3xl bg-[#303030] ${
-                      isSelectedAnswer(
-                        currentQuestionIndex,
-                        index, // TODO: this is WIP. This method should validate if the current answer option is already selected and paint the border color accordingly
-                      )
-                        ? "" // TODO: if it's true, then will add the border color for selected option from figma [#721F79]
-                        : "" // TODO: if it's false, then will not add any other styling and the quotes should be blank as is
-                    }	p-3	text-lg font-bold text-[#F9F9F9]`}
+                    className={`font-clash-display w-full cursor-pointer rounded-3xl bg-[#303030] ${isSelectedAnswer(
+                      index,
+                    )}	p-3	text-lg font-bold text-[#F9F9F9]`}
                     onClick={() => {
                       selectAnswer(index);
                     }}

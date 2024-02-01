@@ -35,13 +35,22 @@ async function main() {
   //   },
   // });
   // console.log({ newTagOnTracks });
-  const newTagsOnLesson = await prisma.tagsOnLessons.create({
+  const updatedLesson = await prisma.tracks.update({
+    where: {
+      id: "clrzjah6u00001w2ndxrq8dou",
+    },
     data: {
-      lessonId: "clrzkw6sp00091wtu66sggity",
-      tagId: "clrzjqdet00031wm1tu55ohp7",
+      order: 4,
     },
   });
-  console.log({ newTagsOnLesson });
+  console.log({ updatedLesson });
+  // const newTagsOnLesson = await prisma.tagsOnLessons.create({
+  //   data: {
+  //     lessonId: "clrzkw6sp00091wtu66sggity",
+  //     tagId: "clrzjqdet00031wm1tu55ohp7",
+  //   },
+  // });
+  // console.log({ newTagsOnLesson });
   // const newTag = await prisma.tags.create({
   //   data: {
   //     tagName: "UI",

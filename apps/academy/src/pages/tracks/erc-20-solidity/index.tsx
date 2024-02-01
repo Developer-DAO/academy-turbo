@@ -1,30 +1,43 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import { TrackCard } from "ui";
 
+import Spinner from "@/components/Spinner";
 import TracksLayout from "@/components/TracksLayout";
+import { api } from "@/utils/api";
 
 const Erc20SolidityTrackPage = () => {
-  const lessonsArray = [
+  const router = useRouter();
+
+  const path = router.pathname;
+
+  const { data: allLessonsData } = api.lessons.getLessonsByTrackPath.useQuery(
+    { trackPath: path },
     {
-      title: "Introduction to Smart Contract Development with Solidity",
-      author: "7i7o, piablo", // ["_7i7o", "piablo"],
-      imgPath: "/image16.png",
-      description:
-        "Beginner-friendly. Create your first Solidity smart contract and learn the fundamentals of blockchain development. Checkpoint quizzes included.",
-      tags: ["Beginner", "Solidity", "Remix"],
-      path: "/tracks/erc-20-solidity/1",
+      refetchOnWindowFocus: false,
     },
-    {
-      title: "Your own ERC-20 Token: A Step-by-Step Guide using Foundry",
-      author: "7i7o, piablo",
-      imgPath: "/image16.png",
-      description:
-        "Foundry demystified: ERC-20 token creation for beginners. Probing quizzes throughout. Grasp the fundamentals and empower yourself to build and customize.",
-      tags: ["Beginner", "ERC-20", "Foundry"],
-      path: "/tracks/erc-20-solidity/2",
-    },
-  ];
+  );
+  // const lessonsArray = [
+  //   {
+  //     title: "Introduction to Smart Contract Development with Solidity",
+  //     author: "_7i7o, piablo", // ["_7i7o", "piablo"],
+  //     imgPath: "/image16.png",
+  //     description:
+  //       "Beginner-friendly. Create your first Solidity smart contract and learn the fundamentals of blockchain development. Checkpoint quizzes included.",
+  //     tags: ["Beginner", "Solidity", "Remix"],
+  //     path: "/tracks/erc-20-solidity/1",
+  //   },
+  //   {
+  //     title: "Your own ERC-20 Token: A Step-by-Step Guide using Foundry",
+  //     author: "_7i7o, piablo",
+  //     imgPath: "/image16.png",
+  //     description:
+  //       "Foundry demystified: ERC-20 token creation for beginners. Probing quizzes throughout. Grasp the fundamentals and empower yourself to build and customize.",
+  //     tags: ["Beginner", "ERC-20", "Foundry"],
+  //     path: "/tracks/erc-20-solidity/2",
+  //   },
+  // ];
   return (
     <div className="relative m-10 flex lg:mx-auto lg:max-w-screen-lg">
       <TracksLayout
@@ -36,17 +49,24 @@ const Erc20SolidityTrackPage = () => {
         tags={["Beginner", "Solidity", "ERC-20", "Foundry", "DeFi"]}
       >
         <div className="mt-14 flex flex-col gap-8 lg:grid lg:w-full lg:grid-cols-3 lg:gap-10">
-          {lessonsArray.map((track, idx) => (
-            <Link href={track.path} key={idx}>
-              <TrackCard
-                imgSrc={track.imgPath}
-                tags={track.tags}
-                title={track.title}
-                author={track.author}
-                description={track.description}
-              />
-            </Link>
-          ))}
+          {allLessonsData !== undefined && allLessonsData.length > 0 ? (
+            allLessonsData.map((lesson, idx) => {
+              const tagsForThisLesson = lesson.tags.map((tag) => tag.tag.tagName);
+              return (
+                <Link href={lesson.lessonPath} key={idx}>
+                  <TrackCard
+                    imgSrc={lesson.imgPath}
+                    tags={tagsForThisLesson}
+                    title={lesson.lessonTitle}
+                    author={lesson.authors}
+                    description={lesson.lessonDescription}
+                  />
+                </Link>
+              );
+            })
+          ) : (
+            <Spinner />
+          )}
         </div>
       </TracksLayout>
     </div>

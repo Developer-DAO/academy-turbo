@@ -64,6 +64,7 @@ model Lessons {
   track Tracks @relation(fields: [trackId], references: [id], onDelete: NoAction)
   trackId String
   completedQuizzes CompletedQuizzes[]
+  order Int?
 }
   
   model Tags {
@@ -96,6 +97,7 @@ model Tracks {
   tags TagsOnTracks[]
   trackPath String
   lessons Lessons[]
+  order Int?
 }
 
 model TagsOnTracks {
