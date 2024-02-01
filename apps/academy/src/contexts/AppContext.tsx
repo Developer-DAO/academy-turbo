@@ -1,7 +1,7 @@
-import type { Lessons, Tags,Tracks } from "database";
+import type { Lessons, Tags, Tracks } from "database";
 import { createContext, useContext } from "react";
 
-import type { Fundamental, Project } from "@/interfaces";
+// import type { Fundamental, Project } from "@/interfaces";
 
 type TagsResult =
   | Tracks
@@ -12,8 +12,8 @@ type TagsResult =
 
 interface AppContextInterface {
   completedQuizzesIds: string[];
-  projects: Project[];
-  fundamentals: Fundamental[];
+  // projects: Project[];
+  // fundamentals: Fundamental[];
   allLessonsData: Lessons[];
   refetchCompletedQuizzesAll?: () => Promise<any>;
   allTracksData: TagsResult[];
@@ -21,8 +21,8 @@ interface AppContextInterface {
 
 export const AppContext = createContext<AppContextInterface>({
   completedQuizzesIds: [],
-  projects: [],
-  fundamentals: [],
+  // projects: [],
+  // fundamentals: [],
   allLessonsData: [],
   refetchCompletedQuizzesAll: async () => Promise.resolve(),
   allTracksData: [],
