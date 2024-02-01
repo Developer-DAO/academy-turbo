@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import { type ReactNode, useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 
-import type { FormatedLessonInterface, Fundamental, Project } from "@/interfaces";
+// import type { FormatedLessonInterface, Fundamental, Project } from "@/interfaces";
 import { api } from "@/utils/api";
 
 import { AppContext } from "./AppContext";
@@ -14,8 +14,8 @@ interface PropsInterface {
 }
 
 export function AppContextProvider({ children }: PropsInterface) {
-  const [fundamentals, setFundamentals] = useState<Fundamental[]>([]);
-  const [projects, setProjects] = useState<Project[]>([]);
+  // const [fundamentals, setFundamentals] = useState<Fundamental[]>([]);
+  // const [projects, setProjects] = useState<Project[]>([]);
   const [completedQuizzesIds, setCompletedQuizzesIds] = useState<string[]>([]);
   const [sessionDataUser, setSessionDataUser] = useState<any>(null);
 
@@ -62,26 +62,26 @@ export function AppContextProvider({ children }: PropsInterface) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [completedQuizzesAllData]);
 
-  const fetchFromDirs = async () => {
-    const lessonsData = await fetch("/api/readfiles").then(async (res) => res.json());
+  // const fetchFromDirs = async () => {
+  //   const lessonsData = await fetch("/api/readfiles").then(async (res) => res.json());
 
-    const lessonsFormatResult: FormatedLessonInterface = lessonsData.reduce(
-      (acc: any, curr: any) => {
-        if (acc[curr.path] === undefined) acc[curr.path] = [];
+  //   const lessonsFormatResult: FormatedLessonInterface = lessonsData.reduce(
+  //     (acc: any, curr: any) => {
+  //       if (acc[curr.path] === undefined) acc[curr.path] = [];
 
-        acc[curr.path].push(curr);
-        return acc as Project | Fundamental;
-      },
-      {},
-    );
+  //       acc[curr.path].push(curr);
+  //       return acc as Project | Fundamental;
+  //     },
+  //     {},
+  //   );
 
-    setFundamentals(lessonsFormatResult.fundamentals);
-    setProjects(lessonsFormatResult.projects);
-  };
+  //   setFundamentals(lessonsFormatResult.fundamentals);
+  //   setProjects(lessonsFormatResult.projects);
+  // };
 
-  useEffect(() => {
-    void fetchFromDirs();
-  }, []);
+  // useEffect(() => {
+  //   void fetchFromDirs();
+  // }, []);
 
   // - Get All Tracks data
   const { data: allTracksData } = api.tracks.getAll.useQuery(undefined, {
@@ -93,78 +93,78 @@ export function AppContextProvider({ children }: PropsInterface) {
     refetchOnWindowFocus: false,
   });
 
-  useEffect(() => {
-    if (
-      allLessonsData !== undefined &&
-      projects !== undefined &&
-      completedQuizzesIds.length !== 0
-    ) {
-      const projectsWithCompleteStatus = projects.map((lesson) => {
-        const currentLessonId = allLessonsData.find(
-          (lessonData: any) =>
-            lessonData.projectLessonNumber?.toString() === lesson.slug.toString(), // DEV_NOTE: forcing .toString() to avoid type errors
-        )?.id;
+  // useEffect(() => {
+  //   if (
+  //     allLessonsData !== undefined &&
+  //     projects !== undefined &&
+  //     completedQuizzesIds.length !== 0
+  //   ) {
+  //     const projectsWithCompleteStatus = projects.map((lesson) => {
+  //       const currentLessonId = allLessonsData.find(
+  //         (lessonData: any) =>
+  //           lessonData.projectLessonNumber?.toString() === lesson.slug.toString(), // DEV_NOTE: forcing .toString() to avoid type errors
+  //       )?.id;
 
-        const completed =
-          currentLessonId !== undefined && completedQuizzesIds.includes(currentLessonId)
-            ? true
-            : false; // DEV_NOTE: if the lesson is not found, it is not completed
-        return { ...lesson, completed };
-      });
+  //       const completed =
+  //         currentLessonId !== undefined && completedQuizzesIds.includes(currentLessonId)
+  //           ? true
+  //           : false; // DEV_NOTE: if the lesson is not found, it is not completed
+  //       return { ...lesson, completed };
+  //     });
 
-      setProjects(projectsWithCompleteStatus);
-    } else if (
-      allLessonsData !== undefined &&
-      projects !== undefined &&
-      completedQuizzesIds.length === 0
-    ) {
-      const projectsWithCompleteStatus = projects.map((lesson) => {
-        return { ...lesson, completed: false };
-      });
-      setProjects(projectsWithCompleteStatus);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [completedQuizzesIds]);
+  //     setProjects(projectsWithCompleteStatus);
+  //   } else if (
+  //     allLessonsData !== undefined &&
+  //     projects !== undefined &&
+  //     completedQuizzesIds.length === 0
+  //   ) {
+  //     const projectsWithCompleteStatus = projects.map((lesson) => {
+  //       return { ...lesson, completed: false };
+  //     });
+  //     setProjects(projectsWithCompleteStatus);
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [completedQuizzesIds]);
 
-  useEffect(() => {
-    if (
-      allLessonsData !== undefined &&
-      fundamentals !== undefined &&
-      completedQuizzesIds.length !== 0
-    ) {
-      const fundamentalsWithCompleteStatus = fundamentals.map((lesson) => {
-        const currentLessonId = allLessonsData.find(
-          (lessonData: any) =>
-            lessonData.fundamentalLessonName?.toString() === lesson.slug.toString(), // DEV_NOTE: forcing .toString() to avoid type errors
-        )?.id;
+  // useEffect(() => {
+  //   if (
+  //     allLessonsData !== undefined &&
+  //     fundamentals !== undefined &&
+  //     completedQuizzesIds.length !== 0
+  //   ) {
+  //     const fundamentalsWithCompleteStatus = fundamentals.map((lesson) => {
+  //       const currentLessonId = allLessonsData.find(
+  //         (lessonData: any) =>
+  //           lessonData.fundamentalLessonName?.toString() === lesson.slug.toString(), // DEV_NOTE: forcing .toString() to avoid type errors
+  //       )?.id;
 
-        const completed =
-          currentLessonId !== undefined && completedQuizzesIds.includes(currentLessonId)
-            ? true
-            : false; // DEV_NOTE: if the lesson is not found, it is not completed
-        return { ...lesson, completed };
-      });
+  //       const completed =
+  //         currentLessonId !== undefined && completedQuizzesIds.includes(currentLessonId)
+  //           ? true
+  //           : false; // DEV_NOTE: if the lesson is not found, it is not completed
+  //       return { ...lesson, completed };
+  //     });
 
-      setFundamentals(fundamentalsWithCompleteStatus);
-    } else if (
-      allLessonsData !== undefined &&
-      fundamentals !== undefined &&
-      completedQuizzesIds.length === 0
-    ) {
-      const fundamentalsWithCompleteStatus = fundamentals.map((lesson) => {
-        return { ...lesson, completed: false };
-      });
-      setFundamentals(fundamentalsWithCompleteStatus);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [completedQuizzesIds]);
+  //     setFundamentals(fundamentalsWithCompleteStatus);
+  //   } else if (
+  //     allLessonsData !== undefined &&
+  //     fundamentals !== undefined &&
+  //     completedQuizzesIds.length === 0
+  //   ) {
+  //     const fundamentalsWithCompleteStatus = fundamentals.map((lesson) => {
+  //       return { ...lesson, completed: false };
+  //     });
+  //     setFundamentals(fundamentalsWithCompleteStatus);
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [completedQuizzesIds]);
 
   return (
     <AppContext.Provider
       value={{
         completedQuizzesIds,
-        projects,
-        fundamentals,
+        // projects,
+        // fundamentals,
         allLessonsData: allLessonsData !== undefined ? allLessonsData : [],
         refetchCompletedQuizzesAll,
         allTracksData: allTracksData !== undefined ? allTracksData : [],
