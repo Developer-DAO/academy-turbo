@@ -35,13 +35,12 @@ async function main() {
   //   },
   // });
   // console.log({ newTagOnTracks });
-  const updatedLesson = await prisma.lessons.update({
+  const updatedLesson = await prisma.tracks.update({
     where: {
-      id: "clrzkw4o000031wtue0zs7su3",
+      id: "clrzjah6u00001w2ndxrq8dou",
     },
     data: {
-      quizFileName: "nft-solidity/quiz-nft-solidity-2",
-      trackId: "clrzj9pul00001wwrecf2lvgf",
+      order: 4,
     },
   });
   console.log({ updatedLesson });

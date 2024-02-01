@@ -97,6 +97,7 @@ model Tracks {
   tags TagsOnTracks[]
   trackPath String
   lessons Lessons[]
+  order Int?
 }
 
 model TagsOnTracks {

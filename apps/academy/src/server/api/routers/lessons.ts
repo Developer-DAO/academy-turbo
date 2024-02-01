@@ -41,6 +41,9 @@ export const lessonsRouter = createTRPCRouter({
             },
           },
         },
+        orderBy: {
+          order: "asc",
+        },
       });
 
       return trackLessons;

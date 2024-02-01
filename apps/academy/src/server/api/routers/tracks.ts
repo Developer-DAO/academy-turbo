@@ -13,6 +13,9 @@ export const TracksRouter = createTRPCRouter({
         tags: true,
         lessons: false,
       },
+      orderBy: {
+        order: "asc",
+      },
     });
     return tracks;
   }),
