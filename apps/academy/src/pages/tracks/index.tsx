@@ -49,12 +49,11 @@ const TracksPage = () => {
     <div className="flex h-full w-full flex-col space-y-10 overflow-hidden bg-black lg:h-screen lg:max-h-screen lg:flex-row">
       <div
         className="flex h-full min-h-screen flex-1 flex-col items-center justify-between overflow-hidden 
-bg-[url('/fundamental-bg.jpeg')] bg-cover bg-no-repeat object-center pt-[300px]  lg:fixed lg:inset-y-0 lg:h-screen lg:w-1/2"
+bg-[url('/exports/tracks_bg.png')] bg-cover bg-no-repeat object-center pt-[300px]  lg:fixed lg:inset-y-0 lg:h-screen lg:w-1/2"
       >
         <div>
-          <h2 className="text-bttf text-3xl text-white sm:text-5xl">Tracks</h2>
+          <h2 className="text-bttf text-5xl text-white lg:text-8xl">Tracks</h2>
         </div>
-        <div className="md:hidden" />
         <div className="flex justify-center">
           <p className="max-w-[275px] text-center text-xl font-bold text-white sm:max-w-xs md:max-w-full lg:text-2xl">
             Developer DAO learning tracks are designed <br /> to get you from 0 to 1.

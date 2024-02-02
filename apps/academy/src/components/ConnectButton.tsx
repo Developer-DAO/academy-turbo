@@ -51,7 +51,7 @@ export const ConnectButton = () => {
             ) : (
               <button onClick={openAccountModal}>
                 <Image
-                  src={account?.ensAvatar !== undefined ? account.ensAvatar : "/DD_NFT_avatar.png"}
+                  src={account?.ensAvatar !== undefined ? account.ensAvatar : "/exports/avatar.png"}
                   alt="account avatar"
                   width={50}
                   height={50}

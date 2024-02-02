@@ -31,9 +31,15 @@ export const PartnerBanner: FC<PartnerBannerProps> = ({ href, imgSrc }) => {
         </div>
       </div>
       <div className="mx-8 mt-8 max-w-sm md:m-auto">
-        <div className="flex flex-col items-center gap-x-6 md:flex-row">
-          <Image src={imgSrc} width={250} height={250} alt="partner" className="rounded-full" />
-          <div className="separator" />
+        <div className="flex flex-col items-center md:flex-row">
+          <Image
+            src={imgSrc}
+            width={100}
+            height={100}
+            alt="partner"
+            className="mb-4 h-[100px] w-[94px] rounded-full lg:mr-[50px]"
+          />
+          <div className="separator mb-4" />
           <div className="flex flex-wrap items-center justify-center gap-6">
             {[
               "/partners/pokt.png",
@@ -47,7 +53,7 @@ export const PartnerBanner: FC<PartnerBannerProps> = ({ href, imgSrc }) => {
                 width={175}
                 height={25}
                 alt="partner"
-                className={`${i === 2 ? "max-h-16" : "max-h-10"} w-auto ${i === 0 ? "mb-4" : ""}`}
+                className={`${i === 2 ? "max-h-16" : "max-h-10"} w-auto ${i < 3 ? "mb-4" : ""}`}
               />
             ))}
           </div>

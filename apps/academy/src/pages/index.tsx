@@ -38,13 +38,13 @@ const Home: NextPageWithLayout = () => {
           </div>
         </div>
       </section>
-      <section id="learn-web3" className="main-container">
+      <section id="learn-web3" className="main-container lg:pt-16">
         <LearnWeb3Banner href="/tracks" />
       </section>
-      <section id="partners" className="main-container">
+      <section id="partners" className="main-container pb-4 pt-16">
         <PartnerBanner
           href="https://airtable.com/appDMMIARfSeiovpk/shrZExypPetXEx6Ox"
-          imgSrc="/DD_NFT_avatar.png"
+          imgSrc="/exports/dd_logo_mini.svg"
         />
       </section>
     </>
