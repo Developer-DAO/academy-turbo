@@ -81,7 +81,9 @@ bg-[url('/fundamental-bg.jpeg')] bg-cover bg-no-repeat object-center pt-[300px] 
                   </Link>
                 ))
               ) : (
-                <Spinner />
+                <div className="w-full justify-center">
+                  <Spinner />
+                </div>
               )}
             </div>
           </div>
