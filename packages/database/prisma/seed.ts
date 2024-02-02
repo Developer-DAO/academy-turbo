@@ -40,7 +40,7 @@ async function main() {
       id: "clrzjah6u00001w2ndxrq8dou",
     },
     data: {
-      order: 4,
+      imgPath: "/track-erc20.png",
     },
   });
   console.log({ updatedLesson });
