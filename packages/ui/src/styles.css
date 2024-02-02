@@ -190,7 +190,7 @@
 }
 
 .main-container {
-  @apply container mx-auto max-w-7xl;
+  @apply container max-w-7xl;
 }
 
 .gradient-blur {

@@ -5,8 +5,12 @@
   font-family: var(--font-future);
 }
 
+.app-container {
+  @apply mx-auto w-full max-w-[1440px];
+}
+
 .academy-grid {
-  @apply mx-auto flex max-w-screen-2xl flex-col-reverse text-white md:flex-row;
+  @apply flex flex-col-reverse text-white md:flex-row;
 }
 .academy-grid .academy-grid-col-1 {
   @apply mb-28 mt-16 flex h-auto max-h-[1024px] w-full flex-col justify-center space-y-8 md:mb-0 md:h-screen md:w-1/2;
@@ -24,7 +28,7 @@
   @apply h-screen max-h-[547px] w-full  md:max-h-[1024px] md:w-1/2;
   background:
     linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
-    url("/dd_nft_image.png"),
+    url("/exports/home_image.png"),
     var(--academy-bg-dark) -406.375px -146px / 219.132% 181.543% no-repeat;
   box-shadow: 0px 4px 35px 0px rgba(0, 0, 0, 0.25);
   background-repeat: no-repeat;
