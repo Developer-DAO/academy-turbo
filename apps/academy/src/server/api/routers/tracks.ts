@@ -10,7 +10,11 @@ export const TracksRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
     const tracks = await ctx.prisma.tracks.findMany({
       include: {
-        tags: true,
+        tags: {
+          include: {
+            tag: true,
+          },
+        },
         lessons: false,
       },
       orderBy: {
