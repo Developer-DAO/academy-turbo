@@ -64,7 +64,6 @@ const Quiz = (props: QuizProps): JSX.Element => {
   };
 
   const selectAnswer = (answerIndex: number) => {
-    console.log({ answerIndex });
     const newAnswers: Answers = { ...answers };
 
     if (

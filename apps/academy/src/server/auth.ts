@@ -50,7 +50,6 @@ export const authOptions: (ctxReq: CtxOrReq) => NextAuthOptions = ({
 }) => ({
   callbacks: {
     session: ({ session, token }) => {
-      console.log({ session, token });
       return {
         ...session,
         user: {
