@@ -44,7 +44,7 @@ const Home: NextPageWithLayout = () => {
       <section id="partners" className="main-container pb-4 pt-16">
         <PartnerBanner
           href="https://airtable.com/appDMMIARfSeiovpk/shrZExypPetXEx6Ox"
-          imgSrc="/exports/dd_logo_mini.svg"
+          imgSrc="/dd_logo.svg"
         />
       </section>
     </>

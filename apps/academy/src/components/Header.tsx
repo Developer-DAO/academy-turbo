@@ -1,12 +1,15 @@
+import localFont from "@next/font/local";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import type { FunctionComponent } from "react";
-import { Icons,type NavItem, SideBar, TopBar } from "ui";
+import { Icons, type NavItem, SideBar, TopBar } from "ui";
 import { cn } from "ui/lib/utils";
 import { useAccount } from "wagmi";
 
 import { ConnectButton } from "@/components/ConnectButton";
+
+const bttf = localFont({ src: "../../public/fonts/BTTF.ttf" });
 
 const sampleMenus: NavItem[] = [
   {
@@ -35,10 +38,10 @@ const PageHeader: FunctionComponent = () => {
     <header className="app-container absolute left-0 right-0 top-0 z-50 flex items-start justify-between px-8 pt-8 md:flex-row">
       <div className="hidden lg:flex ">
         {pathname === "/" || pathname === "/tracks" ? (
-          <div className="nav-division flex flex-col gap-y-8">
+          <div className="nav-division flex flex-col gap-y-6">
             <div className="flex justify-between">
               <Link href="/">
-                <Image src="/exports/academy_logo.svg" width={200} height={40} alt="Academy Logo" />
+                <Image src="/academy_logo.svg" width={200} height={40} alt="Academy Logo" />
               </Link>
               <ThemeToggle hidden={isConnected} />
             </div>
@@ -107,7 +110,7 @@ export const BackButton = ({ className }: { className?: string }) => {
       }}
       className={cn("flex flex-col items-center justify-center text-white", className)}
     >
-      <h2 className="font-future lg:text-xl">Back</h2>
+      <h2 className={`${bttf.className} lg:text-xl`}>Back</h2>
       <Image src={"/back.png"} alt="turn back" width={35} height={25} className="rotate-180" />
     </button>
   );

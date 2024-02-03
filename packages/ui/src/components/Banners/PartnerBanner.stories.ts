@@ -26,6 +26,6 @@ type Story = StoryObj<typeof meta>;
 export const PartnerBanner: Story = {
   args: {
     href: "",
-    imgSrc: "/DD_NFT_avatar.png",
+    imgSrc: "/avatar.png",
   },
 };
