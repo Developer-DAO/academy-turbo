@@ -168,8 +168,9 @@ const Quiz = (props: QuizProps): JSX.Element => {
 
     // return quizSuccessToast();
 
-    const lessonIdToSave: string =
-      allLessonsData.find((lesson) => lesson.quizFileName === `${props.quiz}.json`)!.id || "";
+    const lessonIdToSave: string = allLessonsData.find(
+      (lesson) => lesson.quizFileName === props.quiz,
+    )!.id;
 
     if (lessonIdToSave === undefined || lessonIdToSave === "") {
       console.error("Lesson not found");
@@ -177,7 +178,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
     }
 
     quizzesAddMutate({
-      lesson: lessonIdToSave,
+      lessonId: lessonIdToSave,
     });
   };
 
