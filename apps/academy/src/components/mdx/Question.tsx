@@ -26,7 +26,7 @@ const Question = (props: QuestionProps): JSX.Element => {
 
   const selectAnswer = (optionIndex: number) => {
     if (optionsSelected.includes(optionIndex)) {
-      setOptionsSelected(optionsSelected.filter((o) => o !== optionIndex));
+      setOptionsSelected(optionsSelected.filter((option) => option !== optionIndex));
       return;
     }
 
@@ -34,7 +34,6 @@ const Question = (props: QuestionProps): JSX.Element => {
       [...optionsSelected, optionIndex].filter((o) => o !== -1), // Remove the -1 of the state initialization
     );
   };
-
   // const getOptionBackground = (optionIndex: number) => {
   //   if (optionsSelected.includes(optionIndex)) {
   //     return "yellow.600";
@@ -49,14 +48,6 @@ const Question = (props: QuestionProps): JSX.Element => {
       duration: 9000,
       variant: "default",
     });
-    // toast({
-    //   title: "No answer selected",
-    //   description: "Choose an answer!",
-    //   status: "warning",
-    //   duration: 9000,
-    //   isClosable: true,
-    // });
-    // alert("No answer selected");
   };
 
   const quizFailedToast = () => {
@@ -66,14 +57,6 @@ const Question = (props: QuestionProps): JSX.Element => {
       duration: 9000,
       variant: "destructive",
     });
-    // toast({
-    //   title: "Wrong answer",
-    //   description: `Try again fren`,
-    //   status: "error",
-    //   duration: 9000,
-    //   isClosable: true,
-    // });
-    // alert("Wrong answer");
   };
 
   const quizSuccessToast = () => {
@@ -83,14 +66,6 @@ const Question = (props: QuestionProps): JSX.Element => {
       duration: 9000,
       variant: "default",
     });
-    // toast({
-    //   title: "Correct answer!",
-    //   description: "Let's goooo",
-    //   status: "success",
-    //   duration: 9000,
-    //   isClosable: true,
-    // });
-    // alert("Correct answer!");
   };
 
   const submit = () => {
@@ -118,13 +93,23 @@ const Question = (props: QuestionProps): JSX.Element => {
     quizFailedToast();
   };
 
+  const isSelectedAnswer = (answerIndex: number): string => {
+    if (optionsSelected !== undefined && optionsSelected.includes(answerIndex)) {
+      return "border-2 border-[#44AF96]";
+    } else {
+      return "";
+    }
+  };
+
   return (
     <div className="mb-5 space-x-4 rounded-md bg-[#242424] p-6 text-white">
       <h2 className="w-full text-left font-semibold	">{question.question}</h2>
       {question.options.map((o, index) => {
         return (
           <div
-            className="font-clash-display mt-3 w-full cursor-pointer rounded-md bg-[#1C1C1C] p-3 text-left font-semibold text-white"
+            className={`font-clash-display mt-3 w-full cursor-pointer rounded-md bg-[#1C1C1C] p-3 text-left font-semibold text-white ${isSelectedAnswer(
+              index,
+            )}`}
             onClick={() => {
               selectAnswer(index);
             }}

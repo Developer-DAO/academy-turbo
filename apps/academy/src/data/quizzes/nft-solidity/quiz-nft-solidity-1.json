@@ -122,15 +122,15 @@
       "question": "How many parameters can we have in an event?",
       "options": [
         {
-          "answer": "A. multiple non-indexed parameters",
+          "answer": "Multiple non-indexed parameters",
           "correct": true
         },
         {
-          "answer": "B. three indexed named parameters",
+          "answer": "Three indexed named parameters",
           "correct": true
         },
         {
-          "answer": "C. four indexed anonymous parameters",
+          "answer": "Four indexed anonymous parameters",
           "correct": true
         }
       ]
@@ -151,14 +151,14 @@
       "question": "Which of the following isn’t a 'type'?",
       "options": [
         {
-          "answer": "a string"
+          "answer": "A string"
         },
         {
-          "answer": "a function",
+          "answer": "A function",
           "correct": true
         },
         {
-          "answer": "a uint"
+          "answer": "A uint"
         }
       ]
     }

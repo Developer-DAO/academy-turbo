@@ -13,11 +13,11 @@ export const completedQuizzesRouter = createTRPCRouter({
    * Add completed Quizz belonging to the session user
    */
   add: protectedProcedure
-    .input(z.object({ lesson: z.string() }))
+    .input(z.object({ lessonId: z.string() }))
     .mutation(async ({ input, ctx }) => {
       return await ctx.prisma.completedQuizzes.create({
         data: {
-          lessonId: input.lesson,
+          lessonId: input.lessonId,
           userId: ctx.session.user.id,
           completed: true,
         },

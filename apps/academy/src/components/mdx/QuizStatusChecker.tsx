@@ -20,7 +20,7 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
   useMemo(() => {
     if (allLessonsData.length && completedQuizzesIds.length) {
       const actualLessonId: string = allLessonsData.find(
-        (lesson) => lesson.quizFileName === `${quiz}.json`,
+        (lesson) => lesson.quizFileName === quiz,
       )!.id;
 
       if (actualLessonId === undefined) return;
