@@ -27,12 +27,12 @@ const EditForm = ({ trackToEditData }: EditFormProps) => {
     mode: "onChange",
     resolver: zodResolver(trackEditSchema), // Configuration the validation with the zod schema.
     defaultValues: {
-      id: trackToEditData.id ,
-      trackName: trackToEditData.trackName ,
-      trackTitle: trackToEditData.trackTitle ,
-      trackDescription: trackToEditData.trackDescription ,
-      imgPath: trackToEditData.imgPath ,
-      trackPath: trackToEditData.trackPath ,
+      id: trackToEditData.id,
+      trackName: trackToEditData.trackName,
+      trackTitle: trackToEditData.trackTitle,
+      trackDescription: trackToEditData.trackDescription,
+      imgPath: trackToEditData.imgPath,
+      trackPath: trackToEditData.trackPath,
       order: trackToEditData.order!,
     },
   });
@@ -43,11 +43,10 @@ const EditForm = ({ trackToEditData }: EditFormProps) => {
         const { order, ...restData } = data;
         const trackOrderInt = order;
         editTrack.mutate({
-          trackId: trackToEditData.id ,
+          trackId: trackToEditData.id,
           order: trackOrderInt,
           ...restData,
         });
-        return;
       }
     },
     (e) => {
