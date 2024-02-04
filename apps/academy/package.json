@@ -43,6 +43,7 @@
     "zod": "^3.22.2"
   },
   "devDependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
     "@next/bundle-analyzer": "13.4.12",
@@ -56,6 +57,7 @@
     "next-config": "workspace:*",
     "next-pwa": "^5.6.0",
     "playwright-config": "workspace:*",
+    "react-hook-form": "^7.50.0",
     "react-syntax-highlighter": "^15.5.0",
     "remark-frontmatter": "^5.0.0",
     "storybook-config": "workspace:*",
