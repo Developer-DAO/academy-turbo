@@ -4,7 +4,7 @@
 // ========================================================
 import { z } from "zod";
 
-import { createTRPCRouter, protectedProcedure,publicProcedure } from "@/server/api/trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from "@/server/api/trpc";
 
 // Router
 // ========================================================
@@ -65,7 +65,7 @@ export const TracksRouter = createTRPCRouter({
   udpate: protectedProcedure
     .input(
       z.object({
-        trackId: z.string(),
+        trackId: z.string().min(3),
         trackName: z.string().min(3).max(20),
         trackTitle: z.string().min(3).max(20),
         authors: z.array(z.string().min(3).max(20)),

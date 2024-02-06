@@ -11,11 +11,13 @@ import { trackEditSchema } from "@/zodschemas/track.schemas";
 
 interface EditFormProps {
   trackToEditData: Tracks;
+  trackId: string;
 }
 
-const EditForm = ({ trackToEditData }: EditFormProps) => {
+const EditForm = ({ trackToEditData, trackId }: EditFormProps) => {
   const utils = api.useContext();
   const { data: session } = useSession();
+  const router = useRouter();
 
   const {
     register,
@@ -27,7 +29,6 @@ const EditForm = ({ trackToEditData }: EditFormProps) => {
     mode: "onChange",
     resolver: zodResolver(trackEditSchema), // Configuration the validation with the zod schema.
     defaultValues: {
-      id: trackToEditData.id,
       trackName: trackToEditData.trackName,
       trackTitle: trackToEditData.trackTitle,
       trackDescription: trackToEditData.trackDescription,
@@ -39,11 +40,13 @@ const EditForm = ({ trackToEditData }: EditFormProps) => {
 
   const onSubmit = handleSubmit(
     (data) => {
-      if (data.order !== null) {
+      alert({ trackId, data });
+      console.log({ data, trackId });
+      if (data.order !== null && data.order !== undefined) {
         const { order, ...restData } = data;
         const trackOrderInt = order;
         editTrack.mutate({
-          trackId: trackToEditData.id,
+          trackId: trackId,
           order: trackOrderInt,
           ...restData,
         });
@@ -59,11 +62,12 @@ const EditForm = ({ trackToEditData }: EditFormProps) => {
     onSettled: async () => {
       await utils.tracks.invalidate();
       reset();
+      await router.push(`/admin/tracks`);
     },
   });
 
   return (
-    <form /* action="" */ className="flex flex-col gap-4" onSubmit={void onSubmit}>
+    <form action="" className="flex flex-col gap-4" onSubmit={void onSubmit}>
       <div className="space-y-1">
         <Label htmlFor="trackName" className="text-white">
           Track Name
@@ -165,7 +169,7 @@ export default function EditTrackFormPage() {
       {getTrackByIdIsLoading ? (
         <Spinner />
       ) : getTrackByIdIsSuccess && trackToEditData !== null ? (
-        <EditForm trackToEditData={trackToEditData} />
+        <EditForm trackToEditData={trackToEditData} trackId={trackId as string} />
       ) : null}
     </div>
   );

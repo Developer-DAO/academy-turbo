@@ -11,7 +11,6 @@ export const trackCreateSchema = z.object({
 });
 
 export const trackEditSchema = z.object({
-  trackId: z.string().min(3).max(30),
   trackName: z.string().min(3).max(20),
   trackTitle: z.string().min(3).max(20),
   authors: z.array(z.string().min(3).max(20)),
