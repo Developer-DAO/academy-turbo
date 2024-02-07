@@ -5,14 +5,14 @@ import { useRouter } from "next/router";
 import type { FunctionComponent } from "react";
 import { type NavItem, SideBar, TopBar } from "ui";
 import { cn } from "ui/lib/utils";
-import { useAccount } from "wagmi";
 
+// import { useAccount } from "wagmi";
 import { ConnectButton } from "@/components/ConnectButton";
-import ThemeToggleButton from "@/components/ThemeToggleButton";
+// import ThemeToggleButton from "@/components/ThemeToggleButton";
 
 const bttf = localFont({ src: "../../public/fonts/BTTF.ttf" });
 
-const sampleMenus: NavItem[] = [
+const topbarNavMenues: NavItem[] = [
   {
     name: "Home",
     href: "/",
@@ -31,7 +31,7 @@ const sampleMenus: NavItem[] = [
 ];
 
 const PageHeader: FunctionComponent = () => {
-  const { isConnected } = useAccount();
+  // const { isConnected } = useAccount();
   const router = useRouter();
   const { pathname } = router;
 
@@ -47,7 +47,7 @@ const PageHeader: FunctionComponent = () => {
               {/* <ThemeToggleButton hidden={isConnected} /> */}
             </div>
             <div className="mx-auto">
-              <TopBar menus={sampleMenus} />
+              <TopBar menus={topbarNavMenues} />
             </div>
           </div>
         ) : (
@@ -67,7 +67,7 @@ const PageHeader: FunctionComponent = () => {
         <>
           <BackButton className="lg:hidden" />
           <div className="hidden gap-2 lg:inline-flex">
-            <ThemeToggleButton hidden={pathname !== "/" && isConnected ? false : true} />
+            {/* <ThemeToggleButton hidden={pathname !== "/" && isConnected ? false : true} /> */}
             <ConnectButton />
           </div>
         </>
@@ -76,7 +76,7 @@ const PageHeader: FunctionComponent = () => {
         {pathname === "/" || pathname === "/tracks" ? (
           <SideBar
             menus={[
-              ...sampleMenus,
+              ...topbarNavMenues,
               {
                 name: "Get In Touch",
                 href: "/",
