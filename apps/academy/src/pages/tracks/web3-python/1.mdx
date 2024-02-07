@@ -14,36 +14,34 @@ import Question from "../../../components/mdx/Question";
 
 # Intro
 
-Welcome to the Python Smart Contract Development series, where you will learn how to build, deploy, test and interact with Smart Contracts, using only Python. Don’t learn a new language, use your existing skills to build in Web3 today!
+Welcome to the Python Smart Contract Development series, where you will learn how to build, deploy, test and interact with smart contracts, using only Python. Don’t learn a new language, use your existing skills to build in Web3 today!
 
 ![intro](/assets/tracks/web3-python/1/intro.png)
 
-# Vyper vs Solidity
+# Vyper vs. Solidity
 
 <Callout emoji="💡">
-  TLDR: Using Python in the web3 space allows you to build, test, and deploy smart contracts
-  efficiently without switching languages, making it easier to transition to other stacks like
-  Solidity later, as many fundamentals are similar.
+  TL;DR: Using Python in the Web3 space allows you to build, test, and deploy smart contracts
+  efficiently without switching languages, making it easier to transition to other tech stacks like
+  Solidity later, as many of the fundamentals are similar.
 </Callout>
 
-If you’re new to web3 you might have heard or read about another language, `Solidity`. We wont dive into the details, but as of now there are trade-offs between Solidity and Vyper. Essentially you can still do the same, but your programs will be structured slightly different.
+If you’re new to Web3 you may have come across an established language, **Solidity**. Like alternative languages in any domain, Solidity and Vyper have trade-offs. In general though, you can accomplish the same things in either language.
 
-Here’s the thing. As a Solidity developer, you can have a stack where you, build, test, deploy your smart contracts all using Solidity.
+As a Solidity developer, you can have a technology stack where you build, test, and deploy your smart contracts all using Solidity.
 
-With this stack you can do the same! But using Python. The power of this lies in the simplicity. You dont have to switch between languages to test, build and deploy. What’s even more awesome, is that by learning this stack, it will take very little effort to switch to a solidity stack. As a lot of the fundamentals remain unchanged.
+This lesson will introduce you to an alternative stack entirely using Python! The power of this lies in the simplicity. You dont have to switch between languages to test, build, and deploy. What’s even more awesome is that by learning this stack, your knowledge will largely transfer over if you decide to switch to a Solidity stack in the future. The fundamentals remain unchanged.
 
 ## Virtual environment
 
 <Callout emoji="💡">
-  💡 TLDR - Create a virtual environment `python3 -m venv ./myv` Activate it: `source
-  ./myv/bin/activate`
+  TL;DR: Create a virtual environment with: `python3 -m venv ./myv`, then activate it using: `source
+  ./myv/bin/activate`.
 </Callout>
 
-As pythonista’s we like to keep a clean pc. So we create a virtual environment to install dependencies. A virtual environment is like creating a folder, where we can install software and build our projects. If we want to use specific versions of our software or something went wrong. We can just delete the virtual environment and create a new one very easily.
+As Pythonistas we like to keep a clean working environment, so we create virtual environments to install dependencies. A virtual environment is like creating a folder where we can install software and build our projects within a sandbox. If we want to use specific versions of our software, or something went wrong, we can just delete the virtual environment and create a new one easily.
 
-Here’s a visual of what a virtual environment represents. In practise it means, we create a folder with some scripts. Activate the virtual environment using a script and that’s it. If you want to know more check out the [docs.](https://docs.python.org/3/library/venv.html#creating-virtual-environments)
-
-Let’s spin up a virtual environment. If you run into issues creating a virtual environment, you might need to `pip install` the necessary library. However as of Python version 3.3, the `venv` module should be included by default.
+Let’s spin up a virtual environment before exploring the tools in this lesson. If you run into issues creating a virtual environment, you may need to `pip install` a missing library. However as of Python version 3.3, the `venv` module should be included alongside your installation of Python. In a terminal windoww, run ths following command:
 
 ```bash
 python3 -m venv ./myv
@@ -55,64 +53,68 @@ The command above creates a virtual environment named `myv`. You can give it wha
 source ./myv/bin/activate
 ```
 
+If no errors are displayed, you're good to go!
+
 ## Install Dependencies
 
-It’s time to do thing…the thing we love. Start installing all the Python Libraries we need.
+It’s time to do thing... the thing we love. Start installing all the Python Libraries we need.
 
 ```bash
 pip install vyper eth-ape web3 ape-vyper
 ```
 
+Let's break down what each of these libraries are.
+
 ### Vyper
 
-A programming language for writing smart contracts, known for its simplicity and security-focused design. Now…this language is Pythonic. Which means there are some slight changes, but I promise, you will get used to it no time. `I'm horrible at learning new languages`. So trust me…i can do it…you can do it.
+Vyper is a programming language for writing smart contracts, known for its approachability. This language is Pythonic, meaning it looks and feels a lot like Python. Those already comfortable with Python need only learn the few nuances unique to smart contract development.
 
 ![vyper](/assets/tracks/web3-python/1/vyper.png)
 
 ### Ape
 
-A comprehensive toolkit for developing, testing, and deploying smart contracts, making the whole process smoother.
+Ape is a comprehensive toolkit for developing, testing, scripting, and deploying smart contracts, making the whole process smoother. Ape supports an ecosystem of plugins, so you can quickly configure the tools you need.
 
 ### Ape-Vyper Plugin
 
-An extension for the Ape toolkit that integrates Vyper, letting you easily develop and manage Vyper smart contracts.
+This plugin is an extension for the Ape toolkit that integrates the Vyper compiler, letting you easily develop and compile Vyper smart contracts.
 
 ![ape](/assets/tracks/web3-python/1/ape.png)
 
-### Web3.py
+### web3.py
 
-A Python library for interacting with the Ethereum blockchain, allowing you to connect to and perform transactions.
+web3.py is a Python library for interacting with the Ethereum blockchain, allowing you to connect to a network, read data, and execute transactions.
 
 ![web3.py](/assets/tracks/web3-python/1/web3py.png)
 
 ### Foundry & Anvil
 
-We will run the tests on a local blockchain called `anvil`. The easiest way to run this, is by installing foundry. Follow the steps [here to install foundry](https://book.getfoundry.sh/getting-started/installation), which will also install anvil.
+We will run the tests on a local blockchain called **Anvil**. The easiest way to run this is by installing Foundry. Follow the steps [here](https://book.getfoundry.sh/getting-started/installation) to install Foundry, which will also install Anvil.
 
 ## Create a project with Ape
 
-Apeworkx is like a super tool for building apps on the blockchain. It makes the tricky job of working with smart contracts a lot easier, opening up the world of blockchain to more developers. The BEST thing of it all. We get to use Python. Our favourite language.
+Ape is a super tool for building apps on the blockchain. It makes the tricky job of working with smart contracts a lot easier, opening up the world of blockchain to more developers. The best part of all: we get to use Python, our favourite language.
 
 Let’s get right into it.
 
-So next up inside any folder you want, create an `ape` project. First lets create and navigate to a new folder
+First, lets create and navigate to a new folder, then create a new `ape` project:
 
 ```bash
 mkdir hello_world
 cd hello_world
 ```
 
-Then use the following command to create a new ape project
+Then use the following command to create the new project:
 
 ```bash
 ape init
 ```
 
-You will be prompted for a name for your project. I named mine `hello`
+You will be prompted for a name for your project. I named mine `hello`.
 
-## Your first Vyper Smart Contract
+## Your first Vyper smart contract
 
-So Vyper is `pythonic` , which means it’s very similar to python, with a few differences in syntax and the way the language operates. Rest assured, these are small adjustments. Let’s start nice and easy with a hello world contract. It has a variable with hello world and one function to set the value of the variable when we deploy the contract.
+So we know that Vyper is `Pythonic`, which means it’s very similar to python, with a few important differences in syntax. Rest assured, these are small adjustments. Let’s start nice and easy with a "Hello World" contract. Create a Hello.vy file and insert the code below. It contains a variable with some text and one function to set the value of that variable when we deploy the contract.
 
 ```python
 # Define the version
@@ -121,46 +123,46 @@ So Vyper is `pythonic` , which means it’s very similar to python, with a few
 # Create a string variable that can store maximum 100 characters
 greet: public(String[100])
 
-#Define the visibility with a decorator
+# Define the visibility with a decorator
 @external
 
-#This is the constructor that sets the value of the variable greet
-#upon deploying the smart contract
+# This is the constructor that sets the value of the variable greet
+# upon deploying the smart contract
 def __init__():
     self.greet = "Hello World"
 
 def changeGreet(_greeting: String[100):
-	#set greet to new greeting
+	  # set greet to new greeting
 		self.greet = _greeting
 ```
 
-Before we compile and deploy, let’s take a closer look.
+Before we compile and deploy, let’s take a closer look at each of the components of this contract.
 
 ### Vyper Contract
 
-A Vyper contract looks similar to a Python Class. A Python Class is a template where you can define set of custom data structures and functions that can be re-used. A Vyper contract uses a structure similar to a Python Class. As we write up our contract, we will notice the slight differences.
+A Vyper contract looks similar to a Python class. Classes are templates where you can define set of custom data structures and functions that can be reused. A Vyper contract uses a structure similar to a Python class with at least one important difference: no class declaration! In Vyper, each file contains one and only one contract. We can jump straight into declaring variables and functions.
 
-### **Variable**
+### Variable
 
-First is our variable. The structure of defining a variable is as follows:
-
-```python
-<NAME>:<VISIBILITY>(<TYPE>)
-```
-
-So in our case we have a string named `greet` . Anyone can see this variable once we deploy our contract on chain, because it has the visibility public.
-
-### **Strings**
-
-Now…strings are special in Vyper. The number 100 defined inside our string refers to the amount of characters we can store in there. This only applies to strings. Here’s an example when you define a number or a boolean.
+After defining the compiler version, we declare our first variable. The structure of defining a variable is as follows:
 
 ```python
-#STRING  greet:public(String[100])
-#INTEGER fav_num: public(uint256)
-#BOOLEAN flag:public(bool)
+<NAME>: <VISIBILITY>(<TYPE>)
 ```
 
-### **The Visibility Decorator**
+So in our case we have a string named `greet`. Anyone can see this variable once we deploy our contract on chain, because it has `public` visibility.
+
+### Strings
+
+Now, strings are special in Vyper. The number 100 defined inside our string refers to the amount of characters we can store in there. This pattern only applies to strings. In contrast, here’s an example of defining a number or a boolean:
+
+```python
+greet: public(String[100])  # STRING
+fav_num: public(uint256)    # INTEGER
+flag: public(bool)          # BOOLEAN
+```
+
+### The Visibility Decorator
 
 So what is this `@external` that we’re using. In Vyper we can define who can see and interact with our function. There are 2 visibility types for functions `internal` and `external`. Above every function we can use a decorator (just like you’re used too in Python)
 
