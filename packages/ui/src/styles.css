@@ -194,7 +194,11 @@
 }
 
 .main-container {
-  @apply container mx-auto max-w-7xl;
+  @apply container max-w-7xl;
+}
+
+.app-container {
+  @apply mx-auto w-full max-w-[1440px];
 }
 
 .gradient-blur {
@@ -216,7 +220,7 @@
 }
 
 .connect-button {
-  @apply button-rounded-sm p-2 text-sm  md:p-3 md:text-lg lg:p-5 lg:text-xl;
+  @apply button-rounded-sm px-3 py-2 text-sm md:px-5 md:py-3  md:text-lg lg:px-6 lg:pb-5 lg:pt-6 lg:text-xl;
 }
 
 .top-nav {
@@ -267,6 +271,7 @@
 .banner {
   @apply gradient-neutral flex w-full items-start justify-between rounded-[51px];
   @apply max-w-screen-2xl gap-x-6 gap-y-10 border-none border-[var(--gray-white)] p-2 shadow-sm md:p-4 lg:p-7;
+  @apply ring-[2px] ring-inset ring-[#E9E9E920] ring-offset-0;
 }
 
 .banner .title {
@@ -275,7 +280,7 @@
 }
 
 .banner .description {
-  @apply mb-8 text-center text-xl font-light leading-normal text-white md:text-2xl;
+  @apply text-center text-xl font-light leading-normal text-white md:text-[27.4px] lg:mb-8;
   font-family: var(--font-poppins);
 }
 
@@ -284,7 +289,7 @@
 }
 
 .terminal-text {
-  @apply mx-4 py-8 text-left text-xs font-normal leading-5 text-[#e1e4e84a] md:text-sm lg:mx-auto;
+  @apply mx-4 pt-8 text-left text-xs font-normal leading-5 text-[#e1e4e84a] md:text-sm lg:mx-auto lg:pb-8;
   font-family: var(--font-andale-mono);
 }
 
@@ -310,7 +315,11 @@
   @apply mt-20 px-0 py-8 text-xs font-semibold md:text-sm;
 }
 
+.footer nav {
+  @apply gap-x-6;
+}
+
 .footer nav,
 .footer div {
-  @apply flex items-center gap-x-6 divide-white;
+  @apply flex divide-white;
 }

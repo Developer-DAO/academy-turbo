@@ -80,7 +80,7 @@ const NftSolidityTrackPage = () => {
             allLessonsData.map((lesson, idx) => {
               const tagsForThisLesson = lesson.tags.map((tag) => tag.tag.tagName);
               return (
-                <Link href={lesson.lessonPath} key={idx}>
+                <Link href={lesson.lessonPath} key={idx} className="mx-auto">
                   <TrackCard
                     imgSrc={lesson.imgPath}
                     tags={tagsForThisLesson}

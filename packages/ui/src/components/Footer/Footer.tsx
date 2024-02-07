@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { Icons } from "../Icons";
@@ -63,7 +64,7 @@ export const Footer = () => {
                 <Tooltip>
                   <TooltipTrigger>
                     <a aria-label={social.alt} href={social.href} className="group" target="_blank">
-                      {Icon ? <Icon /> : null}
+                      {Icon ? <Icon className="h-16 w-16 md:h-20 md:w-20" /> : null}
                     </a>
                   </TooltipTrigger>
                   <TooltipContent>
@@ -94,12 +95,24 @@ export const Footer = () => {
             </TooltipProvider>
           ))}
         </nav>
-        <div className="flex flex-col gap-y-6 divide-x-0 divide-y md:flex-row md:divide-x md:divide-y-0">
+        <div className="flex-col gap-y-6 md:flex-row">
           <TooltipProvider delayDuration={30}>
             <Tooltip>
               <TooltipTrigger>
-                <a href="https://www.developerdao.com/" about="_blank">
-                  <Icons.dd_logo className="h-32 w-40" />
+                <a
+                  href="https://www.developerdao.com/"
+                  about="_blank"
+                  className="flex border-b border-r-0 md:border-b-0 md:border-r"
+                >
+                  <div className="m-auto">
+                    <Image
+                      src={"/dd_logo_dark.png"}
+                      alt={"Developer DAO"}
+                      width={200}
+                      height={80}
+                      className="mb-4 h-20 w-32 p-4 md:mb-0"
+                    />
+                  </div>
                 </a>
               </TooltipTrigger>
               <TooltipContent>
@@ -107,24 +120,33 @@ export const Footer = () => {
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
-          <p className="max-w-xs py-6 pl-6 text-start md:py-0">
-            Developer DAO Foundation © 2023 Website content licensed under&emsp;
-            <Link href="https://creativecommons.org/licenses/by-nc/4.0/" className="underline">
-              CC BY-NC 4.0
-            </Link>
-            . Website code is licensed under&emsp;
-            <Link
-              href="https://github.com/Developer-DAO/academy-turbo/blob/main/LICENSE"
-              className="underline"
-            >
-              MIT
-            </Link>
-            .&emsp;
-            <Link href="https://www.developerdao.com/privacy-policy" className="underline">
-              Privacy Policy
-            </Link>
-          </p>
+          <div className="ml-6 max-w-[346px] flex-col justify-center text-start">
+            <p>Developer DAO Foundation © 2023</p>
+            <p>
+              Website content licensed under&nbsp;
+              <Link href="https://creativecommons.org/licenses/by-nc/4.0/" className="underline">
+                CC BY-NC 4.0.
+              </Link>
+            </p>
+            <p>
+              Website code is licensed under&nbsp;
+              <Link
+                href="https://github.com/Developer-DAO/academy-turbo/blob/main/LICENSE"
+                className="underline"
+              >
+                MIT.
+              </Link>
+            </p>
+            <p>
+              <Link href="https://www.developerdao.com/privacy-policy" className="underline">
+                Privacy Policy
+              </Link>
+            </p>
+          </div>
         </div>
+      </div>
+      <div className="mb-[33px] hidden lg:block">
+        <Image src={"/vercel_badge.png"} alt={"powered by vercel"} width={200} height={80} />
       </div>
     </footer>
   );
