@@ -12,7 +12,7 @@ import { ConnectButton } from "@/components/ConnectButton";
 
 const bttf = localFont({ src: "../../public/fonts/BTTF.ttf" });
 
-const topbarNavMenues: NavItem[] = [
+const topbarNavMenus: NavItem[] = [
   {
     name: "Home",
     href: "/",
@@ -47,7 +47,7 @@ const PageHeader: FunctionComponent = () => {
               {/* <ThemeToggleButton hidden={isConnected} /> */}
             </div>
             <div className="mx-auto">
-              <TopBar menus={topbarNavMenues} />
+              <TopBar menus={topbarNavMenus} />
             </div>
           </div>
         ) : (
@@ -76,7 +76,7 @@ const PageHeader: FunctionComponent = () => {
         {pathname === "/" || pathname === "/tracks" ? (
           <SideBar
             menus={[
-              ...topbarNavMenues,
+              ...topbarNavMenus,
               {
                 name: "Get In Touch",
                 href: "/",
