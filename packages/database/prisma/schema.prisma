@@ -65,6 +65,9 @@ model Lessons {
   trackId String
   completedQuizzes CompletedQuizzes[]
   order Int?
+  productionVisible Boolean @default(true)
+  stagingVisible Boolean @default(true)
+  visible Boolean @default(true)
 }
   
   model Tags {
@@ -98,6 +101,9 @@ model Tracks {
   trackPath String
   lessons Lessons[]
   order Int?
+  productionVisible Boolean @default(true)
+  stagingVisible Boolean @default(true)
+  visible Boolean @default(true)
 }
 
 model TagsOnTracks {
