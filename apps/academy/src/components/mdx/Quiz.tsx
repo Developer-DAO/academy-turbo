@@ -265,9 +265,6 @@ const Quiz = (props: QuizProps): JSX.Element => {
           </DialogDescription>
 
           <DialogFooter>
-            <Button className="mx-1 flex bg-red-400 text-white" variant="text" onClick={cancelQuiz}>
-              Cancel
-            </Button>
             <Button
               className="rounded-full bg-[#636363] text-white"
               onClick={submit}
