@@ -4,13 +4,24 @@
 // ========================================================
 import { z } from "zod";
 
+import { env } from "@/env.mjs";
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 
 // Router
 // ========================================================
 export const lessonsRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
-    const lessons = await ctx.prisma.lessons.findMany();
+    const constructedWhere =
+      env.ENVIRONMENT === "production"
+        ? { productionVisible: true }
+        : env.ENVIRONMENT === "staging"
+        ? { stagingVisible: true }
+        : { visible: true };
+    const lessons = await ctx.prisma.lessons.findMany({
+      where: {
+        ...constructedWhere,
+      },
+    });
     return lessons;
   }),
   getLessonsByTrackPath: publicProcedure
@@ -27,11 +38,19 @@ export const lessonsRouter = createTRPCRouter({
       // if (track === undefined) {
       //   return Error("track not found");
       // }
-
+      const constructedWhere =
+        env.ENVIRONMENT === "production"
+          ? { productionVisible: true }
+          : env.ENVIRONMENT === "staging"
+          ? { stagingVisible: true }
+          : { visible: true };
       const trackLessons = await ctx.prisma.lessons.findMany({
         where: {
           trackId: {
             equals: track[0]!.id,
+          },
+          AND: {
+            ...constructedWhere,
           },
         },
         include: {
