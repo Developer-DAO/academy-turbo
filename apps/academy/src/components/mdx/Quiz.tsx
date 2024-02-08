@@ -45,11 +45,11 @@ type Answers = Record<string, number[]>;
 const Quiz = (props: QuizProps): JSX.Element => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-var-requires
   const quiz: Quiz = require(`@/data/quizzes/${props.quiz}.json`);
-  const [showQuiz, setShowQuiz] = useState(true);
+  const [showQuiz, setShowQuiz] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
   const [_correctAnswers, setCorrectAnswers] = useState<number[] | null>(null);
-  const [showCompleteStatusModal, setShowCompleteStatusModal] = useState(true);
+  const [showCompleteStatusModal, setShowCompleteStatusModal] = useState(false);
   const [showKeepGoingModal, setShowKeepGoingModal] = useState(false);
 
   const { toast } = useToast();
