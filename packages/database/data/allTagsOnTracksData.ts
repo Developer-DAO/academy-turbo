@@ -1,0 +1,92 @@
+export const allTagsOnTracksData = [
+  {
+    id: "clrztijwc00011wing5s3iq86",
+    trackId: "clrzj72mx00001wjojxz7d1gq",
+    tagId: "clrzjfgvb00001wf84kmy129q",
+    assignedAt: "2024-01-30T03:47:39.705Z",
+  },
+  {
+    id: "clrztiws300011wnbajj36b48",
+    trackId: "clrzj72mx00001wjojxz7d1gq",
+    tagId: "clrzjfhnw00011wf8rwx9cbzw",
+    assignedAt: "2024-01-30T03:47:56.404Z",
+  },
+  {
+    id: "clrztj5sd00011wr8ybfh9mxw",
+    trackId: "clrzj72mx00001wjojxz7d1gq",
+    tagId: "clrzjfiff00021wf83uufjzaa",
+    assignedAt: "2024-01-30T03:48:08.078Z",
+  },
+  {
+    id: "clrztjolc00011wvcrnmkv5ba",
+    trackId: "clrzj8e6k00001wpj0djgt19b",
+    tagId: "clrzjfj8o00031wf8ykefjkpo",
+    assignedAt: "2024-01-30T03:48:32.449Z",
+  },
+  {
+    id: "clrztjyo200011wz93xnr5gsn",
+    trackId: "clrzj8e6k00001wpj0djgt19b",
+    tagId: "clrzjfk1500041wf82g1b0qxz",
+    assignedAt: "2024-01-30T03:48:45.507Z",
+  },
+  {
+    id: "clrztlljw00011wa3c2suzbe5",
+    trackId: "clrzj8e6k00001wpj0djgt19b",
+    tagId: "clrztl02w00001w59wvwtwz66",
+    assignedAt: "2024-01-30T03:50:01.820Z",
+  },
+  {
+    id: "clrztmjjq00011wfxdz514hcx",
+    trackId: "clrzj9pul00001wwrecf2lvgf",
+    tagId: "clrzjfj8o00031wf8ykefjkpo",
+    assignedAt: "2024-01-30T03:50:45.878Z",
+  },
+  {
+    id: "clrztpa4x00011wzb0wccvh22",
+    trackId: "clrzj9pul00001wwrecf2lvgf",
+    tagId: "clrzjfktk00051wf891wbfy4e",
+    assignedAt: "2024-01-30T03:52:53.650Z",
+  },
+  {
+    id: "clrztqard00011w49w48v8hon",
+    trackId: "clrzj9pul00001wwrecf2lvgf",
+    tagId: "clrzjflm100061wf8osj50603",
+    assignedAt: "2024-01-30T03:53:41.114Z",
+  },
+  {
+    id: "clrztqyvp00011w8nenjmynjh",
+    trackId: "clrzjah6u00001w2ndxrq8dou",
+    tagId: "clrzjfj8o00031wf8ykefjkpo",
+    assignedAt: "2024-01-30T03:54:12.374Z",
+  },
+  {
+    id: "clrztr8qn00011wcb9i4sw7ey",
+    trackId: "clrzjah6u00001w2ndxrq8dou",
+    tagId: "clrzj2fy900001w2oh6njf7ea",
+    assignedAt: "2024-01-30T03:54:25.151Z",
+  },
+  {
+    id: "clrztrei600011wfyouaiej97",
+    trackId: "clrzjah6u00001w2ndxrq8dou",
+    tagId: "clrzj2q4o00001w5zejrnsr8o",
+    assignedAt: "2024-01-30T03:54:32.622Z",
+  },
+  {
+    id: "clsawjoz80003om75iidehtlm",
+    trackId: "clsav6yvi0000omp4szmn3735",
+    tagId: "clrzjfgvb00001wf84kmy129q",
+    assignedAt: "2024-02-06T21:57:59.733Z",
+  },
+  {
+    id: "clsawjpfd0005om759mwvl7dj",
+    trackId: "clsav6yvi0000omp4szmn3735",
+    tagId: "clsawjo6g0000om75v0o1v07x",
+    assignedAt: "2024-02-06T21:58:00.314Z",
+  },
+  {
+    id: "clsawjpti0007om75e0zhfmra",
+    trackId: "clsav6yvi0000omp4szmn3735",
+    tagId: "clsawjol40001om75ar7urmui",
+    assignedAt: "2024-02-06T21:58:00.823Z",
+  },
+];
