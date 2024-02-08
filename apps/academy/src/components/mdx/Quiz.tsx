@@ -1,3 +1,5 @@
+import Image from "next/image";
+import NextLink from "next/link";
 import React, { useState } from "react";
 import {
   ButtonRaw,
@@ -16,9 +18,11 @@ import Spinner from "@/components/Spinner";
 import { useAppContext } from "@/contexts/AppContext";
 import { api } from "@/utils/api";
 import { getCorrectAnswersIndexes, haveSameElements, toLetters } from "@/utils/QuizHelpers";
-
 export interface QuizProps {
   quiz: string;
+  nextLessonURLPath: string;
+  nextLessonTitle: string;
+  actualLessonTitle: string;
 }
 
 interface Quiz {
@@ -41,10 +45,13 @@ type Answers = Record<string, number[]>;
 const Quiz = (props: QuizProps): JSX.Element => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-var-requires
   const quiz: Quiz = require(`@/data/quizzes/${props.quiz}.json`);
-  const [showQuiz, setShowQuiz] = useState(false);
+  const [showQuiz, setShowQuiz] = useState(true);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
   const [_correctAnswers, setCorrectAnswers] = useState<number[] | null>(null);
+  const [showCompleteStatusModal, setShowCompleteStatusModal] = useState(true);
+  const [showKeepGoingModal, setShowKeepGoingModal] = useState(false);
+
   const { toast } = useToast();
   const { refetchCompletedQuizzesAll, allLessonsData } = useAppContext();
 
@@ -52,17 +59,17 @@ const Quiz = (props: QuizProps): JSX.Element => {
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   };
 
-  // const previousQuestion = () => {
-  //   setCurrentQuestionIndex(currentQuestionIndex - 1);
-  // };
+  const previousQuestion = () => {
+    setCurrentQuestionIndex(currentQuestionIndex - 1);
+  };
 
-  // const previousButtonVisibility = () => {
-  //   return currentQuestionIndex === 0 ? "hidden" : "visible";
-  // };
+  const previousButtonVisibility = () => {
+    return currentQuestionIndex === 0 ? "hidden" : "visible";
+  };
 
-  // const nextButtonVisibility = () => {
-  //   return currentQuestionIndex + 1 == quiz.questions.length ? "hidden" : "visible";
-  // };
+  const nextButtonVisibility = () => {
+    return currentQuestionIndex + 1 == quiz.questions.length ? "hidden" : "visible";
+  };
 
   const selectAnswer = (answerIndex: number) => {
     const newAnswers: Answers = { ...answers };
@@ -126,11 +133,13 @@ const Quiz = (props: QuizProps): JSX.Element => {
       onSuccess: async () => {
         refetchCompletedQuizzesAll && (await refetchCompletedQuizzesAll());
         quizSuccessToast();
+        setShowCompleteStatusModal(true);
+        cancelQuiz();
       },
     });
 
   const quizSuccessToast = () => {
-    cancelQuiz();
+    // cancelQuiz();
     toast({
       title: "Amazing!",
       description: "You have passed the lesson!",
@@ -184,7 +193,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
 
   const cancelQuiz = () => {
     setAnswers({});
-    setShowQuiz(false);
+    // setShowQuiz(false);
     setCorrectAnswers(null);
     setCurrentQuestionIndex(0);
   };
@@ -198,6 +207,10 @@ const Quiz = (props: QuizProps): JSX.Element => {
     } else {
       return "";
     }
+  };
+
+  const handleLessonDoneClick = () => {
+    setShowKeepGoingModal(true);
   };
 
   return (
@@ -215,73 +228,157 @@ const Quiz = (props: QuizProps): JSX.Element => {
       </div>
       <Dialog open={showQuiz} onOpenChange={cancelQuiz}>
         <DialogOverlay />
-        <DialogContent className="rounded-lg border-black bg-[#1C1C1C]">
+        <DialogContent
+          className={`rounded-lg border-black bg-[#1C1C1C] ${
+            showCompleteStatusModal ? " h-full " : " mt-8 "
+          } `}
+        >
           <DialogHeader>
             <DialogTitle /* className="font-poppins text-base font-bold leading-9 text-white	lg:text-xl"*/
             >
               <DialogTrigger className="w-full text-right text-[#44AF96]">X</DialogTrigger>
-              <span className="font-clash-display text-base font-bold leading-9 text-white lg:text-3xl">
-                {quiz.title}
-              </span>
-              <br />
-              <span className="font-poppins w-full text-base font-normal text-white	">{`Question ${
-                currentQuestionIndex + 1
-              }/${quiz.questions.length}`}</span>
+              {!showCompleteStatusModal ? (
+                <div className="mx-8 flex flex-col text-start">
+                  <span className="font-clash-display w-full text-xl font-bold leading-9 text-white lg:text-3xl">
+                    {quiz.title}
+                  </span>
+                  <span className="font-poppins w-full text-base font-light text-white">{`Quiz Question ${
+                    currentQuestionIndex + 1
+                  }/${quiz.questions.length}`}</span>
+                </div>
+              ) : !showKeepGoingModal ? (
+                <span className="font-clash-display w-full text-center text-2xl font-bold leading-8 text-white">
+                  Quiz complete!
+                </span>
+              ) : (
+                <span className="font-clash-display w-full text-center text-2xl font-bold leading-8 text-white">
+                  Nice!
+                </span>
+              )}
             </DialogTitle>
           </DialogHeader>
 
-          <DialogDescription className="pb-6">
+          <DialogDescription className="mx-7 h-[85%] max-h-[85%] bg-[#242424] pb-5 lg:mx-12 ">
             <div className="flex flex-col gap-4 rounded-md bg-[#242424] p-6">
-              <span className="font-clash-display w-full text-2xl font-bold leading-6	 text-white">
-                {quiz.questions[currentQuestionIndex]!.question}
-              </span>
-              {quiz.questions[currentQuestionIndex]!.options.map((o, index) => {
-                return (
+              {!showCompleteStatusModal ? (
+                <div className="mt-5 h-[50%] max-h-[50%] w-full overflow-auto scroll-smooth">
+                  <span className="font-clash-display mb-10 w-full text-xl font-bold leading-5 text-white">
+                    {quiz.questions[currentQuestionIndex]!.question}
+                  </span>
+                  {quiz.questions[currentQuestionIndex]!.options.map((option, index) => {
+                    return (
+                      <div
+                        className={`${
+                          index === 0
+                            ? `${
+                                quiz.questions[currentQuestionIndex]!.options.length >= 4
+                                  ? "mt-9"
+                                  : "mt-12"
+                              } `
+                            : ""
+                        } font-clash-display ${
+                          quiz.questions[currentQuestionIndex]!.options.length >= 4
+                            ? "mb-5"
+                            : "mb-7"
+                        } w-full cursor-pointer rounded-3xl bg-[#303030] ${isSelectedAnswer(
+                          index,
+                        )}	p-5	${
+                          quiz.questions[currentQuestionIndex]!.options.length >= 4
+                            ? "text-base"
+                            : "text-lg"
+                        } font-bold text-[#F9F9F9]`}
+                        onClick={() => {
+                          selectAnswer(index);
+                        }}
+                        key={index}
+                      >
+                        {`${toLetters(index + 1)}. ${option.answer}`}
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : !showKeepGoingModal ? (
+                <div className="h-64 w-fit lg:h-96 lg:w-72">
                   <div
-                    className={`font-clash-display w-full cursor-pointer rounded-3xl bg-[#303030] ${isSelectedAnswer(
-                      index,
-                    )}	p-3	text-lg font-bold text-[#F9F9F9]`}
-                    onClick={() => {
-                      selectAnswer(index);
-                    }}
-                    key={index}
+                    className={`font-clash-display w-full cursor-pointer rounded-3xl bg-[#303030] p-3 	text-center	text-lg font-bold text-[#F9F9F9]`}
                   >
-                    {`${toLetters(index + 1)}. ${o.answer}`}
+                    <h1 className="font-clash-display mb-11">You&apos;re doing great!</h1>
+                    <Image
+                      src={"/happy_face.png"}
+                      alt="happy_face_icon"
+                      width={100}
+                      height={100}
+                      className="mx-auto mb-16"
+                    />
+                    <p className="mb-10 text-base font-normal leading-5 text-[#FFFFFF]">
+                      You&apos;ve completed the quiz for this section.
+                    </p>
+                    <ButtonRaw
+                      className="font-future h-14 w-36 bg-[#721F79]"
+                      onClick={handleLessonDoneClick}
+                    >
+                      Done!
+                    </ButtonRaw>
                   </div>
-                );
-              })}
+                </div>
+              ) : (
+                <div className="h-fit w-fit lg:h-96 lg:w-72">
+                  <div
+                    className={`font-clash-display w-full cursor-pointer rounded-3xl bg-[#303030] p-3 	text-center	text-lg font-bold text-[#F9F9F9]`}
+                  >
+                    <h1 className="font-clash-display mb-11">Keep going!</h1>
+                    <Image
+                      src={"/happy_face.png"}
+                      alt="happy_face_icon"
+                      width={100}
+                      height={100}
+                      className="mx-auto mb-16"
+                    />
+                    <p className="mb-10 text-base font-normal leading-5 text-[#FFFFFF]">
+                      {`You've just completed ${props.actualLessonTitle}!`}
+                    </p>
+                    <NextLink href={props.nextLessonURLPath}>
+                      <ButtonRaw className="font-future w-32 rounded-3xl bg-[#44AF96] text-xs font-normal text-white">
+                        {`NEXT: ${props.nextLessonTitle}`}
+                      </ButtonRaw>
+                    </NextLink>
+                  </div>
+                </div>
+              )}
             </div>
           </DialogDescription>
 
           <DialogFooter>
             {/* {(Object.keys(answers).length !== quiz.questions.length) === true ? ( */}
-            <div className="just flex w-full items-center">
+            <div
+              className={`just flex w-full items-center ${
+                !showKeepGoingModal ? "block" : "hidden"
+              }`}
+            >
               <div className="flex w-full">
-                {/* <Button
-                    className={`mx-2 ${previousButtonVisibility()}`}
-                    onClick={previousQuestion}
-                  >
-                    {"< Previous"}
-                  </Button> */}
                 <ButtonRaw
-                  className={`button-rounded w-32 text-xs font-normal text-white`} // ${nextButtonVisibility()}`}
+                  type="button"
+                  className={`button-rounded mr-4 text-xs font-normal text-white lg:w-40 ${previousButtonVisibility()}`}
+                  onClick={previousQuestion}
+                >
+                  {"Previous"}
+                </ButtonRaw>
+                <ButtonRaw
+                  type="button"
+                  className={`button-rounded w-32 text-xs font-normal text-white ${nextButtonVisibility()}`}
                   onClick={nextQuestion}
                 >
                   {"Next"}
                 </ButtonRaw>
+                <ButtonRaw
+                  className="font-future w-32 rounded-3xl bg-[#636363] text-xs font-normal text-white"
+                  onClick={submit}
+                  disabled={Object.keys(answers).length !== quiz.questions.length}
+                >
+                  {!quizzesAddIsLoading ? "Submit" : <Spinner />}
+                </ButtonRaw>
               </div>
-              <ButtonRaw
-                className="font-future w-32 rounded-3xl bg-[#636363] text-xs font-normal text-white"
-                onClick={submit}
-                // isLoading={quizzesAddIsLoading}
-                disabled={Object.keys(answers).length !== quiz.questions.length}
-              >
-                {!quizzesAddIsLoading ? "Submit" : <Spinner />}
-              </ButtonRaw>
             </div>
-            {/* ) : ( */}
-
-            {/* )} */}
           </DialogFooter>
         </DialogContent>
       </Dialog>
