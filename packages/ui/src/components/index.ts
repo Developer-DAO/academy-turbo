@@ -15,3 +15,5 @@ export * from "./ui/drawer";
 export * from "./ui/toaster";
 export * from "./ui/tooltip";
 export * from "./ui/use-toast";
+import { Button as ButtonRaw } from "./ui/button";
+export { ButtonRaw };

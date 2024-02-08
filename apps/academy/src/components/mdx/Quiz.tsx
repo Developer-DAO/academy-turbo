@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  Button,
+  ButtonRaw,
   Dialog,
   DialogContent,
   DialogDescription,
@@ -12,6 +12,7 @@ import {
   useToast,
 } from "ui";
 
+import Spinner from "@/components/Spinner";
 import { useAppContext } from "@/contexts/AppContext";
 import { api } from "@/utils/api";
 import { getCorrectAnswersIndexes, haveSameElements, toLetters } from "@/utils/QuizHelpers";
@@ -51,17 +52,17 @@ const Quiz = (props: QuizProps): JSX.Element => {
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   };
 
-  const previousQuestion = () => {
-    setCurrentQuestionIndex(currentQuestionIndex - 1);
-  };
+  // const previousQuestion = () => {
+  //   setCurrentQuestionIndex(currentQuestionIndex - 1);
+  // };
 
-  const previousButtonVisibility = () => {
-    return currentQuestionIndex === 0 ? "hidden" : "visible";
-  };
+  // const previousButtonVisibility = () => {
+  //   return currentQuestionIndex === 0 ? "hidden" : "visible";
+  // };
 
-  const nextButtonVisibility = () => {
-    return currentQuestionIndex + 1 == quiz.questions.length ? "hidden" : "visible";
-  };
+  // const nextButtonVisibility = () => {
+  //   return currentQuestionIndex + 1 == quiz.questions.length ? "hidden" : "visible";
+  // };
 
   const selectAnswer = (answerIndex: number) => {
     const newAnswers: Answers = { ...answers };
@@ -202,14 +203,15 @@ const Quiz = (props: QuizProps): JSX.Element => {
   return (
     <>
       <div className="w-full text-center">
-        <Button
-          className="mx-auto flex bg-yellow-600 text-white"
+        <ButtonRaw
+          className="font-future mx-auto flex h-12 w-36 rounded-3xl
+          bg-[#721F79] text-2xl font-normal text-white"
           onClick={() => {
             setShowQuiz(true);
           }}
         >
-          Take quiz
-        </Button>
+          QUIZ
+        </ButtonRaw>
       </div>
       <Dialog open={showQuiz} onOpenChange={cancelQuiz}>
         <DialogOverlay />
@@ -248,31 +250,38 @@ const Quiz = (props: QuizProps): JSX.Element => {
                   </div>
                 );
               })}
-              <div className="just flex w-full items-center">
-                <div className="flex w-full">
-                  <Button
-                    className={`mx-2 ${previousButtonVisibility()}`}
-                    onClick={previousQuestion}
-                  >
-                    {"< Previous"}
-                  </Button>
-                  <Button className={`${nextButtonVisibility()}`} onClick={nextQuestion}>
-                    {"Next >"}
-                  </Button>
-                </div>
-              </div>
             </div>
           </DialogDescription>
 
           <DialogFooter>
-            <Button
-              className="rounded-full bg-[#636363] text-white"
-              onClick={submit}
-              isLoading={quizzesAddIsLoading}
-              variant="text"
-            >
-              Submit
-            </Button>
+            {/* {(Object.keys(answers).length !== quiz.questions.length) === true ? ( */}
+            <div className="just flex w-full items-center">
+              <div className="flex w-full">
+                {/* <Button
+                    className={`mx-2 ${previousButtonVisibility()}`}
+                    onClick={previousQuestion}
+                  >
+                    {"< Previous"}
+                  </Button> */}
+                <ButtonRaw
+                  className={`button-rounded w-32 text-xs font-normal text-white`} // ${nextButtonVisibility()}`}
+                  onClick={nextQuestion}
+                >
+                  {"Next"}
+                </ButtonRaw>
+              </div>
+              <ButtonRaw
+                className="font-future w-32 rounded-3xl bg-[#636363] text-xs font-normal text-white"
+                onClick={submit}
+                // isLoading={quizzesAddIsLoading}
+                disabled={Object.keys(answers).length !== quiz.questions.length}
+              >
+                {!quizzesAddIsLoading ? "Submit" : <Spinner />}
+              </ButtonRaw>
+            </div>
+            {/* ) : ( */}
+
+            {/* )} */}
           </DialogFooter>
         </DialogContent>
       </Dialog>

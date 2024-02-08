@@ -18,7 +18,10 @@ interface Props {
 export default function LessonQuestionsModal({ buttonText, title, children }: Props) {
   return (
     <Dialog>
-      <DialogTrigger className="my-3 flex rounded-2xl bg-yellow-600 p-2 font-semibold	text-white">
+      <DialogTrigger
+        className="font-future mx-auto my-3 flex rounded-3xl bg-[#721F79] p-2
+          text-2xl font-normal text-white"
+      >
         {buttonText}
       </DialogTrigger>
       <DialogOverlay />
