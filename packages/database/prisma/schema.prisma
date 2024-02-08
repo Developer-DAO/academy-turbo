@@ -68,6 +68,7 @@ model Lessons {
   productionVisible Boolean @default(true)
   stagingVisible Boolean @default(true)
   visible Boolean @default(true)
+  nextLessonPath String?
 }
   
   model Tags {
