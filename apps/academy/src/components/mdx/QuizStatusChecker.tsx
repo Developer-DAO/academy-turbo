@@ -1,6 +1,7 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import NextLink from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { Badge, Container } from "ui";
+import { Badge, ButtonRaw, Container } from "ui";
 import { useAccount } from "wagmi";
 
 import { useAppContext } from "@/contexts/AppContext";
@@ -18,7 +19,9 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
   const [nextLessonURLPath, setNextLessonURLPath] = useState("");
   const [nextLessonTitle, setNextLessonTitle] = useState("");
   const [actualLessonTitle, setActualLessonTitle] = useState("");
-
+  useEffect(() => {
+    setQuizCompleted(true);
+  }, []);
   // Requests
   useMemo(() => {
     if (allLessonsData.length && completedQuizzesIds.length) {
@@ -42,12 +45,12 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
       setNextLessonURLPath(newNextLessonURLPath);
       const newNextLessonTitle: string = allLessonsData.find(
         (lesson) => lesson.nextLessonPath === newNextLessonURLPath,
-      )!.lessonTitle ;
+      )!.lessonTitle;
       setNextLessonTitle(newNextLessonTitle);
 
       const newActualLessonTitle: string = allLessonsData.find(
         (lesson) => lesson.quizFileName === quiz,
-      )!.lessonTitle ;
+      )!.lessonTitle;
       setActualLessonTitle(newActualLessonTitle);
     }
   }, [quizCompleted]);
@@ -70,13 +73,13 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
         <span className="text-2xl">Quiz Completed</span>
       </Badge>
 
-      {/* {nextLessonURLPath !== "" ? (
+      {nextLessonURLPath !== "" ? (
         <NextLink href={nextLessonURLPath}>
           <ButtonRaw className="font-future w-32 rounded-3xl bg-[#44AF96] text-xs font-normal text-white">
             {`NOW TRY ${nextLessonTitle}`}
           </ButtonRaw>
         </NextLink>
-      ) : null} */}
+      ) : null}
     </>
   ) : (
     <Quiz
@@ -84,6 +87,7 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
       nextLessonURLPath={nextLessonURLPath}
       nextLessonTitle={nextLessonTitle}
       actualLessonTitle={actualLessonTitle}
+      quizCompleted={quizCompleted}
     />
   );
 };
