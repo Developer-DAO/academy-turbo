@@ -164,34 +164,36 @@ flag: public(bool)          # BOOLEAN
 
 ### The Visibility Decorator
 
-So what is this `@external` that we’re using. In Vyper we can define who can see and interact with our function. There are 2 visibility types for functions `internal` and `external`. Above every function we can use a decorator (just like you’re used too in Python)
+So what is this `@external` that we’re using? In Vyper, we can define who can see and interact with any function. There are two visibility types for functions: `internal` and `external`. To set the visibility, decorators can be used, a commonly used feature in the Python language. Let's examine what each visibility implies.
 
-`external` functions can only be called via transactions and not internally. They are typically part of the contract's public interface. They are used to expose functionalities that you want to make available to other users and contracts, like transferring tokens, querying balances, or interacting with other contracts.
+**External** functions can only be called via transactions and not internally. They're typically part of the contract's public interface and are used to expose functionalities that you want to make available to other users and contracts, e.g., transferring tokens, querying balances, or interacting with other contracts.
 
-`internal` functions can only be called within the contract or its derivatives and not via transactions. So this feature is useful for functions that are meant to be part of the contract's internal logic and should not be exposed as part of the contract's interface to the outside world. For example, a function that calculates an intermediate result, which is only relevant within the contract.
+**Internal** functions can only be called within the contract or its derivatives and not via transactions. So this feature is useful for functions that are meant to be part of the contract's internal logic and should not be exposed as part of the contract's interface to the outside world. For example, a function that calculates an intermediate result, which is only relevant within the contract may be best defined as an internal function.
 
-In our case we’re using the `@external` for our constructor, but what is a constructor. Next chapter.
+In our case we’re using the `@external` decordator for our constructor. What is a constructor? Next chapter.
 
 ![internal vs. external](/assets/tracks/web3-python/1/internal-external.png)
 
-### **Constructors in Vyper**
+### Constructors in Vyper
 
-If you’re coming from Solidity, you’re familiar with constructors, just the syntax is different.
+If you’re coming from Solidity, you’re familiar with the **constructor** function. Vyper contracts have the same initialization function, just with Pythonic syntax.
 
-For newcomers, the constructor is a special function that only runs when a contract is being deployed. That’s it. After that no one can call it.
+For newcomers, the constructor function is a special function that only runs when a contract is being deployed. That’s it. After that, no one can call it.
 
-Constructors are typically handy for setting the owner of the contract, or pre-defining a token supply and a bunch of other stuff.
+Constructors are handy for setting the owner of the contract, pre-defining a token supply, or defining any other initial state.
 
-A constructor is always typed like this:
+In Vyper, the constructor borrows the syntax of Python class instantiation:
 
 ```python
 def __init__():
     ...
 ```
 
-### **The ‘self’ keyword**
+Again, anything in this method will be executed once, and only once, when the contract is deployed.
 
-You’ve seen this before in Python. Self refers to the instance of a cCass. Over here it refers to the contract. So when setting the value of a global or state variable, we write it out like this:
+### The ‘self’ keyword
+
+You’ve seen this before in Python. `self` refers to the instance of a class. In Vyper, it refers to the contract. So when setting the value of a global or state variable, we write it out like this:
 
 ```python
 self.greet = "Hello World"
@@ -199,104 +201,84 @@ self.greet = "Hello World"
 
 It's similar to how **`this`** is used in other programming languages like Solidity, Java, or C++.
 
-Cool, lets compile and deploy this basic contract. Before we can deploy, we’ll need an account to deploy from. Let’s set that up.
+Cool, that covers many of the fundamendals, so next we'll want to compile and deploy this basic contract. Before we can deploy, we’ll need an account to deploy from. Let’s set that up.
 
-# **Create an account**
+# Create an account
 
-When we deploy, we need to pass our `private keys`. There are a couple of ways to do it:
+When we deploy, we need to pass our **private keys**. There are a couple of ways to do it:
 
 1. Pass your private keys through the terminal - **Only do this with dummy accounts**
 2. Use a `.env` file - **Only use this for dev environments**
 3. Encrypt your key through the terminal - **Best practise**
 
-Now, the risk with a `.env` file is that you might commit it to Github and then your `private key` becomes public. We don’t want that.
+Option #1 is best avoided. Re: option #2, the risk with a `.env` file is that you might commit it to Github and then your `private key` becomes public. We don’t want that.
 
-Best practise is to pass it through the terminal and encrypt it. Ape allows this natively, so we’re going to use this method. Run the following command to get a list of accounts
+Best practise is to pass it through the terminal and encrypt it. Ape allows this natively, so we’re going to use this method. Run the following command to get a list of accounts:
 
 ```bash
 ape accounts list
 ```
 
-run the following command to create a new account
+Run the following command to create a new account:
 
 ```bash
 ape accounts import <NAME>
 ```
 
-So as an example
+So, as an example:
 
 ```bash
 ape accounts import scrollsepolia
 ```
 
-You will be prompted to pass your private key and then a password. Don’t forget this password (duhh). Run `ape accounts -list` to double check your account got added.
+You will be prompted to pass in your private key and then a password. Don’t forget this password (duhh). Run `ape accounts list` to verify that your account got added.
 
-# **Compile and Deploy**
+# Compile and Deploy
 
-First we need to compile our contract. Compiling a contract means translating the human-readable source code of a smart contract (written in a programming language like Solidity, Vyper, etc.) into machine-readable bytecode that can be executed on the Ethereum Virtual Machine (EVM) or other blockchain platforms. Make sure you have the ape-vyper plugin installed. Run:
+In order to deploy a contract, we first need to compile it. Compiling a contract means translating the human-readable source code of a smart contract (written in a programming language like Solidity, Vyper, etc.) into machine-readable bytecode that can be executed on the Ethereum Virtual Machine (EVM) or other blockchain platforms. Make sure you have the ape-vyper plugin installed, then run:
 
 ```bash
 ape compile
 ```
 
-This generate a file in the .build necessary to deploy our contract. Next step is to deploy our contract!
+This generate a file in the `.build` directory necessary to deploy our contract. Next step is to deploy our contract!
 
-### **Deploy script**
+### Deploy script
 
-Now we can deploy directly from the CLI, but it’s better to do it with a script. We have more control and it’s best practise.
+In this example, we're going to deploy the contract to a network called Scroll. We can deploy it directly from Ape's CLI tool, but it’s better to use a script. We have more control and it’s best practise, given that you can execute the same code, whether you're deploying to a testnet or the real thing. Within the `scripts` directory, create a new file, `deploy.py`, and add the following code:
 
 ```python
 from ape import accounts, project
 
 def main():
-      # Initialize deployer account and print balance
-    dev_account = accounts.load("scrollsep")
+    # Initialize deployer account and print balance
+    dev_account = accounts.load("scrollsepolia")
     print(f'The account balance is: {dev_account.balance / 1e18} ETH')
-     # Deploy the smart contract and print a message
-    kw = {
-        'type': 0
-    }
+    # Deploy the smart contract and print a message
+    kw = { 'type': 0 }
     dev_account.deploy(project.hello, **kw)
     print("Contract deployed!")
 ```
 
-The only thing I want to highlight, is this part
+This code is pretty intuitive, with the exception of this part:
 
 ```python
-kw = {
-        'type': 0
-    }
+kw = { 'type': 0 }
 ```
 
-We’re passing a keyword argument with type:0. Now…there is a reason. For some chains running it like this will work:
+We’re passing a keyword argument with `'type': 0`, because Scroll does not support EIP-1559 ("type 2") transactions. If that is gibberish to you, don’t sweat it. Just know that you need to pass this argument when deploying to Scroll networks.
 
-```python
-dev_account.deploy(project.hello)
-```
-
-So without the keyword argument. The reason we’re passing the `kw`, is due to the fact that some chains do not support EIP 1559 transactions. There are different type of transactions. If you’re curious, click here. If you believe me, go ahead and continue.
-
-Run the following command to deploy your smart contract
-
-```bash
-ape run scripts/deploy.py --network <RPC URL>
-```
-
-Here’s my example deploying it to Scroll Sepolia test-net
+Finally, run the following command to deploy your smart contract:
 
 ```bash
 ape run scripts/deploy.py --network https://sepolia-rpc.scroll.io/
 ```
 
-Now we could further optimise, by preventing to pass an rpc-url directly. We’re going to do this in the next article.
+You will be asked if you want to sign the transaction, say yes, then type your password to unlock the account. You will be asked if you want to leave your account unlocked. I always say no.
 
-You will be asked if you want to sign the transaction, say yes. Then pass your password to unlock the account and you will be asked if you want to leave your account unlocked. I always say no.
+Congratulations, you’ve written and deployed your first Vyper Smart Contract!
 
-Congratulations, you’ve deployed your first Vyper Smart Contract!
-
-Done!
-
-# **Interact with your smart contract**
+# Interact with your smart contract
 
 We deployed our smart contract. Great. Now we can use **[web3.py](http://web3.py/)** to interact with our smart contract. Go ahead and create a file called `hello_**[contract.py](http://contract.py/)**`. This is the full code of our contract:
 
