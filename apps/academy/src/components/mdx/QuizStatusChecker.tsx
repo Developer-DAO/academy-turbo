@@ -1,7 +1,7 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import NextLink from "next/link";
+// import NextLink from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { Badge, ButtonRaw, Container } from "ui";
+import { Badge, /* ButtonRaw, */ Container } from "ui";
 import { useAccount } from "wagmi";
 
 import { useAppContext } from "@/contexts/AppContext";
@@ -73,13 +73,13 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
         <span className="text-2xl">Quiz Completed</span>
       </Badge>
 
-      {nextLessonURLPath !== "" ? (
+      {/* {nextLessonURLPath !== "" ? (
         <NextLink href={nextLessonURLPath}>
           <ButtonRaw className="font-future w-32 rounded-3xl bg-[#44AF96] text-xs font-normal text-white">
             {`NOW TRY ${nextLessonTitle}`}
           </ButtonRaw>
         </NextLink>
-      ) : null}
+      ) : null} */}
     </>
   ) : (
     <Quiz
