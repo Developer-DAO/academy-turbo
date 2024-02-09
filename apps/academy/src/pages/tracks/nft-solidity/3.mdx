@@ -35,9 +35,8 @@ gauge how well you are soaking up the new content. Be sure to check out all the
 side-drawers for a deeper dive into the concepts, as there will be a quiz at the
 end of the lesson. We estimate between one and six hours to complete the lesson,
 depending on your previous experience and your need to learn new ideas. Remember
-to take regular breaks and enjoy the process of development. We even have a
-pomodoro timer ⌛ in the menu header to help you pace yourself and remind you to
-"touch grass" and appreciate nature's contribution to our well-being. 🌱
+to take regular breaks and enjoy the process of development.
+So, once in a while, go and "touch grass" and appreciate nature's contribution to our well-being. 🌱
 
 ## What are we building?
 
@@ -116,13 +115,11 @@ steps and what they do, for you will use them a lot in the future. Using `npm`
 as our package manager, we'll create a Hardhat project and remove the default
 files we don't need.
 
-Let’s first open a console and `cd` into our `d_d_academy` folder, or create it
-first if you haven't already. Then create a folder for our TierNFT project, then
+Let’s first open a terminal and `cd` into our `d_d_academy` folder, or create it
+first if you haven't already. Then create a folder for our TierNFT project, and
 `cd` into it:
 
 ## create a Hardhat project
-
-npx hardhat init \*/}
 
 ```bash
 ## (OPTIONAL) create a folder for our D_D Academy projects
@@ -132,8 +129,22 @@ cd d_d_academy
 ## create a folder for this project
 mkdir tierNFT
 cd tierNFT
+```
 
-## initialize our folder as an npm package
+Fire up your code editor and let’s start hacking. I’m using VSCode,
+so I just need to run `code .` in my terminal.
+
+```bash
+## open folder in code editor
+code .
+```
+
+Follow the steps one by one, and watch your project taking
+form. Don't be afraid to have a look in those new files and be
+curious about what you're building:
+
+```bash
+## initialise our folder as an npm package
 npm init -y
 
 ## install hardhat (and its dependencies)
@@ -195,10 +206,13 @@ rm scripts/*.js
 rm test/*.js
 ```
 
-We now need to add our last dependency. The OpenZeppelin contracts:
+We now need to add our last dependency - the OpenZeppelin contracts. For our
+project, we are going to 'pin' version `4.7.3`, since we want it to be compatible
+with the Solidity version in our smart contract. You may get a warning, and that's
+okay. If you get an actual 'error', reach out for help:
 
 ```bash
-npm install @openzeppelin/contracts
+npm install @openzeppelin/contracts@4.7.3
 ```
 
 OpenZeppelin is best known for implementing freely available contracts for
@@ -206,9 +220,6 @@ various standards. They are powerful and widely used building blocks for Solidit
 developers, and come fully tested and audited.
 
 ### Let’s start coding!
-
-Fire up your code editor and let’s start hacking. I’m using VSCode, so I just
-need to run `code .` in my terminal.
 
 Let’s create an empty file named `TierNFT.sol` inside the `contracts/` folder,
 and by following the contract and file naming convention, create a contract of
@@ -378,7 +389,7 @@ through the code and find out.
 
 <br/>
 <details>
-<summary>**View full code here**</summary>
+<summary>**View updated code**</summary>
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.12;
@@ -1075,7 +1086,7 @@ npx hardhat run scripts/deploy.js --network mumbai
 We specify the network where we want the contract to be deployed using the
 --network option.
 
-![4_deploy.png](/assets/lessons/3/4_deploy.png)
+![4_deploy-tierNFT.png](/assets/lessons/3/4_deploy-tierNFT.png)
 
 **Woohoo!** Finally we deployed our contract! And got a contract address, which
 we will need in a bit.
@@ -1161,7 +1172,8 @@ main().catch((error) => {
   <Question question="lesson-3/4-deploy-scripts/Q5" />
 </LessonQuestionsModal>
 
-⌛ Pomodoro? 😊 🌱
+{/* ⌛ Pomodoro? 😊 🌱 */}
+Go touch grass 😊 🌱
 
 <br />
 
@@ -1175,7 +1187,7 @@ npx hardhat run scripts/mint.js --network mumbai
 
 If we look at our terminal we will see something like this.
 
-![5_mint.png](/assets/lessons/3/5_mint.png)
+![5_mint-tierNFT.png](/assets/lessons/3/5_mint-tierNFT.png)
 
 You have just minted 3 NFTs - with different Tiers!
 
@@ -1185,7 +1197,7 @@ minutes to appear, no need to panic 😎 You can search in
 created collection with your contract address, or with the name that you chose.
 
 <br />
-![6_tierNFTs.png](/assets/lessons/3/6_tierNFTs.png)
+![6_tiernfts_opensea.png](/assets/lessons/3/6_tiernfts_opensea.png)
 
 Of course we already have a couple up there, but you will be able to view the
 three NFTs of your own, which you so diligently minted, the artist that you are!
