@@ -1,0 +1,154 @@
+import LessonLayout from "../../../components/LessonLayout";
+import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
+// import Question from "../../../components/mdx/Question";
+// import Callout from "../../../components/mdx/Callout";
+// import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
+// import LessonInformationalModal from "../../../components/mdx/LessonInformationalModal";
+
+<LessonLayout
+   lessonTitle="Oracles and API3 - Price Feeds" 
+   author="BillyJitsu"
+   authorPosition="Developer_DAO"
+   authorTwitter="wc49358"
+   createdDate=""
+>
+
+## Oracles and API3 (Price Feeds)
+
+### About this lesson
+
+In this course lesson, you will learn how oracles play a vital role in bringing offchain data to the blockchain. The data we will be refering to in course is Price Feeds.
+
+<LessonQuestionsModal
+  buttonText="Warm-up Questions"
+  title="Some previous knowledge, some prediction"
+>
+  <Question question="1-oracles-api3/1-intro/Q1" />
+  <Question question="1-oracles-api3/1-intro/Q2" />
+  <Question question="1-oracles-api3/1-intro/Q3" />
+  <Question question="1-oracles-api3/1-intro/Q4" />
+  <Question question="1-oracles-api3/1-intro/Q5" />
+</LessonQuestionsModal>
+
+### Lesson Contents
+
+1. Understanding the API Connectivity Problem
+2. Key Components of API3
+3. Breakdown of Decentralized APIs (dAPIs) - Price Feeds
+
+### Understanding the API Connectivity Problem
+
+#### Introduction
+
+- **Objective**: To understand the challenge of integrating off-chain data with blockchain technologies, known as the API Connectivity Problem.
+- **Background**: Explanation of the deterministic nature of blockchain and how it limits direct access to off-chain data.
+
+#### The Problem Detailed
+
+- **Smart Contracts' Limitation**: The EVM blockchain cannot access data outside of its own network natively. It has no idea what the dollar value of what Ethereum is or any assets. Being that the blockchain is also deterministic, there is no internal source of randomness.
+- **Real-World Impact**: Scenarios where lack of external data access restricts the capabilities of blockchain applications. For instance, how a smart contract for weather-based crop insurance struggles without real-time weather data or how defi applications get the value of tokens.
+
+#### API3's Solution
+
+- **API3's Role**: API3 aims to bridge the gap by allowing decentralized access to off-chain data, enhancing blockchain applications' functionality permissionlessly.
+- **Benefits**: Detailed analysis of the advantages of API3's approach, including increased security, reduced reliance on intermediaries, and enhanced data integrity.
+
+### Key Components of API3
+
+#### APIs in Blockchain
+
+- **API3's Approach**: API3 facilitates a decentralized approach to integrate these APIs into blockchain environments, enhancing functionality and security using the Airnode infrastructure.
+
+#### Airnode
+
+- **Introduction to Airnode**: The Airnode is an architecture created by API3 to be the relay of data offchain bringing it onchain. There are two types of oracles:
+- A push oracle, where the data is sent to the blockchain constantly via a certain criteria. A price feed is a great example of a push oracle as we need to know the latest update of what the value of an asset is at any given time and need that onchain data immediately.
+- A pull oracle, where the data is requested at the time of need and we wait for a reponse of that request. A random number is a great example of how this would work. We need one for a mint, send the mint request wait for the request and once the data is received do some logic. This is a less time sensitive request.
+
+![Airnode](/assets/lessons/1-oracles-api3/airnode-image.png)
+
+#### First-party vs. Third-party Oracles
+
+- **Contrasting Oracles**: Many oracles send data on chain but how do we know the source in which the the data is coming from? When getting a price feed for ETH, what is the source of price feed? Coingecko, Coinbase, Coin Market Cap? Most services, also combine (aggregate) the data to get the averaged value but how do we know the same date wasn't used more than once? API3 uses a first party oracle system in wich the data source provider must host their own "Airnode" to provide the data onchain. API3 does not act as a middle man in this feed and users can choose to read that single source. API3 aggregates all these first party data feeds and provides that as a service and can reversabley be proven that the feed came from that specific source.
+
+![1st Party](/assets/lessons/1-oracles-api3/1st-party.png)
+![3rd Party](/assets/lessons/1-oracles-api3/3rd-party.png)
+
+---
+
+### Decentralized APIs (dAPIs) - Price Feeds
+
+#### What are dAPIs?
+
+- **Definition and Function**: Decentralized APIs (dAPIs), are essentialy price feeds. They provide the connection from the offchain APIs for smart contract usage.
+
+#### Functionality and Accessibility
+
+- **Connecting Smart Contracts to Data Feeds**: In-depth discussion on how dAPIs enable smart contracts to access accurate and reliable real-world data feeds.
+- **Real-World Example**:
+  To read a dAPI value in a smart contract, import the IProxy.sol interface and call the read() function. Here's an example:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.17;
+
+import "@api3/contracts/v0.8/interfaces/IProxy.sol";
+
+contract DataFeedReaderExample {
+    // The proxy contract address obtained from the API3 Market UI.
+    address public proxyAddress;
+
+    // Set the price feed our contract wants to read
+    function setProxyAddress(address _proxyAddress) public {
+        proxyAddress = _proxyAddress;
+    }
+
+    function readDataFeed()
+        external
+        view
+        returns (int224 value, uint256 timestamp)
+    {
+        // Use the IProxy interface to read a dAPI via its
+        // proxy contract .
+        (value, timestamp) = IProxy(proxyAddress).read();
+        // If you have any assumptions about `value` and `timestamp`,
+        // make sure to validate them after reading from the proxy.
+    }
+}
+```
+
+You'll have to set the proxyAddress using the setProxyAddress() function. You can get the proxyAddress for activated dAPIs from within the data feed dashboard through the [API3 Market](https://market.api3.org/dapis)
+
+---
+
+![MarketPlace](/assets/lessons/1-oracles-api3/market.gif)
+
+---
+
+Once you have set your contracts proxy address, you contract is ready to read the external price feed and be usable for whatever logic you want to use that price data for.
+
+#### Practical Application
+
+- **What the Contract Returns**: When you click on readDataFeed it will return 2 individual numbers.
+
+1. The Current Price of the Asset in 18 decimal format
+2. The block.timestamp of when the price feed was last updated. (To ensure we don't have a stale price feed)
+
+The function `readDataFeed()` will return two values. The first value being the price of the asset in 18 decimals. The second value is the timestamp of when the price was last updated. This is extremely important in production because we want to make sure that our price feeds are active and not stale.
+API3 updates price feeds under two conditions, a change in price (different deviations 1%, 0.5% or 0.25%) or if the price hasn't change that much in 24 hours it will update just to make sure the price feed is active (think of a stable coin like USDC)
+
+Once you have your data, you can add your logic to your smart contract such as setting a consistent price for an NFT or donation or a borrow lending dapp.
+
+Looking for framework examples?
+
+- [Foundry Example](https://github.com/api3-ecosystem/data-feed-reader-example-foundry)
+
+- [Hardhat Example](https://github.com/api3dao/data-feed-reader-example)
+
+#### Lesson summary and kudos
+
+<QuizStatusChecker quiz="oracles-api3/quiz-oracles-api3-1" />
+
+#### Outro and Next steps
+
+</LessonLayout>
