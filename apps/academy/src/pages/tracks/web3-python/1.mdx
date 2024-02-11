@@ -14,7 +14,7 @@ import Question from "../../../components/mdx/Question";
 
 # Intro
 
-Welcome to the Python Smart Contract Development series, where you will learn how to build, deploy, test and interact with smart contracts, using only Python. Don’t learn a new language, use your existing skills to build in Web3 today!
+Welcome to the Python Smart Contract Development series, where you will learn how to build, deploy, test and interact with smart contracts, using only Python. No need to learn a new language - you can use your existing skills to build in Web3 today!
 
 ![intro](/assets/tracks/web3-python/1/intro.png)
 
@@ -419,35 +419,29 @@ Before we write any, let’s check-out the anatomy of a test function. If we loo
 2. Invocation
 3. Assertion
 
-Side note: this might sound familiar to Solidity courses where a structure of the 3 A’s is adhered:
+Side note: this might sound familiar to Solidity courses where a structure of the 3 A’s is adhered to:
 
 1. Arrange
 2. Act
 3. Assert
 
-Below you’ll find a visual. This is how we structure our test-functions.
+### Writing our first test functions
 
-**ADD VISUAL OVERHERE**
-
-## Setup the Test File
-
-First we need to import the necessary libraries
+First we need to import the necessary libraries:
 
 ```python
 from ape import accounts, project
 ```
 
-### Writing our first test functions
+We have two functions in our contract that we need a test for: the constructor and `set_greet()` function. For the constructor, we need to check if the initial value has been set correctly. For the `set_greet` function, we need to set a new greeting and assert (check) if the result is equal to what we set the new greeting to.
 
-We have 2 functions in our contract that we need a test for, the constructor and `set_greet()` function. For the constructor we need to check if the initial value has been set correct. For the `set_greet` function, we need to set a new greeting and assert (check) if the result is equal to what we set the new greeting too.
-
-### Test Function 1 - Test Initial Greeting
+### Test Function 1: Initial Greeting
 
 This is the complete test function:
 
 ```python
 def test_greet_initialization():
-    test_account = accounts.load("anviltest")
+    test_account = accounts.load("anvil0")
     # Deploy the contract
     contract = project.hello.deploy(sender=test_account)
 
@@ -459,47 +453,47 @@ Let’s break it down!
 
 **Step 1: Load Your Anvil Account**
 
-In your Ape script, start by loading your preferred Ape account using Ape's **`accounts.load`** function. This account will be used to deploy the contract and send transactions. Replace **`"anviltest"`** with the alias of your Ape account:
+In your Ape script, start by loading your preferred Ape account using Ape's **`accounts.load`** function. This account will be used to deploy the contract and send transactions. Replace `"anvil0"` with the alias of your Ape account:
 
 ```python
-# Load your preferred Ethereum account
-test_account = accounts.load("anviltest")
+# Load your preferred Ethereum test account
+test_account = accounts.load("anvil0")
 ```
 
 **Step 2: Deploy Your Vyper Smart Contract**
 
-Next, deploy your Vyper smart contract using Ape. You'll need to specify the contract's name (replace **`'hello'`** with the actual name of your contract):
+Next, deploy your Vyper smart contract using Ape. You'll need to specify the contract's name. If you've named your contract something else, replace `hello` with that name:
 
 ```python
 # Deploy your Vyper contract
 contract = test_account.deploy(project.hello)
 ```
 
-This step deploys your contract to the Anvil network, and **`contract`** will represent the deployed contract instance.
+This step deploys your contract to the Anvil network, and `contract` will represent the deployed contract instance.
 
 **Step 3: Verify the Initialization of `greet`**
 
-Now, you want to verify if the **`greet`** variable is initialized correctly. You can do this by checking its initial value. Add an assertion to ensure that it matches the expected initial value:
+Now, you want to verify that the `greet` variable is initialized correctly. You can do this by checking its value after deployment. Add an assertion to verify that it matches the expected initial value:
 
 ```python
 assert contract.greet() == "Hello World", "greet variable not initialized correctly"
 ```
 
-This assertion checks if the **`greet`** variable is set to **`"Hello World"`** as expected. If it's not, the test will fail with the specified error message.
+This assertion checks if the `greet` variable is set to `"Hello World"` as expected. If not, the test will fail with the specified error message.
 
 **Step 4: Run the Test**
 
-Now, you can run your test script with the command `ape test --network ::foundry -s`. This spins up a local anvil chain, specifically for this test. If you have anvil running in a separate terming, this command will throw an error. Either close anvil or run the following command to run the test `ape test --network http://localhost:8545 -s`. Make sure to pass the address where anvil is running.
+Now, you can run your test script with the command `ape test --network ::foundry -s`. The `-s` flag allows you to use your account to sign the message. When you specify the foundry network flag, Ape spins up a local anvil chain, specifically for this test. If you have anvil running in a separate terminal, this command will throw an error. Either close anvil or run the following command to run the test `ape test --network http://localhost:8545 -s`. Make sure to include the port number where anvil is running; 8545 is Anvil's the default port.
 
-If everything is set up correctly and the **`greet`** variable is initialized as expected, the test should pass.
+If everything is set up correctly and the `greet` variable is initialized as expected, the test should pass.
 
-Awesome, let’s write the test for the next function.
+If you've got a passing test, awesome! Let’s move on to write a test for the next function.
 
-### Test Function 2 - Set New Greeting
+### Test Function 2: Set New Greeting
 
 **Step 1: Load Your Anvil Account**
 
-In your Ape Python script, start by loading your preferred account using Ape's `accounts.load` function. This account will be used to deploy the contract and send transactions. Replace `"anvil0"` with the alias of your Ape account:
+In your Ape Python script, start again by loading your preferred account using Ape's `accounts.load` function. This account will be used to deploy the contract and send transactions. Replace `"anvil0"` with the alias of your Ape account:
 
 ```python
 from ape import accounts
@@ -510,7 +504,7 @@ deployer = accounts.load("anvil0")
 
 **Step 2: Deploy Your Vyper Smart Contract**
 
-Next, deploy your Vyper smart contract using Ape. You'll need to specify the contract's name (replace `'your_contract_name'` with the actual name of your contract):
+Next, deploy your contract using Ape. You'll need to specify the contract's name (replace `'your_contract_name'` with the actual name of your contract):
 
 ```python
 from ape import project
@@ -528,8 +522,6 @@ Now, define the new greeting message that you want to set using the `set_greet` 
 ```python
 new_greet = "Hello, Ape!"
 ```
-
-Replace `"Hello, Ape!"` with the desired greeting message.
 
 **Step 4: Call the `set_greet` Function**
 
@@ -559,13 +551,13 @@ Now, you can run your test script. If everything is set up correctly and the `se
 ape test --network ::foundry -s
 ```
 
-The `-s` flag allows you to use your account to sign the message.
-
 That’s it! You’ve mastered the basics of testing with Ape. Pat yourself on the back, this is no small feat!
 
 # Conclusion
 
-xxx
+We covered a lot of ground! In this lesson, we learned how to set up a virtual environment, then create a new project with Ape. We wrote, compiled, and deployed a simple Vyper smart contract. Finally, we interacted with the contract using web3.py, and wrote a couple tests for the contract within Ape.
+
+Test yourself to see if you've retained the information by taking the quiz below.
 
 ![conclusion](/assets/tracks/web3-python/1/conclusion.png)
 
