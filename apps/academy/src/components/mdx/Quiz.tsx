@@ -17,7 +17,7 @@ import {
 import Spinner from "@/components/Spinner";
 import { useAppContext } from "@/contexts/AppContext";
 import { api } from "@/utils/api";
-import { getCorrectAnswersIndexes, haveSameElements, toLetters } from "@/utils/QuizHelpers";
+import { getCorrectAnswersIndexes, haveSameElements } from "@/utils/QuizHelpers";
 export interface QuizProps {
   quiz: string;
   nextLessonURLPath: string;
@@ -273,7 +273,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
                       }}
                       key={index}
                     >
-                      {`${toLetters(index + 1)}. ${option.answer}`}
+                      {`${option.answer}`}
                     </div>
                   );
                 })}
