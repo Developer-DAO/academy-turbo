@@ -1,7 +1,7 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import Link from "next/link";
+// import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { ButtonRaw, Container } from "ui";
+import { /* ButtonRaw, */ Container } from "ui";
 import { useAccount } from "wagmi";
 
 import QuizCompletedModals from "@/components/mdx/QuizCompletedModals";
@@ -77,13 +77,13 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
         <span className="text-2xl">Quiz Completed</span>
       </Badge> */}
 
-      {nextLessonURLPath !== "" ? (
+      {/* {nextLessonURLPath !== "" ? (
         <Link href={nextLessonURLPath}>
           <ButtonRaw className="font-future w-fit rounded-3xl bg-[#44AF96] text-xs font-normal text-white lg:text-2xl">
             {`NOW TRY ${nextLessonTitle}`}
           </ButtonRaw>
         </Link>
-      ) : null}
+      ) : null} */}
     </>
   ) : (
     <Quiz

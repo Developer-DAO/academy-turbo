@@ -225,10 +225,11 @@ const Quiz = (props: QuizProps): JSX.Element => {
       </div>
       <Dialog open={showQuiz} onOpenChange={cancelQuiz}>
         <DialogOverlay />
-        <DialogContent className={`rounded-lg border-black bg-[#1C1C1C] `}>
+        <DialogContent
+          className={`max-w-24 mx-7 rounded-lg border-[#848484] bg-[#1C1C1C] lg:w-full `}
+        >
           <DialogHeader>
-            <DialogTitle /* className="font-poppins text-base font-bold leading-9 text-white	lg:text-xl"*/
-            >
+            <DialogTitle>
               <DialogTrigger className="w-full text-right text-[#44AF96]">X</DialogTrigger>
 
               <div className="mx-8 flex flex-col text-start">
@@ -242,8 +243,8 @@ const Quiz = (props: QuizProps): JSX.Element => {
             </DialogTitle>
           </DialogHeader>
 
-          <DialogDescription className="mx-7 h-[85%] max-h-[85%] bg-[#242424] pb-5 lg:mx-12 ">
-            <div className="flex flex-col gap-4 rounded-md bg-[#242424] p-6">
+          <DialogDescription className="h-[85%] max-h-[85%] bg-[#242424] pb-5 lg:mx-7">
+            <div className="flex flex-col rounded-md bg-[#242424] p-6">
               <div className="mt-5 h-[50%] max-h-[50%] w-full overflow-auto scroll-smooth">
                 <span className="font-clash-display mb-10 w-full text-xl font-bold leading-5 text-white">
                   {quiz.questions[currentQuestionIndex]!.question}
@@ -282,7 +283,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
           </DialogDescription>
 
           <DialogFooter>
-            <div className={`just flex w-full items-center`}>
+            <div className={`flex w-full items-center`}>
               <div className="flex w-full">
                 <ButtonRaw
                   type="button"
