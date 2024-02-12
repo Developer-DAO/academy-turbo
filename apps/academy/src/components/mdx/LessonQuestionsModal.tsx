@@ -19,8 +19,8 @@ export default function LessonQuestionsModal({ buttonText, title, children }: Pr
   return (
     <Dialog>
       <DialogTrigger
-        className="font-future mx-auto my-3 flex rounded-3xl bg-[#721F79] p-2
-          text-2xl font-normal text-white"
+        className="font-future mx-auto my-3 flex w-fit rounded-3xl bg-[#721F79]
+          p-2 text-2xl font-normal text-white"
       >
         {buttonText}
       </DialogTrigger>

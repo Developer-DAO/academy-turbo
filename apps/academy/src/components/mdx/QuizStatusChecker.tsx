@@ -1,8 +1,9 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { useMemo, useState } from "react";
-import { Badge, ButtonRaw, Container } from "ui";
-import { useAccount } from "wagmi";
+import { useEffect, useMemo, useState } from "react";
+import { Container } from "ui";
+import { useAccount, useNetwork } from "wagmi";
 
+import QuizCompletedModals from "@/components/mdx/QuizCompletedModals";
 import { useAppContext } from "@/contexts/AppContext";
 
 import Quiz from "./Quiz";
@@ -17,6 +18,9 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
   const { completedQuizzesIds, allLessonsData } = useAppContext();
   const [nextLessonURLPath, setNextLessonURLPath] = useState("");
   const [nextLessonTitle, setNextLessonTitle] = useState("");
+  const [actualLessonTitle, setActualLessonTitle] = useState("");
+  const { chain } = useNetwork();
+
   // Requests
   useMemo(() => {
     if (allLessonsData.length && completedQuizzesIds.length) {
@@ -28,19 +32,29 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
 
       if (completedQuizzesIds.includes(actualLessonId)) {
         setQuizCompleted(true);
-        const actualLessonNextPath: string = allLessonsData.find(
-          (lesson) => lesson.quizFileName === quiz,
-        )!.nextLessonPath!;
-        setNextLessonURLPath(actualLessonNextPath);
-        const newNextLessonTitle: string = allLessonsData.find(
-          (lesson) => lesson.quizFileName === quiz,
-        )!.lessonTitle;
-        setNextLessonTitle(newNextLessonTitle);
       }
     }
   }, [allLessonsData, completedQuizzesIds, quiz]);
 
-  return isDisconnected || address === undefined ? (
+  useEffect(() => {
+    if (quizCompleted) {
+      const newNextLessonURLPath: string = allLessonsData.find(
+        (lesson) => lesson.quizFileName === quiz,
+      )!.nextLessonPath!;
+      setNextLessonURLPath(newNextLessonURLPath);
+      const newNextLessonTitle: string = allLessonsData.find(
+        (lesson) => lesson.nextLessonPath === newNextLessonURLPath,
+      )!.lessonTitle;
+      setNextLessonTitle(newNextLessonTitle);
+
+      const newActualLessonTitle: string = allLessonsData.find(
+        (lesson) => lesson.quizFileName === quiz,
+      )!.lessonTitle;
+      setActualLessonTitle(newActualLessonTitle);
+    }
+  }, [quizCompleted]);
+
+  return chain?.unsupported === true || isDisconnected || address === undefined ? (
     <>
       <Container>
         <span className="font-future text-3xl font-bold text-[#721F79] underline">
@@ -54,17 +68,32 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
     </>
   ) : quizCompleted ? (
     <>
-      <Badge className="m-auto flex w-fit justify-center bg-green-600">
+      <QuizCompletedModals
+        nextLessonURLPath={nextLessonURLPath}
+        nextLessonTitle={nextLessonTitle}
+        actualLessonTitle={actualLessonTitle}
+        quizCompleted={quizCompleted}
+      />
+      {/* <Badge className="m-auto flex w-fit justify-center bg-green-600">
         <span className="text-2xl">Quiz Completed</span>
-      </Badge>
-      {nextLessonURLPath !== "" ? (
-        <ButtonRaw className="font-future w-32 rounded-3xl bg-[#44AF96] text-xs font-normal text-white">
-          {`NOW TRY ${nextLessonTitle}`}
-        </ButtonRaw>
-      ) : null}
+      </Badge> */}
+
+      {/* {nextLessonURLPath !== "" ? (
+        <NextLink href={nextLessonURLPath}>
+          <ButtonRaw className="font-future w-32 rounded-3xl bg-[#44AF96] text-xs font-normal text-white">
+            {`NOW TRY ${nextLessonTitle}`}
+          </ButtonRaw>
+        </NextLink>
+      ) : null} */}
     </>
   ) : (
-    <Quiz quiz={quiz} />
+    <Quiz
+      quiz={quiz}
+      nextLessonURLPath={nextLessonURLPath}
+      nextLessonTitle={nextLessonTitle}
+      actualLessonTitle={actualLessonTitle}
+      quizCompleted={quizCompleted}
+    />
   );
 };
 

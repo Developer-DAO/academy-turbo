@@ -84,10 +84,10 @@ async function main() {
   // console.log({ newTagOnTracks });
   // const updatedLesson = await prisma.tracks.update({
   //   where: {
-  //     id: "clrzjah6u00001w2ndxrq8dou",
+  //     id: "clrzk4tcb00031wlq6bbvv2yh",
   //   },
   //   data: {
-  //     imgPath: "/track-erc20.png",
+  //     nextLessonPath: "/track-erc20.png",
   //   },
   // });
   // console.log({ updatedLesson });

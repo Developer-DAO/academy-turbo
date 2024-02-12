@@ -1,31 +1,22 @@
-import type { Lessons, Tags, Tracks } from "database";
+import type { Lessons, Tracks } from "database";
 import { createContext, useContext } from "react";
-
-// import type { Fundamental, Project } from "@/interfaces";
-
-type TagsResult =
-  | Tracks
-  | (Tracks &
-      {
-        tags: Tags[];
-      }[]);
 
 interface AppContextInterface {
   completedQuizzesIds: string[];
-  // projects: Project[];
-  // fundamentals: Fundamental[];
   allLessonsData: Lessons[];
+  allLessonsDataIsLoading: boolean;
   refetchCompletedQuizzesAll?: () => Promise<any>;
-  allTracksData: TagsResult[];
+  allTracksData: Tracks[]; // | (Tracks[] & { tags: Tags[] });
+  allTracksDataIsLoading: boolean;
 }
 
 export const AppContext = createContext<AppContextInterface>({
   completedQuizzesIds: [],
-  // projects: [],
-  // fundamentals: [],
   allLessonsData: [],
+  allLessonsDataIsLoading: false,
   refetchCompletedQuizzesAll: async () => Promise.resolve(),
   allTracksData: [],
+  allTracksDataIsLoading: false,
 });
 
 AppContext.displayName = "AcademyAppContext";
