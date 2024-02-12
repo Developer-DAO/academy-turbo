@@ -22,7 +22,7 @@ const Home: NextPageWithLayout = () => {
             <p>Become a web3 developer with Developer DAO.</p>
           </div>
           <div className="hidden w-full items-center justify-center md:flex">
-            <Link href="/#learn-web3">
+            <Link href="/#learn-web3" className="hover:cursor-pointer">
               <Icons.scroll className="h-16 w-16" />
             </Link>
           </div>
