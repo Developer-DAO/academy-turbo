@@ -23,7 +23,6 @@ export interface QuizProps {
   nextLessonURLPath: string;
   nextLessonTitle: string;
   actualLessonTitle: string;
-  quizCompleted: boolean;
 }
 
 interface Quiz {
@@ -46,7 +45,6 @@ export type Answers = Record<string, number[]>;
 const Quiz = (props: QuizProps): JSX.Element => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-var-requires
   const quiz: Quiz = require(`@/data/quizzes/${props.quiz}.json`);
-  const [showQuiz, setShowQuiz] = useState(props.quizCompleted);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
   const [_correctAnswers, setCorrectAnswers] = useState<number[] | null>(null);
@@ -211,107 +209,95 @@ const Quiz = (props: QuizProps): JSX.Element => {
   };
 
   return (
-    <>
-      <div className="w-full text-center">
-        <ButtonRaw
-          className="font-future mx-auto flex h-12 w-36 rounded-3xl
-          bg-[#721F79] text-2xl font-normal text-white"
-          onClick={() => {
-            setShowQuiz(true);
-          }}
-        >
-          QUIZ
-        </ButtonRaw>
-      </div>
-      <Dialog open={showQuiz} onOpenChange={cancelQuiz}>
-        <DialogOverlay />
-        <DialogContent
-          className={`max-w-24 mx-7 rounded-lg border-[#848484] bg-[#1C1C1C] lg:w-full `}
-        >
-          <DialogHeader>
-            <DialogTitle>
-              <DialogTrigger className="w-full text-right text-[#44AF96]">X</DialogTrigger>
+    <Dialog>
+      <DialogTrigger className="font-future mx-auto flex h-12 w-32 rounded-3xl bg-[#721F79] p-3 pl-6 text-center text-2xl font-normal text-white">
+        QUIZ
+      </DialogTrigger>
+      <DialogOverlay />
+      <DialogContent
+        className={`max-w-24 mx-7 rounded-lg border-[#848484] bg-[#1C1C1C] lg:w-full `}
+      >
+        <DialogHeader>
+          <DialogTitle>
+            <DialogTrigger className="w-full text-right text-[#44AF96]">X</DialogTrigger>
 
-              <div className="mx-8 flex flex-col text-start">
-                <span className="font-clash-display w-full text-xl font-bold leading-9 text-white lg:text-3xl">
-                  {quiz.title}
-                </span>
-                <span className="font-poppins w-full text-base font-light text-white">{`Quiz Question ${
-                  currentQuestionIndex + 1
-                }/${quiz.questions.length}`}</span>
-              </div>
-            </DialogTitle>
-          </DialogHeader>
-
-          <DialogDescription className="h-[85%] max-h-[85%] bg-[#242424] pb-5 lg:mx-7">
-            <div className="flex flex-col rounded-md bg-[#242424] p-6">
-              <div className="mt-5 h-[50%] max-h-[50%] w-full overflow-auto scroll-smooth">
-                <span className="font-clash-display mb-10 w-full text-xl font-bold leading-5 text-white">
-                  {quiz.questions[currentQuestionIndex]!.question}
-                </span>
-                {quiz.questions[currentQuestionIndex]!.options.map((option, index) => {
-                  return (
-                    <div
-                      className={`${
-                        index === 0
-                          ? `${
-                              quiz.questions[currentQuestionIndex]!.options.length >= 4
-                                ? "mt-9"
-                                : "mt-12"
-                            } `
-                          : ""
-                      } font-clash-display ${
-                        quiz.questions[currentQuestionIndex]!.options.length >= 4 ? "mb-5" : "mb-7"
-                      } w-full cursor-pointer rounded-3xl bg-[#303030] ${isSelectedAnswer(
-                        index,
-                      )}	p-5	${
-                        quiz.questions[currentQuestionIndex]!.options.length >= 4
-                          ? "text-base"
-                          : "text-lg"
-                      } font-bold text-[#F9F9F9]`}
-                      onClick={() => {
-                        selectAnswer(index);
-                      }}
-                      key={index}
-                    >
-                      {`${option.answer}`}
-                    </div>
-                  );
-                })}
-              </div>
+            <div className="mx-8 flex flex-col text-start">
+              <span className="font-clash-display w-full text-xl font-bold leading-9 text-white lg:text-3xl">
+                {quiz.title}
+              </span>
+              <span className="font-poppins w-full text-base font-light text-white">{`Quiz Question ${
+                currentQuestionIndex + 1
+              }/${quiz.questions.length}`}</span>
             </div>
-          </DialogDescription>
+          </DialogTitle>
+        </DialogHeader>
 
-          <DialogFooter>
-            <div className={`flex w-full items-center`}>
-              <div className="flex w-full">
-                <ButtonRaw
-                  type="button"
-                  className={`button-rounded mr-4 text-xs font-normal text-white lg:w-40 ${previousButtonVisibility()}`}
-                  onClick={previousQuestion}
-                >
-                  {"Previous"}
-                </ButtonRaw>
-                <ButtonRaw
-                  type="button"
-                  className={`button-rounded mr-4 w-32 text-xs font-normal text-white ${nextButtonVisibility()}`}
-                  onClick={nextQuestion}
-                >
-                  {"Next"}
-                </ButtonRaw>
-                <ButtonRaw
-                  className="font-future w-32 rounded-3xl bg-[#636363] text-xs font-normal text-white"
-                  onClick={submit}
-                  disabled={Object.keys(answers).length !== quiz.questions.length}
-                >
-                  {!quizzesAddIsLoading ? "Submit" : <Spinner />}
-                </ButtonRaw>
-              </div>
+        <DialogDescription className="h-[85%] max-h-[85%] bg-[#242424] pb-5 lg:mx-7">
+          <div className="flex flex-col rounded-md bg-[#242424] p-6">
+            <div className="mt-5 h-[50%] max-h-[50%] w-full overflow-auto scroll-smooth">
+              <span className="font-clash-display mb-10 w-full text-xl font-bold leading-5 text-white">
+                {quiz.questions[currentQuestionIndex]!.question}
+              </span>
+              {quiz.questions[currentQuestionIndex]!.options.map((option, index) => {
+                return (
+                  <div
+                    className={`${
+                      index === 0
+                        ? `${
+                            quiz.questions[currentQuestionIndex]!.options.length >= 4
+                              ? "mt-9"
+                              : "mt-12"
+                          } `
+                        : ""
+                    } font-clash-display ${
+                      quiz.questions[currentQuestionIndex]!.options.length >= 4 ? "mb-5" : "mb-7"
+                    } w-full cursor-pointer rounded-3xl bg-[#303030] ${isSelectedAnswer(index)}	p-5	${
+                      quiz.questions[currentQuestionIndex]!.options.length >= 4
+                        ? "text-base"
+                        : "text-lg"
+                    } font-bold text-[#F9F9F9]`}
+                    onClick={() => {
+                      selectAnswer(index);
+                    }}
+                    key={index}
+                  >
+                    {`${option.answer}`}
+                  </div>
+                );
+              })}
             </div>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    </>
+          </div>
+        </DialogDescription>
+
+        <DialogFooter>
+          <div className={`flex w-full items-center`}>
+            <div className="flex w-full">
+              <ButtonRaw
+                type="button"
+                className={`button-rounded mr-4 text-xs font-normal text-white lg:w-40 ${previousButtonVisibility()}`}
+                onClick={previousQuestion}
+              >
+                {"Previous"}
+              </ButtonRaw>
+              <ButtonRaw
+                type="button"
+                className={`button-rounded mr-4 w-32 text-xs font-normal text-white ${nextButtonVisibility()}`}
+                onClick={nextQuestion}
+              >
+                {"Next"}
+              </ButtonRaw>
+              <ButtonRaw
+                className="font-future w-32 rounded-3xl bg-[#636363] text-xs font-normal text-white"
+                onClick={submit}
+                disabled={Object.keys(answers).length !== quiz.questions.length}
+              >
+                {!quizzesAddIsLoading ? "Submit" : <Spinner />}
+              </ButtonRaw>
+            </div>
+          </div>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 };
 

@@ -91,7 +91,6 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
       nextLessonURLPath={nextLessonURLPath}
       nextLessonTitle={nextLessonTitle}
       actualLessonTitle={actualLessonTitle}
-      quizCompleted={quizCompleted}
     />
   );
 };
