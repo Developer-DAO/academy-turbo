@@ -72,7 +72,6 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
         nextLessonURLPath={nextLessonURLPath}
         nextLessonTitle={nextLessonTitle}
         actualLessonTitle={actualLessonTitle}
-        quizCompleted={quizCompleted}
       />
       {/* <Badge className="m-auto flex w-fit justify-center bg-green-600">
         <span className="text-2xl">Quiz Completed</span>

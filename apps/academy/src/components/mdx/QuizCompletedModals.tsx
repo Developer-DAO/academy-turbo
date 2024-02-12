@@ -18,13 +18,12 @@ export interface QuizProps {
   nextLessonURLPath: string;
   nextLessonTitle: string;
   actualLessonTitle: string;
-  quizCompleted: boolean;
 }
 
 export type Answers = Record<string, number[]>;
 
 const QuizCompletedModals = (props: QuizProps): JSX.Element => {
-  const [showDialog, setShowDialog] = useState(props.quizCompleted);
+  const [showDialog, setShowDialog] = useState(false);
   const [showKeepGoingModal, setShowKeepGoingModal] = useState(false);
 
   const handleLessonDoneClick = () => {
