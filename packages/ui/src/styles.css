@@ -255,7 +255,7 @@
 }
 
 .track .gray-badge {
-  @apply badge max-h-7 w-[70px] min-w-fit border border-[#5050504A] text-xs hover:bg-[#5050504A];
+  @apply badge max-h-7 min-w-fit max-w-[88px] border border-[#5050504A] text-xs hover:bg-[#5050504A];
 }
 
 .track .title {

@@ -22,7 +22,11 @@ export const TracksRouter = createTRPCRouter({
       include: {
         tags: {
           include: {
-            tag: true,
+            tag: {
+              include: {
+                tracks: false,
+              },
+            },
           },
         },
         lessons: false,

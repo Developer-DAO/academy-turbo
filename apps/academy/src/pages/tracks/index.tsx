@@ -1,60 +1,13 @@
 import Link from "next/link";
-import React from "react";
 import { TrackCard } from "ui";
 
 import Spinner from "@/components/Spinner";
+// import { useAppContext } from "@/contexts/AppContext";
 import { api } from "@/utils/api";
 
 const TracksPage = () => {
-  const { data: allTracksData } = api.tracks.getAll.useQuery(undefined, {
-    refetchOnWindowFocus: false,
-  });
-  // const tracksArray = [
-  //   {
-  //     trackTitle: "Web3 Fundamentals",
-  //     author: "georgemac510, elPiablo",
-  //     imgPath: "/image16.png",
-  //     trackDescription:
-  //       "There is a lot more to Web3 than blockchains and smart contracts. This track provides resources and insights on various fundamental tooling and infrastructure needed for the magic you create in your projects to become a reality.",
-  //     tags: ["Infra", "Web3", "CLI"],
-  //     trackPath: "/tracks/fundamentals",
-  //   },
-  //   {
-  //     trackTitle: "A Developer's Guide to Ethereum",
-  //     author: "wolovim",
-  //     imgPath: "/image16.png",
-  //     trackDescription:
-  //       "An accessible introduction to Ethereum via web3.py and Python. Grasp blockchain basics, Ethereum's decentralization, and smart contracts with practical insights. Code included for hands-on learning.",
-  //     tags: ["Entry", "Blockchain", "Ethereum"],
-  //     trackPath: "/tracks/intro-to-ethereum",
-  //   },
-  //   {
-  //     trackTitle: "Build a Tiered NFT",
-  //     author: "7i7o, piablo, georgemac510, brianfive, ropats16, meowy, mveve",
-  //     imgPath: "/image16.png",
-  //     trackDescription:
-  //       "After a gentle introduction to Solidity, you'll be building your own tiered ERC-721 token sets using test-driven development, hosting your files on Web3 storage, and creating on your own front-end dApp. The full-stack-track.",
-  //     tags: ["Entry", "Explorer", "ERC-721"],
-  //     trackPath: "/tracks/nft-solidity",
-  //   },
-  //   {
-  //     trackTitle: "Build a Fungible Token",
-  //     author: "_7i7o, piablo",
-  //     imgPath: "/image16.png",
-  //     trackDescription:
-  //       "Start with Solidity basics, or move straight on to creating an ERC-20 token using the Foundry development toolchain. Later, we'll explore more advanced concepts with real-world use cases, and best practices for creating and managing blockchain assets",
-  //     tags: ["Entry", "ERC-20", "Foundry"],
-  //     trackPath: "/tracks/erc-20-solidity",
-  //   },
-  //   {
-  //     trackTitle: "api-connectivity-problem",
-  //     author: "BillyJitsu",
-  //     imgPath: "/image16.png",
-  //     trackDescription: "something here",
-  //     tags: ["Entry", "ERC-20", "Foundry"],
-  //     trackPath: "/tracks/oracles-api3",
-  //   },
-  // ];
+  const { data: allTracksData } = api.tracks.getAll.useQuery();
+
   return (
     <div className="flex h-full w-full flex-col space-y-10 overflow-hidden bg-black lg:h-screen lg:max-h-screen lg:flex-row">
       <div
@@ -71,7 +24,7 @@ bg-[url('/bg_tracks.png')] bg-cover bg-no-repeat object-center pt-[300px]  lg:fi
         </div>
         <div />
       </div>
-      <div className="flex-0 flex lg:fixed lg:right-0 lg:top-20 lg:h-screen lg:w-1/2">
+      <div className="flex-0 flex lg:fixed lg:right-0 lg:top-20 lg:mx-24 lg:h-screen">
         <div className="relative flex max-h-screen w-full flex-1 flex-row space-y-10 overflow-y-scroll bg-black px-8 pb-14 lg:mb-40 lg:pb-28">
           <div className="flex w-full justify-center md:px-8 lg:mb-10 lg:pb-10">
             <div className="grid w-fit justify-center gap-5 sm:grid-cols-2 md:gap-x-10 md:gap-y-8 lg:grid-cols-1 lg:pb-8 xl:grid-cols-2">

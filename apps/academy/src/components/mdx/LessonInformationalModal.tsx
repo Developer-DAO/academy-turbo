@@ -18,8 +18,8 @@ export default function LessonInformationalModal({ buttonText, title, children }
   return (
     <Dialog>
       <DialogTrigger
-        className="font-future mx-auto my-3 flex h-12	w-fit rounded-3xl bg-[#721F79] p-2 text-2xl
-          font-normal text-white"
+        className="font-future mx-auto my-3 flex w-fit rounded-3xl bg-[#721F79] p-2 text-2xl font-normal
+          text-white lg:mx-[20.75rem]"
       >
         {buttonText}
       </DialogTrigger>

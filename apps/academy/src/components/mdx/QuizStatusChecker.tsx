@@ -1,9 +1,10 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 // import NextLink from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { Badge, /* ButtonRaw, */ Container } from "ui";
+import { /* Badge,  ButtonRaw, */ Container } from "ui";
 import { useAccount } from "wagmi";
 
+import QuizCompletedModals from "@/components/mdx/QuizCompletedModals";
 import { useAppContext } from "@/contexts/AppContext";
 
 import Quiz from "./Quiz";
@@ -19,9 +20,7 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
   const [nextLessonURLPath, setNextLessonURLPath] = useState("");
   const [nextLessonTitle, setNextLessonTitle] = useState("");
   const [actualLessonTitle, setActualLessonTitle] = useState("");
-  useEffect(() => {
-    setQuizCompleted(true);
-  }, []);
+
   // Requests
   useMemo(() => {
     if (allLessonsData.length && completedQuizzesIds.length) {
@@ -69,9 +68,15 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
     </>
   ) : quizCompleted ? (
     <>
-      <Badge className="m-auto flex w-fit justify-center bg-green-600">
+      <QuizCompletedModals
+        nextLessonURLPath={nextLessonURLPath}
+        nextLessonTitle={nextLessonTitle}
+        actualLessonTitle={actualLessonTitle}
+        quizCompleted={quizCompleted}
+      />
+      {/* <Badge className="m-auto flex w-fit justify-center bg-green-600">
         <span className="text-2xl">Quiz Completed</span>
-      </Badge>
+      </Badge> */}
 
       {/* {nextLessonURLPath !== "" ? (
         <NextLink href={nextLessonURLPath}>
