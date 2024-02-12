@@ -1,8 +1,7 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-// import NextLink from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { /* Badge,  ButtonRaw, */ Container } from "ui";
-import { useAccount } from "wagmi";
+import { Container } from "ui";
+import { useAccount, useNetwork } from "wagmi";
 
 import QuizCompletedModals from "@/components/mdx/QuizCompletedModals";
 import { useAppContext } from "@/contexts/AppContext";
@@ -20,6 +19,7 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
   const [nextLessonURLPath, setNextLessonURLPath] = useState("");
   const [nextLessonTitle, setNextLessonTitle] = useState("");
   const [actualLessonTitle, setActualLessonTitle] = useState("");
+  const { chain } = useNetwork();
 
   // Requests
   useMemo(() => {
@@ -54,7 +54,7 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
     }
   }, [quizCompleted]);
 
-  return isDisconnected || address === undefined ? (
+  return chain?.unsupported === true || isDisconnected || address === undefined ? (
     <>
       <Container>
         <span className="font-future text-3xl font-bold text-[#721F79] underline">
