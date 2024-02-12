@@ -27,7 +27,7 @@ export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
     <>
       <Header />
       <main className={fontVars}>{children}</main>
-      {pathname !== "/tracks" ? <Footer /> : null}
+      {pathname !== "/tracks" && pathname !== "/fundamentals" ? <Footer /> : null}
     </>
   );
 };
