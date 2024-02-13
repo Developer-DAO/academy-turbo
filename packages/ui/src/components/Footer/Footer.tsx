@@ -101,7 +101,7 @@ export const Footer = () => {
               <TooltipTrigger>
                 <a
                   href="https://www.developerdao.com/"
-                  about="_blank"
+                  target="_blank"
                   className="flex border-b border-r-0 md:border-b-0 md:border-r"
                 >
                   <div className="m-auto">

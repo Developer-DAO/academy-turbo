@@ -1,7 +1,8 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+// import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { Container } from "ui";
-import { useAccount, useNetwork } from "wagmi";
+import { /* ButtonRaw, */ Container } from "ui";
+import { useAccount } from "wagmi";
 
 import QuizCompletedModals from "@/components/mdx/QuizCompletedModals";
 import { useAppContext } from "@/contexts/AppContext";
@@ -19,7 +20,6 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
   const [nextLessonURLPath, setNextLessonURLPath] = useState("");
   const [nextLessonTitle, setNextLessonTitle] = useState("");
   const [actualLessonTitle, setActualLessonTitle] = useState("");
-  const { chain } = useNetwork();
 
   // Requests
   useMemo(() => {
@@ -54,7 +54,7 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
     }
   }, [quizCompleted]);
 
-  return chain?.unsupported === true || isDisconnected || address === undefined ? (
+  return isDisconnected || address === undefined ? (
     <>
       <Container>
         <span className="font-future text-3xl font-bold text-[#721F79] underline">
@@ -72,18 +72,17 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
         nextLessonURLPath={nextLessonURLPath}
         nextLessonTitle={nextLessonTitle}
         actualLessonTitle={actualLessonTitle}
-        quizCompleted={quizCompleted}
       />
       {/* <Badge className="m-auto flex w-fit justify-center bg-green-600">
         <span className="text-2xl">Quiz Completed</span>
       </Badge> */}
 
       {/* {nextLessonURLPath !== "" ? (
-        <NextLink href={nextLessonURLPath}>
-          <ButtonRaw className="font-future w-32 rounded-3xl bg-[#44AF96] text-xs font-normal text-white">
+        <Link href={nextLessonURLPath}>
+          <ButtonRaw className="font-future w-fit rounded-3xl bg-[#44AF96] text-xs font-normal text-white lg:text-2xl">
             {`NOW TRY ${nextLessonTitle}`}
           </ButtonRaw>
-        </NextLink>
+        </Link>
       ) : null} */}
     </>
   ) : (
@@ -92,7 +91,6 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
       nextLessonURLPath={nextLessonURLPath}
       nextLessonTitle={nextLessonTitle}
       actualLessonTitle={actualLessonTitle}
-      quizCompleted={quizCompleted}
     />
   );
 };

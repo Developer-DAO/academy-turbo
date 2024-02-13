@@ -117,7 +117,7 @@ export const LearnWeb3Banner: FC<HomePageBannerProps> = ({ href }) => {
           <p>Developer DAO offers learning resources to help you build with web3 technologies.</p>
         </CardContent>
         <div className="flex justify-center">
-          <Button asChild className="button-rounded text-black">
+          <Button asChild className="button-rounded text-black hover:bg-[#721F79] hover:text-white">
             <NextLink href={href}>get started!</NextLink>
           </Button>
         </div>
