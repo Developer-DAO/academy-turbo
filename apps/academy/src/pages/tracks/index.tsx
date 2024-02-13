@@ -26,7 +26,7 @@ bg-[url('/bg_tracks.png')] bg-cover bg-no-repeat object-center pt-[300px]  lg:fi
       </div>
       <div className="flex-0 flex lg:fixed lg:right-0 lg:top-20 lg:h-screen lg:w-1/2">
         <div className="relative flex max-h-screen w-full flex-1 flex-row space-y-10 overflow-y-scroll bg-black px-8 pb-14 lg:mb-40 lg:pb-28">
-          <div className="flex w-full justify-center md:px-8 lg:mb-10 lg:pb-10">
+          <div className="flex w-full justify-center md:px-2 lg:mb-10 lg:pb-10">
             <div className="grid w-fit justify-center gap-5 sm:grid-cols-2 md:gap-x-10 md:gap-y-8 lg:grid-cols-1 lg:pb-8 xl:grid-cols-2">
               {allTracksData !== undefined && allTracksData.length > 0 ? (
                 allTracksData.map((track, idx) => (
