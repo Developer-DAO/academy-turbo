@@ -42,8 +42,8 @@ const TrackCard: FC<TrackCardProps> = ({ imgSrc, tags, title, description }) => 
       <CardHeader className="space-y-4 pb-10">
         <CardTitle className="title">{title}</CardTitle>
         <CardDescription className="description">{description}</CardDescription>
-        <Separator className="opacity-10" />
       </CardHeader>
+      <Separator className="opacity-10" /> {/*# TODO: change opacity of the parent borRer*/}
     </Card>
   );
 };
