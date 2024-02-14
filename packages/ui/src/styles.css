@@ -281,7 +281,7 @@
 }
 
 .banner .description {
-  @apply text-center text-xl font-light leading-normal text-white md:text-[27.4px] lg:mb-8;
+  @apply text-center text-xl font-light leading-normal text-white md:text-[24px] lg:mb-8;
   font-family: var(--font-poppins);
 }
 

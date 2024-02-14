@@ -53,7 +53,7 @@ export const PartnerBanner: FC<PartnerBannerProps> = ({ href, imgSrc }) => {
                 width={175}
                 height={25}
                 alt="partner"
-                className={`${i === 2 ? "max-h-16" : "max-h-10"} w-auto ${i < 3 ? "mb-4" : ""}`}
+                className={`${i === 2 ? "max-h-16" : "max-h-10"} w-auto ${i === 0 ? "mb-4" : ""}`}
               />
             ))}
           </div>
