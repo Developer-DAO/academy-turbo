@@ -18,7 +18,7 @@ interface FooterLinks {
 }
 
 const links: readonly FooterLinks[] = [
-  { name: "Academy", href: "https://academy.developerdao.com", tooltipText: "D_D Academy website" },
+  { name: "DAO", href: "https://developerdao.com", tooltipText: "Developer DAO website" },
   {
     name: "Feedback",
     href: "https://github.com/Developer-DAO/academy-turbo/issues/new/choose",
