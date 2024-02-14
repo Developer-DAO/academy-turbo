@@ -1,0 +1,190 @@
+{
+  "title": "Quiz: Python Smart Contract Development, Pt. 1",
+  "questions": [
+    {
+      "question": "What is Vyper?",
+      "options": [
+        {
+          "answer": "A gas optimisation pattern"
+        },
+        {
+          "answer": "A test runner"
+        },
+        {
+          "answer": "A Pythonic smart contract language",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "How many Vyper contracts can exist within one file?",
+      "options": [
+        {
+          "answer": "One",
+          "correct": true
+        },
+        {
+          "answer": "Two"
+        },
+        {
+          "answer": "Unlimited"
+        }
+      ]
+    },
+    {
+      "question": "What is a constructor?",
+      "options": [
+        {
+          "answer": "The metadata of a smart contract"
+        },
+        {
+          "answer": "A function that is called when a contract is deployed",
+          "correct": true
+        },
+        {
+          "answer": "A function that deploys new instances of a contract"
+        }
+      ]
+    },
+    {
+      "question": "What visibility decorators are available in Vyper?",
+      "options": [
+        {
+          "answer": "external and internal",
+          "correct": true
+        },
+        {
+          "answer": "hidden and public"
+        },
+        {
+          "answer": "global and local"
+        }
+      ]
+    },
+    {
+      "question": "What Vyper keyword is used to reference the current contract?",
+      "options": [
+        {
+          "answer": "this"
+        },
+        {
+          "answer": "contract"
+        },
+        {
+          "answer": "self",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "In Vyper, how would you define a public string variable up to 20 characters?",
+      "options": [
+        {
+          "answer": "public(string[20])",
+          "correct": true
+        },
+        {
+          "answer": "string(20)"
+        },
+        {
+          "answer": "string[20]:public"
+        }
+      ]
+    },
+    {
+      "question": "What is an ABI?",
+      "options": [
+        {
+          "answer": "A type of smart contract"
+        },
+        {
+          "answer": "A machine-readable interface for a smart contract",
+          "correct": true
+        },
+        {
+          "answer": "A protocol for node communication"
+        }
+      ]
+    },
+    {
+      "question": "What is Ape?",
+      "options": [
+        {
+          "answer": "A compiler for the Vyper language"
+        },
+        {
+          "answer": "A smart contract development framework",
+          "correct": true
+        },
+        {
+          "answer": "A gas optimisation pattern"
+        }
+      ]
+    },
+    {
+      "question": "How can you use Vyper within Ape?",
+      "options": [
+        {
+          "answer": "Install a Vyper plugin",
+          "correct": true
+        },
+        {
+          "answer": "It works out of the box"
+        },
+        {
+          "answer": "You can't"
+        }
+      ]
+    },
+    {
+      "question": "What is Anvil?",
+      "options": [
+        {
+          "answer": "A smart contract development framework"
+        },
+        {
+          "answer": "A local blockchain for testing",
+          "correct": true
+        },
+        {
+          "answer": "A tool within the Foundry toolkit",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "What can web3.py be used for?",
+      "options": [
+        {
+          "answer": "Reading blockchain data",
+          "correct": true
+        },
+        {
+          "answer": "Interacting with deployed smart contracts",
+          "correct": true
+        },
+        {
+          "answer": "Deploying smart contracts",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "Why use a Python smart contract tech stack?",
+      "options": [
+        {
+          "answer": "Python is a popular and approachable language",
+          "correct": true
+        },
+        {
+          "answer": "Scripting, testing, and deployment can be done in one language",
+          "correct": true
+        },
+        {
+          "answer": "Language diversity is healthy for the ecosystem",
+          "correct": true
+        }
+      ]
+    }
+  ]
+}
