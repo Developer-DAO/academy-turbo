@@ -25,7 +25,7 @@ const TrackCard: FC<TrackCardProps> = ({ imgSrc, tags, title, description }) => 
         className="h-40 w-full rounded-t-[51px] bg-no-repeat object-cover px-1 pt-1"
         unoptimized
       />
-      <div className="ml-2 mt-2 flex w-full gap-x-2 text-xs ">
+      <div className="mt-3 flex w-full gap-x-2 px-4 text-base">
         {tags.map((tag, i) => (
           <Badge
             key={i}
@@ -42,8 +42,8 @@ const TrackCard: FC<TrackCardProps> = ({ imgSrc, tags, title, description }) => 
       <CardHeader className="space-y-4 pb-10">
         <CardTitle className="title">{title}</CardTitle>
         <CardDescription className="description">{description}</CardDescription>
-        <Separator className="opacity-10" />
       </CardHeader>
+      <Separator className="opacity-10" />
     </Card>
   );
 };

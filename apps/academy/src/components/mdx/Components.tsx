@@ -7,6 +7,7 @@ import LessonInformationalModal from "@/components/mdx/LessonInformationalModal"
 import LessonQuestionsModal from "@/components/mdx/LessonQuestionsModal";
 import Question from "@/components/mdx/Question";
 import Quiz from "@/components/mdx/Quiz";
+import QuizCompletedModals from "@/components/mdx/QuizCompletedModals";
 import QuizStatusChecker from "@/components/mdx/QuizStatusChecker";
 import SideDrawer from "@/components/mdx/SideDrawer";
 
@@ -45,6 +46,7 @@ const Components = {
   Question,
   LessonQuestionsModal,
   LessonInformationalModal,
+  QuizCompletedModals,
 };
 
 export default Components;

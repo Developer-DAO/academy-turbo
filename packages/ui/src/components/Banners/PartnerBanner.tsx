@@ -1,6 +1,4 @@
-// import Image from "next/image"; to be used with imgSrc
 import Image from "next/image";
-import NextLink from "next/link";
 import type { FC } from "react";
 
 import { Button } from "../ui/button";
@@ -25,8 +23,10 @@ export const PartnerBanner: FC<PartnerBannerProps> = ({ href, imgSrc }) => {
           </p>
         </CardContent>
         <div className=" flex justify-center">
-          <Button asChild className="button-rounded text-black">
-            <NextLink href={href}>reach out!</NextLink>
+          <Button asChild className="button-rounded text-black hover:bg-[#721F79] hover:text-white">
+            <a href={href} target="_blank">
+              reach out!
+            </a>
           </Button>
         </div>
       </div>
