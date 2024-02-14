@@ -215,7 +215,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
       </DialogTrigger>
       <DialogOverlay />
       <DialogContent
-        className={`max-w-24 mx-7 rounded-lg border-[#848484] bg-[#1C1C1C] lg:w-full `}
+        className={`w-fit max-w-full rounded-lg border-[#848484] bg-[#1C1C1C] lg:mx-7 lg:w-full `}
       >
         <DialogHeader>
           <DialogTitle>
@@ -232,8 +232,8 @@ const Quiz = (props: QuizProps): JSX.Element => {
           </DialogTitle>
         </DialogHeader>
 
-        <DialogDescription className="h-[85%] max-h-[85%] bg-[#242424] pb-5 lg:mx-7">
-          <div className="flex flex-col rounded-md bg-[#242424] p-6">
+        <DialogDescription className="h-[85%] max-h-[85%] max-w-[400px] bg-[#242424] pb-5 lg:mx-7">
+          <div className="flex flex-col rounded-md bg-[#242424] lg:p-6">
             <div className="mt-5 h-[50%] max-h-[50%] w-full overflow-auto scroll-smooth">
               <span className="font-clash-display mb-10 w-full text-xl font-bold leading-5 text-white">
                 {quiz.questions[currentQuestionIndex]!.question}
