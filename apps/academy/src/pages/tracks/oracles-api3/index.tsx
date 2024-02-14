@@ -56,6 +56,7 @@ const OraclesApi3TrackPage = () => {
         trackTitle="Learn How API3 Brings Data Onchain in Web3"
         trackDescription="Using API3 technology to solve blockchain problems with oracles"
         trackAuthor="BillyJitsu"
+        trackAuthorImage="/authors/default.png"
         trackAuthorDescription="Active Developer DAO member"
         trackAuthorTwitter="wc49358"
         tags={["Infra", "Oracles", "API3"]}
