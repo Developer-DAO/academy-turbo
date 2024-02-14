@@ -13,7 +13,7 @@ const Home: NextPageWithLayout = () => {
           <div className="hidden justify-center md:flex">
             <div className="text-bttf-lg">
               <h1>learn</h1>
-              <h1>web3 __</h1>
+              <h1>web3__</h1>
               <h1>with</h1>
               <h1>friends</h1>
             </div>
@@ -31,7 +31,7 @@ const Home: NextPageWithLayout = () => {
           <div className="flex h-full items-end justify-center md:hidden">
             <div className="text-bttf-lg">
               <h1>learn</h1>
-              <h1>web3 __</h1>
+              <h1>web3__</h1>
               <h1>with</h1>
               <h1>friends</h1>
             </div>

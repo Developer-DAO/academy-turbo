@@ -42,7 +42,7 @@ const PageHeader: FunctionComponent = () => {
           <div className="nav-division flex flex-col gap-y-6">
             <div className="flex justify-between">
               <Link href="/">
-                <Image src="/academy_logo.svg" width={200} height={40} alt="Academy Logo" />
+                <Image src="/academy_logo.svg" width={150} height={40} alt="Academy Logo" />
               </Link>
               {/* <ThemeToggleButton hidden={isConnected} /> */}
             </div>
