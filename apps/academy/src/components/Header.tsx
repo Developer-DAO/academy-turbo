@@ -14,9 +14,9 @@ const bttf = localFont({ src: "../../public/fonts/BTTF.ttf" });
 
 const topbarNavMenus: NavItem[] = [
   {
-    name: "Home",
-    href: "/",
-    icon: "home_icon",
+    name: "Fundamentals",
+    href: "/fundamentals",
+    icon: "clarity_blocks",
   },
   {
     name: "Tracks",
@@ -38,7 +38,7 @@ const PageHeader: FunctionComponent = () => {
   return (
     <header className="app-container absolute left-0 right-0 top-0 z-50 flex items-start justify-between px-8 pt-8 md:flex-row">
       <div className="hidden lg:flex ">
-        {pathname === "/" || pathname === "/tracks" ? (
+        {pathname === "/" || pathname === "/tracks" || pathname === "/fundamentals" ? (
           <div className="nav-division flex flex-col gap-y-6">
             <div className="flex justify-between">
               <Link href="/">
@@ -58,7 +58,7 @@ const PageHeader: FunctionComponent = () => {
           </div>
         )}
       </div>
-      {pathname === "/" || pathname === "/tracks" ? (
+      {pathname === "/" || pathname === "/tracks" || pathname === "/fundamentals" ? (
         <div className="inline-flex gap-2">
           {/* <ThemeToggleButton hidden={pathname !== "/" && isConnected ? false : true} /> */}
           <ConnectButton />
@@ -73,7 +73,7 @@ const PageHeader: FunctionComponent = () => {
         </>
       )}
       <div className="flex lg:hidden">
-        {pathname === "/" || pathname === "/tracks" ? (
+        {pathname === "/" || pathname === "/tracks" || pathname === "/fundamentals" ? (
           <SideBar
             menus={[
               ...topbarNavMenus,
