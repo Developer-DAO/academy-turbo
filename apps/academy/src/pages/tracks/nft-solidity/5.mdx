@@ -154,7 +154,8 @@ It should say <strong>http://localhost:3000</strong>
 
 {/* TODO: Mention the various versions used. Mention here or above? */}
 
-    {/* "@rainbow-me/rainbowkit": "^1.3.4",
+    {/*
+    "@rainbow-me/rainbowkit": "^1.3.4",
     "next": "^14.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -208,41 +209,47 @@ initial setup:
   them from a component.
 </Callout>
 
-Because our dApp is going to use WalletConnect, we need a `projectID`
+Next we'll be configuring our application.
+
+We save our configuration in a file called `.env` in the root of our `frontend` directory.
+
+Create a new `.env.local` file with this content, and we'll be filling it in with real content next.
+
+```dotenv
+NEXT_PUBLIC_PROJECT_ID=
+NEXT_PUBLIC_ALCHEMY_ID=
+NEXT_PUBLIC_CONTRACT_ADDRESS=
+NEXT_PUBLIC_ENABLE_TESTNETS=true
+```
+
+Add your `NEXT_PUBLIC_ALCHEMY_ID`. This is your API Key from Alchemy.
+
+Our dApp is also using WalletConnect, so we need a `projectID`
 from the [WalletConnectCloud](https://cloud.walletconnect.com/sign-in).
 So go and set up an account and grab that ID. You'll be done in a few minutes 🤗
-
-```tsx
-// code above
-
-const { connectors } = getDefaultWallets({
-  appName: "RainbowKit App",
-  projectId: "YOUR_PROJECT_ID",
-  chains,
-});
-
-// code below
-```
 
 For this application we will continue using the `mumbai` testnet. Other chains
 can be added simply using the following syntax: `chain.chain_name`. For custom
 providers, like the `alchemyProvider` we can pass in our private `apiKey` as
 well.
 
-Set your API Key in a new file named `.env` inside our `frontend` directory as
-follows:
+Lastly add your `NEXT_PUBLIC_CONTRACT_ADDRESS` which is the address of your deployed on mumbai testnet.
 
-```dotenv
-API_KEY='YOUR-API-KEY-FROM-PROVIDER'
-```
+Now we need to add these new environment variables to our codebase.
 
-in our case:
+In `_app.tsx` Replace `projectId: 'YOUR_PROJECT_ID',` with `projectId: process.env.NEXT_PUBLIC_PROJECT_ID || "",`.
 
-```dotenv
-  NEXT_PUBLIC_ALCHEMY_ID=
-  NEXT_PUBLIC_PROJECT_ID=
-  NEXT_PUBLIC_CONTRACT_ADDRESS=
-```
+We're going to continue to use Alchemy as our provider for connecting to `mumbai` testnet.
+
+Please make these changes to `_app.tsx`:
+
+- replace `import { publicProvider } from "wagmi/providers/public";` with `import { alchemyProvider } from "wagmi/providers/alchemy";` at the top of the file.
+- in `configureChains` section, replace `[publicProvider()]` with `[alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID || "" })]`.
+- search and replace `goerli` (which is Ethereum's testnet) and replace with `polygonMumbai`.
+- remove `zora` from `wagmi/chains` import and from the `configureChains` array.
+
+````jsx
+{/* TODO: Could remove the other default chains added in starter */}
 
 Great! Now we can wrap our application in the `RainbowKitProvider` and
 `WagmiConfig` so that it can have access to their features throughout our
@@ -1519,3 +1526,4 @@ creating a full stack decentralised NFT Minting Application.
 
 <br/>
 </LessonLayout>
+````
