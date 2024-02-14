@@ -215,7 +215,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
       </DialogTrigger>
       <DialogOverlay />
       <DialogContent
-        className={`w-fit max-w-full rounded-lg border-[#848484] bg-[#1C1C1C] lg:mx-7 lg:w-full `}
+        className={`mx-2 w-full max-w-[360px] rounded-lg border-[#848484] bg-[#1C1C1C] lg:mx-7 lg:w-full lg:max-w-fit `}
       >
         <DialogHeader>
           <DialogTitle>
@@ -233,7 +233,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
         </DialogHeader>
 
         <DialogDescription className="h-[85%] max-h-[85%] max-w-[400px] bg-[#242424] pb-5 lg:mx-7">
-          <div className="flex flex-col rounded-md bg-[#242424] lg:p-6">
+          <div className="flex flex-col rounded-md bg-[#242424] p-4 lg:p-6">
             <div className="mt-5 h-[50%] max-h-[50%] w-full overflow-auto scroll-smooth">
               <span className="font-clash-display mb-10 w-full text-xl font-bold leading-5 text-white">
                 {quiz.questions[currentQuestionIndex]!.question}
@@ -274,17 +274,17 @@ const Quiz = (props: QuizProps): JSX.Element => {
             <div className="flex w-full">
               <ButtonRaw
                 type="button"
-                className={`button-rounded mr-4 text-xs font-normal text-white lg:w-40 ${previousButtonVisibility()}`}
+                className={`button-rounded mr-4 text-xs font-normal text-white lg:w-24 ${previousButtonVisibility()}`}
                 onClick={previousQuestion}
               >
-                {"Previous"}
+                {"<"}
               </ButtonRaw>
               <ButtonRaw
                 type="button"
-                className={`button-rounded mr-4 w-32 text-xs font-normal text-white ${nextButtonVisibility()}`}
+                className={`button-rounded mr-4 text-xs font-normal text-white lg:w-24 ${nextButtonVisibility()}`}
                 onClick={nextQuestion}
               >
-                {"Next"}
+                {">"}
               </ButtonRaw>
               <ButtonRaw
                 className="font-future w-32 rounded-3xl bg-[#636363] text-xs font-normal text-white"
