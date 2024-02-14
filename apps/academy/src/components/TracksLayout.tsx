@@ -6,6 +6,7 @@ interface TracksLayoutProps {
   trackTitle: string;
   trackDescription: string;
   trackAuthor: string;
+  trackAuthorImage: string;
   trackAuthorDescription: string;
   trackAuthorTwitter: string;
   tags: string[];
@@ -16,6 +17,7 @@ export default function TracksLayout({
   trackTitle,
   trackDescription,
   trackAuthor,
+  trackAuthorImage,
   trackAuthorDescription,
   trackAuthorTwitter,
   tags,
@@ -33,6 +35,7 @@ export default function TracksLayout({
         <div className="w-full">
           <TrackAuthor
             author={trackAuthor}
+            authorImage={trackAuthorImage}
             authorDescription={trackAuthorDescription}
             authorTwitter={trackAuthorTwitter}
           />

@@ -1,17 +1,21 @@
-import { Avatar, AvatarFallback, AvatarImage } from "ui/components/ui/avatar";
+import { Avatar, AvatarImage } from "ui/components/ui/avatar";
 
 interface TrackAuthorProps {
   author: string;
+  authorImage: string;
   authorDescription: string;
   authorTwitter: string;
 }
 
 export default function TrackAuthor({
   author,
+  authorImage = "/authors/default.png",
   authorDescription,
   authorTwitter,
 }: TrackAuthorProps) {
   // mvp: if multiple authors, split by comma and map to multiple links
+  console.log("∆∆∆: ");
+  console.log(authorImage);
   const handles = authorTwitter.split(", ");
   const twitterLinks = handles.map((handle, idx) => (
     <a
@@ -31,8 +35,7 @@ export default function TrackAuthor({
         <p className="text-left">Created by:</p>
         <div className="flex flex-col items-center lg:flex-row lg:items-start lg:gap-4">
           <Avatar className="h-10 w-10 lg:mt-7 lg:h-16 lg:w-16">
-            <AvatarImage src="/azuki.png" />
-            <AvatarFallback>Avatar</AvatarFallback>
+            <AvatarImage src={authorImage} />
           </Avatar>
           <article className="mb-4 mt-2 gap-2 font-light lg:mt-7">
             <p className="font-bold">{author}</p>
