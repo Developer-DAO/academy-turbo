@@ -35,6 +35,7 @@ const Web3PythonTrackPage = () => {
         trackTitle="Python Smart Contract Development for Beginniners"
         trackDescription="Prefer Python? This track offers a deep dive into Vyper contract development and complementary tools, including Ape, and web3.py."
         trackAuthor="Raza"
+        trackAuthorImage="/authors/raza.jpeg"
         trackAuthorDescription="A coding nerd voyaging into tech. I try to learn and explain complicated shit. I spent most of my time building and breaking stuff. Don't take me too seriously."
         trackAuthorTwitter="razacodes"
         tags={["Entry", "Ethereum", "Python", "Web3.py", "Vyper", "Ape"]}

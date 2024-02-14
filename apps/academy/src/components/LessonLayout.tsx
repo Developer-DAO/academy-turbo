@@ -5,6 +5,7 @@ interface LessonLayoutProps {
   children: React.ReactNode;
   lessonTitle: string;
   author: string;
+  authorImage: string;
   authorPosition: string;
   authorTwitter: string;
   createdDate: string;
@@ -14,6 +15,7 @@ export default function LessonLayout({
   children,
   lessonTitle,
   author,
+  authorImage,
   authorTwitter,
 }: LessonLayoutProps) {
   return (
@@ -21,7 +23,7 @@ export default function LessonLayout({
       <section className="text-center">
         <h1 className="font-future text-3xl lg:text-6xl">{lessonTitle}</h1>
       </section>
-      <CreatedBy author={author} authorTwitter={authorTwitter} />
+      <CreatedBy author={author} authorImage={authorImage} authorTwitter={authorTwitter} />
       <div className="font-poppins pt-4 text-xl font-medium tracking-wider lg:mx-auto lg:max-w-screen-lg">
         {children}
       </div>
