@@ -1,9 +1,7 @@
-import { ConnectButton } from "@rainbow-me/rainbowkit";
-// import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { /* ButtonRaw, */ Container } from "ui";
 import { useAccount } from "wagmi";
 
+import { ConnectButton } from "@/components/ConnectButton";
 import QuizCompletedModals from "@/components/mdx/QuizCompletedModals";
 import { useAppContext } from "@/contexts/AppContext";
 
@@ -55,17 +53,14 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
   }, [quizCompleted]);
 
   return isDisconnected || address === undefined ? (
-    <>
-      <Container>
-        <span className="font-future text-3xl font-bold text-[#721F79] underline">
-          Connect your wallet and Sign in to start the quiz
-        </span>
-      </Container>
+    <div className="w-full content-center items-center justify-center text-center">
+      <span className="font-future text-3xl font-bold text-[#721F79] underline">
+        Connect your wallet and Sign in to start the quiz
+      </span>
       <br />
-      <Container>
-        <ConnectButton accountStatus="address" showBalance={false} chainStatus="none" />
-      </Container>
-    </>
+      <br />
+      <ConnectButton />
+    </div>
   ) : quizCompleted ? (
     <>
       <QuizCompletedModals
