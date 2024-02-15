@@ -6,17 +6,20 @@ import Spinner from "@/components/Spinner";
 import { api } from "@/utils/api";
 // import { useRouter } from "next/router";
 
+// const FundamentalsPage = () => {
+//   // const router = useRouter();
+
+//   // const path = router.pathname;
+
+//   const { data: allLessonsData } = api.lessons.getLessonsByTrackPath.useQuery(
+//     { trackPath: "/tracks/fundamentals" },
+//     {
+//       refetchOnWindowFocus: false,
+//     },
+//   );
+
 const FundamentalsPage = () => {
-  // const router = useRouter();
-
-  // const path = router.pathname;
-
-  const { data: allLessonsData } = api.lessons.getLessonsByTrackPath.useQuery(
-    { trackPath: "/tracks/fundamentals" },
-    {
-      refetchOnWindowFocus: false,
-    },
-  );
+  const { data: allLessonsData } = api.lessons.getLessonsByLessonPath.useQuery();
 
   return (
     <div className="flex h-full w-full flex-col space-y-10 overflow-hidden bg-black lg:h-screen lg:max-h-screen lg:flex-row">
