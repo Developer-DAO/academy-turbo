@@ -215,7 +215,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
       </DialogTrigger>
       <DialogOverlay />
       <DialogContent
-        className={`mx-2 w-full max-w-[360px] rounded-lg border-[#848484] bg-[#1C1C1C] lg:mx-7 lg:w-full lg:max-w-fit `}
+        className={`mx-2 max-h-[85%] w-full max-w-[360px] rounded-lg border-[#848484] bg-[#1C1C1C] lg:mx-7 lg:w-full lg:max-w-fit `}
       >
         <DialogHeader>
           <DialogTitle>
@@ -232,10 +232,10 @@ const Quiz = (props: QuizProps): JSX.Element => {
           </DialogTitle>
         </DialogHeader>
 
-        <DialogDescription className="h-[85%] max-h-[85%] max-w-[400px] bg-[#242424] pb-5 lg:mx-7">
-          <div className="flex flex-col rounded-md bg-[#242424] p-4 lg:p-6">
-            <div className="mt-5 h-[50%] max-h-[50%] w-full overflow-auto scroll-smooth">
-              <span className="font-clash-display mb-10 w-full text-xl font-bold leading-5 text-white">
+        <DialogDescription className="h-[75%] max-h-[80%] max-w-[380px] bg-[#242424] pb-5 lg:mx-7">
+          <div className="flex flex-col rounded-md bg-[#242424] p-3 lg:p-6">
+            <div className="mt-5 h-[45%] max-h-fit w-full overflow-auto scroll-smooth">
+              <span className="font-clash-display mb-8 w-full text-xl font-bold leading-5 text-white">
                 {quiz.questions[currentQuestionIndex]!.question}
               </span>
               {quiz.questions[currentQuestionIndex]!.options.map((option, index) => {
@@ -245,16 +245,16 @@ const Quiz = (props: QuizProps): JSX.Element => {
                       index === 0
                         ? `${
                             quiz.questions[currentQuestionIndex]!.options.length >= 4
-                              ? "mt-9"
-                              : "mt-12"
+                              ? "mt-7"
+                              : "mt-10"
                           } `
                         : ""
                     } font-clash-display ${
-                      quiz.questions[currentQuestionIndex]!.options.length >= 4 ? "mb-5" : "mb-7"
-                    } w-full cursor-pointer rounded-3xl bg-[#303030] ${isSelectedAnswer(index)}	p-5	${
+                      quiz.questions[currentQuestionIndex]!.options.length >= 4 ? "mb-3" : "mb-4"
+                    } w-full cursor-pointer rounded-3xl bg-[#303030] ${isSelectedAnswer(index)}	p-3	${
                       quiz.questions[currentQuestionIndex]!.options.length >= 4
-                        ? "text-base"
-                        : "text-lg"
+                        ? "text-xs"
+                        : "text-base"
                     } font-bold text-[#F9F9F9]`}
                     onClick={() => {
                       selectAnswer(index);
