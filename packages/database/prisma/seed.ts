@@ -82,15 +82,51 @@ async function main() {
   //   },
   // });
   // console.log({ newTagOnTracks });
-  // const updatedLesson = await prisma.tracks.update({
+
+  const updatedLesson = await prisma.lessons.update({
+    where: {
+      id: "clrzkfamu000d1wfuiz6dofn2",
+    },
+    data: {
+      lessonPath: "/fundamentals/token-standards",
+      imgPath: "/track-fundamentals.png",
+    },
+  });
+  console.log({ updatedLesson });
+
+  // const updatedLesson = await prisma.lessons.update({
   //   where: {
-  //     id: "clrzk4tcb00031wlq6bbvv2yh",
+  //     id: "",
   //   },
   //   data: {
-  //     nextLessonPath: "/track-erc20.png",
+  //     lessonPath: "/fundamentals/
+  //     imgPath: "/track-fundamentals.png",
   //   },
   // });
   // console.log({ updatedLesson });
+
+  // const updatedLesson = await prisma.lessons.update({
+  //   where: {
+  //     id: "",
+  //   },
+  //   data: {
+  //     lessonPath: "/fundamentals/
+  //     imgPath: "/track-fundamentals.png",
+  //   },
+  // });
+  // console.log({ updatedLesson });
+
+  // const updatedLesson = await prisma.lessons.update({
+  //   where: {
+  //     id: "",
+  //   },
+  //   data: {
+  //     lessonPath: "/fundamentals/
+  //     imgPath: "/track-fundamentals.png",
+  //   },
+  // });
+  // console.log({ updatedLesson });
+
   // const newTagsOnLesson = await prisma.tagsOnLessons.create({
   //   data: {
   //     lessonId: "clrzkw6sp00091wtu66sggity",
