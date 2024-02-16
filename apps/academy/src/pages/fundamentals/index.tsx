@@ -2,21 +2,7 @@ import Link from "next/link";
 import { TrackCard } from "ui";
 
 import Spinner from "@/components/Spinner";
-// import { useAppContext } from "@/contexts/AppContext";
 import { api } from "@/utils/api";
-// import { useRouter } from "next/router";
-
-// const FundamentalsPage = () => {
-//   // const router = useRouter();
-
-//   // const path = router.pathname;
-
-//   const { data: allLessonsData } = api.lessons.getLessonsByTrackPath.useQuery(
-//     { trackPath: "/tracks/fundamentals" },
-//     {
-//       refetchOnWindowFocus: false,
-//     },
-//   );
 
 const FundamentalsPage = () => {
   const { data: allLessonsData } = api.lessons.getLessonsByLessonPath.useQuery();
