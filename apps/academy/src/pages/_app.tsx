@@ -109,7 +109,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session |
             <RainbowKitSiweNextAuthProvider>
               <RainbowKitProvider
                 chains={chains}
-                initialChain={polygonMumbai}
+                initialChain={mainnet}
                 appInfo={{
                   appName: "Developer DAO Academy",
                   learnMoreUrl: "https://academy.developerdao.com",
