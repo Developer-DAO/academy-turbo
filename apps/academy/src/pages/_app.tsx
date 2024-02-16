@@ -22,7 +22,7 @@ import { ThemeProvider } from "next-themes";
 import type { ReactElement, ReactNode } from "react";
 import { Toaster } from "ui";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { polygonMumbai } from "wagmi/chains";
+import { mainnet } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 
 import { Layout } from "@/components/Layout";
@@ -33,7 +33,7 @@ import { api } from "@/utils/api";
 
 import SEO from "../next-seo.config";
 
-const { chains, publicClient } = configureChains([polygonMumbai], [publicProvider()]);
+const { chains, publicClient } = configureChains([mainnet], [publicProvider()]);
 
 const projectId = env.NEXT_PUBLIC_WALLET_CONNECT_ID;
 
