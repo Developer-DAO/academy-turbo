@@ -3,19 +3,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import type { FunctionComponent } from "react";
-import { Icons, type NavItem, SideBar, TopBar } from "ui";
+import { type NavItem, SideBar, TopBar } from "ui";
 import { cn } from "ui/lib/utils";
-import { useAccount } from "wagmi";
 
+// import { useAccount } from "wagmi";
 import { ConnectButton } from "@/components/ConnectButton";
+// import ThemeToggleButton from "@/components/ThemeToggleButton";
 
 const bttf = localFont({ src: "../../public/fonts/BTTF.ttf" });
 
-const sampleMenus: NavItem[] = [
+const topbarNavMenus: NavItem[] = [
   {
-    name: "Home",
-    href: "/",
-    icon: "home_icon",
+    name: "Fundamentals",
+    href: "/fundamentals",
+    icon: "clarity_blocks",
   },
   {
     name: "Tracks",
@@ -30,23 +31,23 @@ const sampleMenus: NavItem[] = [
 ];
 
 const PageHeader: FunctionComponent = () => {
-  const { isConnected } = useAccount();
+  // const { isConnected } = useAccount();
   const router = useRouter();
   const { pathname } = router;
 
   return (
     <header className="app-container absolute left-0 right-0 top-0 z-50 flex items-start justify-between px-8 pt-8 md:flex-row">
       <div className="hidden lg:flex ">
-        {pathname === "/" || pathname === "/tracks" ? (
+        {pathname === "/" || pathname === "/tracks" || pathname === "/fundamentals" ? (
           <div className="nav-division flex flex-col gap-y-6">
             <div className="flex justify-between">
               <Link href="/">
-                <Image src="/academy_logo.svg" width={200} height={40} alt="Academy Logo" />
+                <Image src="/academy_logo.svg" width={150} height={40} alt="Academy Logo" />
               </Link>
-              <ThemeToggle hidden={isConnected} />
+              {/* <ThemeToggleButton hidden={isConnected} /> */}
             </div>
             <div className="mx-auto">
-              <TopBar menus={sampleMenus} />
+              <TopBar menus={topbarNavMenus} />
             </div>
           </div>
         ) : (
@@ -57,25 +58,25 @@ const PageHeader: FunctionComponent = () => {
           </div>
         )}
       </div>
-      {pathname === "/" || pathname === "/tracks" ? (
+      {pathname === "/" || pathname === "/tracks" || pathname === "/fundamentals" ? (
         <div className="inline-flex gap-2">
-          <ThemeToggle hidden={pathname !== "/" && isConnected ? false : true} />
+          {/* <ThemeToggleButton hidden={pathname !== "/" && isConnected ? false : true} /> */}
           <ConnectButton />
         </div>
       ) : (
         <>
           <BackButton className="lg:hidden" />
           <div className="hidden gap-2 lg:inline-flex">
-            <ThemeToggle hidden={pathname !== "/" && isConnected ? false : true} />
+            {/* <ThemeToggleButton hidden={pathname !== "/" && isConnected ? false : true} /> */}
             <ConnectButton />
           </div>
         </>
       )}
       <div className="flex lg:hidden">
-        {pathname === "/" || pathname === "/tracks" ? (
+        {pathname === "/" || pathname === "/tracks" || pathname === "/fundamentals" ? (
           <SideBar
             menus={[
-              ...sampleMenus,
+              ...topbarNavMenus,
               {
                 name: "Get In Touch",
                 href: "/",
@@ -92,14 +93,6 @@ const PageHeader: FunctionComponent = () => {
 };
 
 export { PageHeader as Header };
-
-export const ThemeToggle = ({ hidden }: { hidden: boolean }) => {
-  return (
-    <button disabled className={`${hidden ? "hover:cursor-none" : "lg:block"} hidden`}>
-      <Icons.moon_light className="h-[25px] w-[25px] rounded-full border p-[0.2px]" />
-    </button>
-  );
-};
 
 export const BackButton = ({ className }: { className?: string }) => {
   const router = useRouter();

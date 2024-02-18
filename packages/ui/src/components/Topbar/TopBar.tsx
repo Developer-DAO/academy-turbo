@@ -57,13 +57,13 @@ const TopBarItem: FC<NavItem> = ({ name, icon, href, subnavs }) => {
     <NavigationMenuItem>
       {name === "Community" ? (
         <a target="_blank" href={href} className={`typography nav ${navigationMenuTriggerStyle()}`}>
-          {Icon ? <Icon /> : null}
+          {Icon !== undefined && Icon !== null ? <Icon /> : null}
           {name}
         </a>
       ) : (
         <NextLink href={href} legacyBehavior passHref>
           <NavigationMenuLink className={`typography nav ${navigationMenuTriggerStyle()}`}>
-            {Icon ? <Icon /> : null}
+            {Icon !== undefined && Icon !== null ? <Icon /> : null}
             {name}
           </NavigationMenuLink>
         </NextLink>

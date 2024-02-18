@@ -67,4 +67,34 @@ export const lessonsRouter = createTRPCRouter({
 
       return trackLessons;
     }),
+  getLessonsByLessonPath: publicProcedure.query(async ({ ctx }) => {
+    const constructedWhere =
+      env.ENVIRONMENT === "production"
+        ? { productionVisible: true }
+        : env.ENVIRONMENT === "staging"
+        ? { stagingVisible: true }
+        : { visible: true };
+    const trackLessons = await ctx.prisma.lessons.findMany({
+      where: {
+        lessonPath: {
+          startsWith: "/fundamentals/",
+        },
+        AND: {
+          ...constructedWhere,
+        },
+      },
+      include: {
+        tags: {
+          include: {
+            tag: true,
+          },
+        },
+      },
+      orderBy: {
+        order: "asc",
+      },
+    });
+
+    return trackLessons;
+  }),
 });

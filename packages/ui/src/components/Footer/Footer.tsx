@@ -18,7 +18,7 @@ interface FooterLinks {
 }
 
 const links: readonly FooterLinks[] = [
-  { name: "Academy", href: "https://academy.developerdao.com", tooltipText: "D_D Academy website" },
+  { name: "DAO", href: "https://developerdao.com", tooltipText: "Developer DAO website" },
   {
     name: "Feedback",
     href: "https://github.com/Developer-DAO/academy-turbo/issues/new/choose",
@@ -101,7 +101,7 @@ export const Footer = () => {
               <TooltipTrigger>
                 <a
                   href="https://www.developerdao.com/"
-                  about="_blank"
+                  target="_blank"
                   className="flex border-b border-r-0 md:border-b-0 md:border-r"
                 >
                   <div className="m-auto">

@@ -13,7 +13,7 @@ const Home: NextPageWithLayout = () => {
           <div className="hidden justify-center md:flex">
             <div className="text-bttf-lg">
               <h1>learn</h1>
-              <h1>web3 __</h1>
+              <h1>web3__</h1>
               <h1>with</h1>
               <h1>friends</h1>
             </div>
@@ -22,7 +22,7 @@ const Home: NextPageWithLayout = () => {
             <p>Become a web3 developer with Developer DAO.</p>
           </div>
           <div className="hidden w-full items-center justify-center md:flex">
-            <Link href="/#learn-web3">
+            <Link href="/#learn-web3" className="hover:cursor-pointer">
               <Icons.scroll className="h-16 w-16" />
             </Link>
           </div>
@@ -31,7 +31,7 @@ const Home: NextPageWithLayout = () => {
           <div className="flex h-full items-end justify-center md:hidden">
             <div className="text-bttf-lg">
               <h1>learn</h1>
-              <h1>web3 __</h1>
+              <h1>web3__</h1>
               <h1>with</h1>
               <h1>friends</h1>
             </div>

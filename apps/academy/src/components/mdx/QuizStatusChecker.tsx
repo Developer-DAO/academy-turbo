@@ -1,8 +1,8 @@
-import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { useMemo, useState } from "react";
-import { Badge, Container } from "ui";
+import { useEffect, useMemo, useState } from "react";
 import { useAccount } from "wagmi";
 
+import { ConnectButton } from "@/components/ConnectButton";
+import QuizCompletedModals from "@/components/mdx/QuizCompletedModals";
 import { useAppContext } from "@/contexts/AppContext";
 
 import Quiz from "./Quiz";
@@ -15,6 +15,9 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
   const [quizCompleted, setQuizCompleted] = useState<boolean>(false);
   const { address, isDisconnected } = useAccount();
   const { completedQuizzesIds, allLessonsData } = useAppContext();
+  const [nextLessonURLPath, setNextLessonURLPath] = useState("");
+  const [nextLessonTitle, setNextLessonTitle] = useState("");
+  const [actualLessonTitle, setActualLessonTitle] = useState("");
 
   // Requests
   useMemo(() => {
@@ -31,24 +34,59 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
     }
   }, [allLessonsData, completedQuizzesIds, quiz]);
 
+  useEffect(() => {
+    if (quizCompleted) {
+      const newNextLessonURLPath: string = allLessonsData.find(
+        (lesson) => lesson.quizFileName === quiz,
+      )!.nextLessonPath!;
+      setNextLessonURLPath(newNextLessonURLPath);
+      const newNextLessonTitle: string = allLessonsData.find(
+        (lesson) => lesson.nextLessonPath === newNextLessonURLPath,
+      )!.lessonTitle;
+      setNextLessonTitle(newNextLessonTitle);
+
+      const newActualLessonTitle: string = allLessonsData.find(
+        (lesson) => lesson.quizFileName === quiz,
+      )!.lessonTitle;
+      setActualLessonTitle(newActualLessonTitle);
+    }
+  }, [quizCompleted]);
+
   return isDisconnected || address === undefined ? (
-    <>
-      <Container>
-        <span className="text-3xl font-bold text-yellow-300 underline">
-          Connect your wallet and Sign in to start the quiz
-        </span>
-      </Container>
+    <div className="w-full content-center items-center justify-center text-center">
+      <span className="font-future text-3xl font-bold text-[#721F79] underline">
+        Connect your wallet and Sign in to start the quiz
+      </span>
       <br />
-      <Container>
-        <ConnectButton accountStatus="address" showBalance={false} chainStatus="none" />
-      </Container>
-    </>
+      <br />
+      <ConnectButton />
+    </div>
   ) : quizCompleted ? (
-    <Badge className="m-auto flex w-fit justify-center bg-green-600">
-      <span className="text-2xl">Quiz Completed</span>
-    </Badge>
+    <>
+      <QuizCompletedModals
+        nextLessonURLPath={nextLessonURLPath}
+        nextLessonTitle={nextLessonTitle}
+        actualLessonTitle={actualLessonTitle}
+      />
+      {/* <Badge className="m-auto flex w-fit justify-center bg-green-600">
+        <span className="text-2xl">Quiz Completed</span>
+      </Badge> */}
+
+      {/* {nextLessonURLPath !== "" ? (
+        <Link href={nextLessonURLPath}>
+          <ButtonRaw className="font-future w-fit rounded-3xl bg-[#44AF96] text-xs font-normal text-white lg:text-2xl">
+            {`NOW TRY ${nextLessonTitle}`}
+          </ButtonRaw>
+        </Link>
+      ) : null} */}
+    </>
   ) : (
-    <Quiz quiz={quiz} />
+    <Quiz
+      quiz={quiz}
+      nextLessonURLPath={nextLessonURLPath}
+      nextLessonTitle={nextLessonTitle}
+      actualLessonTitle={actualLessonTitle}
+    />
   );
 };
 
