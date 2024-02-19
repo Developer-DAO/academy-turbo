@@ -248,7 +248,6 @@ Please make these changes to `_app.tsx`:
 - search and replace `goerli` (which is Ethereum's testnet) and replace with `polygonMumbai`.
 - remove `zora` from `wagmi/chains` import and from the `configureChains` array.
 
-````jsx
 {/* TODO: Could remove the other default chains added in starter */}
 
 Great! Now we can wrap our application in the `RainbowKitProvider` and
@@ -476,7 +475,7 @@ import Image from "next/image";
 - Once again, `useEffect` and `useState` are react hooks that will help us
   perform side effects and capture the state, respectively.
 
-```jsx
+```tsx
 export default function Home() {
   const CONTRACT_ADDRESS = const CONTRACT_ADDRESS =
     process.env.NEXT_PUBLIC_TIERNFT_CONTRACT_ADDRESS || "0x5794c3de7a59587048b76060d282476e12a8aff8"; /* Or enter Contract Address between ''*/;
@@ -495,8 +494,8 @@ We're creating a default function called `Home` that will render our home/ index
 page. As you can see , we are required to add the `CONTRACT_ADDRESS` which is
 displayed in your command line when we deploy the contract. The `useAccount`
 hook lets us access account data and check connection status. We will use this
-as a check to provide access to the minting features of our app. A few
-`useState`s let us store state information such as whether a user is connected.
+as a check to provide access to the minting features of our app. `useState`
+lets us store state information such as whether a user is connected.
 The general syntax for using the `useState` hook is:
 
 `const [variableName, functionToSetVariable] = useState(intialValue)`
@@ -515,7 +514,7 @@ We will revisit these state variables later to see their implementation.
 We need a `<header>` that displays our application name and lets us connect our
 wallet.
 
-```jsx
+```tsx
 export default function Home() {
   // variable definitions...
 
@@ -559,7 +558,7 @@ The preview should look like this:
 Next we need to create some cards that display the 3 tiers of NFTs we created in
 our smart contract and provide a way to mint them.
 
-```jsx
+```tsx
 export default function Home() {
   // variable definitions...
 
@@ -600,7 +599,7 @@ The `usePrepareContractWrite` hook also work better with the
 `usePrepareContractWrite` hook as explained on
 [wagmi docs](https://wagmi.sh/react/hooks/useContractWrite#prepared-usage).
 
-```jsx
+```tsx
 // WAGMI useContractWrite hook...
 
 const mintToken = async (e) => {
@@ -649,7 +648,7 @@ code.
 
 Now we can render our NFT Cards.
 
-```jsx
+```tsx
 // return statement for rendering and <header> element...
 
 <main className={styles.main}>
@@ -707,7 +706,7 @@ Now we can render our NFT Cards.
 
 Let's see what is happening in each NFT Card by taking `Tier 0` as an example.
 
-```jsx
+```tsx
 <div style={NFTCard}>
   Tier 0
   <Image src="/nfts/0_basic.svg" width="200" height="200" alt="Premium Tier" />
@@ -745,7 +744,7 @@ in some errors. We must check if a user is connected before we let them interact
 with our application simply by using the `isConnected` utility from Wagmi and
 setting setting its value in our `isUserConnected` state.
 
-```jsx
+```tsx
 // consts...
 
 useEffect(() => {
@@ -764,7 +763,7 @@ dependencies, `isConnected`, in this case, changes.
 
 Then we can wrap the `<main>` element as follows:
 
-```jsx
+```tsx
 // return statement for rendering...
 
 {
@@ -796,7 +795,7 @@ the following side drawer for the code written till now if stuck somewhere.
 
 <LessonInformationalModal buttonText="Code so far for index.tsx" title="Code so far for index.tsx">
 
-```jsx
+```tsx
 import Head from "next/head";
 import Image from "next/image";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
@@ -1029,7 +1028,7 @@ Okay lets write some code for it.
 To be able to display information about our latest mint, we must first get
 information about it from our smart contract.
 
-```jsx
+```tsx
 // imports, consts and WAGMI useContractWrite hook...
 
 const { data: tokenData, refetch: refetchTokenData } = useContractRead({
@@ -1066,7 +1065,7 @@ const mintToken = async (e) => {
     try {
       setModalShow(true);
       write();
-      refetchTokenData(); // <--------- this is the new line: here an exaplanation of the refetchTokenData() Function for i.e.
+      refetchTokenData();
       setMintingPrice("0");
     } catch (error) {
       console.log("Error minting NFT", error.message);
@@ -1102,7 +1101,7 @@ at our modal. The first is that we must display our modal only when we want it
 to and the other is to display a loading message until our NFT has successfully
 minted. This is how the mintToken function should look now:
 
-```jsx
+```tsx
 // useEffect for tokenURI...
 
 const mintToken = async (e) => {
@@ -1132,7 +1131,7 @@ value of `modalShow` to `true`.
 
 We're there at last! Now we can render our modal.
 
-```jsx
+```tsx
 // return statement for rendering...
 
 {
@@ -1209,7 +1208,7 @@ If you are stuck somewhere, please refer to the code side drawer below.
 
 <LessonInformationalModal buttonText="Final Code for index.tsx" title="Final Code for index.tsx">
 
-```jsx
+```tsx
 import Head from "next/head";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
@@ -1526,4 +1525,4 @@ creating a full stack decentralised NFT Minting Application.
 
 <br/>
 </LessonLayout>
-````
+```
