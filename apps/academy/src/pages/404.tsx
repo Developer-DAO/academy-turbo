@@ -22,8 +22,8 @@ const NotFound: NextPageWithLayout = () => {
 NotFound.getLayout = function getLayout(page: ReactElement) {
   return (
     <PageSeoLayout
-      title="Dapp Page" // DEV_NOTE: This is for the next-seo per page config
-      description="A page for your dapp." // DEV_NOTE: This is for the next-seo per page config
+      title="404 Page Not Found"
+      description="Sorry, the page you&#39;re looking for isn&#39;t there."
     >
       {page}
     </PageSeoLayout>
