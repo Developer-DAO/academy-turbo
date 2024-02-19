@@ -235,6 +235,148 @@ importers:
         specifier: workspace:*
         version: link:../../packages/typescript-config
 
+  apps/admin:
+    dependencies:
+      '@headlessui/react':
+        specifier: 1.7.15
+        version: 1.7.15(react-dom@18.2.0)(react@18.2.0)
+      '@next/font':
+        specifier: ^14.1.0
+        version: 14.1.0(next@13.4.12)
+      '@rainbow-me/rainbowkit':
+        specifier: ^1.0.10
+        version: 1.0.10(@types/react@18.2.16)(react-dom@18.2.0)(react@18.2.0)(viem@1.10.14)(wagmi@1.4.2)
+      '@rainbow-me/rainbowkit-siwe-next-auth':
+        specifier: ^0.3.0
+        version: 0.3.0(@rainbow-me/rainbowkit@1.0.10)(next-auth@4.23.1)(react@18.2.0)(siwe@2.1.4)
+      '@t3-oss/env-nextjs':
+        specifier: ^0.6.1
+        version: 0.6.1(typescript@5.1.6)(zod@3.22.2)
+      '@tanstack/react-query':
+        specifier: ^4.33.0
+        version: 4.33.0(react-dom@18.2.0)(react@18.2.0)
+      '@trpc/client':
+        specifier: ^10.38.1
+        version: 10.38.1(@trpc/server@10.38.1)
+      '@trpc/next':
+        specifier: ^10.38.1
+        version: 10.38.1(@tanstack/react-query@4.33.0)(@trpc/client@10.38.1)(@trpc/react-query@10.38.1)(@trpc/server@10.38.1)(next@13.4.12)(react-dom@18.2.0)(react@18.2.0)
+      '@trpc/server':
+        specifier: ^10.38.1
+        version: 10.38.1
+      '@types/lodash.merge':
+        specifier: ^4.6.7
+        version: 4.6.7
+      clsx:
+        specifier: 2.0.0
+        version: 2.0.0
+      database:
+        specifier: workspace:*
+        version: link:../../packages/database
+      lodash.merge:
+        specifier: ^4.6.2
+        version: 4.6.2
+      next:
+        specifier: 13.4.12
+        version: 13.4.12(@babel/core@7.22.15)(react-dom@18.2.0)(react@18.2.0)
+      next-auth:
+        specifier: ^4.23.1
+        version: 4.23.1(next@13.4.12)(react-dom@18.2.0)(react@18.2.0)
+      next-seo:
+        specifier: ^6.1.0
+        version: 6.1.0(next@13.4.12)(react-dom@18.2.0)(react@18.2.0)
+      next-themes:
+        specifier: 0.2.1
+        version: 0.2.1(next@13.4.12)(react-dom@18.2.0)(react@18.2.0)
+      react:
+        specifier: 18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: 18.2.0
+        version: 18.2.0(react@18.2.0)
+      siwe:
+        specifier: ^2.1.4
+        version: 2.1.4(ethers@6.7.1)
+      superjson:
+        specifier: ^1.13.1
+        version: 1.13.1
+      ui:
+        specifier: workspace:*
+        version: link:../../packages/ui
+      utils:
+        specifier: workspace:*
+        version: link:../../packages/utils
+      viem:
+        specifier: ^1.10.14
+        version: 1.10.14(typescript@5.1.6)(zod@3.22.2)
+      wagmi:
+        specifier: ^1.4.2
+        version: 1.4.2(@types/react@18.2.16)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)(viem@1.10.14)(zod@3.22.2)
+      zod:
+        specifier: ^3.22.2
+        version: 3.22.2
+    devDependencies:
+      '@hookform/resolvers':
+        specifier: ^3.3.4
+        version: 3.3.4(react-hook-form@7.50.0)
+      '@mdx-js/loader':
+        specifier: ^3.0.0
+        version: 3.0.0(webpack@5.88.2)
+      '@mdx-js/react':
+        specifier: ^3.0.0
+        version: 3.0.0(@types/react@18.2.16)(react@18.2.0)
+      '@next/bundle-analyzer':
+        specifier: 13.4.12
+        version: 13.4.12
+      '@next/mdx':
+        specifier: ^14.0.4
+        version: 14.0.4(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.0)
+      '@prisma/nextjs-monorepo-workaround-plugin':
+        specifier: ^5.3.1
+        version: 5.3.1
+      '@types/mdx':
+        specifier: ^2.0.10
+        version: 2.0.10
+      '@types/react-syntax-highlighter':
+        specifier: ^15.5.11
+        version: 15.5.11
+      jest-config:
+        specifier: workspace:*
+        version: link:../../packages/jest-config
+      lighthouse-config:
+        specifier: workspace:*
+        version: link:../../packages/lighthouse-config
+      next-compose-plugins:
+        specifier: ^2.2.1
+        version: 2.2.1
+      next-config:
+        specifier: workspace:*
+        version: link:../../packages/next-config
+      next-pwa:
+        specifier: ^5.6.0
+        version: 5.6.0(@babel/core@7.22.15)(esbuild@0.18.20)(next@13.4.12)(webpack@5.88.2)
+      playwright-config:
+        specifier: workspace:*
+        version: link:../../packages/playwright-config
+      react-hook-form:
+        specifier: ^7.50.0
+        version: 7.50.0(react@18.2.0)
+      react-syntax-highlighter:
+        specifier: ^15.5.0
+        version: 15.5.0(react@18.2.0)
+      remark-frontmatter:
+        specifier: ^5.0.0
+        version: 5.0.0
+      storybook-config:
+        specifier: workspace:*
+        version: link:../../packages/storybook-config
+      tailwindcss-config:
+        specifier: workspace:*
+        version: link:../../packages/tailwindcss-config
+      typescript-config:
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
+
   packages/database:
     dependencies:
       '@prisma/client':
@@ -2805,7 +2947,7 @@ packages:
     peerDependencies:
       react: '>=16'
     dependencies:
-      '@types/mdx': 2.0.7
+      '@types/mdx': 2.0.10
       '@types/react': 18.2.16
       react: 18.2.0
     dev: true
@@ -6342,10 +6484,6 @@ packages:
 
   /@types/mdx@2.0.10:
     resolution: {integrity: sha512-Rllzc5KHk0Al5/WANwgSPl1/CwjqCy+AZrGd78zuK+jO9aDM6ffblZ+zIjgPNAaEBmlO0RYDvLNh7wD0zKVgEg==}
-    dev: true
-
-  /@types/mdx@2.0.7:
-    resolution: {integrity: sha512-BG4tyr+4amr3WsSEmHn/fXPqaCba/AYZ7dsaQTiavihQunHSIxk+uAtqsjvicNpyHN6cm+B9RVrUOtW9VzIKHw==}
     dev: true
 
   /@types/mime-types@2.1.1:

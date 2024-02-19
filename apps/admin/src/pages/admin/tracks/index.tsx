@@ -148,7 +148,9 @@ function TrackCard(props: { track: RouterOutputs["tracks"]["getAll"][number] }) 
               <Button
                 variant="primary"
                 disabled={!session}
-                onClick={() => { deletePost.mutate({ trackId: track.id }); }}
+                onClick={() => {
+                  deletePost.mutate({ trackId: track.id });
+                }}
               >
                 Delete
               </Button>
