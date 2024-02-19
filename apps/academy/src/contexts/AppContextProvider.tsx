@@ -1,10 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-
 import { useSession } from "next-auth/react";
 import { type ReactNode, useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 
-// import type { FormatedLessonInterface, Fundamental, Project } from "@/interfaces";
+import type { CompletedQuizRecord } from "@/interfaces";
 import { api } from "@/utils/api";
 
 import { AppContext } from "./AppContext";
@@ -14,10 +12,9 @@ interface PropsInterface {
 }
 
 export function AppContextProvider({ children }: PropsInterface) {
-  // const [fundamentals, setFundamentals] = useState<Fundamental[]>([]);
-  // const [projects, setProjects] = useState<Project[]>([]);
   const [completedQuizzesIds, setCompletedQuizzesIds] = useState<string[]>([]);
   const [sessionDataUser, setSessionDataUser] = useState<any>(null);
+  // const [formattedAllTracksData, setFormattedAllTracksData] = useState<TrackWithTags>([]);
 
   const { data: sessionData, status: sessionStatus } = useSession();
   const { address, status: walletStatus } = useAccount();
@@ -29,8 +26,6 @@ export function AppContextProvider({ children }: PropsInterface) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionData]);
 
-  // Requests
-  // - All
   const {
     data: completedQuizzesAllData,
     // isLoading: completedQuizzesAllIsLoading,
@@ -53,10 +48,10 @@ export function AppContextProvider({ children }: PropsInterface) {
   }, [sessionStatus, walletStatus]);
 
   useEffect(() => {
-    if (completedQuizzesAllData !== undefined) {
+    if (completedQuizzesAllData !== undefined && completedQuizzesAllData.length > 0) {
       const completedIds: string[] = completedQuizzesAllData.map(
-        (quiz: any) => quiz.lesson as string,
-      ); // DEV_NOTE: the -lesson- field now is the lessonId
+        (completedQuiz: CompletedQuizRecord) => completedQuiz.lessonId,
+      );
       if (completedIds !== completedQuizzesIds) setCompletedQuizzesIds(completedIds);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -84,14 +79,20 @@ export function AppContextProvider({ children }: PropsInterface) {
   // }, []);
 
   // - Get All Tracks data
-  const { data: allTracksData } = api.tracks.getAll.useQuery(undefined, {
-    refetchOnWindowFocus: false,
-  });
+  const { data: allTracksData, isLoading: allTracksDataIsLoading } = api.tracks.getAll.useQuery(
+    undefined,
+    {
+      refetchOnWindowFocus: false,
+    },
+  );
 
   // - Get All lessons data
-  const { data: allLessonsData } = api.lessons.getAll.useQuery(undefined, {
-    refetchOnWindowFocus: false,
-  });
+  const { data: allLessonsData, isLoading: allLessonsDataIsLoading } = api.lessons.getAll.useQuery(
+    undefined,
+    {
+      refetchOnWindowFocus: false,
+    },
+  );
 
   // useEffect(() => {
   //   if (
@@ -163,11 +164,11 @@ export function AppContextProvider({ children }: PropsInterface) {
     <AppContext.Provider
       value={{
         completedQuizzesIds,
-        // projects,
-        // fundamentals,
-        allLessonsData: allLessonsData !== undefined ? allLessonsData : [],
-        refetchCompletedQuizzesAll,
         allTracksData: allTracksData !== undefined ? allTracksData : [],
+        allTracksDataIsLoading,
+        allLessonsData: allLessonsData !== undefined ? allLessonsData : [],
+        allLessonsDataIsLoading,
+        refetchCompletedQuizzesAll,
       }}
     >
       {children}

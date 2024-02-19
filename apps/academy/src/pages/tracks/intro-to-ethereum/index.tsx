@@ -53,6 +53,7 @@ const IntroToEthereumTrackPage = () => {
         trackTitle="A Developer's Guide to Ethereum"
         trackDescription="An accessible introduction to Ethereum via web3.py and Python. Grasp blockchain basics, Ethereum's decentralization, and smart contracts with practical insights. Code included for hands-on learning, but no programming expertise required."
         trackAuthor="wolovim"
+        trackAuthorImage="/authors/wolovim.jpeg"
         trackAuthorDescription="Full-stack developer on the Ethereum Foundation's Python tooling team, helping to maintain web3.py, py-evm, and related open source libraries."
         trackAuthorTwitter="wolovim"
         tags={["Entry", "Open Source", "Blockchain", "Ethereum", "Python", "Web3.py", "Node"]}
@@ -62,7 +63,7 @@ const IntroToEthereumTrackPage = () => {
             allLessonsData.map((lesson, idx) => {
               const tagsForThisLesson = lesson.tags.map((tag) => tag.tag.tagName);
               return (
-                <Link href={lesson.lessonPath} key={idx}>
+                <Link href={lesson.lessonPath} key={idx} className="mx-auto">
                   <TrackCard
                     imgSrc={lesson.imgPath}
                     tags={tagsForThisLesson}

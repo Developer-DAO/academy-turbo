@@ -2,7 +2,7 @@ import localFont from "@next/font/local";
 import NextLink from "next/link";
 import type { FC } from "react";
 
-import { Icons } from "../Icons";
+import { Icons } from "../../";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
 
 const deathstar = localFont({

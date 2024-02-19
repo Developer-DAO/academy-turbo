@@ -109,15 +109,15 @@ export const LearnWeb3Banner: FC<HomePageBannerProps> = ({ href }) => {
           </div>
         </div>
       </div>
-      <div className="py-8">
+      <div className="pb-8">
         <CardHeader className="flex-row justify-center">
           <CardTitle className="title">LEARN WEB3</CardTitle>
         </CardHeader>
-        <CardContent className="description max-w-xl p-1">
+        <CardContent className="description max-w-[552px] p-1 pb-12 md:pb-1">
           <p>Developer DAO offers learning resources to help you build with web3 technologies.</p>
         </CardContent>
         <div className="flex justify-center">
-          <Button asChild className="button-rounded text-black">
+          <Button asChild className="button-rounded text-black hover:bg-[#721F79] hover:text-white">
             <NextLink href={href}>get started!</NextLink>
           </Button>
         </div>

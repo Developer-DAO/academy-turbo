@@ -1,8 +1,6 @@
 import React, { type Dispatch, type SetStateAction, useState } from "react";
 import { Button, useToast } from "ui";
 
-import { toLetters } from "@/utils/QuizHelpers";
-
 export interface QuestionProps {
   question: string;
 }
@@ -115,7 +113,7 @@ const Question = (props: QuestionProps): JSX.Element => {
             }}
             key={index}
           >
-            {`${toLetters(index + 1)}. ${o.answer}`}
+            {`${o.answer}`}
           </div>
         );
       })}

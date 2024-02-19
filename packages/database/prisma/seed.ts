@@ -1,10 +1,57 @@
 // import { PrismaClient } from "../client";
 // import { hash } from "bcryptjs";
 import { PrismaClient } from "@prisma/client";
+// import { allTagsData } from "../data/allTagsData";
+// import { allTracksData } from "../data/allTracksData";
+// import { allLessonsData } from "../data/allLessonsData";
+// import { allTagsOnTracksData } from "../data/allTagsOnTracksData";
+// import { allTagsOnLessonsData } from "../data/allTagsOnLessonsData";
 
 const prisma = new PrismaClient();
 
 async function main() {
+  // const allTagsData = await prisma.tags.findMany();
+  // const allTracksData = await prisma.tracks.findMany();
+  // const allLessonsData = await prisma.lessons.findMany();
+  // const allTagsOnTracksData = await prisma.tagsOnTracks.findMany();
+  // const allTagsOnLessonsData = await prisma.tagsOnLessons.findMany();
+  // const allTagsData = await prisma.tags.findMany();
+  // console.log("log length ----");
+  // console.log("allTagsData LENGTH " + allTagsData.length);
+  // console.log("allTracksData LENGTH " + allTracksData.length);
+  // console.log("allLessonsData LENGTH " + allLessonsData.length);
+  // console.log("allTagsOnTracksData LENGTH " + allTagsOnTracksData.length);
+  // console.log("allTagsOnLessonsData LENGTH " + allTagsOnLessonsData.length);
+  // console.log({ allTagsData });
+  // console.log({ allTracksData });
+  // console.log({ allLessonsData });
+  // console.log({ allTagsOnTracksData });
+  // console.log({ allTagsOnLessonsData });
+  // console.log({ allTagsData });
+  // const insert01 = await prisma.tags.createMany({
+  //   data: allTagsData,
+  // });
+  // console.log({ insert01 });
+  // const insert02 = await prisma.tracks.createMany({
+  //   data: allTracksData,
+  // });
+  // console.log({ insert02 });
+  // const insert03 = await prisma.lessons.createMany({
+  //   data: allLessonsData,
+  // });
+  // console.log({ insert03 });
+  // const insert04 = await prisma.tagsOnTracks.createMany({
+  //   data: allTagsOnTracksData,
+  // });
+  // console.log({ insert04 });
+  // const insert05 = await prisma.tagsOnLessons.createMany({
+  //   data: allTagsOnLessonsData,
+  // });
+  // console.log({ insert05 });
+  // console.log(insert01.count);
+  // console.log(insert03.count);
+  // console.log(insert04.count);
+  // console.log(insert05.count);
   // const password = await hash("password123", 12);
   // const user = await prisma.user.upsert({
   //   where: { email: "admin@admin.com" },
@@ -35,15 +82,51 @@ async function main() {
   //   },
   // });
   // console.log({ newTagOnTracks });
-  const updatedLesson = await prisma.tracks.update({
+
+  const updatedLesson = await prisma.lessons.update({
     where: {
-      id: "clrzjah6u00001w2ndxrq8dou",
+      id: "clrzkfamu000d1wfuiz6dofn2",
     },
     data: {
-      imgPath: "/track-erc20.png",
+      lessonPath: "/fundamentals/token-standards",
+      imgPath: "/track-fundamentals.png",
     },
   });
   console.log({ updatedLesson });
+
+  // const updatedLesson = await prisma.lessons.update({
+  //   where: {
+  //     id: "",
+  //   },
+  //   data: {
+  //     lessonPath: "/fundamentals/
+  //     imgPath: "/track-fundamentals.png",
+  //   },
+  // });
+  // console.log({ updatedLesson });
+
+  // const updatedLesson = await prisma.lessons.update({
+  //   where: {
+  //     id: "",
+  //   },
+  //   data: {
+  //     lessonPath: "/fundamentals/
+  //     imgPath: "/track-fundamentals.png",
+  //   },
+  // });
+  // console.log({ updatedLesson });
+
+  // const updatedLesson = await prisma.lessons.update({
+  //   where: {
+  //     id: "",
+  //   },
+  //   data: {
+  //     lessonPath: "/fundamentals/
+  //     imgPath: "/track-fundamentals.png",
+  //   },
+  // });
+  // console.log({ updatedLesson });
+
   // const newTagsOnLesson = await prisma.tagsOnLessons.create({
   //   data: {
   //     lessonId: "clrzkw6sp00091wtu66sggity",

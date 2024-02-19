@@ -19,7 +19,7 @@ class MyDocument extends Document {
     // const csp = getCspContent(NextScript.getInlineScriptSource(this.props));
 
     return (
-      <Html lang="en">
+      <Html lang="en" className="scroll-smooth">
         <Head>
           {/* <meta httpEquiv="Content-Security-Policy" content={csp} /> */}
 

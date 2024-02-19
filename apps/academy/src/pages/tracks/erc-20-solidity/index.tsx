@@ -18,32 +18,14 @@ const Erc20SolidityTrackPage = () => {
       refetchOnWindowFocus: false,
     },
   );
-  // const lessonsArray = [
-  //   {
-  //     title: "Introduction to Smart Contract Development with Solidity",
-  //     author: "_7i7o, piablo", // ["_7i7o", "piablo"],
-  //     imgPath: "/image16.png",
-  //     description:
-  //       "Beginner-friendly. Create your first Solidity smart contract and learn the fundamentals of blockchain development. Checkpoint quizzes included.",
-  //     tags: ["Beginner", "Solidity", "Remix"],
-  //     path: "/tracks/erc-20-solidity/1",
-  //   },
-  //   {
-  //     title: "Your own ERC-20 Token: A Step-by-Step Guide using Foundry",
-  //     author: "_7i7o, piablo",
-  //     imgPath: "/image16.png",
-  //     description:
-  //       "Foundry demystified: ERC-20 token creation for beginners. Probing quizzes throughout. Grasp the fundamentals and empower yourself to build and customize.",
-  //     tags: ["Beginner", "ERC-20", "Foundry"],
-  //     path: "/tracks/erc-20-solidity/2",
-  //   },
-  // ];
+
   return (
     <div className="relative m-10 flex lg:mx-auto lg:max-w-screen-lg">
       <TracksLayout
         trackTitle="Build a Fungible Token"
         trackDescription="Learn to create ERC-20 tokens using Foundry, progressing from the basics to advanced customisation. We will be exploring, testing, real-world applications, security practices, and the role of tokens in decentralised ecosystems. From DeFi to DAO's and everything in between, thanks to its simplicity, but versatility, the ERC-20 is going nowhere. Start with Solidity, or dive directly into token creation — empowering you to contribute to blockchain projects."
         trackAuthor="7i7o, piablo"
+        trackAuthorImage="/authors/default.png"
         trackAuthorDescription="Authors are active Developer DAO members"
         trackAuthorTwitter="7i7o, Skruffster"
         tags={["Beginner", "Solidity", "ERC-20", "Foundry", "DeFi"]}
@@ -53,7 +35,7 @@ const Erc20SolidityTrackPage = () => {
             allLessonsData.map((lesson, idx) => {
               const tagsForThisLesson = lesson.tags.map((tag) => tag.tag.tagName);
               return (
-                <Link href={lesson.lessonPath} key={idx}>
+                <Link href={lesson.lessonPath} key={idx} className="mx-auto">
                   <TrackCard
                     imgSrc={lesson.imgPath}
                     tags={tagsForThisLesson}

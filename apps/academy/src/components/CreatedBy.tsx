@@ -1,11 +1,16 @@
-import { Avatar, AvatarFallback, AvatarImage } from "ui/components/ui/avatar";
+import { Avatar, AvatarImage } from "ui/components/ui/avatar";
 
 interface CreatedByProps {
   author: string;
+  authorImage: string;
   authorTwitter: string;
 }
 
-export default function CreatedBy({ author, authorTwitter }: CreatedByProps) {
+export default function CreatedBy({
+  author,
+  authorImage = "/authors/default.png",
+  authorTwitter,
+}: CreatedByProps) {
   // mvp: if multiple authors, split by comma and map to multiple links
   const handles = authorTwitter.split(", ");
   const twitterLinks = handles.map((handle, idx) => (
@@ -25,8 +30,7 @@ export default function CreatedBy({ author, authorTwitter }: CreatedByProps) {
       <div className="flex w-full">
         <p className="text-left">Created by:</p>
         <Avatar className="ml-6 h-16 w-16">
-          <AvatarImage src="/azuki.png" />
-          <AvatarFallback>Avatar</AvatarFallback>
+          <AvatarImage src={authorImage} />
         </Avatar>
         <div className="ml-6 flex flex-col items-center lg:flex-row lg:items-start lg:gap-4">
           <article className="font-light">
