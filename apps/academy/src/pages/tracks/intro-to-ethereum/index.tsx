@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import type { ReactElement } from "react";
 import { TrackCard } from "ui";
 
+import PageSeoLayout from "@/components/PageSeoLayout";
 import Spinner from "@/components/Spinner";
 import TracksLayout from "@/components/TracksLayout";
 import { api } from "@/utils/api";
@@ -18,35 +19,7 @@ const IntroToEthereumTrackPage = () => {
       refetchOnWindowFocus: false,
     },
   );
-  // const lessonsArray = [
-  //   {
-  //     title: "A Developer's Guide to Ethereum, Pt. 1",
-  //     author: "wolovim",
-  //     imgPath: "/image16.png",
-  //     description:
-  //       "Dive into Ethereum basics with web3.py and Python. Simulate a node, read blocks, check balances, and send transactions. Focus on concepts, not final products, with included code.",
-  //     tags: ["Entry", "Eth", "Block"],
-  //     path: "/tracks/intro-to-ethereum/1",
-  //   },
-  //   {
-  //     title: "A Developer's Guide to Ethereum, Pt. 2",
-  //     author: "wolovim",
-  //     imgPath: "/image16.png",
-  //     description:
-  //       "Explore Ethereum's core — blockchain, decentralization, and ether. Build on Part 1, grasping implications for developers. Practical insights and code provided for understanding.",
-  //     tags: ["Entry", "Accounts", "Signing"],
-  //     path: "/tracks/intro-to-ethereum/2",
-  //   },
-  //   {
-  //     title: "A Developer's Guide to Ethereum, Pt. 3",
-  //     author: "wolovim",
-  //     imgPath: "/image16.png",
-  //     description:
-  //       "From blockchain fundamentals to accounts and now smart contracts. Unveil the programmable, decentralized world with practical insights and code.",
-  //     tags: ["Entry", "OSS", "Contract"],
-  //     path: "/tracks/intro-to-ethereum/3",
-  //   },
-  // ];
+
   return (
     <div className="relative m-10 flex lg:mx-auto lg:max-w-screen-lg">
       <TracksLayout
@@ -80,6 +53,17 @@ const IntroToEthereumTrackPage = () => {
         </div>
       </TracksLayout>
     </div>
+  );
+};
+
+IntroToEthereumTrackPage.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <PageSeoLayout
+      title="Intro To Ethereum Track Page"
+      description="An accessible introduction to Ethereum via web3.py and Python. Grasp blockchain basics, Ethereum's decentralization, and smart contracts with practical insights. Code included for hands-on learning, but no programming expertise required."
+    >
+      {page}
+    </PageSeoLayout>
   );
 };
 

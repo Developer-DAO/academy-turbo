@@ -202,7 +202,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
       answers[currentQuestionIndex] !== undefined &&
       answers[currentQuestionIndex]?.includes(answerIndex) === true
     ) {
-      return "border-2 border-[#44AF96]";
+      return "ring-2 ring-[#44AF96] ring-inset";
     } else {
       return "";
     }
@@ -222,7 +222,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
             <DialogTrigger className="w-full text-right text-[#44AF96]">X</DialogTrigger>
 
             <div className="flex flex-col text-start">
-              <span className="font-clash-display w-full text-xl font-bold leading-9 text-white lg:text-3xl">
+              <span className="font-clash-display w-full text-xl font-semibold leading-9 text-white lg:text-3xl">
                 {quiz.title}
               </span>
               <span className="font-poppins w-full text-base font-light text-white">{`Quiz Question ${
@@ -234,28 +234,20 @@ const Quiz = (props: QuizProps): JSX.Element => {
 
         <DialogDescription className="h-[75%] max-h-[80%] max-w-[380px] bg-[#242424] pb-5 lg:mx-7">
           <div className="flex flex-col rounded-md bg-[#242424] p-3 lg:p-6">
-            <div className="mt-5 h-[45%] max-h-fit w-full overflow-auto scroll-smooth">
-              <span className="font-clash-display mb-8 w-full text-xl font-bold leading-5 text-white">
+            <div className="mt-4 h-[45%] max-h-fit w-full overflow-auto scroll-smooth">
+              <span className="font-poppins mb-4 w-full text-lg font-bold leading-5 text-white">
                 {quiz.questions[currentQuestionIndex]!.question}
               </span>
               {quiz.questions[currentQuestionIndex]!.options.map((option, index) => {
                 return (
                   <div
-                    className={`${
-                      index === 0
-                        ? `${
-                            quiz.questions[currentQuestionIndex]!.options.length >= 4
-                              ? "mt-7"
-                              : "mt-10"
-                          } `
-                        : ""
-                    } font-clash-display ${
+                    className={`${index === 0 ? "mt-4" : ""} font-poppins ${
                       quiz.questions[currentQuestionIndex]!.options.length >= 4 ? "mb-3" : "mb-4"
                     } w-full cursor-pointer rounded-3xl bg-[#303030] ${isSelectedAnswer(index)}	p-3	${
                       quiz.questions[currentQuestionIndex]!.options.length >= 4
                         ? "text-xs"
                         : "text-base"
-                    } font-bold text-[#F9F9F9]`}
+                    } text-[#F9F9F9]`}
                     onClick={() => {
                       selectAnswer(index);
                     }}

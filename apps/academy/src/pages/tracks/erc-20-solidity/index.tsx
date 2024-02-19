@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import type { ReactElement } from "react";
 import { TrackCard } from "ui";
 
+import PageSeoLayout from "@/components/PageSeoLayout";
 import Spinner from "@/components/Spinner";
 import TracksLayout from "@/components/TracksLayout";
 import { api } from "@/utils/api";
@@ -52,6 +53,17 @@ const Erc20SolidityTrackPage = () => {
         </div>
       </TracksLayout>
     </div>
+  );
+};
+
+Erc20SolidityTrackPage.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <PageSeoLayout
+      title="ERC-20 Track Page"
+      description="Learn to create ERC-20 tokens using Foundry, progressing from the basics to advanced customisation. We will be exploring, testing, real-world applications, security practices, and the role of tokens in decentralised ecosystems. From DeFi to DAO's and everything in between, thanks to its simplicity, but versatility, the ERC-20 is going nowhere. Start with Solidity, or dive directly into token creation — empowering you to contribute to blockchain projects."
+    >
+      {page}
+    </PageSeoLayout>
   );
 };
 

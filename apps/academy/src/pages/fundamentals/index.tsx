@@ -1,6 +1,8 @@
 import Link from "next/link";
+import type { ReactElement } from "react";
 import { TrackCard } from "ui";
 
+import PageSeoLayout from "@/components/PageSeoLayout";
 import Spinner from "@/components/Spinner";
 import { api } from "@/utils/api";
 
@@ -49,6 +51,17 @@ bg-[url('/bg_fundamentals.png')] bg-cover bg-center bg-no-repeat object-center p
         </div>
       </div>
     </div>
+  );
+};
+
+FundamentalsPage.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <PageSeoLayout
+      title="Fundamentals Page"
+      description=" Nail the basics and then take on a track."
+    >
+      {page}
+    </PageSeoLayout>
   );
 };
 
