@@ -162,16 +162,6 @@ npm run dev
 You'll see a message that says which url to view your site at.
 It should say <strong>http://localhost:3000</strong>
 
-{/* TODO: Mention the various versions used. Mention here or above? */}
-
-    {/*
-    "@rainbow-me/rainbowkit": "^1.3.4",
-    "next": "^14.0.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "viem": "~1.21.4",
-    "wagmi": "~1.4.13" */}
-
 <br />
 
 ---
@@ -189,8 +179,6 @@ RainbowKit and its dependencies are already installed and ready-to-go.
 To get this setup we need to start working on the `pages/_app.tsx` file in the
 `/frontend/pages` directory. The file should look something like this from our
 initial setup:
-
-{/* Discuss tsx files vs js files? */}
 
 - `import '@rainbow-me/rainbowkit/styles.css';` gives us some basic styling from
   Rainbowkit.
@@ -258,28 +246,6 @@ Please make these changes to `_app.tsx`:
 - search and replace `goerli` (which is Ethereum's testnet) and replace with `polygonMumbai`.
 - remove `zora` from `wagmi/chains` import and from the `configureChains` array.
 
-{/* TODO: Could remove the other default chains added in starter */}
-
-Great! Now we can wrap our application in the `RainbowKitProvider` and
-`WagmiConfig` so that it can have access to their features throughout our
-application. Our code should look like this:
-
-```jsx
-// import statements and configs code...
-
-function MyApp({ Component, pageProps }) {
-  return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
-        <Component {...pageProps} />
-      </RainbowKitProvider>
-    </WagmiConfig>
-  );
-}
-
-export default MyApp;
-```
-
 Now that we have our application setup, we can edit the Index Page.
 
 <br />
@@ -291,12 +257,29 @@ Now that we have our application setup, we can edit the Index Page.
 Notice that we are using the `page folder routing` in our app, which give us an
 `index.tsx` page in the `/frontend/pages` directory. This file work as our
 homepage at the root level, in our url will be `htpp://localhost:3000/` by
-default and its code should look like this after deleting all the _children_
-within the `<main>` element and completely deleting the `<footer>`.
+default.
+
+We'll only make one change to this file. We'll bring in a brand new `<TierNFT>` React component
+that will house our main application functionality and will be displayed on the Home page.
+
+Open `frontend/pages/index.tsx` and add these two lines:
+
+```tsx
+import { TierNFT } from "../components/tiernft";
+```
+
+```tsx
+<main className={styles.main}>
+  <TierNFT />
+</main>
+```
+
+so your file should look like this:
 
 ```tsx
 import type { NextPage } from "next";
 import Head from "next/head";
+import { TierNFT } from "../components/tiernft";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
@@ -308,7 +291,9 @@ const Home: NextPage = () => {
         <link href="/favicon.ico" rel="icon" />
       </Head>
 
-      <main className={styles.main}></main>
+      <main className={styles.main}>
+        <TierNFT />
+      </main>
     </div>
   );
 };
@@ -316,54 +301,240 @@ const Home: NextPage = () => {
 export default Home;
 ```
 
-{/* TODO: LET'S create functionality as a React component in it's own file */}
-
-Let's create a new React component that will house our main application functionality
-and will be displayed on the Home page.
+Before we can run this, we need to now create the `TierNFT` component.
 
 Create a new folder called `components` in the `/frontend` directory and inside create `tiernft.tsx`
 that will contain the following code:
 
 ```tsx
-COMPONENT GOES HERE
-```
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import {
+  useAccount,
+  useContractEvent,
+  useContractRead,
+  useContractWrite,
+  usePrepareContractWrite,
+  useWaitForTransaction,
+} from "wagmi";
+import TierABI from "../artifacts/contracts/TierNFT.sol/TierNFT.json";
+import { Log, formatUnits, parseEther } from "viem";
+import { CSSProperties, useEffect, useState } from "react";
+import Image from "next/image";
 
-{/* TODO: Need to tell users what to replace CONTACT_ADDRESS with */}
+type LogWithArgs = Log & {
+  args: { from: string; to: string; tokenId: bigint };
+};
 
-Add the top import our new component.
+export function TierNFT() {
+  const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as `0x${string}`;
 
-```tsx
-import { TierNFT } from "../components/tiernft";
-```
+  const { isConnected, address } = useAccount();
 
-Now add the component to the `index.tsx` file inbetween `<main></main>` tags.
+  const [isUserConnected, setIsUserConnected] = useState(false);
+  const [latestNFTMinted, setLatestNFTMinted] = useState<{
+    name: string;
+    image: string;
+  }>({ name: "", image: "" });
+  const [modalShow, setModalShow] = useState(false);
+  const [mintingPrice, setMintingPrice] = useState("0");
+  const [mintedTokenId, setMintedTokenId] = useState<bigint | undefined>(undefined);
 
-```tsx
-<main className={styles.main}>
-  <TierNFT />
-</main>
-```
+  const { config } = usePrepareContractWrite({
+    address: CONTRACT_ADDRESS,
+    abi: TierABI.abi,
+    functionName: "mint",
+    value: parseEther(mintingPrice),
+    onError: (e) => {
+      console.log("Error minting NFT", e);
+    },
+    enabled: mintingPrice !== "0",
+  });
 
-{/* remove code below */}
+  const { data: mintData, writeAsync: mint, isLoading: isMintLoading } = useContractWrite(config);
 
-Before we dive into the code for our index page, let's copy and paste some
-styling from the side drawer below, into our file. This is some default styling
-created for the application, which you can play around with themes,
-responsiveness, etc., if needed.
+  const { data: txData } = useWaitForTransaction({
+    hash: mintData?.hash,
+  });
 
-<LessonInformationalModal buttonText="Code for default style" title="Code for default style">
+  useEffect(() => {
+    if (mintingPrice !== "0" && mint) {
+      setModalShow(true);
+      mint();
+      setMintingPrice("0");
+    }
+  }, [mintingPrice, mint]);
 
-```jsx
-export default function Home() {
+  const { data: tokenURI }: { data: any } = useContractRead({
+    address: CONTRACT_ADDRESS,
+    abi: TierABI.abi,
+    functionName: "tokenURI",
+    args: [mintedTokenId],
+    watch: true,
+    enabled: mintedTokenId != undefined,
+  });
+
+  useEffect(() => {
+    try {
+      setIsUserConnected(isConnected);
+    } catch (e) {
+      const error = e as Error;
+      console.log("Error connecting to user", error.message);
+    }
+  }, [isConnected]);
+
+  // await for mint to complete
+  const unwatch = useContractEvent({
+    address: CONTRACT_ADDRESS,
+    abi: TierABI.abi,
+    eventName: "Transfer",
+    listener(events) {
+      if (events.length === 0) {
+        return;
+      }
+      events.forEach((event) => {
+        const extendedEvent = event as LogWithArgs;
+        const { to, tokenId } = extendedEvent.args;
+        if (to === address) {
+          setMintedTokenId(tokenId);
+          unwatch?.();
+        }
+      });
+    },
+  });
+
+  useEffect(() => {
+    try {
+      if (tokenURI) {
+        setLatestNFTMinted(JSON.parse(window.atob(tokenURI.substring(tokenURI.indexOf(",") + 1))));
+      }
+    } catch (e) {
+      const error = e as Error;
+      console.log("Error fetching token URI", error.message);
+    }
+  }, [tokenURI]);
+
   return (
-    // function code...
-  )
+    <div className={styles.container}>
+      <Head>
+        <title>NFT Minter</title>
+        <meta name="description" content="D_D Academy NFT Minter frontend integration project" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <header style={header}>
+        <h1>TierNFTs</h1>
+        <ConnectButton />
+      </header>
+      {isUserConnected ? (
+        <main className={styles.main}>
+          <div style={NFTFlex}>
+            <div style={NFTCard}>
+              <h2>Tier 0</h2>
+              <Image src="/nfts/0_basic.svg" width="200" height="200" alt="basic tier nft" />
+              <button
+                onClick={() => {
+                  setMintingPrice("0.01");
+                }}
+                style={NFTMint}
+                disabled={isMintLoading}
+              >
+                Mint
+              </button>
+            </div>
+            <div style={NFTCard}>
+              <h2>Tier 1</h2>
+              <Image src="/nfts/1_medium.svg" width="200" height="200" alt="medium tier nft" />
+              <button
+                onClick={() => {
+                  setMintingPrice("0.02");
+                }}
+                style={NFTMint}
+                disabled={isMintLoading}
+              >
+                Mint
+              </button>
+            </div>
+            <div style={NFTCard}>
+              <h2>Tier 2</h2>
+              <Image src="/nfts/2_premium.svg" width="200" height="200" alt="premium tier nft" />
+              <button
+                onClick={() => {
+                  setMintingPrice("0.05");
+                }}
+                style={NFTMint}
+                disabled={isMintLoading}
+              >
+                Mint
+              </button>
+            </div>
+          </div>
+          {modalShow && (
+            <div style={modal}>
+              {txData === undefined ? (
+                <div style={modalContent}>
+                  <h2>Minting...</h2>
+                </div>
+              ) : (
+                <div style={modalContent}>
+                  <h2>Mint Successful</h2>
+                  <div style={modalBody}>
+                    {latestNFTMinted.name && <h3>{latestNFTMinted.name}</h3>}
+                    {latestNFTMinted.image && (
+                      <Image
+                        src={latestNFTMinted.image}
+                        height="200"
+                        width="200"
+                        alt="Minted NFT"
+                      />
+                    )}
+                  </div>
+                  <div style={modalFooter}>
+                    <button style={modalButton}>
+                      {mintedTokenId != undefined && (
+                        <a
+                          href={`https://testnets.opensea.io/assets/mumbai/${CONTRACT_ADDRESS}/${formatUnits(
+                            mintedTokenId,
+                            0,
+                          )}`}
+                          target="_blank"
+                        >
+                          View on OpenSea
+                        </a>
+                      )}
+                    </button>
+                    <button style={modalButton}>
+                      {txData && txData.transactionHash ? (
+                        <a
+                          href={`https://mumbai.polygonscan.com/tx/${txData.transactionHash}`}
+                          target="_blank"
+                        >
+                          View on Polygonscan
+                        </a>
+                      ) : undefined}
+                    </button>
+                    <button onClick={() => setModalShow(false)} style={modalButton}>
+                      Close
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+        </main>
+      ) : (
+        <main className={styles.main}>
+          <div>Please connect your wallet.</div>
+        </main>
+      )}
+    </div>
+  );
 }
 
-// ======= COPY THE CODE BELOW =======
-
-const header = {
+const header: CSSProperties = {
   display: "flex",
+  flexDirection: "column",
   alignItems: "center",
   justifyContent: "space-between",
   paddingTop: "20px",
@@ -371,14 +542,14 @@ const header = {
   paddingRight: "50px",
 };
 
-const NFTFlex = {
+const NFTFlex: CSSProperties = {
   display: "flex",
   alignItems: "center",
   justifyContent: "space-evenly",
   gap: "50px",
 };
 
-const NFTCard = {
+const NFTCard: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   border: "2px solid white",
@@ -389,7 +560,7 @@ const NFTCard = {
   fontWeight: "bold",
 };
 
-const NFTMint = {
+const NFTMint: CSSProperties = {
   fontWeight: "700",
   padding: "5px 20px",
   border: "2px solid white",
@@ -399,7 +570,7 @@ const NFTMint = {
   cursor: "pointer",
 };
 
-const modal = {
+const modal: CSSProperties = {
   position: "fixed",
   left: "0",
   top: "0",
@@ -413,20 +584,20 @@ const modal = {
   zIndex: "1",
 };
 
-const modalContent = {
+const modalContent: CSSProperties = {
   backgroundColor: "#fff",
   padding: "10px 30px",
   borderRadius: "16px",
   color: "#000",
 };
 
-const modalBody = {
+const modalBody: CSSProperties = {
   padding: "20px",
   borderTop: "1px solid #eee",
   borderBottom: "1px solid #eee",
 };
 
-const modalFooter = {
+const modalFooter: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   gap: "10px",
@@ -434,7 +605,7 @@ const modalFooter = {
   justifyContent: "space-evenly",
 };
 
-const modalButton = {
+const modalButton: CSSProperties = {
   padding: "10px 20px",
   backgroundColor: "#fff",
   color: "#666",
@@ -442,13 +613,15 @@ const modalButton = {
   borderRadius: "10px",
   fontSize: "18px",
   fontWeight: "700",
-  boxShadow:
-    "0 0.2em 0.4em 0 rgba(0, 0, 0, 0.2), 0 0.3em 1em 0 rgba(0, 0, 0, 0.19)",
+  boxShadow: "0 0.2em 0.4em 0 rgba(0, 0, 0, 0.2), 0 0.3em 1em 0 rgba(0, 0, 0, 0.19)",
+  cursor: "pointer",
 };
 ```
 
-</LessonInformationalModal>
-<br/>
+{/* DISCUSS STYLING? */}
+{/* DISCUSS THE VARIOUS PIECES OF TIERNFT COMPONENT */}
+
+<br />
 
 Moving onto imports.
 
