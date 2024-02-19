@@ -173,7 +173,6 @@ const Quiz = (props: QuizProps): JSX.Element => {
   };
 
   const selectAnswer = (answerIndex: number) => {
-    console.log({ answerIndex });
     const newAnswers: Answers = { ...answers };
 
     if (
@@ -222,7 +221,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
             <DialogTrigger className="w-full text-right text-[#44AF96]">X</DialogTrigger>
 
             <div className="flex flex-col text-start">
-              <span className="font-clash-display w-full text-xl font-semibold leading-9 text-white lg:text-3xl">
+              <span className="font-clash-display w-full text-xl font-semibold text-white lg:text-3xl">
                 {quiz.title}
               </span>
               <span className="font-poppins w-full text-base font-light text-white">{`Quiz Question ${
@@ -232,7 +231,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
           </DialogTitle>
         </DialogHeader>
 
-        <DialogDescription className="h-[75%] max-h-[80%] max-w-[380px] bg-[#242424] pb-5 lg:mx-7">
+        <DialogDescription className="h-[75%] max-h-[80%] bg-[#242424] pb-5">
           <div className="flex flex-col rounded-md bg-[#242424] p-3 lg:p-6">
             <div className="mt-4 h-[45%] max-h-fit w-full overflow-auto scroll-smooth">
               <span className="font-poppins mb-4 w-full text-lg font-bold leading-5 text-white">
