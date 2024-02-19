@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import type { ReactElement } from "react";
 import { TrackCard } from "ui";
 
+import PageSeoLayout from "@/components/PageSeoLayout";
 import Spinner from "@/components/Spinner";
 import TracksLayout from "@/components/TracksLayout";
 import { api } from "@/utils/api";
@@ -18,17 +19,7 @@ const Web3PythonTrackPage = () => {
       refetchOnWindowFocus: false,
     },
   );
-  // const lessonsArray = [
-  //   {
-  //     title: "Python Smart Contract Development for Beginniners, Pt. 1",
-  //     author: "Raza",
-  //     imgPath: "/image16.png",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet.",
-  //     tags: ["Entry", "Python", "Vyper"],
-  //     path: "/tracks/web3-python/1",
-  //   },
-  // ];
+
   return (
     <div className="relative m-10 flex lg:mx-auto lg:max-w-screen-lg">
       <TracksLayout
@@ -62,6 +53,17 @@ const Web3PythonTrackPage = () => {
         </div>
       </TracksLayout>
     </div>
+  );
+};
+
+Web3PythonTrackPage.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <PageSeoLayout
+      title="Pyhton Track Page"
+      description="Prefer Python? This track offers a deep dive into Vyper contract development and complementary tools, including Ape, and web3.py."
+    >
+      {page}
+    </PageSeoLayout>
   );
 };
 

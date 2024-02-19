@@ -1,8 +1,9 @@
 import Link from "next/link";
+import type { ReactElement } from "react";
 import { TrackCard } from "ui";
 
+import PageSeoLayout from "@/components/PageSeoLayout";
 import Spinner from "@/components/Spinner";
-// import { useAppContext } from "@/contexts/AppContext";
 import { api } from "@/utils/api";
 
 const TracksPage = () => {
@@ -52,6 +53,17 @@ bg-[url('/bg_tracks.png')] bg-cover bg-no-repeat object-center pt-[300px]  lg:fi
         </div>
       </div>
     </div>
+  );
+};
+
+TracksPage.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <PageSeoLayout
+      title="Tracks Page"
+      description="Developer DAO learning tracks are designed to get you from 0 to 1."
+    >
+      {page}
+    </PageSeoLayout>
   );
 };
 
