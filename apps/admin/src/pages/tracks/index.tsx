@@ -159,7 +159,7 @@ function TrackCard(props: { track: RouterOutputs["tracks"]["getAll"][number] }) 
         </DialogContent>
       </Dialog>
       <div className="ml-2 flex flex-col">
-        <Link href={`/admin/tracks/${track.id}`}>
+        <Link href={`/tracks/${track.id}`}>
           <Button variant="primary" data-testid={`edit-track-${track.trackTitle}`}>
             Edit
           </Button>

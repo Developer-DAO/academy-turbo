@@ -1,7 +1,6 @@
 import "@/styles.css";
 import "@rainbow-me/rainbowkit/styles.css";
 
-import { MDXProvider } from "@mdx-js/react";
 import {
   connectorsForWallets,
   darkTheme,
@@ -26,7 +25,6 @@ import { mainnet } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 
 import { Layout } from "@/components/Layout";
-import Components from "@/components/mdx/Components";
 import { AppContextProvider } from "@/contexts/AppContextProvider";
 import { env } from "@/env.mjs";
 import { api } from "@/utils/api";
@@ -102,40 +100,38 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session |
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
-    <MDXProvider components={Components}>
-      <ThemeProvider attribute="class">
-        <WagmiConfig config={wagmiConfig}>
-          <SessionProvider refetchInterval={0} session={pageProps.session}>
-            <RainbowKitSiweNextAuthProvider>
-              <RainbowKitProvider
-                chains={chains}
-                initialChain={mainnet}
-                appInfo={{
-                  appName: "Developer DAO Academy",
-                  learnMoreUrl: "https://academy.developerdao.com",
-                }}
-                theme={{
-                  lightMode: academyLightTheme,
-                  darkMode: academyDarkTheme,
-                }}
-              >
-                <DefaultSeo {...SEO} />
-                <Head>
-                  <meta
-                    name="viewport"
-                    content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
-                  />
-                </Head>
-                <AppContextProvider>
-                  <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
-                  <Toaster />
-                </AppContextProvider>
-              </RainbowKitProvider>
-            </RainbowKitSiweNextAuthProvider>
-          </SessionProvider>
-        </WagmiConfig>
-      </ThemeProvider>
-    </MDXProvider>
+    <ThemeProvider attribute="class">
+      <WagmiConfig config={wagmiConfig}>
+        <SessionProvider refetchInterval={0} session={pageProps.session}>
+          <RainbowKitSiweNextAuthProvider>
+            <RainbowKitProvider
+              chains={chains}
+              initialChain={mainnet}
+              appInfo={{
+                appName: "Developer DAO Academy",
+                learnMoreUrl: "https://academy.developerdao.com",
+              }}
+              theme={{
+                lightMode: academyLightTheme,
+                darkMode: academyDarkTheme,
+              }}
+            >
+              <DefaultSeo {...SEO} />
+              <Head>
+                <meta
+                  name="viewport"
+                  content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
+                />
+              </Head>
+              <AppContextProvider>
+                <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
+                <Toaster />
+              </AppContextProvider>
+            </RainbowKitProvider>
+          </RainbowKitSiweNextAuthProvider>
+        </SessionProvider>
+      </WagmiConfig>
+    </ThemeProvider>
   );
 }
 

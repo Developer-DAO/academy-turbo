@@ -1,6 +1,7 @@
 {
   "folders": [
     { "path": "apps/academy", "name": "apps/academy" },
+    { "path": "apps/admin", "name": "apps/admin" },
     { "path": "packages/ui", "name": "packages/ui" },
     { "path": "packages/utils", "name": "packages/utils" },
     { "path": "packages/eslint-config-custom", "name": "packages/eslint-config-custom" },
@@ -173,6 +174,14 @@
         "runtimeExecutable": "pnpm",
         "runtimeArgs": ["test:unit", "${file}"],
         "cwd": "${workspaceFolder:apps/academy}"
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Debug unit test (apps/admin)",
+        "runtimeExecutable": "pnpm",
+        "runtimeArgs": ["test:unit", "${file}"],
+        "cwd": "${workspaceFolder:apps/admin}"
       },
       {
         "type": "node",

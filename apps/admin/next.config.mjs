@@ -1,27 +1,14 @@
 import withPlugins from "next-compose-plugins";
 import withBundleAnalyzer from "@next/bundle-analyzer";
 import { PrismaPlugin } from "@prisma/nextjs-monorepo-workaround-plugin";
-// const { PrismaPlugin } = require("@prisma/nextjs-monorepo-workaround-plugin");
 
 import withPWA from "next-pwa";
-import remarkFrontmatter from "remark-frontmatter";
-import nextMDX from "@next/mdx";
-
-const withMDX = nextMDX({
-  extension: /\.mdx?$/,
-  options: {
-    remarkPlugins: [remarkFrontmatter],
-    rehypePlugins: [],
-    // If you use `MDXProvider`, uncomment the following line.
-    providerImportSource: "@mdx-js/react",
-  },
-});
 
 /** @type {import('next').NextConfig} */
 const config = {
   // basePath,
   reactStrictMode: true,
-  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+  pageExtensions: ["ts", "tsx", "js", "jsx"],
   reactStrictMode: true,
   transpilePackages: ["ui", "utils", "database"],
   webpack: (config, { isServer }) => {
@@ -61,7 +48,6 @@ export default withPlugins(
       dest: "public",
       disable: process.env.NODE_ENV === "development",
     }),
-    withMDX(),
   ],
   config,
 );
