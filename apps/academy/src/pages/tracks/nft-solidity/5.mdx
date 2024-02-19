@@ -122,7 +122,7 @@ directory and sets up all the necessary files and folders within it:
 
 ```bash
 # use the RainbowKit starter to create our your Next.js application with RainbowKit
-npm init @rainbow-me/rainbowkit@latest
+npm init @rainbow-me/rainbowkit@0.2.11 --force
 ```
 
 All you'll need to pick is the name of your project, which will be `frontend`:
@@ -142,10 +142,20 @@ When this command finishes running you'll see:
 ```
 
 Once the setup is complete, we open the `frontend` directory and get cracking.
-Try running `npm run dev` to see if everything is working as expected.
 
 ```bash
 cd frontend
+```
+
+<Callout emoji="💡">
+  Bug fix: You'll need to manually edit `package.json` and change `"@rainbow-me/rainbowkit":
+  "^2.0.0",` to `"@rainbow-me/rainbowkit": "^1.0.0",`. This lesson is based on RainbowKit 1.x.
+</Callout>
+
+Try running the site to see if everything is working as expected:
+
+```bash
+npm install
 npm run dev
 ```
 
