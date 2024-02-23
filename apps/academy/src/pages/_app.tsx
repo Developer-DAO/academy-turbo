@@ -11,6 +11,7 @@ import {
 } from "@rainbow-me/rainbowkit";
 import { zerionWallet } from "@rainbow-me/rainbowkit/wallets";
 import { RainbowKitSiweNextAuthProvider } from "@rainbow-me/rainbowkit-siwe-next-auth";
+import { Analytics } from "@vercel/analytics/react";
 import merge from "lodash.merge";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
@@ -127,7 +128,10 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session |
                   />
                 </Head>
                 <AppContextProvider>
-                  <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
+                  <Layout>
+                    {getLayout(<Component {...pageProps} />)}
+                    <Analytics mode={"production"} />;
+                  </Layout>
                   <Toaster />
                 </AppContextProvider>
               </RainbowKitProvider>
