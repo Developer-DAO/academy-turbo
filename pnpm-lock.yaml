@@ -195,6 +195,9 @@ importers:
       '@types/react-syntax-highlighter':
         specifier: ^15.5.11
         version: 15.5.11
+      '@vercel/analytics':
+        specifier: ^1.2.2
+        version: 1.2.2(next@13.4.12)(react@18.2.0)
       jest-config:
         specifier: workspace:*
         version: link:../../packages/jest-config
@@ -6597,6 +6600,22 @@ packages:
     dependencies:
       '@vanilla-extract/css': 1.9.1
     dev: false
+
+  /@vercel/analytics@1.2.2(next@13.4.12)(react@18.2.0):
+    resolution: {integrity: sha512-X0rctVWkQV1e5Y300ehVNqpOfSOufo7ieA5PIdna8yX/U7Vjz0GFsGf4qvAhxV02uQ2CVt7GYcrFfddXXK2Y4A==}
+    peerDependencies:
+      next: '>= 13'
+      react: ^18 || ^19
+    peerDependenciesMeta:
+      next:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      next: 13.4.12(@babel/core@7.22.15)(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      server-only: 0.0.1
+    dev: true
 
   /@wagmi/connectors@3.1.2(@types/react@18.2.16)(react@18.2.0)(typescript@5.1.6)(viem@1.10.14)(zod@3.22.2):
     resolution: {integrity: sha512-IlLKErqCzQRBUcCvXGPowcczbWcvJtEG006gPsAoePNJEXCHEWoKASghgu+L/bqD7006Z6mW6zlTNjcSQJvFAg==}
@@ -15657,6 +15676,10 @@ packages:
       send: 0.18.0
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /server-only@0.0.1:
+    resolution: {integrity: sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA==}
     dev: true
 
   /set-blocking@2.0.0:
