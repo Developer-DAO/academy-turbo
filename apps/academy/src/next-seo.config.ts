@@ -1,8 +1,8 @@
 import type { DefaultSeoProps } from "next-seo";
 
 const config: DefaultSeoProps = {
-  titleTemplate: "Developer DAO Academy | %s",
-  defaultTitle: "Developer DAO Academy",
+  titleTemplate: "%s | Developer DAO Academy",
+  defaultTitle: "Learn web3 with Friends | Developer DAO Academy",
   openGraph: {
     type: "website",
     locale: "en_US",

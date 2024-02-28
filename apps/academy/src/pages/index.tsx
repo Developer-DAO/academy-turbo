@@ -53,7 +53,10 @@ const Home: NextPageWithLayout = () => {
 
 Home.getLayout = function getLayout(page: ReactElement) {
   return (
-    <PageSeoLayout title="Home Page" description="Become a web3 developer with Developer DAO.">
+    <PageSeoLayout
+      title="Learn Web3 With Friends"
+      description="Become a web3 developer with Developer DAO."
+    >
       {page}
     </PageSeoLayout>
   );
