@@ -60,7 +60,7 @@ Home.getLayout = function getLayout(page: ReactElement) {
   return (
     <PageSeoLayout
       title="Learn Web3 With Friends"
-      description="Become a web3 developer with Developer DAO."
+      description="Start your journey to become a Web3 Developer today. Free high-quality courses to learn web3 with Developer DAO Academy."
     >
       {page}
     </PageSeoLayout>
