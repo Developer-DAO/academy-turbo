@@ -12,10 +12,15 @@ const Home: NextPageWithLayout = () => {
         <div className="academy-grid-col-1">
           <div className="hidden justify-center md:flex">
             <div className="text-bttf-lg">
-              <h1>learn</h1>
-              <h1>web3__</h1>
-              <h1>with</h1>
-              <h1>friends</h1>
+              <h1>
+                Learn
+                <br />
+                web3__
+                <br />
+                with
+                <br />
+                friends
+              </h1>
             </div>
           </div>
           <div className="description max-w-[495px]">
