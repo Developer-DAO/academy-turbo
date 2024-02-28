@@ -57,8 +57,8 @@ bg-[url('/bg_fundamentals.png')] bg-cover bg-center bg-no-repeat object-center p
 FundamentalsPage.getLayout = function getLayout(page: ReactElement) {
   return (
     <PageSeoLayout
-      title="Fundamentals Page"
-      description=" Nail the basics and then take on a track."
+      title="Web3 Coding Fundamentals"
+      description="Learn the basics of web3 programming. Our Fundamentals cover wallets, RPCs, Smart Contract Testing, Command Line Basics and more."
     >
       {page}
     </PageSeoLayout>
