@@ -59,7 +59,7 @@ const Web3PythonTrackPage = () => {
 Web3PythonTrackPage.getLayout = function getLayout(page: ReactElement) {
   return (
     <PageSeoLayout
-      title="Python Track Page"
+      title="Python Smart Contract Development for Beginniners"
       description="Prefer Python? This track offers a deep dive into Vyper contract development and complementary tools, including Ape, and web3.py."
     >
       {page}
