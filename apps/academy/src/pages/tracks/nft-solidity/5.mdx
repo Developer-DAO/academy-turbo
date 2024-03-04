@@ -90,8 +90,8 @@ public goods. We love open source at Developer DAO. And public goods are gooood!
   app
 - [viem](https://viem.sh/docs/getting-started.html) - a compact JavaScript
   library for interacting with the Ethereum eco-system
-- [WAGMI](https://wagmi.sh/) is a collection of React hooks that allows us to
-  work effectively with Ethereum
+- [WAGMI](https://1.x.wagmi.sh/) is a collection of React hooks that allows us to
+  work effectively with Ethereum. We're using v1.
 - [Alchemy](https://dashboard.alchemy.com/) is an RPC provider that lets our app
   connect to the blockchain
 - [WalletConnect](https://cloud.walletconnect.com/sign-in) - is a bridge that
@@ -1006,7 +1006,7 @@ export default function Home() {
 }
 ```
 
-The [`useContractWrite`](https://wagmi.sh/docs/hooks/useContractWrite) hook from
+The [`useContractWrite`](https://1.x.wagmi.sh/react/hooks/useContractWrite) hook from
 WAGMI lets us pass in the contract address, contract ABI and the function name
 to return a JavaScript function (that we have called `mint`) that can interact
 with our smart contract and trigger a `write` function in it.
@@ -1022,9 +1022,8 @@ Even though we have this function, we need to pass in custom `message values`
 i.e. an amount in **ETH**, as defined in our contract. For this we create our
 own `mintToken` function that calls the `mint` function from WAGMI within it.
 
-The `usePrepareContractWrite` hook also work better with the
-`usePrepareContractWrite` hook as explained on
-[wagmi docs](https://wagmi.sh/react/hooks/useContractWrite#prepared-usage).
+The `useContractWrite` hook also work better with the `usePrepareContractWrite` hook
+as explained on [wagmi docs](https://1.x.wagmi.sh/react/hooks/useContractWrite#prepared-usage).
 
 ```tsx
 // WAGMI useContractWrite hook...
@@ -1049,7 +1048,7 @@ const mintToken = async (e) => {
 - We pass in `e` as an argument so that we can pick the amount of ETH associated
   with a particular Tier. This is passed to the mint function using the
   `recklesslySetUnpreparedOverrides` override config. Read more about it
-  [here](https://wagmi.sh/docs/hooks/useContractWrite#override-config).
+  [here](https://1.x.wagmi.sh/react/hooks/useContractWrite#configuration).
 - We want to wait for our minting transaction to complete before moving on to
   other pieces of code so we use `wait()`.
 - After minting is processed we log the returned data to ensure the success of
