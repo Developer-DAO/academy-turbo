@@ -25,11 +25,10 @@ import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
 >
 ## About this lesson
 Congratulations on making it to this final tutorial in a series on smart contract
-development of the ERC-721 standard, a.k.a. NFTs. In the first in the track, you
-created a basic smart contract using Remix. Then a shift to a dedicated developer's
-environment to create and deploy an NFT contract to an actual test network. In
-lesson 3 you added tiers to your NFTs, finally learning to make your contracts
-air-tight by building your own automated testing suite in the fourth of the series.
+development of the ERC-721 standard, a.k.a. NFTs. In the first in the track, you created a basic smart
+contract using Remix. Then a shift to a dedicated developer's environment to create and deploy an NFT
+contract to an actual test network. In lesson 3 you added tiers to your NFTs, finally learning to make
+your contracts air-tight by building your own automated testing suite in the fourth of the series.
 
 But to create a full stack decentralised application, we also need a
 UI, or front-end for users to interact with. In this lesson that is exactly what
@@ -825,8 +824,6 @@ to use `RainbowKit` and `WAGMI` for wallet connections and blockchain interactio
 
 We haven't yet added any blockchain functionality to our application. We'll do that next.
 
-#### `useMint` and `useAwaitMintResult` hooks
-
 WAGMI is a collection of React hooks that allows us to work effectively with Ethereum. We
 need to use many of these hooks together to achieve our goal. Instead of sticking them all in one
 big file, we created two custom hooks to handle the minting process.
@@ -839,6 +836,8 @@ address, and the user's wallet address. It returns the `mintedTokenId` and `late
 use to display the minted NFT and its details via our `<SuccessfulMint />` component.
 
 We'll be adding these hooks to our application next.
+
+#### `useMint` hook
 
 Let's start with the `useMint` hook. Let's create a `hooks/useMint.ts` file and add the following code:
 
@@ -881,7 +880,28 @@ export function useMint({
 }
 ```
 
-Let's add the `useAwaitMintResult` hook. Let's create a `hooks/useAwaitMintResult.ts` file and add the following code:
+What's happening in `useMint`?
+
+To mint, we need a contact address to call, the contract ABI that has info about the blockchain
+`mint` function, and the minting price.
+
+We use the `usePrepareContractWrite` hook to prepare the contract for writing. This hook returns a
+`config` object that we can use to mint the NFTs.
+
+We then use the `useContractWrite` hook to write the minting transaction to the blockchain.
+This hook returns a `mintData` object that contains the transaction hash and a `mint` function
+that we can call to mint the NFTs.
+
+We also use the `useWaitForTransaction` hook to wait for the minting transaction to complete. This
+hook returns a `txData` object that contains the transaction receipt.
+
+At the end of the hook, you'll see it returns `{mint, mintData, isMinting, txData}` which are used
+in the main application to update the UI and pass values to our `useAwaitMintResult` hook.
+
+#### `useAwaitMintResult` hook
+
+Let's add the `useAwaitMintResult` by creating `hooks/useAwaitMintResult.ts` file and adding
+the following code:
 
 ```tsx
 import { useEffect, useState } from "react";
@@ -954,7 +974,11 @@ export function useAwaitMintResult({
 }
 ```
 
-TODO: Explain the WAGMI hooks above and how they work.
+When a NFT successfully mints, an event is emitted from the smart contract.
+Our `useAwaitMintResult` hook is listening for this event, and when it happens the hook saves the
+new tokenId which we need to create a link to the NFT in OpenSea. It also fetches the NFT's metadata
+from the contract and saves it (to `latestNFTMinted`). The hook then returns these two values to the
+main application to display in the UI.
 
 ** --- FIXME: BRIAN LEFT OFF HERE WHILE UPDATING LESSON --- **
 
@@ -1930,3 +1954,4 @@ creating a full stack decentralised NFT Minting Application.
 </LessonLayout>
 ```
 import { LessonHeader } from "@/components/mdx/LessonHeader"
+import { AvatarCard } from "ui"
