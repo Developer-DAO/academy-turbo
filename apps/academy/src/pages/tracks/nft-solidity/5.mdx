@@ -24,11 +24,11 @@ import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
   createdDate="September 22, 2022"
 >
 ## About this lesson
-Congratulations on making it to this final tutorial in a series on smart contract 
-development of the ERC-721 standard, a.k.a. NFTs. In the first in the track, you 
-created a basic smart contract using Remix. Then a shift to a dedicated developer's 
-environment to create and deploy an NFT contract to an actual test network. In 
-lesson 3 you added tiers to your NFTs, finally learning to make your contracts 
+Congratulations on making it to this final tutorial in a series on smart contract
+development of the ERC-721 standard, a.k.a. NFTs. In the first in the track, you
+created a basic smart contract using Remix. Then a shift to a dedicated developer's
+environment to create and deploy an NFT contract to an actual test network. In
+lesson 3 you added tiers to your NFTs, finally learning to make your contracts
 air-tight by building your own automated testing suite in the fourth of the series.
 
 But to create a full stack decentralised application, we also need a
@@ -563,9 +563,400 @@ It's highlighting the various steps in the minting process.
   returns the `mintedTokenId` and `latestNFTMinted` that we can use to display
   the minted NFT and its details via our `<SuccessfulMint />` component.
 
-**FIXME: Add a screenshot of the preview**
+**FIXME: Add a screenshot of the preview of what the app will look like**
 
-### NFT Cards
+### React Display Components
+
+We have a few components that we need to create to complete our application. These are React components
+that are used to display the minting process and the minted NFT. They don't have much logic in them
+are are primarily used to display information passed in from the main application via component properties.
+
+This allows us to reuse components (like the `NftCard` component) and keeps our `tiernft.tsx` code
+clean by leveraging the power of React and its component-based architecture.
+
+Let's just add three of them now and then will explain some common patterns.
+
+**Create components/nftcard.tsx**
+
+```tsx
+import Image from "next/image";
+import { CSSProperties } from "react";
+
+export function NftCard({
+  name,
+  imageSrc,
+  alt,
+  onClick,
+  disabled,
+}: {
+  name: string;
+  imageSrc: string;
+  alt: string;
+  onClick: () => void;
+  disabled: boolean;
+}) {
+  return (
+    <div style={NFTCard}>
+      <h2>{name}</h2>
+      <Image src={imageSrc} width="200" height="200" alt={alt} />
+      <button onClick={onClick} style={NFTMint} disabled={disabled}>
+        Mint
+      </button>
+    </div>
+  );
+}
+
+const NFTCard: CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  border: "2px solid white",
+  borderRadius: "10px",
+  padding: "20px",
+  alignItems: "center",
+  gap: "10px",
+  fontWeight: "bold",
+};
+
+const NFTMint: CSSProperties = {
+  fontWeight: "700",
+  padding: "5px 20px",
+  border: "2px solid white",
+  color: "white",
+  backgroundColor: "black",
+  borderRadius: "5px",
+  cursor: "pointer",
+};
+```
+
+**Create components/minting.tsx**
+
+```tsx
+import { CSSProperties } from "react";
+
+export function Minting() {
+  return (
+    <div style={modal}>
+      <div style={modalContent}>
+        <h2>Minting...</h2>
+        <p>Please be patient, this make take several seconds.</p>
+      </div>
+    </div>
+  );
+}
+
+const modal: CSSProperties = {
+  position: "fixed",
+  left: "0",
+  top: "0",
+  right: "0",
+  bottom: "0",
+  backgroundColor: "rgba(0, 0, 0, 0.8)",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  textAlign: "center",
+  zIndex: "1",
+};
+
+const modalContent: CSSProperties = {
+  backgroundColor: "#fff",
+  padding: "10px 30px",
+  borderRadius: "16px",
+  color: "#000",
+};
+```
+
+**Create components/successfulmint.tsx**
+
+```tsx
+import Image from "next/image";
+import { CSSProperties } from "react";
+import { TransactionReceipt, formatUnits } from "viem";
+
+export function SuccessfulMint({
+  contractAddress,
+  nftMinted,
+  mintedTokenId,
+  txData,
+  onClose,
+}: {
+  contractAddress: `0x${string}`;
+  nftMinted: {
+    name: string;
+    image: string;
+  };
+  mintedTokenId?: bigint;
+  txData?: TransactionReceipt;
+  onClose: () => void;
+}) {
+  return (
+    <div style={modal}>
+      <div style={modalContent}>
+        <div style={modalContent}>
+          <h2>Mint Successful</h2>
+          <div style={modalBody}>
+            {nftMinted.name && <h3>{nftMinted.name}</h3>}
+            {nftMinted.image && (
+              <Image src={nftMinted.image} height="200" width="200" alt="Minted NFT" />
+            )}
+          </div>
+          <div style={modalFooter}>
+            <button style={modalButton}>
+              {mintedTokenId != undefined && (
+                <a
+                  href={`https://testnets.opensea.io/assets/mumbai/${contractAddress}/${formatUnits(
+                    mintedTokenId,
+                    0,
+                  )}`}
+                  target="_blank"
+                >
+                  View on OpenSea
+                </a>
+              )}
+            </button>
+            <button style={modalButton}>
+              {txData && txData.transactionHash ? (
+                <a
+                  href={`https://mumbai.polygonscan.com/tx/${txData.transactionHash}`}
+                  target="_blank"
+                >
+                  View on Polygonscan
+                </a>
+              ) : undefined}
+            </button>
+            <button onClick={onClose} style={modalButton}>
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const modal: CSSProperties = {
+  position: "fixed",
+  left: "0",
+  top: "0",
+  right: "0",
+  bottom: "0",
+  backgroundColor: "rgba(0, 0, 0, 0.8)",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  textAlign: "center",
+  zIndex: "1",
+};
+
+const modalContent: CSSProperties = {
+  backgroundColor: "#fff",
+  padding: "10px 30px",
+  borderRadius: "16px",
+  color: "#000",
+};
+
+const modalBody: CSSProperties = {
+  padding: "20px",
+  borderTop: "1px solid #eee",
+  borderBottom: "1px solid #eee",
+};
+
+const modalFooter: CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  gap: "10px",
+  padding: "20px",
+  justifyContent: "space-evenly",
+};
+
+const modalButton: CSSProperties = {
+  padding: "10px 20px",
+  backgroundColor: "#fff",
+  color: "#666",
+  border: "0",
+  borderRadius: "10px",
+  fontSize: "18px",
+  fontWeight: "700",
+  boxShadow: "0 0.2em 0.4em 0 rgba(0, 0, 0, 0.2), 0 0.3em 1em 0 rgba(0, 0, 0, 0.19)",
+  cursor: "pointer",
+};
+```
+
+Here are some common patterns we can see in these components:
+
+They all use the `.tsx` extension which is a TypeScript file that contains JSX.
+
+Each returns an `export function`. That function name is the React component's name.
+The function accepts an object of properties followed by `:{}` which are the TypeScript
+types for the properties. TypeScript provides meaningful information for your code editor
+and provides warnings when you try to pass the wrong type of data to a component.
+
+`SuccessfulMint` component has a range of properties and types:
+
+```tsx
+: {
+  contractAddress: `0x${string}`;
+  nftMinted: {
+    name: string;
+    image: string;
+  };
+  mintedTokenId?: bigint;
+  txData?: TransactionReceipt;
+  onClose: () => void;
+}
+```
+
+This component accepts the following properties:
+
+- `contractAddress` is a string that starts with `0x`.
+- `nftMinted` is an object with a `name` and `image` property.
+- `mintedTokenId` is a `bigint` type and is optional.
+- `txData` is a `TransactionReceipt` type and is optional.
+- `onClose` is a function that returns `void`.
+
+TypeScript annotations don't end up in the final code, they are used while developing your application.
+
+At the end of each file is the CSS in JS styling used by the component. This is a common pattern in React applications.
+
+### Adding Blockchain functionality
+
+So far, we've been building a fairly standard React application in `Next.js` and have configured it
+to use `RainbowKit` and `WAGMI` for wallet connections and blockchain interactions.
+
+We haven't yet added any blockchain functionality to our application. We'll do that next.
+
+#### `useMint` and `useAwaitMintResult` hooks
+
+WAGMI is a collection of React hooks that allows us to work effectively with Ethereum. We
+need to use many of these hooks together to achieve our goal. Instead of sticking them all in one
+big file, we created two custom hooks to handle the minting process.
+
+The `useMint` hook is used to mint the NFTs. It takes in the contract address, ABI, and the minting
+price. It returns a `mint` function that can be called to mint the NFTs.
+
+The `useAwaitMintResult` hook is used to wait for the minting to complete. It takes in the ABI, contract
+address, and the user's wallet address. It returns the `mintedTokenId` and `latestNFTMinted` that we can
+use to display the minted NFT and its details via our `<SuccessfulMint />` component.
+
+We'll be adding these hooks to our application next.
+
+Let's start with the `useMint` hook. Let's create a `hooks/useMint.ts` file and add the following code:
+
+```tsx
+import { parseEther } from "viem";
+import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from "wagmi";
+
+export function useMint({
+  abi,
+  contractAddress,
+  mintingPrice,
+}: {
+  abi: any;
+  contractAddress: `0x${string}`;
+  mintingPrice: string;
+}) {
+  const { config } = usePrepareContractWrite({
+    address: contractAddress,
+    abi: abi,
+    functionName: "mint",
+    value: parseEther(mintingPrice),
+    onError: (e) => {
+      console.log("Error minting NFT", e);
+    },
+    enabled: mintingPrice !== "0",
+  });
+
+  const { data: mintData, writeAsync: mint, isLoading: isMinting } = useContractWrite(config);
+
+  const { data: txData } = useWaitForTransaction({
+    hash: mintData?.hash,
+  });
+
+  return {
+    mint,
+    mintData,
+    isMinting,
+    txData,
+  };
+}
+```
+
+Let's add the `useAwaitMintResult` hook. Let's create a `hooks/useAwaitMintResult.ts` file and add the following code:
+
+```tsx
+import { useEffect, useState } from "react";
+import { Log } from "viem";
+import { useContractEvent, useContractRead } from "wagmi";
+
+type LogWithArgs = Log & {
+  args: { from: string; to: string; tokenId: bigint };
+};
+
+export function useAwaitMintResult({
+  abi,
+  contractAddress,
+  userWalletAddress,
+}: {
+  abi: any;
+  contractAddress: `0x${string}`;
+  userWalletAddress?: `0x${string}`;
+}) {
+  const [mintedTokenId, setMintedTokenId] = useState<bigint | undefined>(undefined);
+  const [latestNFTMinted, setLatestNFTMinted] = useState<{
+    name: string;
+    image: string;
+  }>({ name: "", image: "" });
+
+  // await for mint to complete
+  const unwatch = useContractEvent({
+    address: contractAddress,
+    abi: abi,
+    eventName: "Transfer",
+    listener(events) {
+      if (events.length === 0) {
+        return;
+      }
+      events.forEach((event) => {
+        const extendedEvent = event as LogWithArgs;
+        const { to, tokenId } = extendedEvent.args;
+        if (to === userWalletAddress) {
+          setMintedTokenId(tokenId);
+          unwatch?.();
+        }
+      });
+    },
+  });
+
+  const { data: tokenURI }: { data: any } = useContractRead({
+    address: contractAddress,
+    abi: abi,
+    functionName: "tokenURI",
+    args: [mintedTokenId],
+    watch: true,
+    enabled: mintedTokenId != undefined,
+  });
+
+  useEffect(() => {
+    try {
+      if (tokenURI) {
+        setLatestNFTMinted(JSON.parse(window.atob(tokenURI.substring(tokenURI.indexOf(",") + 1))));
+      }
+    } catch (e) {
+      const error = e as Error;
+      console.log("Error fetching token URI", error.message);
+    }
+  }, [tokenURI]);
+
+  return {
+    mintedTokenId,
+    latestNFTMinted,
+  };
+}
+```
+
+TODO: Explain the WAGMI hooks above and how they work.
+
+** --- FIXME: BRIAN LEFT OFF HERE WHILE UPDATING LESSON --- **
 
 Next we need to create some cards that display the 3 tiers of NFTs we created in
 our smart contract and provide a way to mint them.
@@ -1538,3 +1929,4 @@ creating a full stack decentralised NFT Minting Application.
 <br/>
 </LessonLayout>
 ```
+import { LessonHeader } from "@/components/mdx/LessonHeader"
