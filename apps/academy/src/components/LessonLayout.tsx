@@ -20,7 +20,11 @@ export default function LessonLayout({
   authorTwitter,
 }: LessonLayoutProps) {
   return (
-    <PageSeoLayout title={lessonTitle} description="">
+    <PageSeoLayout
+      title={lessonTitle}
+      // This should be the individual lesson description eventually
+      description="Start your journey to become a Web3 Developer today. Free high-quality courses to learn web3 with Developer DAO Academy."
+    >
       <main className="px-10 pt-36 text-white lg:mx-auto lg:max-w-screen-lg lg:pt-44">
         <section className="text-center">
           <h1 className="font-future text-3xl lg:text-6xl">{lessonTitle}</h1>
