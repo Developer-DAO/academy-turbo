@@ -12,10 +12,15 @@ const Home: NextPageWithLayout = () => {
         <div className="academy-grid-col-1">
           <div className="hidden justify-center md:flex">
             <div className="text-bttf-lg">
-              <h1>learn</h1>
-              <h1>web3__</h1>
-              <h1>with</h1>
-              <h1>friends</h1>
+              <h1>
+                Learn
+                <br />
+                web3__
+                <br />
+                with
+                <br />
+                friends
+              </h1>
             </div>
           </div>
           <div className="description max-w-[495px]">
@@ -53,7 +58,10 @@ const Home: NextPageWithLayout = () => {
 
 Home.getLayout = function getLayout(page: ReactElement) {
   return (
-    <PageSeoLayout title="Home Page" description="Become a web3 developer with Developer DAO.">
+    <PageSeoLayout
+      title="Learn Web3 With Friends"
+      description="Start your journey to become a Web3 Developer today. Free high-quality courses to learn web3 with Developer DAO Academy."
+    >
       {page}
     </PageSeoLayout>
   );
