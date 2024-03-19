@@ -18,53 +18,99 @@ import LessonLayout from "../../components/LessonLayout";
 
 ## Connecting the Dots from Web1 to Web3
 
-Have you ever wondered how all the data on the internet moves from one place
-to the next. And then to the next, and so on. Let's first have a very basic
-look at some concepts used in data decimination and retrieival on the web.
+In the era of **Web1**, information retrieval was primarily one-directional. Users consumed static
+content through technologies like HTTP (Hypertext Transfer Protocol), and the data fetching process
+was relatively straightforward.
 
-In the era of Web1, information retrieval was basic and primarily one-directional. Users consumed static
-content through technologies like HTTP (Hypertext Transfer Protocol), and the data fetching process was
-relatively straightforward.
-
-Then came our now familiar Web2, and with it development, a paradigm shift occured, introducing a
-new era of interactivity, user-generated content, and the social web. Technologies
-like AJAX (Asynchronous JavaScript and XML) still play a crucial role in enabling
-dynamic, asynchronous function **calls** between the user's browser and the server.
+**Web2** introduced a new era of interactivity, user-generated content, and the social web.
+Technologies like AJAX (Asynchronous JavaScript and XML) still play a crucial role in enabling
+dynamic, asynchronous interactions between the user's browser and the server.
 
 ### The Rise of Web3
 
-The protocols used in Web1, including HTTP, still form the backbone of communication, but the way data
-is managed and controlled has become more centralised, primarily through the social media, search and
-online retail giants, whose underlying structure often relies on centralised servers and databases. That
-gave cause for concern in a lot of quarters, and the result is the ever-evolving decentralised web, a.k.a.
-Web3.
+The protocols introduced in the Web1 and Web2 eras still form the backbone of communication, but data
+inevitably found its way into silos managed by gatekeepers. Social media, search and online retail giants
+found themselves with massive amounts of user data and customers willing to pay for that data. As that
+trade-offs became better understood by Internet users, alternatives were sought for healthier digital
+ecosystems.
 
-Now, in the epoch of Web3, we witness a transformative phase. Web3 transcends these aforementioned
-structures, emphasising decentralisation, trustless systems, and blockchain technology. We are going
-to help you get set up with one integral aspect of this evolution for your Web3 development needs —
-the Remote Procedure Call (RPC).
+Now, in what has been dubbed **Web3**, we explore what could be the next era of the Internet. Web3
+means different things to different people, but it generally refers to more decentralised, user-centric
+systems, leveraging modern cryptography and blockchain technology. In this world, users have more
+control over their data, their digital identity, and their ability to interact in these peer-to-peer
+permissionless systems.
 
-## RPCs
+In the remainder of this lesson, we're going to help you get familiar with an important concept within
+Web3 development — the Remote Procedure Call (RPC). Note that RPC is not a new concept invented alongside
+blockchains - original credit goes to Bruce Jay Nelson in 1984 - but the pattern is leveraged heavily in
+this domain.
+
+## RPC
 
 **Remote Procedure Call (RPC)** could be classified as a type of API
 (application programming interface) that allows for developers to run code that
-can be executed on servers remotely. In plain English, an RPC call is how a dApp
-communicates with the blockchain or accesses other information from remote
-servers. In this section, we will concern ourselves with RPC calls to the
-blockchain via the Zerion wallet to Ethereum testnets such as Sepolia, and an RPC
-endpoint provider such as POKT Network.
+can be executed on servers remotely. In plain English, an RPC call is how an app
+communicates with a blockchain or accesses other information from remote
+servers.
+
+### JSON-RPC
+
+More specifically, **JSON-RPC** has been adopted as the standard protocol for
+communication with Ethereum nodes. JSON-RPC is a stateless, light-weight RPC protocol.
+Its design is simple, and it uses JSON (JavaScript Object Notation) as the data
+format for the request and response. JSON-RPC is transport agnostic, meaning that
+requests and responses can be sent over any transport protocol, such as HTTP or
+WebSockets.
+
+### Ethereum JSON-RPC
+
+Finally, we get down to the blockchain level. The Ethereum JSON-RPC specification
+defines a set of methods that can be called to interact with the Ethereum blockchain.
+These methods include things like getting the balance of an account, sending transactions,
+reading contract data, and more. The Ethereum JSON-RPC specification is a standard
+that all Ethereum clients (e.g., Geth, Nethermind) adhere to, and sometimes extend to
+include additional custom functionality.
+
+The JSON payload for a balance lookup might look something like this:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "eth_getBalance",
+  "params": ["0x7dcd17...", "latest"],
+  "id": 1
+}
+```
+
+The response might look something like this:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "0x3f"
+}
+```
+
+Now, this is pretty clunky to do by hand. Fortunately, there are libraries and
+tools that can help you make these calls in a more human-friendly way. Even better
+for casual users, wallets will construct and make these calls for you, and display
+the results in a more user-friendly way.
+
+In the next section, we'll get our hands dirty by using Zerion wallet to connect to
+an Ethereum testnet and connect to a custom RPC endpoint provider, such as POKT Network.
 
 ## Connecting to a Testnet with Zerion
 
 When opening up the Zerion browser extension, we can connect to the various
-testnets as seen below by clicking on the extension's icon, the Settings gear ⚙️
-wheel, choosing Networks, and selecting your desired test network:
+testnets as seen below, by clicking on the extension's icon, the Settings gear ⚙️
+wheel, choosing Networks, and selecting the desired test network:
 
 ![Testnets on Zerion](/assets/lessons/connect-with-rpc/test-networks-zerion.png)
 
 If you are trying to view a given network’s RPC connection information, it can be
 accessed by clicking on the arrow to the right of the network name. In my case,
-I am connected to the Sepolia testnet. You can see its Network Name, RPC URL,
+I'm connected to the Sepolia testnet. You can see its Network Name, RPC URL,
 Chain ID, Currency Symbol, Decimals and Block Explorer URL shown below:
 
 ![Sepolia Network info Zerion](/assets/lessons/connect-with-rpc/sepolia-network-info-zerion.png)
@@ -72,27 +118,26 @@ Chain ID, Currency Symbol, Decimals and Block Explorer URL shown below:
 ### Add a Network
 
 A lot of networks are already pre-loaded in the wallet, otherwise any new network's
-details should be provided to you, e.g. in a tutorial that you're working from. A new
-network can be added in Zerion by clicking on the **Add Network** button. Then
-add the 6 data inputs for your chosen network, similar to the Sepolia example in the
-image above.
+details should be provided to you, e.g., in a tutorial that you're working from. A new
+network can be added in Zerion by clicking on the **Add Network** button. Add the six
+data inputs for your chosen network, similar to the Sepolia example in the image above.
 
 An alternative way of adding network choices is through
 [Chainlist](https://chainlist.org/)'s website. It's quite self-explanatory,
 but be sure to check ☑️ the **Include Testnets** option. Chainlist is a rich source
-of RPC statistics for EVM's (Ethereum Virtual Machine).
+of RPC statistics for EVM (Ethereum Virtual Machine) blockchains.
 
 ## Connecting a dApp through an RPC Endpoint Provider
 
 In blockchain development, it is necessary to connect your dApp to the
 blockchain to deploy smart contracts and interact with the deployed contract.
-This can be done by either running your own blockchain node such as GETH or
-accessing the blockchain through an RPC endpoint service. Connecting through
+This can be done by either running your own blockchain node (e.g., Geth, Nethermind)
+or accessing the blockchain through an RPC endpoint service. Connecting through
 one of these node providers is much easier than running your own node.
 
 By using a node provider, it is quick and easy, and usually free to open an
 account that will get you access to RPC endpoints of many different testnets
-including Sepolia Ethereum, Polygon Mumbai, Optimistic Goerli and Scroll Sepolia.
+including Sepolia Ethereum, Polygon Mumbai, Optimistic Goerli, and Scroll Sepolia.
 
 ### Which RPC should I use?
 
@@ -100,17 +145,15 @@ There are many node providers nowadays, and you might recognise some names
 such as Ankr, Alchemy, and Infura among others. We're going to look at POKT Network,
 a decentralised RPC base layer that operates as an ecosystem of providers,
 as opposed to a monolithic RPC company. Its network's diverse ecosystem of
-web3 node operators ensures uptime, therefore resilience. We
-recommend choosing from one of the _Gateways_ built on top of POKT Network's
-RPC baselayer:
+node operators ensures uptime, and therefore resilience. We recommend choosing
+from one of the _Gateways_ built on top of POKT Network's RPC baselayer:
 
 - [Grove](https://www.grove.city/)
 - [Nodies](https://www.nodies.app/)
 
-With both, you can sign up with email, or Github, and proceed to 'create an
-application/project' to get your app's ID keys - don't worry, you don't have to write
-code for an application! 😁 You can use your key to gain access to
-many blockchain networks, e.g. by coding, configuring and deploying your smart contracts.
+With both, you can sign up with email, or Github, and proceed to "create an
+application/project" to get your app's ID keys. With your key, you've got access
+to the blockchain - you can read data, send transactions, and deploy contracts.
 
 ### Are you a Developer DAO member?
 
@@ -118,13 +161,13 @@ If you're a Developer DAO member, you are hopefully aware of some of the
 "Developer DAO Perks" for Web3 we have. Let's take advantage of one of
 those, and get you hooked up with Grove:
 
-- for D_D Grove Perks deForm click [here](https://devdao.to/grove-perk)
-- connect and sign with your D4R NFT/$CODE 400+ wallet
+- click [here](https://devdao.to/grove-perk) to access the D_D Grove Perk
+- connect and sign with your wallet that contains the D4R NFT or 400+ $CODE
 - register with your email
-- check your email for your Perks and further instructions
-- choose the development wallet to use with the Perks
+- check your email for your perk and further instructions
+- choose the development wallet to use with the perk
 
-Are you not yet a member of Developer DAO? There is no time like the present 😁
+Are you not yet a member of Developer DAO? There is no time like the present. 😁
 
 ### Important Security Notes
 
