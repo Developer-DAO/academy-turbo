@@ -569,8 +569,6 @@ It's highlighting the various steps in the minting process.
   returns the `mintedTokenId` and `latestNFTMinted` that we can use to display
   the minted NFT and its details via our `<SuccessfulMint />` component.
 
-**FIXME: Add a screenshot of the preview of what the app will look like**
-
 ### React Display Components
 
 We have a few components that we need to create to complete our application. These are React components
@@ -790,14 +788,13 @@ const modalButton: CSSProperties = {
 
 Here are some common patterns we can see in these components:
 
-They all use the `.tsx` extension which is a TypeScript file that contains JSX.
+- they all use the `.tsx` extension which is a TypeScript file that contains JSX.
+- each returns an `export function`. That function name is the React component's name.
+- the function accepts an object of properties followed by `:{}` which are the TypeScript
+  annotations for each property. TypeScript provides meaningful information for your code editor
+  and provides warnings when you try to pass the wrong type of data to a component.
 
-Each returns an `export function`. That function name is the React component's name.
-The function accepts an object of properties followed by `:{}` which are the TypeScript
-types for the properties. TypeScript provides meaningful information for your code editor
-and provides warnings when you try to pass the wrong type of data to a component.
-
-`SuccessfulMint` component has a range of properties and types:
+`SuccessfulMint` component has these properties and types, each explained below:
 
 ```tsx
 : {
@@ -812,8 +809,6 @@ and provides warnings when you try to pass the wrong type of data to a component
 }
 ```
 
-This component accepts the following properties:
-
 - `contractAddress` is a string that starts with `0x`.
 - `nftMinted` is an object with a `name` and `image` property.
 - `mintedTokenId` is a `bigint` type and is optional.
@@ -822,9 +817,9 @@ This component accepts the following properties:
 
 TypeScript annotations don't end up in the final code, they are used while developing your application.
 
-At the end of each file is the CSS in JS styling used by the component. This is a common pattern in React applications.
+At the end of each file is the styling used by the component. This is a common pattern in React applications using CSS-in-JS styling.
 
-### NFT Images
+### Images for the Three NFT Tiers
 
 The `NftCard` component uses images to display the NFTs. We need to add these images to our application.
 
@@ -842,7 +837,7 @@ code.
   Make sure you have downloaded the SVG file and not just saved the URL of the file.
 </Callout>
 
-### Adding Blockchain functionality
+### Add Blockchain functionality
 
 So far, we've been building a fairly standard React application in `Next.js` and have configured it
 to use `RainbowKit` and `WAGMI` for wallet connections and blockchain interactions.
@@ -1033,14 +1028,13 @@ There are several steps involved, which is another reason why we created this ho
 the logic focused on the task at hand and makes it more obvious what inputs values the hook needs,
 and what output values it is returning to the component using our hook.
 
-### Running the Application
+### Let's Mint some test NFTs
 
 Now our preview should look like this once a wallet is connected:
 
 ![NFT Cards Preview](/assets/lessons/5/img_2.png)
 
-**Woohoo! You've done a lot so far.** Try minting these NFTs and check your
-wallet's profile on `https://testnets.opensea.io/YOUR_WALLET_ADDRESS`.
+Try minting these NFTs and check your wallet's profile on `https://testnets.opensea.io/YOUR_WALLET_ADDRESS`.
 
 The final modal should look like similar to this:
 
