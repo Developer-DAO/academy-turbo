@@ -1015,68 +1015,7 @@ Now our preview should look like this once a wallet is connected:
 ![NFT Cards Preview](/assets/lessons/5/img_2.png)
 
 **Woohoo! You've done a lot so far.** Try minting these NFTs and check your
-wallet's profile on `https://testnets.opensea.io/YOUR_WALLET_ADDRESS`. Refer to
-the following side drawer for the code written till now if stuck somewhere.
-
-Take a breather and stretch yourself before we do the last bit of coding.
-
-### Successful Mint Modal
-
-Doesn't it feel like we are still missing something?
-
-Right! We want our users to see information when they minting. We want them to
-know when a mint _is in progress_ and we want them to see the result once the
-mint _is successful_.
-
-But what is this _modal_. It is a an element that is usually used as an overlay
-that provides its own interaction environment separate from the page below it.
-This interaction environment provides a focus element where only options from
-this can be selected while it is active.
-
-Okay lets write some code for it.
-
-To be able to display information about our latest mint, we must first get
-information about it from our smart contract.
-
-- The first thing we need is the `tokenId` of the latest NFT minted. We can do
-  so by reading the value of the `totalSupply` stored in our smart contract
-  because the `totalSupply` should equal to the latest `tokenId` in our case. We
-  can fetch this using the `useContractRead` hook from WAGMI that is configured
-  for reading data from smart contracts. The cool thing about solidity is that
-  it automatically gives us a way to read values of variables that are tagged as
-  `public`, which is why we are able to read the value of `totalSupply`.
-- The `refetchTokenData` function will be called in our `mintToken` function to
-  update the `tokenData` after minting has succeeded. We pass a `watch: true`
-  key-value pair so that the hook keeps an active watch on the value of
-  totalSupply.
-- Then the returned value (tokenData) is passed in as an argument to the
-  `tokenURI` function from our smart contract and we receive a `Base64` encoded
-  string in return.
-- A `useEffect` hook keeps updating this string everytime the `tokenData` or
-  `tokenURI` is updated and stores a decoded JSON format of it in the
-  `latestNFTMinted` variable.
-
-We're almost there. We just need to do two more checks before we actually look
-at our modal. The first is that we must display our modal only when we want it
-to and the other is to display a loading message until our NFT has successfully
-minted. This is how the mintToken function should look now:
-
-When we trigger the `mintToken` function we want to set the state to
-`isMinting`. Based on this condition, we can inform the users that the mint is
-in progress. We also want our modal to pop up right after this so we set the
-value of `modalShow` to `true`.
-
-We're there at last! Now we can render our modal.
-
-This may seem like a lot of code but we're going to look at it in bits:
-
-- We have a heading that tells us our mint is successful.
-- The body shows us the name, id and image of the NFT minted. We fetch from the
-  information stored earlier in the `latestNFTMinted` variable.
-- We have a footer that provides links to view our NFT on OpenSea and to the
-  transaction details on Polygonscan. Additionally we have a **Close** button
-  that changes the state of the `modalShow` to `false` and thus closes the modal
-  modal when we click it.
+wallet's profile on `https://testnets.opensea.io/YOUR_WALLET_ADDRESS`.
 
 The final modal should look like this:
 
