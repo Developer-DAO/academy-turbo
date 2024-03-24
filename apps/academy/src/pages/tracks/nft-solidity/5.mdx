@@ -928,81 +928,6 @@ How cool is that?!
 At the end of the hook, you'll see it returns `{mint, mintData, isMinting, txData}` which are used
 in the main application to update the UI and pass values to our `useAwaitMintResult` hook.
 
-** --- BRIAN LEFT OFF HERE WHILE UPDATING LESSON --- **
-
-Let's see what is happening in each NFT Card by taking `Tier 0` as an example.
-
-- We start off by displaying the NFT Tier name.
-- A Next.js `Image` element renders a preview of the NFT Image. Earlier, we saved
-  our images in the `/public/nfts` folder. A Next.js app automatically detects
-  content from the `/public` directory so we can directly reference the source
-  as `/nfts/0_basic.svg`. We also need to pass in the width and height
-  explicitly.
-- A `button` element lets us first set the minting price choosen and then it
-  calls the `mintToken` function `onClick` and we send the value associated with
-  the button to that function so that it can be used to mint the specific tier
-  of NFT in the `<button>` element. Make sure you pass in the right value for
-  each tier. Lastly, we want to disable the button when another mint is
-  underway. For this we use the true/ false values received from
-  `isMintLoading`. The button will be disabled when `isMintLoading` is `true`.
-
-Great but anyone can view and call our mint functions in the front-end of our
-app even if their wallet is not connected to the application. This could result
-in some errors. We must check if a user is connected before we let them interact
-with our application simply by using the `isConnected` utility from Wagmi and
-setting setting its value in our `isUserConnected` state.
-
-```tsx
-// consts...
-
-useEffect(() => {
-  try {
-    setIsUserConnected(isConnected);
-  } catch (error) {
-    console.log("Error connecting to user", error.message);
-  }
-}, [isConnected]);
-
-// function Home() code...
-```
-
-The `useEffect` hook runs the functions within it everytime the value of its
-dependencies, `isConnected`, in this case, changes.
-
-Then we can wrap the `<main>` element as follows:
-
-```tsx
-// return statement for rendering...
-
-{
-  isUserConnected ? (
-    <main className={styles.main}>{/* NFT Flex div code here... */}</main>
-  ) : (
-    <main className={styles.main}>
-      <div>Please connect your wallet.</div>
-    </main>
-  );
-}
-
-// closing <div> and styling consts...
-```
-
-This `condition ? ifTrueDoThis : ifFalseDoThis` type of syntax is known as a
-**ternary** operator. It checks whether the condition is `true` or `false` and
-returns one of two values accordingly. In our case, we check if the the user is
-connected and show them the mint options `if` `true`, `else` we ask them to connect
-their wallet.
-
-Now our preview should look like this once a wallet is connected:
-
-![NFT Cards Preview](/assets/lessons/5/img_2.png)
-
-**Woohoo! You've done a lot so far.** Try minting these NFTs and check your
-wallet's profile on `https://testnets.opensea.io/YOUR_WALLET_ADDRESS`. Refer to
-the following side drawer for the code written till now if stuck somewhere.
-
-Take a breather and stretch yourself before we do the last bit of coding.
-
 #### `useAwaitMintResult` hook
 
 Let's add the `useAwaitMintResult` by creating `hooks/useAwaitMintResult.ts` file and adding
@@ -1084,6 +1009,16 @@ Our `useAwaitMintResult` hook is listening for this event, and when it happens t
 new tokenId which we need to create a link to the NFT in OpenSea. It also fetches the NFT's metadata
 from the contract and saves it (to `latestNFTMinted`). The hook then returns these two values to the
 main application to display in the UI.
+
+Now our preview should look like this once a wallet is connected:
+
+![NFT Cards Preview](/assets/lessons/5/img_2.png)
+
+**Woohoo! You've done a lot so far.** Try minting these NFTs and check your
+wallet's profile on `https://testnets.opensea.io/YOUR_WALLET_ADDRESS`. Refer to
+the following side drawer for the code written till now if stuck somewhere.
+
+Take a breather and stretch yourself before we do the last bit of coding.
 
 ### Successful Mint Modal
 
