@@ -338,8 +338,6 @@ expected.
 
 The preview should look like this:
 
-**FIXME: Add a screenshot of the preview**
-
 ![App Header Preview](/assets/lessons/5/img_1.png)
 
 ### Overview of Application Logic
@@ -355,6 +353,15 @@ In this application, we have these files:
 - `successfulmint.tsx` - a component that displays the final minted NFT and its details
 - `useMint.ts` - a custom hook that handles minting
 - `useAwaitMintResult.ts` - a custom hook that waits for the minting to complete
+
+<Callout emoji="💡">
+All the code used in this lesson is included. We've intentionally pasted in complete code file
+(instead of many snippets) to make it easier to keep track of where all the code goes.
+
+Also here is a link to the fully working project at
+[github.com/Developer-DAO/D_D-Academy-lesson-5-frontend-rainbowkit-starter](https://github.com/Developer-DAO/D_D-Academy-lesson-5-frontend-rainbowkit-starter).
+
+</Callout>
 
 ### The TierNFT Component
 
@@ -922,8 +929,7 @@ Our custom hook returns that `mintData` object that contains the transaction has
 
 We also use the `useWaitForTransaction` hook to wait for the minting transaction to complete. This
 hook returns a `txData` object that contains the transaction receipt.
-
-How cool is that?!
+We'll explain `useWaitForTransaction` shortly.
 
 At the end of the hook, you'll see it returns `{mint, mintData, isMinting, txData}` which are used
 in the main application to update the UI and pass values to our `useAwaitMintResult` hook.
@@ -1004,11 +1010,30 @@ export function useAwaitMintResult({
 }
 ```
 
-When a NFT successfully mints, an event is emitted from the smart contract.
-Our `useAwaitMintResult` hook is listening for this event, and when it happens the hook saves the
-new tokenId which we need to create a link to the NFT in OpenSea. It also fetches the NFT's metadata
-from the contract and saves it (to `latestNFTMinted`). The hook then returns these two values to the
-main application to display in the UI.
+When a NFT successfully mints, an event is emitted from the smart contract. Our `useAwaitMintResult` hook
+will listen for this event, so we can display the minted NFT in our final Successful Mint modal.
+
+How does the hook listen for the mint event? Notice we're using WAGMI's `useContractEvent` hook.
+We ask it to monitor the `Transfer` event for our NFT contract.
+
+(Yes, "hooks" all the way down. Hooks are often composed from other hooks.)
+
+If the blockchain is busy there can be many transfer events happening, so we wait until there is a
+transaction that matches our wallet address and ignore the otehrs. When the event we want comes in,
+we'll then discover the tokenId of our freshly minted NFT.
+
+Once we `setMintedTokenId(tokenId);` another WAGMI hook kicks off below called `useContractRead`.
+We use this to retrieve the NFT's `tokenURI` which we'll parse to find the NFT's metadata, including
+its name and image.
+
+At the very end of the hook, we return the `mintedTokenId` and `latestNFTMinted` to the main application
+in `tiernft.tsx`.
+
+There are several steps involved, which is another reason why we created this hook. It keeps
+the logic focused on the task at hand and makes it more obvious what inputs values the hook needs,
+and what output values it is returning to the component using our hook.
+
+### Running the Application
 
 Now our preview should look like this once a wallet is connected:
 
@@ -1017,7 +1042,7 @@ Now our preview should look like this once a wallet is connected:
 **Woohoo! You've done a lot so far.** Try minting these NFTs and check your
 wallet's profile on `https://testnets.opensea.io/YOUR_WALLET_ADDRESS`.
 
-The final modal should look like this:
+The final modal should look like similar to this:
 
 ![Successful Mint Modal Preview](/assets/lessons/5/img_3.png)
 
