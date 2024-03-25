@@ -339,7 +339,7 @@ The preview should look like this:
 
 ![App Header Preview](/assets/lessons/5/img_1.png)
 
-### Overview of Application Logic
+### Overview of Application Structure
 
 A well structured application is easy to maintain and debug when you split it into smaller components.
 Each component is easier to understand and test.
@@ -350,23 +350,20 @@ In this application, we have these files:
 - `nftcard.tsx` - a component that displays each NFT available to mint
 - `minting.tsx` - a component that displays a message while minting
 - `successfulmint.tsx` - a component that displays the final minted NFT and its details
-- `useMint.ts` - a custom hook that handles minting
-- `useAwaitMintResult.ts` - a custom hook that waits for the minting to complete
+- `useMint.ts` - logic that handles minting
+- `useAwaitMintResult.ts` - logic that waits for the minting to complete to display the minted NFT
 
 <Callout emoji="💡">
-All the code used in this lesson is included. We've intentionally pasted in complete code file
-(instead of many snippets) to make it easier to keep track of where all the code goes.
-
-Also here is a link to the fully working project at
-[github.com/Developer-DAO/D_D-Academy-lesson-5-frontend-rainbowkit-starter](https://github.com/Developer-DAO/D_D-Academy-lesson-5-frontend-rainbowkit-starter).
-
+  Each file is pasted in this lesson, though if you want to view the full project, is is available
+  at
+  [github.com/Developer-DAO/D_D-Academy-lesson-5-frontend-rainbowkit-starter](https://github.com/Developer-DAO/D_D-Academy-lesson-5-frontend-rainbowkit-starter).
 </Callout>
 
 ### The TierNFT Component
 
-We'll start with the main application logic.
+We'll start with the main application logic, which is built as a React component.
 
-Update `tiernft.tsx` to contain the following code:
+Add `tiernft.tsx` with the following code:
 
 ```tsx
 import { ConnectButton } from "@rainbow-me/rainbowkit";
@@ -841,7 +838,7 @@ code.
 So far, we've been building a fairly standard React application in `Next.js` and have configured it
 to use `RainbowKit` and `WAGMI` for wallet connections and blockchain interactions.
 
-We haven't yet added any blockchain functionality to our application. We'll do that next.
+We haven't added any blockchain functionality to our application. We'll do that next.
 
 WAGMI is a collection of React hooks that allows us to work effectively with Ethereum. We
 need to use many of these hooks together to achieve our goal. Instead of sticking them all in one
