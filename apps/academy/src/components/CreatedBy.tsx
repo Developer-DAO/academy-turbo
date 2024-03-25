@@ -4,12 +4,14 @@ interface CreatedByProps {
   author: string;
   authorImage: string;
   authorTwitter: string;
+  label?: string;
 }
 
 export default function CreatedBy({
   author,
   authorImage = "/authors/default.png",
   authorTwitter,
+  label = "Created by:",
 }: CreatedByProps) {
   // mvp: if multiple authors, split by comma and map to multiple links
   const handles = authorTwitter.split(", ");
@@ -28,7 +30,7 @@ export default function CreatedBy({
   return (
     <section className="grid place-items-start pt-6 text-sm lg:text-xl">
       <div className="flex w-full">
-        <p className="text-left">Created by:</p>
+        <p className="text-left">{label}</p>
         <Avatar className="ml-6 h-16 w-16">
           <AvatarImage src={authorImage} />
         </Avatar>
