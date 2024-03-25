@@ -3,27 +3,26 @@ i18n: "smart-contracts"
 title: Connecting to a Front-end
 description: Connect your smart contract to a UI for people to interact with.
 icons: ["rainbowkit", "wagmi", "viem"]
-author: "ropats16"
+author: ["ropats16", "brianfive"]
 ---
 
-import LessonLayout from "../../../components/LessonLayout";
+import LessonLayoutLite from "../../../components/LessonLayoutLite";
 import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
 import LessonInformationalModal from "../../../components/mdx/LessonInformationalModal";
 import Question from "../../../components/mdx/Question";
 import Callout from "../../../components/mdx/Callout";
 import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
+import CreatedBy from "@/components/CreatedBy";
 
-{/* title="Lesson 5: Connecting to a Front-end" */}
-
-<LessonLayout
+<LessonLayoutLite
   lessonTitle="Connect your Smart Contract to a Front End Application."
-  author="ropats16"
-  authorImage="/authors/ropats16.jpg"
-  authorPosition="D_D Academy"
-  authorTwitter="ropats16"
-  createdDate="September 22, 2022"
->
+  headerSection={<div>
+  <CreatedBy label="Updated in 2024 by:" author={"brianfive"} authorImage={"/authors/brianfive.jpg"} authorTwitter={"brianfive"} />
+  <CreatedBy label="Created in 2022 by:" author={"ropats16"} authorImage={"/authors/ropats16.jpg"} authorTwitter={"ropats16"} />
+  </div>}>
+
 ## About this lesson
+
 Congratulations on making it to this final tutorial in a series on smart contract
 development of the ERC-721 standard, a.k.a. NFTs. In the first in the track, you created a basic smart
 contract using Remix. Then a shift to a dedicated developer's environment to create and deploy an NFT
@@ -1055,5 +1054,5 @@ creating a full stack decentralised NFT Minting Application.
 
 **Stay tuned for more!**
 
-</LessonLayout>
+</LessonLayoutLite>
 ```
