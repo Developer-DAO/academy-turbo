@@ -8,7 +8,7 @@
   },
   "scripts": {
     "clean": "turbo run clean --no-daemon",
-    "dev": "turbo run dev --no-daemon --concurrency=13",
+    "dev": "turbo run dev --no-daemon --concurrency=14",
     "build": "turbo run build --no-daemon",
     "check": "turbo run check --no-daemon",
     "storybook:dev": "turbo run storybook:dev --no-daemon",
