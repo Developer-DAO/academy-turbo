@@ -59,8 +59,8 @@ bg-[url('/bg_tracks.png')] bg-cover bg-no-repeat object-center pt-[300px]  lg:fi
 TracksPage.getLayout = function getLayout(page: ReactElement) {
   return (
     <PageSeoLayout
-      title="Tracks Page"
-      description="Developer DAO learning tracks are designed to get you from 0 to 1."
+      title="Web3 Learning Tracks"
+      description="Our Web3 courses are desgined to get you from 0 to 1 via project based learning tracks."
     >
       {page}
     </PageSeoLayout>

@@ -1,8 +1,8 @@
 import type { DefaultSeoProps } from "next-seo";
 
 const config: DefaultSeoProps = {
-  titleTemplate: "Developer DAO Academy | %s",
-  defaultTitle: "Developer DAO Academy",
+  titleTemplate: "%s | Developer DAO Academy",
+  defaultTitle: "Learn web3 with Friends | Developer DAO Academy",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -15,9 +15,9 @@ const config: DefaultSeoProps = {
       {
         url:
           process.env["NEXT_PUBLIC_VERCEL_URL"] !== undefined
-            ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/homepage-seo-screenshot.png`
+            ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/default-meta-image.png`
             : "",
-        alt: "Developer DAO Academy",
+        alt: "Learn Web3 With Friends | Developer DAO Academy",
         type: "image/png",
       },
     ],
