@@ -1,5 +1,4 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import type { Tracks } from "database";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
@@ -12,22 +11,22 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  Icons,
   Input,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
   useToast,
 } from "ui";
 import type { z } from "zod";
 
 import { api } from "@/utils/api";
-import { trackEditSchema } from "@/zodschemas/track.schemas";
+import { trackCreateSchema } from "@/zodschemas/track.schemas";
 
-type EditTrackFormFormValues = z.infer<typeof trackEditSchema>;
+type CreateTrackFormValues = z.infer<typeof trackCreateSchema>;
 
-interface EditFormProps {
-  trackToEditData: Tracks;
-  trackId: string;
-}
-
-function EditTrackFormForm({ trackId, trackToEditData }: EditFormProps) {
+function CreateTrackForm() {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
@@ -35,34 +34,28 @@ function EditTrackFormForm({ trackId, trackToEditData }: EditFormProps) {
 
   const { data: session } = useSession();
 
-  const form = useForm<EditTrackFormFormValues>({
-    resolver: zodResolver(trackEditSchema),
-    defaultValues: { ...trackToEditData },
+  const form = useForm<CreateTrackFormValues>({
+    resolver: zodResolver(trackCreateSchema),
   });
 
   const utils = api.useContext();
 
-  const udpateTrack = api.tracks.udpate.useMutation({
+  const createTrack = api.tracks.create.useMutation({
     onSettled: async () => {
       await utils.tracks.invalidate();
     },
-    onError: (error) => {
-      console.log("request error ", { error });
-    },
-    onSuccess: async () => {
+  });
+
+  const onSubmit = async (data: CreateTrackFormValues) => {
+    try {
+      setLoading(true);
+      createTrack.mutate(data);
       await router.push(`/tracks`);
       toast({
         variant: "default",
-        title: "Track updated",
-        description: "Track entry was updated successfully",
+        title: "New track created",
+        description: "The new track entry was created successfully",
       });
-    },
-  });
-
-  const onSubmit = (data: EditTrackFormFormValues) => {
-    try {
-      setLoading(true);
-      udpateTrack.mutate({ trackId, ...data });
     } catch (error: any) {
       toast({
         variant: "destructive",
@@ -140,12 +133,29 @@ function EditTrackFormForm({ trackId, trackToEditData }: EditFormProps) {
             name="imgPath"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Track Image URL</FormLabel>
+                <FormLabel className="flex justify-between">
+                  Track Image URL
+                  <TooltipProvider delayDuration={30}>
+                    <Tooltip>
+                      <TooltipTrigger type="button">
+                        <Icons.info size={17} />
+                      </TooltipTrigger>
+                      <TooltipContent className="text-md bg-white text-black">
+                        <p>
+                          The value of this field should be the path to the image inside the public
+                          folder. e.g.: &quot;/newtrack_image.png&quot; <br />
+                          The example will be for an image at root level inside public folder an so
+                          on.
+                        </p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </FormLabel>
                 <FormControl>
                   <Input
                     className="text-black"
                     disabled={loading}
-                    placeholder="Track Image URL"
+                    placeholder="e.g: '/newtrack_image.png'"
                     {...field}
                   />
                 </FormControl>
@@ -159,12 +169,28 @@ function EditTrackFormForm({ trackId, trackToEditData }: EditFormProps) {
             name="trackPath"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Track Path</FormLabel>
+                <FormLabel className="flex justify-between">
+                  Track Path
+                  <TooltipProvider delayDuration={30}>
+                    <Tooltip>
+                      <TooltipTrigger type="button">
+                        <Icons.info size={17} />
+                      </TooltipTrigger>
+                      <TooltipContent className="text-md bg-white text-black">
+                        <p>
+                          The value of this field should be the path to the new track e.g.:
+                          &quot;/tracks/newtrack&quot;. <br /> The track path is defined by the
+                          pages routing feature.
+                        </p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>{" "}
+                </FormLabel>
                 <FormControl>
                   <Input
                     className="text-black"
                     disabled={loading}
-                    placeholder="Track Path"
+                    placeholder="Track Path e.g.: /tracks/newtrack"
                     {...field}
                   />
                 </FormControl>
@@ -174,13 +200,13 @@ function EditTrackFormForm({ trackId, trackToEditData }: EditFormProps) {
           />
 
           <Button type="submit" disabled={loading}>
-            {!session ? "Sign in error" : udpateTrack.isLoading ? "Loading..." : "Save changes"}
+            {!session ? "Sign in error" : createTrack.isLoading ? "Loading..." : "Create Track"}
           </Button>
-          <p className="font-medium text-red-500">{udpateTrack.error?.message}</p>
+          <p className="font-medium text-red-500">{createTrack.error?.message}</p>
         </form>
       </Form>
     </div>
   );
 }
 
-export default EditTrackFormForm;
+export default CreateTrackForm;

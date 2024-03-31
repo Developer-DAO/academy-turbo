@@ -1,4 +1,4 @@
-import CreateTrackForm from "@/components/CreateTrackForm";
+import CreateTrackForm from "@/components/form/CreateTrackForm";
 
 const CreateTrackPage = () => {
   return (

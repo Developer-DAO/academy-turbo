@@ -1,6 +1,5 @@
 import localFont from "@next/font/local";
 import Image from "next/image";
-// import Link from "next/link";
 import { useRouter } from "next/router";
 import type { FunctionComponent } from "react";
 import { type NavItem, SideBar, TopBar } from "ui";
@@ -8,7 +7,6 @@ import { cn } from "ui/lib/utils";
 import { useAccount } from "wagmi";
 
 import { ConnectButton } from "@/components/ConnectButton";
-// import ThemeToggleButton from "@/components/ThemeToggleButton";
 
 const bttf = localFont({ src: "../../public/fonts/BTTF.ttf" });
 
@@ -35,7 +33,7 @@ const PageHeader: FunctionComponent = () => {
   const { isConnected } = useAccount();
   const router = useRouter();
   const { pathname } = router;
-  console.log({ isConnected, pathname });
+
   return (
     <header className="app-container relative left-0 right-0 top-0 z-50 flex items-start justify-between  px-8 pt-8 md:flex-row">
       <div className="hidden w-full  lg:flex">

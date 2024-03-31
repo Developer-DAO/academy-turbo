@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-import EditTrackFormForm from "@/components/EditTrackForm";
+import EditTrackFormForm from "@/components/form/EditTrackForm";
 import Spinner from "@/components/Spinner";
 import { api } from "@/utils/api";
 
