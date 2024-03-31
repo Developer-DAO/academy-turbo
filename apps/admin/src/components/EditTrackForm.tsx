@@ -1,4 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import type { Tracks } from "database";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
@@ -17,11 +18,16 @@ import {
 import type { z } from "zod";
 
 import { api } from "@/utils/api";
-import { trackCreateSchema } from "@/zodschemas/track.schemas";
+import { trackEditSchema } from "@/zodschemas/track.schemas";
 
-type CreateTrackFormValues = z.infer<typeof trackCreateSchema>;
+type EditTrackFormFormValues = z.infer<typeof trackEditSchema>;
 
-function CreateTrackForm() {
+interface EditFormProps {
+  trackToEditData: Tracks;
+  trackId: string;
+}
+
+function EditTrackFormForm({ trackId, trackToEditData }: EditFormProps) {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
@@ -29,28 +35,34 @@ function CreateTrackForm() {
 
   const { data: session } = useSession();
 
-  const form = useForm<CreateTrackFormValues>({
-    resolver: zodResolver(trackCreateSchema),
+  const form = useForm<EditTrackFormFormValues>({
+    resolver: zodResolver(trackEditSchema),
+    defaultValues: { ...trackToEditData },
   });
 
   const utils = api.useContext();
 
-  const createTrack = api.tracks.create.useMutation({
+  const udpateTrack = api.tracks.udpate.useMutation({
     onSettled: async () => {
       await utils.tracks.invalidate();
     },
-  });
-
-  const onSubmit = async (data: CreateTrackFormValues) => {
-    try {
-      setLoading(true);
-      createTrack.mutate(data);
+    onError: (error) => {
+      console.log("request error ", { error });
+    },
+    onSuccess: async () => {
       await router.push(`/tracks`);
       toast({
         variant: "default",
-        title: "New track created",
-        description: "The new track entry was created successfully",
+        title: "Track updated",
+        description: "Track entry was updated successfully",
       });
+    },
+  });
+
+  const onSubmit = (data: EditTrackFormFormValues) => {
+    try {
+      setLoading(true);
+      udpateTrack.mutate({ trackId, ...data });
     } catch (error: any) {
       toast({
         variant: "destructive",
@@ -162,13 +174,13 @@ function CreateTrackForm() {
           />
 
           <Button type="submit" disabled={loading}>
-            {!session ? "Sign in error" : createTrack.isLoading ? "Loading..." : "Create Track"}
+            {!session ? "Sign in error" : udpateTrack.isLoading ? "Loading..." : "Save changes"}
           </Button>
-          <p className="font-medium text-red-500">{createTrack.error?.message}</p>
+          <p className="font-medium text-red-500">{udpateTrack.error?.message}</p>
         </form>
       </Form>
     </div>
   );
 }
 
-export default CreateTrackForm;
+export default EditTrackFormForm;
