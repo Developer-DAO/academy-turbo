@@ -57,11 +57,11 @@ export const TracksRouter = createTRPCRouter({
       z.object({
         trackName: z.string().min(3).max(20),
         trackTitle: z.string().min(3).max(20),
-        authors: z.array(z.string().min(3).max(20)),
+        // authors: z.array(z.string().min(3).max(20)),
         imgPath: z.string().min(3).max(20),
         trackDescription: z.string().min(3).max(20),
         trackPath: z.string().min(3).max(20),
-        order: z.number().min(1).max(10),
+        // order: z.number().min(1).max(10),
       }),
     )
     .mutation(async ({ input, ctx }) => {
@@ -70,6 +70,7 @@ export const TracksRouter = createTRPCRouter({
   delete: protectedProcedure
     .input(z.object({ trackId: z.string() }))
     .mutation(async ({ input, ctx }) => {
+      console.log({ input, ctx });
       return await ctx.prisma.tracks.delete({
         where: {
           id: input.trackId,

@@ -36,6 +36,14 @@ module.exports = {
         },
       },
     ],
+    "@typescript-eslint/no-misused-promises": [
+      2,
+      {
+        checksVoidReturn: {
+          attributes: false,
+        },
+      },
+    ],
     "@typescript-eslint/no-confusing-void-expression": "error",
     "@typescript-eslint/no-duplicate-type-constituents": "error",
     "@typescript-eslint/no-import-type-side-effects": "error",

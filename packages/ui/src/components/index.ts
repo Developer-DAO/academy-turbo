@@ -13,6 +13,7 @@ export * from "./ui/avatar";
 export * from "./ui/badge";
 export * from "./ui/dialog";
 export * from "./ui/drawer";
+export * from "./ui/form";
 export * from "./ui/input";
 export * from "./ui/label";
 export * from "./ui/select";
