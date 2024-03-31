@@ -12,13 +12,13 @@ const bttf = localFont({ src: "../../public/fonts/BTTF.ttf" });
 
 const topbarNavMenus: NavItem[] = [
   {
-    name: "Home",
-    href: "/",
+    name: "Tracks",
+    href: "/tracks",
     icon: "vector",
   },
   {
-    name: "Create New Track",
-    href: "/tracks/create",
+    name: "Lessons",
+    href: "/lessons",
     icon: "clarity_blocks",
   },
   {
