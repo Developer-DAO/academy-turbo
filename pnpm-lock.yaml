@@ -321,9 +321,6 @@ importers:
       zod:
         specifier: ^3.22.2
         version: 3.22.2
-      zod-prisma-types:
-        specifier: ^3.1.6
-        version: 3.1.6
     devDependencies:
       '@hookform/resolvers':
         specifier: ^3.3.4
@@ -391,9 +388,6 @@ importers:
       '@prisma/client':
         specifier: ^5.2.0
         version: 5.2.0(prisma@5.2.0)
-      zod-prisma-types:
-        specifier: ^3.1.6
-        version: 3.1.6
     devDependencies:
       '@types/node':
         specifier: ^18.16.5
@@ -3297,10 +3291,6 @@ packages:
       prisma: 5.2.0
     dev: false
 
-  /@prisma/debug@5.11.0:
-    resolution: {integrity: sha512-N6yYr3AbQqaiUg+OgjkdPp3KPW1vMTAgtKX6+BiB/qB2i1TjLYCrweKcUjzOoRM5BriA4idrkTej9A9QqTfl3A==}
-    dev: false
-
   /@prisma/engines-version@5.2.0-25.2804dc98259d2ea960602aca6b8e7fdc03c1758f:
     resolution: {integrity: sha512-jsnKT5JIDIE01lAeCj2ghY9IwxkedhKNvxQeoyLs6dr4ZXynetD0vTy7u6wMJt8vVPv8I5DPy/I4CFaoXAgbtg==}
     dev: false
@@ -3308,12 +3298,6 @@ packages:
   /@prisma/engines@5.2.0:
     resolution: {integrity: sha512-dT7FOLUCdZmq+AunLqB1Iz+ZH/IIS1Fz2THmKZQ6aFONrQD/BQ5ecJ7g2wGS2OgyUFf4OaLam6/bxmgdOBDqig==}
     requiresBuild: true
-
-  /@prisma/generator-helper@5.11.0:
-    resolution: {integrity: sha512-oK25sTb2q2TPN7OipiU5xkCpDPNvdWvmFgU9UmmPr8uEt2CdwDjxiWonULgwd6YfqnCOLNpLq0wBIONjelaVMg==}
-    dependencies:
-      '@prisma/debug': 5.11.0
-    dev: false
 
   /@prisma/nextjs-monorepo-workaround-plugin@5.3.1:
     resolution: {integrity: sha512-SrM068G8BEUmxtyis97/NGTcVodJLcG+YV7fYW7A19ls549WEXvEjXt9jMBAtd2AUw6d8PER+0G6nCfeOtSQhQ==}
@@ -8725,10 +8709,6 @@ packages:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
     engines: {iojs: '>= 1.0.0', node: '>= 0.12.0'}
     dev: true
-
-  /code-block-writer@12.0.0:
-    resolution: {integrity: sha512-q4dMFMlXtKR3XNBHyMHt/3pwYNA69EDk00lloMOaaUMKPUXBw6lpXtbu3MMVG6/uOihGnRDOlkyqsONEUj60+w==}
-    dev: false
 
   /collapse-white-space@2.1.0:
     resolution: {integrity: sha512-loKTxY1zCOuG4j9f6EPnuyyYkf58RnhhWTvRoZEokgB+WbdXehfjFviyOVYkqzEWz1Q5kRiZdBYS5SwxbQYwzw==}
@@ -18251,25 +18231,11 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  /zod-prisma-types@3.1.6:
-    resolution: {integrity: sha512-ySaG91RraTm4J19zfvuX6S3OxhDMlK4dTfYWM4rS+4AlEGqDqGu5BbIn2trjTDt8OiCMBHoIjZmRXPKQCyNApA==}
-    hasBin: true
-    dependencies:
-      '@prisma/generator-helper': 5.11.0
-      code-block-writer: 12.0.0
-      lodash: 4.17.21
-      zod: 3.22.4
-    dev: false
-
   /zod@3.21.4:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
 
   /zod@3.22.2:
     resolution: {integrity: sha512-wvWkphh5WQsJbVk1tbx1l1Ly4yg+XecD+Mq280uBGt9wa5BKSWf4Mhp6GmrkPixhMxmabYY7RbzlwVP32pbGCg==}
-    dev: false
-
-  /zod@3.22.4:
-    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
     dev: false
 
   /zustand@4.4.1(@types/react@18.2.16)(react@18.2.0):

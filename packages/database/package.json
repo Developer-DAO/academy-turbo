@@ -14,8 +14,7 @@
     "db:seed": "npx prisma db seed"
   },
   "dependencies": {
-    "@prisma/client": "^5.2.0",
-    "zod-prisma-types": "^3.1.6"
+    "@prisma/client": "^5.2.0"
   },
   "devDependencies": {
     "@types/node": "^18.16.5",
