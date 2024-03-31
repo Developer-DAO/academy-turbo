@@ -21,12 +21,11 @@ const topbarNavMenus: NavItem[] = [
     href: "/tracks/create",
     icon: "clarity_blocks",
   },
-
-  // {
-  //   name: "Community",
-  //   href: "https://handbook.developerdao.com/",
-  //   icon: "dd_logo",
-  // },
+  {
+    name: "Tags",
+    href: "/tags",
+    icon: "",
+  },
 ];
 
 const PageHeader: FunctionComponent = () => {

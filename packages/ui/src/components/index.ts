@@ -17,6 +17,7 @@ export * from "./ui/form";
 export * from "./ui/input";
 export * from "./ui/label";
 export * from "./ui/select";
+export * from "./ui/table";
 export * from "./ui/textarea";
 export * from "./ui/toaster";
 export * from "./ui/tooltip";

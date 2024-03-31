@@ -1,5 +1,6 @@
 import { completedQuizzesRouter } from "@/server/api/routers/completedquizzes";
 import { lessonsRouter } from "@/server/api/routers/lessons";
+import { TagsRouter } from "@/server/api/routers/tags";
 import { TracksRouter } from "@/server/api/routers/tracks";
 import { createTRPCRouter } from "@/server/api/trpc";
 // export * from "database";
@@ -13,6 +14,7 @@ export const appRouter = createTRPCRouter({
   tracks: TracksRouter,
   lessons: lessonsRouter,
   completedQuizzes: completedQuizzesRouter,
+  tags: TagsRouter,
 });
 
 // export type definition of API

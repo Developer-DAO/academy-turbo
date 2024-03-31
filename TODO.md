@@ -29,7 +29,7 @@ March 2024
 - image Error while trying to use the following icon from the
   Manifest: http://localhost:3000/icon-192x192.png (Download error or resource isn't a valid image)
 
-- fix ender method of `SlotClone`. on hamburger_menu svg icon code
+- fix render method of `SlotClone`. on hamburger_menu svg icon code. We have to use React.forwardRef as explained here: https://www.radix-ui.com/primitives/docs/guides/composition#your-component-must-forward-ref
 
 - check a future error with cookies on: https://developers.google.com/privacy-sandbox/3pcd?hl=es-419#report-issues
 
