@@ -116,3 +116,12 @@ model TagsOnTracks {
   assignedAt DateTime @default(now())
   @@id([trackId, tagId])
 }
+
+model Authors {
+  id String  @id @default(cuid())
+  authorName String
+  authorDescription String
+  authorImage String
+  authorPosition String
+  authorTwitter String
+}
