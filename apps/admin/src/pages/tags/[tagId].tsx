@@ -5,7 +5,7 @@ import EditTagForm from "@/components/form/EditTagForm";
 import Spinner from "@/components/Spinner";
 import { api } from "@/utils/api";
 
-export default function EditTrackFormPage() {
+export default function EditTagPage() {
   const router = useRouter();
   const tagId = router.query["tagId"];
   const {
@@ -18,7 +18,7 @@ export default function EditTrackFormPage() {
 
   return (
     <main className="container mx-auto py-16">
-      <h1 className="text-center text-2xl text-white">Update Track</h1>
+      <h1 className="text-center text-2xl text-white">Update Tag</h1>
       {getTrackByIdIsLoading ? (
         <Spinner />
       ) : getTrackByIdIsSuccess && tagToEditData !== null ? (

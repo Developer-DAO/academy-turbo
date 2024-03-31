@@ -13,7 +13,7 @@ import {
 
 import { api } from "@/utils/api";
 
-function TagsPage() {
+function AdminTagsPage() {
   const { data: tags } = api.tags.getAll.useQuery();
 
   const router = useRouter();
@@ -58,4 +58,4 @@ function TagsPage() {
   );
 }
 
-export default TagsPage;
+export default AdminTagsPage;

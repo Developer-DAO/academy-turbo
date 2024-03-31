@@ -4,7 +4,7 @@ import EditTrackFormForm from "@/components/form/EditTrackForm";
 import Spinner from "@/components/Spinner";
 import { api } from "@/utils/api";
 
-export default function EditTrackFormPage() {
+export default function EditTrackPage() {
   const router = useRouter();
   const trackId = router.query["trackId"];
   const {

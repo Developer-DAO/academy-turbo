@@ -18,46 +18,38 @@ import {
 
 import { api, type RouterOutputs } from "@/utils/api";
 
-function TrackCard(props: { track: RouterOutputs["tracks"]["getAll"][number] }) {
+function LessonCard(props: { lesson: RouterOutputs["lessons"]["getAll"][number] }) {
   const { data: session } = useSession();
-  const { track } = props;
+  const { lesson } = props;
   const utils = api.useContext();
 
-  const deletePost = api.tracks.delete.useMutation({
+  const deletePost = api.lessons.delete.useMutation({
     onSettled: async () => {
-      await utils.tracks.invalidate();
+      await utils.lessons.invalidate();
     },
   });
 
   return (
     <div className="flex flex-row rounded-lg bg-white p-4 transition-all hover:scale-[101%]">
       <Avatar className="mr-2 self-center">
-        <AvatarImage src={track.imgPath} alt="track banner" />
-        <AvatarFallback>{track.trackName}</AvatarFallback>
+        <AvatarImage src={lesson.imgPath} alt="track banner" />
+        <AvatarFallback>{lesson.lessonTitle}</AvatarFallback>
       </Avatar>
       <div className="flex-grow">
-        <h2 className="text-2xl font-bold">{track.trackName}</h2>
-        <p className="mt-2 text-sm">{track.trackTitle}</p>
-        <span className="mt-2 text-sm">{track.trackDescription}</span>
+        <h2 className="text-2xl font-bold">{lesson.lessonTitle}</h2>
+        <span className="mt-2 text-sm">{lesson.lessonDescription}</span>
       </div>
       <Dialog>
         <div className="flex flex-col">
           <DialogTrigger asChild>
-            <Button variant="primary" data-testid={`delete-track-${track.trackTitle}`}>
+            <Button variant="primary" data-testid={`delete-track-${lesson.lessonTitle}`}>
               Delete
             </Button>
           </DialogTrigger>
           <div className="mt-2 ">
-            <Link href={`/tracks/${track.id}/edit`}>
-              <Button variant="primary" data-testid={`edit-track-${track.trackTitle}`}>
+            <Link href={`/lessons/${lesson.id}/edit`}>
+              <Button variant="primary" data-testid={`edit-track-${lesson.lessonTitle}`}>
                 Edit
-              </Button>
-            </Link>
-          </div>
-          <div className="mt-2 ">
-            <Link href={`/tracks/${track.id}/lessons`}>
-              <Button variant="primary" data-testid={`edit-track-${track.trackTitle}`}>
-                View Lessons
               </Button>
             </Link>
           </div>
@@ -77,7 +69,7 @@ function TrackCard(props: { track: RouterOutputs["tracks"]["getAll"][number] }) 
                 variant="default"
                 disabled={!session}
                 onClick={() => {
-                  deletePost.mutate({ trackId: track.id });
+                  deletePost.mutate({ lessonId: lesson.id });
                 }}
               >
                 Confirm Deletion
@@ -94,4 +86,4 @@ function TrackCard(props: { track: RouterOutputs["tracks"]["getAll"][number] }) 
   );
 }
 
-export default TrackCard;
+export default LessonCard;
