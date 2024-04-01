@@ -135,7 +135,7 @@ export const allLessonsData = [
     imgPath: "/track-fundamentals.png",
     lessonDescription:
       "Whether you call your CLI a Linux terminal, Mac console, or Windows command prompt, you'll learn navigation, file handling, and essential commands for efficient development.",
-    lessonPath: "/tracks/fundamentals/cli_lesson",
+    lessonPath: "/tracks/fundamentals/cli-lesson",
     trackId: "clrzj72mx00001wjojxz7d1gq",
     order: 1,
     productionVisible: true,
@@ -207,7 +207,7 @@ export const allLessonsData = [
     imgPath: "/track-fundamentals.png",
     lessonDescription:
       "Check out the foundations of OpenZeppelin contracts for robust and secure smart contract development in the web3 ecosystem.",
-    lessonPath: "/tracks/fundamentals/open_zeppelin",
+    lessonPath: "/tracks/fundamentals/open-zeppelin",
     trackId: "clrzj72mx00001wjojxz7d1gq",
     order: 6,
     productionVisible: true,

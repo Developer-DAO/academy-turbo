@@ -29,3 +29,4 @@ storybook-static/
 
 # Prisma generated client
 packages/database/client/
+.vercel

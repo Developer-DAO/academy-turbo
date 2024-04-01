@@ -27,10 +27,6 @@ class MyDocument extends Document {
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="default" />
           <meta name="apple-mobile-web-app-title" content="Developer DAO Academy" />
-          <meta
-            name="description"
-            content="Academy is an open-source education platform created by the Developer DAO."
-          />
           <meta name="format-detection" content="telephone=no" />
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="msapplication-TileColor" content="#2B5797" />
