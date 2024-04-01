@@ -28,7 +28,10 @@ function AdminLessonsPage() {
 
   return (
     <main className="container mx-auto py-16">
-      <Button onClick={handleCreateNewBtnClick}>Create New Lesson</Button>
+      <h1 className="text-center text-2xl text-white">Lessons List</h1>
+      <div className="mb-4 flex w-full justify-end">
+        <Button onClick={handleCreateNewBtnClick}>Create New Lesson</Button>
+      </div>
       <Table className="text-white">
         <TableCaption>Full list of availables lessons.</TableCaption>
         <TableHeader>
@@ -38,6 +41,7 @@ function AdminLessonsPage() {
             <TableHead>Description</TableHead>
             <TableHead>Lesson Path</TableHead>
             <TableHead>Quiz filename</TableHead>
+            <TableHead>Track</TableHead>
             <TableHead>Order N°</TableHead>
             <TableHead className="text-right">Actions</TableHead>
           </TableRow>
@@ -50,6 +54,7 @@ function AdminLessonsPage() {
               <TableCell>{lesson.lessonDescription}</TableCell>
               <TableCell>{lesson.lessonPath}</TableCell>
               <TableCell>{lesson.quizFileName}</TableCell>
+              <TableCell>{lesson.track.trackTitle}</TableCell>
               <TableCell>{lesson.order}</TableCell>
               <TableCell className="text-right">
                 <Button variant="default" onClick={async () => handleEditLessonBtnClick(lesson.id)}>

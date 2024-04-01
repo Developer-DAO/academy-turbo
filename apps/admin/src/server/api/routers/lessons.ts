@@ -45,6 +45,9 @@ export const lessonsRouter = createTRPCRouter({
       where: {
         ...constructedWhere,
       },
+      include: {
+        track: true,
+      },
     });
     return lessons;
   }),
@@ -206,6 +209,7 @@ export const lessonsRouter = createTRPCRouter({
               tag: true,
             },
           },
+          track: true,
         },
         orderBy: {
           order: "asc",

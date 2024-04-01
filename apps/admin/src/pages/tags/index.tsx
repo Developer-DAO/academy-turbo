@@ -28,7 +28,10 @@ function AdminTagsPage() {
 
   return (
     <main className="container mx-auto py-16">
-      <Button onClick={handleCreateNewBtnClick}>Create New Tag</Button>
+      <h1 className="text-center text-2xl text-white">Tags List</h1>
+      <div className="mb-4 flex w-full justify-end">
+        <Button onClick={handleCreateNewBtnClick}>Create New Tag</Button>
+      </div>
       <Table className="text-white">
         <TableCaption>Full list of availables tags.</TableCaption>
         <TableHeader>

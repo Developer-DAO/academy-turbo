@@ -18,6 +18,8 @@ export default function TrackLessonsPage() {
   };
   return (
     <main className="container mx-auto py-16">
+      <h1 className="text-center text-2xl text-white">Track Lessons List</h1>
+
       <Button onClick={handleCreateNewBtnClick}>Create New Lesson</Button>
 
       <div className="mx-auto mt-4 flex max-w-xl flex-col gap-4">
