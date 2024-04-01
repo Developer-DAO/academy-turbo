@@ -9,7 +9,7 @@
   "description": "Academy is an open-source education platform created by the Developer DAO.",
   "icons": [
     {
-      "src": "/android-chrome-192x192",
+      "src": "/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
