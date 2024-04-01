@@ -592,6 +592,9 @@ importers:
       lucide-react:
         specifier: ^0.274.0
         version: 0.274.0(react@18.2.0)
+      react-hook-form:
+        specifier: ^7.50.0
+        version: 7.50.0(react@18.2.0)
       storybook-config:
         specifier: workspace:*
         version: link:../storybook-config

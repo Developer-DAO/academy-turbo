@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
 import { useRouter } from "next/router";
-import { type FunctionComponent, type PropsWithChildren,useEffect } from "react";
+import { type FunctionComponent, type PropsWithChildren, useEffect } from "react";
 import { useAccount } from "wagmi";
 
 import { Header } from "@/components/Header";
@@ -33,7 +33,7 @@ export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <Header />
-      <main className={fontVars}>{children}</main>
+      <main className={`${fontVars} relative flex `}>{children}</main>
     </>
   );
 };

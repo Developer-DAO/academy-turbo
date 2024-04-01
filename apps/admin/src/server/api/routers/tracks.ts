@@ -56,16 +56,20 @@ export const TracksRouter = createTRPCRouter({
     .input(
       z.object({
         trackName: z.string().min(3).max(20),
-        trackTitle: z.string().min(3).max(20),
-        authors: z.array(z.string().min(3).max(20)),
-        imgPath: z.string().min(3).max(20),
-        trackDescription: z.string().min(3).max(20),
-        trackPath: z.string().min(3).max(20),
-        order: z.number().min(1).max(10),
+        trackTitle: z.string().min(3).max(30),
+        // authors: z.array(z.string().min(3).max(20)),
+        imgPath: z.string().min(3).max(30),
+        trackDescription: z.string().min(3).max(200),
+        trackPath: z.string().min(3).max(30),
+        // order: z.number().min(1).max(10),
       }),
     )
     .mutation(async ({ input, ctx }) => {
-      return await ctx.prisma.tracks.create({ data: { ...input } });
+      return await ctx.prisma.tracks.create({
+        data: {
+          ...input,
+        },
+      });
     }),
   delete: protectedProcedure
     .input(z.object({ trackId: z.string() }))
@@ -79,14 +83,14 @@ export const TracksRouter = createTRPCRouter({
   udpate: protectedProcedure
     .input(
       z.object({
-        trackId: z.string().min(3),
+        trackId: z.string().min(3).max(30),
         trackName: z.string().min(3).max(20),
-        trackTitle: z.string().min(3).max(20),
-        authors: z.array(z.string().min(3).max(20)),
-        imgPath: z.string().min(3).max(20),
-        trackDescription: z.string().min(3).max(20),
-        trackPath: z.string().min(3).max(20),
-        order: z.number().min(1).max(10),
+        trackTitle: z.string().min(3).max(30),
+        // authors: z.array(z.string().min(3).max(20)),
+        imgPath: z.string().min(3).max(30),
+        trackDescription: z.string().min(3).max(200),
+        trackPath: z.string().min(3).max(30),
+        // order: z.number().min(1).max(10),
       }),
     )
     .mutation(async ({ input, ctx }) => {
