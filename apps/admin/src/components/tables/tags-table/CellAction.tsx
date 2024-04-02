@@ -1,6 +1,6 @@
 import type { Lessons } from "database";
 // import { User } from "@/constants/data";
-import { Edit, Trash } from "lucide-react";
+import { Edit, MoreHorizontal, Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import {
@@ -10,7 +10,6 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-  Icons,
   useToast,
 } from "ui";
 
@@ -29,9 +28,9 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
 
   const utils = api.useContext();
 
-  const deleteLesson = api.lessons.delete.useMutation({
+  const deleteLesson = api.tags.delete.useMutation({
     onSettled: async () => {
-      await utils.lessons.invalidate();
+      await utils.tags.invalidate();
       setOpen(false);
     },
     onError: (error) => {
@@ -41,8 +40,8 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       // router.push(`/lessons`); // TODO: redirect to the tracks page where the user clicked the button
       toast({
         variant: "default",
-        title: "Lesson deleted",
-        description: "The lesson entry was deleted from the database !!",
+        title: "Tag deleted",
+        description: "The tag entry was deleted from the database !!",
       });
     },
   });
@@ -50,7 +49,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const onConfirm = () => {
     try {
       setLoading(true);
-      deleteLesson.mutate({ lessonId: data.id });
+      deleteLesson.mutate({ tagId: data.id });
     } catch (error: any) {
       toast({
         variant: "destructive",
@@ -74,9 +73,9 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       />
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
-          <Button variant="default" className="h-8 w-8 p-0 text-black">
-            <span className="sr-only text-black">Open menu</span>
-            <Icons.more_horizontal className="h-4 w-4 text-black" />
+          <Button variant="default" className="h-8 w-8 p-0">
+            <span className="sr-only">Open menu</span>
+            <MoreHorizontal className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
@@ -84,7 +83,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
 
           <DropdownMenuItem
             onClick={() => {
-              router.push(`/lessons/${data.id}/edit`);
+              router.push(`/tags/${data.id}`);
             }}
           >
             <Edit className="mr-2 h-4 w-4" /> Update

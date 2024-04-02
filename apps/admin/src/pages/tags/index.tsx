@@ -1,38 +1,19 @@
-import { useRouter } from "next/router";
 import React from "react";
-import {
-  Button,
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "ui";
 
+import { TagsTable } from "@/components/tables/tags-table/TagsTable";
 import { api } from "@/utils/api";
 
 function AdminTagsPage() {
   const { data: tags } = api.tags.getAll.useQuery();
 
-  const router = useRouter();
-
-  const handleEditTagBtnClick = async (tagId: string) => {
-    await router.push(`/tags/${tagId}`);
-  };
-
-  const handleCreateNewBtnClick = async () => {
-    await router.push("tags/create");
-  };
-
   return (
     <main className="container mx-auto py-16">
       <h1 className="text-center text-2xl text-white">Tags List</h1>
-      <div className="mb-4 flex w-full justify-end">
+      {/* <div className="mb-4 flex w-full justify-end">
         <Button onClick={handleCreateNewBtnClick}>Create New Tag</Button>
-      </div>
-      <Table className="text-white">
+      </div> */}
+      {tags !== undefined && tags.length > 1 ? <TagsTable data={tags} /> : null}
+      {/* <Table className="text-white">
         <TableCaption>Full list of availables tags.</TableCaption>
         <TableHeader>
           <TableRow>
@@ -56,7 +37,7 @@ function AdminTagsPage() {
             </TableRow>
           ))}
         </TableBody>
-      </Table>
+      </Table> */}
     </main>
   );
 }
