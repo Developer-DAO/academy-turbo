@@ -53,7 +53,6 @@
     "class-variance-authority": "^0.7.0",
     "jest-config": "workspace:*",
     "lucide-react": "^0.274.0",
-    "react-hook-form": "^7.50.0",
     "storybook-config": "workspace:*",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-config": "workspace:*",
@@ -61,6 +60,11 @@
     "vaul": "^0.8.0"
   },
   "dependencies": {
-    "@next/font": "^14.1.0"
+    "@next/font": "^14.1.0",
+    "@radix-ui/react-checkbox": "^1.0.4",
+    "@radix-ui/react-dropdown-menu": "^2.0.5",
+    "@radix-ui/react-scroll-area": "^1.0.5",
+    "@tanstack/react-table": "^8.15.3",
+    "react-hook-form": "^7.49.3"
   }
 }
