@@ -224,4 +224,24 @@ export const allTagsData = [
     tagName: "API3",
     tagDescription: "Application programming interface for Web3 infrastructure",
   },
+  {
+    id: "clsmlz1ss0000om2jzsd2qrm0",
+    tagName: "Ape",
+    tagDescription: "Ape",
+  },
+  {
+    id: "clsmm0gn60000om9ydhbakghi",
+    tagName: "Vyper",
+    tagDescription: "Vyper",
+  },
+  {
+    id: "clst8bdc00000omuwii32bhzk",
+    tagName: "UI",
+    tagDescription: "UI",
+  },
+  {
+    id: "cluf5w2cf00001waigseqb1pa",
+    tagName: "new test",
+    tagDescription: "testing new tag form",
+  },
 ];

@@ -3,9 +3,9 @@
 import { PrismaClient } from "@prisma/client";
 // import { allTagsData } from "../data/allTagsData";
 // import { allTracksData } from "../data/allTracksData";
-// import { allLessonsData } from "../data/allLessonsData";
-// import { allTagsOnTracksData } from "../data/allTagsOnTracksData";
-// import { allTagsOnLessonsData } from "../data/allTagsOnLessonsData";
+import { allLessonsData } from "../data/allLessonsData";
+import { allTagsOnTracksData } from "../data/allTagsOnTracksData";
+import { allTagsOnLessonsData } from "../data/allTagsOnLessonsData";
 
 const prisma = new PrismaClient();
 
@@ -36,18 +36,18 @@ async function main() {
   //   data: allTracksData,
   // });
   // console.log({ insert02 });
-  // const insert03 = await prisma.lessons.createMany({
-  //   data: allLessonsData,
-  // });
-  // console.log({ insert03 });
-  // const insert04 = await prisma.tagsOnTracks.createMany({
-  //   data: allTagsOnTracksData,
-  // });
-  // console.log({ insert04 });
-  // const insert05 = await prisma.tagsOnLessons.createMany({
-  //   data: allTagsOnLessonsData,
-  // });
-  // console.log({ insert05 });
+  const insert03 = await prisma.lessons.createMany({
+    data: allLessonsData,
+  });
+  console.log({ insert03 });
+  const insert04 = await prisma.tagsOnTracks.createMany({
+    data: allTagsOnTracksData,
+  });
+  console.log({ insert04 });
+  const insert05 = await prisma.tagsOnLessons.createMany({
+    data: allTagsOnLessonsData,
+  });
+  console.log({ insert05 });
   // console.log(insert01.count);
   // console.log(insert03.count);
   // console.log(insert04.count);
@@ -83,16 +83,8 @@ async function main() {
   // });
   // console.log({ newTagOnTracks });
 
-  const updatedLesson = await prisma.lessons.update({
-    where: {
-      id: "clrzkfamu000d1wfuiz6dofn2",
-    },
-    data: {
-      lessonPath: "/fundamentals/token-standards",
-      imgPath: "/track-fundamentals.png",
-    },
-  });
-  console.log({ updatedLesson });
+  // const allData = await prisma.tagsOnTracks.findMany();
+  // console.log({ allData });
 
   // const updatedLesson = await prisma.lessons.update({
   //   where: {

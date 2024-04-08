@@ -32,8 +32,15 @@ interface EditFormProps {
   lessonId: string;
 }
 
+const creators = [
+  { id: "asd01", name: "creator01" },
+  { id: "asd02", name: "creator02" },
+  { id: "asd03", name: "creator03" },
+];
+
 function EditLessonForm({ lessonId, lessonToEditData }: EditFormProps) {
   const [loading, setLoading] = useState(false);
+  const [showAddContributionFormVisible, setShowAddContributionFormVisible] = useState(false);
 
   const router = useRouter();
   const { toast } = useToast();
@@ -83,6 +90,14 @@ function EditLessonForm({ lessonId, lessonToEditData }: EditFormProps) {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleAddNewContributionEntry = () => {
+    setShowAddContributionFormVisible(true);
+  };
+
+  const handleCloseNewContributionForm = () => {
+    setShowAddContributionFormVisible(false);
   };
 
   return (
@@ -213,6 +228,106 @@ function EditLessonForm({ lessonId, lessonToEditData }: EditFormProps) {
               </FormItem>
             )}
           />
+
+          <div className="rounded-sm bg-white p-2">
+            <div className="flex items-start justify-between ">
+              <h2 className="text-black">
+                <u>Contributions</u>
+              </h2>
+              {!showAddContributionFormVisible ? (
+                <Button type="button" onClick={handleAddNewContributionEntry}>
+                  Add
+                </Button>
+              ) : (
+                <Button type="button" onClick={handleCloseNewContributionForm}>
+                  Close
+                </Button>
+              )}
+            </div>
+            <div className={showAddContributionFormVisible ? "block" : "hidden"}>
+              <FormField
+                control={form.control}
+                name="contributor"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Contributor</FormLabel>
+                    <Select
+                      disabled={loading}
+                      onValueChange={field.onChange}
+                      value={field.value}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger className="w-full bg-white text-black">
+                          <SelectValue
+                            defaultValue={field.value}
+                            placeholder="Select contributor"
+                          />
+                        </SelectTrigger>
+                      </FormControl>
+
+                      <SelectContent>
+                        {creators.map((creator, idx) => (
+                          <SelectItem key={idx} value={creator.id}>
+                            {creator.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="typeOfContribution"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Type of contribution</FormLabel>
+                    <Select
+                      disabled={loading}
+                      onValueChange={field.onChange}
+                      value={field.value}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger className="w-full bg-white text-black">
+                          <SelectValue
+                            defaultValue={field.value}
+                            placeholder="Select type of contribution"
+                          />
+                        </SelectTrigger>
+                      </FormControl>
+
+                      <SelectContent>
+                        {["Author", "Co-author", "Editor"].map((typeOfContribution, idx) => (
+                          <SelectItem key={idx} value={typeOfContribution}>
+                            {typeOfContribution}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="timestamp"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Select date</FormLabel>
+                    <FormControl>
+                      <Input type="date" className="text-black" disabled={loading} {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          </div>
 
           <Button type="submit" disabled={loading}>
             {!session ? "Sign in error" : udpateLesson.isLoading ? "Loading..." : "Save changes"}

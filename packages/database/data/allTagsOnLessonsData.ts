@@ -306,12 +306,6 @@ export const allTagsOnLessonsData = [
     assignedAt: "2024-01-30T04:26:21.314Z",
   },
   {
-    id: "clrzuwirl00011wntr93bi0hq",
-    lessonId: "clrzkw63400071wtumt4iobu6",
-    tagId: "clrzjqdet00031wm1tu55ohp7",
-    assignedAt: "2024-01-30T04:26:31.042Z",
-  },
-  {
     id: "clrzvb49500011wug3ufqrjxp",
     lessonId: "clrzkw63400071wtumt4iobu6",
     tagId: "clrzv8iyi00001wm0eewbxc4b",
@@ -334,5 +328,23 @@ export const allTagsOnLessonsData = [
     lessonId: "clrzkw6sp00091wtu66sggity",
     tagId: "clrzjqdet00031wm1tu55ohp7",
     assignedAt: "2024-01-30T04:41:37.062Z",
+  },
+  {
+    id: "clsmmkiz00001om1j8s2ht152",
+    lessonId: "clskhhouu00012i92em3se6zv",
+    tagId: "clrzjqb1h00001wm18q62d8ch",
+    assignedAt: "2024-02-15T02:51:56.556Z",
+  },
+  {
+    id: "clsmmkxzi0001om69s8a0dmoq",
+    lessonId: "clskhhouu00012i92em3se6zv",
+    tagId: "clsmm0gn60000om9ydhbakghi",
+    assignedAt: "2024-02-15T02:52:16.014Z",
+  },
+  {
+    id: "clsmml9qj0001omb4c0oy8ju2",
+    lessonId: "clskhhouu00012i92em3se6zv",
+    tagId: "clsmlz1ss0000om2jzsd2qrm0",
+    assignedAt: "2024-02-15T02:52:31.244Z",
   },
 ];

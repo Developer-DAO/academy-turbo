@@ -109,6 +109,15 @@ export const lessonsRouter = createTRPCRouter({
               tag: true,
             },
           },
+          contributions: {
+            include: {
+              contributions: {
+                include: {
+                  contributor: true,
+                },
+              },
+            },
+          },
         },
       });
     }),

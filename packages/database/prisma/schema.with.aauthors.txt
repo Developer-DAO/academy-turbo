@@ -56,7 +56,8 @@ model Lessons {
   fundamentalLessonName String?
   quizFileName      String
   lessonTitle String
-  authors String[]
+  // authors String[]
+  authors AuthorsOnLessons[]
   imgPath String
   lessonDescription String
   lessonPath String
@@ -69,7 +70,6 @@ model Lessons {
   stagingVisible Boolean @default(true)
   visible Boolean @default(true)
   nextLessonPath String?
-  contributions ContributionsOnLessons[]
 }
   
   model Tags {
@@ -96,7 +96,8 @@ model Tracks {
   id String @id @default(cuid())
   trackName String
   trackTitle String
-  authors String[]
+  // authors String[]
+  authors AuthorsOnTracks[]
   imgPath String
   trackDescription String
   tags TagsOnTracks[]
@@ -118,34 +119,33 @@ model TagsOnTracks {
   @@id([trackId, tagId])
 }
 
-model Contributors {
+model Authors {
   id String  @id @default(cuid())
-  name String
-  description String
-  avatar String
-  position String
-  twitter String
-  website String
-  blog String
-  emailAddress String
-  contributions Contributions[]
+  authorName String
+  authorDescription String
+  authorImage String
+  authorPosition String
+  authorTwitter String
+  tracks AuthorsOnTracks[]
+  lessons AuthorsOnLessons[]
 }
 
-model Contributions {
-  id String @id @default(cuid())
-  contributor Contributors @relation(fields: [contributorId], references: [id])
-  contributorId String
-  typeOfContribution String
-  timestamp DateTime
-  lessons ContributionsOnLessons[]
-}
-
-model ContributionsOnLessons {
-  id String @default(cuid())
-  lessons       Lessons     @relation(fields: [lessonId], references: [id])
-  lessonId     String 
-  contributions   Contributions @relation(fields: [contributionId], references: [id])
-  contributionId String 
+model AuthorsOnTracks {
+   id String @default(cuid())
+  track       Tracks     @relation(fields: [trackId], references: [id])
+  trackId     String // relation scalar field (used in the `@relation` attribute above)
+  authorId String // relation scalar field (used in the `@relation` attribute above)
+  author   Authors @relation(fields: [authorId], references: [id])
   assignedAt DateTime @default(now())
-  @@id([lessonId, contributionId])
+  @@id([trackId, authorId])
+}
+
+model AuthorsOnLessons {
+   id String @default(cuid())
+  lesson       Lessons     @relation(fields: [lessonId], references: [id])
+  lessonId     String // relation scalar field (used in the `@relation` attribute above)
+  authorId String // relation scalar field (used in the `@relation` attribute above)
+  author   Authors @relation(fields: [authorId], references: [id])
+  assignedAt DateTime @default(now())
+  @@id([lessonId, authorId])
 }
