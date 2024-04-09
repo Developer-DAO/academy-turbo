@@ -16,7 +16,7 @@ export default function EditLessonPage() {
   });
   return (
     <main className="container mx-auto py-16">
-      <h1 className="text-center text-2xl text-white">Update Lesson</h1>
+      <h1 className="text-center text-2xl ">Update Lesson</h1>
       {getLessonByIdIsLoading ? (
         <Spinner />
       ) : getLessonByIdIsSuccess && lessonToEditData !== null ? (

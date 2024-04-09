@@ -58,7 +58,7 @@ export const BackButton = ({ className }: { className?: string }) => {
       onClick={() => {
         router.back();
       }}
-      className={cn("flex flex-col items-center justify-center text-white", className)}
+      className={cn("flex flex-col items-center justify-center ", className)}
     >
       <h2 className={`${bttf.className} lg:text-xl`}>Back</h2>
       <Image src={"/back.png"} alt="turn back" width={35} height={25} className="rotate-180" />

@@ -1,11 +1,12 @@
 import CreateTrackForm from "@/components/form/CreateTrackForm";
+import { Layout } from "@/components/Layout";
 
 const CreateTrackPage = () => {
   return (
-    <main className="container mx-auto py-16">
-      <h1 className="text-center text-2xl text-white">Create New Track</h1>
+    <Layout>
+      <h1 className="text-center text-2xl ">Create New Track</h1>
       <CreateTrackForm />
-    </main>
+    </Layout>
   );
 };
 

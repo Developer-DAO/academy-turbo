@@ -88,7 +88,7 @@ function EditLessonForm({ lessonId, lessonToEditData }: EditFormProps) {
   return (
     <div className="mx-auto max-w-xl space-y-8 ">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4 text-white">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4 ">
           <FormField
             control={form.control}
             name="lessonTitle"

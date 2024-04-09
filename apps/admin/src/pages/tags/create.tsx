@@ -16,6 +16,7 @@ import {
 } from "ui";
 import type { z } from "zod";
 
+import { Layout } from "@/components/Layout";
 import { api } from "@/utils/api";
 import { tagCreateSchema } from "@/zodschemas/tag.schemas";
 
@@ -63,56 +64,58 @@ function CreateNewTagPage() {
   };
 
   return (
-    <main className="container mx-auto py-16">
-      <h1 className="text-center text-2xl text-white">Create New Tag</h1>
-      <div className="mx-auto max-w-xl space-y-8 ">
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4 text-white">
-            <FormField
-              control={form.control}
-              name="tagName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Tag Name</FormLabel>
-                  <FormControl>
-                    <Input
-                      className="text-black"
-                      disabled={loading}
-                      placeholder="Tag Name"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+    <Layout>
+      <section className="container mx-auto py-16">
+        <h1 className="text-center text-2xl ">Create New Tag</h1>
+        <div className="mx-auto max-w-xl space-y-8 ">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4 ">
+              <FormField
+                control={form.control}
+                name="tagName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Tag Name</FormLabel>
+                    <FormControl>
+                      <Input
+                        className="text-black"
+                        disabled={loading}
+                        placeholder="Tag Name"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-            <FormField
-              control={form.control}
-              name="tagDescription"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Tag Description</FormLabel>
-                  <FormControl>
-                    <Input
-                      className="text-black"
-                      disabled={loading}
-                      placeholder="Tag Description (internal - not shown)"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button type="submit" disabled={loading}>
-              {!session ? "Sign in error" : createTag.isLoading ? "Loading..." : "Create Tag"}
-            </Button>
-            <p className="font-medium text-red-500">{createTag.error?.message}</p>
-          </form>
-        </Form>
-      </div>
-    </main>
+              <FormField
+                control={form.control}
+                name="tagDescription"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Tag Description</FormLabel>
+                    <FormControl>
+                      <Input
+                        className="text-black"
+                        disabled={loading}
+                        placeholder="Tag Description (internal - not shown)"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" disabled={loading}>
+                {!session ? "Sign in error" : createTag.isLoading ? "Loading..." : "Create Tag"}
+              </Button>
+              <p className="font-medium text-red-500">{createTag.error?.message}</p>
+            </form>
+          </Form>
+        </div>
+      </section>
+    </Layout>
   );
 }
 

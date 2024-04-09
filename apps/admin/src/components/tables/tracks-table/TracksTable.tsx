@@ -10,27 +10,27 @@ interface ProductsClientProps {
   data: any[];
 }
 
-export const TagsTable: React.FC<ProductsClientProps> = ({ data }) => {
+export const TracksTable: React.FC<ProductsClientProps> = ({ data }) => {
   const router = useRouter();
 
   const handleCreateNewBtnClick = async () => {
-    await router.push("tags/create");
+    await router.push("tracks/create");
   };
   return (
     <div className="">
       <div className="flex items-start justify-between ">
-        <Heading title={`Tags (${data.length})`} description="Manage Tags" />
+        <Heading title={`Tracks (${data.length})`} description="Manage Tracks" />
         <div className="mb-4 flex w-full justify-end">
           <Button
             onClick={handleCreateNewBtnClick}
             className="outline hover:bg-black hover:text-white"
           >
-            Create New Tag
+            Create New Track
           </Button>
         </div>
       </div>
-      <Separator color="white" />
-      <DataTable searchKey="tagName" columns={columns} data={data} />
+      <Separator color="black" />
+      <DataTable searchKey="trackTitle" columns={columns} data={data} />
     </div>
   );
 };

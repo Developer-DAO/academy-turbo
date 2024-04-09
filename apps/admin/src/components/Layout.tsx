@@ -1,24 +1,31 @@
-import localFont from "next/font/local";
 import { useRouter } from "next/router";
 import { type FunctionComponent, type PropsWithChildren, useEffect } from "react";
 import { useAccount } from "wagmi";
 
-import { Header } from "@/components/Header";
+import Navbar from "@/components/Navbar";
 
-const bttf = localFont({
-  src: "../../public/fonts/BTTF.ttf",
-  variable: "--font-future",
-});
-const deathstar = localFont({
-  src: "../../public/fonts/DeathStar.otf",
-  variable: "--font-deathstar",
-});
-const andale = localFont({
-  src: "../../public/fonts/ANDALEMO.ttf",
-  variable: "--font-andale-mono",
-});
-
-const fontVars = `${bttf.variable} ${deathstar.variable} ${andale.variable}`;
+const navMenus: any[] = [
+  {
+    title: "Tracks",
+    href: "/tracks",
+    // icon: "vector",
+  },
+  {
+    title: "Lessons",
+    href: "/lessons",
+    // icon: "clarity_blocks",
+  },
+  {
+    title: "Tags",
+    href: "/tags",
+    // icon: "",
+  },
+  {
+    title: "Contributors",
+    href: "/contributors",
+    // icon: "",
+  },
+];
 
 export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
   const { isDisconnected } = useAccount();
@@ -32,8 +39,10 @@ export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
 
   return (
     <>
-      <Header />
-      <main className={`${fontVars} relative flex `}>{children}</main>
+      <Navbar navItems={navMenus} />
+      <div className="flex h-screen overflow-hidden">
+        <main className="w-full pt-16">{children}</main>
+      </div>
     </>
   );
 };

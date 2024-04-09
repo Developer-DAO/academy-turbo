@@ -61,6 +61,7 @@ model Lessons {
   lessonDescription String
   lessonPath String
   tags TagsOnLessons[]
+  contributors ContributorsOnLessons[]
   track Tracks @relation(fields: [trackId], references: [id], onDelete: NoAction)
   trackId String
   completedQuizzes CompletedQuizzes[]
@@ -117,11 +118,22 @@ model TagsOnTracks {
   @@id([trackId, tagId])
 }
 
-model Authors {
+model Contributors {
   id String  @id @default(cuid())
-  authorName String
-  authorDescription String
-  authorImage String
-  authorPosition String
-  authorTwitter String
+  name String
+  description String
+  image String
+  position String
+  twitter String
+  lessons ContributorsOnLessons[]
+}
+
+model ContributorsOnLessons {
+  id String @default(cuid())
+  lesson       Lessons     @relation(fields: [lessonId], references: [id])
+  lessonId     String
+  contributor   Contributors @relation(fields: [contributorId], references: [id])
+  contributorId String
+  assignedAt DateTime @default(now())
+  @@id([lessonId, contributorId])
 }
