@@ -10,8 +10,6 @@ function AdminLessonsPage() {
   return (
     <Layout>
       <section className="container mx-auto py-16">
-        {/* <h1 className="text-center text-2xl ">Lessons List</h1> */}
-
         {lessons !== undefined && lessons.length > 1 ? <LessonsTable data={lessons} /> : null}
       </section>
     </Layout>

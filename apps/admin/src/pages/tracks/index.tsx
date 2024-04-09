@@ -9,10 +9,7 @@ export default function AdminTracksPage() {
   return (
     <Layout>
       <section className="container mx-auto py-16">
-        <h1 className="text-center text-2xl ">Tracks List</h1>
-        <div className="mx-10  mt-4 flex flex-col gap-4 ">
-          {tracks !== undefined && tracks.length > 1 ? <TracksTable data={tracks} /> : null}
-        </div>
+        {tracks !== undefined && tracks.length > 1 ? <TracksTable data={tracks} /> : null}
       </section>
     </Layout>
   );

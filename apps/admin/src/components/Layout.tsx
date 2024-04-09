@@ -41,7 +41,7 @@ export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
     <>
       <Navbar navItems={navMenus} />
       <div className="flex h-screen overflow-hidden">
-        <main className="w-full pt-16">{children}</main>
+        <main className="w-full">{children}</main>
       </div>
     </>
   );

@@ -10,8 +10,6 @@ function AdminLessonsPage() {
   return (
     <Layout>
       <section className="container mx-auto py-16">
-        {/* <h1 className="text-center text-2xl ">Lessons List</h1> */}
-
         {!isLoading && isSuccess ? <ContributorsTable data={contributors} /> : null}
       </section>
     </Layout>

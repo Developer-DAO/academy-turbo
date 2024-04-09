@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
-// import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { Icons } from "ui";
 
 interface NavbarProps {
   navItems: {
@@ -12,26 +13,32 @@ interface NavbarProps {
 const Navbar = ({ navItems }: NavbarProps) => {
   // State to manage the navbar's visibility
   const [nav, setNav] = useState(false);
-
+  const router = useRouter();
+  const pathname = router.pathname;
   // Toggle function to handle the navbar's display
   const handleNav = () => {
     setNav(!nav);
   };
 
   // Array containing navigation items
-
+  console.log({ pathname });
   return (
     <div className="mx-auto flex h-24  items-center justify-between bg-black px-4 text-white">
       {/* Logo */}
-      <h1 className="w-full text-3xl font-bold text-[#00df9a]">Academy Dashboard</h1>
-
+      <Link href="/">
+        <h1 className="w-full text-3xl font-bold text-[#00df9a]">Academy Dashboard</h1>
+      </Link>
       {/* Desktop Navigation */}
       <ul className="hidden md:flex">
         {navItems.map((item, idx) => (
           <Link
             key={idx}
             href={item.href}
-            className="m-2 cursor-pointer rounded-xl p-4 duration-300 hover:bg-[#00df9a] hover:text-black"
+            className={`m-2 cursor-pointer rounded-xl p-4 duration-300 ${
+              pathname === item.href
+                ? "bg-[#00df9a] text-black"
+                : "hover:bg-[#00df9a] hover:text-black"
+            }`}
           >
             {item.title}
           </Link>
@@ -40,7 +47,7 @@ const Navbar = ({ navItems }: NavbarProps) => {
 
       {/* Mobile Navigation Icon */}
       <div onClick={handleNav} className="block md:hidden">
-        {/* {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />} */}
+        {nav ? <Icons.hamburger_menu_close size={20} /> : <Icons.hamburger_menu size={20} />}
       </div>
 
       {/* Mobile Navigation Menu */}

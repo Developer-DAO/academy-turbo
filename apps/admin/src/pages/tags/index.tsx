@@ -10,8 +10,6 @@ function AdminTagsPage() {
   return (
     <Layout>
       <section className="container mx-auto py-16">
-        <h1 className="text-center text-2xl ">Tags List</h1>
-
         {tags !== undefined && tags.length > 1 ? <TagsTable data={tags} /> : null}
       </section>
     </Layout>
