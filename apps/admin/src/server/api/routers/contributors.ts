@@ -13,6 +13,30 @@ export const contributorsRouter = createTRPCRouter({
   getAll: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.contributors.findMany();
   }),
+  getAllAvailableByLessonId: protectedProcedure
+    .input(
+      z.object({
+        lessonId: z.string().min(1),
+      }),
+    )
+    .query(async ({ input, ctx }) => {
+      const contributorsOnThisLesson = await ctx.prisma.contributorsOnLessons.findMany({
+        where: {
+          lessonId: input.lessonId,
+        },
+      });
+      const contributorsIds = contributorsOnThisLesson.map(
+        (contribution) => contribution.contributorId,
+      );
+      console.log({ contributorsIds });
+      const asd = await ctx.prisma.contributors.findMany({
+        where: {
+          id: { notIn: contributorsIds },
+        },
+      });
+      console.log({ asd });
+      return asd;
+    }),
   create: protectedProcedure
     .input(
       z.object({

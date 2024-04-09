@@ -23,6 +23,7 @@ export * from "./ui/label";
 export * from "./ui/modal";
 export * from "./ui/select";
 export * from "./ui/separator";
+export * from "./ui/sheet";
 export * from "./ui/table";
 export * from "./ui/textarea";
 export * from "./ui/toaster";

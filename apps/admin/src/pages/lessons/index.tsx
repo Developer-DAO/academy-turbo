@@ -9,7 +9,7 @@ function AdminLessonsPage() {
 
   return (
     <Layout>
-      <section className="container mx-auto py-16">
+      <section className="container mx-auto max-h-[80vh] py-16">
         {lessons !== undefined && lessons.length > 1 ? <LessonsTable data={lessons} /> : null}
       </section>
     </Layout>

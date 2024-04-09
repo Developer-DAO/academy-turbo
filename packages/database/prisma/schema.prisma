@@ -135,5 +135,7 @@ model ContributorsOnLessons {
   contributor   Contributors @relation(fields: [contributorId], references: [id])
   contributorId String
   assignedAt DateTime @default(now())
+  typeOfContribution String 
   @@id([lessonId, contributorId])
 }
+

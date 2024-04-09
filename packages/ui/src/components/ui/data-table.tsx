@@ -43,7 +43,7 @@ export function DataTable<TData, TValue>({
         className="m-4 w-full md:max-w-sm"
       />
       <ScrollArea className="h-[calc(80vh-220px)] rounded-md border">
-        <Table className="relative">
+        <Table className="relative overflow-auto">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>

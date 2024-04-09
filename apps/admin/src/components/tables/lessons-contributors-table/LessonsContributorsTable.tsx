@@ -3,32 +3,34 @@ import { DataTable, Heading, Separator } from "ui";
 import { Button } from "ui";
 
 import { columns } from "./Columns";
+// import { Lessons } from "database";
 
 interface ProductsClientProps {
-  data: any[];
+  data: any; // Lessons["contributors"];
 }
 
-export const LessonsTable: React.FC<ProductsClientProps> = ({ data }) => {
+export const LessonsContributorsTable: React.FC<ProductsClientProps> = ({ data }) => {
   const router = useRouter();
 
   const handleCreateNewBtnClick = async () => {
-    await router.push("lessons/create");
+    const lessonId = router.query["lessonId"];
+    await router.push(`/lessons/${lessonId as string}/newcontributor`);
   };
   return (
     <div className="">
       <div className="flex items-start justify-between ">
-        <Heading title={`Lessons (${data.length})`} description="Manage Lessons" />
+        <Heading title={`Contributors`} /* (${data})`} */ description="Manage Contributors" />
         <div className="mb-4 flex w-full justify-end">
           <Button
             onClick={handleCreateNewBtnClick}
             className="outline hover:bg-black hover:text-white"
           >
-            Create New Lesson
+            Add new Contributor
           </Button>
         </div>
       </div>
       <Separator color="black" />
-      <DataTable searchKey="lessonTitle" columns={columns} data={data} />
+      <DataTable searchKey="contributor.name" columns={columns} data={data} />
     </div>
   );
 };

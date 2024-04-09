@@ -1,4 +1,4 @@
-import "@/styles.css";
+import "@/global.css";
 import "@rainbow-me/rainbowkit/styles.css";
 
 import {
