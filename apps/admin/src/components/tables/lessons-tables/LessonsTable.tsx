@@ -15,7 +15,7 @@ export const LessonsTable: React.FC<ProductsClientProps> = ({ data }) => {
     await router.push("lessons/create");
   };
   return (
-    <div className="">
+    <div>
       <div className="flex items-start justify-between ">
         <Heading title={`Lessons (${data.length})`} description="Manage Lessons" />
         <div className="mb-4 flex w-full justify-end">

@@ -21,7 +21,6 @@ const Navbar = ({ navItems }: NavbarProps) => {
   };
 
   // Array containing navigation items
-  console.log({ pathname });
   return (
     <div className="mx-auto flex h-24  items-center justify-between bg-black px-4 text-white">
       {/* Logo */}

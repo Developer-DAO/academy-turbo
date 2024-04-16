@@ -40,7 +40,7 @@ export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <Navbar navItems={navMenus} />
-      <div className="flex h-screen overflow-hidden">
+      <div className="flex h-screen">
         <main className="w-full">{children}</main>
       </div>
     </>

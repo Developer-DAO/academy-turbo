@@ -43,7 +43,7 @@ export function DataTable<TData, TValue>({
         className="m-4 w-full md:max-w-sm"
       />
       <ScrollArea className="h-[calc(80vh-220px)] rounded-md border">
-        <Table className="relative overflow-auto">
+        <Table className="relative">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
@@ -79,7 +79,7 @@ export function DataTable<TData, TValue>({
             )}
           </TableBody>
         </Table>
-        <ScrollBar orientation="horizontal" />
+        <ScrollBar orientation="vertical" />
       </ScrollArea>
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="text-muted-foreground flex-1 text-sm">
