@@ -9,7 +9,7 @@ import { createTRPCRouter, protectedProcedure, publicProcedure } from "@/server/
 
 // Router
 // ========================================================
-export const TracksRouter = createTRPCRouter({
+export const tracksRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
     const constructedWhere =
       env.ENVIRONMENT === "production"

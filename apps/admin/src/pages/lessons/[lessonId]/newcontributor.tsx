@@ -3,7 +3,7 @@ import React from "react";
 import AddContributorToLessonForm from "@/components/form/AddContributorToLessonForm";
 import { Layout } from "@/components/Layout";
 
-function newcontributor() {
+function NewContributorOnLessonPage() {
   return (
     <Layout>
       <section className="container mx-auto py-16">
@@ -14,4 +14,4 @@ function newcontributor() {
   );
 }
 
-export default newcontributor;
+export default NewContributorOnLessonPage;
