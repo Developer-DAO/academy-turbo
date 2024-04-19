@@ -925,10 +925,15 @@ Go touch grass 😊 🌱
 
 ### Time for our Deploy Script
 
-We need a script so we can get our smart contract deployed. Let’s write that.
+We need a script so we can get our smart contract deployed.
 
-Create a new Javascript file named `deploy.js` in the `scripts` folder with this
-code:
+First create a `scripts` directory in the root of your project, and then a new Javascript file named
+`deploy.js` inside that directory:
+
+```bash
+mkdir scripts && touch scripts/deploy.js
+```
+Great! Now let’s write our deployment code in there:
 
 ```jsx
 const hre = require('hardhat')
@@ -991,8 +996,8 @@ require("dotenv").config();
 module.exports = {
   solidity: "0.8.12",
   networks: {
-    mumbai: {
-      url: "https://rpc-mumbai.maticvigil.com",
+    amoy: {
+      url: "https://rpc-amoy.polygon.technology/",
       accounts: [process.env.PRIVATE_KEY],
     },
   },
@@ -1007,16 +1012,17 @@ can actually **pay** for the deployment of the contract!
 
 ### Adding the testnet network
 
-This time we're using Polygon Mumbai test network. Head over to the
+This time we're using Polygon Amoy test network. Head over to the
 [Chainlist](https://chainlist.org/) page and connect your wallet. Make sure you
 toggle the testnet button, otherwise no testnets will show up, and search for
-Mumbai. You will see the testnet network with chainID 80001. Add it to your
+Amoy. You will see the testnet network with chainID 80002. Add it to your
 wallet.
 
 <br />
 Note: **Always make sure to use a separate browser profile, with a separate wallet, holding only testnet
 tokens, for any tutorials. See our Fundamental on** *Introduction to web3 Wallets* **for background on
 your security, your private keys and your recovery seed phrases!**
+
 <br />
 ![2_faucet.png](/assets/lessons/3/2_faucet.png)
 
