@@ -28,14 +28,12 @@ export const contributorsRouter = createTRPCRouter({
       const contributorsIds = contributorsOnThisLesson.map(
         (contribution) => contribution.contributorId,
       );
-      console.log({ contributorsIds });
-      const asd = await ctx.prisma.contributors.findMany({
+      const contributorsAvailable = await ctx.prisma.contributors.findMany({
         where: {
           id: { notIn: contributorsIds },
         },
       });
-      console.log({ asd });
-      return asd;
+      return contributorsAvailable;
     }),
   create: protectedProcedure
     .input(
@@ -53,5 +51,27 @@ export const contributorsRouter = createTRPCRouter({
           ...input,
         },
       });
+    }),
+  getAllAvailableByTrackId: protectedProcedure
+    .input(
+      z.object({
+        trackId: z.string().min(1),
+      }),
+    )
+    .query(async ({ input, ctx }) => {
+      const contributorsOnThisTrack = await ctx.prisma.contributorsOnTracks.findMany({
+        where: {
+          trackId: input.trackId,
+        },
+      });
+      const contributorsIds = contributorsOnThisTrack.map(
+        (contribution) => contribution.contributorId,
+      );
+      const contributorsAvailable = await ctx.prisma.contributors.findMany({
+        where: {
+          id: { notIn: contributorsIds },
+        },
+      });
+      return contributorsAvailable;
     }),
 });

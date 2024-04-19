@@ -50,6 +50,13 @@ export const TracksRouter = createTRPCRouter({
         where: {
           id: input.trackId,
         },
+        include: {
+          contributors: {
+            include: {
+              contributor: true,
+            },
+          },
+        },
       });
     }),
   create: protectedProcedure

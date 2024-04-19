@@ -106,6 +106,7 @@ model Tracks {
   productionVisible Boolean @default(true)
   stagingVisible Boolean @default(true)
   visible Boolean @default(true)
+  contributors ContributorsOnTracks[]
 }
 
 model TagsOnTracks {
@@ -126,6 +127,7 @@ model Contributors {
   position String
   twitter String
   lessons ContributorsOnLessons[]
+  tracks ContributorsOnTracks[]
 }
 
 model ContributorsOnLessons {
@@ -139,3 +141,13 @@ model ContributorsOnLessons {
   @@id([lessonId, contributorId])
 }
 
+model ContributorsOnTracks {
+  id String @default(cuid())
+  track       Tracks     @relation(fields: [trackId], references: [id])
+  trackId     String
+  contributor   Contributors @relation(fields: [contributorId], references: [id])
+  contributorId String
+  assignedAt DateTime @default(now())
+  typeOfContribution String 
+  @@id([trackId, contributorId])
+}

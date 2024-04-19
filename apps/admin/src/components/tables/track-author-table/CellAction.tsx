@@ -1,4 +1,5 @@
-import type { Tracks } from "database";
+import type { Lessons } from "database";
+// import { User } from "@/constants/data";
 import { Edit, Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -17,7 +18,7 @@ import { AlertModal } from "@/components/AlertModal";
 import { api } from "@/utils/api";
 
 interface CellActionProps {
-  data: Tracks;
+  data: Lessons;
 }
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
@@ -28,19 +29,20 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
 
   const utils = api.useContext();
 
-  const deleteTrack = api.tracks.delete.useMutation({
+  const deleteLesson = api.lessons.delete.useMutation({
     onSettled: async () => {
-      await utils.tracks.invalidate();
+      await utils.lessons.invalidate();
       setOpen(false);
     },
     onError: (error) => {
       console.log("request error ", { error });
     },
     onSuccess: () => {
+      // router.push(`/lessons`); // TODO: redirect to the tracks page where the user clicked the button
       toast({
         variant: "default",
-        title: "Track deleted",
-        description: "The track entry was deleted from the database !!",
+        title: "Lesson deleted",
+        description: "The lesson entry was deleted from the database !!",
       });
     },
   });
@@ -48,7 +50,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const onConfirm = () => {
     try {
       setLoading(true);
-      deleteTrack.mutate({ trackId: data.id });
+      deleteLesson.mutate({ lessonId: data.id });
     } catch (error: any) {
       toast({
         variant: "destructive",
@@ -73,7 +75,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
           <Button>
-            <span className="sr-only ">Open menu</span>
+            <span className="sr-only text-black">Open menu</span>
             <Icons.more_horizontal />
           </Button>
         </DropdownMenuTrigger>
@@ -82,24 +84,17 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
 
           <DropdownMenuItem
             onClick={() => {
-              router.push(`/tracks/${data.id}/edit`);
+              router.push(`/lessons/${data.id}/edit`);
             }}
           >
             <Edit className="mr-2 h-4 w-4" /> Update
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => {
-              router.push(`/tracks/${data.id}/lessons`);
+              router.push(`/lessons/${data.id}/contributors`);
             }}
           >
-            <Edit className="mr-2 h-4 w-4" /> Lessons
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => {
-              router.push(`/tracks/${data.id}/author`);
-            }}
-          >
-            <Edit className="mr-2 h-4 w-4" /> Author
+            <Edit className="mr-2 h-4 w-4" /> Contributors
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => {
