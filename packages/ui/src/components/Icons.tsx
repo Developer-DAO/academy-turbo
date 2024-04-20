@@ -1,4 +1,11 @@
-import { type LucideIcon, type LucideProps, Moon, SunMedium, Twitter } from "lucide-react";
+import {
+  type LucideIcon,
+  type LucideProps,
+  Moon,
+  SunMedium,
+  Twitter,
+  UserIcon,
+} from "lucide-react";
 
 // Simply copy the contents of your SVG into the Icons object and name it.
 // First, make sure you convert the HTML to JSX markup. You can use this https://transform.tools/
@@ -27,6 +34,7 @@ interface DDIcons {
   copy_icon: (props: LucideProps) => JSX.Element;
   home_icon: (props: LucideProps) => JSX.Element;
   moon_light: (props: LucideProps) => JSX.Element;
+  user_icon: (props: LucideProps) => JSX.Element;
 }
 
 export const Icons: DDIcons = {
@@ -34,6 +42,7 @@ export const Icons: DDIcons = {
   sun: (props: LucideProps) => <SunMedium {...props} />,
   moon: (props: LucideProps) => <Moon {...props} />,
   twitter: (props: LucideProps) => <Twitter {...props} />,
+  user_icon: (props: LucideProps) => <UserIcon {...props} />,
   logo: (props: LucideProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
       <path

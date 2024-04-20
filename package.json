@@ -13,7 +13,7 @@
     "dev:admin": "turbo run dev --filter=admin --filter=database --no-daemon --concurrency=14",
     "build": "turbo run build --no-daemon",
     "check": "turbo run check --no-daemon",
-    "storybook:dev": "turbo run storybook:dev --no-daemon",
+    "storybook:dev": "turbo run storybook:dev --no-daemon --concurrency=14",
     "storybook:build": "turbo run storybook:build --no-daemon",
     "test:e2e": "turbo run test:e2e --concurrency=1 --no-daemon",
     "test:unit": "turbo run test:unit --concurrency=1 --no-daemon",
