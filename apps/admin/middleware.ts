@@ -14,5 +14,5 @@
 export { default } from "next-auth/middleware";
 
 export const config = {
-  matcher: ["/tags", "/tracks"],
+  matcher: ["/tags", "/tracks", "/lessons"],
 };

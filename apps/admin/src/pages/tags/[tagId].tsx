@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React from "react";
 
 import EditTagForm from "@/components/form/EditTagForm";
+import { Layout } from "@/components/Layout";
 import Spinner from "@/components/Spinner";
 import { api } from "@/utils/api";
 
@@ -17,13 +18,15 @@ export default function EditTagPage() {
   });
 
   return (
-    <main className="container mx-auto py-16">
-      <h1 className="text-center text-2xl text-white">Update Tag</h1>
-      {getTrackByIdIsLoading ? (
-        <Spinner />
-      ) : getTrackByIdIsSuccess && tagToEditData !== null ? (
-        <EditTagForm tagToEditData={tagToEditData} tagId={tagId as string} />
-      ) : null}
-    </main>
+    <Layout>
+      <section className="container mx-auto py-16">
+        <h1 className="text-center text-2xl ">Update Tag</h1>
+        {getTrackByIdIsLoading ? (
+          <Spinner />
+        ) : getTrackByIdIsSuccess && tagToEditData !== null ? (
+          <EditTagForm tagToEditData={tagToEditData} tagId={tagId as string} />
+        ) : null}
+      </section>
+    </Layout>
   );
 }

@@ -34,7 +34,6 @@ interface EditFormProps {
 
 function EditLessonForm({ lessonId, lessonToEditData }: EditFormProps) {
   const [loading, setLoading] = useState(false);
-
   const router = useRouter();
   const { toast } = useToast();
 
@@ -86,141 +85,146 @@ function EditLessonForm({ lessonId, lessonToEditData }: EditFormProps) {
   };
 
   return (
-    <div className="mx-auto max-w-xl space-y-8 ">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4 text-white">
-          <FormField
-            control={form.control}
-            name="lessonTitle"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Lesson Title</FormLabel>
-                <FormControl>
-                  <Input
-                    className="text-black"
-                    disabled={loading}
-                    placeholder="Lesson Title "
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="trackId"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Track</FormLabel>
-                <Select
-                  disabled={loading}
-                  onValueChange={field.onChange}
-                  value={field.value}
-                  defaultValue={field.value}
-                >
+    <>
+      <div className="mx-auto max-w-xl space-y-8 ">
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-col gap-4 rounded-md border p-4"
+          >
+            <FormField
+              control={form.control}
+              name="lessonTitle"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Lesson Title</FormLabel>
                   <FormControl>
-                    <SelectTrigger className="w-full bg-white text-black">
-                      <SelectValue defaultValue={field.value} placeholder="Select the Track" />
-                    </SelectTrigger>
+                    <Input
+                      className="text-black"
+                      disabled={loading}
+                      placeholder="Lesson Title "
+                      {...field}
+                    />
                   </FormControl>
-
-                  <SelectContent>
-                    {tracksData?.map((track, idx) => (
-                      <SelectItem key={idx} value={track.id}>
-                        {track.trackTitle}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="lessonDescription"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Lesson Description</FormLabel>
-                <FormControl>
-                  <Input
-                    className="text-black"
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="trackId"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Track</FormLabel>
+                  <Select
                     disabled={loading}
-                    placeholder="Lesson Description"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger className="w-full ">
+                        <SelectValue defaultValue={field.value} placeholder="Select the Track" />
+                      </SelectTrigger>
+                    </FormControl>
 
-          <FormField
-            control={form.control}
-            name="quizFileName"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Lesson quiz File Name</FormLabel>
-                <FormControl>
-                  <Input
-                    className="text-black"
-                    disabled={loading}
-                    placeholder="Lesson's quiz File Name"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+                    <SelectContent>
+                      {tracksData?.map((track, idx) => (
+                        <SelectItem key={idx} value={track.id}>
+                          {track.trackTitle}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
 
-          <FormField
-            control={form.control}
-            name="imgPath"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Lesson Image URL</FormLabel>
-                <FormControl>
-                  <Input
-                    className="text-black"
-                    disabled={loading}
-                    placeholder="e.g '/newlesson_image.png'"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="lessonDescription"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Lesson Description</FormLabel>
+                  <FormControl>
+                    <Input
+                      className="text-black"
+                      disabled={loading}
+                      placeholder="Lesson Description"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <FormField
-            control={form.control}
-            name="lessonPath"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Lesson Path</FormLabel>
-                <FormControl>
-                  <Input
-                    className="text-black"
-                    disabled={loading}
-                    placeholder="Lesson Path"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+            <FormField
+              control={form.control}
+              name="quizFileName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Lesson quiz File Name</FormLabel>
+                  <FormControl>
+                    <Input
+                      className="text-black"
+                      disabled={loading}
+                      placeholder="Lesson's quiz File Name"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <Button type="submit" disabled={loading}>
-            {!session ? "Sign in error" : udpateLesson.isLoading ? "Loading..." : "Save changes"}
-          </Button>
-          <p className="font-medium text-red-500">{udpateLesson.error?.message}</p>
-        </form>
-      </Form>
-    </div>
+            <FormField
+              control={form.control}
+              name="imgPath"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Lesson Image URL</FormLabel>
+                  <FormControl>
+                    <Input
+                      className="text-black"
+                      disabled={loading}
+                      placeholder="e.g '/newlesson_image.png'"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="lessonPath"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Lesson Path</FormLabel>
+                  <FormControl>
+                    <Input
+                      className="text-black"
+                      disabled={loading}
+                      placeholder="Lesson Path"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <Button type="submit" disabled={loading} className="outline">
+              {!session ? "Sign in error" : udpateLesson.isLoading ? "Loading..." : "Save changes"}
+            </Button>
+            <p className="font-medium text-red-500">{udpateLesson.error?.message}</p>
+          </form>
+        </Form>
+      </div>
+    </>
   );
 }
 

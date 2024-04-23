@@ -47,6 +47,11 @@ export const lessonsRouter = createTRPCRouter({
       },
       include: {
         track: true,
+        contributors: {
+          include: {
+            contributor: true,
+          },
+        },
       },
     });
     return lessons;
@@ -109,6 +114,11 @@ export const lessonsRouter = createTRPCRouter({
               tag: true,
             },
           },
+          contributors: {
+            include: {
+              contributor: true,
+            },
+          },
         },
       });
     }),
@@ -147,6 +157,11 @@ export const lessonsRouter = createTRPCRouter({
               tag: true,
             },
           },
+          contributors: {
+            include: {
+              contributor: true,
+            },
+          },
         },
         orderBy: {
           order: "asc",
@@ -175,6 +190,11 @@ export const lessonsRouter = createTRPCRouter({
         tags: {
           include: {
             tag: true,
+          },
+        },
+        contributors: {
+          include: {
+            contributor: true,
           },
         },
       },
@@ -210,6 +230,11 @@ export const lessonsRouter = createTRPCRouter({
             },
           },
           track: true,
+          contributors: {
+            include: {
+              contributor: true,
+            },
+          },
         },
         orderBy: {
           order: "asc",

@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import React from "react";
-import { Button } from "ui";
 
-import LessonCard from "@/components/LessonCard";
+import { Layout } from "@/components/Layout";
+import { LessonsTable } from "@/components/tables/lessons-tables/LessonsTable";
 import { api } from "@/utils/api";
 
 export default function TrackLessonsPage() {
@@ -13,18 +13,11 @@ export default function TrackLessonsPage() {
     trackId: trackId as string,
   });
 
-  const handleCreateNewBtnClick = async () => {
-    await router.push("/lessons/create");
-  };
   return (
-    <main className="container mx-auto py-16">
-      <h1 className="text-center text-2xl text-white">Track Lessons List</h1>
-
-      <Button onClick={handleCreateNewBtnClick}>Create New Lesson</Button>
-
-      <div className="mx-auto mt-4 flex max-w-xl flex-col gap-4">
-        {lessons?.map((lesson) => <LessonCard key={lesson.id} lesson={lesson} />)}
-      </div>
-    </main>
+    <Layout>
+      <section className="container mx-auto py-16">
+        {lessons !== undefined && lessons.length > 1 ? <LessonsTable data={lessons} /> : null}
+      </section>
+    </Layout>
   );
 }

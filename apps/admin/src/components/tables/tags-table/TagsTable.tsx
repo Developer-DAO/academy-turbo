@@ -17,11 +17,16 @@ export const TagsTable: React.FC<ProductsClientProps> = ({ data }) => {
     await router.push("tags/create");
   };
   return (
-    <div className="text-white">
+    <div className="">
       <div className="flex items-start justify-between ">
         <Heading title={`Tags (${data.length})`} description="Manage Tags" />
         <div className="mb-4 flex w-full justify-end">
-          <Button onClick={handleCreateNewBtnClick}>Create New Tag</Button>
+          <Button
+            onClick={handleCreateNewBtnClick}
+            className="outline hover:bg-black hover:text-white"
+          >
+            Create New Tag
+          </Button>
         </div>
       </div>
       <Separator color="white" />

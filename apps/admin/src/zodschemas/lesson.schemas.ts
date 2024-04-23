@@ -23,6 +23,7 @@ export const lessonEditSchema = z.object({
   lessonDescription: z.string().min(1),
   lessonPath: z.string().min(1),
   trackId: z.string().min(1),
+  contributorId: z.string().min(1),
   // productionVisible: z.boolean(),
   // stagingVisible: z.boolean(),
   // visible: z.boolean(),

@@ -9,7 +9,7 @@ import { createTRPCRouter, protectedProcedure, publicProcedure } from "@/server/
 
 // Router
 // ========================================================
-export const TracksRouter = createTRPCRouter({
+export const tracksRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
     const constructedWhere =
       env.ENVIRONMENT === "production"
@@ -49,6 +49,13 @@ export const TracksRouter = createTRPCRouter({
       return await ctx.prisma.tracks.findUnique({
         where: {
           id: input.trackId,
+        },
+        include: {
+          contributors: {
+            include: {
+              contributor: true,
+            },
+          },
         },
       });
     }),

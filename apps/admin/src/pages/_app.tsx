@@ -1,16 +1,13 @@
-import "@/styles.css";
+import "@/global.css";
 import "@rainbow-me/rainbowkit/styles.css";
 
 import {
   connectorsForWallets,
-  darkTheme,
   getDefaultWallets,
-  lightTheme,
   RainbowKitProvider,
 } from "@rainbow-me/rainbowkit";
 import { zerionWallet } from "@rainbow-me/rainbowkit/wallets";
 import { RainbowKitSiweNextAuthProvider } from "@rainbow-me/rainbowkit-siwe-next-auth";
-import merge from "lodash.merge";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import Head from "next/head";
@@ -24,7 +21,6 @@ import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { mainnet } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 
-import { Layout } from "@/components/Layout";
 import { AppContextProvider } from "@/contexts/AppContextProvider";
 import { env } from "@/env.mjs";
 import { api } from "@/utils/api";
@@ -55,38 +51,6 @@ const wagmiConfig = createConfig({
   publicClient,
 });
 
-const academyLightTheme = merge(
-  lightTheme({
-    overlayBlur: "small",
-  }),
-  {
-    colors: {
-      accentColor: "var(--button-secondary-dark);",
-      // modalBackground: "var(--gray-white);",
-      modalBackdrop: "gradient-neutral",
-    },
-    fonts: {
-      body: "var(--font-poppins);",
-    },
-  },
-);
-
-const academyDarkTheme = merge(
-  darkTheme({
-    overlayBlur: "small",
-  }),
-  {
-    colors: {
-      accentColor: "var(--button-secondary);",
-      modalBackground: "var(--academy-card-dark);",
-      modalBackdrop: "gradient-neutral",
-    },
-    fonts: {
-      body: "var(--font-poppins);",
-    },
-  },
-);
-
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -111,10 +75,6 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session |
                 appName: "Developer DAO Academy",
                 learnMoreUrl: "https://academy.developerdao.com",
               }}
-              theme={{
-                lightMode: academyLightTheme,
-                darkMode: academyDarkTheme,
-              }}
             >
               <DefaultSeo {...SEO} />
               <Head>
@@ -124,7 +84,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session |
                 />
               </Head>
               <AppContextProvider>
-                <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
+                {getLayout(<Component {...pageProps} />)}
                 <Toaster />
               </AppContextProvider>
             </RainbowKitProvider>

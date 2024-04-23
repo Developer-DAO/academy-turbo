@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 
 import EditLessonForm from "@/components/form/EditLessonForm";
+import { Layout } from "@/components/Layout";
 import Spinner from "@/components/Spinner";
 import { api } from "@/utils/api";
 
@@ -15,13 +16,15 @@ export default function EditLessonPage() {
     lessonId: lessonId as string,
   });
   return (
-    <main className="container mx-auto py-16">
-      <h1 className="text-center text-2xl text-white">Update Lesson</h1>
-      {getLessonByIdIsLoading ? (
-        <Spinner />
-      ) : getLessonByIdIsSuccess && lessonToEditData !== null ? (
-        <EditLessonForm lessonToEditData={lessonToEditData} lessonId={lessonId as string} />
-      ) : null}
-    </main>
+    <Layout>
+      <section className="container mx-auto py-16">
+        <h1 className="text-center text-2xl ">Update Lesson</h1>
+        {getLessonByIdIsLoading ? (
+          <Spinner />
+        ) : getLessonByIdIsSuccess && lessonToEditData !== null ? (
+          <EditLessonForm lessonToEditData={lessonToEditData} lessonId={lessonId as string} />
+        ) : null}
+      </section>
+    </Layout>
   );
 }

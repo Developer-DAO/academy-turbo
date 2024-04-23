@@ -14,14 +14,13 @@ export interface NavigationProps {
 
 export const Navigation: FunctionComponent<NavigationProps> = (props) => {
   const { leftLinks = [], rightLinks = [] } = props;
-
   return (
     <nav aria-label="main" className="relative flex justify-between">
       <div className="flex items-center gap-x-5 md:gap-x-10">
         <Link aria-label="Home" href="#">
           <Logo className="h-6 w-auto" />
         </Link>
-        <div className="hidden gap-x-5 md:flex">
+        <div className="hidden gap-x-5 text-black md:flex">
           {leftLinks.map(({ classNameMobile: _classNameMobile, ...link }) => (
             <ButtonLink {...link} key={link.href.toString()} />
           ))}

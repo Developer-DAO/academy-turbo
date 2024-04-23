@@ -67,4 +67,24 @@ export const TagsRouter = createTRPCRouter({
         },
       });
     }),
+  getAllAvailableByLessonId: protectedProcedure
+    .input(
+      z.object({
+        lessonId: z.string().min(1),
+      }),
+    )
+    .query(async ({ input, ctx }) => {
+      const tagsOnThisLesson = await ctx.prisma.tagsOnLessons.findMany({
+        where: {
+          lessonId: input.lessonId,
+        },
+      });
+      const tagsAssignedIds = tagsOnThisLesson.map((tagsOnLesson) => tagsOnLesson.tagId);
+      const tagsAvailable = await ctx.prisma.tags.findMany({
+        where: {
+          id: { notIn: tagsAssignedIds },
+        },
+      });
+      return tagsAvailable;
+    }),
 });

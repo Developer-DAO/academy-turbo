@@ -74,9 +74,9 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       />
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
-          <Button variant="default" className="h-8 w-8 p-0 text-black">
+          <Button>
             <span className="sr-only text-black">Open menu</span>
-            <Icons.more_horizontal className="h-4 w-4 text-black" />
+            <Icons.more_horizontal />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
@@ -88,6 +88,20 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
             }}
           >
             <Edit className="mr-2 h-4 w-4" /> Update
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              router.push(`/lessons/${data.id}/contributors`);
+            }}
+          >
+            <Edit className="mr-2 h-4 w-4" /> Contributors
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              router.push(`/lessons/${data.id}/tags`);
+            }}
+          >
+            <Edit className="mr-2 h-4 w-4" /> Tags
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => {
