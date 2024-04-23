@@ -39,9 +39,7 @@ depending on your previous experience and your need to learn new ideas. Remember
 to take regular breaks and enjoy the process of development.
 So, once in a while, go and "touch grass" and appreciate nature's contribution to our well-being. 🌱
 
-## What are we building?
-
-{/* INTRO AND CONTENTS */}
+### What are we building?
 
 In the previous lesson, we talked about NFTs and their use cases. Unlike
 traditional NFTs that may represent a single unique use-case, such as a login to
@@ -75,7 +73,7 @@ How did that go? No pressure if there were some gaps. We're here to bridge them 
 {/* ⌛ And
 have you set your pomodoro yet? 😊 🌱 */}
 
-### Lesson breakdown
+## Lesson breakdown
 
 Now that we have set the stage, it's time to dive into the exciting world of
 tiered NFTs and uncover the unique superpowers they possess. By the end of this
@@ -108,7 +106,7 @@ We will guide you through each step, ensuring a fun and comprehensive learning
 experience. Let's get started on this exciting journey into the world of tiered
 NFTs, and unleash the endless possibilities they hold!
 
-## First things first 👷‍♂️
+## First things first 👷‍♂️ Create a Hardhat project
 
 Before we start coding, we need to create our project template by following the
 same steps as in the previous _Build a Basic NFT_ lesson. Make a note of these
@@ -119,8 +117,6 @@ files we don't need.
 Let’s first open a terminal and `cd` into our `d_d_academy` folder, or create it
 first if you haven't already. Then create a folder for our TierNFT project, and
 `cd` into it:
-
-## create a Hardhat project
 
 ```bash
 ## (OPTIONAL) create a folder for our D_D Academy projects
@@ -218,7 +214,7 @@ OpenZeppelin is best known for implementing freely available contracts for
 various standards. They are powerful and widely used building blocks for Solidity
 developers, and come fully tested and audited.
 
-### Let’s start coding!
+## Let’s start coding!
 
 Let’s create an empty file named `TierNFT.sol` inside the `contracts/` folder,
 and by following the contract and file naming convention, create a contract of
@@ -243,7 +239,7 @@ contracts. We'll write our smart contract step by step in five stages:
 - enhance TokenURI function with SVG file
 - add withdraw function
 
-### Add a Mint Function
+### Add a mint function
 
 Let’s get started by inheriting OpenZeppelin's `ERC721` contract like we did last time.
 We add a constructor to our contract, which will mirror the one from `ERC721.sol`.
@@ -290,7 +286,7 @@ contract TierNFT is ERC721 {
 
 ```
 
-### Add Tiers
+### Add tiers
 
 Next, to make our code neat and easily readable, just before the contract
 declaration add the tier _NAME_ and _VALUE_ state variables, and assign their
@@ -440,7 +436,7 @@ contract TierNFT is ERC721 {
 
 <br/>
 
-### Create tokenURI function
+## Create tokenURI function
 
 When we inherited OpenZeppelin's `ERC721`, it gave us a function for `tokenURI` where we can store an image, a video, or much more. With the help of this `ERC721` contract we have the ability to define **a base path** for creating a
 unique URI which adds the token ID to the end of it.
@@ -748,7 +744,9 @@ contract TierNFT is ERC721 {
 </details>
 <br/>
 
-### Where are all our funds?  Let's add a withdraw Function!
+## Where are all our funds?
+
+Let's add a withdraw function!
 
 We need to find a way to actually withdraw any funds our contract generates, otherwise they'll get stuck **in the contract** ... that **we** created! Let's import `Ownable.sol`, to get those permissions, so that only **we** can withdraw those funds, and not anyone else. Clever, eh?
 
@@ -923,7 +921,7 @@ mapping(uint256 => uint256) public tokenTier;
 Go touch grass 😊 🌱
 <br/>
 
-### Time for our Deploy Script
+## Time for our deploy script
 
 We need a script so we can get our smart contract deployed.
 
@@ -1026,7 +1024,7 @@ your security, your private keys and your recovery seed phrases!**
 <br />
 ![2_chainlist-amoy-dark-theme](/assets/lessons/3/2_chainlist-amoy-dark-theme.png)
 
-### Getting Some Testnet Funds
+### Getting some testnet funds
 
 {/* @wolovim, maybe we should give a couple of testnet options, just in case. what do you think? */}
 
@@ -1046,7 +1044,7 @@ tokens from a testnet to a mainnet, or vice-versa. Let's head over and get some 
 
 ![3_polygon-faucet-amoy.png](/assets/lessons/3/3_polygon-faucet-amoy.png)
 
-### Personal Security
+### Personal security
 
 Take your time to understand the **good practices for developers** in this section. Before we deploy, we need to add a `.env` file to our root folder to make sure we are **not pushing and therefore exposing our private keys in public repositories**.
 
@@ -1088,7 +1086,7 @@ configuration files, which may need uploaded to a project's repo.
 Remember to always **protect your private keys, and your recovery seed phrases**
 to keep your wallet safe and **unwanted guests out**.
 
-### It’s Time . . .
+### It’s time . . .
 
 We will deploy our smart contract by using this command:
 
@@ -1104,7 +1102,7 @@ We specify the network where we want the contract to be deployed using the
 **Woohoo!** Finally we deployed our contract! And got a contract address, which
 we will need in a bit.
 
-### Create a Script to Mint our tier NFTs
+## Create a script to mint our tier NFTs
 
 Without a new script we won’t be able to mint any of our NFTs.
 
@@ -1215,9 +1213,18 @@ created collection with your contract address, or with the name that you chose.
 Of course we already have a couple up there, but you will be able to view the
 three NFTs of your own, which you so diligently minted, the artist that you are!
 
-## 😊 lesson summary 😊 😊 😊 here
+## A quick summary of your achievements
 
-😊 Now let's see what you have learned along the way with a little quiz 😉
+- Initialise project TierNFT with Hardhat to set up a neat directory and file structure
+- Develop TierNFT contract inheriting necessary OpenZeppelin contract functionalities
+- Implement functions for minting NFTs, incorporating SVG graphics, and generating token URIs dynamically using Base64 encoding.
+- Write deploy script for deploying TierNFT to Polygon Amoy test network
+- Successfully create configuraton for testnet, secure your environment variables, and obtain testnet tokens
+- Develop and execute minting script to interact with deployed TierNFT contract and mint NFTs with varying features
+- Verify successful creation and market readiness of ERC721's on Opensea
+
+<br />
+**Now let's dive in with a little quiz, and see what you have learned along the way** 😉
 
 <br />
 <br />
@@ -1227,16 +1234,18 @@ three NFTs of your own, which you so diligently minted, the artist that you are!
 <br />
 <br />
 How did you enjoy that? We hope you had fun. And what's next? We're going to bring your dev skills
-to the level. You ain't seen nothin' yet - we're going testing together. Building culture in web3 is
+to the level. You ain't seen nothin' yet - we're going testing together.{" "}
+
+Building culture in web3 is
 the substrate for the infrastructure we create, and learning to test what we build with real
 awareness, just like anywhere else, is crucial for creating a safe and sustainable environment. So
-we're looking forward to seeing you in our *Smart Contracts: Automated Testing and Test-Driven
-Development (TDD)* project next!
+we're looking forward to seeing you in our _Smart Contracts: Automated Testing and Test-Driven
+Development (TDD)_ project up next!
 
 In the mean time, jump into the forum and share your experiences with your
 peers!
 
-## Woohoo ✨ Now it’s time to celebrate.
+### Woohoo ✨ Now it’s time to celebrate.
 
 <br />
 <br />
