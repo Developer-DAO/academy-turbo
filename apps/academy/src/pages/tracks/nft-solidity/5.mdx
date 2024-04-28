@@ -184,7 +184,7 @@ initial setup:
   returns the default wallet provider option and a RainbowKit Provider to "wrap"
   around our app so that we can use its features throughout the app's pages and
   components.
-- `import { polygonMumbai, configureChains, createClient, WagmiConfig, } from 'wagmi';`
+- `import { configureChains, createClient, WagmiConfig, } from 'wagmi';`
   provides a way to configure the WagmiConfig wrapper for our app based on the
   chains and providers of our choice along with some other customisations.
 - `import { alchemyProvider } from 'wagmi/providers/alchemy';` and
@@ -224,25 +224,111 @@ Our dApp is also using WalletConnect, so we need a `projectID`
 from the [WalletConnectCloud](https://cloud.walletconnect.com/sign-in).
 So go and set up an account and grab that ID. You'll be done in a few minutes 🤗
 
-For this application we will continue using the `mumbai` testnet. Other chains
+For this application we will continue using the `amoy` Polygon testnet. Other chains
 can be added simply using the following syntax: `chain.chain_name`. For custom
 providers, like the `alchemyProvider` we can pass in our private `apiKey` as
 well.
 
-Lastly add your `NEXT_PUBLIC_CONTRACT_ADDRESS` which is the address of your deployed on mumbai testnet.
+Lastly add your `NEXT_PUBLIC_CONTRACT_ADDRESS` which is the address of your deployed on Amoy testnet.
 
 Now we need to add these new environment variables to our codebase.
 
 In `_app.tsx` Replace `projectId: 'YOUR_PROJECT_ID',` with `projectId: process.env.NEXT_PUBLIC_PROJECT_ID || "",`.
 
-We're going to continue to use Alchemy as our provider for connecting to `mumbai` testnet.
+We're going to continue to use Alchemy as our provider for connecting to `amoy` testnet.
 
 Please make these changes to `_app.tsx`:
 
 - replace `import { publicProvider } from "wagmi/providers/public";` with `import { alchemyProvider } from "wagmi/providers/alchemy";` at the top of the file.
 - in `configureChains` section, replace `[publicProvider()]` with `[alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID || "" })]`.
-- search and replace `goerli` (which is Ethereum's testnet) and replace with `polygonMumbai`.
 - remove `zora` from `wagmi/chains` import and from the `configureChains` array.
+
+The Amoy Polygon testnet is newer than the libraries this tutorial is using. Normally you'd search
+and replace testnet with `amoy` though for this tutorial, we'll manually add.
+
+Here it the complete `_app.tsx` with changes to use Amoy.
+
+```tsx
+import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import "@rainbow-me/rainbowkit/styles.css";
+import type { AppProps } from "next/app";
+import { configureChains, createConfig, WagmiConfig } from "wagmi";
+import { arbitrum, base, mainnet, optimism, polygon } from "wagmi/chains";
+import { alchemyProvider } from "wagmi/providers/alchemy";
+import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
+import "../styles/globals.css";
+
+import { Chain } from "wagmi";
+
+export const polygonAmoy = {
+  id: 80002,
+  name: "Polygon Amoy",
+  network: "polygonamoy",
+  nativeCurrency: {
+    decimals: 18,
+    name: "MATIC",
+    symbol: "MATIC",
+  },
+  rpcUrls: {
+    public: { http: ["https://polygon-amoy-bor-rpc.publicnode.com"] },
+    default: { http: ["https://rpc-amoy.polygon.technology"] },
+  },
+  blockExplorers: {
+    etherscan: { name: "OK LINK", url: "https://www.oklink.com/amoy" },
+    default: { name: "OK LINK", url: "https://www.oklink.com/amoy" },
+  },
+  contracts: {
+    multicall3: {
+      address: "0xca11bde05977b3631167028862be2a173976ca11",
+      blockCreated: 3127388,
+    },
+  },
+} as const satisfies Chain;
+
+const { chains, publicClient, webSocketPublicClient } = configureChains(
+  [
+    mainnet,
+    polygon,
+    optimism,
+    arbitrum,
+    base,
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [polygonAmoy] : []),
+  ],
+  [
+    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID || "" }),
+    jsonRpcProvider({
+      rpc: (chain) => ({
+        http: `${chain.rpcUrls.default.http}`,
+      }),
+    }),
+  ],
+);
+
+const { connectors } = getDefaultWallets({
+  appName: "RainbowKit App",
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID || "",
+  chains,
+});
+
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors,
+  publicClient,
+  webSocketPublicClient,
+});
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <WagmiConfig config={wagmiConfig}>
+      <RainbowKitProvider chains={chains}>
+        <Component {...pageProps} />
+      </RainbowKitProvider>
+    </WagmiConfig>
+  );
+}
+
+export default MyApp;
+```
 
 Now that we have our application setup, we can edit the Index Page.
 
@@ -672,6 +758,7 @@ const modalContent: CSSProperties = {
 import Image from "next/image";
 import { CSSProperties } from "react";
 import { TransactionReceipt, formatUnits } from "viem";
+import { useNetwork } from "wagmi";
 
 export function SuccessfulMint({
   contractAddress,
@@ -689,6 +776,7 @@ export function SuccessfulMint({
   txData?: TransactionReceipt;
   onClose: () => void;
 }) {
+  const { chain } = useNetwork();
   return (
     <div style={modal}>
       <div style={modalContent}>
@@ -704,7 +792,7 @@ export function SuccessfulMint({
             <button style={modalButton}>
               {mintedTokenId != undefined && (
                 <a
-                  href={`https://testnets.opensea.io/assets/mumbai/${contractAddress}/${formatUnits(
+                  href={`https://testnets.opensea.io/assets/amoy/${contractAddress}/${formatUnits(
                     mintedTokenId,
                     0,
                   )}`}
@@ -717,7 +805,7 @@ export function SuccessfulMint({
             <button style={modalButton}>
               {txData && txData.transactionHash ? (
                 <a
-                  href={`https://mumbai.polygonscan.com/tx/${txData.transactionHash}`}
+                  href={`${chain?.blockExplorers?.etherscan?.url}/tx/${txData.transactionHash}`}
                   target="_blank"
                 >
                   View on Polygonscan
