@@ -1,6 +1,9 @@
 // import AboutCourse from "@/components/AboutCourse";
+import { useRouter } from "next/router";
+
 import CreatedBy from "@/components/CreatedBy";
 import PageSeoLayout from "@/components/PageSeoLayout";
+import { api } from "@/utils/api";
 
 interface LessonLayoutProps {
   children: React.ReactNode;
@@ -19,6 +22,14 @@ export default function LessonLayout({
   authorImage,
   authorTwitter,
 }: LessonLayoutProps) {
+  const router = useRouter();
+
+  console.log(router.pathname);
+
+  const { data: lessonData } = api.lessons.getLessonsByLessonPath.useQuery({
+    lessonPath: router.pathname,
+  });
+  console.log({ lessonData });
   return (
     <PageSeoLayout
       title={lessonTitle}
