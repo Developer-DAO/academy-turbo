@@ -14,10 +14,10 @@ interface PropsInterface {
 export function AppContextProvider({ children }: PropsInterface) {
   const [completedQuizzesIds, setCompletedQuizzesIds] = useState<string[]>([]);
   const [sessionDataUser, setSessionDataUser] = useState<any>(null);
-  // const [formattedAllTracksData, setFormattedAllTracksData] = useState<TrackWithTags>([]);
 
   const { data: sessionData, status: sessionStatus } = useSession();
   const { address, status: walletStatus } = useAccount();
+  const [learnersAmmountToShow, setLearnersAmmountToShow] = useState("");
 
   useEffect(() => {
     if (sessionData?.user && sessionData.user !== sessionDataUser) {
@@ -57,27 +57,6 @@ export function AppContextProvider({ children }: PropsInterface) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [completedQuizzesAllData]);
 
-  // const fetchFromDirs = async () => {
-  //   const lessonsData = await fetch("/api/readfiles").then(async (res) => res.json());
-
-  //   const lessonsFormatResult: FormatedLessonInterface = lessonsData.reduce(
-  //     (acc: any, curr: any) => {
-  //       if (acc[curr.path] === undefined) acc[curr.path] = [];
-
-  //       acc[curr.path].push(curr);
-  //       return acc as Project | Fundamental;
-  //     },
-  //     {},
-  //   );
-
-  //   setFundamentals(lessonsFormatResult.fundamentals);
-  //   setProjects(lessonsFormatResult.projects);
-  // };
-
-  // useEffect(() => {
-  //   void fetchFromDirs();
-  // }, []);
-
   // - Get All Tracks data
   const { data: allTracksData, isLoading: allTracksDataIsLoading } = api.tracks.getAll.useQuery(
     undefined,
@@ -94,71 +73,22 @@ export function AppContextProvider({ children }: PropsInterface) {
     },
   );
 
-  // useEffect(() => {
-  //   if (
-  //     allLessonsData !== undefined &&
-  //     projects !== undefined &&
-  //     completedQuizzesIds.length !== 0
-  //   ) {
-  //     const projectsWithCompleteStatus = projects.map((lesson) => {
-  //       const currentLessonId = allLessonsData.find(
-  //         (lessonData: any) =>
-  //           lessonData.projectLessonNumber?.toString() === lesson.slug.toString(), // DEV_NOTE: forcing .toString() to avoid type errors
-  //       )?.id;
+  const { data: allAccountsData, isLoading: allAccountsDataIsLoading } =
+    api.account.getAll.useQuery(undefined, {
+      refetchOnWindowFocus: false,
+    });
 
-  //       const completed =
-  //         currentLessonId !== undefined && completedQuizzesIds.includes(currentLessonId)
-  //           ? true
-  //           : false; // DEV_NOTE: if the lesson is not found, it is not completed
-  //       return { ...lesson, completed };
-  //     });
-
-  //     setProjects(projectsWithCompleteStatus);
-  //   } else if (
-  //     allLessonsData !== undefined &&
-  //     projects !== undefined &&
-  //     completedQuizzesIds.length === 0
-  //   ) {
-  //     const projectsWithCompleteStatus = projects.map((lesson) => {
-  //       return { ...lesson, completed: false };
-  //     });
-  //     setProjects(projectsWithCompleteStatus);
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [completedQuizzesIds]);
-
-  // useEffect(() => {
-  //   if (
-  //     allLessonsData !== undefined &&
-  //     fundamentals !== undefined &&
-  //     completedQuizzesIds.length !== 0
-  //   ) {
-  //     const fundamentalsWithCompleteStatus = fundamentals.map((lesson) => {
-  //       const currentLessonId = allLessonsData.find(
-  //         (lessonData: any) =>
-  //           lessonData.fundamentalLessonName?.toString() === lesson.slug.toString(), // DEV_NOTE: forcing .toString() to avoid type errors
-  //       )?.id;
-
-  //       const completed =
-  //         currentLessonId !== undefined && completedQuizzesIds.includes(currentLessonId)
-  //           ? true
-  //           : false; // DEV_NOTE: if the lesson is not found, it is not completed
-  //       return { ...lesson, completed };
-  //     });
-
-  //     setFundamentals(fundamentalsWithCompleteStatus);
-  //   } else if (
-  //     allLessonsData !== undefined &&
-  //     fundamentals !== undefined &&
-  //     completedQuizzesIds.length === 0
-  //   ) {
-  //     const fundamentalsWithCompleteStatus = fundamentals.map((lesson) => {
-  //       return { ...lesson, completed: false };
-  //     });
-  //     setFundamentals(fundamentalsWithCompleteStatus);
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [completedQuizzesIds]);
+  useEffect(() => {
+    if (allAccountsData !== undefined && !allAccountsDataIsLoading) {
+      const accountsLength = allAccountsData.length;
+      let stringToShow = `+${accountsLength}`;
+      if (accountsLength % 10 === 0) {
+        const firstNumber = accountsLength.toString().split("")[0]!;
+        stringToShow = `+${firstNumber}0`;
+      }
+      setLearnersAmmountToShow(stringToShow);
+    }
+  }, [allAccountsData, allAccountsDataIsLoading]);
 
   return (
     <AppContext.Provider
@@ -169,6 +99,7 @@ export function AppContextProvider({ children }: PropsInterface) {
         allLessonsData: allLessonsData !== undefined ? allLessonsData : [],
         allLessonsDataIsLoading,
         refetchCompletedQuizzesAll,
+        learnersAmmountToShow,
       }}
     >
       {children}

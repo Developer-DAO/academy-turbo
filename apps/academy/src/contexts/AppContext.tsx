@@ -8,6 +8,7 @@ interface AppContextInterface {
   refetchCompletedQuizzesAll?: () => Promise<any>;
   allTracksData: Tracks[]; // | (Tracks[] & { tags: Tags[] });
   allTracksDataIsLoading: boolean;
+  learnersAmmountToShow: string;
 }
 
 export const AppContext = createContext<AppContextInterface>({
@@ -17,6 +18,7 @@ export const AppContext = createContext<AppContextInterface>({
   refetchCompletedQuizzesAll: async () => Promise.resolve(),
   allTracksData: [],
   allTracksDataIsLoading: false,
+  learnersAmmountToShow: "",
 });
 
 AppContext.displayName = "AcademyAppContext";

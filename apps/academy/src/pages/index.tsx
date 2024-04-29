@@ -3,9 +3,11 @@ import type { ReactElement } from "react";
 import { Icons, LearnWeb3Banner, PartnerBanner } from "ui";
 
 import PageSeoLayout from "@/components/PageSeoLayout";
+import { useAppContext } from "@/contexts/AppContext";
 import type { NextPageWithLayout } from "@/pages/_app";
 
 const Home: NextPageWithLayout = () => {
+  const { learnersAmmountToShow } = useAppContext();
   return (
     <>
       <section className="academy-grid app-container">
@@ -13,15 +15,16 @@ const Home: NextPageWithLayout = () => {
           <div className="hidden justify-center md:flex">
             <div className="text-bttf-lg">
               <h1>
-                Learn
-                <br />
+                Learn <br />
                 web3__
                 <br />
                 with
-                <br />
-                friends
+                <br /> friends
               </h1>
             </div>
+          </div>
+          <div className="text-glow flex justify-center text-2xl">
+            {`${learnersAmmountToShow} learners`}
           </div>
           <div className="description max-w-[495px]">
             <p>Become a web3 developer with Developer DAO.</p>
