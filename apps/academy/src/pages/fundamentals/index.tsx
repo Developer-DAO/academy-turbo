@@ -7,7 +7,7 @@ import Spinner from "@/components/Spinner";
 import { api } from "@/utils/api";
 
 const FundamentalsPage = () => {
-  const { data: allLessonsData } = api.lessons.getLessonsByLessonPath.useQuery();
+  const { data: allLessonsData } = api.lessons.getFundamentalLessonsByPath.useQuery();
 
   return (
     <div className="flex h-full w-full flex-col space-y-10 overflow-hidden bg-black lg:h-screen lg:max-h-screen lg:flex-row">

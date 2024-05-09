@@ -61,6 +61,7 @@ model Lessons {
   lessonDescription String
   lessonPath String
   tags TagsOnLessons[]
+  contributors ContributorsOnLessons[]
   track Tracks @relation(fields: [trackId], references: [id], onDelete: NoAction)
   trackId String
   completedQuizzes CompletedQuizzes[]
@@ -74,7 +75,7 @@ model Lessons {
   model Tags {
   id String @id @default(cuid())
   tagName String
-  tagDescription String?
+  tagDescription String
   lessons TagsOnLessons[]
   tracks TagsOnTracks[]
 }
@@ -105,6 +106,7 @@ model Tracks {
   productionVisible Boolean @default(true)
   stagingVisible Boolean @default(true)
   visible Boolean @default(true)
+  contributors ContributorsOnTracks[]
 }
 
 model TagsOnTracks {
@@ -115,4 +117,37 @@ model TagsOnTracks {
   tagId String // relation scalar field (used in the `@relation` attribute above)
   assignedAt DateTime @default(now())
   @@id([trackId, tagId])
+}
+
+model Contributors {
+  id String  @id @default(cuid())
+  name String
+  description String
+  image String
+  position String
+  twitter String
+  lessons ContributorsOnLessons[]
+  tracks ContributorsOnTracks[]
+}
+
+model ContributorsOnLessons {
+  id String @default(cuid())
+  lesson       Lessons     @relation(fields: [lessonId], references: [id])
+  lessonId     String
+  contributor   Contributors @relation(fields: [contributorId], references: [id])
+  contributorId String
+  assignedAt DateTime @default(now())
+  typeOfContribution String 
+  @@id([lessonId, contributorId])
+}
+
+model ContributorsOnTracks {
+  id String @default(cuid())
+  track       Tracks     @relation(fields: [trackId], references: [id])
+  trackId     String
+  contributor   Contributors @relation(fields: [contributorId], references: [id])
+  contributorId String
+  assignedAt DateTime @default(now())
+  typeOfContribution String 
+  @@id([trackId, contributorId])
 }
