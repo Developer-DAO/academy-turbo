@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { type Dispatch, type SetStateAction, useState } from "react";
 import { Button } from "ui";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "ui";
 import { Input } from "ui";
@@ -7,7 +7,12 @@ import { useToast } from "ui";
 
 import { api } from "@/utils/api";
 
-export function RequestEmailDialog({ open, setIsOpen }: any) {
+interface Props {
+  open: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+export function RequestEmailDialog({ open, setIsOpen }: Props) {
   const { toast } = useToast();
   const [userEmail, setUserEmail] = useState("");
   const [saveBtnClicked, setSaveBtnClicked] = useState(false);
@@ -19,20 +24,31 @@ export function RequestEmailDialog({ open, setIsOpen }: any) {
         description: "Now Check your inbox to verify your email address",
       });
       setSaveBtnClicked(true);
+      const timer = setTimeout(() => { setIsOpen(false); }, 350);
+      return () => { clearTimeout(timer); };
     },
   });
 
-  const handleSaveBtnClick = () => {
-    saveUserEmail(userEmail);
+  const handleSaveBtnClick = (e: any) => {
+    e.preventDefault();
+    if (userEmail !== "") {
+      saveUserEmail(userEmail);
+    }
   };
 
   return (
-    <Dialog open={open} onOpenChange={setIsOpen()}>
+    <Dialog open={open}>
       <DialogContent
         className=" h-fit w-fit gap-10 border-[#44AF96] bg-black"
-        onEscapeKeyDown={(e) => { e.preventDefault(); }}
-        onPointerDown={(e) => { e.preventDefault(); }}
-        onInteractOutside={(e) => { e.preventDefault(); }}
+        onEscapeKeyDown={(e) => {
+          e.preventDefault();
+        }}
+        onPointerDown={(e) => {
+          e.preventDefault();
+        }}
+        onInteractOutside={(e) => {
+          e.preventDefault();
+        }}
       >
         <DialogHeader className="gap-2">
           <DialogTitle className="text-3xl text-[#44AF96]">Configure your email</DialogTitle>
@@ -49,7 +65,9 @@ export function RequestEmailDialog({ open, setIsOpen }: any) {
               placeholder="Keep up to date with Academy's updates!"
               className="col-span-3 border-0 bg-[#333333] text-[#999999]"
               value={userEmail}
-              onChange={(e) => { setUserEmail(e.target.value); }}
+              onChange={(e) => {
+                setUserEmail(e.target.value);
+              }}
             />
           </div>
         </div>
