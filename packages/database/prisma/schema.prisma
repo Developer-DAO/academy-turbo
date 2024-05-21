@@ -5,7 +5,7 @@ generator client {
 datasource db {
   provider          = "postgresql"
   url               = env("POSTGRES_PRISMA_URL")
-  directUrl         = env("POSTGRES_URL_NON_POOLING")
+  directUrl         = env("POSTGRES_PRISMA_URL")
   shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
@@ -33,6 +33,7 @@ model User {
   address          String?            @unique
   email            String?            @unique
   emailVerified    DateTime?
+  verificationNumber Int? 
   image            String?
   createdAt        DateTime           @default(now())
   accounts         Account[]

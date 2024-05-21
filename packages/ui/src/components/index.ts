@@ -19,6 +19,7 @@ export * from "./ui/dropdown-menu";
 export * from "./ui/form";
 export * from "./ui/heading";
 export * from "./ui/input";
+export * from "./ui/input-otp";
 export * from "./ui/label";
 export * from "./ui/modal";
 export * from "./ui/scroll-area";
