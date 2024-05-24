@@ -64,6 +64,11 @@ export const userRouter = createTRPCRouter({
         ...emailSaved,
         emailSent: true,
       };
+    } else {
+      return {
+        emailSaved: null,
+        emailSent: false,
+      };
     }
   }),
   emailVerificatedSuccess: protectedProcedure.mutation(async ({ ctx }) => {
