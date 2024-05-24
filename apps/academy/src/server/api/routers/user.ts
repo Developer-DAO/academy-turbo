@@ -66,7 +66,7 @@ export const userRouter = createTRPCRouter({
       };
     } else {
       return {
-        emailSaved: null,
+        ...emailSaved,
         emailSent: false,
       };
     }
