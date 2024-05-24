@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import { useRouter } from "next/router";
-import { type FunctionComponent, type PropsWithChildren,useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { type FunctionComponent, type PropsWithChildren, useEffect, useState } from "react";
 import { Footer } from "ui";
 
 import { Header } from "@/components/Header";
@@ -27,19 +28,39 @@ export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
   const { pathname } = router;
   const [requestEmail, setRequestEmail] = useState(false);
 
-  const { data: userEmailData } = api.user.getUserEmail.useQuery();
+  const { status } = useSession();
+
+  const { data: userEmailData, refetch: refetchGetUSerEMailData } =
+    api.user.getUserEmail.useQuery();
 
   useEffect(() => {
-    if (userEmailData) {
-      if (userEmailData.email === null) {
-        setRequestEmail(true);
-      }
+    if (status === "authenticated") {
+      const fetchGetUserEmailData = async () => {
+        await refetchGetUSerEMailData();
+      };
+      void fetchGetUserEmailData();
     }
-  }, [userEmailData]);
+  }, [status]);
+
+  useEffect(() => {
+    console.log({ userEmailData });
+
+    if (
+      status === "authenticated" &&
+      (userEmailData?.email === null || userEmailData?.emailVerified === null)
+    ) {
+      setRequestEmail(true);
+    }
+  }, [userEmailData, status]);
 
   return (
     <>
-      <RequestEmailDialog open={requestEmail} setIsOpen={() => { setRequestEmail(false); }} />
+      <RequestEmailDialog
+        open={requestEmail}
+        setIsOpen={() => {
+          setRequestEmail(false);
+        }}
+      />
       <Header />
       <main className={fontVars}>{children}</main>
       {pathname !== "/tracks" && pathname !== "/fundamentals" ? <Footer /> : null}

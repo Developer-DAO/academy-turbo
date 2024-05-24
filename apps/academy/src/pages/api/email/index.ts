@@ -17,7 +17,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Respon
       to: body.email,
       from: "no-reply@developerdao.com",
       subject: "D_D Academy Verification Code",
-      text: "This is your verification code, please insert it in the modal on Academy web",
+      text: "This is your e-mail verification code for Developer DAO Academy ",
       html: `<strong>${body.verificationNumber}</strong>`,
     };
 

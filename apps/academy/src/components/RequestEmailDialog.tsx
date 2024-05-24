@@ -1,4 +1,4 @@
-import { type Dispatch, type SetStateAction, useState } from "react";
+import { type Dispatch, type SetStateAction, useEffect, useState } from "react";
 import { Button, InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "ui";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "ui";
 import { Input } from "ui";
@@ -35,6 +35,16 @@ export function RequestEmailDialog({ open, setIsOpen }: Props) {
     },
   });
 
+  const { mutate: saveEmailVerificatedSuccess } = api.user.emailVerificatedSuccess.useMutation({
+    onSuccess: () => {
+      toast({
+        title: "Email verified!",
+        description: "Thank you so much for verifying you email address, keep learning now. Enjoy!",
+      });
+      setIsOpen(false);
+    },
+  });
+
   const handleSaveBtnClick = (e: any) => {
     e.preventDefault();
     if (userEmail !== "") {
@@ -42,23 +52,27 @@ export function RequestEmailDialog({ open, setIsOpen }: Props) {
     }
   };
 
+  const { data: userEmailData } = api.user.getUserEmail.useQuery();
+
   const handleVerifyVerificationNumber = () => {
-    console.log("handleVerifyVerificationNumber");
     if (userData?.verificationNumber !== null && userData?.verificationNumber !== undefined) {
       const verificationCorrect = Number(numberToVerify) === userData.verificationNumber;
       if (verificationCorrect) {
-        // TODO: mutate save emailVerificated field with the date verified - trigger the toast inside the onSuccess callback from the mutation
-        toast({
-          title: "Email verified!",
-          description:
-            "Thank you so much for verifying you email address, keep learning now. Enjoy!",
-        });
-        setIsOpen(false);
+        saveEmailVerificatedSuccess();
       } else {
-        //TODO: what to do? resend another email with another number?
+        console.log("notttt correct");
+        //TODO:  resend another email with another number
       }
+    } else {
+      console.log("weird else");
     }
   };
+
+  useEffect(() => {
+    if (userEmailData?.email !== null && userEmailData?.emailVerified === null) {
+      setShowInputOtp(true);
+    }
+  }, [userEmailData]);
 
   return (
     <Dialog open={open}>
@@ -86,19 +100,27 @@ export function RequestEmailDialog({ open, setIsOpen }: Props) {
               frens!
             </Label>
             {showInputOtp ? (
-              <InputOTP maxLength={6} onChange={(val) => { setNumberToVerify(val); }}>
-                <InputOTPGroup>
-                  <InputOTPSlot index={0} />
-                  <InputOTPSlot index={1} />
-                  <InputOTPSlot index={2} />
-                </InputOTPGroup>
-                <InputOTPSeparator />
-                <InputOTPGroup>
-                  <InputOTPSlot index={3} />
-                  <InputOTPSlot index={4} />
-                  <InputOTPSlot index={5} />
-                </InputOTPGroup>
-              </InputOTP>
+              <div className="flex justify-center">
+                <InputOTP
+                  maxLength={6}
+                  onChange={(val) => {
+                    console.log({ val });
+                    setNumberToVerify(val);
+                  }}
+                >
+                  <InputOTPGroup>
+                    <InputOTPSlot index={0} className="border border-[#44AF96] text-[#44AF96]" />
+                    <InputOTPSlot index={1} className="border border-[#44AF96] text-[#44AF96]" />
+                    <InputOTPSlot index={2} className="border border-[#44AF96] text-[#44AF96]" />
+                  </InputOTPGroup>
+                  <InputOTPSeparator />
+                  <InputOTPGroup>
+                    <InputOTPSlot index={3} className="border border-[#44AF96] text-[#44AF96]" />
+                    <InputOTPSlot index={4} className="border border-[#44AF96] text-[#44AF96]" />
+                    <InputOTPSlot index={5} className="border border-[#44AF96] text-[#44AF96]" />
+                  </InputOTPGroup>
+                </InputOTP>
+              </div>
             ) : (
               <Input
                 id="email"
