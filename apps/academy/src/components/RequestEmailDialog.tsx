@@ -56,18 +56,28 @@ export function RequestEmailDialog({ open, setIsOpen }: Props) {
 
   const handleVerifyVerificationNumber = () => {
     if (
-      (userData?.verificationNumber !== null && userData?.verificationNumber !== undefined) ||
-      (userEmailData?.verificationNumber !== null &&
-        userEmailData?.verificationNumber !== undefined)
+      (userData !== null &&
+        userData !== undefined &&
+        userData.verificationNumber !== null &&
+        userData.verificationNumber !== undefined) ||
+      (userEmailData !== null &&
+        userEmailData !== undefined &&
+        userEmailData.verificationNumber !== null &&
+        userEmailData.verificationNumber !== undefined)
     ) {
       let verificationCorrect = false;
+
       if (userData?.verificationNumber !== null && userData?.verificationNumber !== undefined) {
+        console.log("111");
         verificationCorrect = Number(numberToVerify) === userData.verificationNumber;
-      }
-      if (
-        userEmailData?.verificationNumber !== null &&
-        userEmailData?.verificationNumber !== undefined
+      } else if (
+        userEmailData !== null &&
+        userEmailData !== undefined &&
+        userEmailData.verificationNumber !== null &&
+        userEmailData.verificationNumber !== undefined &&
+        verificationCorrect
       ) {
+        console.log("222");
         verificationCorrect = Number(numberToVerify) === userEmailData.verificationNumber;
       }
 
