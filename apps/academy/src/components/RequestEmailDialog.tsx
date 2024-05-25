@@ -166,6 +166,7 @@ export function RequestEmailDialog({ open, setIsOpen }: Props) {
               disabled={numberToVerify.length !== 6}
               onClick={handleVerifyVerificationNumber}
               className="disabled:bg-gray-600 disabled:hover:bg-gray-500"
+              type="button"
             >
               Verify Email
             </Button>
@@ -175,6 +176,7 @@ export function RequestEmailDialog({ open, setIsOpen }: Props) {
               disabled={!userEmail}
               onClick={handleSaveBtnClick}
               className="disabled:bg-gray-600 disabled:hover:bg-gray-500"
+              type="button"
             >
               Save
             </Button>

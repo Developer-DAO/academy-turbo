@@ -5,14 +5,14 @@ import sgMail from "@sendgrid/mail";
 import { z } from "zod";
 
 import { env } from "@/env.mjs";
-import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from "@/server/api/trpc";
 
 sgMail.setApiKey(env.SENDGRID_API_KEY);
 
 // Router
 // ========================================================
 export const userRouter = createTRPCRouter({
-  getUserEmail: protectedProcedure.query(async ({ ctx }) => {
+  getUserEmail: publicProcedure.query(async ({ ctx }) => {
     const userEmail = await ctx.prisma.user.findUnique({
       where: {
         id: ctx.session.user.id,
