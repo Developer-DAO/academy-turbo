@@ -66,8 +66,14 @@ export function RequestEmailDialog({ open, setIsOpen }: Props) {
         userEmailData.verificationNumber !== undefined)
     ) {
       let verificationCorrect = false;
-
-      if (userData?.verificationNumber !== null && userData?.verificationNumber !== undefined) {
+      console.log({ userData });
+      console.log({ userEmailData });
+      if (
+        userData !== null &&
+        userData !== undefined &&
+        userData.verificationNumber !== null &&
+        userData.verificationNumber !== undefined
+      ) {
         console.log("111");
         verificationCorrect = Number(numberToVerify) === userData.verificationNumber;
       } else if (
@@ -75,10 +81,12 @@ export function RequestEmailDialog({ open, setIsOpen }: Props) {
         userEmailData !== undefined &&
         userEmailData.verificationNumber !== null &&
         userEmailData.verificationNumber !== undefined &&
-        verificationCorrect
+        !verificationCorrect
       ) {
         console.log("222");
         verificationCorrect = Number(numberToVerify) === userEmailData.verificationNumber;
+      } else {
+        console.log("F3333");
       }
 
       if (verificationCorrect) {
