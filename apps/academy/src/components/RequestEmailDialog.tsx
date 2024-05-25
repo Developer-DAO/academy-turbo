@@ -55,8 +55,22 @@ export function RequestEmailDialog({ open, setIsOpen }: Props) {
   const { data: userEmailData } = api.user.getUserEmail.useQuery();
 
   const handleVerifyVerificationNumber = () => {
-    if (userData?.verificationNumber !== null && userData?.verificationNumber !== undefined) {
-      const verificationCorrect = Number(numberToVerify) === userData.verificationNumber;
+    if (
+      (userData?.verificationNumber !== null && userData?.verificationNumber !== undefined) ||
+      (userEmailData?.verificationNumber !== null &&
+        userEmailData?.verificationNumber !== undefined)
+    ) {
+      let verificationCorrect = false;
+      if (userData?.verificationNumber !== null && userData?.verificationNumber !== undefined) {
+        verificationCorrect = Number(numberToVerify) === userData.verificationNumber;
+      }
+      if (
+        userEmailData?.verificationNumber !== null &&
+        userEmailData?.verificationNumber !== undefined
+      ) {
+        verificationCorrect = Number(numberToVerify) === userEmailData.verificationNumber;
+      }
+
       if (verificationCorrect) {
         saveEmailVerificatedSuccess();
       } else {
@@ -103,7 +117,7 @@ export function RequestEmailDialog({ open, setIsOpen }: Props) {
               <div className="flex justify-center">
                 <InputOTP
                   maxLength={6}
-                  onChange={(val) => {
+                  onChange={(val: string) => {
                     console.log({ val });
                     setNumberToVerify(val);
                   }}
