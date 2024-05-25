@@ -12,10 +12,10 @@ sgMail.setApiKey(env.SENDGRID_API_KEY);
 // Router
 // ========================================================
 export const userRouter = createTRPCRouter({
-  getUserEmail: publicProcedure.query(async ({ ctx }) => {
+  getUserEmail: publicProcedure.input(z.string().min(1)).query(async ({ ctx, input }) => {
     const userEmail = await ctx.prisma.user.findUnique({
       where: {
-        id: ctx.session.user.id,
+        id: input,
       },
       select: {
         email: true,

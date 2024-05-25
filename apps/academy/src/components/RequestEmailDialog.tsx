@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react";
 import { type Dispatch, type SetStateAction, useEffect, useState } from "react";
 import { Button, InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "ui";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "ui";
@@ -18,6 +19,8 @@ export function RequestEmailDialog({ open, setIsOpen }: Props) {
   const [saveBtnClicked, setSaveBtnClicked] = useState(false);
   const [showInputOtp, setShowInputOtp] = useState(false);
   const [numberToVerify, setNumberToVerify] = useState("");
+
+  const { data: sessionData } = useSession();
 
   const { mutate: saveUserEmail, data: userData } = api.user.addEmail.useMutation({
     onSuccess: () => {
@@ -52,7 +55,9 @@ export function RequestEmailDialog({ open, setIsOpen }: Props) {
     }
   };
 
-  const { data: userEmailData } = api.user.getUserEmail.useQuery();
+  const { data: userEmailData } = api.user.getUserEmail.useQuery(sessionData?.user.id!, {
+    enabled: sessionData?.user.id !== null && sessionData?.user.id !== undefined,
+  });
 
   const handleVerifyVerificationNumber = () => {
     if (

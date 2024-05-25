@@ -28,10 +28,14 @@ export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
   const { pathname } = router;
   const [requestEmail, setRequestEmail] = useState(false);
 
-  const { status } = useSession();
+  const { status, data: sessionData } = useSession();
 
-  const { data: userEmailData, refetch: refetchGetUSerEMailData } =
-    api.user.getUserEmail.useQuery();
+  const { data: userEmailData, refetch: refetchGetUSerEMailData } = api.user.getUserEmail.useQuery(
+    sessionData?.user.id!,
+    {
+      enabled: sessionData?.user.id !== null && sessionData?.user.id !== undefined,
+    },
+  );
 
   useEffect(() => {
     if (status === "authenticated") {
