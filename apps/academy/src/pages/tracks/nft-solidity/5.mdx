@@ -118,19 +118,25 @@ application.
 The next command creates a sub-directory named `frontend` inside our root
 directory and sets up all the necessary files and folders within it:
 
+First switch to the root directory of your project. For example:
+
+```bash
+cd /d_d_academy/tierNFT
+```
+
 ```bash
 # use the RainbowKit starter to create our your Next.js application with RainbowKit
 npm init @rainbow-me/rainbowkit@0.2.11 --force
 ```
 
-All you'll need to pick is the name of your project, which will be `frontend`:
+All you'll need to do is type the name of your project, which is `frontend`:
 
 ```bash
 🌈 Welcome to RainbowKit!
 
 ✔ What is the name of your project? … frontend
 
-🚀 Creating a new RainbowKit app in ((path)):/developerdao/frontend
+🚀 Creating a new RainbowKit app in ((path)):/d_d_academy/tierNFT/frontend
 ```
 
 When this command finishes running you'll see:
@@ -146,19 +152,19 @@ cd frontend
 ```
 
 <Callout emoji="💡">
-  Bug fix: You'll need to manually edit `package.json` and change `"@rainbow-me/rainbowkit":
-  "^2.0.0",` to `"@rainbow-me/rainbowkit": "^1.0.0",`. This lesson is based on RainbowKit 1.x.
+  Bug fix: You'll need to manually edit `frontend/package.json` and change
+  `"@rainbow-me/rainbowkit": "^2.0.0",` to `"@rainbow-me/rainbowkit": "^1.0.0",`. This lesson is
+  based on RainbowKit 1.x.
 </Callout>
 
-Try running the site to see if everything is working as expected:
+Try running the site:
 
 ```bash
 npm install
 npm run dev
 ```
 
-You'll see a message that says which url to view your site at.
-It should say <strong>http://localhost:3000</strong>
+You'll see a message that says which url to view your site at. It should say <strong>http://localhost:3000</strong>. Open that url in your browser to see if everything is working as expected. We'll be grabbing a valid projectID shortly.
 
 <br />
 
@@ -229,7 +235,7 @@ can be added simply using the following syntax: `chain.chain_name`. For custom
 providers, like the `alchemyProvider` we can pass in our private `apiKey` as
 well.
 
-Lastly add your `NEXT_PUBLIC_CONTRACT_ADDRESS` which is the address of your deployed on Amoy testnet.
+Lastly add your `NEXT_PUBLIC_CONTRACT_ADDRESS` which is the address of your deployed contract on Amoy testnet.
 
 Now we need to add these new environment variables to our codebase.
 
@@ -246,7 +252,7 @@ Please make these changes to `_app.tsx`:
 The Amoy Polygon testnet is newer than the libraries this tutorial is using. Normally you'd search
 and replace testnet with `amoy` though for this tutorial, we'll manually add.
 
-Here it the complete `_app.tsx` with changes to use Amoy.
+Here is the complete `_app.tsx` with changes to use Amoy.
 
 ```tsx
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
@@ -398,7 +404,7 @@ mkdir components
 mkdir hooks
 ```
 
-Create `tiernft.tsx` that will contain the following code:
+Create `tiernft.tsx` inside the new `components` directory that will contain the following code:
 
 ```tsx
 export function TierNFT() {
@@ -430,7 +436,7 @@ The preview should look like this:
 A well structured application is easy to maintain and debug when you split it into smaller components.
 Each component is easier to understand and test.
 
-In this application, we have these files:
+In this application, we will have these files:
 
 - `tiernft.tsx` - the main application logic which pulls in various components
 - `nftcard.tsx` - a component that displays each NFT available to mint
@@ -449,6 +455,8 @@ In this application, we have these files:
 
 We'll start with the main application logic, which is built as a React component.
 
+Let's first stop our development server we had started running earlier, by pressing CTRL-C in terminal. Our code base won't be working correctly until we have all the code added. Or if you leave your server running, don't worry about any errors you see in your terminal, or errors you see in your browser until we've finished.
+
 Add `tiernft.tsx` with the following code:
 
 ```tsx
@@ -456,7 +464,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Head from "next/head";
 import { CSSProperties, useEffect, useState } from "react";
 import { useAccount } from "wagmi";
-import TierABI from "../artifacts/contracts/TierNFT.sol/TierNFT.json";
+import TierABI from "../../artifacts/contracts/TierNFT.sol/TierNFT.json";
 import { NftCard } from "../components/nftcard";
 import { useAwaitMintResult } from "../hooks/useAwaitMintResult";
 import { useMint } from "../hooks/useMint";
@@ -660,7 +668,7 @@ are are primarily used to display information passed in from the main applicatio
 This allows us to reuse components (like the `NftCard` component) and keeps our `tiernft.tsx` code
 clean by leveraging the power of React and its component-based architecture.
 
-Let's just add three of them now and then will explain some common patterns.
+Let's just add three of them now and then we'll explain some common patterns.
 
 **Create components/nftcard.tsx**
 
@@ -907,8 +915,15 @@ At the end of each file is the styling used by the component. This is a common p
 
 The `NftCard` component uses images to display the NFTs. We need to add these images to our application.
 
-Create a new folder named `nfts` in the `/public` directory for saving
-Tier SVGs. You can find links for downloading the SVGs here.
+Create a new folder named `nfts` in the `/public` directory for saving Tier SVGs:
+
+```bash
+mkdir -p mkdir -p public/nfts
+```
+
+(`-p` option creates the parent `/public` folder as well)
+
+You can find links for downloading the SVGs here:
 
 - [0_basic.svg](https://arweave.net/o9z59y3sDvBaamvBDJGtyX5BGM983n1zwbs-UaZRUM8)
 - [1_medium.svg](https://arweave.net/-sa-soe34iPLridK0T98rWb7XvfHRSTDdBCoXCuwv60)
@@ -923,7 +938,7 @@ code.
 
 ### Add Blockchain functionality
 
-So far, we've been building a fairly standard React application in `Next.js` and have configured it
+So far, we've been building a fairly standard React application in `Next.js` framework and have configured it
 to use `RainbowKit` and `WAGMI` for wallet connections and blockchain interactions.
 
 We haven't added any blockchain functionality to our application. We'll do that next.
@@ -941,7 +956,7 @@ use to display the minted NFT and its details via our `<SuccessfulMint />` compo
 
 We'll be adding these hooks to our application next.
 
-#### `useMint` hook
+#### Create `useMint` hook
 
 Let's start with the `useMint` hook. Let's create a `hooks/useMint.ts` file and add the following code:
 
@@ -1013,7 +1028,7 @@ We'll explain `useWaitForTransaction` shortly.
 At the end of the hook, you'll see it returns `{mint, mintData, isMinting, txData}` which are used
 in the main application to update the UI and pass values to our `useAwaitMintResult` hook.
 
-#### `useAwaitMintResult` hook
+#### Create `useAwaitMintResult` hook
 
 Let's add the `useAwaitMintResult` by creating `hooks/useAwaitMintResult.ts` file and adding
 the following code:
@@ -1095,10 +1110,10 @@ will listen for this event, so we can display the minted NFT in our final Succes
 How does the hook listen for the mint event? Notice we're using WAGMI's `useContractEvent` hook.
 We ask it to monitor the `Transfer` event for our NFT contract.
 
-(Yes, "hooks" all the way down. Hooks are often composed from other hooks.)
+Yes, "hooks" all the way down. Hooks are often composed from other hooks.
 
 If the blockchain is busy there can be many transfer events happening, so we wait until there is a
-transaction that matches our wallet address and ignore the otehrs. When the event we want comes in,
+transaction that matches our wallet address and ignore the others. When the event we want comes in,
 we'll then discover the tokenId of our freshly minted NFT.
 
 Once we `setMintedTokenId(tokenId);` another WAGMI hook kicks off below called `useContractRead`.
