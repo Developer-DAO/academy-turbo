@@ -464,8 +464,8 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Head from "next/head";
 import { CSSProperties, useEffect, useState } from "react";
 import { useAccount } from "wagmi";
-import TierABI from "../../artifacts/contracts/TierNFT.sol/TierNFT.json";
-import { NftCard } from "../components/nftcard";
+import TierABI from "../artifacts/contracts/TierNFT.sol/TierNFT.json";
+import { NftCard } from "./nftcard";
 import { useAwaitMintResult } from "../hooks/useAwaitMintResult";
 import { useMint } from "../hooks/useMint";
 import { Minting } from "./minting";
@@ -531,9 +531,10 @@ export function TierNFT() {
       <header style={header}>
         <h1>TierNFTs</h1>
         <ConnectButton />
+        {!isUserConnected && <div style={pleaseConnectWallet}>Please connect your wallet.</div>}
       </header>
 
-      {isUserConnected ? (
+      {isUserConnected && (
         <main>
           <div style={NFTFlex}>
             <NftCard
@@ -576,10 +577,6 @@ export function TierNFT() {
               <Minting />
             ))}
         </main>
-      ) : (
-        <main>
-          <div>Please connect your wallet.</div>
-        </main>
       )}
     </div>
   );
@@ -590,9 +587,10 @@ const header: CSSProperties = {
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "space-between",
-  paddingTop: "20px",
-  paddingLeft: "50px",
-  paddingRight: "50px",
+};
+
+const pleaseConnectWallet: CSSProperties = {
+  marginTop: "20px",
 };
 
 const NFTFlex: CSSProperties = {
