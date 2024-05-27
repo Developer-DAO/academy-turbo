@@ -248,9 +248,7 @@ Please make these changes to `_app.tsx`:
 - replace `import { publicProvider } from "wagmi/providers/public";` with `import { alchemyProvider } from "wagmi/providers/alchemy";` at the top of the file.
 - in `configureChains` section, replace `[publicProvider()]` with `[alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID || "" })]`.
 - remove `zora` from `wagmi/chains` import and from the `configureChains` array.
-
-The Amoy Polygon testnet is newer than the libraries this tutorial is using. Normally you'd search
-and replace testnet with `amoy` though for this tutorial, we'll manually add.
+- manually add the `polygonAmoy` related sections as seen below. The Amoy Polygon testnet is newer than the libraries this tutorial is using. Normally you'd search and replace testnet with a simple `amoy` value though instead we need to manually add.
 
 Here is the complete `_app.tsx` with changes to use Amoy.
 
