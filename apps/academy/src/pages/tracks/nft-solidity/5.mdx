@@ -383,10 +383,10 @@ Notice that we are using the `page folder routing` in our app, which give us an
 homepage at the root level, in our url will be `htpp://localhost:3000/` by
 default.
 
-We'll only make one change to this file. We'll bring in a brand new `<TierNFT>` React component
+We'll trim out most of the content in this initial file, and bring in a brand new `<TierNFT>` React component
 that will house our main application functionality and will be displayed on the Home page.
 
-Open `frontend/pages/index.tsx` and add these two lines:
+Open `frontend/pages/index.tsx`, remove most of the content, and add these two lines:
 
 ```tsx
 import { TierNFT } from "../components/tiernft";
@@ -398,7 +398,7 @@ import { TierNFT } from "../components/tiernft";
 </main>
 ```
 
-so your file should look like this:
+Your file should look like this:
 
 ```tsx
 import type { NextPage } from "next";
