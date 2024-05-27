@@ -184,13 +184,61 @@ To get this setup we need to start working on the `pages/_app.tsx` file in the
 `/frontend/pages` directory. The file should look something like this from our
 initial setup:
 
+```tsx
+import "../styles/globals.css";
+import "@rainbow-me/rainbowkit/styles.css";
+import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import type { AppProps } from "next/app";
+import { configureChains, createConfig, WagmiConfig } from "wagmi";
+import { arbitrum, goerli, mainnet, optimism, polygon, base, zora } from "wagmi/chains";
+import { publicProvider } from "wagmi/providers/public";
+
+const { chains, publicClient, webSocketPublicClient } = configureChains(
+  [
+    mainnet,
+    polygon,
+    optimism,
+    arbitrum,
+    base,
+    zora,
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [goerli] : []),
+  ],
+  [publicProvider()],
+);
+
+const { connectors } = getDefaultWallets({
+  appName: "RainbowKit App",
+  projectId: "YOUR_PROJECT_ID",
+  chains,
+});
+
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors,
+  publicClient,
+  webSocketPublicClient,
+});
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <WagmiConfig config={wagmiConfig}>
+      <RainbowKitProvider chains={chains}>
+        <Component {...pageProps} />
+      </RainbowKitProvider>
+    </WagmiConfig>
+  );
+}
+
+export default MyApp;
+```
+
 - `import '@rainbow-me/rainbowkit/styles.css';` gives us some basic styling from
   Rainbowkit.
 - `import { getDefaultWallets, RainbowKitProvider, } from '@rainbow-me/rainbowkit';`
   returns the default wallet provider option and a RainbowKit Provider to "wrap"
   around our app so that we can use its features throughout the app's pages and
   components.
-- `import { configureChains, createClient, WagmiConfig, } from 'wagmi';`
+- `import { configureChains, createConfig, WagmiConfig } from "wagmi";`
   provides a way to configure the WagmiConfig wrapper for our app based on the
   chains and providers of our choice along with some other customisations.
 - `import { alchemyProvider } from 'wagmi/providers/alchemy';` and
@@ -198,18 +246,6 @@ initial setup:
   provider configs for the providers we will be using. In our app we are using
   an `alchemyProvider` along with a fall back `publicProvider`. A provider
   allows our application to communicate with a blockchain.
-  {/* It would be better to have a side drawer on 'state' and 'useEffect' here. We already have a few external links, and  we have hardly built anything so far in this lesson. That's a lot of potential rabbitholes. We could add the sidedrawers in at the end of this chunk before a checkpoint set */}
-- `useEffect` and `useState` are react hooks that help us perform side effects
-  and capture the state, respectively. More on
-  [state](https://www.freecodecamp.org/news/what-is-state-in-react-explained-with-examples/)
-  and the
-  [useEffect](https://www.freecodecamp.org/news/react-useeffect-absolute-beginners/)
-  hook.
-
-<Callout emoji="💡">
-  Hooks are JavaScript functions that manage the state's behaviour and side effects by isolating
-  them from a component.
-</Callout>
 
 Next we'll be configuring our application.
 
@@ -606,6 +642,16 @@ Let's break down the code next.
 At the top of the file we import the necessary dependencies for our application. This pulls in
 the components we're about to add, plus existing libraries.
 
+<Callout emoji="💡">
+  Here we start to use React Hooks, which are JavaScript functions that manage the state's behaviour
+  and side effects by isolating them from a component.
+</Callout>
+
+- Two common hooks we use are `useEffect` and `useState`. More on
+  [state](https://www.freecodecamp.org/news/what-is-state-in-react-explained-with-examples/)
+  and the
+  [useEffect](https://www.freecodecamp.org/news/react-useeffect-absolute-beginners/)
+  hook.
 - RainbowKit provides us a ready-made `ConnectButton`.
 - We need to use the `useAccount` hook from WAGMI to check account connection
   and `useContractRead` and `useContractWrite` to interact with our smart
