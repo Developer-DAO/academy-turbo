@@ -60,13 +60,17 @@ You can access this example website as long as the network is operating. It will
 
 Arweave transactions are similar to Bitcoin transactions in that you can use them to transfer the network's native token, AR, between wallet addresses. In contrast to Bitcoin, each transaction can also point to data of arbitrary size, called the transaction body. Figure 1 illustrates how blocks, transactions, and transaction bodies relate to each other.
 
-Figure 1: Arweave transactions
+![figure-1](/assets/tracks/arweave-101/2/figure-1.png)
+
+<div style={{ textAlign: "center" }}>*Figure 1: Arweave transactions*</div>
 
 ### How Do Arweave Gateways Work?
 
 If you send a TXID to a gateway’s data endpoint (e.g., `/<TXID>`), it can use the ID to find the transaction and, in turn, its associated body (i.e., the file). In Figure 2, you can see parts of the network topology of the miner and gateway nodes.
 
-Figure 2: Arweave gateways
+![figure-2](/assets/tracks/arweave-101/2/figure-2.png)
+
+<div style={{ textAlign: "center" }}>*Figure 2: Arweave gateways*</div>
 
 The endpoint usually won’t return the file directly but redirects you to a dynamically generated subdomain. This subdomain is isolated from other subdomains and ensures that a browser considers websites stored in different transactions to have different origins, each with its own storage in the browser (e.g., local storage, session storage, indexed, cookies, etc.).
 
@@ -156,7 +160,9 @@ The path manifest of the example looks like this:
 
 It maps each file path to a TXID and allows you to set an index path that will be loaded when someone requests the TXID without a file path. You can also set a wildcard path that will be delivered when no other path matches. Figure 3 shows how the path manifests enable linking one TXID to multiple files.
 
-Figure 3: Arweave path manifests
+![figure-3](/assets/tracks/arweave-101/2/figure-3.png)
+
+<div style={{ textAlign: "center" }}>*Figure 3: Arweave path manifests*</div>
 
 If you want to access the JSON of a path manifest directly, you can use the raw data endpoint with the following URL schema:
 
@@ -276,7 +282,9 @@ You need to understand the difference between transaction data and body to under
 
 An Arweave transaction, just like a Bitcoin transaction, is an object that has several properties. Unlike a Bitcoin transaction, these properties include the files uploaded alongside the transaction. Let’s look at the transaction properties illustrated in Figure 4.
 
-Figure 4: Arweave transaction format
+![figure-4](/assets/tracks/arweave-101/2/figure-4.png)
+
+<div style={{ textAlign: "center" }}>*Figure 4: Arweave transaction format*</div>
 
 First, the identification properties:
 
