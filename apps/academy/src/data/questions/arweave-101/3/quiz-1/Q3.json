@@ -1,0 +1,16 @@
+{
+  "question": "When would you upload a file via a bundled transaction?",
+  "options": [
+    {
+      "answer": "You wan’t your data to become part of a block."
+    },
+    {
+      "answer": "You’re file is under 100 KiB, so it’s a free upload",
+      "correct": true
+    },
+    {
+      "answer": "You require high TPS",
+      "correct": true
+    }
+  ]
+}

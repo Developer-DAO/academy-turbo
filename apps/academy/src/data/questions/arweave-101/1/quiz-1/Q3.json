@@ -1,0 +1,20 @@
+{
+  "question": "What data can you store on Arweave?",
+  "options": [
+    {
+      "answer": "Music and videos",
+      "correct": true
+    },
+    {
+      "answer": "Images and text",
+      "correct": true
+    },
+    {
+      "answer": "Single page applications",
+      "correct": true
+    },
+    {
+      "answer": "Server-side rendered websites"
+    }
+  ]
+}

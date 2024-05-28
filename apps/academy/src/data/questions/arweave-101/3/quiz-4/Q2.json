@@ -1,0 +1,12 @@
+{
+  "question": "Can you use Ledger as a cold wallet for Arweave?",
+  "options": [
+    {
+      "answer": "Yes, there is a plugin for AR.",
+      "correct": true
+    },
+    {
+      "answer": "No, Ledger doesn’t support AR."
+    }
+  ]
+}

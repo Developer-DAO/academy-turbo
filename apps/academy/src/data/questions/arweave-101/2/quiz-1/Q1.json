@@ -1,0 +1,19 @@
+{
+  "question": "What information do you need to access a file on Arweave?",
+  "options": [
+    {
+      "answer": "The hostname of a gateway",
+      "correct": true
+    },
+    {
+      "answer": "A transaction ID",
+      "correct": true
+    },
+    {
+      "answer": "The IP of a miner node"
+    },
+    {
+      "answer": "The name of the file"
+    }
+  ]
+}

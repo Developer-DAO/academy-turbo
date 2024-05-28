@@ -1,0 +1,20 @@
+{
+  "question": "What properties does a path manifest support?",
+  "options": [
+    {
+      "answer": "A list of keys that point to transaction IDs",
+      "correct": true
+    },
+    {
+      "answer": "A wildcard key that resolves missing paths",
+      "correct": true
+    },
+    {
+      "answer": "An index key that resolves the empty path",
+      "correct": true
+    },
+    {
+      "answer": "An archive of multiple files"
+    }
+  ]
+}

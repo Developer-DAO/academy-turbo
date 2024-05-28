@@ -44,38 +44,11 @@ Arweave is suitable for storing all types of static data, including text, binari
 
 As Arweave links all data permanently with a cryptographically signed transaction, everyone can verify its creator and creation time, giving authors strong data provenance for copyright claims.
 
-Quiz 1
-
-Question 1
-What is Arweave?
-True
-A layer 1 network
-False
-A layer 2 network
-True
-Like Bitcoin for storage
-True
-Immutable object storage
-Question 2
-What features does Arweave have?
-True
-Censorship resistance
-True
-Global replication
-False
-Temporary storage
-False
-Automatic encryption
-Question 3
-What data can you store on Arweave?
-True
-Music and videos
-True
-Images and text
-True
-Single page applications
-False
-Server-side rendered websites
+<LessonQuestionsModal buttonText="Quiz 1" title="Comprehension Check">
+  <Question question="arweave-101/1/quiz-1/Q1" />
+  <Question question="arweave-101/1/quiz-1/Q2" />
+  <Question question="arweave-101/1/quiz-1/Q3" />
+</LessonQuestionsModal>
 
 ## How Does Arweave Work?
 
@@ -109,33 +82,11 @@ Arweave rewards miner nodes for storing data, and AR.IO rewards gateway nodes fo
 
 The AR.IO network is a layer 2 (L2) network, as it uses Arweave’s permanent storage to manage incentives for the gateways. However, this mechanism isn’t part of the Arweave protocol, so anyone can build other gateways that work differently from gateway nodes.
 
-Quiz 2
-Question 1
-Where does Arweave store files?
-False
-Everything is stored in the transaction object
-True
-The transaction object can contain files smaller than 12MiB
-True
-Files bigger than 12MiB have a separate storage location
-Question 2
-How does Arweave’s consensus algorithm ensure permanent storage?
-True
-By requiring miner nodes to prove access to random chunks of uploaded data
-True
-By incentivizing miner nodes to share data
-False
-By encrypting transaction bodies before upload
-Question 3
-What responsibilities do miner nodes have?
-True
-Data storage
-True
-Data replication
-False
-Data access
-False
-Data encoding
+<LessonQuestionsModal buttonText="Quiz 2" title="Comprehension Check">
+  <Question question="arweave-101/1/quiz-2/Q1" />
+  <Question question="arweave-101/1/quiz-2/Q2" />
+  <Question question="arweave-101/1/quiz-2/Q3" />
+</LessonQuestionsModal>
 
 ## Permanent Storage Through Consensus and The Endowment
 
@@ -169,33 +120,11 @@ The tokens in the endowment pay for future storage costs. Should the price of Ar
 
 Since its inception in 2017, no payments from the endowment were necessary.
 
-Quiz 3
-Question 1
-What are parts of the SPoRA consensus algorithm?
-True
-Computing a hash
-True
-Proving access to random chunks of uploaded data
-False
-Locking sectors of a block storage
-Question 2
-How can you remove data from Arweave?
-True
-By sending a do-not-store request
-True
-You can’t enforce removal
-False
-By forking the chain
-Question 3
-How does Arweave ensure continuous payment for its storage?
-True
-It has a storage endowment to save tokens for later
-True
-Its token economics are based on future storage cost estimates
-False
-It gives each miner node one Bitcoin
-False
-It requires continuous payments.
+<LessonQuestionsModal buttonText="Quiz 3" title="Comprehension Check">
+  <Question question="arweave-101/1/quiz-3/Q1" />
+  <Question question="arweave-101/1/quiz-3/Q2" />
+  <Question question="arweave-101/1/quiz-3/Q3" />
+</LessonQuestionsModal>
 
 ## Arweave Transactions
 
@@ -221,35 +150,11 @@ Bundling allows for much higher throughput than L1 transactions, with some bundl
 
 The downside of bundled transactions is a weaker security guarantee. Since bundled transactions are part of the bodies of L1 transactions, they can become subject to a do-not-store request. Also, gateway operators can explicitly block transactions. They are still part of the consensus algorithm, and Arweave incentivizes miners to keep them around, but the network won’t stop if they’re missing. This risk makes bundled transactions a bad choice for some high-stakes transactions, but a good one for other data storage needs.
 
-Quiz 4
-Question 1
-What are the Arweave transaction types?
-True
-L1 transactions
-True
-Bundled transactions
-False
-Volatile transactions
-Question 2
-What are the properties of L1 transactions?
-True
-They are relatively slow
-True
-They can transfer AR tokens
-False
-They can be paid with fiat currency
-True
-They can have custom tags
-Question 3
-What are the properties of bundled transactions?
-True
-They are relatively fast
-True
-They can be paid with fiat currency
-False
-They can transfer AR tokens
-True
-They can have custom tags
+<LessonQuestionsModal buttonText="Quiz 4" title="Comprehension Check">
+  <Question question="arweave-101/1/quiz-4/Q1" />
+  <Question question="arweave-101/1/quiz-4/Q2" />
+  <Question question="arweave-101/1/quiz-4/Q3" />
+</LessonQuestionsModal>
 
 ## Smart Contracts as Add-Ons
 
@@ -300,27 +205,10 @@ L1 transactions have strong security but aren’t optimized for speed. The 2-min
 There is no temporary storage. All data is permanent. Networks like Filecoin have more flexible options.
 The high costs are also due to the lack of temporary storage. Filecoin, for example, can offer much cheaper storage fees if you only want to host your data for a limited time frame.
 
-Quiz 5
-Question 1
-What are Arweave’s pros compared to cloud storage?
-True
-One-time payment
-True
-Strong provenance guarantees
-False
-Temporary storage
-False
-Cheap storage
-Question 2
-What are Arweave’s pros compared to popular blockchain networks?
-True
-Cheap permanent storage
-True
-The protocol handles storage and replication
-False
-Temporary storage
-False
-Fast L1 transactions
+<LessonQuestionsModal buttonText="Quiz 5" title="Comprehension Check">
+  <Question question="arweave-101/1/quiz-5/Q1" />
+  <Question question="arweave-101/1/quiz-5/Q2" />
+</LessonQuestionsModal>
 
 ## Summary
 

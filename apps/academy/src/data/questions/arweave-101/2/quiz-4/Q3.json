@@ -1,0 +1,15 @@
+{
+  "question": "How does Arweave incentivize gateway nodes?",
+  "options": [
+    {
+      "answer": "The money from ArNS name sales is used to pay gateway operators.",
+      "correct": true
+    },
+    {
+      "answer": "Arweave sends parts of transaction fees to gateway operators"
+    },
+    {
+      "answer": "Gateway operators aren’t incentivized"
+    }
+  ]
+}
