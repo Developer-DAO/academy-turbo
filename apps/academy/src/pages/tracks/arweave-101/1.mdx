@@ -85,7 +85,9 @@ Transaction bodies below 12MiB can be stored inside a transaction, but if they a
 
 Figure 1 illustrates how a blockchain with transaction bodies forms the blockweave.
 
-Figure 1: The blockweave
+![figure-1](/assets/tracks/arweave-101/1/figure-1.png)
+
+<div style={{ textAlign: "center" }}>*Figure 1: The blockweave*</div>
 
 Note: In this course, I will use the term transaction body to avoid confusing it with the other transaction data (e.g., signature, address, tags, etc.)
 
@@ -101,7 +103,9 @@ That’s where the AR.IO network comes into play. It consists of gateway nodes t
 
 Arweave rewards miner nodes for storing data, and AR.IO rewards gateway nodes for delivering it via HTTP to clients. The gateway nodes get incentivized by IO token payments, which, in turn, are collected from the sale of domains for the Arweave Name System (ArNS). You will learn about ArNS in the following lessons. Figure 2 shows the relations between miner nodes, gateway nodes, and clients.
 
-Figure 2: Arweave & AR.IO
+![figure-2](/assets/tracks/arweave-101/1/figure-2.png)
+
+<div style={{ textAlign: "center" }}>*Figure 2: Arweave & AR.IO*</div>
 
 The AR.IO network is a layer 2 (L2) network, as it uses Arweave’s permanent storage to manage incentives for the gateways. However, this mechanism isn’t part of the Arweave protocol, so anyone can build other gateways that work differently from gateway nodes.
 
@@ -149,7 +153,9 @@ Node X can create the next block, as it has a full replica.
 Node Z is missing chunk C2 and cannot create the next block.
 Node Y is also capable of creating the next block. It doesn’t have a full replica, but it was lucky to have the selected chunks this time. However, it might have the same problem as node Z in the next round.
 
-Figure 3: Chunk selection
+![figure-3](/assets/tracks/arweave-101/1/figure-3.png)
+
+<div style={{ textAlign: "center" }}>*Figure 3: Chunk selection*</div>
 
 If no miner has the selected chunks, the network will choose different chunks, allowing Arweave to incentivize permanent storage without forcing miners to store all the data. When miners don’t want to store specific transaction bodies for ethical or legal reasons, they will lose hash power but can still participate in the mining. Do-Not-Store requests allow users to notify miners and gateways of data they should delete in specific jurisdictions.
 
@@ -207,7 +213,9 @@ Again, Arweave doesn’t store transaction bodies (i.e., the data you want to st
 
 Bundled transactions are Arweave's layer 2 (L2) transactions. They follow a similar structure to the L1 transactions, but you can’t use them to transfer AR, only smart contract tokens. Bundling services store multiple bundled transactions into the body of one L1 transaction, hence the name bundled transactions. In Figure 4, you see how the types relate to each other.
 
-Figure 4: Arweave transaction types
+![figure-4](/assets/tracks/arweave-101/1/figure-4.png)
+
+<div style={{ textAlign: "center" }}>*Figure 4: Arweave transaction types*</div>
 
 Bundling allows for much higher throughput than L1 transactions, with some bundling services claiming millions of transactions per second. Commercial bundling services enable payment via fiat or other cryptocurrencies (e.g., SOL, ETH, MATIC, etc.) Some services subsidize transactions smaller than 100KB and offer optimistic access via their gateways before they settle the transactions on L1.
 
