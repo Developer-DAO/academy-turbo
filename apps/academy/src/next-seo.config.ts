@@ -16,7 +16,7 @@ const config: DefaultSeoProps = {
         url:
           process.env["NEXT_PUBLIC_VERCEL_URL"] !== undefined
             ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/default-meta-image.png`
-            : "",
+            : "/default-meta-image.png",
         alt: "Learn Web3 With Friends | Developer DAO Academy",
         type: "image/png",
       },

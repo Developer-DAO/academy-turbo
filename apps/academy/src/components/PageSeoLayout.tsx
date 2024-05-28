@@ -1,31 +1,36 @@
-import { NextSeo } from "next-seo";
+import { NextSeo, type NextSeoProps } from "next-seo";
 
-interface PageSeoLayoutProps {
-  title: string;
-  description: string;
-  children: React.ReactNode;
-  imgPath?: string;
-}
+import defaultSeoConfig from "../next-seo.config";
 
-const PageSeoLayout = ({ title, description, children }: PageSeoLayoutProps) => {
+// interface PageSeoLayoutProps {
+//   title: string;
+//   description: string;
+//   children: React.ReactNode;
+//   openGraph?: Object
+// }
+
+type PageSeoLayoutProps = NextSeoProps
+
+const PageSeoLayout: React.FC<PageSeoLayoutProps> = ({
+  title,
+  description,
+  children,
+  openGraph,
+}: PageSeoLayoutProps) => {
+  const seoConfig = {
+    title: title ?? defaultSeoConfig.defaultTitle,
+    description: description ?? defaultSeoConfig.description,
+    openGraph: {
+      ...defaultSeoConfig.openGraph,
+      ...openGraph,
+    },
+    twitter: {
+      ...defaultSeoConfig.twitter,
+    },
+  };
   return (
     <>
-      <NextSeo
-        title={title}
-        description={description}
-        // openGraph={{
-        //   title: title,
-        //   description: description,
-        //   images: [
-        //     {
-        //       url: imgPath
-        //         ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/${imgPath}`
-        //         : imgPath,
-        //       alt: title,
-        //     },
-        //   ],
-        // }}
-      />
+      <NextSeo {...seoConfig} />
       {children}
     </>
   );
