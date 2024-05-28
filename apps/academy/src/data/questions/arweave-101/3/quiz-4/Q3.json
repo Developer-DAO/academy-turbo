@@ -1,0 +1,19 @@
+{
+  "question": "Which Arweave wallets are well suited for DApp frontends?",
+  "options": [
+    {
+      "answer": "ArConnect",
+      "correct": true
+    },
+    {
+      "answer": "Arweave.app",
+      "correct": true
+    },
+    {
+      "answer": "arweave-js"
+    },
+    {
+      "answer": "Viem"
+    }
+  ]
+}

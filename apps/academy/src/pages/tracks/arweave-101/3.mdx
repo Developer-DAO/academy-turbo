@@ -48,9 +48,11 @@ Let’s start by creating a web application that uploads small files.
 
 First, you run the following commands to install Vite and Arweave dependencies:
 
+```bash
 npm create vite@latest demo-frontend -- --template vanilla
 cd demo-frontend
 npm i && npm i arweave @ardrive/turbo-sdk
+```
 
 Next, you implement the frontend. The arweave package will generate a random wallet address for each upload. Remember, you upload each file alongside a transaction, so it needs to be signed by a private key of an Arweave wallet.
 
@@ -175,31 +177,11 @@ Despite not being part of blocks, Arweave’s consensus algorithm relies on the 
 
 Bundled transactions have higher TPS than L1 transactions, and the bundling services let you pay with tokens other than AR. The subsidized 100KiB transactions are nice, too.
 
-Quiz 1
-Question 1
-How do you store small files on Arweave?
-True
-You upload them via a bundling service
-FALSE
-You pay for a transaction with AR tokens
-TRUE
-You don’t need any tokens to upload files under 100KiB
-FALSE
-You need to pay with BTC tokens
-Question 2
-Can you upload files directly from the browser?
-TRUE
-Yes, you can use JavaScript SDKs in the browser and Node.js
-FALSE
-No, you have to send your files to a Node.js server first
-Question 3
-When would you upload a file via a bundled transaction?
-FALSE
-You wan’t your data to become part of a block.
-TRUE
-You’re file is under 100 KiB, so it’s a free upload
-TRUE
-You require high TPS
+<LessonQuestionsModal buttonText="Quiz 1" title="Comprehension Check">
+  <Question question="arweave-101/3/quiz-1/Q1" />
+  <Question question="arweave-101/3/quiz-1/Q2" />
+  <Question question="arweave-101/3/quiz-1/Q3" />
+</LessonQuestionsModal>
 
 ### How to Store Big Files on Arweave?
 
@@ -422,35 +404,11 @@ Do you want to start the upload? (y/n) y
 https://arweave.developerdao.com/YG3PpZHN…
 ```
 
-Quiz 2
-Question 1
-How do you pay for a bundled transaction?
-TRUE
-Depends on the bundling service
-FALSE
-Always with AR tokens
-FALSE
-Always with fiat
-FALSE
-All bundled transactions are free.
-Question 2
-Why do you need a reusable wallet address to upload big files?
-TRUE
-To charge the wallet with tokens for the upload payments
-TRUE
-To mark your uploads with your personal signature, to proof you uploaded it first
-FALSE
-To save money on upload fees
-FALSE
-To be able to change the file content later
-Question 3
-Can you use the same wallet address on the frontend and backend?
-TRUE
-Yes, you can export a key file from a wallet app and load it in the backend
-TRUE
-Yes, you can import the key file exported from your backend in your wallet app
-FALSE
-No, you have to generate a new wallet address
+<LessonQuestionsModal buttonText="Quiz 2" title="Comprehension Check">
+  <Question question="arweave-101/3/quiz-2/Q1" />
+  <Question question="arweave-101/3/quiz-2/Q2" />
+  <Question question="arweave-101/3/quiz-2/Q3" />
+</LessonQuestionsModal>
 
 ## What are Popular Arweave Bundling Services and SDKs?
 
@@ -466,35 +424,11 @@ The Turbo and the Irys SDK are based on ArBundles, which allows you to create an
 
 For quickly building apps on top of these tools, Community Labs offers a comprehensive frontend library called Arweave Kit. It integrates well with popular frameworks and comes with authentication, encryption, and GraphQL clients. If you want to build something quickly, check it out.
 
-Quiz 3
-Question 1
-What are popular Arweave bundling services?
-TRUE
-Irys
-TRUE
-Permanent Data Solutions
-FALSE
-Dropbox
-FALSE
-Web3 Storage
-Question 2
-Which library do the popular bundling SDKs use as a base?
-TRUE
-arbundles
-TRUE
-web3.js
-FALSE
-ethers.js
-Question 3
-How do bundling services improve Arweave?
-TRUE
-They enable fiat payments
-TRUE
-They enable non-AR token payments
-TRUE
-They enable non-Arweave signatures
-FALSE
-They use Bitcoin to store signatures
+<LessonQuestionsModal buttonText="Quiz 3" title="Comprehension Check">
+  <Question question="arweave-101/3/quiz-3/Q1" />
+  <Question question="arweave-101/3/quiz-3/Q2" />
+  <Question question="arweave-101/3/quiz-3/Q3" />
+</LessonQuestionsModal>
 
 ## What are Popular Arweave Wallets?
 
@@ -505,33 +439,11 @@ ArConnect is the go-to wallet for everyday tasks. It’s always up-to-date and i
 
 You can also check out Ledger if you’re searching for cold storage for your AR.
 
-Quiz 4
-Question 1
-What are popular wallet libraries for Arweave?
-TRUE
-Arweave.app
-TRUE
-arweave-js
-FALSE
-libp2p
-FALSE
-Viem
-Question 2
-Can you use Ledger as a cold wallet for Arweave?
-TRUE
-Yes, there is a plugin for AR.
-FALSE
-No, Ledger doesn’t support AR.
-Question 3
-Which Arweave wallets are well suited for DApp frontends?
-TRUE
-ArConnect
-TRUE
-Arweave.app
-FALSE
-arweave-js
-FALSE
-Viem
+<LessonQuestionsModal buttonText="Quiz 4" title="Comprehension Check">
+  <Question question="arweave-101/3/quiz-4/Q1" />
+  <Question question="arweave-101/3/quiz-4/Q2" />
+  <Question question="arweave-101/3/quiz-4/Q3" />
+</LessonQuestionsModal>
 
 ## Summary
 

@@ -78,31 +78,11 @@ For any given TXID, every gateway will respond with the same data. The following
 
 `https://ar-io.dev/dE0rmDfl9_OWjkDznNEXHaSO_JohJkRolvMzaCroUdw`
 
-Quiz 1
-Question 1
-What information do you need to access a file on Arweave?
-True
-The hostname of a gateway
-True
-A transaction ID
-false
-The IP of a miner node
-false
-The name of the file
-Question 2
-What’s the primary difference between Bitcoin and Arweave transactions?
-True
-Arweave transactions can contain links to files of arbitrary size.
-false
-Arweave transactions are volatile
-Question 3
-Why do gateways isolate transactions with subdomains?
-True
-To prevent browser data access between transactions
-False
-To improve latency
-False
-To hide transaction IDs from users
+<LessonQuestionsModal buttonText="Quiz 1" title="Comprehension Check">
+  <Question question="arweave-101/2/quiz-1/Q1" />
+  <Question question="arweave-101/2/quiz-1/Q2" />
+  <Question question="arweave-101/2/quiz-1/Q3" />
+</LessonQuestionsModal>
 
 ## How to Access Directories on Arweave?
 
@@ -174,33 +154,11 @@ Example URL:
 
 If you want to learn more about path manifests, check out their specification.
 
-Quiz 2
-Question 1
-How do gateways simulate directory structures?
-True
-With JSON path manifests.
-False
-With transaction reflection.
-False
-With ZIP archives
-Question 2
-What properties does a path manifest support?
-True
-A list of keys that point to transaction IDs
-True
-A wildcard key that resolves missing paths
-True
-An index key that resolves the empty path
-False
-An archive of multiple files
-Question 3
-How do you access the plain manifest JSON?
-True
-With the /raw endpoint of a gateway node
-False
-You can’t access it directly
-False
-By adding a question mark to the transaction ID
+<LessonQuestionsModal buttonText="Quiz 2" title="Comprehension Check">
+  <Question question="arweave-101/2/quiz-2/Q1" />
+  <Question question="arweave-101/2/quiz-2/Q2" />
+  <Question question="arweave-101/2/quiz-2/Q3" />
+</LessonQuestionsModal>
 
 ## How to Find Files on Arweave With GraphQL?
 
@@ -324,35 +282,12 @@ The GraphQL endpoint doesn’t allow you to query by content in the body, as it 
 You can only query data by owners, recipients (i.e., target), tags, and blocks, which are part of the transaction object.
 
 After you receive a response from the GraphQL endpoint, you can use the included TXIDs to load your files with the data endpoint. This makes the GraphQL method very flexible, as you can define custom transaction tags when uploading a file.
-Quiz 3
-Question 1
-How do you search transactions on Arweave?
-True
-With the GraphQL endpoint of the gateway nodes.
-False
-By crawling the Arweave blockchain.
-False
-By email.
-Question 2
-Where can you store files on Arweave?
-True
-Inside the transaction, if it’s smaller than 12MiB
-True
-Outside the transaction, if it’s bigger than 12MiB
-True
-Outside the transaction, if it’s smaller than 12MiB
-False
-Inside the transaction, if it’s bigger than 12MiB
-Question 3
-Which properties are part of Arweave transactions?
-True
-tags
-True
-signature
-True
-data_root
-True
-last_tx
+
+<LessonQuestionsModal buttonText="Quiz 3" title="Comprehension Check">
+  <Question question="arweave-101/2/quiz-3/Q1" />
+  <Question question="arweave-101/2/quiz-3/Q2" />
+  <Question question="arweave-101/2/quiz-3/Q3" />
+</LessonQuestionsModal>
 
 ## How to Find Files on Arweave With Subdomains?
 
@@ -384,27 +319,11 @@ If you have wondered how Arweave incentivizes gateways, ArNS is the answer. The 
 - Layer 1 (L1) Arweave nodes are responsible for data storage and replication. They are paid with AR, the native token of the Arweave network.
 - Layer 2 (L2) nodes, called AR.IO gateways, are responsible for data access. They are paid with IO, a smart contract token.
 
-Quiz 4
-Question 1
-Does Arweave support naming transactions?
-True
-Yes, with ArNS.
-False
-No.
-Question 2
-Are ArNS names mutable?
-False
-No, everything on Arweave is permanent.
-True
-Yes, ArNS names let you change their target transaction ID
-Question 3
-How does Arweave incentivize gateway nodes?
-True
-The money from ArNS name sales is used to pay gateway operators.
-False
-Arweave sends parts of transaction fees to gateway operators
-False
-Gateway operators aren’t incentivized
+<LessonQuestionsModal buttonText="Quiz 4" title="Comprehension Check">
+  <Question question="arweave-101/2/quiz-4/Q1" />
+  <Question question="arweave-101/2/quiz-4/Q2" />
+  <Question question="arweave-101/2/quiz-4/Q3" />
+</LessonQuestionsModal>
 
 ## Summary
 

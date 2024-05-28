@@ -1,0 +1,16 @@
+{
+  "question": "What are the Arweave transaction types?",
+  "options": [
+    {
+      "answer": "L1 transactions",
+      "correct": true
+    },
+    {
+      "answer": "Bundled transactions",
+      "correct": true
+    },
+    {
+      "answer": "Volatile transactions"
+    }
+  ]
+}

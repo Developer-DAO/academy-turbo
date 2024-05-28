@@ -1,0 +1,21 @@
+{
+  "question": "Which properties are part of Arweave transactions?",
+  "options": [
+    {
+      "answer": "tags",
+      "correct": true
+    },
+    {
+      "answer": "signature",
+      "correct": true
+    },
+    {
+      "answer": "data_root",
+      "correct": true
+    },
+    {
+      "answer": "last_tx",
+      "correct": true
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "question": "How do bundling services improve Arweave?",
+  "options": [
+    {
+      "answer": "They enable fiat payments",
+      "correct": true
+    },
+    {
+      "answer": "They enable non-AR token payments",
+      "correct": true
+    },
+    {
+      "answer": "They enable non-Arweave signatures",
+      "correct": true
+    },
+    {
+      "answer": "They use Bitcoin to store signatures"
+    }
+  ]
+}

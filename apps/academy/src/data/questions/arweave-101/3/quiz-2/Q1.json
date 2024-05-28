@@ -1,0 +1,18 @@
+{
+  "question": "How do you pay for a bundled transaction?",
+  "options": [
+    {
+      "answer": "Depends on the bundling service",
+      "correct": true
+    },
+    {
+      "answer": "Always with AR tokens"
+    },
+    {
+      "answer": "Always with fiat"
+    },
+    {
+      "answer": "All bundled transactions are free"
+    }
+  ]
+}

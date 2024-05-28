@@ -1,0 +1,15 @@
+{
+  "question": "Why do gateways isolate transactions with subdomains?",
+  "options": [
+    {
+      "answer": "To prevent browser data access between transactions",
+      "correct": true
+    },
+    {
+      "answer": "To improve latency"
+    },
+    {
+      "answer": "To hide transaction IDs from users"
+    }
+  ]
+}

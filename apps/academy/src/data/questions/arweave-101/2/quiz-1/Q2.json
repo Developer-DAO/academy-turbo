@@ -1,0 +1,12 @@
+{
+  "question": "What’s the primary difference between Bitcoin and Arweave transactions?",
+  "options": [
+    {
+      "answer": "Arweave transactions can contain links to files of arbitrary size.",
+      "correct": true
+    },
+    {
+      "answer": "Arweave transactions are volatile"
+    }
+  ]
+}
