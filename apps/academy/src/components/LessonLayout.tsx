@@ -42,7 +42,7 @@ export default function LessonLayout({
           {
             url:
               process.env["NEXT_PUBLIC_VERCEL_URL"] !== undefined
-                ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/${lessonImage}}`
+                ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/${lessonImage}`
                 : lessonImage,
             alt: lessonTitle,
           },
