@@ -15,6 +15,7 @@ module.exports = {
   ],
   plugins: ["simple-import-sort", "testing-library"],
   rules: {
+    "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
     "@next/next/no-html-link-for-pages": "off",
     "@typescript-eslint/consistent-type-exports": "error",
     "@typescript-eslint/consistent-type-imports": [

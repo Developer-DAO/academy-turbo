@@ -25,6 +25,7 @@ declare module "next-auth" {
     user: {
       id: string;
       image: string;
+      verificationNumber: number;
       // ...other properties
       // role: UserRole;
     } & DefaultSession["user"];
@@ -120,6 +121,7 @@ export const authOptions: (ctxReq: CtxOrReq) => NextAuthOptions = ({
               data: {
                 address: fields.address,
                 image: "https://www.developerdao.com/D_D_logo-dark.svg",
+                // verificationNumber: Math.floor(100000 + Math.random() * 900000),
               },
             });
 
