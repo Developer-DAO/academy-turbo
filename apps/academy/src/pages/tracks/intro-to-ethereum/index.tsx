@@ -68,6 +68,7 @@ IntroToEthereumTrackPage.getLayout = function getLayout(page: ReactElement) {
               process.env["NEXT_PUBLIC_VERCEL_URL"] !== undefined
                 ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/meta-images/a-developers-guide-to-ethereum.png`
                 : "/meta-images/a-developers-guide-to-ethereum.png",
+            alt: "A Developer's Guide to Ethereum",
           },
         ],
       }}
