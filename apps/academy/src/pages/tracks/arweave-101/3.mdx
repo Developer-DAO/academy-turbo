@@ -54,16 +54,16 @@ cd demo-frontend
 npm i && npm i arweave @ardrive/turbo-sdk
 ```
 
-Next, you implement the frontend. The arweave package will generate a random wallet address for each upload. Remember, you upload each file alongside a transaction, so it needs to be signed by a private key of an Arweave wallet.
+Next, you implement the frontend. The `arweave` package will generate a random wallet address for each upload. Remember, you upload each file alongside a transaction, so it needs to be signed by a private key of an Arweave wallet.
 
-The @ardrive/turbo-sdk package will handle all the upload modalities for us:
+The `@ardrive/turbo-sdk` package will handle all the upload modalities for us:
 
-Converting the file to a data item
-Creating a transaction and linking it to the data item
-Signing the transaction with the private key of our randomly generated wallet
-Submitting the transaction to a bundling service that will then seed it to Arweave
+- Converting the file to a data item
+- Creating a transaction and linking it to the data item
+- Signing the transaction with the private key of our randomly generated wallet
+- Submitting the transaction to a bundling service that will then seed it to Arweave
 
-Replace the content of demo-frontend/index.html with the following code:
+Replace the content of `demo-frontend/index.html` with the following code:
 
 ```html
 <!doctype html>
@@ -110,7 +110,10 @@ You can test the app with this command:
 
     `npm run dev`
 
-Note: For the next step, remember that files on Arweave are permanently stored, so don’t upload sensitive information!
+<Callout emoji="💡">
+  Note: For the next step, remember that files on Arweave are permanently stored, so don’t upload
+  sensitive information!
+</Callout>
 
 Open the URL of the development server in your browser, choose a file smaller than 100KiB, and click the “Upload” button. After a few seconds, you should see a new link that allows you to download and share your file. Figure 1 shows an example upload.
 
@@ -118,7 +121,7 @@ Open the URL of the development server in your browser, choose a file smaller th
 
 <div style={{ textAlign: "center" }}>*Figure 1: Example upload*</div>
 
-AWESOME! You just stored your first file permanently on Arweave!
+**AWESOME! You just stored your first file permanently on Arweave!**
 
 Keep going, and fill the remaining knowledge gaps to build fully-fledged DApps!
 
@@ -128,12 +131,12 @@ Next, we build a simple CLI uploader with Node.js.
 
 Run the following commands to initialize a new Node.js project and install the same dependencies:
 
-    ```
+    ```bash
     mkdir demo-backend && cd demo-backend
     npm init -y && npm i arweave @ardrive/turbo-sdk
     ```
 
-Then, create a new file at demo-backend/index.mjs with the following code:
+Then, create a new file at `demo-backend/index.mjs` with the following code:
 
 ```typescript
 import fs from "fs";
@@ -161,9 +164,9 @@ const uploadResult = await turbo.uploadFile({
 console.log(`https://arweave.developerdao.com/${uploadResult.id}`);
 ```
 
-Again, the arweave and @ardrive/turbo-sdk packages handle the wallet creation and upload.
+Again, the `arweave` and `@ardrive/turbo-sdk` packages handle the wallet creation and upload.
 
-The CLI requires a file path as the first argument so you can upload the package.json file to test it.
+The CLI requires a file path as the first argument so you can upload the `package.json` file to test it.
 
     `node ./index.mjs ./package.json`
 
@@ -171,7 +174,7 @@ The output should be a gateway URL to the file on Arweave.
 
 ### Review: Bundled Transactions
 
-Arweave supports two types of transactions: L1 and L2 (or “bundled”). L1 transactions become part of Arweave blocks, while Arweave stores bundled transactions in the body of an L1 transaction outside blocks.
+Arweave supports two types of transactions: **L1 and L2 (or “bundled”)**. L1 transactions become part of Arweave blocks, while Arweave stores bundled transactions in the body of an L1 transaction outside blocks.
 
 Despite not being part of blocks, Arweave’s consensus algorithm relies on the bodies of L1 transactions, so miner nodes are incentivized to store L1 bodies and, in turn, bundled transactions as possible.
 
@@ -191,19 +194,19 @@ Again, you will use the Turbo SDK, which lets you pay with fiat. Since you pay u
 
 Go to the ArConnect download page and follow the instructions to install the wallet and create your first address.
 
-Note: You should only use this address for development purposes.
+<Callout emoji="💡">Note: You should only use this address for development purposes.</Callout>
 
 ### Upload via Frontend
 
 Let’s start with a web app again. Create a new Vite project and install the dependencies with the following commands:
 
-```
+```bash
 npm create vite@latest demo-frontend-big -- --template vanilla
 cd demo-frontend-big
 npm i && npm i @ardrive/turbo-sdk vite-plugin-node-polyfills
 ```
 
-As the Turbo SDK uses the Buffer class in the background, you need the Node.js polyfill. To set it up, create a demo-frontend-big/vite.config.js file with this code:
+As the Turbo SDK uses the Buffer class in the background, you need the Node.js polyfill. To set it up, create a `demo-frontend-big/vite.config.js` file with this code:
 
 ```typescript
 import { defineConfig } from "vite";
@@ -214,9 +217,12 @@ export default defineConfig({
 });
 ```
 
-Note: A polyfill is a library that adds missing language or runtime features to your environment. For example Buffer is only natively available on Node.js.
+<Callout emoji="💡">
+  Note: A polyfill is a library that adds missing language or runtime features to your environment.
+  For example Buffer is only natively available on Node.js.
+</Callout>
 
-Next, you implement the frotnend. Again, first the explanation, then the code. While this is under 100 lines of code, it’s still a bit much at once, so let’s look at the rendered HTML in Figure 2 to understand how this will look in the browser and then go through the code step by step.
+Next, you implement the front-end. Again, first the explanation, then the code. While this is under 100 lines of code, it’s still a bit much at once, so let’s look at the rendered HTML in Figure 2 to understand how this will look in the browser and then go through the code step by step.
 
 ![figure-2](/assets/tracks/arweave-101/3/figure-2.png)
 
@@ -234,13 +240,13 @@ The “Choose file” input lets you choose a file from your disk and will calcu
 
 Lastly, the “Upload” button uses the Turbo SDK to upload the file to Arweave. The turbo credits will automatically be debited from your wallet address.
 
-After you connect your wallet, buy turbo credits, select a file, and upload it, the app will show you a link to a gateway for download. For the example of 322KiB in Figure 3, the USD equivalent would be around $0.0145-
+After you connect your wallet, buy turbo credits, select a file, and upload it, the app will show you a link to a gateway for download. For the example of 322KiB in Figure 3, the USD equivalent would be around $0.0145.
 
 ![figure-3](/assets/tracks/arweave-101/3/figure-3.png)
 
 <div style={{ textAlign: "center" }}>*Figure 3: Application after upload*</div>
 
-Now to the actual code. Replace the content of the demo-frontend-big/index.html file with the following:
+Now to the actual code. Replace the content of the `demo-frontend-big/index.html` file with the following:
 
 ```html
 <!doctype html>
@@ -334,15 +340,15 @@ First, create a new Node.js project and install the dependencies.
     npm init -y && npm i @ardrive/turbo-sdk
     ```
 
-Next, you must export a key file from ArConnect—figure 4 shows where you can find the settings.
+Next, you must export a key file from ArConnect — Figure 4 shows where you can find the settings.
 
 ![figure-4](/assets/tracks/arweave-101/3/figure-4.png)
 
 <div style={{ textAlign: "center" }}>*Figure 4: ArConnect settings*</div>
 
-In the settings, navigate to Wallets, select your development wallet, and click the “Export Keyfile” button on the bottom right. Save the file in demo-backend-big/key.json.
+In the settings, navigate to Wallets, select your development wallet, and click the “Export Keyfile” button on the bottom right. Save the file in `demo-backend-big/key.json`.
 
-Then, create a new file at demo-backend-big/index.mjs and add the following code:
+Then, create a new file at `demo-backend-big/index.mjs` and add the following code:
 
 ```typescript
 import fs from "fs";
@@ -377,11 +383,11 @@ const uploadResult = await turbo.uploadFile({
 console.log(`https://arweave.developerdao.com/${uploadResult.id}`);
 ```
 
-Compared to the small file example, you can eliminate the arweave dependency, as the Turbo SDK can load key files directly. Besides that, the CLI version reads similar information from Arweave to calculate costs and balances.
+Compared to the small file example, you can eliminate the `arweave` dependency, as the Turbo SDK can load key files directly. Besides that, the CLI version reads similar information from Arweave to calculate costs and balances.
 
-You don't have to buy credits again if you already bought turbo credits in the frontend version and reused the wallet address.
+You don't have to buy credits again if you already bought turbo credits in the front-end version and reused the wallet address.
 
-The CLI requires a file path as the first argument so you can upload the package.json file to test it.
+The CLI requires a file path as the first argument so you can upload the `package.json` file to test it.
 
     `node ./index.mjs ./package.json`
 
@@ -412,7 +418,7 @@ https://arweave.developerdao.com/YG3PpZHN…
 
 ## What are Popular Arweave Bundling Services and SDKs?
 
-You can only upload files with L1 transactions by paying AR tokens. Bundling services help overcome this limitation by providing alternative payment methods. While not part of this lesson, it’s notable that you can use non-Arweave wallets to sign bundled transactions for Arweave.
+**You can only upload files with L1 transactions by paying AR tokens.** Bundling services help overcome this limitation by providing alternative payment methods. While not part of this lesson, it’s notable that you can use non-Arweave wallets to sign bundled transactions for Arweave.
 
 Popular bundling services are Irys and ArDrive.
 
