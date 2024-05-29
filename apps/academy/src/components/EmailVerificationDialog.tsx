@@ -150,7 +150,10 @@ export function EmailVerificationDialog({
         <DialogFooter className="flex w-full">
           <div className="flex w-full justify-between">
             <div className="flex flex-col justify-center">
-              <span className="text-sm text-[#44AF96]">Haven&apos;t received the email yet?</span>
+              <span className="text-sm text-[#44AF96]">
+                Haven&apos;t received your email? Please check your spam folder, otherwise request
+                another code below
+              </span>
               {allowNewEmail ? (
                 <span className="h-fit w-fit border-[#44AF96] text-xs text-[#44AF96]">
                   {`You can request new email in a moment. `}

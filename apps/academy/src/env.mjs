@@ -22,6 +22,7 @@ const server = z.object({
   // DISCORD_CLIENT_SECRET: z.string(),
   ENVIRONMENT: z.enum(["local", "staging", "production"]),
   SENDGRID_API_KEY: z.string().min(1),
+  SENDGRID_CONTACTS_LIST_ID: z.string().min(1),
 });
 
 /**
@@ -49,6 +50,7 @@ const processEnv = {
   NEXT_PUBLIC_WALLET_CONNECT_ID: process.env["NEXT_PUBLIC_WALLET_CONNECT_ID"],
   ENVIRONMENT: process.env["ENVIRONMENT"],
   SENDGRID_API_KEY: process.env["SENDGRID_API_KEY"],
+  SENDGRID_CONTACTS_LIST_ID: process.env["SENDGRID_CONTACTS_LIST_ID"],
 };
 
 // Don't touch the part below
