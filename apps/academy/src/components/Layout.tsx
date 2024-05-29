@@ -4,8 +4,9 @@ import { useSession } from "next-auth/react";
 import { type FunctionComponent, type PropsWithChildren, useEffect, useState } from "react";
 import { Footer } from "ui";
 
+import { EmailRequestDialog } from "@/components/EmailRequestDialog";
+import { EmailVerificationDialog } from "@/components/EmailVerificationDialog";
 import { Header } from "@/components/Header";
-import { RequestEmailDialog } from "@/components/RequestEmailDialog";
 import { api } from "@/utils/api";
 
 const bttf = localFont({
@@ -27,6 +28,9 @@ export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
   const router = useRouter();
   const { pathname } = router;
   const [requestEmail, setRequestEmail] = useState(false);
+  const [emailAlreadySent, setEmailAlreadySent] = useState(false);
+
+  const [requestVerification, setRequestVerification] = useState(false);
 
   const { status, data: sessionData } = useSession();
 
@@ -47,24 +51,47 @@ export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
   }, [status]);
 
   useEffect(() => {
-    console.log({ userEmailData });
-
     if (
       status === "authenticated" &&
-      (userEmailData?.email === null || userEmailData?.emailVerified === null)
+      typeof userEmailData?.email === "string" &&
+      (userEmailData.emailVerified === null || userEmailData.emailVerified === undefined)
+    ) {
+      setRequestVerification(true);
+      setEmailAlreadySent(userEmailData.emailSent === true ? true : false);
+    } else if (
+      status === "authenticated" &&
+      userEmailData?.email === null &&
+      userEmailData.emailVerified === null &&
+      userEmailData.emailSent !== undefined
     ) {
       setRequestEmail(true);
+      setEmailAlreadySent(userEmailData.emailSent || false);
     }
   }, [userEmailData, status]);
 
   return (
     <>
-      <RequestEmailDialog
+      <EmailRequestDialog
         open={requestEmail}
         setIsOpen={() => {
           setRequestEmail(false);
         }}
+        setRequestVerification={setRequestVerification}
       />
+      {userEmailData?.verificationNumber !== null &&
+      userEmailData?.verificationNumber !== undefined &&
+      userEmailData.email !== null &&
+      userEmailData.email !== undefined ? (
+        <EmailVerificationDialog
+          open={requestVerification}
+          setIsOpen={() => {
+            setRequestVerification(false);
+          }}
+          verificationCodeNumber={userEmailData.verificationNumber.toString()}
+          emailAlreadySent={emailAlreadySent}
+          emailAddress={userEmailData.email}
+        />
+      ) : null}
       <Header />
       <main className={fontVars}>{children}</main>
       {pathname !== "/tracks" && pathname !== "/fundamentals" ? <Footer /> : null}

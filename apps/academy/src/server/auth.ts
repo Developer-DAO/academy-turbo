@@ -121,7 +121,7 @@ export const authOptions: (ctxReq: CtxOrReq) => NextAuthOptions = ({
               data: {
                 address: fields.address,
                 image: "https://www.developerdao.com/D_D_logo-dark.svg",
-                verificationNumber: Math.floor(100000 + Math.random() * 900000),
+                // verificationNumber: Math.floor(100000 + Math.random() * 900000),
               },
             });
 
@@ -134,22 +134,10 @@ export const authOptions: (ctxReq: CtxOrReq) => NextAuthOptions = ({
                 providerAccountId: fields.address,
               },
             });
-          } else {
-            if (user.verificationNumber === null) {
-              await prisma.user.update({
-                where: {
-                  id: user.id,
-                },
-                data: {
-                  verificationNumber: Math.floor(100000 + Math.random() * 900000),
-                },
-              });
-            }
           }
-          const { verificationNumber: _verificationNumber, ...restUser } = user;
 
           return {
-            ...restUser,
+            ...user,
           };
         } catch (error) {
           // Uncomment or add logging if needed

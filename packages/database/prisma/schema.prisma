@@ -32,6 +32,7 @@ model User {
   name             String?
   address          String?            @unique
   email            String?            @unique
+  emailSent        Boolean            @default(false)
   emailVerified    DateTime?
   verificationNumber Int? 
   image            String?

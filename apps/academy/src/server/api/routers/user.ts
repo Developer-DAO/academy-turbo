@@ -21,6 +21,7 @@ export const userRouter = createTRPCRouter({
         email: true,
         emailVerified: true,
         verificationNumber: true,
+        emailSent: true,
       },
     });
 
@@ -39,6 +40,35 @@ export const userRouter = createTRPCRouter({
       },
     });
 
+    async function sendEmail(msg: {
+      to: string;
+      from: string;
+      subject: string;
+      text: string;
+      html: string;
+    }) {
+      return new Promise((resolve, reject) => {
+        sgMail
+          .send(msg)
+          .then(async () => {
+            console.log("Email sent successfully");
+            const userEmailSent = await ctx.prisma.user.update({
+              where: {
+                id: ctx.session.user.id,
+              },
+              data: {
+                emailSent: true,
+              },
+            });
+            resolve(userEmailSent);
+          })
+          .catch((error: any) => {
+            console.error(error);
+            reject();
+          });
+      });
+    }
+
     if (
       emailSaved !== null &&
       emailSaved.email !== null &&
@@ -52,14 +82,8 @@ export const userRouter = createTRPCRouter({
         html: `<strong>${emailSaved.verificationNumber}</strong>`,
       };
 
-      sgMail
-        .send(msg)
-        .then(() => {
-          console.log("Email sent successfully");
-        })
-        .catch((error: any) => {
-          console.error(error);
-        });
+      await sendEmail(msg);
+
       return {
         ...emailSaved,
         emailSent: true,
@@ -81,4 +105,58 @@ export const userRouter = createTRPCRouter({
       },
     });
   }),
+  resendCodeVerificationEmail: protectedProcedure
+    .input(z.string().email())
+    .mutation(async ({ ctx, input }) => {
+      const userEmailData = await ctx.prisma.user.findUnique({
+        where: {
+          id: ctx.session.user.id,
+        },
+      });
+
+      async function sendEmail(msg: {
+        to: string;
+        from: string;
+        subject: string;
+        text: string;
+        html: string;
+      }) {
+        return new Promise((resolve, reject) => {
+          sgMail
+            .send(msg)
+            .then(async () => {
+              console.log("Email sent successfully");
+              const userEmailSent = await ctx.prisma.user.update({
+                where: {
+                  id: ctx.session.user.id,
+                },
+                data: {
+                  emailSent: true,
+                },
+              });
+              resolve(userEmailSent);
+            })
+            .catch((error: any) => {
+              console.error(error);
+              reject();
+            });
+        });
+      }
+
+      if (
+        userEmailData !== null &&
+        userEmailData.email !== null &&
+        userEmailData.verificationNumber !== null
+      ) {
+        const msg = {
+          to: input,
+          from: "no-reply@developerdao.com",
+          subject: "D_D Academy Verification Code",
+          text: "This is your e-mail verification code for Developer DAO Academy ",
+          html: `<strong>${userEmailData.verificationNumber}</strong>`,
+        };
+
+        await sendEmail(msg);
+      }
+    }),
 });
