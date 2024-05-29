@@ -60,7 +60,18 @@ Erc20SolidityTrackPage.getLayout = function getLayout(page: ReactElement) {
   return (
     <PageSeoLayout
       title="Build a Fungible Token"
-      description="Learn to create ERC-20 tokens using Foundry, progressing from the basics to advanced customisation. We will be exploring, testing, real-world applications, security practices, and the role of tokens in decentralised ecosystems. From DeFi to DAO's and everything in between, thanks to its simplicity, but versatility, the ERC-20 is going nowhere. Start with Solidity, or dive directly into token creation — empowering you to contribute to blockchain projects."
+      description="Start with Solidity basics, or move straight on to creating an ERC-20 token using the Foundry development toolchain."
+      openGraph={{
+        images: [
+          {
+            url:
+              process.env["NEXT_PUBLIC_VERCEL_URL"] !== undefined
+                ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/meta-images/build-an-erc20-token.png`
+                : "/meta-images/build-an-erc20-token.png",
+            alt: "Web3 Learning Tracks",
+          },
+        ],
+      }}
     >
       {page}
     </PageSeoLayout>
