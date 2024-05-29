@@ -66,7 +66,7 @@ Web3PythonTrackPage.getLayout = function getLayout(page: ReactElement) {
           {
             url:
               process.env["NEXT_PUBLIC_VERCEL_URL"] !== undefined
-                ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/meta-images/a-developers-guide-to-ethereum.png`
+                ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/meta-images/python-smart-contract-development-for-beginners.png`
                 : "/meta-images/python-smart-contract-development-for-beginners.png",
             alt: "Python Smart Contract Development for Beginniners",
           },
