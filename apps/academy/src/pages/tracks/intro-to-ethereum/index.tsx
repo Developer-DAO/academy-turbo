@@ -64,7 +64,10 @@ IntroToEthereumTrackPage.getLayout = function getLayout(page: ReactElement) {
       openGraph={{
         images: [
           {
-            url: "/public/meta-images/a-developers-guide-to-ethereum.png",
+            url:
+              process.env["NEXT_PUBLIC_VERCEL_URL"] !== undefined
+                ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/meta-images/a-developers-guide-to-ethereum.png`
+                : "/meta-images/a-developers-guide-to-ethereum.png",
           },
         ],
       }}
