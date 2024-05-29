@@ -20,6 +20,14 @@ const withMDX = nextMDX({
 /** @type {import('next').NextConfig} */
 const config = {
   // basePath,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+  },
   reactStrictMode: true,
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   reactStrictMode: true,

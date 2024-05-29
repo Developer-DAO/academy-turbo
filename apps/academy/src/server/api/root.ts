@@ -1,6 +1,7 @@
 import { completedQuizzesRouter } from "@/server/api/routers/completedquizzes";
 import { lessonsRouter } from "@/server/api/routers/lessons";
 import { TracksRouter } from "@/server/api/routers/tracks";
+import { userRouter } from "@/server/api/routers/user";
 import { createTRPCRouter } from "@/server/api/trpc";
 // export * from "database";
 
@@ -10,6 +11,7 @@ import { createTRPCRouter } from "@/server/api/trpc";
  * All routers added in /api/routers should be manually added here.
  */
 export const appRouter = createTRPCRouter({
+  user: userRouter,
   tracks: TracksRouter,
   lessons: lessonsRouter,
   completedQuizzes: completedQuizzesRouter,
