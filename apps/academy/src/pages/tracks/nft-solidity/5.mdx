@@ -386,7 +386,7 @@ default.
 We'll trim out most of the content in this initial file, and bring in a brand new `<TierNFT>` React component
 that will house our main application functionality and will be displayed on the Home page.
 
-Open `frontend/pages/index.tsx`, remove most of the content, and add these two lines:
+We'll be able to identify the component in the `index.tsx` file by the following two sections:
 
 ```tsx
 import { TierNFT } from "../components/tiernft";
@@ -398,7 +398,7 @@ import { TierNFT } from "../components/tiernft";
 </main>
 ```
 
-Your file should look like this:
+Open `frontend/pages/index.tsx`, remove most of the content, and update the file so that it looks like this:
 
 ```tsx
 import type { NextPage } from "next";
