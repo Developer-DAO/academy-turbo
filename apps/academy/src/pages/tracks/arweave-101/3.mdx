@@ -34,15 +34,15 @@ You need a basic understanding of web technologies like HTTPS, HTML, JavaScript,
 
 A basic understanding of blockchains is helpful, too. At least you should understand what wallets and transactions are.
 
-A browser and Node.js to try the examples.
+A browser and Node.js are required to try the examples.
 
-Since using web crypto functions requires HTTPS, you might want to use a cloud IDE like GitHub Codespaces or a service like lcl.host.
+Since using web crypto functions requires HTTPS, you might want to use a cloud IDE like [GitHub Codespaces](https://github.com/features/codespaces) or a service like [lcl.host](https://lcl.host/).
 
 ## How to Store Small Files on Arweave?
 
 Thanks to layer 2 (L2) bundling services that store multiple transactions and files in a single layer 1 (L1) transaction, uploading data under 100KiB is so cheap that the major bundling services subsidize them. You can upload small files without paying tokens.
 
-### Uploading via Frontend
+### Uploading via Front-end
 
 Let’s start by creating a web application that uploads small files.
 
@@ -54,7 +54,7 @@ cd demo-frontend
 npm i && npm i arweave @ardrive/turbo-sdk
 ```
 
-Next, you implement the frontend. The `arweave` package will generate a random wallet address for each upload. Remember, you upload each file alongside a transaction, so it needs to be signed by a private key of an Arweave wallet.
+Next, you implement the front-end. The `arweave` package will generate a random wallet address for each upload. Remember, you upload each file alongside a transaction, so it needs to be signed by a private key of an Arweave wallet.
 
 The `@ardrive/turbo-sdk` package will handle all the upload modalities for us:
 
@@ -125,7 +125,7 @@ Open the URL of the development server in your browser, choose a file smaller th
 
 Keep going, and fill the remaining knowledge gaps to build fully-fledged DApps!
 
-### Uploading via Backend
+### Uploading via Back-end
 
 Next, we build a simple CLI uploader with Node.js.
 
@@ -192,11 +192,11 @@ The free uploads are awesome but limited. You can’t upload audio, video, or a 
 
 Again, you will use the Turbo SDK, which lets you pay with fiat. Since you pay up-front with fiat, you can’t use random wallet addresses anymore, as the Turbo SDK will associate your payments with an address. You need a reusable wallet address, which you can create with ArConnect, Arweave’s most popular crypto wallet. It’s a browser extension that comes with a handy install video.
 
-Go to the ArConnect download page and follow the instructions to install the wallet and create your first address.
+Go to the [ArConnect download page](https://www.arconnect.io/download) and follow the instructions to install the wallet and create your first address.
 
 <Callout emoji="💡">Note: You should only use this address for development purposes.</Callout>
 
-### Upload via Frontend
+### Upload via Front-end
 
 Let’s start with a web app again. Create a new Vite project and install the dependencies with the following commands:
 
@@ -236,6 +236,11 @@ The “Connect Wallet” button asks ArConnect for wallet permissions required b
 
 The “Buy” button calls the Turbo SDK to start a Stripe checkout session and opens it in a new tab. Here, you can buy Turbo Credits (the token required for uploads with the Turbo SDK). This will work either with Google Pay or a credit card.
 
+<Callout emoji="💸">
+  If you want to try a larger upload for yourself, get 20% off of one Turbo Credits purchase with
+  promo code: `DDDISCOUNT`
+</Callout>
+
 The “Choose file” input lets you choose a file from your disk and will calculate the size and costs of uploading that file to Arweave. Everything under 100 KiB is still free.
 
 Lastly, the “Upload” button uses the Turbo SDK to upload the file to Arweave. The turbo credits will automatically be debited from your wallet address.
@@ -254,7 +259,7 @@ Now to the actual code. Replace the content of the `demo-frontend-big/index.html
 <title>Arweave File Upload</title>
 
 <button id="connectButton">Connect Wallet</button>
-<button id="chargeButton">Buy $5 worth of Turbo Credis</button>
+<button id="chargeButton">Buy $5 worth of Turbo Credits</button>
 
 <p>Connected Wallet: <span id="walletAddress">-</span></p>
 <p>Wallet Balance: <span id="walletBalance">-</span> TC</p>
@@ -294,6 +299,7 @@ Now to the actual code. Replace the content of the `demo-frontend-big/index.html
     const result = await turbo.createCheckoutSession({
       amount: USD(5.0),
       owner: activeAddress,
+      promoCodes: ["DDDISCOUNT"], // 20% discount
     });
 
     const checkoutButton = document.getElementById("checkoutButton");
@@ -331,7 +337,7 @@ Now to the actual code. Replace the content of the `demo-frontend-big/index.html
 </script>
 ```
 
-### Upload via Backend
+### Upload via Back-end
 
 First, create a new Node.js project and install the dependencies.
 
@@ -422,13 +428,13 @@ https://arweave.developerdao.com/YG3PpZHN…
 
 Popular bundling services are Irys and ArDrive.
 
-Irys is a service that helps upload to Arweave with its Irys SDK and search for uploads with the Irys Query Package. It supports payment with tokens like ETH, SOL, USDC, etc. You can find an up-to-date list of supported tokens in the Irys docs.
+Irys is a service that helps upload to Arweave with its [Irys SDK](https://docs.irys.xyz/developer-docs/irys-sdk) and search for uploads with the [Irys Query Package](https://docs.irys.xyz/developer-docs/querying/query-package). It supports payment with tokens like ETH, SOL, USDC, etc. You can find an up-to-date list of supported tokens in the [Irys docs](https://docs.irys.xyz/overview/supported-tokens).
 
-Permanent Data Solutions, the creators of ArDrive, a permanent storage alternative to services like DropBox, also provide bundling services. We already used the Turbo SDK, which enables payments in AR, ETH, SOL, and even fiat. There is also the ArDrive Core library, which comes with built-in ArFS support, so if you want to use your uploaded files directly in your ArDrive, that’s the way to go.
+Permanent Data Solutions, the creators of ArDrive, a permanent storage alternative to services like DropBox, also provide bundling services. In this lesson, we used the [Turbo SDK](https://docs.ardrive.io/docs/turbo/what-is-turbo.html), which enables payments in AR, ETH, SOL, and even fiat. There is also the [ArDrive Core](https://docs.ardrive.io/docs/core-sdk.html) library, which comes with built-in ArFS support, so if you want to use your uploaded files directly in your ArDrive, that’s the way to go.
 
-The Turbo and the Irys SDK are based on ArBundles, which allows you to create and upload bundles directly to Arweave. However, this is out of scope for this lesson. If you want to learn more, check out the arweave-js docs.
+The Turbo and the Irys SDK are based on [ArBundles](https://github.com/Irys-xyz/arbundles), which allows you to create and upload bundles directly to Arweave. However, this is out of scope for this lesson.
 
-For quickly building apps on top of these tools, Community Labs offers a comprehensive frontend library called Arweave Kit. It integrates well with popular frameworks and comes with authentication, encryption, and GraphQL clients. If you want to build something quickly, check it out.
+For quickly building apps on top of these tools, Community Labs offers a comprehensive front-end library called [Arweave Kit](https://docs.arweavekit.com/). It integrates well with popular frameworks and comes with authentication, encryption, and GraphQL clients.
 
 <LessonQuestionsModal buttonText="Quiz 3" title="Comprehension Check">
   <Question question="arweave-101/3/quiz-3/Q1" />
@@ -439,11 +445,11 @@ For quickly building apps on top of these tools, Community Labs offers a compreh
 ## What are Popular Arweave Wallets?
 
 Arweave supports three wallet types: libraries, extensions, and hardware wallets.
-Arweave.app and arweave-js are library wallets. You import them into your app, and they handle signing. That way, your users don’t have to install a wallet extension. Arweave.app is for frontend apps, and arweave-js is for backend apps. However, Arweave.app is often a bit harder to integrate with other libraries like the Turbo SDK; that’s why it isn’t used in this course.
+[Arweave.app](https://jfbeats.github.io/ArweaveWalletConnector/) and [arweave-js](https://github.com/ArweaveTeam/arweave-js) are library wallets. You import them into your app, and they handle signing. That way, your users don’t have to install a wallet extension. Arweave.app is for front-end apps, and arweave-js is for backend apps. However, Arweave.app is often a bit harder to integrate with other libraries like the Turbo SDK; that’s why it isn’t used in this course.
 
-ArConnect is the go-to wallet for everyday tasks. It’s always up-to-date and integrates well with SDKs. The downside is that it requires installation, as it’s a browser extension.
+[ArConnect](https://www.arconnect.io/) is the go-to wallet for everyday tasks. It’s always up-to-date and integrates well with SDKs. The downside is that it requires installation, as it’s a browser extension.
 
-You can also check out Ledger if you’re searching for cold storage for your AR.
+You can also check out [Ledger](https://www.ledger.com/coin/wallet/arweave#learn-more) if you’re searching for cold storage for your AR.
 
 <LessonQuestionsModal buttonText="Quiz 4" title="Comprehension Check">
   <Question question="arweave-101/3/quiz-4/Q1" />
@@ -453,7 +459,7 @@ You can also check out Ledger if you’re searching for cold storage for your AR
 
 ## Summary
 
-In this lesson, you learned all about uploading data to Arweave. The bundling services and their SDKs enable you to get all your files on Arwave without buying AR tokens, and you don't need to pay anything for small files under 100KiB.
+In this lesson, you learned all about uploading data to Arweave. The bundling services and their SDKs enable you to get all your files on Arweave without buying AR tokens, and you don't need to pay anything for small files under 100KiB.
 
 You also created your first wallet address and learned about the available Arweave wallets. With wallet libraries and extensions, you can build DApps that work directly in the browser or use Node.js.
 
