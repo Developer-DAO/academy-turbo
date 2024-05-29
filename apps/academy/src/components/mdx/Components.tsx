@@ -38,7 +38,7 @@ const Components = {
   a: (props: any) => <a apply="mdx.a" className="mdx-a" {...props} />,
   ul: (props: any) => <ul apply="mdx.ul" className="mdx-ul text-xl" {...props} />,
   ol: (props: any) => <ol apply="mdx.ol" className="mdx-ol text-xl" {...props} />,
-  img: (props: any) => <img apply="mdx.image" className="m-0" alt="" {...props} />,
+  img: (props: any) => <img apply="mdx.image" className="mdx-img m-0" alt="" {...props} />,
   SideDrawer,
   Callout,
   QuizStatusChecker,

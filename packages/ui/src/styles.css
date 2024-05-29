@@ -186,6 +186,11 @@
   @apply my-4 ml-4 list-inside list-decimal font-light;
 }
 
+.mdx-img {
+  @apply mx-auto;
+  max-height: 640px;
+}
+
 .inline-code {
   font-family: "Courier New", monospace;
   background-color: #1c1c1c;
