@@ -35,7 +35,7 @@ const Components = {
   h3: (props: any) => <h3 apply="mdx.h3" className="h3" {...props} />,
   h4: (props: any) => <h4 apply="mdx.h4" className="h4" {...props} />,
   p: (props: any) => <p apply="mdx.p" className="mdx-p text-xl" {...props} />,
-  a: (props: any) => <a apply="mdx.a" className="mdx-a" {...props} />,
+  a: (props: any) => <a apply="mdx.a" className="mdx-a" target="_blank" {...props} />,
   ul: (props: any) => <ul apply="mdx.ul" className="mdx-ul text-xl" {...props} />,
   ol: (props: any) => <ol apply="mdx.ol" className="mdx-ol text-xl" {...props} />,
   img: (props: any) => <img apply="mdx.image" className="mdx-img m-0" alt="" {...props} />,

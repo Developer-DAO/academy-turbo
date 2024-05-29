@@ -71,7 +71,7 @@ Arweave’s consensus algorithm requires nodes to prove they can access random c
 
 ### Data Storage and Data Access
 
-The Arweave ecosystem has a shared responsibility model. The Arweave network manages data storage and replication; gateway networks, like AR.IO, handle data access.
+The Arweave ecosystem has a shared responsibility model. The Arweave network manages data storage and replication; gateway networks, like [AR.IO](https://ar.io/), handle data access.
 
 While Arweave incentivizes miner nodes to share the data with their peers, the storage format isn’t well suited for random access. Besides, running a miner node is quite costly, as it needs to store all data for mining.
 
@@ -111,15 +111,15 @@ In Figure 3, you can see how the chunk selection affects the block creation capa
 
 <div style={{ textAlign: "center" }}>*Figure 3: Chunk selection*</div>
 
-If no miner has the selected chunks, the network will choose different chunks, allowing Arweave to incentivize permanent storage without forcing miners to store all the data. When miners don’t want to store specific transaction bodies for ethical or legal reasons, they will lose hash power but can still participate in the mining. Do-Not-Store requests allow users to notify miners and gateways of data they should delete in specific jurisdictions.
+If no miner has the selected chunks, the network will choose different chunks, allowing Arweave to incentivize permanent storage without forcing miners to store all the data. When miners don’t want to store specific transaction bodies for ethical or legal reasons, they will lose hash power but can still participate in the mining. [Do-Not-Store](https://specs.arweave.dev/?tx=5i-j61GnGy4p6a2mZY3j_1o0XTpPQKUUb7UY3O8NqSE) requests allow users to notify miners and gateways of data they should delete in specific jurisdictions.
 
-For the computation part, Arweave started with the same proof of work (PoW) algorithm as Bitcoin but later moved to RandomX, as it ensures miners don’t get an advantage by using expensive CPUs or GPUs. Compute power is still required to build a hash for the next block, but it isn’t the main part of the algorithm anymore, lowering the environmental impact by making more of the PoW useful.
+For the computation part, Arweave started with the same proof of work (PoW) algorithm as Bitcoin but later moved to [RandomX](https://44jxru4mdgbtd66dlzjlc3huktqmmzufomg5p24jl66zyut562yq.arweave.net/5xN404wZgzH7w15SsWz0VODGZoVzDdfriV-9nFJ99rE), as it ensures miners don’t get an advantage by using expensive CPUs or GPUs. Compute power is still required to build a hash for the next block, but it isn’t the main part of the algorithm anymore, lowering the environmental impact by making more of the PoW useful.
 
 ### The Storage Endowment
 
 Arweave’s storage endowment makes it economically unique compared to other networks. Whenever a user submits a transaction, most fees go into the endowment, not the miners. The more data is stored, the bigger the endowment gets.
 
-The tokens in the endowment pay for future storage costs. Should the price of Arweave's native AR token fall too much, the network will automatically pay miners with tokens from the endowment. The economics behind Arweave’s native AR token and the endowment are based on (very conservatively) projected storage costs for at least 200 years in the future.
+The tokens in the endowment pay for future storage costs. Should the price of Arweave's native AR token fall too much, the network will automatically pay miners with tokens from the endowment. The economics behind Arweave’s native AR token and the endowment are based on (very conservatively) projected [storage costs](https://arwiki.wiki/#/en/storage-endowment#toc_Cost_of_Perpetual_Data_Storage) for at least 200 years in the future.
 
 Since its inception in 2017, no payments from the endowment were necessary.
 
@@ -165,11 +165,11 @@ Smart contracts aren’t part of the Arweave protocol, which is more similar to 
 
 ### SmartWeave
 
-The most established example is SmartWeave, a smart contract specification for TypeScript executed lazily in the browser. As you execute the contract on your machine, you don’t have to pay a node to do it for you, and since Arweave stores the result of each action permanently, everyone can verify it.
+The most established example is [SmartWeave](https://github.com/ArweaveTeam/SmartWeave), a smart contract specification for TypeScript executed lazily in the browser. As you execute the contract on your machine, you don’t have to pay a node to do it for you, and since Arweave stores the result of each action permanently, everyone can verify it.
 
 ### AO
 
-Another new and exciting example is AO, an L2 network. Like SmartWeave, it uses Arweave’s permanent storage to store computation results and interactions with smart contracts. However, it provides a network of computation nodes that execute contracts as processes that talk to each other via messages. While Lua is currently the only supported programming language (because it has a small runtime and is deterministic), the WebAssembly runtime powering AO allows for all kinds of languages in the future.
+Another new and exciting example is [AO](https://ao.arweave.developerdao.com/), an L2 network. Like SmartWeave, it uses Arweave’s permanent storage to store computation results and interactions with smart contracts. However, it provides a network of computation nodes that execute contracts as processes that talk to each other via messages. While Lua is currently the only supported programming language (because it has a small runtime and is deterministic), the WebAssembly runtime powering AO allows for all kinds of languages in the future.
 
 ## The Pros and Cons of Arweave
 
