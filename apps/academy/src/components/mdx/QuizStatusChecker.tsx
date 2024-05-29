@@ -64,6 +64,7 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
   ) : quizCompleted ? (
     <>
       <QuizCompletedModals
+        quizCompleted={quizCompleted}
         nextLessonURLPath={nextLessonURLPath}
         nextLessonTitle={nextLessonTitle}
         actualLessonTitle={actualLessonTitle}
@@ -81,12 +82,19 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
       ) : null} */}
     </>
   ) : (
-    <Quiz
-      quiz={quiz}
-      nextLessonURLPath={nextLessonURLPath}
-      nextLessonTitle={nextLessonTitle}
-      actualLessonTitle={actualLessonTitle}
-    />
+    <div className="w-full content-center items-center justify-center text-center">
+      <span className="font-future text-3xl font-bold text-[#721F79] underline">
+        Take the quiz to advance to the next lesson
+      </span>
+      <br />
+      <br />
+      <Quiz
+        quiz={quiz}
+        nextLessonURLPath={nextLessonURLPath}
+        nextLessonTitle={nextLessonTitle}
+        actualLessonTitle={actualLessonTitle}
+      />
+    </div>
   );
 };
 

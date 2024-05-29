@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect,useState } from "react";
 import {
   ButtonRaw,
   Dialog,
@@ -16,13 +16,20 @@ export interface QuizProps {
   nextLessonURLPath: string;
   nextLessonTitle: string;
   actualLessonTitle: string;
+  quizCompleted: boolean;
 }
 
 export type Answers = Record<string, number[]>;
 
-const QuizCompletedModals = (_props: QuizProps): JSX.Element => {
+const QuizCompletedModals = ({ quizCompleted }: QuizProps): JSX.Element => {
   const [showDialog, setShowDialog] = useState(false);
   // const [showKeepGoingModal, setShowKeepGoingModal] = useState(false);
+
+  useEffect(() => {
+    if (quizCompleted) {
+      setShowDialog(true);
+    }
+  }, [quizCompleted]);
 
   const handleLessonDoneClick = () => {
     // setShowKeepGoingModal(true);
