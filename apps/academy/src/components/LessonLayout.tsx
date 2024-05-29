@@ -8,6 +8,7 @@ import { api } from "@/utils/api";
 interface LessonLayoutProps {
   children: React.ReactNode;
   lessonTitle: string;
+  lessonImage?: string;
   author: string;
   authorImage: string;
   authorPosition: string;
@@ -18,6 +19,7 @@ interface LessonLayoutProps {
 export default function LessonLayout({
   children,
   lessonTitle,
+  lessonImage = "default-meta-image.png",
   author,
   authorImage,
   authorTwitter,
@@ -35,6 +37,17 @@ export default function LessonLayout({
       title={lessonTitle}
       // This should be the individual lesson description eventually
       description="Start your journey to become a Web3 Developer today. Free high-quality courses to learn web3 with Developer DAO Academy."
+      openGraph={{
+        images: [
+          {
+            url:
+              process.env["NEXT_PUBLIC_VERCEL_URL"] !== undefined
+                ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/${lessonImage}}`
+                : lessonImage,
+            alt: lessonTitle,
+          },
+        ],
+      }}
     >
       <main className="px-10 pt-36 text-white lg:mx-auto lg:max-w-screen-lg lg:pt-44">
         <section className="text-center">
