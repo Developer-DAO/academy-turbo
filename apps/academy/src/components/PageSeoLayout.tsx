@@ -1,36 +1,19 @@
-import { NextSeo, type NextSeoProps } from "next-seo";
+import { NextSeo } from "next-seo";
 
-import defaultSeoConfig from "../next-seo.config";
-
-// interface PageSeoLayoutProps {
-//   title: string;
-//   description: string;
-//   children: React.ReactNode;
-//   openGraph?: Object
-// }
-
-type PageSeoLayoutProps = NextSeoProps
+interface PageSeoLayoutProps {
+  title: string;
+  description: string;
+  children: React.ReactNode;
+}
 
 const PageSeoLayout: React.FC<PageSeoLayoutProps> = ({
   title,
   description,
   children,
-  openGraph,
 }: PageSeoLayoutProps) => {
-  const seoConfig = {
-    title: title ?? defaultSeoConfig.defaultTitle,
-    description: description ?? defaultSeoConfig.description,
-    openGraph: {
-      ...defaultSeoConfig.openGraph,
-      ...openGraph,
-    },
-    twitter: {
-      ...defaultSeoConfig.twitter,
-    },
-  };
   return (
     <>
-      <NextSeo {...seoConfig} />
+      <NextSeo title={title} description={description} />
       {children}
     </>
   );
