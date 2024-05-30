@@ -13,12 +13,16 @@ import {
   DialogTrigger,
 } from "ui";
 
+import { createTwitterIntentLink } from "@/utils/create-twitter-intent-link";
+
 export interface QuizProps {
   nextLessonURLPath: string;
   nextLessonTitle: string;
   actualLessonTitle: string;
   quizCompleted: boolean;
-  tweetShareText: string;
+  successMessage?: string;
+  successTitle?: string;
+  currentLessonPath: string;
 }
 
 export type Answers = Record<string, number[]>;
@@ -27,7 +31,9 @@ const QuizCompletedModals = ({
   nextLessonURLPath,
   actualLessonTitle,
   quizCompleted,
-  tweetShareText,
+  successMessage = "You succesffuly answered all the quiz questions correctly. Celebrate your learning on Twitter and advanced to the next lesson below.",
+  successTitle = "Great Job!",
+  currentLessonPath,
 }: QuizProps): JSX.Element => {
   const [showDialog, setShowDialog] = useState(false);
   // const [showKeepGoingModal, setShowKeepGoingModal] = useState(false);
@@ -74,11 +80,6 @@ const QuizCompletedModals = ({
                 <span className="font-clash-display w-full text-center text-2xl font-bold leading-8 text-white">
                   {actualLessonTitle}
                 </span>
-                {/*   ) : ( 
-                <span className="font-clash-display w-full text-center text-2xl font-bold leading-8 text-white">
-                  Nice!
-                </span>
-              )} */}
               </div>
             </DialogTitle>
           </DialogHeader>
@@ -91,28 +92,24 @@ const QuizCompletedModals = ({
                   className={`font-clash-display w-full cursor-pointer rounded-3xl p-3 text-center font-bold text-[#F9F9F9]`}
                 >
                   <h1 className="font-clash-display mb-11 text-3xl lg:text-[26px]">
-                    Lesson complete
+                    {successTitle}
                   </h1>
-                  {/* <Image
-                    src={"/happy_face.png"}
-                    alt="happy_face_icon"
-                    width={100}
-                    height={100}
-                    className="mx-auto mb-16"
-                  /> */}
                   <p className="mb-20 text-base font-normal leading-5 text-[#FFFFFF] lg:mb-10 lg:text-2xl">
-                    You&apos;ve completed the quiz for this section. Share your success on Twitter
-                    using the button below. <a href={tweetShareText}>share</a>
+                    {successMessage}
                   </p>
                   <div className="flex flex-col gap-y-8">
-                    <NextLink href={nextLessonURLPath}>
-                      <ButtonRaw
-                        className="font-future h-14 w-36 bg-[#721F79] lg:h-[4.125rem] lg:w-80 lg:min-w-[21rem] lg:text-base"
-                        onClick={handleLessonDoneClick}
-                      >
+                    <NextLink
+                      href={createTwitterIntentLink(
+                        `I completed ${actualLessonTitle} on @devdao_academy.
+                          https://academy.developerdao.com${currentLessonPath}`,
+                      )}
+                      target="_blank"
+                    >
+                      <ButtonRaw className="font-future h-14 w-36 bg-[#721F79] lg:h-[4.125rem] lg:w-80 lg:min-w-[21rem] lg:text-base">
                         Share on twitter
                       </ButtonRaw>
                     </NextLink>
+
                     <NextLink href={nextLessonURLPath}>
                       <ButtonRaw
                         variant="outline"

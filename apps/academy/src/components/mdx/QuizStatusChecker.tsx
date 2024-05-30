@@ -10,16 +10,23 @@ import Quiz from "./Quiz";
 export interface QuizStatusCheckerType {
   quiz: string;
   tweetShareText: string;
+  successMessage: string;
+  successTitle: string;
 }
 
-const QuizStatusChecker = ({ quiz, tweetShareText }: QuizStatusCheckerType) => {
+const QuizStatusChecker = ({
+  quiz,
+  tweetShareText,
+  successMessage,
+  successTitle,
+}: QuizStatusCheckerType) => {
   const [quizCompleted, setQuizCompleted] = useState<boolean>(false);
   const { address, isDisconnected } = useAccount();
   const { completedQuizzesIds, allLessonsData } = useAppContext();
   const [nextLessonURLPath, setNextLessonURLPath] = useState("");
   const [nextLessonTitle, setNextLessonTitle] = useState("");
   const [actualLessonTitle, setActualLessonTitle] = useState("");
-  // const [actualtwitterShareUrl, setActualtwitterShareUrl] = useState("");
+  const [currentLessonPath, setCurrentLessonPath] = useState("");
 
   // Requests
   useMemo(() => {
@@ -52,9 +59,10 @@ const QuizStatusChecker = ({ quiz, tweetShareText }: QuizStatusCheckerType) => {
       )!.lessonTitle;
       setActualLessonTitle(newActualLessonTitle);
 
-      // const newTwitterShareUrl: string =
-      //   allLessonsData.find((lesson) => lesson.quizFileName === quiz)!.twitterShareUrl ?? "";
-      // setActualtwitterShareUrl(newTwitterShareUrl);
+      const newCurrentLessonPath: string = allLessonsData.find(
+        (lesson) => lesson.quizFileName === quiz,
+      )!.lessonPath;
+      setCurrentLessonPath(newCurrentLessonPath);
     }
   }, [quizCompleted]);
 
@@ -70,11 +78,14 @@ const QuizStatusChecker = ({ quiz, tweetShareText }: QuizStatusCheckerType) => {
   ) : quizCompleted ? (
     <>
       <QuizCompletedModals
+        successMessage={successMessage}
+        successTitle={successTitle}
         tweetShareText={tweetShareText}
         quizCompleted={quizCompleted}
         nextLessonURLPath={nextLessonURLPath}
         nextLessonTitle={nextLessonTitle}
         actualLessonTitle={actualLessonTitle}
+        currentLessonPath={currentLessonPath}
       />
       {/* <Badge className="m-auto flex w-fit justify-center bg-green-600">
         <span className="text-2xl">Quiz Completed</span>
