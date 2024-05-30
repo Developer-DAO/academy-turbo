@@ -10,7 +10,7 @@ interface Props {
   open: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   emailAlreadySent: boolean;
-  verificationCodeNumber: string;
+  verificationCodeNumber: number;
   emailAddress: string;
 }
 

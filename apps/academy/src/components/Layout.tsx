@@ -29,6 +29,8 @@ export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
   const { pathname } = router;
   const [requestEmail, setRequestEmail] = useState(false);
   const [emailAlreadySent, setEmailAlreadySent] = useState(false);
+  const [verificationCodeNumber, setVerificationCodeNumber] = useState<number>();
+  const [emailAddress, setEmailAddress] = useState("");
 
   const [requestVerification, setRequestVerification] = useState(false);
 
@@ -56,6 +58,12 @@ export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
       typeof userEmailData?.email === "string" &&
       (userEmailData.emailVerified === null || userEmailData.emailVerified === undefined)
     ) {
+      const fetchGetUserEmailData = async () => {
+        await refetchGetUSerEMailData();
+      };
+      void fetchGetUserEmailData();
+      setVerificationCodeNumber(userEmailData.verificationNumber!);
+      setEmailAddress(userEmailData.email);
       setRequestVerification(true);
       setEmailAlreadySent(userEmailData.emailSent === true ? true : false);
     } else if (
@@ -64,6 +72,10 @@ export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
       userEmailData.emailVerified === null &&
       userEmailData.emailSent !== undefined
     ) {
+      const fetchGetUserEmailData = async () => {
+        await refetchGetUSerEMailData();
+      };
+      void fetchGetUserEmailData();
       setRequestEmail(true);
       setEmailAlreadySent(userEmailData.emailSent || false);
     }
@@ -78,20 +90,13 @@ export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
         }}
         setRequestVerification={setRequestVerification}
       />
-      {userEmailData?.verificationNumber !== null &&
-      userEmailData?.verificationNumber !== undefined &&
-      userEmailData.email !== null &&
-      userEmailData.email !== undefined ? (
-        <EmailVerificationDialog
-          open={requestVerification}
-          setIsOpen={() => {
-            setRequestVerification(false);
-          }}
-          verificationCodeNumber={userEmailData.verificationNumber.toString()}
-          emailAlreadySent={emailAlreadySent}
-          emailAddress={userEmailData.email}
-        />
-      ) : null}
+      <EmailVerificationDialog
+        open={requestVerification}
+        setIsOpen={setRequestVerification}
+        verificationCodeNumber={verificationCodeNumber!}
+        emailAlreadySent={emailAlreadySent}
+        emailAddress={emailAddress}
+      />
       <Header />
       <main className={fontVars}>{children}</main>
       {pathname !== "/tracks" && pathname !== "/fundamentals" ? <Footer /> : null}
