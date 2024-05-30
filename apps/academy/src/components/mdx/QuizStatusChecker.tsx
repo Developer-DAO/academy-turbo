@@ -7,12 +7,12 @@ import { useAppContext } from "@/contexts/AppContext";
 
 import Quiz from "./Quiz";
 
-export interface QuizStatusCheckerTye {
+export interface QuizStatusCheckerType {
   quiz: string;
-  twitterShareUrl: string;
+  tweetShareText: string;
 }
 
-const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
+const QuizStatusChecker = ({ quiz, tweetShareText }: QuizStatusCheckerType) => {
   const [quizCompleted, setQuizCompleted] = useState<boolean>(false);
   const { address, isDisconnected } = useAccount();
   const { completedQuizzesIds, allLessonsData } = useAppContext();
@@ -70,6 +70,7 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
   ) : quizCompleted ? (
     <>
       <QuizCompletedModals
+        tweetShareText={tweetShareText}
         quizCompleted={quizCompleted}
         nextLessonURLPath={nextLessonURLPath}
         nextLessonTitle={nextLessonTitle}

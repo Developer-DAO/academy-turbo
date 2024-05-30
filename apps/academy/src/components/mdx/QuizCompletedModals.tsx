@@ -1,6 +1,6 @@
 // import Image from "next/image";
 import NextLink from "next/link";
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ButtonRaw,
   Dialog,
@@ -18,6 +18,7 @@ export interface QuizProps {
   nextLessonTitle: string;
   actualLessonTitle: string;
   quizCompleted: boolean;
+  tweetShareText: string;
 }
 
 export type Answers = Record<string, number[]>;
@@ -26,6 +27,7 @@ const QuizCompletedModals = ({
   nextLessonURLPath,
   actualLessonTitle,
   quizCompleted,
+  tweetShareText,
 }: QuizProps): JSX.Element => {
   const [showDialog, setShowDialog] = useState(false);
   // const [showKeepGoingModal, setShowKeepGoingModal] = useState(false);
@@ -100,7 +102,7 @@ const QuizCompletedModals = ({
                   /> */}
                   <p className="mb-20 text-base font-normal leading-5 text-[#FFFFFF] lg:mb-10 lg:text-2xl">
                     You&apos;ve completed the quiz for this section. Share your success on Twitter
-                    using the button below.
+                    using the button below. <a href={tweetShareText}>share</a>
                   </p>
                   <div className="flex flex-col gap-y-8">
                     <NextLink href={nextLessonURLPath}>
