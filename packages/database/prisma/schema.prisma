@@ -72,6 +72,7 @@ model Lessons {
   stagingVisible Boolean @default(true)
   visible Boolean @default(true)
   nextLessonPath String?
+  // twitterShareUrl String?
 }
   
   model Tags {

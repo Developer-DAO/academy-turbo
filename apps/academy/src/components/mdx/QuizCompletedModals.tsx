@@ -1,4 +1,5 @@
-import Image from "next/image";
+// import Image from "next/image";
+import NextLink from "next/link";
 import React, { useEffect,useState } from "react";
 import {
   ButtonRaw,
@@ -21,7 +22,11 @@ export interface QuizProps {
 
 export type Answers = Record<string, number[]>;
 
-const QuizCompletedModals = ({ quizCompleted }: QuizProps): JSX.Element => {
+const QuizCompletedModals = ({
+  nextLessonURLPath,
+  actualLessonTitle,
+  quizCompleted,
+}: QuizProps): JSX.Element => {
   const [showDialog, setShowDialog] = useState(false);
   // const [showKeepGoingModal, setShowKeepGoingModal] = useState(false);
 
@@ -65,7 +70,7 @@ const QuizCompletedModals = ({ quizCompleted }: QuizProps): JSX.Element => {
               <div className="w-full text-center">
                 {/*   {!showKeepGoingModal ? ( */}
                 <span className="font-clash-display w-full text-center text-2xl font-bold leading-8 text-white">
-                  Quiz complete!
+                  {actualLessonTitle}
                 </span>
                 {/*   ) : ( 
                 <span className="font-clash-display w-full text-center text-2xl font-bold leading-8 text-white">
@@ -84,50 +89,40 @@ const QuizCompletedModals = ({ quizCompleted }: QuizProps): JSX.Element => {
                   className={`font-clash-display w-full cursor-pointer rounded-3xl p-3 text-center font-bold text-[#F9F9F9]`}
                 >
                   <h1 className="font-clash-display mb-11 text-3xl lg:text-[26px]">
-                    You&apos;re doing great!
+                    Lesson complete
                   </h1>
-                  <Image
+                  {/* <Image
                     src={"/happy_face.png"}
                     alt="happy_face_icon"
                     width={100}
                     height={100}
                     className="mx-auto mb-16"
-                  />
+                  /> */}
                   <p className="mb-20 text-base font-normal leading-5 text-[#FFFFFF] lg:mb-10 lg:text-2xl">
-                    You&apos;ve completed the quiz for this section.
+                    You&apos;ve completed the quiz for this section. Share your success on Twitter
+                    using the button below.
                   </p>
-                  <ButtonRaw
-                    className="font-future h-14 w-36 bg-[#721F79] lg:h-[4.125rem] lg:w-80 lg:min-w-[21rem] lg:text-base"
-                    onClick={handleLessonDoneClick}
-                  >
-                    Done!
-                  </ButtonRaw>
+                  <div className="flex flex-col gap-y-8">
+                    <NextLink href={nextLessonURLPath}>
+                      <ButtonRaw
+                        className="font-future h-14 w-36 bg-[#721F79] lg:h-[4.125rem] lg:w-80 lg:min-w-[21rem] lg:text-base"
+                        onClick={handleLessonDoneClick}
+                      >
+                        Share on twitter
+                      </ButtonRaw>
+                    </NextLink>
+                    <NextLink href={nextLessonURLPath}>
+                      <ButtonRaw
+                        variant="outline"
+                        className="font-future h-14 w-36  lg:h-[4.125rem] lg:w-80 lg:min-w-[21rem] lg:text-base"
+                        onClick={handleLessonDoneClick}
+                      >
+                        Next Lesson
+                      </ButtonRaw>
+                    </NextLink>
+                  </div>
                 </div>
               </div>
-              {/*   ) : ( 
-              <div className="h-64 w-fit lg:mt-11 lg:h-96 lg:w-full">
-                <div
-                  className={`font-clash-display w-full cursor-pointer rounded-3xl p-3 text-center font-bold text-[#F9F9F9]`}
-                >
-                  <h1 className="font-clash-display mb-11 text-3xl lg:text-[26px]">Keep going!</h1>
-                  <Image
-                    src={"/happy_face.png"}
-                    alt="happy_face_icon"
-                    width={100}
-                    height={100}
-                    className="mx-auto mb-16"
-                  />
-                  <p className="mb-20 text-base font-normal leading-5 text-[#FFFFFF] lg:mb-10 lg:text-2xl">
-                    {`You've just completed ${props.actualLessonTitle}!`}
-                  </p>
-                  <NextLink href={props.nextLessonURLPath}>
-                    <ButtonRaw className="font-future h-fit w-fit bg-[#44AF96] lg:h-[4.125rem] lg:w-80 lg:min-w-[21rem] lg:text-base">
-                      {`NEXT: ${props.nextLessonTitle}`}
-                    </ButtonRaw>
-                  </NextLink>
-                </div>
-              </div>
-              {/*  )} */}
             </div>
           </DialogDescription>
 

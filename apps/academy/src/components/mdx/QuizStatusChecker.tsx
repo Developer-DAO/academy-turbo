@@ -9,6 +9,7 @@ import Quiz from "./Quiz";
 
 export interface QuizStatusCheckerTye {
   quiz: string;
+  twitterShareUrl: string;
 }
 
 const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
@@ -18,6 +19,7 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
   const [nextLessonURLPath, setNextLessonURLPath] = useState("");
   const [nextLessonTitle, setNextLessonTitle] = useState("");
   const [actualLessonTitle, setActualLessonTitle] = useState("");
+  // const [actualtwitterShareUrl, setActualtwitterShareUrl] = useState("");
 
   // Requests
   useMemo(() => {
@@ -49,6 +51,10 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
         (lesson) => lesson.quizFileName === quiz,
       )!.lessonTitle;
       setActualLessonTitle(newActualLessonTitle);
+
+      // const newTwitterShareUrl: string =
+      //   allLessonsData.find((lesson) => lesson.quizFileName === quiz)!.twitterShareUrl ?? "";
+      // setActualtwitterShareUrl(newTwitterShareUrl);
     }
   }, [quizCompleted]);
 
