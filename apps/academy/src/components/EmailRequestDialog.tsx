@@ -47,25 +47,22 @@ export function EmailRequestDialog({ open, setIsOpen, setRequestVerification }: 
   return (
     <Dialog open={open}>
       <DialogContent
-        className=" h-fit w-fit gap-10 border-[#44AF96] bg-black"
-        onEscapeKeyDown={(e) => {
-          e.preventDefault();
+        className=" h-fit w-fit gap-6 border-[#44AF96] bg-black"
+        onEscapeKeyDown={() => {
+          setIsOpen(false);
         }}
-        onPointerDown={(e) => {
-          e.preventDefault();
-        }}
-        onInteractOutside={(e) => {
-          e.preventDefault();
+        onInteractOutside={() => {
+          setIsOpen(false);
         }}
       >
         <DialogHeader className="gap-2">
           <DialogTitle className="text-3xl text-[#44AF96]">Configure your email</DialogTitle>
         </DialogHeader>
-        <div className="flex h-fit flex-col gap-10">
-          <div className="flex flex-col gap-10">
+        <div className="flex h-fit flex-col gap-6">
+          <div className="flex flex-col gap-6">
             <Label htmlFor="collaborators" className="text-left text-sm text-[#999999]">
-              Your email address will be used to receive notifications about updates, join the
-              frens!
+              Your email address will be used to receive infrequent notifications about new lessons
+              and product updates. Opt out at any time.
             </Label>
             <Input
               id="email"
