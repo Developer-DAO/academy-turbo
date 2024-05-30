@@ -1,12 +1,14 @@
 // Imports
 // ========================================================
 
+import sgClient from "@sendgrid/client";
 import sgMail from "@sendgrid/mail";
 import { z } from "zod";
 
 import { env } from "@/env.mjs";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "@/server/api/trpc";
 
+sgClient.setApiKey(env.SENDGRID_API_KEY);
 sgMail.setApiKey(env.SENDGRID_API_KEY);
 
 // Router
@@ -96,7 +98,7 @@ export const userRouter = createTRPCRouter({
     }
   }),
   emailVerificatedSuccess: protectedProcedure.mutation(async ({ ctx }) => {
-    await ctx.prisma.user.update({
+    const userEmailVerified = await ctx.prisma.user.update({
       where: {
         id: ctx.session.user.id,
       },
@@ -104,6 +106,40 @@ export const userRouter = createTRPCRouter({
         emailVerified: new Date().toISOString(),
       },
     });
+
+    async function addEmailToContactGroup(email: string) {
+      try {
+        // Step 1: Add contacts
+        const request = {
+          method: "PUT" as const,
+          url: "/v3/marketing/contacts",
+          body: {
+            contacts: email,
+          },
+        };
+
+        const [response] = await sgClient.request(request);
+        console.log("Contacts added:", response.body);
+
+        // @ts-expect-error Step 2: Retrieve contact IDs from the response
+        const contactIds = response.body.persisted_recipients;
+
+        // Step 3: Add contacts to the list
+        const listRequest = {
+          method: "POST" as const,
+          url: `/v3/marketing/lists/${env.SENDGRID_CONTACTS_LIST_ID}/contacts`,
+          body: {
+            contact_ids: contactIds,
+          },
+        };
+
+        const [listResponse] = await sgClient.request(listRequest);
+        console.log("Contacts added to list:", listResponse.body);
+      } catch (error) {
+        console.error("Error adding contacts to list:", error);
+      }
+    }
+    await addEmailToContactGroup(userEmailVerified.email!);
   }),
   resendCodeVerificationEmail: protectedProcedure
     .input(z.string().email())

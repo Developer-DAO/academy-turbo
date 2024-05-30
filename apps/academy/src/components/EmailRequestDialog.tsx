@@ -23,6 +23,7 @@ export function EmailRequestDialog({ open, setIsOpen, setRequestVerification }: 
         title: "Amazing!",
         description: "Now Check your inbox to verify your email address.",
       });
+      setRequestVerification(true);
     },
     onError: ({ message }) => {
       toast({
@@ -30,6 +31,7 @@ export function EmailRequestDialog({ open, setIsOpen, setRequestVerification }: 
         title: "Error!",
         description: `Unexpected error: ${message}`,
       });
+      515619;
     },
     onSettled: () => {
       setIsOpen(false);
