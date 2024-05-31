@@ -9,16 +9,16 @@ import Quiz from "./Quiz";
 
 export interface QuizStatusCheckerType {
   quiz: string;
-  tweetShareText: string;
   successMessage: string;
   successTitle: string;
+  actionButton: any;
 }
 
 const QuizStatusChecker = ({
   quiz,
-  tweetShareText,
   successMessage,
   successTitle,
+  actionButton,
 }: QuizStatusCheckerType) => {
   const [quizCompleted, setQuizCompleted] = useState<boolean>(false);
   const { address, isDisconnected } = useAccount();
@@ -78,9 +78,9 @@ const QuizStatusChecker = ({
   ) : quizCompleted ? (
     <>
       <QuizCompletedModals
+        actionButton={actionButton}
         successMessage={successMessage}
         successTitle={successTitle}
-        tweetShareText={tweetShareText}
         quizCompleted={quizCompleted}
         nextLessonURLPath={nextLessonURLPath}
         nextLessonTitle={nextLessonTitle}

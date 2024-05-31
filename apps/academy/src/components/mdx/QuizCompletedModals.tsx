@@ -20,9 +20,10 @@ export interface QuizProps {
   nextLessonTitle: string;
   actualLessonTitle: string;
   quizCompleted: boolean;
-  successMessage?: string;
+  successMessage?: { message: string }[];
   successTitle?: string;
   currentLessonPath: string;
+  actionButton?: { href: string; text: string } | null;
 }
 
 export type Answers = Record<string, number[]>;
@@ -31,9 +32,15 @@ const QuizCompletedModals = ({
   nextLessonURLPath,
   actualLessonTitle,
   quizCompleted,
-  successMessage = "You successfuly answered all the quiz questions correctly. Celebrate your learning on Twitter and advance to the next lesson below.",
-  successTitle = "Great Job!",
+  successMessage = [
+    {
+      message:
+        "You answered all the quiz questions correctly, great job. Celebrate your learning on Twitter and advance to the next lesson below.",
+    },
+  ],
+  successTitle = "Lesson complete",
   currentLessonPath,
+  actionButton,
 }: QuizProps): JSX.Element => {
   const [showDialog, setShowDialog] = useState(false);
   // const [showKeepGoingModal, setShowKeepGoingModal] = useState(false);
@@ -52,6 +59,8 @@ const QuizCompletedModals = ({
   const handleClose = () => {
     setShowDialog(false);
   };
+
+  console.log(actionButton);
 
   return (
     <>
@@ -94,10 +103,17 @@ const QuizCompletedModals = ({
                   <h1 className="font-clash-display mb-11 text-3xl lg:text-[26px]">
                     {successTitle}
                   </h1>
-                  <p className="mb-20 text-base font-normal leading-5 text-[#FFFFFF] lg:mb-10 lg:text-2xl">
-                    {successMessage}
-                  </p>
-                  <div className="flex flex-col gap-y-8">
+                  {successMessage.map((message, index) => {
+                    return (
+                      <p
+                        className="mb-20 text-base font-normal leading-5 text-[#FFFFFF] lg:mb-6 lg:text-2xl"
+                        key={index}
+                      >
+                        {message.message}
+                      </p>
+                    );
+                  })}
+                  <div className="flex flex-col gap-y-6">
                     <NextLink
                       href={createTwitterIntentLink(
                         `I completed ${actualLessonTitle} on @devdao_academy.
@@ -105,20 +121,28 @@ const QuizCompletedModals = ({
                       )}
                       target="_blank"
                     >
-                      <ButtonRaw className="font-future h-14 w-36 bg-[#721F79] lg:h-[4.125rem] lg:w-80 lg:min-w-[21rem] lg:text-base">
+                      <ButtonRaw className="font-future h-8 w-24 bg-[#721F79] lg:h-14 lg:w-80 lg:min-w-[21rem] lg:text-base">
                         Share on twitter
                       </ButtonRaw>
                     </NextLink>
-
-                    <NextLink href={nextLessonURLPath}>
-                      <ButtonRaw
-                        variant="outline"
-                        className="font-future h-14 w-36  lg:h-[4.125rem] lg:w-80 lg:min-w-[21rem] lg:text-base"
-                        onClick={handleLessonDoneClick}
-                      >
-                        Next Lesson
-                      </ButtonRaw>
-                    </NextLink>
+                    {actionButton ? (
+                      <NextLink href={actionButton.href} target="_blank">
+                        <ButtonRaw className="font-future h-8 w-24 bg-[#721F79] lg:h-14 lg:w-80 lg:min-w-[21rem] lg:text-base">
+                          {actionButton.text}
+                        </ButtonRaw>
+                      </NextLink>
+                    ) : null}
+                    {nextLessonURLPath ? (
+                      <NextLink href={nextLessonURLPath}>
+                        <ButtonRaw
+                          // variant="outline"
+                          className="font-future h-14 w-36 hover:bg-[#721F79] lg:h-14 lg:w-80 lg:min-w-[21rem] lg:text-base"
+                          onClick={handleLessonDoneClick}
+                        >
+                          Next Lesson
+                        </ButtonRaw>
+                      </NextLink>
+                    ) : null}
                   </div>
                 </div>
               </div>
