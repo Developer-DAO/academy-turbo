@@ -31,7 +31,7 @@ const QuizCompletedModals = ({
   nextLessonURLPath,
   actualLessonTitle,
   quizCompleted,
-  successMessage = "You succesffuly answered all the quiz questions correctly. Celebrate your learning on Twitter and advanced to the next lesson below.",
+  successMessage = "You successfuly answered all the quiz questions correctly. Celebrate your learning on Twitter and advance to the next lesson below.",
   successTitle = "Great Job!",
   currentLessonPath,
 }: QuizProps): JSX.Element => {
