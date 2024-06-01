@@ -26,7 +26,7 @@ const Arweave101TrackPage = () => {
         trackTitle="Arweave 101: Front-end Development"
         trackDescription="Learn the basics. Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat. Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
         trackAuthor="K"
-        trackAuthorImage="/authors/default.png"
+        trackAuthorImage="/authors/k4y1s.jpg"
         trackAuthorDescription="I'm a developer trying to break down complex concepts for the rest of us. I'm not smarter than you; I just have more time for research. Web and open-source enthusiast 💚"
         trackAuthorTwitter="K4y1s"
         tags={["Beginner", "Arweave", "Storage"]}
