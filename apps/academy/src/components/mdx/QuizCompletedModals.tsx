@@ -38,7 +38,7 @@ const QuizCompletedModals = ({
         "You answered all the quiz questions correctly, great job. Celebrate your learning on Twitter and advance to the next lesson below.",
     },
   ],
-  successTitle = "Lesson complete",
+  // successTitle = "Lesson complete",
   currentLessonPath,
   actionButton,
 }: QuizProps): JSX.Element => {
@@ -100,9 +100,9 @@ const QuizCompletedModals = ({
                 <div
                   className={`font-clash-display w-full cursor-pointer rounded-3xl p-3 text-center font-bold text-[#F9F9F9]`}
                 >
-                  <h1 className="font-clash-display mb-11 text-3xl lg:text-[26px]">
+                  {/* <h1 className="font-clash-display mb-11 text-3xl lg:text-[26px]">
                     {successTitle}
-                  </h1>
+                  </h1> */}
                   {successMessage.map((message, index) => {
                     return (
                       <p
@@ -114,7 +114,7 @@ const QuizCompletedModals = ({
                     );
                   })}
                   <div className="flex flex-col gap-y-6">
-                    <NextLink
+                    <a
                       href={createTwitterIntentLink(
                         `I completed ${actualLessonTitle} on @devdao_academy.
                           https://academy.developerdao.com${currentLessonPath}`,
@@ -124,13 +124,13 @@ const QuizCompletedModals = ({
                       <ButtonRaw className="font-future h-8 w-24 bg-[#721F79] lg:h-14 lg:w-80 lg:min-w-[21rem] lg:text-base">
                         Share on twitter
                       </ButtonRaw>
-                    </NextLink>
+                    </a>
                     {actionButton ? (
-                      <NextLink href={actionButton.href} target="_blank">
+                      <a href={actionButton.href} target="_blank">
                         <ButtonRaw className="font-future h-8 w-24 bg-[#721F79] lg:h-14 lg:w-80 lg:min-w-[21rem] lg:text-base">
                           {actionButton.text}
                         </ButtonRaw>
-                      </NextLink>
+                      </a>
                     ) : null}
                     {nextLessonURLPath ? (
                       <NextLink href={nextLessonURLPath}>
