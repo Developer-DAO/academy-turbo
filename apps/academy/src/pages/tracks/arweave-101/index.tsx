@@ -24,7 +24,7 @@ const Arweave101TrackPage = () => {
     <div className="relative m-10 flex lg:mx-auto lg:max-w-screen-lg">
       <TracksLayout
         trackTitle="Arweave 101: Building Apps on Arweave"
-        trackDescription="Go from 0 to building on Arweave. Learn what Arweave is, how to acces and store data, and how to build permaweb apps and deploy them to Arweave."
+        trackDescription="Go from 0 to building on Arweave. Learn what Arweave is, how to acces and store data on Arweave, and how to build permaweb apps and deploy them to Arweave."
         trackAuthor="K"
         trackAuthorImage="/authors/k4y1s.jpg"
         trackAuthorDescription="I'm a developer trying to break down complex concepts for the rest of us. I'm not smarter than you; I just have more time for research. Web and open-source enthusiast 💚"
@@ -60,7 +60,7 @@ Arweave101TrackPage.getLayout = function getLayout(page: ReactElement) {
   return (
     <PageSeoLayout
       title="Arweave 101: Building Apps on Arweave"
-      description="Go from 0 to building on Arweave. Learn what Arweave is, how to acces and store data, and how to build permaweb apps and deploy them to Arweave"
+      description="Go from 0 to building on Arweave. Learn what Arweave is, how to acces and store data on Arweave, and how to build permaweb apps and deploy them to Arweave."
       openGraph={{
         images: [
           {
