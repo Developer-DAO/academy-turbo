@@ -1,0 +1,19 @@
+{
+  "question": "What are popular Arweave bundling services?",
+  "options": [
+    {
+      "answer": "Irys",
+      "correct": true
+    },
+    {
+      "answer": "Permanent Data Solutions",
+      "correct": true
+    },
+    {
+      "answer": "Dropbox"
+    },
+    {
+      "answer": "Web3 Storage"
+    }
+  ]
+}

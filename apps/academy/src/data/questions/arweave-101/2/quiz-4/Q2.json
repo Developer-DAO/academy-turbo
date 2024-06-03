@@ -1,0 +1,12 @@
+{
+  "question": "Are ArNS names mutable?",
+  "options": [
+    {
+      "answer": "No, everything on Arweave is permanent."
+    },
+    {
+      "answer": "Yes, ArNS names let you change their target transaction ID",
+      "correct": true
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "question": "How do you store small files on Arweave?",
+  "options": [
+    {
+      "answer": "You upload them via a bundling service",
+      "correct": true
+    },
+    {
+      "answer": "You pay for a transaction with AR tokens"
+    },
+    {
+      "answer": "You don’t need any tokens to upload files under 100KiB",
+      "correct": true
+    },
+    {
+      "answer": "You need to pay with BTC tokens"
+    }
+  ]
+}

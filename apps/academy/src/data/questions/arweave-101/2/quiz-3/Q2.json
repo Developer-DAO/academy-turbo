@@ -1,0 +1,20 @@
+{
+  "question": "Where can you store files on Arweave?",
+  "options": [
+    {
+      "answer": "Inside the transaction, if it’s smaller than 12MiB",
+      "correct": true
+    },
+    {
+      "answer": "Outside the transaction, if it’s bigger than 12MiB",
+      "correct": true
+    },
+    {
+      "answer": "Outside the transaction, if it’s smaller than 12MiB",
+      "correct": true
+    },
+    {
+      "answer": "Inside the transaction, if it’s bigger than 12MiB"
+    }
+  ]
+}

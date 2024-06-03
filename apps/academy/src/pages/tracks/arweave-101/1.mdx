@@ -1,0 +1,259 @@
+---
+title: Arweave 101: Lesson 0
+description: TODO
+icons: ["arweave", "fundamentals"]
+---
+
+import LessonLayout from "../../../components/LessonLayout";
+import Callout from "../../../components/mdx/Callout";
+import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
+import Question from "../../../components/mdx/Question";
+import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
+import LessonInformationalModal from "../../../components/mdx/LessonInformationalModal";
+
+<LessonLayout
+   lessonTitle="Intro to Arweave"
+   lessonImage="/meta-images/arweave-101/intro-to-arweave.png"
+   lessonDescription="This lesson covers the technical and theoretical essentials of the Arweave blockchain. It’s not required to get started, but it helps you understand its features and limitations."
+   author="K"
+   authorImage="/authors/k4y1s.jpg"
+   authorPosition="Developer DAO"
+   authorTwitter="K4y1s"
+   createdDate="May 27, 2024"
+>
+
+## About this lesson
+
+Greetings reader! I’d like to welcome you to the zeroth lesson of the Arweave 101 track, where you will learn the background and fundamentals of Arweave.
+
+Blockchains solved cloud computing issues like censorship and storage volatility. However, onchain storage is very expensive and only suitable for small amounts of data, usually just a few kilobytes. That’s enough to record the balance of an account, but if you want to store an image or even a video, you’re out of luck (or money after doing so). That’s why the creators of Arweave set out to build a blockchain network with more reasonable storage costs.
+
+This lesson isn’t a prerequisite for the other lessons in this track, but knowing the fundamentals of Arweave provides a strong base to build on and makes the upcoming lessons easier to grasp. Also, there are quizzes to test your understanding!
+
+Nevertheless, if you want to get into the nitty gritty of building something, jump head-on into the first lesson!
+
+## Prerequisites
+
+A **basic understanding of blockchain concepts** (e.g., blocks and transactions) is expected, as this is no introduction to blockchains in general, but an explanation of how Arweave works and differs from popular blockchains.
+
+## What is Arweave?
+
+Arweave is a decentralized and globally distributed **layer 1 (L1) blockchain network** similar to Bitcoin. Unlike Bitcoin, Arweave focuses on permanent data storage. You pay once when uploading your data; the network ensures it’s replicated and stored forever. There are no recurring costs.
+
+A lack of subscriptions doesn't mean storage is cheap. Storing data on Arweave is expensive compared to cloud provider storage. However, you get **censorship resistance**, as Arweave replicates your data worldwide, and users can be sure the data stays online, even if you don’t want to maintain it anymore. In contrast, your data is lost if you stop paying your cloud provider bill.
+
+Arweave is suitable for storing all types of static data, including text, binaries, images, music, and videos. You can even use it to host websites. Think of it as the immutable AWS S3 of blockchains.
+
+As Arweave links all data permanently with a cryptographically signed transaction, everyone can verify its creator and creation time, giving authors strong data provenance for copyright claims.
+
+<LessonQuestionsModal buttonText="Quiz 1" title="Comprehension Check">
+  <Question question="arweave-101/1/quiz-1/Q1" />
+  <Question question="arweave-101/1/quiz-1/Q2" />
+  <Question question="arweave-101/1/quiz-1/Q3" />
+</LessonQuestionsModal>
+
+## How Does Arweave Work?
+
+The Arweave blockchain, commonly called blockweave, is similar to the Bitcoin blockchain. It’s a list of blocks, each containing transactions and a hash of the previous block. Yet, Arweave transactions differ from Bitcoin transactions; they include links to data items (i.e., the files you can upload with a transaction.) These data items are called transaction data or transaction bodies. The transaction bodies are signed with the uploader's private key to ensure authenticity.
+
+Transaction bodies below 12MiB can be stored inside a transaction, but if they are bigger than that (and there is no upper limit) the transactions only link to the bodies, so they don’t become part of the blockchain.
+
+Figure 1 illustrates how a blockchain with transaction bodies forms the blockweave.
+
+![figure-1](/assets/tracks/arweave-101/1/figure-1.png)
+
+<div style={{ textAlign: "center" }}>*Figure 1: The blockweave*</div>
+
+<Callout emoji="💡">
+  Note: In this course, the term *transaction body* will be used to avoid confusing it with the
+  other transaction data (e.g., signature, address, tags, etc.)
+</Callout>
+
+Arweave’s consensus algorithm requires nodes to prove they can access random chunks of transaction bodies to mine blocks and get rewarded. Since these chunks are selected randomly, no miner can predict which transaction bodies they should store. This random selection makes storing a whole replica the best mining strategy. Requiring random chunks also incentivizes miners to share the data with their peers; for miners, all data has the same value. Miner rewards are distributed in AR, the native token of Arweave.
+
+### Data Storage and Data Access
+
+The Arweave ecosystem has a shared responsibility model. The Arweave network manages data storage and replication; gateway networks, like [AR.IO](https://ar.io/), handle data access.
+
+While Arweave incentivizes miner nodes to share the data with their peers, the storage format isn’t well suited for random access. Besides, running a miner node is quite costly, as it needs to store all data for mining.
+
+That’s where the AR.IO network comes into play. It consists of gateway nodes that index Arweave’s chain data and cache uploaded files for quick and easy access.
+
+Arweave rewards miner nodes for storing data, and AR.IO rewards gateway nodes for delivering it via HTTP to clients. The gateway nodes get incentivized by IO token payments, which, in turn, are collected from the sale of domains for the Arweave Name System (ArNS). You will learn about ArNS in the following lessons. Figure 2 shows the relations between miner nodes, gateway nodes, and clients.
+
+![figure-2](/assets/tracks/arweave-101/1/figure-2.png)
+
+<div style={{ textAlign: "center" }}>*Figure 2: Arweave & AR.IO*</div>
+
+The AR.IO network is a **layer 2 (L2)** network, as it uses Arweave’s permanent storage to manage incentives for the gateways. However, this mechanism isn’t part of the Arweave protocol, so anyone can build other gateways that work differently from gateway nodes.
+
+<LessonQuestionsModal buttonText="Quiz 2" title="Comprehension Check">
+  <Question question="arweave-101/1/quiz-2/Q1" />
+  <Question question="arweave-101/1/quiz-2/Q2" />
+  <Question question="arweave-101/1/quiz-2/Q3" />
+</LessonQuestionsModal>
+
+## Permanent Storage Through Consensus and The Endowment
+
+Now that you have an overview, let’s dive deeper into the mechanisms that enable permanent decentralized storage.
+
+### Succinct Proof of Random Access (SPoRA)
+
+Arweave uses a next-generation proof of work algorithm that relies more on storage than computation.
+
+For the storage part, the network requires the miners to prove they can access random chunks of transaction body data. A transaction doesn’t include body data but a Merkle tree of that data to ensure the transaction doesn’t grow indefinitely. Still, the consensus algorithm requires the body data, not the Merkle trees, to mine a block, so storing only the chain doesn’t help a miner.
+
+In Figure 3, you can see how the chunk selection affects the block creation capabilities of the miner nodes.
+
+- Node X can create the next block, as it has a full replica.
+- Node Z is missing chunk C2 and cannot create the next block.
+- Node Y is also capable of creating the next block. It doesn’t have a full replica, but it was lucky to have the selected chunks this time. However, it might have the same problem as node Z in the next round.
+
+![figure-3](/assets/tracks/arweave-101/1/figure-3.png)
+
+<div style={{ textAlign: "center" }}>*Figure 3: Chunk selection*</div>
+
+If no miner has the selected chunks, the network will choose different chunks, allowing Arweave to incentivize permanent storage without forcing miners to store all the data. When miners don’t want to store specific transaction bodies for ethical or legal reasons, they will lose hash power but can still participate in the mining. [Do-Not-Store](https://specs.arweave.dev/?tx=5i-j61GnGy4p6a2mZY3j_1o0XTpPQKUUb7UY3O8NqSE) requests allow users to notify miners and gateways of data they should delete in specific jurisdictions.
+
+For the computation part, Arweave started with the same proof of work (PoW) algorithm as Bitcoin but later moved to [RandomX](https://44jxru4mdgbtd66dlzjlc3huktqmmzufomg5p24jl66zyut562yq.arweave.net/5xN404wZgzH7w15SsWz0VODGZoVzDdfriV-9nFJ99rE), as it ensures miners don’t get an advantage by using expensive CPUs or GPUs. Compute power is still required to build a hash for the next block, but it isn’t the main part of the algorithm anymore, lowering the environmental impact by making more of the PoW useful.
+
+### The Storage Endowment
+
+Arweave’s storage endowment makes it economically unique compared to other networks. Whenever a user submits a transaction, most fees go into the endowment, not the miners. The more data is stored, the bigger the endowment gets.
+
+The tokens in the endowment pay for future storage costs. Should the price of Arweave's native AR token fall too much, the network will automatically pay miners with tokens from the endowment. The economics behind Arweave’s native AR token and the endowment are based on (very conservatively) projected [storage costs](https://arwiki.wiki/#/en/storage-endowment#toc_Cost_of_Perpetual_Data_Storage) for at least 200 years in the future.
+
+Since its inception in 2017, no payments from the endowment were necessary.
+
+<LessonQuestionsModal buttonText="Quiz 3" title="Comprehension Check">
+  <Question question="arweave-101/1/quiz-3/Q1" />
+  <Question question="arweave-101/1/quiz-3/Q2" />
+  <Question question="arweave-101/1/quiz-3/Q3" />
+</LessonQuestionsModal>
+
+## Arweave Transactions
+
+Arweave currently has two transaction types. Both support transaction bodies of arbitrary size, but they have their differences. I’ll explain the two types here, but I won’t detail their structure; you’ll learn about that later in this track.
+
+### Layer 1 Transactions
+
+L1 transactions are the default transactions of the Arweave protocol. They can transfer AR and smart contract tokens. You can only pay for L1 transactions with AR, and they settle rather slowly, as Arweave only creates a block every ~2 minutes. Depending on how many blocks you wait to be sure your transaction went through, it can take 10-15 minutes.
+
+Transactions support the addition of custom key-value text data called tags. They become part of the transaction, and you can query them later to find your transaction, but they have a total limit of 2048 bytes.
+
+Again, Arweave doesn’t store transaction bodies (i.e., the data you want to store on Arweave) inside the transaction; only a Merkle tree of the body is inside. This distinction allows Arweave transactions to have an upper size limit, while the transaction bodies don’t.
+
+### Bundled Transactions
+
+Bundled transactions are Arweave's layer 2 (L2) transactions. They follow a similar structure to the L1 transactions, but you can’t use them to transfer AR, only smart contract tokens. Bundling services store multiple bundled transactions into the body of one L1 transaction, hence the name bundled transactions. In Figure 4, you see how the types relate to each other.
+
+![figure-4](/assets/tracks/arweave-101/1/figure-4.png)
+
+<div style={{ textAlign: "center" }}>*Figure 4: Arweave transaction types*</div>
+
+Bundling allows for much higher throughput than L1 transactions, with some bundling services claiming millions of transactions per second. Commercial bundling services enable payment via fiat or other cryptocurrencies (e.g., SOL, ETH, MATIC, etc.) Some services subsidize transactions smaller than 100KB and offer optimistic access via their gateways before they settle the transactions on L1.
+
+The downside of bundled transactions is a weaker security guarantee. Since bundled transactions are part of the bodies of L1 transactions, they can become subject to a do-not-store request. Also, gateway operators can explicitly block transactions. They are still part of the consensus algorithm, and Arweave incentivizes miners to keep them around, but the network won’t stop if they’re missing. This risk makes bundled transactions a bad choice for some high-stakes transactions, but a good one for other data storage needs.
+
+<LessonQuestionsModal buttonText="Quiz 4" title="Comprehension Check">
+  <Question question="arweave-101/1/quiz-4/Q1" />
+  <Question question="arweave-101/1/quiz-4/Q2" />
+  <Question question="arweave-101/1/quiz-4/Q3" />
+</LessonQuestionsModal>
+
+## Smart Contracts as Add-Ons
+
+Smart contracts aren’t part of the Arweave protocol, which is more similar to Bitcoin than Ethereum in most respects. However, several smart contract specifications exist for Arweave, which leverage its verifiable permanent storage.
+
+### SmartWeave
+
+The most established example is [SmartWeave](https://github.com/ArweaveTeam/SmartWeave), a smart contract specification for TypeScript executed lazily in the browser. As you execute the contract on your machine, you don’t have to pay a node to do it for you, and since Arweave stores the result of each action permanently, everyone can verify it.
+
+### AO
+
+Another new and exciting example is [AO](https://ao.arweave.developerdao.com/), an L2 network. Like SmartWeave, it uses Arweave’s permanent storage to store computation results and interactions with smart contracts. However, it provides a network of computation nodes that execute contracts as processes that talk to each other via messages. While Lua is currently the only supported programming language (because it has a small runtime and is deterministic), the WebAssembly runtime powering AO allows for all kinds of languages in the future.
+
+## The Pros and Cons of Arweave
+
+Arweave is a powerful addition to the blockchain ecosystem, but it isn’t a solution for everything. Let’s compare it to traditional cloud infrastructure and other popular blockchains.
+
+### Arweave Compared to Traditional Cloud Storage
+
+Arweave has some clear advantages over cloud storage:
+
+- You pay only once, and Arweave stores your data forever—no ongoing subscription fees exist.
+- Global replication is the default and doesn’t cost extra.
+- Arweave replicates all data globally. If nodes in one country are forced to delete data, the network can keep replicas in the rest of the world.
+- Arweave is permissionless for users and providers. Everyone can host a node and upload data.
+- Since Arweave uses a blockchain to catalog the uploaded data, you get strong provenance guarantees. All data is cryptographically signed to prove ownership and upload dates.
+- Computations are verifiable as inputs and outputs are signed and publicly available.
+
+Still, there are some downsides:
+
+- Storage costs are much higher on Arweave. $24/GB (as of May 2024) compared to $0.023/GB/month on AWS S3.
+- Costs are highly variable. Price fluctuations for AR affect storage prices in the short run, while cloud storage prices are more consistent.
+- Arweave doesn’t support temporary storage. All data is permanent; the network doesn’t enforce do-not-store requests, which are only a safety mechanism for storage providers.
+
+### Arweave Compared to Popular Blockchains
+
+Having had the opportunity to learn from networks like Bitcoin and Ethereum, Arweave has some innovations to offer:
+
+- Unlike Bitcoin PoW, Arweave’s SPoRA requires the miners to store real data instead of calculating random hashes. Arweave even actively limits the computation requirements to lower environmental impact.
+- Unlike Ethereum PoS, SPoRA doesn’t require ownership of tokens to get started. This allows for easier decentralization, as the accumulation of tokens doesn’t directly affect the node's trustworthiness.
+  Arweave storage costs (~$24/GB) are much lower compared to Bitcoin (~$22M/GB) and Ethereum (~$75K/GB).
+- Unlike Filecoin, Arweave handles storage, replication, and payments in the L1 protocol (e.g., SPoRA, storage endowment)—there is no need for smart contract deals.
+- Lazily evaluated smart contracts allow gasless transactions, as the client provides the computations and the nodes only store the inputs.
+
+But to be fair, let’s also look at the downsides:
+
+- L1 transactions have strong security but aren’t optimized for speed. The 2-minute block time, multiplied by 10 blocks you want to wait to be sure your transaction was included, has user experience implications.
+- There is no temporary storage. All data is permanent. Networks like Filecoin have more flexible options.
+- The high costs are also due to the lack of temporary storage. Filecoin, for example, can offer much cheaper storage fees if you only want to host your data for a limited time frame.
+
+<LessonQuestionsModal buttonText="Quiz 5" title="Comprehension Check">
+  <Question question="arweave-101/1/quiz-5/Q1" />
+  <Question question="arweave-101/1/quiz-5/Q2" />
+</LessonQuestionsModal>
+
+## Summary
+
+Arweave is like Bitcoin for permanent storage. Uploaded data is immutable, globally replicated, and cryptographically signed. These features eliminate link rot and enable strong provenance for creators worldwide.
+
+Arweave’s SPoRA consensus algorithm incentivizes miners to store real data instead of just requiring random hashes, giving it a purpose besides ensuring network consensus. Arweave’s storage endowment is the last piece in the permanent storage puzzle designed for at least 200 years of storage by saving tokens for future price fluctuations.
+
+Do-not-store requests allow anyone to notify miner and gateway nodes of problematic data so operators can comply with local laws.
+
+Arweave’s bundled transactions allow you to move actions to L2 if you need more performance or want to pay with tokens other than AR. While their actual data doesn’t end up in a block, the chain ensures their integrity, and the SPoRA algorithm will incentivize their storage.
+
+<QuizStatusChecker
+  quiz="arweave-101/1"
+  actionButton={{ href: "https://zealy.io/", text: "Claim Quest" }}
+  successMessage={[
+    {
+      message: "You answered all the quiz questions correctly, awesome job!",
+    },
+    {
+      message:
+        "To claim your EXP tokens with AR.IO, share your success on Twitter, take a screenshot of this page and enter these alongwith your sceret code on Zealy.",
+    },
+    {
+      message: "Secrect CODE - HOLZBV",
+    },
+  ]}
+/>
+
+## Conclusion
+
+Arweave is a powerful storage service and a serious alternative to object storage like S3.
+
+If you ever wondered where you should host the frontend of your DApp or store your NFT assets. In that case, you now have an answer: Arweave’s permanent, censorship-resistant, onchain storage is accessible everywhere via HTTP.
+
+**Congratulations!**
+
+Fundamentals are always tough, but you did it!
+
+Do you already have ideas about what you could build on Arweave? What are the possibilities if backups and replication aren’t an issue anymore?
+
+You are now well-equipped to dive into the following lessons, where you will learn how to access data on Arweave and upload your own!
+
+</LessonLayout>

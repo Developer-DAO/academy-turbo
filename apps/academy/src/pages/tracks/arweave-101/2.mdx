@@ -1,0 +1,363 @@
+---
+title: Arweave 101: Lesson 1
+description: TODO
+icons: ["arweave", "fundamentals"]
+---
+
+import LessonLayout from "../../../components/LessonLayout";
+import Callout from "../../../components/mdx/Callout";
+import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
+import Question from "../../../components/mdx/Question";
+import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
+import LessonInformationalModal from "../../../components/mdx/LessonInformationalModal";
+
+<LessonLayout
+   lessonTitle="Accessing Data on Arweave"
+   lessonImage="/meta-images/arweave-101/accessing-data-on-arweave.png"
+   lessonDescription="This lesson covers data access on Arweave via AR.IO gateways. It's the first practical lesson of the course, but it doesn’t require knowledge of wallets or Arweave."
+   author="K"
+   authorImage="/authors/k4y1s.jpg"
+   authorPosition="Developer DAO"
+   authorTwitter="K4y1s"
+   createdDate="May 27, 2024"
+>
+
+## About this lesson
+
+Greetings, and welcome to the first lesson of the Arweave 101 track. Here, you will learn how to access data stored on Arweave.
+
+Arweave is a blockchain network for permanent storage. You pay for your storage at upload time, and the network will incentivize constant replication. (You can read lesson zero to learn more about how this works.)
+
+The first and easiest step in interacting with Arweave is accessing or reading data. Since you don’t need a wallet to access the data, you don’t have to install any additional software to get started. Your browser is enough. Also, users usually read data more often than they write it, so I think data access is the perfect starting point for this track.
+
+## Prerequisites
+
+You need a basic understanding of web technologies like HTTP, SSL, and DNS. While you won’t set up an SSL-enabled web server with a custom domain, these three will play a major role here.
+
+A basic understanding of blockchains is helpful, too. At least you should understand what a transaction is.
+
+Finally, you only need a browser to try out the examples.
+
+Optionally, you can check out lesson 0 of this track, which explains the inner workings of Arweave.
+
+## How to Access Files on Arweave?
+
+To read a file on Arweave, you need the hostname of an Arweave gateway and the ID of the transaction (TXID) that uploaded the file.
+
+The URL schema:
+
+`https://<GATEWAY_HOSTNAME>/<TXID>`
+
+An example URL:
+
+`https://arweave.developerdao.com/dE0rmDfl9_OWjkDznNEXHaSO_JohJkRolvMzaCroUdw`
+
+In this example, you use the official D_D Arweave gateway, and the TXID leads us to a static website. If you [open the URL](https://arweave.developerdao.com/dE0rmDfl9_OWjkDznNEXHaSO_JohJkRolvMzaCroUdw) in the browser, the gateway will redirect you to a subdomain showing you the file.
+
+This illustrates one of the major use cases for Arweave: Web hosting.
+
+You can access this example website as long as the network is operating. It will be replicated globally, and gateways will make it available to whoever wants to read it. If you ever wondered where to host the frontend of your DApp, Arweave is a good answer.
+
+### How Do Transactions Work on Arweave?
+
+Arweave transactions are similar to Bitcoin transactions in that you can use them to transfer the network's native token, AR, between wallet addresses. In contrast to Bitcoin, each transaction can also point to data of arbitrary size, called the transaction body. Figure 1 illustrates how blocks, transactions, and transaction bodies relate to each other.
+
+![figure-1](/assets/tracks/arweave-101/2/figure-1.png)
+
+<div style={{ textAlign: "center" }}>*Figure 1: Arweave transactions*</div>
+
+### How Do Arweave Gateways Work?
+
+If you send a TXID to a gateway’s data endpoint (e.g., `/<TXID>`), it can use the ID to find the transaction and, in turn, its associated body (i.e., the file). In Figure 2, you can see parts of the network topology of the miner and gateway nodes.
+
+![figure-2](/assets/tracks/arweave-101/2/figure-2.png)
+
+<div style={{ textAlign: "center" }}>*Figure 2: Arweave gateways*</div>
+
+The endpoint usually won’t return the file directly but redirects you to a dynamically generated subdomain. This subdomain is isolated from other subdomains and ensures that a browser considers websites stored in different transactions to have different origins, each with its own storage in the browser (e.g., local storage, session storage, indexed, cookies, etc.).
+
+For any given TXID, every gateway will respond with the same data. The following URL will deliver the same response as the one from the example above:
+
+`https://ar-io.dev/dE0rmDfl9_OWjkDznNEXHaSO_JohJkRolvMzaCroUdw`
+
+<LessonQuestionsModal buttonText="Quiz 1" title="Comprehension Check">
+  <Question question="arweave-101/2/quiz-1/Q1" />
+  <Question question="arweave-101/2/quiz-1/Q2" />
+  <Question question="arweave-101/2/quiz-1/Q3" />
+</LessonQuestionsModal>
+
+## How to Access Directories on Arweave?
+
+While Arweave doesn’t have native directory support, you can simulate them via **path manifests**. These JSON files define a directory structure; if you access them with their TXID, a gateway won’t send you the JSON file but transparently delivers (i.e., without redirects) the file paths you add to the TXID.
+
+The URL schema:
+
+    `https://<GATEWAY_HOSTNAME>/<TXID>/<FILE_PATH>`
+
+An example URL:
+
+`https://arweave.developerdao.com/DF3j88R6nhvQYsvttWjefgfa2lnY193K__rvhPh6VRU/index.html`
+
+The structure of the example:
+
+```bash
+/<TXID>/index.html
+/<TXID>/file-a.txt
+/<TXID>/subfolder/index.html
+/<TXID>/subfolder/file-b.txt
+```
+
+### How Do Path Manifests Work?
+
+A path manifest associates a human-readable file path with a TXID, so it’s just an indirection that allows you to use a single TXID to refer to files uploaded with other transactions.
+
+Path manifest is one of the main features that enables website hosting on Arweave. You use relative links in your frontend, upload every file with one transaction, and then use a path manifest to translate each relative link to the corresponding file transaction. Otherwise, you would have to use TXIDs in your frontend code and upload them in the correct order.
+
+The path manifest of the example looks like this:
+
+```json
+{
+  "manifest": "arweave/paths",
+  "version": "0.1.0",
+  "index": { "path": "index.html" },
+  "paths": {
+    "index.html": {
+      "id": "AzzaawIn8XRKiYn160mVvkjo-laItBIL4_blcS45sEM"
+    },
+    "subfolder/index.html": {
+      "id": "yPvP9MiXK31VdU6EGG18BFS8WnF_9Wy2qyp9E20Z64o"
+    },
+    "file-a.txt": {
+      "id": "Ok_yVlpyf_nTPsSahT_5uXnrDqTS3-Dd1YPizlv6gBA"
+    },
+    "subfolder/file-b.txt": {
+      "id": "2clrLzqQC2I0vOsSJoO5Lx-34HqauedciEUYZgquvrM"
+    },
+    "*": {
+      "id": "AzzaawIn8XRKiYn160mVvkjo-laItBIL4_blcS45sEM"
+    }
+  }
+}
+```
+
+It maps each file path to a TXID and allows you to set an index path that will be loaded when someone requests the TXID without a file path. You can also set a wildcard path that will be delivered when no other path matches. Figure 3 shows how the path manifests enable linking one TXID to multiple files.
+
+![figure-3](/assets/tracks/arweave-101/2/figure-3.png)
+
+<div style={{ textAlign: "center" }}>*Figure 3: Arweave path manifests*</div>
+
+If you want to access the JSON of a path manifest directly, you can use the raw data endpoint with the following URL schema:
+
+`https://<GATEWAY_HOSTNAME>/raw/<TXID>`
+
+Example URL:
+
+`https://arweave.developerdao.com/raw/DF3j88R6nhvQYsvttWjefgfa2lnY193K__rvhPh6VRU`
+
+If you want to learn more about path manifests, see the [specification](https://6rmxcmtlmayc4vqmktsq3hpjd77anzp5uhwybondp3prfxze5yaa.arweave.dev/9FlxMmtgMC5WDFTlDZ3pH_4G5f2h7YC5o37fEt8k7gA/#/view/lXLd0OPwo-dJLB_Amz5jgIeDhiOkjXuM3-r0H_aiNj0).
+
+<LessonQuestionsModal buttonText="Quiz 2" title="Comprehension Check">
+  <Question question="arweave-101/2/quiz-2/Q1" />
+  <Question question="arweave-101/2/quiz-2/Q2" />
+  <Question question="arweave-101/2/quiz-2/Q3" />
+</LessonQuestionsModal>
+
+## How to Find Files on Arweave With GraphQL?
+
+TXIDs are good when you know what file you want, but sometimes, you don’t know this in advance. However, you want files uploaded by a specific user or with a particular tag. This is where the GraphQL endpoint of Arweave gateways comes into play. It allows you to query for TXIDs that contain specific transaction data.
+
+The URL schema:
+
+    `https://<GATEWAY_HOSTNAME>/graphql`
+
+An example URL:
+
+    `https://arweave.developerdao.com/graphql`
+
+Most gateways support a GraphQL GUI, so you can [open the URL](https://arweave.developerdao.com/graphql) directly in a browser and start building queries.
+
+An example query that loads all transactions that have the same owner:
+
+```graphql
+{
+  transactions(owners: ["LSKZ5taMANhACaEHwlY_gzlltF_PwRI3AgAPMLNw5JE"]) {
+    edges {
+      node {
+        id
+      }
+    }
+  }
+}
+```
+
+The response would be a list of TXIDs:
+
+```json
+{
+  "data": {
+    "transactions": {
+      "edges": [
+        {
+          "node": {
+            "id": "_n1dQ4X7XQAt0ka8TW7S3wtHIOzi0Fl9qLYhI7SsUkU"
+          }
+        },
+        {
+          "node": {
+            "id": "aOSTPupaXwR02sm2JSgnBHy70e3DsBvIGNbwY70QkOI"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+You can also use transaction tags to search for TXIDs, like in this query, which only loads transactions of type “Transfer.”
+
+```graphql
+{
+  transactions(
+    owners: ["LSKZ5taMANhACaEHwlY_gzlltF_PwRI3AgAPMLNw5JE"]
+    tags: [{ name: "Type", values: ["Transfer"] }]
+  ) {
+    edges {
+      node {
+        id
+      }
+    }
+  }
+}
+```
+
+Tags are custom data the uploader added to a transaction at upload time. You will learn more about them in the following lessons.
+
+### How Does Transaction Data Differ from Transaction Bodies?
+
+You need to understand the difference between transaction data and body to understand how GraphQL queries work and what data you can use in them. For this, let’s look at the transaction format first.
+
+#### Arweave Transaction Format
+
+An Arweave transaction, just like a Bitcoin transaction, is an object that has several properties. Unlike a Bitcoin transaction, these properties include the files uploaded alongside the transaction. Let’s look at the transaction properties illustrated in Figure 4.
+
+![figure-4](/assets/tracks/arweave-101/2/figure-4.png)
+
+<div style={{ textAlign: "center" }}>*Figure 4: Arweave transaction format*</div>
+
+First, the `identification properties`:
+
+- `format` can be "1" or "2" as there are currently two versions, but "1" is only used for backward compatibility.
+- `id` is the unique identifier of the transaction, the signature’s hash.
+- `last_tx` contains the previous TXID of the address that sent the transaction. This prevents replay attacks.
+
+Then, the **authenticity properties**:
+
+- `owner` is the wallet address that sent the transaction.
+- `signature` is “an RSA signature of a Merkle root of the SHA-384 hashes of transaction fields (except for `id`, which is the hash of the signature).”
+
+Next are the **native token properties** for sending AR to another address or checking the cost of a previous transaction.
+
+- `target` is the wallet address of the recipient of the AR tokens.
+- `quantity` is the amount of AR tokens in Winston (the smallest fraction of AR).
+- `reward` is the transaction fee in Winston.
+
+The **tags property** is for custom transaction data:
+
+- `tags` is an array of `{"name": "<TAG_NAME>", "value": "<TAG_VALUE>"}` objects. It’s limited to 2048 Bytes of total tag data.
+
+Finally, the **data properties** are all about the files you uploaded with the transaction. They’re also called transaction bodies to prevent confusion with the rest of the transaction data.
+
+- `data` contains the file as a Base64 string directly inside the transaction if smaller than 12 MiB.
+- `data_root` contains a Merkle root of the file if it’s bigger than 12 MiB.
+- `data_size` includes the size of the file linked via data_root.
+
+<Callout emoji="💡">
+  Note: You can still link files smaller than 12MiB with the `data_root`.
+</Callout>
+
+Following the structure:
+
+- Transaction data is part of the transaction object itself.
+- Transaction bodies can be stored outside the transaction object.
+
+The GraphQL endpoint doesn’t allow you to query by content in the body, as it isn’t necessarily part of the transaction object and could include virtually any format.
+You can only query data by owners, recipients (i.e., target), tags, and blocks, which are part of the transaction object.
+
+After you receive a response from the GraphQL endpoint, you can use the included TXIDs to load your files with the data endpoint. This makes the GraphQL method very flexible, as you can define custom transaction tags when uploading a file.
+
+<LessonQuestionsModal buttonText="Quiz 3" title="Comprehension Check">
+  <Question question="arweave-101/2/quiz-3/Q1" />
+  <Question question="arweave-101/2/quiz-3/Q2" />
+  <Question question="arweave-101/2/quiz-3/Q3" />
+</LessonQuestionsModal>
+
+## How to Find Files on Arweave With Subdomains?
+
+While the GraphQL endpoint is very flexible in finding one or more files with the correct tags, it’s a very technical approach that requires understanding GraphQL and transactions.
+
+For improved user experience, you can also locate a file using subdomains instead of transactions. These subdomains are called Arweave Name System (ArNS) domains; you can use them instead of a TXID.
+
+The long and complicated TXID URL for a Permaweb page:
+`https://arweave.developerdao.com/nOXJjj_vk0Dc1yCgdWD8kti_1iHruGzLQLNNBHVpN0Y`
+
+Becomes a simpler human-readable ArNS URL:
+
+    `https://ardrive.arweave.developerdao.com`
+
+Again, this works with all gateways:
+
+    `https://ardrive.ar-io.dev`
+
+Regarding permanent storage and link-rot, the downside of this approach is mutability. The owner of an ArNS domain can change the target TXID. While this improves UX for users, it can lead to dead links. If you want a permanent link to such a page, you need to get the current TXID from the X-Arns-Resolved-Id header.
+
+Like the path manifest, ArNS domains are transparent, so your clients won’t get redirected to the TXID or a sandbox domain when requesting data.
+
+ArNS domains are managed via smart contracts similar to ENS domains; the difference is that they’re a native feature of most Arweave gateways.
+
+### How Does Arweave Incentivise Data Availability?
+
+If you have wondered how Arweave incentivizes gateways, ArNS is the answer. The registration fees refinance the gateway operators, and gateway observers continuously check gateways to ensure availability.
+
+- Layer 1 (L1) Arweave nodes are responsible for data storage and replication. They are paid with AR, the native token of the Arweave network.
+- Layer 2 (L2) nodes, called AR.IO gateways, are responsible for data access. They are paid with IO, a smart contract token.
+
+<LessonQuestionsModal buttonText="Quiz 4" title="Comprehension Check">
+  <Question question="arweave-101/2/quiz-4/Q1" />
+  <Question question="arweave-101/2/quiz-4/Q2" />
+  <Question question="arweave-101/2/quiz-4/Q3" />
+</LessonQuestionsModal>
+
+## Summary
+
+Gateway nodes' indexing and caching features make accessing data on Arweave straightforward. You just need a TXID and the hostname of a gateway, and you can download any file stored on Arweave. If you’re missing the TXID, you can leverage the GraphQL API with transaction tags to find one. ArNS domains and path manifests improve the user experience by allowing users to access files with human-readable names.
+
+<QuizStatusChecker
+  quiz="arweave-101/2"
+  actionButton={{ href: "https://zealy.io/", text: "Claim Quest" }}
+  successMessage={[
+    {
+      message: "You answered all the quiz questions correctly, awesome job!",
+    },
+    {
+      message:
+        "To claim your EXP tokens with AR.IO, share your success on Twitter, take a screenshot of this page and enter these alongwith your sceret code on Zealy.",
+    },
+    {
+      message: "Secrect CODE - CSSYVH",
+    },
+  ]}
+/>
+
+## Conclusion
+
+Accessing data on Arweave is not a whole new ball game. You're already halfway there if you're familiar with reading data from a traditional hosting service. Arweave operates on popular web technologies like HTTP, DNS, JSON, and GraphQL, making the process quite similar to what you're used to.
+
+**Congratulations!**
+
+You finished the first practical lesson of the Arweave 101 track!
+
+Now, you can access all of Arweave’s permanent data from your browser or any other HTTP client.
+
+In the next lesson, you will finally learn how to get your own data on Arweave, so stay tuned!
+
+</LessonLayout>

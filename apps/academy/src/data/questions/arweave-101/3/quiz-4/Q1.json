@@ -1,0 +1,19 @@
+{
+  "question": "What are popular wallet libraries for Arweave?",
+  "options": [
+    {
+      "answer": "Arweave.app",
+      "correct": true
+    },
+    {
+      "answer": "arweave-js",
+      "correct": true
+    },
+    {
+      "answer": "libp2p"
+    },
+    {
+      "answer": "Viem"
+    }
+  ]
+}

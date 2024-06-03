@@ -1,0 +1,12 @@
+{
+  "question": "Does Arweave support naming transactions?",
+  "options": [
+    {
+      "answer": "Yes, with ArNS.",
+      "correct": true
+    },
+    {
+      "answer": "No."
+    }
+  ]
+}
