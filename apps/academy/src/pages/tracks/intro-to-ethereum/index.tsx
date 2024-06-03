@@ -61,6 +61,17 @@ IntroToEthereumTrackPage.getLayout = function getLayout(page: ReactElement) {
     <PageSeoLayout
       title="A Developer's Guide to Ethereum"
       description="An accessible introduction to Ethereum via web3.py and Python. Grasp blockchain basics, Ethereum's decentralization, and smart contracts with practical insights."
+      openGraph={{
+        images: [
+          {
+            url:
+              process.env["NEXT_PUBLIC_VERCEL_URL"] !== undefined
+                ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/meta-images/a-developers-guide-to-ethereum.png`
+                : "/meta-images/a-developers-guide-to-ethereum.png",
+            alt: "A Developer's Guide to Ethereum",
+          },
+        ],
+      }}
     >
       {page}
     </PageSeoLayout>
