@@ -98,7 +98,7 @@ const QuizCompletedModals = ({
               {/*  {!showKeepGoingModal ? ( */}
               <div className="max-h-64 w-fit lg:mt-11 lg:h-96 lg:w-full">
                 <div
-                  className={`font-clash-display w-full cursor-pointer rounded-3xl p-3 text-center font-bold text-[#F9F9F9]`}
+                  className={`font-clash-display w-full rounded-3xl p-3 text-center font-bold text-[#F9F9F9]`}
                 >
                   {/* <h1 className="font-clash-display mb-11 text-3xl lg:text-[26px]">
                     {successTitle}
