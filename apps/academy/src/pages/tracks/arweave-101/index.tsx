@@ -58,7 +58,21 @@ const Arweave101TrackPage = () => {
 
 Arweave101TrackPage.getLayout = function getLayout(page: ReactElement) {
   return (
-    <PageSeoLayout title="Arweave 101: Front-end Development" description="TODO">
+    <PageSeoLayout
+      title="Arweave 101: Front-end Development"
+      description="TODO"
+      openGraph={{
+        images: [
+          {
+            url:
+              process.env["NEXT_PUBLIC_VERCEL_URL"] !== undefined
+                ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/meta-images/arweave-101/building-apps-on-arweave.png`
+                : "/meta-images/arweave-101/building-apps-on-arweave.png",
+            alt: "A Developer's Guide to Ethereum",
+          },
+        ],
+      }}
+    >
       {page}
     </PageSeoLayout>
   );
