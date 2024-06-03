@@ -24,7 +24,7 @@ const Arweave101TrackPage = () => {
     <div className="relative m-10 flex lg:mx-auto lg:max-w-screen-lg">
       <TracksLayout
         trackTitle="Arweave 101: Front-end Development"
-        trackDescription="Learn the basics. Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat. Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+        trackDescription="Go from 0 to building on Arweave. Learn what Arweave is, how to acces and store data, and how to build permaweb apps and deploy them to Arweave."
         trackAuthor="K"
         trackAuthorImage="/authors/k4y1s.jpg"
         trackAuthorDescription="I'm a developer trying to break down complex concepts for the rest of us. I'm not smarter than you; I just have more time for research. Web and open-source enthusiast 💚"
