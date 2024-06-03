@@ -122,7 +122,7 @@ const QuizCompletedModals = ({
                       target="_blank"
                     >
                       <ButtonRaw className="font-future h-8 w-24 bg-[#721F79] lg:h-14 lg:w-80 lg:min-w-[21rem] lg:text-base">
-                        Share on twitter
+                        Share on Twitter
                       </ButtonRaw>
                     </a>
                     {actionButton ? (
