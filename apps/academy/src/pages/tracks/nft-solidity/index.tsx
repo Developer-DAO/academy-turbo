@@ -65,7 +65,18 @@ NftSolidityTrackPage.getLayout = function getLayout(page: ReactElement) {
   return (
     <PageSeoLayout
       title="Build a Tiered NFT"
-      description="This ERC-721 NFT track will take you from complete beginner to building a series of meaningful, real-world, NFT projects. You'll enhance your skills along the way by using test-driven development to gain confidence that your smart contracts are safe to deploy to a live blockchain. And finally you'll be creating a tasteful front-end interface so your users can mint your ERC-721 tokens in their desired tier. All in all, a rewarding coding journey."
+      description="After a gentle introduction to Solidity, you'll be building your own tiered ERC-721 token sets using test-driven development, hosting your files on Web3 storage, and creating on your own front-end dApp. The full-stack-track."
+      openGraph={{
+        images: [
+          {
+            url:
+              process.env["NEXT_PUBLIC_VERCEL_URL"] !== undefined
+                ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/meta-images/build-a-tiered-nft.png`
+                : "/meta-images/build-a-tiered-nft.pngg",
+            alt: "Web3 Learning Tracks",
+          },
+        ],
+      }}
     >
       {page}
     </PageSeoLayout>
