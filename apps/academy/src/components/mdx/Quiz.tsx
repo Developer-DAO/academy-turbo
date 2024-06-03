@@ -210,7 +210,7 @@ const Quiz = (props: QuizProps): JSX.Element => {
   return (
     <Dialog>
       <DialogTrigger className="font-future mx-auto flex h-12 w-32 rounded-3xl bg-[#721F79] p-3 pl-6 text-center text-2xl font-normal text-white">
-        QUIZ
+        FINAL QUIZ
       </DialogTrigger>
       <DialogOverlay />
       <DialogContent
