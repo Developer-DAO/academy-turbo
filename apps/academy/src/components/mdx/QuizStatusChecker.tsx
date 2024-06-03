@@ -7,17 +7,26 @@ import { useAppContext } from "@/contexts/AppContext";
 
 import Quiz from "./Quiz";
 
-export interface QuizStatusCheckerTye {
+export interface QuizStatusCheckerType {
   quiz: string;
+  successMessage: { message: string }[];
+  successTitle: string;
+  actionButton: any;
 }
 
-const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
+const QuizStatusChecker = ({
+  quiz,
+  successMessage,
+  successTitle,
+  actionButton,
+}: QuizStatusCheckerType) => {
   const [quizCompleted, setQuizCompleted] = useState<boolean>(false);
   const { address, isDisconnected } = useAccount();
   const { completedQuizzesIds, allLessonsData } = useAppContext();
   const [nextLessonURLPath, setNextLessonURLPath] = useState("");
   const [nextLessonTitle, setNextLessonTitle] = useState("");
   const [actualLessonTitle, setActualLessonTitle] = useState("");
+  const [currentLessonPath, setCurrentLessonPath] = useState("");
 
   // Requests
   useMemo(() => {
@@ -49,6 +58,11 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
         (lesson) => lesson.quizFileName === quiz,
       )!.lessonTitle;
       setActualLessonTitle(newActualLessonTitle);
+
+      const newCurrentLessonPath: string = allLessonsData.find(
+        (lesson) => lesson.quizFileName === quiz,
+      )!.lessonPath;
+      setCurrentLessonPath(newCurrentLessonPath);
     }
   }, [quizCompleted]);
 
@@ -64,9 +78,14 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
   ) : quizCompleted ? (
     <>
       <QuizCompletedModals
+        actionButton={actionButton}
+        successMessage={successMessage}
+        successTitle={successTitle}
+        quizCompleted={quizCompleted}
         nextLessonURLPath={nextLessonURLPath}
         nextLessonTitle={nextLessonTitle}
         actualLessonTitle={actualLessonTitle}
+        currentLessonPath={currentLessonPath}
       />
       {/* <Badge className="m-auto flex w-fit justify-center bg-green-600">
         <span className="text-2xl">Quiz Completed</span>
@@ -81,12 +100,19 @@ const QuizStatusChecker = ({ quiz }: QuizStatusCheckerTye) => {
       ) : null} */}
     </>
   ) : (
-    <Quiz
-      quiz={quiz}
-      nextLessonURLPath={nextLessonURLPath}
-      nextLessonTitle={nextLessonTitle}
-      actualLessonTitle={actualLessonTitle}
-    />
+    <div className="w-full content-center items-center justify-center text-center">
+      <span className="font-future text-3xl font-bold text-[#721F79] underline">
+        Take the quiz to advance to the next lesson
+      </span>
+      <br />
+      <br />
+      <Quiz
+        quiz={quiz}
+        nextLessonURLPath={nextLessonURLPath}
+        nextLessonTitle={nextLessonTitle}
+        actualLessonTitle={actualLessonTitle}
+      />
+    </div>
   );
 };
 
