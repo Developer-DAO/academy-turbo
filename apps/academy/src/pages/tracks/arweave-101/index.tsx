@@ -59,8 +59,8 @@ const Arweave101TrackPage = () => {
 Arweave101TrackPage.getLayout = function getLayout(page: ReactElement) {
   return (
     <PageSeoLayout
-      title="Arweave 101: Front-end Development"
-      description="TODO"
+      title="Arweave 101: Building Apps on Arweave"
+      description="Go from 0 to building on Arweave. Learn what Arweave is, how to acces and store data, and how to build permaweb apps and deploy them to Arweave"
       openGraph={{
         images: [
           {
