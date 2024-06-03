@@ -75,7 +75,7 @@ export const allTracksData = [
     authors: [""],
     imgPath: "/image16.png",
     trackDescription:
-      "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+      "This track offers a deep dive into Vyper contract development and complementary tools, including Ape, and web3 py.",
     trackPath: "/tracks/web3-python",
     order: 6,
     productionVisible: true,
