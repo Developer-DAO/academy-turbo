@@ -1,0 +1,16 @@
+{
+  "question": "Where does Arweave store files?",
+  "options": [
+    {
+      "answer": "Everything is stored in the transaction object"
+    },
+    {
+      "answer": "The transaction object can contain files smaller than 12MiB",
+      "correct": true
+    },
+    {
+      "answer": "Files bigger than 12MiB have a separate storage location",
+      "correct": true
+    }
+  ]
+}

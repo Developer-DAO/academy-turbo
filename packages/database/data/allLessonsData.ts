@@ -304,6 +304,8 @@ export const allLessonsData = [
     stagingVisible: true,
     visible: true,
     nextLessonPath: "",
+    twitterShareUrl:
+      "https://twitter.com/intent/tweet?text=I've%20just%20completed%20%22Background%20on%20Arweave%22%20with%20%40devdao_academy%20%26%20%40ar_io_network%0A%0Ahttps%3A//academy.developerdao.com/tracks/arweave-101/1",
   },
   {
     id: "clrzkw63400071wtumt4iobu6",

@@ -59,6 +59,11 @@ export const lessonsRouter = createTRPCRouter({
               tag: true,
             },
           },
+          contributors: {
+            include: {
+              contributor: true,
+            },
+          },
         },
         orderBy: {
           order: "asc",
@@ -67,7 +72,7 @@ export const lessonsRouter = createTRPCRouter({
 
       return trackLessons;
     }),
-  getLessonsByLessonPath: publicProcedure.query(async ({ ctx }) => {
+  getFundamentalLessonsByPath: publicProcedure.query(async ({ ctx }) => {
     const constructedWhere =
       env.ENVIRONMENT === "production"
         ? { productionVisible: true }
@@ -97,4 +102,24 @@ export const lessonsRouter = createTRPCRouter({
 
     return trackLessons;
   }),
+  getLessonsByLessonPath: publicProcedure
+    .input(z.object({ lessonPath: z.string() }))
+    .query(async ({ input, ctx }) => {
+      const lesson = await ctx.prisma.lessons.findMany({
+        where: {
+          lessonPath: {
+            equals: input.lessonPath,
+          },
+        },
+        include: {
+          contributors: {
+            include: {
+              contributor: true,
+            },
+          },
+        },
+      });
+
+      return lesson[0];
+    }),
 });

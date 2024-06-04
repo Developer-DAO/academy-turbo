@@ -1,0 +1,16 @@
+{
+  "question": "Can you use the same wallet address on the frontend and backend?",
+  "options": [
+    {
+      "answer": "Yes, you can export a key file from a wallet app and load it in the backend",
+      "correct": true
+    },
+    {
+      "answer": "Yes, you can import the key file exported from your backend in your wallet app",
+      "correct": true
+    },
+    {
+      "answer": "No, you have to generate a new wallet address"
+    }
+  ]
+}

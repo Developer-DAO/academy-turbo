@@ -1,0 +1,11 @@
+{
+  "extends": "typescript-config/next.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*", "../../../../../packages/database/node_modules/@prisma/client/runtime/library"]
+    }
+  },
+  "include": ["next-env.d.ts", "src", "e2e", "middleware.ts"],
+  "exclude": ["dist", "node_modules"]
+}

@@ -1,4 +1,12 @@
-import { type LucideIcon, type LucideProps, Moon, SunMedium, Twitter } from "lucide-react";
+import {
+  Info,
+  type LucideIcon,
+  type LucideProps,
+  Moon,
+  MoreHorizontalIcon,
+  SunMedium,
+  Twitter,
+} from "lucide-react";
 
 // Simply copy the contents of your SVG into the Icons object and name it.
 // First, make sure you convert the HTML to JSX markup. You can use this https://transform.tools/
@@ -9,6 +17,7 @@ interface DDIcons {
   [key: string]: (props: LucideProps) => JSX.Element;
   sun: (props: LucideProps) => JSX.Element;
   moon: (props: LucideProps) => JSX.Element;
+  info: (props: LucideProps) => JSX.Element;
   twitter: (props: LucideProps) => JSX.Element;
   scroll: (props: LucideProps) => JSX.Element;
   vector: (props: LucideProps) => JSX.Element;
@@ -27,12 +36,13 @@ interface DDIcons {
   copy_icon: (props: LucideProps) => JSX.Element;
   home_icon: (props: LucideProps) => JSX.Element;
   moon_light: (props: LucideProps) => JSX.Element;
+  more_horizontal: (props: LucideProps) => JSX.Element;
 }
 
 export const Icons: DDIcons = {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   sun: (props: LucideProps) => <SunMedium {...props} />,
   moon: (props: LucideProps) => <Moon {...props} />,
+  info: (props: LucideProps) => <Info {...props} />,
   twitter: (props: LucideProps) => <Twitter {...props} />,
   logo: (props: LucideProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
@@ -402,4 +412,5 @@ export const Icons: DDIcons = {
       />
     </svg>
   ),
+  more_horizontal: (props: LucideProps) => <MoreHorizontalIcon {...props} />,
 };

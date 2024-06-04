@@ -1,3 +1,4 @@
+import type { NextPage } from "next";
 import Link from "next/link";
 import type { ReactElement } from "react";
 import { TrackCard } from "ui";
@@ -6,7 +7,7 @@ import PageSeoLayout from "@/components/PageSeoLayout";
 import Spinner from "@/components/Spinner";
 import { api } from "@/utils/api";
 
-const TracksPage = () => {
+const TracksPage: NextPage & { getLayout?: (page: ReactElement) => ReactElement } = () => {
   const { data: allTracksData } = api.tracks.getAll.useQuery();
 
   return (
@@ -56,15 +57,25 @@ bg-[url('/bg_tracks.png')] bg-cover bg-no-repeat object-center pt-[300px]  lg:fi
   );
 };
 
-TracksPage.getLayout = function getLayout(page: ReactElement) {
+TracksPage.getLayout = function getLayout(page: ReactElement): ReactElement {
   return (
     <PageSeoLayout
       title="Web3 Learning Tracks"
-      description="Our Web3 courses are desgined to get you from 0 to 1 via project based learning tracks."
+      description="Our Web3 courses are designed to get you from 0 to 1 via project-based learning tracks."
+      openGraph={{
+        images: [
+          {
+            url:
+              process.env["NEXT_PUBLIC_VERCEL_URL"] !== undefined
+                ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/meta-images/academy-web3-tracks.png`
+                : "/meta-images/academy-web3-tracks.png",
+            alt: "Web3 Learning Tracks",
+          },
+        ],
+      }}
     >
       {page}
     </PageSeoLayout>
   );
 };
-
 export default TracksPage;

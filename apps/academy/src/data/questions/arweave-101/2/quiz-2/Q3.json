@@ -1,0 +1,15 @@
+{
+  "question": "How do you access the plain manifest JSON?",
+  "options": [
+    {
+      "answer": "With the /raw endpoint of a gateway node",
+      "correct": true
+    },
+    {
+      "answer": "You can’t access it directly"
+    },
+    {
+      "answer": "By adding a question mark to the transaction ID"
+    }
+  ]
+}

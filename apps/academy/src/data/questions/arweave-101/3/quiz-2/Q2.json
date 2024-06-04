@@ -1,0 +1,19 @@
+{
+  "question": "Why do you need a reusable wallet address to upload big files?",
+  "options": [
+    {
+      "answer": "To charge the wallet with tokens for the upload payments",
+      "correct": true
+    },
+    {
+      "answer": "To mark your uploads with your personal signature, to proof you uploaded it first",
+      "correct": true
+    },
+    {
+      "answer": "To save money on upload fees"
+    },
+    {
+      "answer": "To be able to change the file content later"
+    }
+  ]
+}

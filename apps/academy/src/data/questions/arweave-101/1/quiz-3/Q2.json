@@ -1,0 +1,16 @@
+{
+  "question": "How can you remove data from Arweave?",
+  "options": [
+    {
+      "answer": "By sending a do-not-store request",
+      "correct": true
+    },
+    {
+      "answer": "You can’t enforce removal",
+      "correct": true
+    },
+    {
+      "answer": "By forking the chain"
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "title": "Final Quiz: Storing Data on Arweave",
+  "questions": [
+    {
+      "question": "When would you NOT upload small files to Arweave via a bundling service?",
+      "options": [
+        {
+          "answer": "When you need strong L1 security guarantees",
+          "correct": true
+        },
+        {
+          "answer": "When you want to store files for free"
+        }
+      ]
+    },
+    {
+      "question": "Can you upload files to Arweave via Node.js",
+      "options": [
+        {
+          "answer": "Yes, you can use JavaScript SDKs in the browser and Node.js",
+          "correct": true
+        },
+        {
+          "answer": "No, you can only use a browser."
+        }
+      ]
+    },
+    {
+      "question": "Do you need a polyfill to use the Turbo SDK in the browser?",
+      "options": [
+        {
+          "answer": "Yes, because the browser doesn't support Buffers natively",
+          "correct": true
+        },
+        {
+          "answer": "No, the native web-crypto API is sufficient"
+        },
+        {
+          "answer": "Yes, because the Turbo SDK requires multi threading"
+        }
+      ]
+    },
+    {
+      "question": "Can you pay for your Arweave uploads with fiat?",
+      "options": [
+        {
+          "answer": "Yes, when using the Turbo SDK",
+          "correct": true
+        },
+        {
+          "answer": "Yes, when using arbundles"
+        },
+        {
+          "answer": "No, only AR is supported"
+        },
+        {
+          "answer": "No, only SOL and ETH are supported."
+        }
+      ]
+    },
+    {
+      "question": "Can you use randomly generated addresses to upload big files?",
+      "options": [
+        {
+          "answer": "No, as you need to charge the address with tokens before an upload",
+          "correct": true
+        },
+        {
+          "answer": "Yes, you can pay manually later",
+          "correct": true
+        },
+        {
+          "answer": "No, since random addresses aren't long enough"
+        }
+      ]
+    },
+    {
+      "question": "How can you share addresses between the front-end and back-end?",
+      "options": [
+        {
+          "answer": "You can export a key file from a wallet app and load it in the back-end",
+          "correct": true
+        },
+        {
+          "answer": "You can import the key file exported from your back-end in your wallet app",
+          "correct": true
+        },
+        {
+          "answer": "Sharing addresses between apps isn't possible"
+        },
+        {
+          "answer": "Only if you sign your transaction with an Ethereum wallet"
+        }
+      ]
+    },
+    {
+      "question": "What are NOT popular Arweave bundling services?",
+      "options": [
+        {
+          "answer": "Irys"
+        },
+        {
+          "answer": "Permanent Data Solutions"
+        },
+        {
+          "answer": "Google Drive",
+          "correct": true
+        },
+        {
+          "answer": "Consensys",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "What are popular Arweave Libraries?",
+      "options": [
+        {
+          "answer": "The Irys SDK",
+          "correct": true
+        },
+        {
+          "answer": "The Turbo SDK",
+          "correct": true
+        },
+        {
+          "answer": "Viem"
+        },
+        {
+          "answer": "arweave-js",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "What do bundling services add to Arweave UX?",
+      "options": [
+        {
+          "answer": "They enable fiat payments",
+          "correct": true
+        },
+        {
+          "answer": "They enable non-AR token payments",
+          "correct": true
+        },
+        {
+          "answer": "They enable non-Arweave signatures",
+          "correct": true
+        },
+        {
+          "answer": "They use Bitcoin to store signatures"
+        }
+      ]
+    },
+    {
+      "question": "What Arweave wallets don't require installation by your users?",
+      "options": [
+        {
+          "answer": "Arweave.app",
+          "correct": true
+        },
+        {
+          "answer": "arweave-js",
+          "correct": true
+        },
+        {
+          "answer": "ArConnect"
+        },
+        {
+          "answer": "The Ledger AR plugin"
+        }
+      ]
+    },
+    {
+      "question": "Is there a hardware wallet for Arweave?",
+      "options": [
+        {
+          "answer": "Yes, there is a Ledger plugin for AR.",
+          "correct": true
+        },
+        {
+          "answer": "No, your only cold storage option is a paper wallet."
+        }
+      ]
+    },
+    {
+      "question": "Which Arweave wallets are too low-level for DApp frontends?",
+      "options": [
+        {
+          "answer": "ArConnect"
+        },
+        {
+          "answer": "Arweave.app"
+        },
+        {
+          "answer": "arweave-js",
+          "correct": true
+        }
+      ]
+    }
+  ]
+}

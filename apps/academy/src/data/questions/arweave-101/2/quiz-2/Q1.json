@@ -1,0 +1,15 @@
+{
+  "question": "How do gateways simulate directory structures?",
+  "options": [
+    {
+      "answer": "With JSON path manifests.",
+      "correct": true
+    },
+    {
+      "answer": "With transaction reflection."
+    },
+    {
+      "answer": "With ZIP archives"
+    }
+  ]
+}

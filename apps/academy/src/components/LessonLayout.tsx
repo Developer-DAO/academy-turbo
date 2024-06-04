@@ -1,10 +1,15 @@
 // import AboutCourse from "@/components/AboutCourse";
+import { useRouter } from "next/router";
+
 import CreatedBy from "@/components/CreatedBy";
 import PageSeoLayout from "@/components/PageSeoLayout";
+import { api } from "@/utils/api";
 
 interface LessonLayoutProps {
   children: React.ReactNode;
   lessonTitle: string;
+  lessonImage?: string;
+  lessonDescription?: string;
   author: string;
   authorImage: string;
   authorPosition: string;
@@ -15,15 +20,36 @@ interface LessonLayoutProps {
 export default function LessonLayout({
   children,
   lessonTitle,
+  lessonImage = "default-meta-image.png",
+  lessonDescription = "Start your journey to become a Web3 Developer today. Free high-quality courses to learn web3 with Developer DAO Academy.",
   author,
   authorImage,
   authorTwitter,
 }: LessonLayoutProps) {
+  const router = useRouter();
+
+  console.log(router.pathname);
+
+  const { data: lessonData } = api.lessons.getLessonsByLessonPath.useQuery({
+    lessonPath: router.pathname,
+  });
+  console.log("poop", { lessonData });
   return (
     <PageSeoLayout
       title={lessonTitle}
       // This should be the individual lesson description eventually
-      description="Start your journey to become a Web3 Developer today. Free high-quality courses to learn web3 with Developer DAO Academy."
+      description={lessonDescription}
+      openGraph={{
+        images: [
+          {
+            url:
+              process.env["NEXT_PUBLIC_VERCEL_URL"] !== undefined
+                ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/${lessonImage}`
+                : lessonImage,
+            alt: lessonTitle,
+          },
+        ],
+      }}
     >
       <main className="px-10 pt-36 text-white lg:mx-auto lg:max-w-screen-lg lg:pt-44">
         <section className="text-center">

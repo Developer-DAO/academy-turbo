@@ -1,0 +1,19 @@
+{
+  "question": "How does Arweave ensure continuous payment for its storage?",
+  "options": [
+    {
+      "answer": "It has a storage endowment to save tokens for later",
+      "correct": true
+    },
+    {
+      "answer": "Its token economics are based on future storage cost estimates",
+      "correct": true
+    },
+    {
+      "answer": "It gives each miner node one Bitcoin"
+    },
+    {
+      "answer": "It requires continuous payments."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "question": "Can you upload files directly from the browser?",
+  "options": [
+    {
+      "answer": "Yes, you can use JavaScript SDKs in the browser and Node.js",
+      "correct": true
+    },
+    {
+      "answer": "No, you have to send your files to a Node.js server first"
+    }
+  ]
+}

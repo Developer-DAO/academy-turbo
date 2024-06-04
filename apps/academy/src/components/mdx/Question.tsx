@@ -105,7 +105,7 @@ const Question = (props: QuestionProps): JSX.Element => {
       {question.options.map((o, index) => {
         return (
           <div
-            className={`font-clash-display mt-3 w-full cursor-pointer rounded-md bg-[#1C1C1C] p-3 text-left font-semibold text-white ${isSelectedAnswer(
+            className={`font-poppins mt-3 w-full cursor-pointer rounded-md bg-[#1C1C1C] p-3 text-left font-normal text-white ${isSelectedAnswer(
               index,
             )}`}
             onClick={() => {

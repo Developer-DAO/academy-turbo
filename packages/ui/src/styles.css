@@ -179,11 +179,16 @@
 }
 
 .mdx-ul {
-  @apply my-4 ml-4 list-inside list-disc font-light;
+  @apply my-4 ml-4 list-outside list-disc font-light;
 }
 
 .mdx-ol {
-  @apply my-4 ml-4 list-inside list-decimal font-light;
+  @apply my-4 ml-4 list-outside list-decimal font-light;
+}
+
+.mdx-img {
+  @apply mx-auto;
+  max-height: 640px;
 }
 
 .inline-code {

@@ -1,0 +1,203 @@
+{
+  "title": "Final Quiz: Accessing data on Arweave",
+  "questions": [
+    {
+      "question": "What do you need to read a file on Arweave?",
+      "options": [
+        {
+          "answer": "The hostname of a gateway",
+          "correct": true
+        },
+        {
+          "answer": "A transaction ID",
+          "correct": true
+        },
+        {
+          "answer": "The IP of a miner node"
+        },
+        {
+          "answer": "The name of the file"
+        }
+      ]
+    },
+    {
+      "question": "What’s the primary difference between Ethereum and Arweave transactions?",
+      "options": [
+        {
+          "answer": "Arweave transactions can contain links to files of arbitrary size.",
+          "correct": true
+        },
+        {
+          "answer": "Arweave transactions are volatile"
+        },
+        {
+          "answer": "Ethereum transactions contain gas costs",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "What's the purpose of transaction sandboxing?",
+      "options": [
+        {
+          "answer": "To prevent browser data access between transactions",
+          "correct": true
+        },
+        {
+          "answer": "To improve latency"
+        },
+        {
+          "answer": "To hide transaction IDs from users"
+        }
+      ]
+    },
+    {
+      "question": "Can Arweave gateways simulate directory structures?",
+      "options": [
+        {
+          "answer": "Yes, with JSON path manifests.",
+          "correct": true
+        },
+        {
+          "answer": "Yes, with transaction reflection."
+        },
+        {
+          "answer": "No, only single files can be referenced with a transaction ID",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "What are the properties of a path manifest?",
+      "options": [
+        {
+          "answer": "A list of keys that point to transaction IDs",
+          "correct": true
+        },
+        {
+          "answer": "A wildcard key that resolves missing paths",
+          "correct": true
+        },
+        {
+          "answer": "An index key that resolves the empty path",
+          "correct": true
+        },
+        {
+          "answer": "An archive of multiple files"
+        }
+      ]
+    },
+    {
+      "question": "Can you read the plain manifest JSON?",
+      "options": [
+        {
+          "answer": "Yes, with the /raw endpoint of a gateway node",
+          "correct": true
+        },
+        {
+          "answer": "No, you can’t access it directly"
+        },
+        {
+          "answer": "Yes, by adding a question mark to the transaction ID"
+        }
+      ]
+    },
+    {
+      "question": "Is it possible to search files on Arweave?",
+      "options": [
+        {
+          "answer": "Indirectly, with the GraphQL endpoint of the gateway nodes.",
+          "correct": true
+        },
+        {
+          "answer": "No, all files are encrypted."
+        },
+        {
+          "answer": "Yes, there is a search engine like Google on Arweave."
+        }
+      ]
+    },
+    {
+      "question": "What are the storage locations supported by Arweave?",
+      "options": [
+        {
+          "answer": "Inside the transaction, if it’s smaller than 12MiB",
+          "correct": true
+        },
+        {
+          "answer": "Outside the transaction, if it’s bigger than 12MiB",
+          "correct": true
+        },
+        {
+          "answer": "Outside the transaction, if it’s smaller than 12MiB",
+          "correct": true
+        },
+        {
+          "answer": "Inside the transaction, if it’s bigger than 12MiB"
+        }
+      ]
+    },
+    {
+      "question": "Which properties are NOT part of Arweave transactions?",
+      "options": [
+        {
+          "answer": "tags"
+        },
+        {
+          "answer": "geolocation",
+          "correct": true
+        },
+        {
+          "answer": "data_root"
+        },
+        {
+          "answer": "gas_fee",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "What is the purpose of ArNS?",
+      "options": [
+        {
+          "answer": "Creating human readable names for transaction IDs",
+          "correct": true
+        },
+        {
+          "answer": "Creating mutable references",
+          "correct": true
+        },
+        {
+          "answer": "Saving on upload fees"
+        }
+      ]
+    },
+    {
+      "question": "Are ArNS names immutable?",
+      "options": [
+        {
+          "answer": "No, they can link to different IDs over time",
+          "correct": true
+        },
+        {
+          "answer": "Yes, everything on Arweave is permanent"
+        }
+      ]
+    },
+    {
+      "question": "Are gateway nodes incentivised with AR tokens?",
+      "options": [
+        {
+          "answer": "No, the tokens from ArNS name sales is used to pay gateway operators.",
+          "correct": true
+        },
+        {
+          "answer": "Arweave sends parts of transaction fees to gateway operators"
+        },
+        {
+          "answer": "No, gateway operators aren't rewarded at all"
+        }
+      ]
+    }
+  ]
+}

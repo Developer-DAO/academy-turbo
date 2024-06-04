@@ -1,5 +1,6 @@
-import Image from "next/image";
-import React, { useState } from "react";
+// import Image from "next/image";
+import NextLink from "next/link";
+import React, { useEffect, useState } from "react";
 import {
   ButtonRaw,
   Dialog,
@@ -12,17 +13,43 @@ import {
   DialogTrigger,
 } from "ui";
 
+import { createTwitterIntentLink } from "@/utils/create-twitter-intent-link";
+
 export interface QuizProps {
   nextLessonURLPath: string;
   nextLessonTitle: string;
   actualLessonTitle: string;
+  quizCompleted: boolean;
+  successMessage?: { message: string }[];
+  successTitle?: string;
+  currentLessonPath: string;
+  actionButton?: { href: string; text: string } | null;
 }
 
 export type Answers = Record<string, number[]>;
 
-const QuizCompletedModals = (_props: QuizProps): JSX.Element => {
+const QuizCompletedModals = ({
+  nextLessonURLPath,
+  actualLessonTitle,
+  quizCompleted,
+  successMessage = [
+    {
+      message:
+        "You answered all the quiz questions correctly, great job. Celebrate your learning on Twitter and advance to the next lesson below.",
+    },
+  ],
+  // successTitle = "Lesson complete",
+  currentLessonPath,
+  actionButton,
+}: QuizProps): JSX.Element => {
   const [showDialog, setShowDialog] = useState(false);
   // const [showKeepGoingModal, setShowKeepGoingModal] = useState(false);
+
+  useEffect(() => {
+    if (quizCompleted) {
+      setShowDialog(true);
+    }
+  }, [quizCompleted]);
 
   const handleLessonDoneClick = () => {
     // setShowKeepGoingModal(true);
@@ -32,6 +59,8 @@ const QuizCompletedModals = (_props: QuizProps): JSX.Element => {
   const handleClose = () => {
     setShowDialog(false);
   };
+
+  console.log(actionButton);
 
   return (
     <>
@@ -58,13 +87,8 @@ const QuizCompletedModals = (_props: QuizProps): JSX.Element => {
               <div className="w-full text-center">
                 {/*   {!showKeepGoingModal ? ( */}
                 <span className="font-clash-display w-full text-center text-2xl font-bold leading-8 text-white">
-                  Quiz complete!
+                  {actualLessonTitle}
                 </span>
-                {/*   ) : ( 
-                <span className="font-clash-display w-full text-center text-2xl font-bold leading-8 text-white">
-                  Nice!
-                </span>
-              )} */}
               </div>
             </DialogTitle>
           </DialogHeader>
@@ -74,53 +98,54 @@ const QuizCompletedModals = (_props: QuizProps): JSX.Element => {
               {/*  {!showKeepGoingModal ? ( */}
               <div className="max-h-64 w-fit lg:mt-11 lg:h-96 lg:w-full">
                 <div
-                  className={`font-clash-display w-full cursor-pointer rounded-3xl p-3 text-center font-bold text-[#F9F9F9]`}
+                  className={`font-clash-display w-full rounded-3xl p-3 text-center font-bold text-[#F9F9F9]`}
                 >
-                  <h1 className="font-clash-display mb-11 text-3xl lg:text-[26px]">
-                    You&apos;re doing great!
-                  </h1>
-                  <Image
-                    src={"/happy_face.png"}
-                    alt="happy_face_icon"
-                    width={100}
-                    height={100}
-                    className="mx-auto mb-16"
-                  />
-                  <p className="mb-20 text-base font-normal leading-5 text-[#FFFFFF] lg:mb-10 lg:text-2xl">
-                    You&apos;ve completed the quiz for this section.
-                  </p>
-                  <ButtonRaw
-                    className="font-future h-14 w-36 bg-[#721F79] lg:h-[4.125rem] lg:w-80 lg:min-w-[21rem] lg:text-base"
-                    onClick={handleLessonDoneClick}
-                  >
-                    Done!
-                  </ButtonRaw>
+                  {/* <h1 className="font-clash-display mb-11 text-3xl lg:text-[26px]">
+                    {successTitle}
+                  </h1> */}
+                  {successMessage.map((message, index) => {
+                    return (
+                      <p
+                        className="mb-20 text-base font-normal leading-5 text-[#FFFFFF] lg:mb-6 lg:text-2xl"
+                        key={index}
+                      >
+                        {message.message}
+                      </p>
+                    );
+                  })}
+                  <div className="flex flex-col gap-y-6">
+                    <a
+                      href={createTwitterIntentLink(
+                        `I completed ${actualLessonTitle} on @devdao_academy.
+                          https://academy.developerdao.com${currentLessonPath}`,
+                      )}
+                      target="_blank"
+                    >
+                      <ButtonRaw className="font-future h-8 w-24 bg-[#721F79] lg:h-14 lg:w-80 lg:min-w-[21rem] lg:text-base">
+                        Share on Twitter
+                      </ButtonRaw>
+                    </a>
+                    {actionButton ? (
+                      <a href={actionButton.href} target="_blank">
+                        <ButtonRaw className="font-future h-8 w-24 bg-[#721F79] lg:h-14 lg:w-80 lg:min-w-[21rem] lg:text-base">
+                          {actionButton.text}
+                        </ButtonRaw>
+                      </a>
+                    ) : null}
+                    {nextLessonURLPath ? (
+                      <NextLink href={nextLessonURLPath}>
+                        <ButtonRaw
+                          // variant="outline"
+                          className="font-future h-14 w-36 hover:bg-[#721F79] lg:h-14 lg:w-80 lg:min-w-[21rem] lg:text-base"
+                          onClick={handleLessonDoneClick}
+                        >
+                          Next Lesson
+                        </ButtonRaw>
+                      </NextLink>
+                    ) : null}
+                  </div>
                 </div>
               </div>
-              {/*   ) : ( 
-              <div className="h-64 w-fit lg:mt-11 lg:h-96 lg:w-full">
-                <div
-                  className={`font-clash-display w-full cursor-pointer rounded-3xl p-3 text-center font-bold text-[#F9F9F9]`}
-                >
-                  <h1 className="font-clash-display mb-11 text-3xl lg:text-[26px]">Keep going!</h1>
-                  <Image
-                    src={"/happy_face.png"}
-                    alt="happy_face_icon"
-                    width={100}
-                    height={100}
-                    className="mx-auto mb-16"
-                  />
-                  <p className="mb-20 text-base font-normal leading-5 text-[#FFFFFF] lg:mb-10 lg:text-2xl">
-                    {`You've just completed ${props.actualLessonTitle}!`}
-                  </p>
-                  <NextLink href={props.nextLessonURLPath}>
-                    <ButtonRaw className="font-future h-fit w-fit bg-[#44AF96] lg:h-[4.125rem] lg:w-80 lg:min-w-[21rem] lg:text-base">
-                      {`NEXT: ${props.nextLessonTitle}`}
-                    </ButtonRaw>
-                  </NextLink>
-                </div>
-              </div>
-              {/*  )} */}
             </div>
           </DialogDescription>
 
