@@ -1,4 +1,4 @@
-import React, { type Dispatch, type SetStateAction, useState } from "react";
+import React, { useState } from "react";
 import { Button, useToast } from "ui";
 
 export interface QuestionProps {
@@ -18,8 +18,7 @@ interface Question {
 const Question = (props: QuestionProps): JSX.Element => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-var-requires
   const question: Question = require(`@/data/questions/${props.question}.json`);
-  const [optionsSelected, setOptionsSelected]: [number[], Dispatch<SetStateAction<number[]>>] =
-    useState([-1]);
+  const [optionsSelected, setOptionsSelected] = useState([-1]);
   const { toast } = useToast();
 
   const selectAnswer = (optionIndex: number) => {
@@ -72,13 +71,19 @@ const Question = (props: QuestionProps): JSX.Element => {
       return;
     }
     const correctAnswers = question.options.filter((o) => o.correct).length;
+    console.log({ correctAnswers });
 
     let success = true;
     let correctAnswersCount = 0;
 
-    optionsSelected.forEach((o) => {
-      if (question.options[o]?.correct === false) success = false;
-      correctAnswersCount++;
+    optionsSelected.forEach((optionSelected) => {
+      if (question.options[optionSelected]?.correct === true) {
+        success = true;
+        correctAnswersCount++;
+      } else {
+        success = false;
+        correctAnswersCount--;
+      }
     });
 
     if (correctAnswers !== correctAnswersCount) success = false;
