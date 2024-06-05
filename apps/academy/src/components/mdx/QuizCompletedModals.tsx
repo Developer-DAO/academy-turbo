@@ -116,7 +116,7 @@ const QuizCompletedModals = ({
                   <div className="flex flex-col gap-y-6">
                     <a
                       href={createTwitterIntentLink(
-                        `I completed ${actualLessonTitle} on @devdao_academy.
+                        `I completed "${actualLessonTitle}" on @developer_dao Academy.
                           https://academy.developerdao.com${currentLessonPath}`,
                       )}
                       target="_blank"
