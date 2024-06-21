@@ -1,0 +1,15 @@
+{
+  "question": "What enables users to access multiple files with one TXID?",
+  "options": [
+    {
+      "answer": "A JSON path manifest that maps paths to TXIDs.",
+      "correct": true
+    },
+    {
+      "answer": "ZIP archive uploads."
+    },
+    {
+      "answer": "An XML manifest that links TXIDs to URLs."
+    }
+  ]
+}

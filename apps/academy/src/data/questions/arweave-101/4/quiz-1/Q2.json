@@ -1,0 +1,15 @@
+{
+  "question": "Does Arweave treat websites different from other data?",
+  "options": [
+    {
+      "answer": "Yes, if you add the correct tags, gateways will deliver the data as website to a browser.",
+      "correct": true
+    },
+    {
+      "answer": "No, Arweave forces all browsers to download them as files."
+    },
+    {
+      "answer": "Yes, Arweave uses React to render websites on the gateway."
+    }
+  ]
+}

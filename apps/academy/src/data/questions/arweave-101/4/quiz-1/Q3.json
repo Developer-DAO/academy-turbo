@@ -1,0 +1,15 @@
+{
+  "question": "Why is a static website generator the perfect tool to create websites for Arweave?",
+  "options": [
+    {
+      "answer": "Arweave gateways can’t render HTML and build-time rendering solves this issue.",
+      "correct": true
+    },
+    {
+      "answer": "It isn’t well suited for Arweave, as the files are getting too big."
+    },
+    {
+      "answer": "Static websites revive the spirit of the early web."
+    }
+  ]
+}

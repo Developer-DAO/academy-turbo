@@ -1,0 +1,15 @@
+{
+  "question": "How do you use the rel filter in a Eleventy template?",
+  "options": [
+    {
+      "answer": "{{ post.url | rel }}",
+      "correct": true
+    },
+    {
+      "answer": "rel(post.url)"
+    },
+    {
+      "answer": "{{ rel(post.url) }}"
+    }
+  ]
+}

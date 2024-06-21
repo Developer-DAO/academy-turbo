@@ -1,0 +1,196 @@
+{
+  "title": "Final Quiz: Building a Static Site on Arweave",
+  "questions": [
+    {
+      "question": "Why was Arweave created?",
+      "options": [
+        {
+          "answer": "To provide the world with permanent, immutable storage.",
+          "correct": true
+        },
+        {
+          "answer": "To increase the TPS of Ethereum and Solana."
+        },
+        {
+          "answer": "To bridge Bitcoin to Ethereum."
+        }
+      ]
+    },
+
+    {
+      "question": "Does websites get special treatment from Arweave gateways?",
+      "options": [
+        {
+          "answer": "Yes, if you add the correct tags, gateways will deliver the data as website to a browser.",
+          "correct": true
+        },
+        {
+          "answer": "No, you must download all files with BitTorrent."
+        },
+        {
+          "answer": "Yes, Arweave uses Vite to render websites on the gateway."
+        }
+      ]
+    },
+
+    {
+      "question": "Why would you use a static site generator to build website on Arweave?",
+      "options": [
+        {
+          "answer": "Arweave gateways can’t render HTML and build-time rendering solves this issue.",
+          "correct": true
+        },
+        {
+          "answer": "You wouldn’t, as the rendering inhibits token allocations."
+        },
+        {
+          "answer": "You woulnd’t, dynamic websites would be better suited, as they’re more flexible.."
+        }
+      ]
+    },
+
+    {
+      "question": "Does Eleventy create Arweave compliant websites out of the box?",
+      "options": [
+        {
+          "answer": "No, it needs a filter to rewrite relative URLs, so they work with the TXID Arweave websites start with.",
+          "correct": true
+        },
+        {
+          "answer": "Yes, no special configuration required."
+        },
+        {
+          "answer": "No, Eleventy needs advanced compression to fit the page on Arweave."
+        }
+      ]
+    },
+
+    {
+      "question": "How do you make Eleventy’s relative URLs work on Arweave?",
+      "options": [
+        {
+          "answer": "{{ post.url | rel }}",
+          "correct": true
+        },
+        {
+          "answer": "rel(post.url)"
+        },
+        {
+          "answer": "{{ rel(post.url) }}"
+        }
+      ]
+    },
+
+    {
+      "question": "Do the relative links created by Eleventy break on an update?",
+      "options": [
+        {
+          "answer": "No, updates always get new TXIDs. Existing versions stay the same.",
+          "correct": true
+        },
+        {
+          "answer": "Yes, when the TXID changes, the links don’t work anymore."
+        },
+        {
+          "answer": "No, gateways always update TXIDs retroactively."
+        }
+      ]
+    },
+
+    {
+      "question": "Do you need to purchase AR tokens to deploy a website?",
+      "options": [
+        {
+          "answer": "No, Arweave bundling services subsidize uploads under 100 KiB.",
+          "correct": true
+        },
+        {
+          "answer": "Yes, all uploads are in transactions that cost money to settle onchain."
+        },
+        {
+          "answer": "No, new wallets can submit 5 free transactions."
+        }
+      ]
+    },
+
+    {
+      "question": "Does Arweave change the content of a TXID after you upload a new version of a file?",
+      "options": [
+        {
+          "answer": "No, each new upload will get a new TXID.",
+          "correct": true
+        },
+        {
+          "answer": "Yes, it apppends the new version to the old file."
+        },
+        {
+          "answer": "Np, You can’t upload multiple versions of one file."
+        }
+      ]
+    },
+
+    {
+      "question": "How can you access multiple files with one TXID?",
+      "options": [
+        {
+          "answer": "A JSON path manifest that maps paths to TXIDs.",
+          "correct": true
+        },
+        {
+          "answer": "Impossible,you need to keep track of the TXIDs of all pages to link them with each other."
+        },
+        {
+          "answer": "An XML manifest that links TXIDs to URLs."
+        }
+      ]
+    },
+
+    {
+      "question": "Can you change the TXID of an ArNS name?",
+      "options": [
+        {
+          "answer": "Yes, you can change their target TXIDs.",
+          "correct": true
+        },
+        {
+          "answer": "No, once you set a TXID, they will always point to that."
+        },
+        {
+          "answer": "Yes, they can change 5 times after registration."
+        }
+      ]
+    },
+
+    {
+      "question": "How many gateways can deliver a website behind an ArNS name?",
+      "options": [
+        {
+          "answer": "You can access every ArNS name from every gateway.",
+          "correct": true
+        },
+        {
+          "answer": "Only the first 5 gateways that access the ArNS name will deliver the website."
+        },
+        {
+          "answer": "10 gateways will deliver the website"
+        }
+      ]
+    },
+
+    {
+      "question": "Is there a way to access the immutable TXID of a website?",
+      "options": [
+        {
+          "answer": "Yes, it’s stored in the X-Arns-Resolved-Id header field.",
+          "correct": true
+        },
+        {
+          "answer": "Yes, it’s stored in the Arweave-Txid header field."
+        },
+        {
+          "answer": "No, the TXID is hidden from the client."
+        }
+      ]
+    }
+  ]
+}

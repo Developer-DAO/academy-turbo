@@ -1,0 +1,15 @@
+{
+  "question": "Are ArNS names immutable?",
+  "options": [
+    {
+      "answer": "No, you can change their target TXIDs.",
+      "correct": true
+    },
+    {
+      "answer": "Yes, once you set a TXID, they will always point to that."
+    },
+    {
+      "answer": "No, they can change 5 times after registration."
+    }
+  ]
+}

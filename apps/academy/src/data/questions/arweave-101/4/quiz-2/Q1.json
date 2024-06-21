@@ -1,0 +1,15 @@
+{
+  "question": "Does Eleventy need any special configuration to work with Arweave?",
+  "options": [
+    {
+      "answer": "Yes, it needs a filter to rewrite relative URLs, so they work with the TXID Arweave websites start with.",
+      "correct": true
+    },
+    {
+      "answer": "No, Eleventy works with Arweave out of the box."
+    },
+    {
+      "answer": "Yes, Eleventy needs advanced compression to fit the page on Arweave."
+    }
+  ]
+}
