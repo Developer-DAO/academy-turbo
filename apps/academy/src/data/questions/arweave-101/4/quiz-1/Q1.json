@@ -1,0 +1,15 @@
+{
+  "question": "What is the goal of Arweave?",
+  "options": [
+    {
+      "answer": "To provide the world with permanent, immutable storage.",
+      "correct": true
+    },
+    {
+      "answer": "To dethrone Bitcoin as the most valuable cryptocurrency."
+    },
+    {
+      "answer": "To save you from paying taxes."
+    }
+  ]
+}

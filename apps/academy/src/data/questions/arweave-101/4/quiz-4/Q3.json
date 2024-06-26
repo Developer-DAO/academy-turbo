@@ -1,0 +1,15 @@
+{
+  "question": "Where can you find the immutable TXID of an ArNS page?",
+  "options": [
+    {
+      "answer": "In the X-Arns-Resolved-Id header field.",
+      "correct": true
+    },
+    {
+      "answer": "In the Arweave-Txid header field."
+    },
+    {
+      "answer": "You can’t, the TXID is hidden from the client."
+    }
+  ]
+}

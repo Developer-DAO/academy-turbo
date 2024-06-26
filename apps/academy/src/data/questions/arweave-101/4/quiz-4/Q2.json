@@ -1,0 +1,15 @@
+{
+  "question": "Are ArNS names linked to a gateway?",
+  "options": [
+    {
+      "answer": "No, you can access every ArNS name from every gateway.",
+      "correct": true
+    },
+    {
+      "answer": "Yes, you have to choose a gateway at registration."
+    },
+    {
+      "answer": "Yes, but only for the first month."
+    }
+  ]
+}

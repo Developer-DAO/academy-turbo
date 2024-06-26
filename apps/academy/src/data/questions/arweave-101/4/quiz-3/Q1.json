@@ -1,0 +1,15 @@
+{
+  "question": "Why can you deploy a website with a randomly generated wallet?",
+  "options": [
+    {
+      "answer": "Arweave bundling services subsidize uploads under 100 KiB.",
+      "correct": true
+    },
+    {
+      "answer": "They can’t, all uploads are in transactions that cost money to settle onchain."
+    },
+    {
+      "answer": "The first 10 files are free to upload."
+    }
+  ]
+}
