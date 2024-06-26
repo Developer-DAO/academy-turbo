@@ -1,6 +1,6 @@
 ---
 title: Arweave 101: Lesson 3
-description: TODO
+description: Deploy a static website to Arweave. Start with a static site generator and learn to deploy and update the site.
 icons: ["arweave", "fundamentals"]
 ---
 
@@ -13,8 +13,8 @@ import LessonInformationalModal from "../../../components/mdx/LessonInformationa
 
 <LessonLayout
    lessonTitle="Building a Static Website on Arweave"
-   lessonImage="/meta-images/arweave-101/storing-data-on-arweave.png"
-   lessonDescription="TODO."
+   lessonImage="/meta-images/arweave-101/building-a-static-website-on-arweave.png"
+   lessonDescription="Deploy a static website to Arweave. Start with a static site generator and learn to deploy and update the site."
    author="K"
    authorImage="/authors/k4y1s.jpg"
    authorPosition="Developer DAO"
@@ -46,7 +46,7 @@ A **browser, Node.js, and an ArConnect wallet** to try the examples.
 
 <Callout emoji="💡">
   Note: The ArNS section of this lesson requires AR.IO test tokens (tIO). You can complete the whole
-  lesson without the ArNS part, but the UX of your site might suffer from a missing ArNS name. You 
+  lesson without the ArNS part, but the UX of your site might suffer from a missing ArNS name. You
   can get tIO through an ecosystem DEX or by completing an EXPerience quest. I will explain that
   process later in the ArNS section of this lesson.
 </Callout>
@@ -173,9 +173,9 @@ Create a new file at `src/posts/posts.json` to define data for all post files.
 
 - `layout` defines which file should wrap your post pages
 - `tags` define the tags of each post page; here, using post ensures every post will be part of the
-post-collection used on the home page.
+  post-collection used on the home page.
 - `permalink` defines the URL schema for your pages; the schema ensures the file name without the
-extension is used as the post URL.
+  extension is used as the post URL.
 
 Add the following code to the JSON file:
 
@@ -264,7 +264,7 @@ If you completed [lesson 2](/tracks/arweave-101/3), you should already have a wa
 ArConnect and exported as a keyfile. Copy it to your project directory and ensure it’s named
 `key.json`.
 
-You can continue this lesson with a randomly generated keyfile, as all uploads are smaller than 
+You can continue this lesson with a randomly generated keyfile, as all uploads are smaller than
 100 KiB and are free with Turbo; however, using a wallet that is charged with Turbo Credits
 ([explained in lesson 2](/tracks/arweave-101/3)) is recommended to ensure uploads are larger than
 100 KiB.
@@ -435,7 +435,6 @@ You can share an ArNS URL that looks like this:
     https://arweave101.arweave.developerddao.com/path/to/some/file.html
     https://arweave101.ar-io.dev/path/to/some/file.html
 
-
 When you upload a new release, you can simply point the ArNS name to the new TXID, and your users
 will automatically see the latest version.
 
@@ -451,9 +450,9 @@ test tokens then you can claim some by completing EXPerience quests.
 
 ### Getting tIO Tokens
 
-You must complete these steps to be able to complete the quests: 
+You must complete these steps to be able to complete the quests:
 
-1. Go to the [EXPerience](https://ar.io/experience) website. 
+1. Go to the [EXPerience](https://ar.io/experience) website.
 2. Register with Zealy.
 3. Connect your social media accounts.
 4. Join [the AR.IO Discord server](https://discord.com/invite/HGG52EtTc2) to get verified.
@@ -466,7 +465,7 @@ related to this course using `85D9P2`.
 You can register an ArNS name on the [ArNS website](https://arns.app/). Keep in mind that ArNS is
 currently in testnet.
 
-First, click the "Connect" button at the top right, to connect your ArConnect wallet. 
+First, click the "Connect" button at the top right, to connect your ArConnect wallet.
 
 Then, search for your desired ArNS name. If you only have the tIO tokens from the quests, your name
 has to be at least 12 characters long.
@@ -481,7 +480,7 @@ name.
 For this, you need four pieces of information:
 
 1. The AR.IO SDK, to interact with the Arweave Name Token (ANT) contract that controls your ArNS
-name.
+   name.
 2. The TXID of the ANT contract.
 3. The keyfile of the wallet that owns the ANT contract.
 4. The TXID of your latest deployment.
@@ -491,7 +490,7 @@ You installed the SDK at the beginning of the lesson, so that’s done.
 You will find the TXID of the ANT contract in the [ArNS web app](https://arns.app/manage/names)
 under “Manage Assets”. Copy and save it into a new `ant-contract-id` file in your project directory.
 
-You exported the keyfile in [the previous lesson](/tracks/arweave-101/3) or generated a new one with 
+You exported the keyfile in [the previous lesson](/tracks/arweave-101/3) or generated a new one with
 the `create-wallet.mjs` script.
 
 The `deploy-website.mjs` script saved the TXID of the latest deployment in a `deployment-id` file in
@@ -526,7 +525,7 @@ await antContract.setRecord({
   ttlSeconds: 900,
 });
 console.log(
-  "ArNS update submitted successfully. The changes might take a few minutes to propagate."
+  "ArNS update submitted successfully. The changes might take a few minutes to propagate.",
 );
 ```
 
@@ -570,7 +569,25 @@ with ANT contracts on Arweave to automate the update for your ArNS names after a
 you can build websites for the Permaweb to save your users from link-rot and ensure they have access
 to your page as long as Arweave is online.
 
-TODO: final quiz component
+<QuizStatusChecker
+  quiz="arweave-101/4"
+  actionButton={{
+    href: "https://zealy.io/cw/ar-io/questboard/e9cf0f33-d511-46a8-8750-efaf843ab8fd/3e77d5ef-f34d-4d4d-963d-4569a1a28511",
+    text: "Claim on Zealy",
+  }}
+  successMessage={[
+    {
+      message: "You answered all the quiz questions correctly, awesome job!",
+    },
+    {
+      message:
+        "To claim your XP tokens with AR.IO: share your success on Twitter, take a screenshot of this page, and submit these along with your secret code on Zealy.",
+    },
+    {
+      message: "Secret code: ASDASD",
+    },
+  ]}
+/>
 
 ## Conclusion
 

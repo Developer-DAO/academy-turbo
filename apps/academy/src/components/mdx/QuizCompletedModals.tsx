@@ -21,7 +21,7 @@ export interface QuizProps {
   actualLessonTitle: string;
   quizCompleted: boolean;
   successMessage?: { message: string }[];
-  successTitle?: string;
+  successTitle?: string | undefined;
   currentLessonPath: string;
   actionButton?: { href: string; text: string } | null;
 }
@@ -59,8 +59,6 @@ const QuizCompletedModals = ({
   const handleClose = () => {
     setShowDialog(false);
   };
-
-  console.log(actionButton);
 
   return (
     <>
