@@ -471,74 +471,6 @@ latest release right after the registration completes.
 ![Figure 2: Registering an ArNS name](/assets/tracks/arweave-101/4/figure-2.png)
 Figure 2: Registering an ArNS name
 
-{/\* Section hidden until AR.IO SDK is availble
-
-### Creating a Script to Update Your ArNS Name
-
-To point your ArNS name to your latest release, you must update the root record (@) of your ArNS
-name.
-
-For this, you need four pieces of information:
-
-1. The AR.IO SDK, to interact with your ANT.
-2. The TXID of your ANT.
-3. The keyfile of the wallet address that owns your ANT.
-4. The TXID of your latest deployment.
-
-You installed the SDK at the beginning of the lesson, so that’s done.
-
-You will find the TXID of the ANT in the [ArNS web app](https://arns.app/manage/ants) under
-“Process ID”. Copy and save it into a new `ant-id` file in your project directory.
-
-You exported the keyfile in [the previous lesson](/tracks/arweave-101/3) or generated a new one with
-the `create-wallet.mjs` script.
-
-The `deploy-website.mjs` script saved the TXID of the latest deployment in a `deployment-id` file in
-your project directory.
-
-Create a new file at `scripts/update-arns.mjs`. This script will connect to the ANT and update the
-root record to the TXID inside the `deployment-id` file. Every time you deploy a new build you must
-run this script to ensure your users get the latest version.
-
-<Callout emoji="💡">
-  Note: All files are permanent, and if a user saves the TXID, the old versions of your website will
-  continue to work. The permanent TXID of any ArNS page is inside the `X-Arns-Resolved-Id` header.
-</Callout>
-
-Copy the following code in the new script file:
-
-```javascript
-import * as fs from "node:fs";
-import * as ArIoSdk from "@ar.io/sdk/node";
-import * as TurboSdk from "@ardrive/turbo-sdk";
-const antId = fs.readFileSync("ant-id", { encoding: "utf-8" });
-const deploymentId = fs.readFileSync("deployment-id", { encoding: "utf-8" });
-const jwk = JSON.parse(fs.readFileSync("key.json", { encoding: "utf-8" }));
-const signer = new TurboSdk.ArweaveSigner(jwk);
-const ant = ArIoSdk.ANT.init({ processId: antId, signer });
-const name = await ant.getName();
-const undername = "@";
-const rootRecord = await ant.getRecord({ undername });
-console.log(`Submitting update for ArNS name: ${name}`);
-console.log(`From: ${rootRecord.transactionId}`);
-console.log(`To  : ${deploymentId}`);
-await ant.setRecord({ undername, transactionId: deploymentId, ttlSeconds: 900 });
-console.log(
-  "ArNS update submitted successfully. The changes might take a few minutes to propagate.",
-);
-```
-
-For convenience, also update the `scripts` section of your `package.json` file:
-
-    "update-arns": "node scripts/update-arns.mjs"
-
-Now you can call the script to update it to your new deployment:
-
-    npm run update-arns
-
-The script will submit the update, but it will take a few minutes to settle onchain.
-\*/}
-
 ### Testing Deployed Release With the ArNS Name
 
 After changing the TXID and your ArNS name, you can access your blog via your new ArNS name.
@@ -568,18 +500,10 @@ with ANTs to automate the update for your ArNS names after a website update. Now
 websites for the Permaweb to save your users from link-rot and ensure they have access to your page
 as long as Arweave is online.
 
-{/_ Summary when AR.IO SDK is available
-In this lesson, you learned how to put your knowledge to the test by creating a static website,
-uploading it to Arweave, and registering an ArNS name for it. You used Node.js scripts to interact
-with ANTs to automate the update for your ArNS names after a website update. Now you can build
-websites for the Permaweb to save your users from link-rot and ensure they have access to your page
-as long as Arweave is online.
-_/}
-
 <QuizStatusChecker
   quiz="arweave-101/4"
   actionButton={{
-    href: "https://zealy.io/cw/ar-io/questboard/e9cf0f33-d511-46a8-8750-efaf843ab8fd/3e77d5ef-f34d-4d4d-963d-4569a1a28511",
+    href: "https://zealy.io/cw/ar-io/questboard/e9cf0f33-d511-46a8-8750-efaf843ab8fd/66ffbef7-3d3e-4731-8988-84d3b039be95",
     text: "Claim on Zealy",
   }}
   successMessage={[
@@ -591,7 +515,7 @@ _/}
         "To claim your XP tokens with AR.IO: share your success on Twitter, take a screenshot of this page, and submit these along with your secret code on Zealy.",
     },
     {
-      message: "Secret code: ASDASD",
+      message: "Secret code: 6QAIZ6",
     },
   ]}
 />
