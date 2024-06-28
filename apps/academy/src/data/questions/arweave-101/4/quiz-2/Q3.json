@@ -1,0 +1,15 @@
+{
+  "question": "How can using relative URLs in your website lead to permanent links?",
+  "options": [
+    {
+      "answer": "While the URLs are relative to the TXID they belong to, this ID never changes.",
+      "correct": true
+    },
+    {
+      "answer": "It can’t. The moment the TXID changes, the relative links of your website are all broken."
+    },
+    {
+      "answer": "Eleventy automatically applies a <base> element to all of your links."
+    }
+  ]
+}

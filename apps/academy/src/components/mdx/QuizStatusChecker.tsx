@@ -10,7 +10,7 @@ import Quiz from "./Quiz";
 export interface QuizStatusCheckerType {
   quiz: string;
   successMessage: { message: string }[];
-  successTitle: string;
+  successTitle?: string;
   actionButton: any;
 }
 

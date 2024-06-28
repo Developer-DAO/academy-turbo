@@ -1,0 +1,15 @@
+{
+  "question": "How does Arweave change the content of a TXID after you uploaded a new version of a file?",
+  "options": [
+    {
+      "answer": "It doesn’t, the new upload will get a new TXID.",
+      "correct": true
+    },
+    {
+      "answer": "It apppends the new version to the old file."
+    },
+    {
+      "answer": "You can’t upload multiple versions of one file."
+    }
+  ]
+}
