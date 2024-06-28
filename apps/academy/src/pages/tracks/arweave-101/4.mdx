@@ -24,7 +24,7 @@ import LessonInformationalModal from "../../../components/mdx/LessonInformationa
 
 ## About this lesson
 
-Greetings! I welcome you to the first project lesson of the Arweave 101 track. In this lesson, you 
+Greetings! I welcome you to the first project lesson of the Arweave 101 track. In this lesson, you
 will test your knowledge of the previous lessons by hosting your first website on Arweave.
 
 You will start by **creating a website** with [Eleventy](https://www.11ty.dev/), a popular static
@@ -131,8 +131,7 @@ Add the following code to the new file:
 <h1>{{ title | default: "Permablog" }}</h1>
 {% if title %}
 <a href="../">Articles</a>
-{% endif %}
-{{ content }}
+{% endif %} {{ content }}
 ```
 
 ### Creating the Pages
@@ -150,7 +149,7 @@ rendered on your home page.
 The `post.url` is added with the rel filter you defined above to ensure the URL doesn’t start with a
 slash; instead, it keeps the TXID in which your website is nested.
 
-The `pkg.author` comes from `author` field of your project’s `package.json` file. So make sure you 
+The `pkg.author` comes from `author` field of your project’s `package.json` file. So make sure you
 enter a name there!
 
 Add this code to the new file:
@@ -169,7 +168,7 @@ layout: layout.html
 <p>by {{ pkg.author }}</p>
 ```
 
-To prevent repetition, create a data file inside a directory that applies this front matter to all 
+To prevent repetition, create a data file inside a directory that applies this front matter to all
 template files in that directory.
 
 Create a new file at `src/posts/posts.json` to define data for all post files.
@@ -307,60 +306,54 @@ to generate a path manifest that allows users to access all files via a single T
 Add the following code to the deployment script:
 
 ```javascript
-import fs from "node:fs"
-import path from "node:path"
-import mimeTypes from "mime-types"
-import * as TurboSdk from "@ardrive/turbo-sdk"
-console.log("Deploying website...")
+import fs from "node:fs";
+import path from "node:path";
+import mimeTypes from "mime-types";
+import * as TurboSdk from "@ardrive/turbo-sdk";
+console.log("Deploying website...");
 function getAllFiles(dir, allFiles = []) {
   fs.readdirSync(dir).forEach((file) => {
-    const filePath = path.join(dir, file)
-    if (!fs.statSync(filePath).isDirectory()) return allFiles.push(filePath)
-    allFiles = getAllFiles(filePath, allFiles)
-  })
-  return allFiles
+    const filePath = path.join(dir, file);
+    if (!fs.statSync(filePath).isDirectory()) return allFiles.push(filePath);
+    allFiles = getAllFiles(filePath, allFiles);
+  });
+  return allFiles;
 }
 const turbo = TurboSdk.TurboFactory.authenticated({
   privateKey: JSON.parse(fs.readFileSync("key.json", { encoding: "utf-8" })),
-})
-const uploadResults = []
+});
+const uploadResults = [];
 for (let filePath of getAllFiles("dist")) {
-  console.log(`- ${filePath}`)
+  console.log(`- ${filePath}`);
   const result = await turbo.uploadFile({
     fileStreamFactory: () => fs.createReadStream(filePath),
     fileSizeFactory: () => fs.statSync(filePath).size,
     dataItemOpts: {
       tags: [{ name: "Content-Type", value: mimeTypes.lookup(filePath) }],
     },
-  })
+  });
   uploadResults.push({
-    path: filePath
-      .replaceAll(path.sep, "/")
-      .replace("dist/", "")
-      .replace("/index.html", "/"),
+    path: filePath.replaceAll(path.sep, "/").replace("dist/", "").replace("/index.html", "/"),
     txId: result.id,
-  })
+  });
 }
-console.log("- manifest.json")
+console.log("- manifest.json");
 const pathManifest = {
   manifest: "arweave/paths",
   version: "0.2.0",
   index: { path: "index.html" },
-  paths: uploadResults.reduce(
-    (paths, file) => ({ ...paths, [file.path]: { id: file.txId } }),
-    {}
-  ),
-}
-fs.writeFileSync("manifest.json", JSON.stringify(pathManifest))
+  paths: uploadResults.reduce((paths, file) => ({ ...paths, [file.path]: { id: file.txId } }), {}),
+};
+fs.writeFileSync("manifest.json", JSON.stringify(pathManifest));
 const result = await turbo.uploadFile({
   fileStreamFactory: () => fs.createReadStream("manifest.json"),
   fileSizeFactory: () => fs.statSync("manifest.json").size,
   dataItemOpts: {
     tags: [{ name: "Content-Type", value: "application/x.arweave-manifest+json" }],
   },
-})
-fs.writeFileSync("deployment-id", result.id)
-console.log(`https://arweave.developerdao.com/${result.id}`)
+});
+fs.writeFileSync("deployment-id", result.id);
+console.log(`https://arweave.developerdao.com/${result.id}`);
 ```
 
 ### Deploying the Release
@@ -444,22 +437,20 @@ ArNS domain.
     first_test_arweave101.arweave.developerddao.com/path/to/file.html
     second_test_arweave101.arweave.developerddao.com/path/to/file.html
 
-Arweave Name Tokens (ANTs) are NFTs that enable the management of ArNS names in a decentralized way. 
+Arweave Name Tokens (ANTs) are NFTs that enable the management of ArNS names in a decentralized way.
 
 In the next step, we will walk you through registering an ArNS name. If you don't already have AR.IO
 test tokens then you can claim some by completing EXPerience quests.
 
 ### Getting tIO Tokens
 
-You must complete these steps to be able to complete the quests:
+AR.IO Testnet Tokens (tIO) are required to register an ArNS name.
 
-1. Go to the [EXPerience](https://ar.io/experience) website.
-2. Register with Zealy.
-3. Connect your social media accounts.
-4. Join [the AR.IO Discord server](https://discord.com/invite/HGG52EtTc2) to get verified.
+Users who completed our previous course, Lesson 3 - Storing Data on Arweave, AND completed the corresponding AR.IO EXPerience quest have been airdropped sufficent tIO tokens to register a 12-character ArNS name.
 
-You can now complete the prerequisite quests that will allow you to claim tIO tokens in the quests
-using this secret code `85D9P2`.
+You can check for the tokens using your ARWEAVE wallets at https://arns.app/ .
+
+If you did not complete this prerequisite, then do not worry - there will be opportunities to acquire tokens in the future - stay tuned!
 
 ### Registering an ArNS Name
 
@@ -468,19 +459,20 @@ currently in testnet.
 
 First, click the "Connect" button at the top right, to connect your ArConnect wallet.
 
-Then, search for your desired ArNS name. The tIO tokens from the quests should be enough to lease a 
+Then, search for your desired ArNS name. The tIO tokens from the quests should be enough to lease a
 12 characters long name for 1 year.
 
 When the name is available, you click the "Register Now" button to start the registration process.
 
 Figure 2 shows how the registration form. Enter the TXID from the `deployment-id` file in
 your project directory into the "Arweave Transaction ID" field, to point your ArNS name to your
-latest release right after the registration completes. 
+latest release right after the registration completes.
 
 ![Figure 2: Registering an ArNS name](/assets/tracks/arweave-101/4/figure-2.png)
 Figure 2: Registering an ArNS name
 
-{/* Section hidden until AR.IO SDK is availble
+{/\* Section hidden until AR.IO SDK is availble
+
 ### Creating a Script to Update Your ArNS Name
 
 To point your ArNS name to your latest release, you must update the root record (@) of your ArNS
@@ -516,24 +508,24 @@ run this script to ensure your users get the latest version.
 Copy the following code in the new script file:
 
 ```javascript
-import * as fs from "node:fs"
-import * as ArIoSdk from "@ar.io/sdk/node"
-import * as TurboSdk from "@ardrive/turbo-sdk"
-const antId = fs.readFileSync("ant-id", { encoding: "utf-8" })
-const deploymentId = fs.readFileSync("deployment-id", { encoding: "utf-8" })
-const jwk = JSON.parse(fs.readFileSync("key.json", { encoding: "utf-8" }))
-const signer = new TurboSdk.ArweaveSigner(jwk)
-const ant = ArIoSdk.ANT.init({ processId: antId, signer })
-const name = await ant.getName()
-const undername = "@"
-const rootRecord = await ant.getRecord({ undername })
-console.log(`Submitting update for ArNS name: ${name}`)
-console.log(`From: ${rootRecord.transactionId}`)
-console.log(`To  : ${deploymentId}`)
-await ant.setRecord({ undername, transactionId: deploymentId, ttlSeconds: 900 })
+import * as fs from "node:fs";
+import * as ArIoSdk from "@ar.io/sdk/node";
+import * as TurboSdk from "@ardrive/turbo-sdk";
+const antId = fs.readFileSync("ant-id", { encoding: "utf-8" });
+const deploymentId = fs.readFileSync("deployment-id", { encoding: "utf-8" });
+const jwk = JSON.parse(fs.readFileSync("key.json", { encoding: "utf-8" }));
+const signer = new TurboSdk.ArweaveSigner(jwk);
+const ant = ArIoSdk.ANT.init({ processId: antId, signer });
+const name = await ant.getName();
+const undername = "@";
+const rootRecord = await ant.getRecord({ undername });
+console.log(`Submitting update for ArNS name: ${name}`);
+console.log(`From: ${rootRecord.transactionId}`);
+console.log(`To  : ${deploymentId}`);
+await ant.setRecord({ undername, transactionId: deploymentId, ttlSeconds: 900 });
 console.log(
-  "ArNS update submitted successfully. The changes might take a few minutes to propagate."
-)
+  "ArNS update submitted successfully. The changes might take a few minutes to propagate.",
+);
 ```
 
 For convenience, also update the `scripts` section of your `package.json` file:
@@ -545,7 +537,7 @@ Now you can call the script to update it to your new deployment:
     npm run update-arns
 
 The script will submit the update, but it will take a few minutes to settle onchain.
-*/}
+\*/}
 
 ### Testing Deployed Release With the ArNS Name
 
@@ -576,13 +568,13 @@ with ANTs to automate the update for your ArNS names after a website update. Now
 websites for the Permaweb to save your users from link-rot and ensure they have access to your page
 as long as Arweave is online.
 
-{/* Summary when AR.IO SDK is available 
+{/_ Summary when AR.IO SDK is available
 In this lesson, you learned how to put your knowledge to the test by creating a static website,
 uploading it to Arweave, and registering an ArNS name for it. You used Node.js scripts to interact
 with ANTs to automate the update for your ArNS names after a website update. Now you can build
 websites for the Permaweb to save your users from link-rot and ensure they have access to your page
 as long as Arweave is online.
-*/}
+_/}
 
 <QuizStatusChecker
   quiz="arweave-101/4"
