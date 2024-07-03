@@ -1,0 +1,15 @@
+{
+  "question": "How do you retrieve the article content?",
+  "options": [
+    {
+      "answer": "With the TXID and the gateway’s data endpoint.",
+      "correct": true
+    },
+    {
+      "answer": "Via tags and a GraphQL query."
+    },
+    {
+      "answer": "With Websockets and the article ID."
+    }
+  ]
+}

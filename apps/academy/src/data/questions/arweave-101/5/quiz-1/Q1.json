@@ -1,0 +1,17 @@
+{
+  "question": "What are the properties of SPAs?",
+  "options": [
+    {
+      "answer": "You can use them without installation.",
+      "correct": true
+    },
+    {
+      "answer": "They are platform independent.",
+      "correct": true
+    },
+    {
+      "answer": "They execute and rener inside the browser.",
+      "correct": true
+    }
+  ]
+}

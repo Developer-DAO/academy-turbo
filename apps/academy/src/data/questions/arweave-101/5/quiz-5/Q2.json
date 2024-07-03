@@ -1,0 +1,15 @@
+{
+  "question": "What’s the undername of the root record of an ArNS name?",
+  "options": [
+    {
+      "answer": "@",
+      "correct": true
+    },
+    {
+      "answer": "#"
+    },
+    {
+      "answer": "ꙮ"
+    }
+  ]
+}

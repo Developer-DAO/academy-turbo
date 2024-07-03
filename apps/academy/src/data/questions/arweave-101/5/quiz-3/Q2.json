@@ -1,0 +1,16 @@
+{
+  "question": "Why should you define your bundle chunks manually?",
+  "options": [
+    {
+      "answer": "Chunk uploads under 100 KiB are free.",
+      "correct": true
+    },
+    {
+      "answer": "It reduces storage costs by using chunks that are already on Arweave.",
+      "correct": true
+    },
+    {
+      "answer": "Polyfill performance decreases with chunk size."
+    }
+  ]
+}

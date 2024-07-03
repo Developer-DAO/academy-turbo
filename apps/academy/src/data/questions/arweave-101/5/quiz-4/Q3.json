@@ -1,0 +1,15 @@
+{
+  "question": "Why do you have to set a base in the Vite configuration?",
+  "options": [
+    {
+      "answer": "To ensure Vite generates relative URLs.",
+      "correct": true
+    },
+    {
+      "answer": "To hide admin features from users."
+    },
+    {
+      "answer": "To improve build performance."
+    }
+  ]
+}
