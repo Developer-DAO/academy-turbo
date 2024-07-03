@@ -24,27 +24,41 @@ import LessonInformationalModal from "../../../components/mdx/LessonInformationa
 
 ## About this lesson
 
-Greetings! I welcome you to the second project lesson of the Arweave 101 track. In the previous lesson, you learned how to build and deploy a static website to Arweave. The website only allowed users to view the content but not edit it. In this lesson, you will go to the next step: build a blog to create and update articles inside the browser.
+Greetings! I welcome you to the second project lesson of the Arweave 101 track. In the previous
+lesson, you learned how to build and deploy a static website to Arweave. The website only allowed
+users to view the content but not edit it. In this lesson, you will go to the next step: build a
+blog to create and update articles inside the browser.
 
-You will create a single-page application (SPA) with [Vite](https://vitejs.dev/), a popular web application bundler. You will use React as a UI framework and handle Arweave uploads with the Turbo SDK in the browser.
+You will create a single-page application (SPA) with [Vite](https://vitejs.dev/), a popular web
+application bundler. You will use React as a UI framework and handle Arweave uploads with the Turbo
+SDK in the browser.
 
 ## Prerequisites
 
-You must **complete lessons 1, 2, and 3**. You need the **wallet address you charged with Turbo Credits** in lesson 2 and **the ArNS name you registered** in lesson 3.
+You must **complete [lessons 2](/tracks/arweave-101/2), [lessons 3](/tracks/arweave-101/3), and 
+[lessons 4](/tracks/arweave-101/4)**. You need the **wallet address you charged with Turbo
+Credits** in lesson 3 and **the ArNS name you registered** in lesson 4.
 
 You need a basic understanding of web technologies like HTTPS, HTML, JavaScript, Node.js, and React.
 
-A **basic understanding of blockchains** is helpful, too. At least you should understand what wallets and transactions are.
+A **basic understanding of blockchains** is helpful, too. At least you should understand what
+wallets and transactions are.
 
 A **browser, Node.js, and an ArConnect wallet** to try the examples.
 
-Since using web crypto functions requires HTTPS, you might want to use a cloud IDE like GitHub Codespaces or a service like lcl.host.
+Since using **web crypto functions requires HTTPS**, you might want to use a cloud IDE like [GitHub
+Codespaces](https://github.com/features/codespaces) or a service like [lcl.host](https://lcl.host/).
 
 ## Why a Single-Page Application?
 
-While server-side rendering is all the hype, the fastest way to get a DApp up and running on Arweave is to follow the SPA approach. Arweave gateways can’t execute your code, so static generation and client-side rendering are the way to go. In the previous lesson, you rendered HTML at build-time; now, you’ll render it dynamically in the browser.
+While server-side rendering is all the hype, the fastest way to get a DApp up and running on Arweave
+is to follow the SPA approach. Arweave gateways can’t execute your code, so static generation and
+client-side rendering are the way to go. In the previous lesson, you rendered HTML at build-time;
+now, you’ll render it dynamically in the browser.
 
-An SPA can be slower than a static website but more flexible. It enables you to include data stored on Arweave into the rendering that wasn’t available at build time, so you don’t have to build and deploy a new release every time something changes.
+An SPA can be slower than a static website but more flexible. It enables you to include data stored
+on Arweave into the rendering that wasn’t available at build time, so you don’t have to build and
+deploy a new release every time something changes.
 
 <LessonQuestionsModal buttonText="Quiz 1" title="Comprehension Check">
   <Question question="arweave-101/5/quiz-1/Q1" />
@@ -54,15 +68,19 @@ An SPA can be slower than a static website but more flexible. It enables you to 
 
 ## Creating the DApp
 
-You will build a blog with React and use Vite as the JavaScript bundler. In contrast to the prior version of the blog, this one will allow you to create and update articles in the browser.
+You will build a blog with React and use Vite as the JavaScript bundler. In contrast to the prior
+version of the blog, this one will allow you to create and update articles in the browser.
 
-Figure 1 illustrates the architecture of the new blog. React and React Router form the base for the pages, which will use a storage utility that interacts with Arweave through the ArweaveKit and Turbo SDK. Vite will build the app, and the Turbo SDK will deploy it on Arweave. This means there are two locations where you write data to Arweave:
+Figure 1 illustrates the architecture of the new blog. React and React Router form the base for the
+pages, which will use a storage utility that interacts with Arweave through the ArweaveKit and Turbo
+SDK. Vite will build the app, and the Turbo SDK will deploy it on Arweave. This means there are two
+locations where you write data to Arweave:
 
 1. In a Node.js deployment script.
 2. In the DApp in the browser.
 
-TODO
-_Figure 1: Permablog V2 architecture_
+![Figure 1: Permablog V2 architecture](/assets/tracks/arweave-101/5/figure-1.png)
+*Figure 1: Permablog V2 architecture*
 
 ### Creating the Project and Installing the Dependencies
 
@@ -89,15 +107,19 @@ After you install the dependencies, you have everything ready to build and deplo
 
 ### Creating a Storage Utility
 
-The first task is implementing a storage utility. It will handle all interactions with Arweave and give you a simple interface for creating, reading, and updating articles in the rest of your code.
+The first task is implementing a storage utility. It will handle all interactions with Arweave and
+give you a simple interface for creating, reading, and updating articles in the rest of your code.
 
-You will implement the read and write functionality in separate files. This way, the pages that only need to read from the storage don’t have to fetch all the writing functions and dependencies.
+You will implement the read and write functionality in separate files. This way, the pages that only
+need to read from the storage don’t have to fetch all the writing functions and dependencies.
 
 #### Creating the Writing Functionality
 
-The first part of the storage is the writing functionality, which allows you to upload new and updated articles to Arweave.
+The first part of the storage is the writing functionality, which allows you to upload new and
+updated articles to Arweave.
 
-Start by creating a new file at `src/utilities/storage.write.js`, then add the following snippets to complete the file.
+Start by creating a new file at `src/utilities/storage.write.js`, then add the following snippets to
+complete the file.
 
 #### Including the Modules and Creating Constants
 
@@ -107,24 +129,34 @@ You start with the dependencies—the Turbo SDK for uploading articles.
 import * as TurboSdk from "@ardrive/turbo-sdk/web";
 ```
 
-Next, you add the constants, which define some configurations: the name of your blog. You need it later to query the articles you created for this blog.
+Next, you add the constants, which define some configurations: the name of your blog. You need it
+later to query the articles you created for this blog.
 
 ```javascript
 export const APPLICATION_NAME = "Permablog V2";
 ```
 
-#### Implementing the Functions
+##### Implementing the Functions
 
-The `uploadArticle` function converts an article object into a format suitable for the Turbo SDK. Then, it creates an instance of the SDK, connects with the ArConnect wallet of the current browser, and uploads the converted article as a file.
+The `uploadArticle` function converts an article object into a format suitable for the Turbo SDK.
+Then, it creates an instance of the SDK, connects with the ArConnect wallet of the current browser,
+and uploads the converted article as a file.
 
-The `uploadFile` function accepts tags that enable you to customize the transaction used to upload your article. You can use these tags in GraphQL queries to find your uploads on Arweave. It returns the TXID for the new version of the article.
+The `uploadFile` function accepts tags that enable you to customize the transaction used to upload
+your article. You can use these tags in GraphQL queries to find your uploads on Arweave. It returns
+the TXID for the new version of the article.
 
-Most of the tags are just general information that makes it easier for others to categorize your data, but a few are important, and you will use them later:
+Most of the tags are just general information that makes it easier for others to categorize your
+data, but a few are important, and you will use them later:
 
-- The `Content-Type` tag ensures gateways will deliver your articles with the correct mime type to the browser.
+- The `Content-Type` tag ensures gateways will deliver your articles with the correct mime type to
+the browser.
 - The `Application` tag allows you to filter for articles from that blog if you have multiple ones.
-- The `Article-Id` tag ensures different versions of the same article have a correlating ID, so you can filter out older versions when listing all articles.
-- The `Created-At` tag is a nice example of how you can include some parts of your content into tags to make it available via GraphQL. It does not need to be a query, but it’s helpful to display the creation dates of articles when listing them.
+- The `Article-Id` tag ensures different versions of the same article have a correlating ID, so you
+can filter out older versions when listing all articles.
+- The `Created-At` tag is a nice example of how you can include some parts of your content into tags
+to make it available via GraphQL. It does not need to be a query, but it’s helpful to display the
+creation dates of articles when listing them.
 - `Topic` tags are generated from an article's topic list. Think of them as Arweave's hashtags.
 
 <Callout emoji="💡">
@@ -158,7 +190,9 @@ const uploadArticle = async (article) => {
 };
 ```
 
-The `updateArticle` function comes next. It’s relatively straightforward, as the `uploadArticle` function above does most of the work. It uploads a new article version to Arweave. The TXID will change, but the article's ID will stay the same.
+The `updateArticle` function comes next. It’s relatively straightforward, as the `uploadArticle`
+function above does most of the work. It uploads a new article version to Arweave. The TXID will
+change, but the article's ID will stay the same.
 
 ```javascript
 export const updateArticle = async (article) => ({
@@ -167,7 +201,8 @@ export const updateArticle = async (article) => ({
 });
 ```
 
-The `createArticle` function uses the `updateArticle` function. However, it also adds an ID to the article, so it doesn’t correlate with any other article. This ID will stay the same on every update.
+The `createArticle` function uses the `updateArticle` function. However, it also adds an ID to the
+article, so it doesn’t correlate with any other article. This ID will stay the same on every update.
 
 ```javascript
 export const createArticle = async (article) =>
@@ -179,13 +214,15 @@ export const createArticle = async (article) =>
 
 Now that you can upload your articles, let’s ensure you can also download them.
 
-### Creating the Reading Functionality
+#### Creating the Reading Functionality
 
-The reading part of the storage will include a GraphQL query to list all articles and the gateway's data endpoint to retrieve the content of each article.
+The reading part of the storage will include a GraphQL query to list all articles and the gateway's
+data endpoint to retrieve the content of each article.
 
-Start by creating a new file at `src/utilities/storage.read.js`, then add the following snippets to complete the file.
+Start by creating a new file at `src/utilities/storage.read.js`, then add the following snippets to
+complete the file.
 
-#### Including the Modules and Creating Constants
+##### Including the Modules and Creating Constants
 
 You start with the dependencies—the Turbo SDK for uploads and the Arweave Kit for GraphQL queries.
 
@@ -193,16 +230,21 @@ You start with the dependencies—the Turbo SDK for uploads and the Arweave Kit 
 import * as ArweaveKit from "arweavekit/graphql";
 ```
 
-Next, you add the constants, which define some configurations: the name of your blog and your Arweave wallet address. You need them later to query for articles you created for this blog.
+Next, you add the constants, which define some configurations: the name of your blog and your
+Arweave wallet address. You need them later to query for articles you created for this blog.
 
 ```javascript
 export const APPLICATION_NAME = "Permablog V2";
 export const BLOG_OWNER_ADDRESS = "xyz...123";
 ```
 
-#### Implementing the Functions
+##### Implementing the Functions
 
-You start with the GraphQL query. It will get all transactions signed by your wallet address and have an `Application` tag with your blog’s name. It returns the newest 100 matching transactions and sorts them from new to old. This way, the newest article versions will be on top. It will return the ID of each TX, which you need to fetch the article content and the tags, as you will display article creation dates when listing them.
+You start with the GraphQL query. It will get all transactions signed by your wallet address and
+have an `Application` tag with your blog’s name. It returns the newest 100 matching transactions and
+sorts them from new to old. This way, the newest article versions will be on top. It will return the
+ID of each TX, which you need to fetch the article content and the tags, as you will display article
+creation dates when listing them.
 
 ```javascript
 const LOAD_ARTICLES_QUERY = `  query($owner: String!, $application: String!) {
@@ -222,9 +264,14 @@ const LOAD_ARTICLES_QUERY = `  query($owner: String!, $application: String!) {
   }`;
 ```
 
-The `getArticles` function uses the GraphQL query to fetch all article versions and filters only the newest version of each article. The older ones are always available, as they’re permanently stored on Arweave, but your users will only see the latest versions.
+The `getArticles` function uses the GraphQL query to fetch all article versions and filters only the
+newest version of each article. The older ones are always available, as they’re permanently stored
+on Arweave, but your users will only see the latest versions.
 
-The GraphQL response won’t include the article content, as it’s stored inside the transaction body, which isn’t accessible in a GraphQL query because it can have an arbitrary size and data format. You can only query the transaction data, but properties like title and creation date are enough to create a list of articles.
+The GraphQL response won’t include the article content, as it’s stored inside the transaction body,
+which isn’t accessible in a GraphQL query because it can have an arbitrary size and data format. You
+can only query the transaction data, but properties like title and creation date are enough to
+create a list of articles.
 
 ```javascript
 export const getArticles = async () => {
@@ -263,7 +310,10 @@ export const getArticles = async () => {
 };
 ```
 
-The last function is `getArticle`, which loads only one article with content so that users can read more than just the title. You stored the article objects as JSON inside transaction bodies, which means you need to revive the date objects inside createdAt and add the TXID from the current version of the article.
+The last function is `getArticle`, which loads only one article with content so that users can read
+more than just the title. You stored the article objects as JSON inside transaction bodies, which
+means you need to revive the date objects inside createdAt and add the TXID from the current version
+of the article.
 
 ```javascript
 export const getArticle = async (txId) => {
@@ -276,7 +326,8 @@ export const getArticle = async (txId) => {
 };
 ```
 
-After finishing the storage utility, you can use it on your pages to interact with Arweave in the browser. So, let’s move on to the pages!
+After finishing the storage utility, you can use it on your pages to interact with Arweave in the
+browser. So, let’s move on to the pages!
 
 <LessonQuestionsModal buttonText="Quiz 2" title="Comprehension Check">
   <Question question="arweave-101/5/quiz-2/Q1" />
@@ -287,7 +338,7 @@ After finishing the storage utility, you can use it on your pages to interact wi
   <Question question="arweave-101/5/quiz-2/Q6" />
 </LessonQuestionsModal>
 
-## Creating the Pages
+### Creating the Pages
 
 Now, let’s create the pages. Your blog will have three of them:
 
@@ -295,13 +346,15 @@ Now, let’s create the pages. Your blog will have three of them:
 2. An article page to read an article.
 3. An editor page that allows you to create new articles and modify existing ones.
 
-### Creating the Home Page
+#### Creating the Home Page
 
-The home page will display a list of articles and a “Connect Wallet” button that you’ll use later to log in and access editor functionality.
+The home page will display a list of articles and a “Connect Wallet” button that you’ll use later to
+log in and access editor functionality.
 
 It exports two functions:
 
-1. React Router calls the `loader` function before rendering your page to get the data for the page. For this page, it will fetch all the articles.
+1. React Router calls the `loader` function before rendering your page to get the data for the page.
+For this page, it will fetch all the articles.
 2. The `Component` function is a React component that will render the actual HTML for the page.
 
 <Callout emoji="💡">
@@ -342,9 +395,10 @@ export function Component() {
 }
 ```
 
-### Creating the Article Page
+#### Creating the Article Page
 
-The article page lets users read the article content. It will use the TXID from the URL to determine the current article.
+The article page lets users read the article content. It will use the TXID from the URL to determine
+the current article.
 
 Create a new file at `src/pages/article.jsx` and add this code:
 
@@ -377,9 +431,14 @@ export function Component() {
 }
 ```
 
-### Creating the Editor Page
+#### Creating the Editor Page
 
-The editor is the heart of this blog, making it an interactive DApp. Its `loader` function will either load an existing article from Arweave or create a new one. The `Component` function will always create a new article, based on the one supplied by the loader function, but call different storage functions depending on the current article. You use the `createArticle` function if it’s a new article and the `updateArticle` function if it’s an existing article. The former will override the ID of the article.
+The editor is the heart of this blog, making it an interactive DApp. Its `loader` function will
+either load an existing article from Arweave or create a new one. The `Component` function will
+always create a new article, based on the one supplied by the loader function, but call different
+storage functions depending on the current article. You use the `createArticle` function if it’s a
+new article and the `updateArticle` function if it’s an existing article. The former will override
+the ID of the article.
 
 Create a new file at `src/pages/editor.jsx` and add this code:
 
@@ -453,15 +512,19 @@ export function Component() {
 
 After you create all the pages, you need to connect them with React Router.
 
-### Connecting the Pages with React Router
+#### Connecting the Pages with React Router
 
 React Router will handle the navigation of your DApp, so you must connect your pages with it.
 
-React Router offers regular routes that ensure the page code ends up in your application's main bundle and lazy routes that place a page in a separate file, only loaded when required.
+React Router offers regular routes that ensure the page code ends up in your application's main
+bundle and lazy routes that place a page in a separate file, only loaded when required.
 
-You will use regular routes for the home and article page and lazy routes for the editor page, as most of your users are readers who aren’t allowed to edit, and the dependencies for writing on Arweave are quite big.
+You will use regular routes for the home and article page and lazy routes for the editor page, as
+most of your users are readers who aren’t allowed to edit, and the dependencies for writing on
+Arweave are quite big.
 
-This file is also where you initialize the `arweave-wallet-kit` to ensure the "Connect Wallet" button asks for the correct permissions every time someone clicks it.
+This file is also where you initialize the `arweave-wallet-kit` to ensure the "Connect Wallet"
+button asks for the correct permissions every time someone clicks it.
 
 Create a new file at `src/main.jsx` and add this code:
 
@@ -519,11 +582,16 @@ dist/assets/editor-BQmFi87H.js 3,670.04 kB │ gzip: 1,062.05 kB
   ✓ built in 13.43s
 ```
 
-The editor chunk is the biggest part of your DApp, so it’s good that not all users load it. However, you must pay for the index and the editor chunk, as they are bigger than 100 KiB. Also, the editor chunk is the most expensive, so every change to the editor will hurt your wallet. You should think about structuring your chunks to reuse them efficiently.
+The editor chunk is the biggest part of your DApp, so it’s good that not all users load it. However,
+you must pay for the index and the editor chunk, as they are bigger than 100 KiB. Also, the editor
+chunk is the most expensive, so every change to the editor will hurt your wallet. You should think
+about structuring your chunks to reuse them efficiently.
 
 ### Optimizing Releases for Upload Costs
 
-You can define manual chunks in Vite to group modules that don’t change frequently. For example, React, React-Router, and the Turbo SDK only change when you update the dependencies, so put them in separate chunks.
+You can define manual chunks in Vite to group modules that don’t change frequently. For example,
+React, React-Router, and the Turbo SDK only change when you update the dependencies, so put them in
+separate chunks.
 
 Update the `vite.config.js` with the following code:
 
@@ -546,7 +614,8 @@ export default defineConfig({
 });
 ```
 
-After this change, the output should now include five chunks. The nice part is that the editor is now under 100 KiB, so changes to them are free!
+After this change, the output should now include five chunks. The nice part is that the editor is
+now under 100 KiB, so changes to them are free!
 
 ```bash
 dist/index.html 0.46 kB │ gzip: 0.30 kB
@@ -556,7 +625,8 @@ dist/assets/index-OGUd33G9.js 712.97 kB │ gzip: 223.23 kB
 dist/assets/turbo-DVJqhdOv.js 3,667.86 kB │ gzip: 1,061.03 kB
 ```
 
-The editor and index chunks will update with changes to the pages or your storage utility, but the library chunks for React and the Turbo SDK will stay the same.
+The editor and index chunks will update with changes to the pages or your storage utility, but the
+library chunks for React and the Turbo SDK will stay the same.
 
 ```bash
 dist/index.html 0.46 kB │ gzip: 0.29 kB
@@ -568,7 +638,7 @@ dist/assets/turbo-DVJqhdOv.js 3,667.86 kB │ gzip: 1,061.03 kB
 
 You don’t have to upload the react or turbo chunks again if you don't update your dependencies.
 
-## Testing Release Locally
+### Testing Release Locally
 
 To run a local webserver server that serves the built files, execute this command:
 
@@ -591,25 +661,32 @@ This should start a web server at `http://localhost:3000` where you can check al
 
 ## Deploying the DApp
 
-Now that you have implemented and tested the blog locally, you must get it onchain. You must pay storage fees as some files are bigger than 100 KiB.
+Now that you have implemented and tested the blog locally, you must get it onchain. You must pay
+storage fees as some files are bigger than 100 KiB.
 
 ### Setting Up a Wallet
 
-If you completed the “Storing Data on Arweave” lesson, you have a wallet in ArConnect and exported it as a keyfile. Copy it to your project directory and make sure it’s named `key.json`. You also bought $5 worth of Turbo Credits in that lesson, which should be plenty to pay for these uploads.
+If you completed the “Storing Data on Arweave” lesson, you have a wallet in ArConnect and exported
+it as a keyfile. Copy it to your project directory and make sure it’s named `key.json`. You also
+bought $5 worth of Turbo Credits in that lesson, which should be plenty to pay for these uploads.
 
 ### Creating a Deployment Script
 
-You can upload files via the browser and Node.js. As deployments are often automated, it makes sense to implement it as a Node.js script.
+You can upload files via the browser and Node.js. As deployments are often automated, it makes sense
+to implement it as a Node.js script.
 
-Create a new file at `scripts/deploy-app.mjs` and add the following entry to scripts in your `package.json` file:
+Create a new file at `scripts/deploy-app.mjs` and add the following entry to scripts in your
+`package.json` file:
 
 ```json
 "deploy": "npm run build && node scripts/deploy-app.mjs"
 ```
 
-This script has around 100 LoC, so let’s go through it step by step and add each part to the file as you go.
+This script has around 100 LoC, so let’s go through it step by step and add each part to the file as
+you go.
 
-First, import the dependencies. The two out-of-the-ordinary modules are `process` and `readline`. You use the former to exit the script and access the keyboard and the latter to confirm the upload.
+First, import the dependencies. The two out-of-the-ordinary modules are `process` and `readline`.
+You use the former to exit the script and access the keyboard and the latter to confirm the upload.
 
 ```javascript
 import fs from "node:fs";
@@ -620,13 +697,16 @@ import mimeTypes from "mime-types";
 import * as TurboSdk from "@ardrive/turbo-sdk";
 ```
 
-Then, load and parse the path manifest from the previous deployment. The first time, it’s just an empty template without any paths. You’ll use it to diff the file names, so you only upload changed and new files.
+Then, load and parse the path manifest from the previous deployment. The first time, it’s just an
+empty template without any paths. You’ll use it to diff the file names, so you only upload changed
+and new files.
 
 ```javascript
 const previousManifest = JSON.parse(fs.readFileSync("manifest.json", { encoding: "utf-8" }));
 ```
 
-Next, read all the files Vite created during the build process and use the path manifest from the previous deployment to filter out files you already uploaded. If no file is left, abort.
+Next, read all the files Vite created during the build process and use the path manifest from the
+previous deployment to filter out files you already uploaded. If no file is left, abort.
 
 ```javascript
 const getFilePaths = (directory, filePaths = []) => {
@@ -648,7 +728,10 @@ if (changedDistFiles.length < 1) {
 }
 ```
 
-Before uploading the files, calculate the costs and ask the user if they want to upload so you don’t accidentally drain their wallet. The balance is in the Turbo Credits token but formatted as its smallest denominator, Winston. You get the Turbo Credits value when dividing it by one trillion (i.e., 12 zeros)
+Before uploading the files, calculate the costs and ask the user if they want to upload so you don’t
+accidentally drain their wallet. The balance is in the Turbo Credits token but formatted as its
+smallest denominator, Winston. You get the Turbo Credits value when dividing it by one trillion
+(i.e., 12 zeros).
 
 ```javascript
 const turbo = TurboSdk.TurboFactory.authenticated({
@@ -669,7 +752,10 @@ const key = await readline
 if (key !== "y") process.exit();
 ```
 
-Now that you know all the files and clarified the costs with the user, you can start uploading files. The resulting TXIDs get stored for later when you create the path manifest, enabling access to all files via one TXID. If a file was already part of the previous path manifest, you can reuse its TXID and skip the upload.
+Now that you know all the files and clarified the costs with the user, you can start uploading
+files. The resulting TXIDs get stored for later when you create the path manifest, enabling access
+to all files via one TXID. If a file was already part of the previous path manifest, you can reuse
+its TXID and skip the upload.
 
 ```javascript
 const upload = (filePath, tags) =>
@@ -694,7 +780,12 @@ for (let filePath of distFiles) {
 }
 ```
 
-The files are all on Arweave. Now, add their TXIDs to the path manifest. By default, Vite doesn’t add a hash to the `index.html` file it creates in the build process, but this file can change, too. Your script can't detect the change if the file name doesn’t reflect that. In the next section, you will solve that issue and assume that the `index.html` already has a hash in the filename. Find the path of this file and add it as an index to your manifest; this allows users to access it with a slash in the browser.
+The files are all on Arweave. Now, add their TXIDs to the path manifest. By default, Vite doesn’t
+add a hash to the `index.html` file it creates in the build process, but this file can change, too.
+Your script can't detect the change if the file name doesn’t reflect that. In the next section, you
+will solve that issue and assume that the `index.html` already has a hash in the filename. Find the
+path of this file and add it as an index to your manifest; this allows users to access it with a
+slash in the browser.
 
 ```javascript
 const indexPath = Object.keys(paths).find((path) => !!path.match(/index-.*html$/gi));
@@ -712,7 +803,8 @@ const result = await upload("manifest.json", [
 ]);
 ```
 
-After you upload the path manifest, save this deployment's TXID in a file to make it available to other scripts. Also, print the deployment's URL to open it in your browser.
+After you upload the path manifest, save this deployment's TXID in a file to make it available to
+other scripts. Also, print the deployment's URL to open it in your browser.
 
 ```javascript
 fs.writeFileSync("deployment-id", result.id);
@@ -722,7 +814,7 @@ process.exit();
 
 This script will get your files on Arweave, but you must do two things before executing it.
 
-### Creating the Initial Path Manifest
+#### Creating the Initial Path Manifest
 
 First, create the initial path manifest file at manifest.json with this code:
 
@@ -735,11 +827,13 @@ First, create the initial path manifest file at manifest.json with this code:
 }
 ```
 
-### Adding a Hash to the Index File and Updating the Base Path
+#### Adding a Hash to the Index File and Updating the Base Path
 
-Second, as mentioned above, update the `vite.config.js` to ensure that the `index.html` also gets a hash in its filename when building; otherwise, your deployment script will not detect its changes.
+Second, as mentioned above, update the `vite.config.js` to ensure that the `index.html` also gets a
+hash in its filename when building; otherwise, your deployment script will not detect its changes.
 
-Also, define a relative `base`, or all URLs Vite generates point to the domain root, which won’t work as Arweave gateways always start URLs with a TXID (if they don’t have an ArNS name.)
+Also, define a relative `base`, or all URLs Vite generates point to the domain root, which won’t
+work as Arweave gateways always start URLs with a TXID (if they don’t have an ArNS name.)
 
 ```javascript
 import crypto from "node:crypto";
@@ -803,15 +897,19 @@ Do you want to upload 5 changed files? (y/N) y
 https://arweave.developerdao.com/8jctPVVUkKnvGhzXJpQsqj-E0ZKSOr1XYZlcB4sstqw
 ```
 
-The deployment script will write a `deployment-id` file with the latest TXID to help find your latest deployment.
+The deployment script will write a `deployment-id` file with the latest TXID to help find your
+latest deployment.
 
 **Congrats!!!**
 
-You deployed your first Arweave DApp to the Permaweb. You can now write permanently stored articles inside your browser; no need to run a deploy script anymore!
+You deployed your first Arweave DApp to the Permaweb. You can now write permanently stored articles
+inside your browser; no need to run a deploy script anymore!
 
 ### Testing Deployed Release
 
-The script logs the URL to the deployment, so you can immediately test it by opening it in your browser. If you want to see what it looks like, try [my deployment](https://arweave.developerdao.com/8jctPVVUkKnvGhzXJpQsqj-E0ZKSOr1XYZlcB4sstqw).
+The script logs the URL to the deployment, so you can immediately test it by opening it in your
+browser. If you want to see what it looks like, try
+[my deployment](https://arweave.developerdao.com/8jctPVVUkKnvGhzXJpQsqj-E0ZKSOr1XYZlcB4sstqw).
 
 <Callout emoji="💡">
   Note: My blog's blog owner address is hardcoded and used to fetch the list of articles. If you
@@ -826,7 +924,8 @@ The script logs the URL to the deployment, so you can immediately test it by ope
 
 ## Creating a Human-Friendly Name for the DApp
 
-While the website is already usable, it isn’t easy to remember. You can improve this by pointing the ArNS name you registered in the previous lesson to your new blog.
+While the website is already usable, it isn’t easy to remember. You can improve this by pointing the
+ArNS name you registered in the previous lesson to your new blog.
 
 Adding an ArNS name will change your URLs from looking like this:
 
@@ -842,9 +941,11 @@ https://totally-awesome-blog.arweave.developerdao.com/
 
 ### Creating an ArNS Update Script
 
-To update your ArNS name, you need the process ID of the ANT contract that controls it. You can find it in the ArNS management console. Save it to an `ant-process-id` file so your script can read it.
+To update your ArNS name, you need the process ID of the ANT contract that controls it. You can find
+it in the ArNS management console. Save it to an `ant-process-id` file so your script can read it.
 
-To update your ArNS name with the help of the AR.IO SDK, create a new file at `scripts/update-arns.mjs` with the following content:
+To update your ArNS name with the help of the AR.IO SDK, create a new file at
+`scripts/update-arns.mjs` with the following content:
 
 ```javascript
 import * as fs from "node:fs";
@@ -877,7 +978,8 @@ Now, you can run the new script after each deployment:
 npm run update-arns
 ```
 
-It will submit the update to the ArNS contract, and after a few minutes, you can access your new blog via your ArNS name.
+It will submit the update to the ArNS contract, and after a few minutes, you can access your new
+blog via your ArNS name.
 
 <LessonQuestionsModal buttonText="Quiz 5" title="Comprehension Check">
   <Question question="arweave-101/5/quiz-5/Q1" />
@@ -887,22 +989,31 @@ It will submit the update to the ArNS contract, and after a few minutes, you can
 
 ## Summary
 
-In this lesson, you build a fully-fledged DApp. You used Arweave Wallet Kit to connect a browser wallet and upload articles to Arweave. You structured your transactions to make them easily discoverable via GraphQL. You learned how to configure Vite to create URLs that work with Arweave gateways and how to structure your code and split your bundle chunks to save money on storage.
+In this lesson, you build a fully-fledged DApp. You used Arweave Wallet Kit to connect a browser
+wallet and upload articles to Arweave. You structured your transactions to make them easily
+discoverable via GraphQL. You learned how to configure Vite to create URLs that work with Arweave 
+gateways and how to structure your code and split your bundle chunks to save money on storage.
 
 (Final Quiz: TODO)
 
 ## Conclusion
 
-This was the last lesson of the Arweave 101 track. It reiterated everything you learned in the previous lessons by building a complete DApp. It was a long lesson, but it was worth it. You encountered issues that could crop up in practice and learned basic solutions.
+This was the last lesson of the Arweave 101 track. It reiterated everything you learned in the
+previous lessons by building a complete DApp. It was a long lesson, but it was worth it. You
+encountered issues that could crop up in practice and learned basic solutions.
 
 **Congratulations!**
 
-You are now an Arweave developer and can host your frontends on Arweave. And since DApps hosted on Arweave are just regular SPAs, you can use them for all kinds of workloads.
+You are now an Arweave developer and can host your frontends on Arweave. And since DApps hosted on
+Arweave are just regular SPAs, you can use them for all kinds of workloads.
 
-Is Ethereum your jam? Just include Viem or Ethers.js, and build a DApp powered by EVM smart contracts!
+Is Ethereum your jam? Just include Viem or Ethers.js, and build a DApp powered by EVM smart
+contracts!
 
 Solana is where it’s at? Go and use web3.js and connect your users to your Rust smart contracts!
 
-Did you get hyped by AO, the new compute network on top of Arweave? Install ao-connect and get going! In fact, he AR.IO SDK uses AO processes under the hood, so you already used it when you built the ArNS update script.
+Did you get hyped by AO, the new compute network on top of Arweave? Install ao-connect and get
+going! In fact, he AR.IO SDK uses AO processes under the hood, so you already used it when you built
+the ArNS update script.
 
 </LessonLayout>
