@@ -1,0 +1,16 @@
+{
+  "question": "Why do you need custom tags?",
+  "options": [
+    {
+      "answer": "To improve the discoverability of your uploaded files.",
+      "correct": true
+    },
+    {
+      "answer": "To tell the gateways what type of file is in the transaction body.",
+      "correct": true
+    },
+    {
+      "answer": "To enable compression of the uploaded files."
+    }
+  ]
+}

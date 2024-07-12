@@ -1,0 +1,16 @@
+{
+  "question": "How does the deployment script detect changed files?",
+  "options": [
+    {
+      "answer": "The file names contain hashes that change when their content changes.",
+      "correct": true
+    },
+    {
+      "answer": "The script can diff the current file names with the ones in the path manifest of the previous deployment.",
+      "correct": true
+    },
+    {
+      "answer": "The script does integrity checks on the files."
+    }
+  ]
+}

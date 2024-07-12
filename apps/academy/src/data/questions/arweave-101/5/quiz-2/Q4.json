@@ -1,0 +1,15 @@
+{
+  "question": "How does your blog update articles if data on Arweave is immutable?",
+  "options": [
+    {
+      "answer": "It creates a transaction with a new article version and only displays the latest versions.",
+      "correct": true
+    },
+    {
+      "answer": "It sends an UPDATE transaction to Arweave which circumvents the immutability."
+    },
+    {
+      "answer": "It doesn’t, you can only create new articles."
+    }
+  ]
+}

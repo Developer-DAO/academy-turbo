@@ -1,0 +1,15 @@
+{
+  "question": "Why do you need the ANT process ID to update your ArNS name?",
+  "options": [
+    {
+      "answer": "The ANT process controls the ArNS name.",
+      "correct": true
+    },
+    {
+      "answer": "The ANT process handles your Turbo Credits."
+    },
+    {
+      "answer": "Without the ANT process your change would be auctioned to the highest bidder."
+    }
+  ]
+}

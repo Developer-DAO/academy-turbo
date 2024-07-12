@@ -1,0 +1,15 @@
+{
+  "question": "Why should you test your DApp with a regular web server before uploading it to Arweave?",
+  "options": [
+    {
+      "answer": "Web servers behave more similarly to Arweave gateways than dev servers, which include hot reloading and other features.",
+      "correct": true
+    },
+    {
+      "answer": "Web servers are faster in packaging your bundles for responses."
+    },
+    {
+      "answer": "Dev servers aren’t open source."
+    }
+  ]
+}

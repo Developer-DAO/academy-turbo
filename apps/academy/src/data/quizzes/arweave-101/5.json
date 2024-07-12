@@ -1,0 +1,162 @@
+{
+  "title": "Final Quiz: Building a DApp on Arweave",
+  "questions": [
+    {
+      "question": "Why would you build a DApp on Arweave as SPA?",
+      "options": [
+        {
+          "answer": "Arweave gateways can't render HTML on the server side.",
+          "correct": true
+        },
+        {
+          "answer": "Client-side rendering scales better as server don’t have to execute any logic.",
+          "correct": true
+        },
+        {
+          "answer": "SPA's don’t require any JavaScript on the client."
+        }
+      ]
+    },
+    {
+      "question": "What advantages do SPAs have over static websites?",
+      "options": [
+        {
+          "answer": "They can use data that isn’t available at build time.",
+          "correct": true
+        },
+        {
+          "answer": "They render faster."
+        },
+        {
+          "answer": "They enable complex user interactions.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "Why did you split the storage utility in two files?",
+      "options": [
+        {
+          "answer": "For efficiency, because the writing functionality requires many libraries and readers don’t need them.",
+          "correct": true
+        },
+        {
+          "answer": "For security, because nobody should be able to write articles on your blog."
+        },
+        {
+          "answer": "For stability, because some dependencies are very buggy and you don’t want the DApp to crash."
+        }
+      ]
+    },
+
+    {
+      "question": "Why DON'T you need custom tags?",
+      "options": [
+        {
+          "answer": "To improve the discoverability of your uploaded files."
+        },
+        {
+          "answer": "To tell the gateways what type of file is in the transaction body."
+        },
+        {
+          "answer": "To enable compression of the uploaded files.",
+          "correct": true
+        }
+      ]
+    },
+
+    {
+      "question": "How does your blog mutate files on Arweave?",
+      "options": [
+        {
+          "answer": "It doesn't, instead it creates a transaction with a new article version.",
+          "correct": true
+        },
+        {
+          "answer": "It sends an UPDATE transaction to Arweave which circumvents the immutability."
+        },
+        {
+          "answer": "It doesn’t, you can only create new articles."
+        }
+      ]
+    },
+    {
+      "question": "How do you filter GraphQL queries by the content of the transaction body?",
+      "options": [
+        {
+          "answer": "You can't; transaction bodies can have an arbitrary size and format.",
+          "correct": true
+        },
+        {
+          "answer": "By using the data attribute."
+        },
+        {
+          "answer": "By uploading a JSON file, other formats aren't supported."
+        }
+      ]
+    },
+    {
+      "question": "Is the automatic chunk creation of Vite well suited for Arweave deployments?",
+      "options": [
+        {
+          "answer": "No, it can lead to big chunks that change with only small updates.",
+          "correct": true
+        },
+        {
+          "answer": "Yes, by default Vite generates chunks that are under 100 KiB."
+        },
+        {
+          "answer": "No, Vite applies ZIP compression, which breaks the gateway cache."
+        }
+      ]
+    },
+    {
+      "question": "Can your deployment script filter out previously deployed files?",
+      "options": [
+        {
+          "answer": "Yes, the script checks the file names, which contain hashes that change when their content changes.",
+          "correct": true
+        },
+        {
+          "answer": "Yes, the script can compare the current file names with the ones in the path manifest of the previous deployment.",
+          "correct": true
+        },
+        {
+          "answer": "No, the script would need to compare files on Arweave with the local ones, which is impossible."
+        }
+      ]
+    },
+    {
+      "question": "Is the default Vite configuration sufficient for Arweave deployments?",
+      "options": [
+        {
+          "answer": "No, Vite generates absolute URLs by default, which don't work with TXIDs in the path.",
+          "correct": true
+        },
+        {
+          "answer": "No, Vite doesn't add hashes to the index.html, which makes change detection hard.",
+          "correct": true
+        },
+        {
+          "answer": "Yes, it builds the optimal bundles for gateways."
+        }
+      ]
+    },
+    {
+      "question": "What is NOT the undername of the root record of an ArNS name?",
+      "options": [
+        {
+          "answer": "@"
+        },
+        {
+          "answer": "$",
+          "correct": true
+        },
+        {
+          "answer": "ROOT",
+          "correct": true
+        }
+      ]
+    }
+  ]
+}

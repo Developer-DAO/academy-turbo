@@ -1,0 +1,15 @@
+{
+  "question": "Why is the storage utility split into two files?",
+  "options": [
+    {
+      "answer": "For efficiency, because the writing functionality requires many libraries and readers don’t need them.",
+      "correct": true
+    },
+    {
+      "answer": "For security, because nobody should be able to write articles on your blog."
+    },
+    {
+      "answer": "For stability, because some dependencies are very buggy and you don’t want the DApp to crash."
+    }
+  ]
+}

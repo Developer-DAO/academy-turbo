@@ -1,0 +1,16 @@
+{
+  "question": "Why are SPAs a good fit for Arweave?",
+  "options": [
+    {
+      "answer": "As gateways only deliver static files, code must run on the client.",
+      "correct": true
+    },
+    {
+      "answer": "Clint-side rendering scales better as server don’t have to execute any logic.",
+      "correct": true
+    },
+    {
+      "answer": "They don’t require any JavaScript on the client."
+    }
+  ]
+}

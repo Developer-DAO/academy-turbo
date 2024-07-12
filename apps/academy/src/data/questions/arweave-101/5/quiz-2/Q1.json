@@ -1,0 +1,16 @@
+{
+  "question": "Where in this project do you write data to Arweave?",
+  "options": [
+    {
+      "answer": "In Node.js, to deploy the DApp.",
+      "correct": true
+    },
+    {
+      "answer": "In the browser, when creating and updating articles.",
+      "correct": true
+    },
+    {
+      "answer": "On th server, when pre-rendering the articles."
+    }
+  ]
+}

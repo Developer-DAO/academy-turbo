@@ -1,0 +1,15 @@
+{
+  "question": "Can you filter GraphQL queries by the content of the transaction body?",
+  "options": [
+    {
+      "answer": "No because transaction bodies can have an arbitrary size and format.",
+      "correct": true
+    },
+    {
+      "answer": "Yes because gateways can parse transaction bodies."
+    },
+    {
+      "answer": "Yes but only for transaction bodies that contain JSON."
+    }
+  ]
+}
