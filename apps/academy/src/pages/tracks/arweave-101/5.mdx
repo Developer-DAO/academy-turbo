@@ -14,7 +14,7 @@ import LessonInformationalModal from "../../../components/mdx/LessonInformationa
 <LessonLayout
    lessonTitle="Building a DApp on Arweave"
    lessonImage="/meta-images/arweave-101/building-a-static-website-on-arweave.png"
-   lessonDescription="Deploy a DApp to Arweave."
+   lessonDescription="Build a blog using Vite and React, then deploy your dapp to Arweave."
    author="K"
    authorImage="/authors/k4y1s.jpg"
    authorPosition="Developer DAO"
@@ -35,7 +35,7 @@ SDK in the browser.
 
 ## Prerequisites
 
-You must **complete [lessons 2](/tracks/arweave-101/2), [lessons 3](/tracks/arweave-101/3), and 
+You must **complete [lessons 2](/tracks/arweave-101/2), [lessons 3](/tracks/arweave-101/3), and
 [lessons 4](/tracks/arweave-101/4)**. You need the **wallet address you charged with Turbo
 Credits** in lesson 3 and **the ArNS name you registered** in lesson 4.
 
@@ -80,7 +80,7 @@ locations where you write data to Arweave:
 2. In the DApp in the browser.
 
 ![Figure 1: Permablog V2 architecture](/assets/tracks/arweave-101/5/figure-1.png)
-*Figure 1: Permablog V2 architecture*
+_Figure 1: Permablog V2 architecture_
 
 ### Creating the Project and Installing the Dependencies
 
@@ -150,13 +150,13 @@ Most of the tags are just general information that makes it easier for others to
 data, but a few are important, and you will use them later:
 
 - The `Content-Type` tag ensures gateways will deliver your articles with the correct mime type to
-the browser.
+  the browser.
 - The `Application` tag allows you to filter for articles from that blog if you have multiple ones.
 - The `Article-Id` tag ensures different versions of the same article have a correlating ID, so you
-can filter out older versions when listing all articles.
+  can filter out older versions when listing all articles.
 - The `Created-At` tag is a nice example of how you can include some parts of your content into tags
-to make it available via GraphQL. It does not need to be a query, but it’s helpful to display the
-creation dates of articles when listing them.
+  to make it available via GraphQL. It does not need to be a query, but it’s helpful to display the
+  creation dates of articles when listing them.
 - `Topic` tags are generated from an article's topic list. Think of them as Arweave's hashtags.
 
 <Callout emoji="💡">
@@ -354,7 +354,7 @@ log in and access editor functionality.
 It exports two functions:
 
 1. React Router calls the `loader` function before rendering your page to get the data for the page.
-For this page, it will fetch all the articles.
+   For this page, it will fetch all the articles.
 2. The `Component` function is a React component that will render the actual HTML for the page.
 
 <Callout emoji="💡">
@@ -991,10 +991,17 @@ blog via your ArNS name.
 
 In this lesson, you build a fully-fledged DApp. You used Arweave Wallet Kit to connect a browser
 wallet and upload articles to Arweave. You structured your transactions to make them easily
-discoverable via GraphQL. You learned how to configure Vite to create URLs that work with Arweave 
+discoverable via GraphQL. You learned how to configure Vite to create URLs that work with Arweave
 gateways and how to structure your code and split your bundle chunks to save money on storage.
 
-(Final Quiz: TODO)
+<QuizStatusChecker
+  quiz="arweave-101/5"
+  successMessage={[
+    {
+      message: "You answered all the quiz questions correctly, awesome job!",
+    },
+  ]}
+/>
 
 ## Conclusion
 
