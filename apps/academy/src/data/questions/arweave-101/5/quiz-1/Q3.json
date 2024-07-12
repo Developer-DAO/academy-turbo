@@ -1,0 +1,16 @@
+{
+  "question": "What can SPAs do that static websites can’t?",
+  "options": [
+    {
+      "answer": "Include data that isn’t available at build time.",
+      "correct": true
+    },
+    {
+      "answer": "Render faster."
+    },
+    {
+      "answer": "Enable complex user interactions.",
+      "correct": true
+    }
+  ]
+}

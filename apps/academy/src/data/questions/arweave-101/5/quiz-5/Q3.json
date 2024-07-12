@@ -1,0 +1,15 @@
+{
+  "question": "Under which URL scheme is your DApp available after you point an ArNS name to its TXID?",
+  "options": [
+    {
+      "answer": "https://<ARNS_NAME>.<GATEWAY_HOSTNAME>/",
+      "correct": true
+    },
+    {
+      "answer": "https://<GATEWAY_HOSTNAME>/<ARNS_NAME>/"
+    },
+    {
+      "answer": "https://<GATEWAY_HOSTNAME>.<ARNS_NAME>/"
+    }
+  ]
+}

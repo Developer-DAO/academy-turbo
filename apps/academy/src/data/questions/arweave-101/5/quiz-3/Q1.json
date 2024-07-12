@@ -1,0 +1,15 @@
+{
+  "question": "Why should you lazy-load some routes of your DApp?",
+  "options": [
+    {
+      "answer": "Because not all functionality is used by all users.",
+      "correct": true
+    },
+    {
+      "answer": "Because having all code in one file leads to bugs."
+    },
+    {
+      "answer": "Because gateways can’t deliver files bigger than 100 KiB."
+    }
+  ]
+}
