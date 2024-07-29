@@ -1,0 +1,19 @@
+{
+  "question": "What are Arweave's pros compared to cloud storage?",
+  "options": [
+    {
+      "answer": "One-time payment",
+      "correct": true
+    },
+    {
+      "answer": "Strong provenance guarantees",
+      "correct": true
+    },
+    {
+      "answer": "Temporary storage"
+    },
+    {
+      "answer": "Cheap storage"
+    }
+  ]
+}

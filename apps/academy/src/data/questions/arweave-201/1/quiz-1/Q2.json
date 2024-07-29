@@ -1,0 +1,19 @@
+{
+  "question": "What features does Arweave have?",
+  "options": [
+    {
+      "answer": "Censorship resistance",
+      "correct": true
+    },
+    {
+      "answer": "Global replication",
+      "correct": true
+    },
+    {
+      "answer": "Temporary storage"
+    },
+    {
+      "answer": "Automatic encryption"
+    }
+  ]
+}

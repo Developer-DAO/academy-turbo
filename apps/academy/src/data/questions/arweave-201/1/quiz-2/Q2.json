@@ -1,0 +1,16 @@
+{
+  "question": "How does Arweave’s consensus algorithm ensure permanent storage?",
+  "options": [
+    {
+      "answer": "By requiring miner nodes to prove access to random chunks of uploaded data",
+      "correct": true
+    },
+    {
+      "answer": "By incentivizing miner nodes to share data",
+      "correct": true
+    },
+    {
+      "answer": "By encrypting transaction bodies before upload"
+    }
+  ]
+}

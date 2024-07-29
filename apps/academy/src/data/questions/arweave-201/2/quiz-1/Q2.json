@@ -1,0 +1,15 @@
+{
+  "question": "How are AR.IO gateway operators incentivized?",
+  "options": [
+    {
+      "answer": "With IO tokens generated from ArNS sales.",
+      "correct": true
+    },
+    {
+      "answer": "With Arweave's native AR token."
+    },
+    {
+      "answer": "They do it for the greater good."
+    }
+  ]
+}

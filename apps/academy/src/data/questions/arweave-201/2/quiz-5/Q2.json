@@ -1,0 +1,15 @@
+{
+  "question": "Can you use webhooks without unbundling transactions?",
+  "options": [
+    {
+      "answer": "Yes, but only for layer 1 transactions and blocks.",
+      "correct": true
+    },
+    {
+      "answer": "No, you need to activate it to use webhooks."
+    },
+    {
+      "answer": "Yes, they will trigger on all transactions."
+    }
+  ]
+}

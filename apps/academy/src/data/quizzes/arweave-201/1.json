@@ -1,0 +1,243 @@
+{
+  "title": "Quiz: Intro to Arweave",
+  "questions": [
+    {
+      "question": "What is Arweave's primary focus?",
+      "options": [
+        {
+          "answer": "Censorship resistance",
+          "correct": true
+        },
+        {
+          "answer": "Global replication",
+          "correct": true
+        },
+        {
+          "answer": "Temporary storage"
+        },
+        {
+          "answer": "Automatic encryption"
+        }
+      ]
+    },
+    {
+      "question": "Which file types are a good fit for Arweave?",
+      "options": [
+        {
+          "answer": "Music and videos",
+          "correct": true
+        },
+        {
+          "answer": "Images and text",
+          "correct": true
+        },
+        {
+          "answer": "single-page applications",
+          "correct": true
+        },
+        {
+          "answer": "Server-side rendered websites"
+        }
+      ]
+    },
+    {
+      "question": "What storage location does Arweave use for files?",
+      "options": [
+        {
+          "answer": "Everything is stored in the transaction object"
+        },
+        {
+          "answer": "The transaction object can contain files smaller than 12MiB",
+          "correct": true
+        },
+        {
+          "answer": "Files bigger than 12MiB have a separate storage location",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "How does Arweave's consensus algorithm work?",
+      "options": [
+        {
+          "answer": "By requiring miner nodes to prove access to random chunks of uploaded data",
+          "correct": true
+        },
+        {
+          "answer": "By incentivizing miner nodes to share data",
+          "correct": true
+        },
+        {
+          "answer": "By encrypting transaction bodies before upload"
+        }
+      ]
+    },
+    {
+      "question": "What is the responsibility of gateway nodes?",
+      "options": [
+        {
+          "answer": "Data storage"
+        },
+        {
+          "answer": "Data replication"
+        },
+        {
+          "answer": "Data access",
+          "correct": true
+        },
+        {
+          "answer": "Data encoding",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "What are NOT parts of the SPoRA consensus algorithm?",
+      "options": [
+        {
+          "answer": "Computing a hash"
+        },
+        {
+          "answer": "Proving access to random chunks of uploaded data"
+        },
+        {
+          "answer": "Locking sectors of a block storage",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "Can you delete data from the Arweave network?",
+      "options": [
+        {
+          "answer": "No, you can only suggest the removal with a do-not-store request.",
+          "correct": true
+        },
+        {
+          "answer": "You can’t enforce removal",
+          "correct": true
+        },
+        {
+          "answer": "Yes, the data is only temporarily stored"
+        }
+      ]
+    },
+    {
+      "question": "Which mechanisms enable the payments for Arweave's permanent storage?",
+      "options": [
+        {
+          "answer": "It has a storage endowment to save tokens for later",
+          "correct": true
+        },
+        {
+          "answer": "Its token economics are based on future storage cost estimates",
+          "correct": true
+        },
+        {
+          "answer": "It gives each miner node one Bitcoin"
+        },
+        {
+          "answer": "It requires continuous payments."
+        }
+      ]
+    },
+    {
+      "question": "Which types of transactions does Arweave support?",
+      "options": [
+        {
+          "answer": "L1 transactions",
+          "correct": true
+        },
+        {
+          "answer": "Bundled transactions",
+          "correct": true
+        },
+        {
+          "answer": "Volatile transactions"
+        },
+        {
+          "answer": "Accelerated transactions"
+        }
+      ]
+    },
+    {
+      "question": "What are the properties of L1 transactions?",
+      "options": [
+        {
+          "answer": "They are relatively slow",
+          "correct": true
+        },
+        {
+          "answer": "They can transfer AR tokens",
+          "correct": true
+        },
+        {
+          "answer": "They can be paid with fiat currency"
+        },
+        {
+          "answer": "They can have custom tags",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "What are the properties of bundled transactions?",
+      "options": [
+        {
+          "answer": "They are relatively fast",
+          "correct": true
+        },
+        {
+          "answer": "They can be paid with fiat currency",
+          "correct": true
+        },
+        {
+          "answer": "They can transfer AR tokens"
+        },
+        {
+          "answer": "They can have custom tags",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "What are Arweave’s CONS compared to cloud storage?",
+      "options": [
+        {
+          "answer": "Expensive storage",
+          "correct": true
+        },
+        {
+          "answer": "Volatile pricing",
+          "correct": true
+        },
+        {
+          "answer": "No temporary storage",
+          "correct": true
+        },
+        {
+          "answer": "Subscription costs"
+        }
+      ]
+    },
+    {
+      "question": "What are Arweave’s CONS compared to popular blockchain networks?",
+      "options": [
+        {
+          "answer": "Slow L1 transactions",
+          "correct": true
+        },
+        {
+          "answer": "Storage and replication handled by smart contracts"
+        },
+        {
+          "answer": "No cheap temporary storage option",
+          "correct": true
+        },
+        {
+          "answer": "High computation demands"
+        }
+      ]
+    }
+  ]
+}

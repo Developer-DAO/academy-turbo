@@ -1,0 +1,20 @@
+{
+  "question": "What is Arweave?",
+  "options": [
+    {
+      "answer": "A layer 1 network",
+      "correct": true
+    },
+    {
+      "answer": "A layer 2 network"
+    },
+    {
+      "answer": "Like Bitcoin for storage",
+      "correct": true
+    },
+    {
+      "answer": "Immutable object storage",
+      "correct": true
+    }
+  ]
+}
