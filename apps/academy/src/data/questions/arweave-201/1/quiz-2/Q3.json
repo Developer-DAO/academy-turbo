@@ -1,0 +1,19 @@
+{
+  "question": "What responsibilities do miner nodes have?",
+  "options": [
+    {
+      "answer": "Data storage",
+      "correct": true
+    },
+    {
+      "answer": "Data replication",
+      "correct": true
+    },
+    {
+      "answer": "Data access"
+    },
+    {
+      "answer": "Data encoding"
+    }
+  ]
+}

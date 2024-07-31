@@ -1,0 +1,16 @@
+{
+  "question": "Why should you enable HTTPS for your server?",
+  "options": [
+    {
+      "answer": "Because some browser APIs don't work without HTTPS.",
+      "correct": true
+    },
+    {
+      "answer": "To prevent third-parties from reading your users data.",
+      "correct": true
+    },
+    {
+      "answer": "To save traffic."
+    }
+  ]
+}

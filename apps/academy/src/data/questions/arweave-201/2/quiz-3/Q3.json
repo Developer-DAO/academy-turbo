@@ -1,0 +1,15 @@
+{
+  "question": "How do you disable sandboxing?",
+  "options": [
+    {
+      "answer": "By not setting a ARNS_ROOT_HOST in your .env file.",
+      "correct": true
+    },
+    {
+      "answer": "By setting SANDBOXING to false in your .env file."
+    },
+    {
+      "answer": "By using a ?sandbox=false query parameter when opening a TX."
+    }
+  ]
+}

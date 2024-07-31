@@ -1,0 +1,16 @@
+{
+  "question": "What types of Arweave nodes exist?",
+  "options": [
+    {
+      "answer": "Miner nodes.",
+      "correct": true
+    },
+    {
+      "answer": "Gateway nodes.",
+      "correct": true
+    },
+    {
+      "answer": "Swap nodes."
+    }
+  ]
+}

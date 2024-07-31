@@ -1,0 +1,15 @@
+{
+  "question": "Why should you not start the writer processes?",
+  "options": [
+    {
+      "answer": "Because they will start indexing the whole chain, which can take weeks.",
+      "correct": true
+    },
+    {
+      "answer": "Because you have to pay for each byte downloaded from Arweave."
+    },
+    {
+      "answer": "Because they will mine Bitcoin on your machine."
+    }
+  ]
+}

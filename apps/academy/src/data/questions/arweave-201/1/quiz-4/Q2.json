@@ -1,0 +1,20 @@
+{
+  "question": "What are the properties of L1 transactions?",
+  "options": [
+    {
+      "answer": "They are relatively slow",
+      "correct": true
+    },
+    {
+      "answer": "They can transfer AR tokens",
+      "correct": true
+    },
+    {
+      "answer": "They can be paid with fiat currency"
+    },
+    {
+      "answer": "They can have custom tags",
+      "correct": true
+    }
+  ]
+}

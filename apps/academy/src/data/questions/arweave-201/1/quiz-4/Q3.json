@@ -1,0 +1,20 @@
+{
+  "question": "What are the properties of bundled transactions?",
+  "options": [
+    {
+      "answer": "They are relatively fast",
+      "correct": true
+    },
+    {
+      "answer": "They can be paid with fiat currency",
+      "correct": true
+    },
+    {
+      "answer": "They can transfer AR tokens"
+    },
+    {
+      "answer": "They can have custom tags",
+      "correct": true
+    }
+  ]
+}
