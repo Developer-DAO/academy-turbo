@@ -1,241 +1,155 @@
 {
-  "title": "Quiz: Intro to Arweave",
+  "title": "Final Quiz: Running a Local Arweave Gateway for Development",
   "questions": [
     {
-      "question": "What is Arweave's primary focus?",
+      "question": "How are AR.IO gateway operators rewarded?",
       "options": [
         {
-          "answer": "Censorship resistance",
+          "answer": "With IO tokens generated from ArNS sales.",
           "correct": true
         },
         {
-          "answer": "Global replication",
-          "correct": true
+          "answer": "With Arweave’s native AR token."
         },
         {
-          "answer": "Temporary storage"
-        },
-        {
-          "answer": "Automatic encryption"
+          "answer": "They do it for the greater good."
         }
       ]
     },
     {
-      "question": "Which file types are a good fit for Arweave?",
+      "question": "Which files are required to start a gateway?",
       "options": [
         {
-          "answer": "Music and videos",
+          "answer": "The docker-compose.yaml.",
           "correct": true
         },
         {
-          "answer": "Images and text",
+          "answer": "An .env file.",
           "correct": true
         },
         {
-          "answer": "single-page applications",
-          "correct": true
-        },
-        {
-          "answer": "Server-side rendered websites"
+          "answer": "A XML file."
         }
       ]
     },
     {
-      "question": "What storage location does Arweave use for files?",
+      "question": "Should you always start the writer processes?",
       "options": [
         {
-          "answer": "Everything is stored in the transaction object"
-        },
-        {
-          "answer": "The transaction object can contain files smaller than 12MiB",
+          "answer": "No, they will start indexing the whole chain, which can take weeks.",
           "correct": true
         },
         {
-          "answer": "Files bigger than 12MiB have a separate storage location",
-          "correct": true
+          "answer": "No, because they will mine Bitcoin on your machine."
         }
       ]
     },
     {
-      "question": "How does Arweave's consensus algorithm work?",
+      "question": "Do you need a trusted node?",
       "options": [
         {
-          "answer": "By requiring miner nodes to prove access to random chunks of uploaded data",
+          "answer": "Yes, the trusted node is your entry to the Arweave network.",
           "correct": true
         },
         {
-          "answer": "By incentivizing miner nodes to share data",
+          "answer": "Yes, the trusted node will resolve all data your gateway hasn’t indexed/cached yet.",
           "correct": true
         },
         {
-          "answer": "By encrypting transaction bodies before upload"
+          "answer": "No, it's only needed for compression."
         }
       ]
     },
     {
-      "question": "What is the responsibility of gateway nodes?",
+      "question": "Can you use the gateway without TLS/SSL?",
       "options": [
         {
-          "answer": "Data storage"
-        },
-        {
-          "answer": "Data replication"
-        },
-        {
-          "answer": "Data access",
+          "answer": "Yes, but clients might get errors when opening permapages that require a secure context.",
           "correct": true
         },
         {
-          "answer": "Data encoding",
+          "answer": "Yes, if you don't open your gateway URLs in the browser",
           "correct": true
+        },
+        {
+          "answer": "No, your user's browser will crash."
         }
       ]
     },
     {
-      "question": "What are NOT parts of the SPoRA consensus algorithm?",
+      "question": "How do you enable sandboxing?",
       "options": [
         {
-          "answer": "Computing a hash"
-        },
-        {
-          "answer": "Proving access to random chunks of uploaded data"
-        },
-        {
-          "answer": "Locking sectors of a block storage",
+          "answer": "By setting a ARNS_ROOT_HOST in your .env file.",
           "correct": true
+        },
+        {
+          "answer": "By setting SANDBOXING to true in your .env file."
+        },
+        {
+          "answer": "By using a ?sandbox=true query parameter when opening a transaction."
         }
       ]
     },
     {
-      "question": "Can you delete data from the Arweave network?",
+      "question": "What do you have to remember when enbaling the writers?",
       "options": [
         {
-          "answer": "No, you can only suggest the removal with a do-not-store request.",
+          "answer": "To set a START_HEIGHT value so the writers don’t index the whole chain.",
           "correct": true
         },
         {
-          "answer": "You can’t enforce removal",
-          "correct": true
+          "answer": "To set a TIMEOUT value, so they don’t wait for pending transacitons."
         },
         {
-          "answer": "Yes, the data is only temporarily stored"
+          "answer": "Nothing, you can simply set START_WRITERS to true and acccess new transactions right away."
         }
       ]
     },
     {
-      "question": "Which mechanisms enable the payments for Arweave's permanent storage?",
+      "question": "Under which route are the admin features NOT located?",
       "options": [
         {
-          "answer": "It has a storage endowment to save tokens for later",
+          "answer": "/ar-io/admin/..."
+        },
+        {
+          "answer": "/admin",
           "correct": true
         },
         {
-          "answer": "Its token economics are based on future storage cost estimates",
-          "correct": true
-        },
-        {
-          "answer": "It gives each miner node one Bitcoin"
-        },
-        {
-          "answer": "It requires continuous payments."
-        }
-      ]
-    },
-    {
-      "question": "Which types of transactions does Arweave support?",
-      "options": [
-        {
-          "answer": "L1 transactions",
-          "correct": true
-        },
-        {
-          "answer": "Bundled transactions",
-          "correct": true
-        },
-        {
-          "answer": "Volatile transactions"
-        },
-        {
-          "answer": "Accelerated transactions"
-        }
-      ]
-    },
-    {
-      "question": "What are the properties of L1 transactions?",
-      "options": [
-        {
-          "answer": "They are relatively slow",
-          "correct": true
-        },
-        {
-          "answer": "They can transfer AR tokens",
-          "correct": true
-        },
-        {
-          "answer": "They can be paid with fiat currency"
-        },
-        {
-          "answer": "They can have custom tags",
+          "answer": "/gatetway/admin",
           "correct": true
         }
       ]
     },
     {
-      "question": "What are the properties of bundled transactions?",
+      "question": "Can multiple gateways reuse data?",
       "options": [
         {
-          "answer": "They are relatively fast",
+          "answer": "Yes, but only CHUNKS_DATA_PATH, CONTIGUOUS_DATA_PATH, and HEADERS_DATA_PATH.",
           "correct": true
         },
         {
-          "answer": "They can be paid with fiat currency",
+          "answer": "Yes, but only one gateway should have START_WRITERS set to true.",
           "correct": true
         },
         {
-          "answer": "They can transfer AR tokens"
-        },
-        {
-          "answer": "They can have custom tags",
-          "correct": true
+          "answer": "No, all data is unique to a gateway."
         }
       ]
     },
     {
-      "question": "What are Arweave’s CONS compared to cloud storage?",
+      "question": "Can you use webhooks on bundled transactions?",
       "options": [
         {
-          "answer": "Expensive storage",
+          "answer": "Yes, but only if you enable unbundling on your gateway.",
           "correct": true
         },
         {
-          "answer": "Volatile pricing",
-          "correct": true
+          "answer": "No, you can only execute webhooks for blocks and layer 1 transactions."
         },
         {
-          "answer": "No temporary storage",
-          "correct": true
-        },
-        {
-          "answer": "Subscription costs"
-        }
-      ]
-    },
-    {
-      "question": "What are Arweave’s CONS compared to popular blockchain networks?",
-      "options": [
-        {
-          "answer": "Slow L1 transactions",
-          "correct": true
-        },
-        {
-          "answer": "Storage and replication handled by smart contracts"
-        },
-        {
-          "answer": "No cheap temporary storage option",
-          "correct": true
-        },
-        {
-          "answer": "High computation demands"
+          "answer": "Yes, they will be fetched from your trusted node."
         }
       ]
     }
