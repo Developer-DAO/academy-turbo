@@ -1,0 +1,16 @@
+{
+  "question": "What are parts of the SPoRA consensus algorithm?",
+  "options": [
+    {
+      "answer": "Computing a hash",
+      "correct": true
+    },
+    {
+      "answer": "Proving access to random chunks of uploaded data",
+      "correct": true
+    },
+    {
+      "answer": "Locking sectors of a block storage"
+    }
+  ]
+}

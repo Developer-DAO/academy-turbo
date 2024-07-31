@@ -1,0 +1,157 @@
+{
+  "title": "Final Quiz: Running a Local Arweave Gateway for Development",
+  "questions": [
+    {
+      "question": "How are AR.IO gateway operators rewarded?",
+      "options": [
+        {
+          "answer": "With IO tokens generated from ArNS sales.",
+          "correct": true
+        },
+        {
+          "answer": "With Arweave’s native AR token."
+        },
+        {
+          "answer": "They do it for the greater good."
+        }
+      ]
+    },
+    {
+      "question": "Which files are required to start a gateway?",
+      "options": [
+        {
+          "answer": "The docker-compose.yaml.",
+          "correct": true
+        },
+        {
+          "answer": "An .env file.",
+          "correct": true
+        },
+        {
+          "answer": "A XML file."
+        }
+      ]
+    },
+    {
+      "question": "Should you always start the writer processes?",
+      "options": [
+        {
+          "answer": "No, they will start indexing the whole chain, which can take weeks.",
+          "correct": true
+        },
+        {
+          "answer": "No, because they will mine Bitcoin on your machine."
+        }
+      ]
+    },
+    {
+      "question": "Do you need a trusted node?",
+      "options": [
+        {
+          "answer": "Yes, the trusted node is your entry to the Arweave network.",
+          "correct": true
+        },
+        {
+          "answer": "Yes, the trusted node will resolve all data your gateway hasn’t indexed/cached yet.",
+          "correct": true
+        },
+        {
+          "answer": "No, it's only needed for compression."
+        }
+      ]
+    },
+    {
+      "question": "Can you use the gateway without TLS/SSL?",
+      "options": [
+        {
+          "answer": "Yes, but clients might get errors when opening permapages that require a secure context.",
+          "correct": true
+        },
+        {
+          "answer": "Yes, if you don't open your gateway URLs in the browser",
+          "correct": true
+        },
+        {
+          "answer": "No, your user's browser will crash."
+        }
+      ]
+    },
+    {
+      "question": "How do you enable sandboxing?",
+      "options": [
+        {
+          "answer": "By setting a ARNS_ROOT_HOST in your .env file.",
+          "correct": true
+        },
+        {
+          "answer": "By setting SANDBOXING to true in your .env file."
+        },
+        {
+          "answer": "By using a ?sandbox=true query parameter when opening a transaction."
+        }
+      ]
+    },
+    {
+      "question": "What do you have to remember when enbaling the writers?",
+      "options": [
+        {
+          "answer": "To set a START_HEIGHT value so the writers don’t index the whole chain.",
+          "correct": true
+        },
+        {
+          "answer": "To set a TIMEOUT value, so they don’t wait for pending transacitons."
+        },
+        {
+          "answer": "Nothing, you can simply set START_WRITERS to true and acccess new transactions right away."
+        }
+      ]
+    },
+    {
+      "question": "Under which route are the admin features NOT located?",
+      "options": [
+        {
+          "answer": "/ar-io/admin/..."
+        },
+        {
+          "answer": "/admin",
+          "correct": true
+        },
+        {
+          "answer": "/gatetway/admin",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "Can multiple gateways reuse data?",
+      "options": [
+        {
+          "answer": "Yes, but only CHUNKS_DATA_PATH, CONTIGUOUS_DATA_PATH, and HEADERS_DATA_PATH.",
+          "correct": true
+        },
+        {
+          "answer": "Yes, but only one gateway should have START_WRITERS set to true.",
+          "correct": true
+        },
+        {
+          "answer": "No, all data is unique to a gateway."
+        }
+      ]
+    },
+    {
+      "question": "Can you use webhooks on bundled transactions?",
+      "options": [
+        {
+          "answer": "Yes, but only if you enable unbundling on your gateway.",
+          "correct": true
+        },
+        {
+          "answer": "No, you can only execute webhooks for blocks and layer 1 transactions."
+        },
+        {
+          "answer": "Yes, they will be fetched from your trusted node."
+        }
+      ]
+    }
+  ]
+}

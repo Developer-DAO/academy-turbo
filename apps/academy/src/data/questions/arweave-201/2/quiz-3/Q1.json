@@ -1,0 +1,12 @@
+{
+  "question": "Why do you need to stop the gateway explicitly?",
+  "options": [
+    {
+      "answer": "Because Docker Compose will run the gateway in the background.",
+      "correct": true
+    },
+    {
+      "answer": "You don't have to stop it, it will stop automatically after 5 minutes."
+    }
+  ]
+}

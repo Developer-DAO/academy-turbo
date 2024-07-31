@@ -1,0 +1,12 @@
+{
+  "question": "Should you run an observer for your dev gateway?",
+  "options": [
+    {
+      "answer": "No, they're only for production gateways.",
+      "correct": true
+    },
+    {
+      "answer": "Yes, they can improve performance."
+    }
+  ]
+}
