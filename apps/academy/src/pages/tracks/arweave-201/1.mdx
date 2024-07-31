@@ -14,7 +14,7 @@ import LessonInformationalModal from "../../../components/mdx/LessonInformationa
 <LessonLayout
    lessonTitle="Running a Local Arweave Gateway for Development"
    lessonImage="/meta-images/arweave-101/intro-to-arweave.png"
-   lessonDescription="TODO"
+   lessonDescription="Install and run an Arweave gateway locally using Docker Compose and environment variables. Learn configuration options for development in this concise guide."
    author="K"
    authorImage="/authors/k4y1s.jpg"
    authorPosition="Developer DAO"
@@ -40,7 +40,7 @@ You also need a **Linux system with Docker, Git, and Node.js.**
 
 There are currently two types of Arweave nodes: miners and gateways (Figure 1).
 
-(TODO: Figure 1)
+![figure-1](/assets/tracks/arweave-201/1/figure-1.png)
 
 <div style={{ textAlign: "center" }}>*Figure 1: Arweave gateways*</div>
 
@@ -50,13 +50,13 @@ There are currently two types of Arweave nodes: miners and gateways (Figure 1).
 
 AR.IO gateways form their own proof-of-stake network controlled by smart contracts on Arweave. They are incentivized by IO tokens (similar to ERC-20 tokens) generated via sales of ArNS names, which are Arweave’s equivalent of DNS domains that get resolved by AR.IO gateways (Figure 2).
 
-(TODO: Figure 2)
+![figure-2](/assets/tracks/arweave-201/1/figure-2.png)
 
 <div style={{ textAlign: "center" }}>*Figure 2: AR.IO Network*</div>
 
 The AR.IO gateway is implemented as a Docker Compose application. It consists of containers for data delivery, data upload to Arweave, and third-party containers that care about the gateway’s internal state and routing. For this lesson, only the core and envoy containers are important; the rest is either experimental, optional, or both.
 
-(TODO: Figure 3)
+![figure-3](/assets/tracks/arweave-201/1/figure-3.png)
 
 <div style={{ textAlign: "center" }}>*Figure 3: AR.IO Gateway containers*</div>
 
