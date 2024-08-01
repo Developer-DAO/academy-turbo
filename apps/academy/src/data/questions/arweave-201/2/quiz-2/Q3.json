@@ -1,16 +1,17 @@
 {
-  "question": "Why do you need to set a trusted node?",
+  "question": "Why does the gateway use two wallet addresses?",
   "options": [
     {
-      "answer": "The trusted node is your entry to the Arweave network.",
+      "answer": "One key is used to join the AR.IO network.",
       "correct": true
     },
     {
-      "answer": "The trusted node will resolve all data your gateway hasn't indexed/cached yet.",
+      "answer": "One is used to submit reports to Arweave.",
       "correct": true
     },
     {
-      "answer": "The trusted node will help you encrypting uploaded data."
+      "answer": "You can use the same key for joining the network and submit reports.",
+      "correct": true
     }
   ]
 }

@@ -1,15 +1,17 @@
 {
-  "question": "How are AR.IO gateway operators incentivized?",
+  "question": "Why does this setup include a load balancer?",
   "options": [
     {
-      "answer": "With IO tokens generated from ArNS sales.",
+      "answer": "To distribute the load between two EC2 instances.",
       "correct": true
     },
     {
-      "answer": "With Arweave's native AR token."
+      "answer": "To protect the EC2 instances with a web application firewall.",
+      "correct": true
     },
     {
-      "answer": "They do it for the greater good."
+      "answer": "To improve reliability.",
+      "correct": true
     }
   ]
 }

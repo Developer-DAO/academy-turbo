@@ -1,16 +1,15 @@
 {
-  "question": "Which files do you need to start an AR.IO gateway?",
+  "question": "Which wallet key will be stored on AWS?",
   "options": [
     {
-      "answer": "The docker-compose.yaml.",
+      "answer": "The gateway key."
+    },
+    {
+      "answer": "The observer key.",
       "correct": true
     },
     {
-      "answer": "An .env file.",
-      "correct": true
-    },
-    {
-      "answer": "A MAKE file."
+      "answer": "The master key."
     }
   ]
 }

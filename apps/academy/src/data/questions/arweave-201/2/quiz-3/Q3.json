@@ -1,15 +1,15 @@
 {
-  "question": "How do you disable sandboxing?",
+  "question": "What's the path of the health check enpoint??",
   "options": [
     {
-      "answer": "By not setting a ARNS_ROOT_HOST in your .env file.",
+      "answer": "/ar-io/healthcheck",
       "correct": true
     },
     {
-      "answer": "By setting SANDBOXING to false in your .env file."
+      "answer": "/health-check"
     },
     {
-      "answer": "By using a ?sandbox=false query parameter when opening a TX."
+      "answer": "/ar-io/status"
     }
   ]
 }

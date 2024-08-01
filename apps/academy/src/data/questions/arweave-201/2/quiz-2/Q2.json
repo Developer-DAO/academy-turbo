@@ -1,15 +1,15 @@
 {
-  "question": "Why should you not start the writer processes?",
+  "question": "Do you have to host your gateway on a second-level domain?",
   "options": [
     {
-      "answer": "Because they will start indexing the whole chain, which can take weeks.",
+      "answer": "Yes, it has to be a second-level domain."
+    },
+    {
+      "answer": "No, you can use a subdomain.",
       "correct": true
     },
     {
-      "answer": "Because you have to pay for each byte downloaded from Arweave."
-    },
-    {
-      "answer": "Because they will mine Bitcoin on your machine."
+      "answer": "No, you can use an ENS domain."
     }
   ]
 }

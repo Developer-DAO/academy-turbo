@@ -1,12 +1,15 @@
 {
-  "question": "Why do you need to stop the gateway explicitly?",
+  "question": "Why does the first deplyoment run fail?",
   "options": [
     {
-      "answer": "Because Docker Compose will run the gateway in the background.",
+      "answer": "Because AWS can't vaildate the SSL certificates.",
       "correct": true
     },
     {
-      "answer": "You don't have to stop it, it will stop automatically after 5 minutes."
+      "answer": "Because you didn't assign a cost center."
+    },
+    {
+      "answer": "Because SSL certificate validation always times out."
     }
   ]
 }

@@ -1,16 +1,16 @@
 {
-  "question": "Where does Arweave store files?",
+  "question": "Which files do you need to start an AR.IO gateway?",
   "options": [
     {
-      "answer": "Everything is stored in the transaction object"
-    },
-    {
-      "answer": "The transaction object can contain files smaller than 12MiB",
+      "answer": "The docker-compose.yaml.",
       "correct": true
     },
     {
-      "answer": "Files bigger than 12MiB have a separate storage location",
+      "answer": "An .env file.",
       "correct": true
+    },
+    {
+      "answer": "A MAKE file."
     }
   ]
 }
