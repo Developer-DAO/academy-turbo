@@ -1,19 +1,16 @@
 {
-  "question": "What are Arweave's pros compared to cloud storage?",
+  "question": "Can multiple gateways reuse data?",
   "options": [
     {
-      "answer": "One-time payment",
+      "answer": "Yes, but only CHUNKS_DATA_PATH, CONTIGUOUS_DATA_PATH, and HEADERS_DATA_PATH.",
       "correct": true
     },
     {
-      "answer": "Strong provenance guarantees",
+      "answer": "Yes, but only one gateway should have START_WRITERS.",
       "correct": true
     },
     {
-      "answer": "Temporary storage"
-    },
-    {
-      "answer": "Cheap storage"
+      "answer": "No, all data is unique to a gateway."
     }
   ]
 }

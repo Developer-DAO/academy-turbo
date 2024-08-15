@@ -1,16 +1,16 @@
 {
-  "question": "Why should you enable HTTPS for your server?",
+  "question": "Why does the gateway need two DNS records?",
   "options": [
     {
-      "answer": "Because some browser APIs don't work without HTTPS.",
+      "answer": "One record is required for the domain root of the gateway.",
       "correct": true
     },
     {
-      "answer": "To prevent third-parties from reading your users data.",
-      "correct": true
+      "answer": "One record is required for wallet verification."
     },
     {
-      "answer": "To save traffic."
+      "answer": "The wildcard record is required for sandboxing and ArNS name resolution.",
+      "correct": true
     }
   ]
 }

@@ -1,20 +1,16 @@
 {
-  "question": "What is Arweave?",
+  "question": "What types of Arweave nodes exist?",
   "options": [
     {
-      "answer": "A layer 1 network",
+      "answer": "Miner nodes.",
       "correct": true
     },
     {
-      "answer": "A layer 2 network"
-    },
-    {
-      "answer": "Like Bitcoin for storage",
+      "answer": "Gateway nodes.",
       "correct": true
     },
     {
-      "answer": "Immutable object storage",
-      "correct": true
+      "answer": "Swap nodes."
     }
   ]
 }

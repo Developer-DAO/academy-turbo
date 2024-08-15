@@ -1,0 +1,154 @@
+{
+  "title": "Final Quiz",
+  "questions": [
+    {
+      "question": "Will your deployment succeed on the first run?",
+      "options": [
+        {
+          "answer": "No, because AWS can't vaildate the SSL certificates.",
+          "correct": true
+        },
+        {
+          "answer": "No, because you didn't assign a cost center."
+        },
+        {
+          "answer": "No, because SSL certificate validation always times out."
+        }
+      ]
+    },
+
+    {
+      "question": "How many DNS records does your gateway need?",
+      "options": [
+        {
+          "answer": "Two records, one for the domain root of the gateway and a wildcard record is required for sandboxing and ArNS.",
+          "correct": true
+        },
+        {
+          "answer": "One for the domain root."
+        },
+        {
+          "answer": "Three for some DNS providers that require CAA records.",
+          "correct": true
+        }
+      ]
+    },
+
+    {
+      "question": "How can you check your gateway is working?",
+      "options": [
+        {
+          "answer": "By calling the /ar-io/healthcheck endpoint.",
+          "correct": true
+        },
+        {
+          "answer": "By reading the CloudWatch Logs.",
+          "correct": true
+        },
+        {
+          "answer": "By calling the /ar-io/status endpoint."
+        }
+      ]
+    },
+    {
+      "question": "Should you use the same key for gateway and observer?",
+      "options": [
+        {
+          "answer": "No, because the observer key is stored on AWS.",
+          "correct": true
+        },
+        {
+          "answer": "No, because that would be too easy."
+        },
+        {
+          "answer": "Yes, because it saves you the key management hassle."
+        }
+      ]
+    },
+
+    {
+      "question": "Can you host your gateway on a subdomain?",
+      "options": [
+        {
+          "answer": "Yes, you can use a subdomain.",
+          "correct": true
+        },
+        {
+          "answer": "No, it has to be a second-level domain."
+        },
+        {
+          "answer": "No, you must use an ENS domain."
+        }
+      ]
+    },
+
+    {
+      "question": "Why does the gateway use two wallet addresses?",
+      "options": [
+        {
+          "answer": "One key is used to join the AR.IO network.",
+          "correct": true
+        },
+        {
+          "answer": "One is used to submit reports to Arweave.",
+          "correct": true
+        },
+        {
+          "answer": "You can use the same key for joining the network and submit reports.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "Can your gateway work without a domain?",
+      "options": [
+        {
+          "answer": "Yes, but sandboxing via dynamic subdomains won't be available.",
+          "correct": true
+        },
+        {
+          "answer": "Yes, but human-friendly ArNS names won't be available.",
+          "correct": true
+        },
+        {
+          "answer": "No, it won't start without an assigned domain.",
+          "correct": false
+        }
+      ]
+    },
+
+    {
+      "question": "Why does this setup include a load balancer?",
+      "options": [
+        {
+          "answer": "To distribute the load between two EC2 instances.",
+          "correct": true
+        },
+        {
+          "answer": "To protect the EC2 instances with a web application firewall.",
+          "correct": true
+        },
+        {
+          "answer": "To improve reliability.",
+          "correct": true
+        }
+      ]
+    },
+
+    {
+      "question": "What is the job of CodeDeploy in this setup?",
+      "options": [
+        {
+          "answer": "It will update the gateway when a new version is released.",
+          "correct": true
+        },
+        {
+          "answer": "It will deploy the gateway."
+        },
+        {
+          "answer": "It will check the health of the deployment."
+        }
+      ]
+    }
+  ]
+}

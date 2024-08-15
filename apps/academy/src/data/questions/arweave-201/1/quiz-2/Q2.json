@@ -1,16 +1,15 @@
 {
-  "question": "How does Arweave’s consensus algorithm ensure permanent storage?",
+  "question": "Why should you not start the writer processes?",
   "options": [
     {
-      "answer": "By requiring miner nodes to prove access to random chunks of uploaded data",
+      "answer": "Because they will start indexing the whole chain, which can take weeks.",
       "correct": true
     },
     {
-      "answer": "By incentivizing miner nodes to share data",
-      "correct": true
+      "answer": "Because you have to pay for each byte downloaded from Arweave."
     },
     {
-      "answer": "By encrypting transaction bodies before upload"
+      "answer": "Because they will mine Bitcoin on your machine."
     }
   ]
 }

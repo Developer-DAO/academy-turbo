@@ -1,0 +1,419 @@
+---
+title: Arweave 201: Lesson 2
+description: This lesson covers installing and running an Arweave gateway on AWS. You will deploy the cloud infrastructure using Terraform. This lesson will also explain how to update the gateway via CodeDeploy.
+icons: ["arweave", "fundamentals"]
+---
+
+import LessonLayout from "../../../components/LessonLayout";
+import Callout from "../../../components/mdx/Callout";
+import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
+import Question from "../../../components/mdx/Question";
+import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
+import LessonInformationalModal from "../../../components/mdx/LessonInformationalModal";
+
+<LessonLayout
+   lessonTitle="Deploying an Arweave Gateway to the Cloud for Production"
+   lessonImage="/meta-images/arweave-201/deploying-an-arweave-gateway-to-the-cloud-for-production.png"
+   lessonDescription="This lesson covers installing and running an Arweave gateway on AWS. You will deploy the cloud infrastructure using Terraform. This lesson will also explain how to update the gateway via CodeDeploy."
+   author="K"
+   authorImage="/authors/k4y1s.jpg"
+   authorPosition="Developer DAO"
+   authorTwitter="K4y1s"
+   createdDate="Aug 1, 2024"
+>
+
+## About this Lesson
+
+Greetings! Welcome to the first cloud lesson of the Arweave 201 track. In the previous lesson, I explained how to run an Arweave gateway on your local machine for development purposes. In this lesson, you will apply that knowledge to the cloud by deploying a gateway to AWS.
+
+Running your own gateway is useful if your application needs advanced features like webhooks, which let your gateway call external services when specific transactions are submitted to Arweave. With your gateway, you improve everyone's access to data on Arweave and participate in the AR.IO network to earn IO tokens.
+
+## Prerequisites
+
+To complete this lesson, you need:
+
+- **A basic understanding of HTTP, TLS/SSL, DNS, Linux, Docker, and AWS.**
+- A **basic understanding of blockchains** (i.e., transactions, wallets) is also helpful.
+- You also need a **Linux system with [Terraform](https://developer.hashicorp.com/terraform/install?product_intent=terraform) and Git.**
+- A browser with an [Arweave wallet](https://www.arconnect.io/).
+- As you will deploy the gateway on AWS, **you need an [AWS account](https://aws.amazon.com/resources/create-account/).**
+- A (sub-)**domain** you can assign to your gateway.
+
+<Callout emoji="💡">
+  Note: Running a gateway isn’t free. However, you can destroy the deployment after you complete the
+  lesson, so you are only billed for a few minutes.
+</Callout>
+
+<Callout emoji="💡">
+  Note 2: The gateway will take at least two weeks to index Arweave transactions. It will be
+  partially functional before that, but it will relay requests to its trusted node, which impacts
+  latency.
+</Callout>
+
+## Why Amazon Web Services?
+
+AWS is the most popular cloud provider, and while it goes against the spirit of decentralization, most students taking this course will be familiar with AWS. Using IaC definitions written for Terraform, you can rebuild the architecture used in this lesson for any other cloud provider.
+
+## What Does the Architecture Look Like?
+
+The deployment consists of multiple AWS resources. Figure 1 illustrates the whole stack. Let’s discuss the purpose of each service.
+
+- The **DNS provider** ensures that your gateway receives a domain; without it, you can’t use sandboxing or ArNS.
+- A **CloudFront distribution** is a content delivery network that can cache HTTP responses, allowing you to serve users globally. Its monthly free tier gives you 1TB of outgoing data and 10 million monthly requests, which can save you some money.
+- An **Application Load Balancer** distributes traffic evenly between the EC2 instances, stops serving an instance if it goes down, and comes with a web application firewall that protects your gateways from DDoS attacks.
+- An **Auto-Scaling Group** will start two EC2 instances, and CodeDeploy can use it to remove instances from the load balancer when updating.
+- **EC2 instances** run the gateway software.
+- **Elastic Block Storage** drives store each instance's index and cache files.
+- **Elastic File System** allows the instances to share data.
+- **SSM Parameter Store** stores encrypted configuration and wallet data the gateways require to join the AR.IO network.
+- **CloudWatch** stores all logs created by each gateway’s Docker containers.
+- **CodeDeploy** a CI/CD runner that will handle updates to the gateway.
+- The **S3 bucket** stores the gateway updates for CodeDeploy.
+
+![figure-1](/assets/tracks/arweave-201/2/figure-1.png)
+
+<div style={{ textAlign: "center" }}>*Figure 1: AR.IO Gateway on AWS Architecture*</div>
+
+<LessonQuestionsModal buttonText="Quiz 1" title="Comprehension Check">
+  <Question question="arweave-201/2/quiz-1/Q1" />
+  <Question question="arweave-201/2/quiz-1/Q2" />
+  <Question question="arweave-201/2/quiz-1/Q3" />
+</LessonQuestionsModal>
+
+## Deploying the Gateway
+
+The gateway deployment process consists of five major steps.
+
+1. Generating wallets for the gateway and the observer
+2. Cloning the Git repository with the Terraform definitions
+3. Configuring Terraform and the gateway
+4. Deploying to AWS
+5. Testing the deployment with an API client
+
+### Generate Arweave Wallets
+
+If you want to join the AR.IO network, your observer needs two wallet addresses.
+
+1. An address that identifies the gateway. You will receive IO tokens when your gateway behaves well in the network. This wallet gets the most rewards, but you won’t upload it to AWS.
+2. This is the address of the wallet that your observer uses to submit reports to Arweave. This wallet is uploaded to AWS because it needs to submit transactions. However, it doesn’t receive many rewards, so it’s less critical than your gateway wallet.
+
+You can create these wallets with [ArConnect](https://www.arconnect.io/) and save the observer wallet as a keyfile so you can interact with the AR.IO gateway website via your browser wallet. You only need the address of your gateway key; no export is required. However, you must export a keyfile for the observer key.
+
+### Cloning the Repository
+
+You can clone the repository with the following commands:
+
+```bash
+git clone https://github.com/Developer-DAO/ario-gateway-aws.git arweave-gateway
+cd arweave-gateway
+git checkout arweave-201-track
+```
+
+After that, you have an `arweave-gateway` directory with all Terraform definitions.
+
+### Configuring the Deployment
+
+Next comes the configuration, for which you need to copy the configuration templates with these commands:
+
+```bash
+cd resources
+cp template.env.terraform .env.terraform
+cp template.env.gateway .env.gateway
+```
+
+#### Configuring Terraform
+
+Terraform uses `resources/.env.terraform` at deployment. It contains AWS access tokens and basic configurations for VPCs and regions.
+
+You need to create an AWS access key to complete the provider token section of the config.
+
+1. [Go to the AWS IAM console](https://console.aws.amazon.com/iamv2/home#/users)
+2. Select one of your users or create a new one
+3. Open the Security Credentials tab
+4. Scroll down to the Access Keys section
+5. Press the Create Access key button
+6. Select Command Line Interface
+7. Confirm the recommendation
+8. Click Next
+9. Give the key a name like “Terraform Arweave”
+10. Click Next
+11. Copy the access key and paste it as `AWS_ACCESS_KEY_ID` value
+12. Copy the secret access key and paste it as `AWS_SECRET_ACCESS_KEY` value
+
+Next is the gateway-related information, such as domains and aliases.
+
+- `alias` is useful if you have multiple gateway deployments, but right now, just enter `"arweave-201"`.
+- `domain_name` and `subdomain_name` are required; enter values for a domain you control.
+- `observer_key` is the observer key as JSON/JWK string (without newlines, use single quotes). Terraform will store it encrypted inside the SSM Parameter Store. You get it from the keyfile you exported from ArConnect.
+
+Finally, we have the AWS configuration, such as region and VPC.
+
+- `region` is the AWS region you want to use for the deployment.
+- account_id is your AWS account ID.
+- `vpc_id` is the ID of the VPC you want to use. You will find the ID of your default VPC in the[ AWS VPC console](https://console.aws.amazon.com/vpcconsole/home#vpcs:).
+- You need at least two `subnets` in your VPC. For this lesson, the public and private subnets can be the same. You can find them in [the AWS VPC console](https://console.aws.amazon.com/vpcconsole/home#subnets:).
+- For the `instance_type`, I recommend at least `t3a.medium`, but machines with NVMe will generally perform a lot better.
+
+With the Terraform configuration done, you can configure the gateway.
+
+#### Configuring the Gateway
+
+Terraform will upload the content of `resources/.env.gateway` into the SSM Parameter Store, and the gateway will fetch it from there at boot time. It’s used to configure the gateway software at runtime.
+
+- The `ARNS_ROOT_HOST` is the domain that will host your gateway. (e.g., something like `arweave.example.com`)
+- Get the `AR_IO_WALLET` and the `OBSERVER_WALLET` addresses from your ArConnect browser extension.
+
+<LessonQuestionsModal buttonText="Quiz 2" title="Comprehension Check">
+  <Question question="arweave-201/2/quiz-2/Q1" />
+  <Question question="arweave-201/2/quiz-2/Q2" />
+  <Question question="arweave-201/2/quiz-2/Q3" />
+</LessonQuestionsModal>
+
+### Deploying the Terraform State Resources
+
+Terraform will store your deployment state in S3 and DynamoDB, but you must manually create these resources before the first deployment.
+
+First, go to [the AWS DynamoDB console](https://console.aws.amazon.com/dynamodbv2/home#dashboard) and create a new table named `ar-io-gateway-terraform-state` with a partition key named `LockID`.
+
+Then, go to [the AWS S3 console](https://console.aws.amazon.com/s3/buckets), create a new bucket, and add its name to your `main.tf` file under the `backend` section as value for `bucket,` and replace the `region` value with your deployment region.
+
+```txt
+backend "s3" {
+  region = "us-east-1"
+  dynamodb_table = "ar-io-gateway-terraform-state"
+  bucket = "terraform-state-bucket-1234567890"
+  key = "ar-io-gateway.tfstate"
+}
+```
+
+### Deploying the Gateway
+
+You can start a deployment after successfully configuring Terraform and the gateway. The repository comes with several scripts that help you with this.
+
+To initialize the Terraform backend and install all providers, run the following command:
+
+```bash
+scripts/init
+```
+
+The output should look like this:
+
+```txt
+Initializing the backend...
+
+Successfully configured the backend "s3"! Terraform will automatically
+use this backend unless the backend configuration changes.
+Initializing provider plugins...
+- Reusing previous version of hashicorp/random from the dependency lock file
+- Reusing previous version of hashicorp/aws from the dependency lock file
+- Installing hashicorp/random v3.6.1...
+- Installed hashicorp/random v3.6.1 (signed by HashiCorp)
+- Installing hashicorp/aws v5.46.0...
+- Installed hashicorp/aws v5.46.0 (signed by HashiCorp)
+Partner and community providers are signed by their developers.
+If you'd like to know more about provider signing, you can read about it here:
+https://www.terraform.io/docs/cli/plugins/signing.html
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+```
+
+Next, you create a deployment plan for your first deployment by running this command:
+
+```bash
+scripts/plan
+```
+
+The output is quite long and will contain all resources, but the last lines should look like this:
+
+```txt
+Plan: 39 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + CodeDeployBucket = (known after apply)
+  + GatewayAlias     = "arweave-201"
+  + GatewayUrl       = "https://arweave.example.com/"
+  + LogGroup         = "https://us-east-1.console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/ar-io-nodes-arweave-201"
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: ./resources/terraform-plan.bin
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "./resources/terraform-plan.bin"
+```
+
+Now comes the big moment: **deploying it all to AWS**.
+
+You can do so with the following command:
+
+```bash
+scripts/apply
+```
+
+Yet, the first run will take around 10 minutes and fail.
+
+It fails because you didn’t set the validation domains for the SSL certificates. You couldn’t do this, as AWS tells you the required values after it creates the certificates, hence the required run. But Terraform doesn’t roll back your deployment on a failed run, so the certificates were created and await validation.
+
+#### Setting Up Domains and SSL Validation
+
+To validate the certificates, you must open [the AWS Certificate Manager console](https://us-east-1.console.aws.amazon.com/acm/home?region=us-east-1#/certificates/list) and locate the certificate using your gateway domain name. The status should be Pending Validation. Open it to find the `CNAME` record name and value for the validation process. Use them to create a new `CNAME` record on your DNS provider's website. The validation can take up to 10 minutes, depending on your provider.
+
+After successful validation, run the plan and apply commands again to see the CloudFront distribution domain name in the outputs. You need it to set up the domain records for your gateway.
+
+```txt
+scripts/plan
+scripts/apply
+```
+
+Now, create two records for your gateway:
+
+1. A `CNAME` record of the form `arweave.example.com` that points to your CloudFront distribution.
+2. A `CNAME` wildcard record of the form `*.arweave.example.com` that points to your CloudFront distribution.
+
+<Callout emoji="💡">
+  Note: Some DNS providers (e.g., Vercel) require a `CAA` record with the value `'0 issue
+  "amazon.com"'` to allow AWS certificates for your domain.
+</Callout>
+
+### Testing the Gateway
+
+You can call some endpoints to test whether the gateway is working. Just replace `arweave.example.com` with your gateway domain.
+
+Getting the basic Gateway info:
+
+```
+https://arweave.example.com/
+```
+
+Running the health check:
+
+```
+https://arweave.example.com/ar-io/healthcheck
+```
+
+Getting a website by transaction ID:
+
+```
+https://arweave.example.com/yRj4a5KMctX_uOmKWCFJIjmY8DeJcusVk6-HzLiM_t8
+```
+
+Getting a website by ArNS name:
+
+```
+https://ardrive.arweave.example.com/
+```
+
+You just deployed your first Arweave gateway, so you are now an Arweave node operator!
+
+**Congratulations!!!!**
+
+If you want to delete the whole stack from AWS, you can do so with the following command:
+
+```bash
+scripts/destroy
+```
+
+If you get an error, check the `instances.tf` file for a `prevent_destroy = true` and remove it.
+
+<LessonQuestionsModal buttonText="Quiz 3" title="Comprehension Check">
+  <Question question="arweave-201/2/quiz-3/Q1" />
+  <Question question="arweave-201/2/quiz-3/Q2" />
+  <Question question="arweave-201/2/quiz-3/Q3" />
+</LessonQuestionsModal>
+
+## Updating the Gateway
+
+When a new gateway version is released, you must update your servers. The Terraform code includes a CodeDeploy application for this update. CodeDeploy is a CI/CD service that can stop the node on each instance, install the new version, and restart the node again.
+
+### Preparing a New Revision
+
+The first step for each update is preparing a revision, which means creating a directory that includes all files for the new version. You can create one by running the following command:
+
+```bash
+scripts/prepare-revision r123
+```
+
+This will create a new directory at `revisions/r123` that contains CodeDeploy scripts and your `.env.gateway` file.
+
+You must download the latest version of the `docker-compose.yaml` from [the official ar-io-node repository](https://github.com/ar-io/ar-io-node) and save it at `revisions/r123/source/docker-compose.yaml`.
+
+In that file, you need to remove all build commands from the services, as your servers should pull the Docker images instead of building them from the source.
+
+In the following code, the last two lines are the build command and should be removed:
+
+```txt
+services:
+  envoy:
+    image: ghcr.io/ar-io/ar-io-envoy:${ENVOY_IMAGE_TAG:-latest}
+    build:
+      context: envoy/
+```
+
+Next, check the file for any newly added environment variables and add them to your `revisions/r123/source/.env.gateway` file.
+
+_Note: You can also use this update mechanism to change your gateway configuration._
+
+### Deploying the New Revision
+
+To deploy your new revision, you must package the new directory into an archive, upload it to an S3 bucket, and create a new deployment for your CodeDeploy app. This is all done for you with the following command:
+
+```bash
+scripts/deploy-revision r123
+```
+
+CodeDeploy will do the following steps:
+
+1. Block traffic to one EC2 instance
+2. Stop the gateway service
+3. Install the new `docker-compose.yaml` and `.env.gateway` files
+4. Start the gateway service
+5. Check the health of the service
+6. Allow traffic to the EC2 instance
+
+Then, it will do the same with the second EC2 instance. This procedure takes between 5 and 10 minutes per instance. If something goes wrong, CodeDeploy will roll back to the previous revision.
+
+<LessonQuestionsModal buttonText="Quiz 4" title="Comprehension Check">
+  <Question question="arweave-201/2/quiz-4/Q1" />
+  <Question question="arweave-201/2/quiz-4/Q2" />
+  <Question question="arweave-201/2/quiz-4/Q3" />
+</LessonQuestionsModal>
+
+## Summary
+
+In this lesson, you learned how to deploy an Arweave gateway to AWS and everything related to that task, like configuring Terraform and validating SSL certificates. Now, you know how to host your own gateway to improve everyone's access to Permaweb.
+
+<QuizStatusChecker
+  quiz="arweave-201/2"
+  actionButton={{
+    href: "https://zealy.io/cw/ar-io/questboard/5a3f0d7a-b379-433f-9ad4-b9aecf7f463f",
+    text: "Claim on Zealy",
+  }}
+  successMessage={[
+    {
+      message: "You answered all the quiz questions correctly. Awesome job!",
+    },
+    {
+      message:
+        "To claim your XP tokens with AR.IO: share your success on Twitter and submit these along with your secret code on Zealy.",
+    },
+    {
+      message: "Secret code: PO3ZEO",
+    },
+  ]}
+/>
+
+## Conclusion
+
+Hosting an Arweave gateway in the cloud is much more involved than doing so on your machine. You need to think about reliability, content caching, and security. Running a gateway improves all users' access to data on Arweave. When the AR.IO network goes mainnet, you can join it and earn IO tokens for hosting a gateway.
+
+You might already think it’s not helpful for decentralization if everyone hosts their nodes on AWS, and you’re right! That’s why you will learn how to deploy a gateway with Akash in the next lesson.
+
+</LessonLayout>

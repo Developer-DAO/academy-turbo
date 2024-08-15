@@ -1,19 +1,15 @@
 {
-  "question": "What features does Arweave have?",
+  "question": "How are AR.IO gateway operators incentivized?",
   "options": [
     {
-      "answer": "Censorship resistance",
+      "answer": "With IO tokens generated from ArNS sales.",
       "correct": true
     },
     {
-      "answer": "Global replication",
-      "correct": true
+      "answer": "With Arweave's native AR token."
     },
     {
-      "answer": "Temporary storage"
-    },
-    {
-      "answer": "Automatic encryption"
+      "answer": "They do it for the greater good."
     }
   ]
 }

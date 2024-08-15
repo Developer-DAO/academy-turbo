@@ -1,12 +1,15 @@
 {
-  "question": "Should you run an observer for your dev gateway?",
+  "question": "What does CodeDeploy do on a failed update?",
   "options": [
     {
-      "answer": "No, they're only for production gateways.",
+      "answer": "Roll back to the previous version.",
       "correct": true
     },
     {
-      "answer": "Yes, they can improve performance."
+      "answer": "Send you a notification."
+    },
+    {
+      "answer": "Bribe observers for a better report."
     }
   ]
 }

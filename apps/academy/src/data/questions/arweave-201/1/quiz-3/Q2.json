@@ -1,16 +1,16 @@
 {
-  "question": "How can you remove data from Arweave?",
+  "question": "Why should you enable HTTPS for your server?",
   "options": [
     {
-      "answer": "By sending a do-not-store request",
+      "answer": "Because some browser APIs don't work without HTTPS.",
       "correct": true
     },
     {
-      "answer": "You can’t enforce removal",
+      "answer": "To prevent third-parties from reading your users data.",
       "correct": true
     },
     {
-      "answer": "By forking the chain"
+      "answer": "To save traffic."
     }
   ]
 }

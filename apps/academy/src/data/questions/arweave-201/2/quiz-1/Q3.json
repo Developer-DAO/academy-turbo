@@ -1,15 +1,15 @@
 {
-  "question": "How are AR.IO gateways implemented?",
+  "question": "What is the job of CodeDeploy in this setup?",
   "options": [
     {
-      "answer": "They are Node.js containers running on Docker Compose.",
+      "answer": "It will update the gateway when a new version is released.",
       "correct": true
     },
     {
-      "answer": "They use Java Server Pages and Nginx."
+      "answer": "It will deploy the gateway."
     },
     {
-      "answer": "They are written in Rust."
+      "answer": "It will check the health of the deployment."
     }
   ]
 }
