@@ -1,19 +1,15 @@
 {
-  "question": "What are Arweave’s pros compared to popular blockchain networks?",
+  "question": "Can you use webhooks without unbundling transactions?",
   "options": [
     {
-      "answer": "Cheap permanent storage",
+      "answer": "Yes, but only for layer 1 transactions and blocks.",
       "correct": true
     },
     {
-      "answer": "The protocol handles storage and replication",
-      "correct": true
+      "answer": "No, you need to activate it to use webhooks."
     },
     {
-      "answer": "Temporary storage"
-    },
-    {
-      "answer": "Fast L1 transactions"
+      "answer": "Yes, they will trigger on all transactions."
     }
   ]
 }

@@ -1,19 +1,16 @@
 {
-  "question": "What responsibilities do miner nodes have?",
+  "question": "Why do you need to set a trusted node?",
   "options": [
     {
-      "answer": "Data storage",
+      "answer": "The trusted node is your entry to the Arweave network.",
       "correct": true
     },
     {
-      "answer": "Data replication",
+      "answer": "The trusted node will resolve all data your gateway hasn't indexed/cached yet.",
       "correct": true
     },
     {
-      "answer": "Data access"
-    },
-    {
-      "answer": "Data encoding"
+      "answer": "The trusted node will help you encrypting uploaded data."
     }
   ]
 }

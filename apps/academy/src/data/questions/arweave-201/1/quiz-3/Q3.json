@@ -1,19 +1,15 @@
 {
-  "question": "How does Arweave ensure continuous payment for its storage?",
+  "question": "How do you disable sandboxing?",
   "options": [
     {
-      "answer": "It has a storage endowment to save tokens for later",
+      "answer": "By not setting a ARNS_ROOT_HOST in your .env file.",
       "correct": true
     },
     {
-      "answer": "Its token economics are based on future storage cost estimates",
-      "correct": true
+      "answer": "By setting SANDBOXING to false in your .env file."
     },
     {
-      "answer": "It gives each miner node one Bitcoin"
-    },
-    {
-      "answer": "It requires continuous payments."
+      "answer": "By using a ?sandbox=false query parameter when opening a TX."
     }
   ]
 }

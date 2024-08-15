@@ -1,16 +1,15 @@
 {
-  "question": "What are the Arweave transaction types?",
+  "question": "What do you have to remember when enbaling the writers?",
   "options": [
     {
-      "answer": "L1 transactions",
+      "answer": "To set a START_HEIGHT value so the writers don't index the whole chain.",
       "correct": true
     },
     {
-      "answer": "Bundled transactions",
-      "correct": true
+      "answer": "To set a TIMEOUT value, so they don't wait for pending transacitons."
     },
     {
-      "answer": "Volatile transactions"
+      "answer": "Nothing, you can simply set START_WRITERS to true and acccess new transactions right away."
     }
   ]
 }

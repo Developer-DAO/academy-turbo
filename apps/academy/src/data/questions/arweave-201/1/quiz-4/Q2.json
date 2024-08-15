@@ -1,20 +1,15 @@
 {
-  "question": "What are the properties of L1 transactions?",
+  "question": "Under which route are the admin features located?",
   "options": [
     {
-      "answer": "They are relatively slow",
+      "answer": "/ar-io/admin/...",
       "correct": true
     },
     {
-      "answer": "They can transfer AR tokens",
-      "correct": true
+      "answer": "/admin"
     },
     {
-      "answer": "They can be paid with fiat currency"
-    },
-    {
-      "answer": "They can have custom tags",
-      "correct": true
+      "answer": "/gatetway/admin"
     }
   ]
 }

@@ -1,16 +1,16 @@
 {
-  "question": "What types of Arweave nodes exist?",
+  "question": "Why does your gateway need a domain?",
   "options": [
     {
-      "answer": "Miner nodes.",
+      "answer": "To enable sandboxing via dynamic subdomains.",
       "correct": true
     },
     {
-      "answer": "Gateway nodes.",
+      "answer": "To enable human-friendly ArNS names.",
       "correct": true
     },
     {
-      "answer": "Swap nodes."
+      "answer": "To improve latency and reliability."
     }
   ]
 }

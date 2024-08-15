@@ -1,15 +1,16 @@
 {
-  "question": "Under which route are the admin features located?",
+  "question": "How long is your gateway unavailable during an update?",
   "options": [
     {
-      "answer": "/ar-io/admin/...",
+      "answer": "It's never unavailable, as there is only one instance updated at a time.",
       "correct": true
     },
     {
-      "answer": "/admin"
+      "answer": "All in all, 30 minutes."
     },
     {
-      "answer": "/gatetway/admin"
+      "answer": "Each instance takes 7 minutes, so the gateway is unavailable for 14 minutes.",
+      "correct": true
     }
   ]
 }

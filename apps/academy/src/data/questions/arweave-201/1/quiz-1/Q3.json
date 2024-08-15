@@ -1,20 +1,15 @@
 {
-  "question": "What data can you store on Arweave?",
+  "question": "How are AR.IO gateways implemented?",
   "options": [
     {
-      "answer": "Music and videos",
+      "answer": "They are Node.js containers running on Docker Compose.",
       "correct": true
     },
     {
-      "answer": "Images and text",
-      "correct": true
+      "answer": "They use Java Server Pages and Nginx."
     },
     {
-      "answer": "Single page applications",
-      "correct": true
-    },
-    {
-      "answer": "Server-side rendered websites"
+      "answer": "They are written in Rust."
     }
   ]
 }
