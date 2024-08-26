@@ -1,0 +1,352 @@
+---
+title: Arweave 201: Lesson 3
+description: This lesson covers extending an Arweave gateway for bundling, which enables uploads to Arweave. You will install the bundler sidecar to your gateway and allow specific addresses to upload.
+icons: ["arweave", "fundamentals"]
+---
+
+import LessonLayout from "../../../components/LessonLayout";
+import Callout from "../../../components/mdx/Callout";
+import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
+import Question from "../../../components/mdx/Question";
+import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
+import LessonInformationalModal from "../../../components/mdx/LessonInformationalModal";
+
+<LessonLayout
+   lessonTitle="Enabling Your Gateway for Uploads to Arweave"
+   lessonImage="/meta-images/arweave-201/deploying-an-arweave-gateway-to-the-cloud-for-production.png"
+   lessonDescription="This lesson covers extending an Arweave gateway for bundling, which enables uploads to Arweave. You will install the bundler sidecar to your gateway and allow specific addresses to upload."
+   author="K"
+   authorImage="/authors/k4y1s.jpg"
+   authorPosition="Developer DAO"
+   authorTwitter="K4y1s"
+   createdDate="Aug 29, 2024"
+>
+
+## About this Lesson
+
+Greetings! Welcome to the third lesson of the Arweave 201 track. In the previous lesson, you learned how to deploy an Arweave gateway to AWS so it can power Permaweb apps in production. In this lesson, you’ll learn how to add bundling functionality to that gateway so your users can’t just read but also write data for Arweave.
+
+While running a basic gateway is useful for decentralizing data access, it does little for data ingress. Users can read data from your gateway, but they still have to upload it via a centralized bundling service like ArDrive Turbo. While these services are very convenient, they can break an application if they go offline.
+
+You can run a bundling service alongside your gateway to circumvent this issue. Your bundler gives you full control over who is allowed to upload data to Arweave. In addition, you optimistically serve the data before it gets settled on Arweave, improving the performance of your applications.
+
+## Prerequisites
+
+To complete this lesson, you should have completed [the previous lesson](https://academy.developerdao.com/tracks/arweave-201/2) to have a gateway to start with. If you destroyed that stack already, go back and redeploy it.
+
+You need **a basic understanding of Linux, Docker, and AWS.**
+
+A **basic understanding of blockchains** (i.e., transactions, wallets) is also helpful.
+
+You also need a **Linux system with [Terraform](https://developer.hashicorp.com/terraform/install?product_intent=terraform) and Git.**
+
+A browser with an [Arweave wallet](https://www.arconnect.io/).
+
+As you will use the gateway on AWS from the previous lesson, **you need an [AWS account](https://aws.amazon.com/resources/create-account/).**
+
+A (sub-)**domain** you can assign to your gateway.
+
+## Refresher: What are Bundled Transactions?
+
+Bundled transactions are Arweave's layer 2 transactions. The name bundled transaction comes from the fact that multiple of these transactions are “bundled” into a single layer 1 transaction. Storing transactions in transactions is possible on Arweave, as the protocol allows storing arbitrary data alongside a transaction. Instead of uploading an image or a video with a transaction, you upload a list of other transactions.
+
+Figure 1 shows how Arweave blocks differ from Bitcoin blocks and how the bundled transactions fit into that model. While Bitcoin contains all its data in transactions, with limited block space, Arweave has regular transaction data and transaction bodies, which don’t count toward the block space.
+
+(TODO: Figure 1)
+Figure 1: Bitcoin and Arweave blocks compared
+
+This data is often called the transaction body. While it is not part of the chain, it is part of Arweave’s PoW consensus algorithm. That’s why you can think of bundled transactions as layer 2 transactions.
+
+Layer 1 transactions are slow, as each block takes 2 minutes to generate, and you have to wait several blocks to be sure the whole network consents to its integration into the blockchain. However, as each layer 1 transaction can include an arbitrary number of bundled transactions, Arweave can scale its TPS indefinitely.
+
+## What Does the Updated Architecture Look Like?
+
+While it’s possible to provision a new S3 bucket to store the uploaded data until it’s settled on Arweave, you will use [LocalStack](https://www.localstack.cloud/) instead. This allows you to store the data in a Docker container and, in turn, on an existing EC2 instance, so the architecture in Figure 2 looks the same.
+
+(TODO: Figure 2)
+Figure 2: AR.IO Gateway on AWS Architecture
+
+However, after the update, the Docker-Compose cluster will contain more containers, marked in green in Figure 3.
+
+(TODO: Figure 3)
+Figure 3: New containers
+
+## Quiz 1
+
+## Installing the Bundler
+
+Your gateway is currently running without the bundler. Since you define the bundler containers in a separate Docker Compose file, you must add it and the related configuration files to your gateway's instances. You can achieve this by using the revision updates built on CodeDeploy.
+
+### Creating a New Revision
+
+Open a shell in your cloned [ario-gateway-aws repository](https://github.com/Developer-DAO/ario-gateway-aws) to create a new revision with the following command:
+
+```bash
+scripts/prepare-revision r15+bundler
+```
+
+This will copy `revisions/template` and add the `resources/.env.gateway` containing your configuration.
+
+### Adding Docker Compose and Configuration Files
+
+Next, download the [`docker-compose.yaml`](https://raw.githubusercontent.com/Developer-DAO/ario-gateway-aws/main/revisions/r15/source/docker-compose.yaml) and the [`docker-compose.bundler.yaml`](https://raw.githubusercontent.com/ar-io/ar-io-node/r15/docker-compose.bundler.yaml) from [the ar-io-node repository](https://github.com/ar-io/ar-io-node/tree/r15) and save them into `revisions/r15+bundler/source`.
+
+Delete the `build` commands from the services in these files to ensure Docker downloads the container images instead of trying to build them.
+
+Finally, create a config file at `revisions/r15+bundler/source/.env.gateway` with this content:
+
+```txt
+ARWEAVE_WALLET='{...}'
+ALLOW_LISTED_ADDRESSES='...'
+APP_NAME='Example Bundler'
+DATA_ITEM_BUCKET=ar.io
+DATA_ITEM_S3_PREFIX=data
+BUNDLE_PAYLOAD_S3_PREFIX=data
+AR_IO_ADMIN_KEY=...
+```
+
+The `ARWEAVE_WALLET` has to contain a JWK/JSON of an Arweave wallet. You can create and export such a wallet with [ArConnect](https://www.arconnect.io/). As this wallet will pay for the bundle uploads, **you need a wallet that contains Arweave’s native AR token**. You can’t test the bundler if you don’t have at least a bit of AR on that address.
+
+The `ALLOW_LISTED_ADDRESSES` is a list of addresses that can submit transactions for upload. You can use the same address for the wallet and the allow list.
+
+The `AR_IO_ADMIN_KEY` is the admin key you used when setting up your gateway. It’s defined in the `.env` file under `ADMIN_API_KEY`. If you haven’t set it yet, add it to the `.env` file of the new revision to ensure your bundler can talk to your gateway.
+
+You should also activate indexing and unbundling in the `.env` file. This way, your gateway can deliver uploads before they are settled onchain, which usually takes a few minutes.
+
+These are the variables you have to set in the `.env` file:
+
+```txt
+ADMIN_API_KEY=... # only if missing
+ANS104_INDEX_FILTER='{ "always": true }'
+ANS104_UNBUNDLE_FILTER='{ "attributes": { "owner_address": "..." } }'
+```
+
+Use the same password as in the `.env.bundler` file and add your bundler wallet as owner_address. This way, your gateway will only unbundle your transactions.
+
+### Updating the CodeDeploy Scripts
+
+Inside `revisions/r15+bundler/scripts` are five files that CodeDeploy will execute in a deployment process. They stop the gateway, clean up old files, install the new ones, restart it, and check that it’s running correctly. If any of those scripts fail, CodeDeploy will roll back a previous revision.
+
+CodeDepoy will automatically copy all files from `revisions/r15+bundler/source` to the EC2 instances, so you can be sure that all the files created in the previous step are available. Yet, you need to update the scripts to ensure that it starts the gateway and the bundler.
+
+The first file you need to update is `revisions/r15+bundler/codedeploy-scripts/3-after-install`. Replace its content with the following code:
+
+```bash
+#!/usr/bin/env bash
+set -e
+
+export INSTANCE_ID=$(curl http://169.254.169.254/latest/meta-data/instance-id)
+echo "INSTANCE_ID=$INSTANCE_ID" >> /opt/ar-io-node/.env
+
+cat <<EOF > /etc/systemd/system/ar-io-bundler.service
+[Unit]
+Description=ar-io-bundler
+After=ar-io-node.service
+Requires=ar-io-node.service
+
+[Service]
+WorkingDirectory=/opt/ar-io-node
+Restart=always
+RestartSec=10s
+ExecStart=/usr/bin/docker-compose --env-file /opt/ar-io-node/.env.bundler -f /opt/ar-io-node/docker-compose.bundler.yaml up
+ExecStop=/usr/bin/docker-compose -f /opt/ar-io-node/docker-compose.bundler.yaml down
+TimeoutSec=60
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+systemctl enable ar-io-bundler
+```
+
+This will create a new Systemctl service to start and stop your bundler. It depends on the gateway service to ensure it starts only if the gateway is running and shuts down the bundler when the gateway shuts down.
+
+The second script is `revisions/r15+bundler/codedeploy-scripts/4-application-start`. Right now, it only starts the gateway, so you need to replace its content with the following code to include the bundler:
+
+```bash
+#!/bin/bash
+
+systemctl start ar-io-node
+systemctl start ar-io-bundler
+```
+
+The other scripts can stay the same.
+
+### Deploying the Revision
+
+With the new revision at hand, you can move on to deploy it to AWS with this command:
+
+```bash
+scripts/deploy-revision r15+bundler
+```
+
+This will pack your revision into an archive, upload it to S3, and tell CodeDeploy to update your EC2 instances. A new deployment can take 10 to 15 minutes.
+
+## Quiz 2
+
+## Testing the Bundler
+
+You can upload a file using [the Turbo SDK](https://docs.ardrive.io/docs/turbo/turbo-sdk) to complete a test of your bundler. Ensure your bundler wallet has some AR and check that you added an address to the allow list.
+
+<Callout emoji="💡">
+  Note: Replace `example.com` with your gateway hostname in the following examples.
+</Callout>
+
+### Getting Basic Information
+
+To check that the bundler is running, you can send a health check request with the following command:
+
+```bash
+curl https://example.com/bundler/health
+```
+
+To see if you configured the wallet correctly, you can use the info endpoint:
+
+```bash
+curl https://example.com/bundler/info
+```
+
+Which should respond with JSON that looks like this:
+
+```json
+{
+  "version": "0.2.0",
+  "addresses": {
+    "arweave": "ew3...fPU"
+  },
+  "gateway": "envoy",
+  "freeUploadLimitBytes": 123456
+}
+```
+
+### Uploading a File
+
+You can upload a file to the bundler if the GET endpoints work. The Turbo SDK accepts configuration options for using your bundler instead of the one provided by ArDrive.
+
+Create a new Node.js project and add the Turbo SDK with these commands:
+
+```bash
+mkdir bundler-test
+cd bundler-test
+npm init -y
+npm i @ardrive/turbo-sdk
+```
+
+Next, create an `index.mjs` file with the following code, replacing `example.com` with your bundler gateway domain:
+
+```javascript
+import Fs from "node:fs";
+import { ArweaveSigner, TurboFactory } from "@ardrive/turbo-sdk";
+
+const jwk = JSON.parse(Fs.readFileSync("./key.json", { encoding: "utf-8" }));
+
+const turbo = TurboFactory.authenticated({
+  signer: new ArweaveSigner(jwk),
+  gatewayUrl: "https://example.com",
+  uploadServiceConfig: {
+    url: "https://example.com/bundler",
+  },
+});
+
+const result = await turbo.uploadFile({
+  fileStreamFactory: () => Fs.createReadStream("./package.json"),
+  fileSizeFactory: () => Fs.statSync("./package.json").size,
+});
+
+console.log(result);
+```
+
+Create a `key.json` file with the JWK of one of the keys you added to the allow list in the `.env.bundler` file.
+
+After you have created all the files, you can run the upload script with the following command:
+
+```bash
+node index.mjs
+```
+
+Sometimes, it can take one or two retries before the call succeeds.
+
+The output should look similar to this:
+
+```json
+{
+  "id": "some-long-id-123456789",
+  "timestamp": 123456789,
+  "winc": "0",
+  "version": "0.2.0",
+  "deadlineHeight": 123456789,
+  "dataCaches": ["arweave.net"],
+  "fastFinalityIndexes": ["arweave.net"],
+  "public": "gcH…6fc",
+  "signature": "BUG...5NY",
+  "owner": "ew3...fPU"
+}
+```
+
+The `id` is the transaction ID for your upload. You can use it with your gateway to retrieve the file:
+
+```txt
+https://example.com/some-long-id-123456789
+```
+
+You can also read the transaction data with your gateway’s GraphQL endpoint at `https://example.com/graphql` with this query:
+
+```graphql
+query {
+  transaction(id: "some-long-id-123456789") {
+    id
+    owner {
+      address
+    }
+    data {
+      size
+    }
+    block {
+      id
+      timestamp
+    }
+  }
+}
+```
+
+The response should look similar to this:
+
+```json
+{
+  "data": {
+    "transaction": {
+      "id": "some-long-id-123456789",
+      "owner": {
+        "address": "ew3...fPU"
+      },
+      "data": {
+        "size": "313"
+      },
+      "block": null
+    }
+  }
+}
+```
+
+The `block` in that response will get filled in when an Arweave storage node picks up the bundle.
+
+You can also check Viewblock to see if the bundle is confirmed onchain.
+
+```
+https://viewblock.io/arweave/tx/some-long-id-123456789
+```
+
+**Congratulations!!!**
+
+You just uploaded your first bundled transaction to Arweave with your very own bundler! This means you can now handle and pay for your uploads and aren’t dependent on other bundlers. The only thing more involved than that would be running an Arweave storage node, so you learned all the gateway features!
+
+## Quiz 3
+
+## Summary
+
+## Final Quiz
+
+## Conclusion
+
+</LessonLayout>
