@@ -1,0 +1,17 @@
+{
+  "question": "Where can you get transaction data and body from your gateway?",
+  "options": [
+    {
+      "answer": "Via the GET /tx/<TX_ID> endpoint.",
+      "correct": true
+    },
+    {
+      "answer": "Via the GraphQL endpoint.",
+      "correct": true
+    },
+    {
+      "answer": "Via the GET /<TX_ID> endpoint.",
+      "correct": true
+    }
+  ]
+}

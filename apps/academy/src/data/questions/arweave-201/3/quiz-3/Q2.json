@@ -1,0 +1,15 @@
+{
+  "question": "Can anyone upload files through your bundler?",
+  "options": [
+    {
+      "answer": "No, only the wallet addresses added to the bundler's allow list.",
+      "correct": true
+    },
+    {
+      "answer": "Yes, as long as they pay via credit card."
+    },
+    {
+      "answer": "No, only Arweave and Solana addresses."
+    }
+  ]
+}
