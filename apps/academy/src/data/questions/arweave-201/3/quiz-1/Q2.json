@@ -1,0 +1,17 @@
+{
+  "question": "When would you use bundled transactions?",
+  "options": [
+    {
+      "answer": "When you care about TPS.",
+      "correct": true
+    },
+    {
+      "answer": "When you want to sign your transactions with a non-Arweave key.",
+      "correct": true
+    },
+    {
+      "answer": "When you want want gasless transactions smaller than 100 KiB.",
+      "correct": true
+    }
+  ]
+}

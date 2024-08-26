@@ -1,0 +1,15 @@
+{
+  "question": "How can the bundler run outside AWS?",
+  "options": [
+    {
+      "answer": "It uses LocalStack to emulate S3, SQS, and other AWS services.",
+      "correct": true
+    },
+    {
+      "answer": "It can't outside AWS."
+    },
+    {
+      "answer": "By allowing operators to write their own storage adapters."
+    }
+  ]
+}
