@@ -1,0 +1,145 @@
+{
+  "title": "Final Quiz",
+  "questions": [
+    {
+      "question": "How does your bundler bundle transactions?",
+      "options": [
+        {
+          "answer": "Each bundled transaction becomes a tag."
+        },
+        {
+          "answer": "It stores them locally and references them in a layer 1 transaction."
+        },
+        {
+          "answer": "It packs them all into one transaction body.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "What's the function of LocalStack in the bundler?",
+      "options": [
+        {
+          "answer": "It emulates AWS services inside Docker containers.",
+          "correct": true
+        },
+        {
+          "answer": "It improves indexing performance of the gateway."
+        },
+        {
+          "answer": "It makes AWS services deterministic."
+        }
+      ]
+    },
+    {
+      "question": "Can you deploy a bundler only on AWS?",
+      "options": [
+        {
+          "answer": "It can't run outside of AWS."
+        },
+        {
+          "answer": "Yes, AWS is the only cloud provider that's fast enough."
+        },
+        {
+          "answer": "No, with LocalStack it can run wherever Docker runs.",
+          "correct": true
+        }
+      ]
+    },
+
+    {
+      "question": "Can the bundler run without a wallet?",
+      "options": [
+        {
+          "answer": "No, it needs to sign the layer 1 transactions.",
+          "correct": true
+        },
+        {
+          "answer": "No, it needs to pay for the layer 1 transactions.",
+          "correct": true
+        },
+        {
+          "answer": "Yes, all layer 1 transactions smaller than 100 KiB are subsidized by Arweave."
+        }
+      ]
+    },
+    {
+      "question": "What do you have to activate to ensure your gateway can serve your bundler transactions optimisitically?",
+      "options": [
+        {
+          "answer": "Webhooks"
+        },
+        {
+          "answer": "ANS-104 Indexing",
+          "correct": true
+        },
+        {
+          "answer": "ANS-104 Unbundling",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "Can your gateway serve bundled transactions before they're settled on Arweave?",
+      "options": [
+        {
+          "answer": "Yes",
+          "correct": true
+        },
+        {
+          "answer": "No"
+        },
+        {
+          "answer": "Only via webhooks."
+        }
+      ]
+    },
+    {
+      "question": "Which library do you need to upload files through your bundler?",
+      "options": [
+        {
+          "answer": "The Turbo SDK",
+          "correct": true
+        },
+        {
+          "answer": "The AR.IO SDK"
+        },
+        {
+          "answer": "The Arweave SDK"
+        }
+      ]
+    },
+    {
+      "question": "Which endpoints can serve your bundled transactions optimistically?",
+      "options": [
+        {
+          "answer": "Via the GET /tx/<TX_ID> endpoint.",
+          "correct": true
+        },
+        {
+          "answer": "Via the GraphQL endpoint.",
+          "correct": true
+        },
+        {
+          "answer": "Via the GET /<TX_ID> endpoint.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "Is your bundler permissionless?",
+      "options": [
+        {
+          "answer": "Yes, but only for EU citizens."
+        },
+        {
+          "answer": "No, only the wallet addresses added to the bundler's allow list.",
+          "correct": true
+        },
+        {
+          "answer": "No, only Arweave and Solana addresses can upload data."
+        }
+      ]
+    }
+  ]
+}

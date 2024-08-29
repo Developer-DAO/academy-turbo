@@ -1,0 +1,15 @@
+{
+  "question": "Where does Arweave store bundled transactions?",
+  "options": [
+    {
+      "answer": "In transaction body, the same place where file uploads are stored.",
+      "correct": true
+    },
+    {
+      "answer": "In the transaction data, where the signature and tags are stored."
+    },
+    {
+      "answer": "On an external object storage, together with indexing data."
+    }
+  ]
+}

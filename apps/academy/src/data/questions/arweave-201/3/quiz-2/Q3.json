@@ -1,0 +1,17 @@
+{
+  "question": "What do you have to activate to ensure your gateway can serve your bundler transactions optimisitically?",
+  "options": [
+    {
+      "answer": "ANS-104 Indexing",
+      "correct": true
+    },
+    {
+      "answer": "ANS-104 Unbundling",
+      "correct": true
+    },
+    {
+      "answer": "Webhooks",
+      "correct": false
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "question": "Does the bundler communicate with your gateway?",
+  "options": [
+    {
+      "answer": "Yes, to tell the gateway about the uploaded transactions it should index.",
+      "correct": true
+    },
+    {
+      "answer": "No, they are completely separate."
+    },
+    {
+      "answer": "Yes, to pause the gateway for every upload."
+    }
+  ]
+}
