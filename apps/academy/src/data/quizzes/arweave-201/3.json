@@ -5,14 +5,14 @@
       "question": "How does your bundler bundle transactions?",
       "options": [
         {
-          "answer": "It packs them all into one transaction body.",
-          "correct": true
-        },
-        {
           "answer": "Each bundled transaction becomes a tag."
         },
         {
           "answer": "It stores them locally and references them in a layer 1 transaction."
+        },
+        {
+          "answer": "It packs them all into one transaction body.",
+          "correct": true
         }
       ]
     },
@@ -35,14 +35,14 @@
       "question": "Can you deploy a bundler only on AWS?",
       "options": [
         {
-          "answer": "No, with LocalStack it can run wherever Docker runs.",
-          "correct": true
-        },
-        {
           "answer": "It can't run outside of AWS."
         },
         {
           "answer": "Yes, AWS is the only cloud provider that's fast enough."
+        },
+        {
+          "answer": "No, with LocalStack it can run wherever Docker runs.",
+          "correct": true
         }
       ]
     },
@@ -67,16 +67,15 @@
       "question": "What do you have to activate to ensure your gateway can serve your bundler transactions optimisitically?",
       "options": [
         {
+          "answer": "Webhooks"
+        },
+        {
           "answer": "ANS-104 Indexing",
           "correct": true
         },
         {
           "answer": "ANS-104 Unbundling",
           "correct": true
-        },
-        {
-          "answer": "Webhooks",
-          "correct": false
         }
       ]
     },
@@ -131,11 +130,11 @@
       "question": "Is your bundler permissionless?",
       "options": [
         {
-          "answer": "No, only the wallet addresses added to the bundler's allow list.",
-          "correct": true
+          "answer": "Yes, but only for EU citizens."
         },
         {
-          "answer": "Yes, but only for EU citizens."
+          "answer": "No, only the wallet addresses added to the bundler's allow list.",
+          "correct": true
         },
         {
           "answer": "No, only Arweave and Solana addresses can upload data."

@@ -13,7 +13,7 @@ import LessonInformationalModal from "../../../components/mdx/LessonInformationa
 
 <LessonLayout
    lessonTitle="Enabling Your Gateway for Uploads to Arweave"
-   lessonImage="/meta-images/arweave-201/deploying-an-arweave-gateway-to-the-cloud-for-production.png"
+   lessonImage="/meta-images/arweave-201/enabling-your-gateway-for-uploads-to-arweave.png"
    lessonDescription="This lesson covers extending an Arweave gateway for bundling, which enables uploads to Arweave. You will install the bundler sidecar to your gateway and allow specific addresses to upload."
    author="K"
    authorImage="/authors/k4y1s.jpg"
@@ -97,7 +97,6 @@ Figure 2 looks the same.
 
 However, after the update, the Docker-Compose cluster will contain more containers, marked in green
 in Figure 3.
-
 
 ![Figure 3: New containerse](/assets/tracks/arweave-201/3/figure-3.png)
 
@@ -266,7 +265,7 @@ address to the allow list.
 
 ### Getting Basic Information
 
-To check that the bundler is running, you can send a health check request with the following 
+To check that the bundler is running, you can send a health check request with the following
 command:
 
 ```bash
@@ -430,7 +429,7 @@ features!
 ## Summary
 
 In this lesson, you learned how to deploy an Arweave bundler to AWS and everything related to that
-task, like installing the bundler sidecar and configuring your gateway for unbundling. Now, you can 
+task, like installing the bundler sidecar and configuring your gateway for unbundling. Now, you can
 upload Arweave transactions on your own.
 
 <QuizStatusChecker
@@ -448,18 +447,18 @@ upload Arweave transactions on your own.
         "To claim your XP tokens with AR.IO: share your success on Twitter and submit these along with your secret code on Zealy.",
     },
     {
-      message: "Secret code: PO3ZEO",
+      message: "Secret code: BZB48B",
     },
   ]}
 />
 
 ## Conclusion
 
-Running your own Arweave bundler isn't much more complex than running a gateway. You just need 
+Running your own Arweave bundler isn't much more complex than running a gateway. You just need
 another docker-compose.yaml, the corresponding configuration, and a bit of AR to pay for the
-uploads. 
+uploads.
 
-Having your own bundler frees you from the reliance on central services and gives you more control 
-over optimistic indexes, which can speed up data availability drastically. 
+Having your own bundler frees you from the reliance on central services and gives you more control
+over optimistic indexes, which can speed up data availability drastically.
 
 </LessonLayout>
