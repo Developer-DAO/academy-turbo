@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactElement } from "react";
-import { Icons } from "ui";
+import { Icons, LearnWeb3Banner, PartnerBanner } from "ui";
 
 //  LearnWeb3Banner, PartnerBanner
 import PageSeoLayout from "@/components/PageSeoLayout";
@@ -48,19 +48,22 @@ const Home: NextPageWithLayout = () => {
       </div>
 
       {/* Banner Section */}
-      <div></div>
+      <div>
+        <div>
+          <div id="learn-web3" className="  lg:pt-16">
+            <LearnWeb3Banner href="/tracks" />{" "}
+          </div>
+        </div>
+        <div>
+          <div id="partners" className="  pb-4 pt-16">
+            <PartnerBanner
+              href="https://airtable.com/appDMMIARfSeiovpk/shrZExypPetXEx6Ox"
+              imgSrc="/dd_logo.svg"
+            />
+          </div>
+        </div>
+      </div>
     </div>
-
-    //   <section id="learn-web3" className="main-container lg:pt-16">
-    //     <LearnWeb3Banner href="/tracks" />
-    //   </section>
-    //   <section id="partners" className="main-container pb-4 pt-16">
-    //     <PartnerBanner
-    //       href="https://airtable.com/appDMMIARfSeiovpk/shrZExypPetXEx6Ox"
-    //       imgSrc="/dd_logo.svg"
-    //     />
-    //   </section>
-    // </>
   );
 };
 
@@ -76,3 +79,5 @@ Home.getLayout = function getLayout(page: ReactElement) {
 };
 
 export default Home;
+
+// h-[480px] w-[1185px]

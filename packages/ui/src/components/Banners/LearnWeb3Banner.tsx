@@ -10,7 +10,7 @@ export interface HomePageBannerProps {
 
 export const LearnWeb3Banner: FC<HomePageBannerProps> = ({ href }) => {
   return (
-    <Card className="banner flex-col lg:flex-row">
+    <Card className=" banner flex-col lg:flex-row">
       <div className="terminal-text">
         <div className="line">
           <div>1</div>
