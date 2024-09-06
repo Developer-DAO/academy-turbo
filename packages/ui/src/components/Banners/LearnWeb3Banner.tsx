@@ -12,7 +12,7 @@ export const LearnWeb3Banner: FC<HomePageBannerProps> = ({ href }) => {
   return (
     <Card className=" banner flex-col lg:flex-row">
       <div className=" w-[78rem] items-center justify-center md:flex">
-        <div className="terminal-text md:py-[50px] md:pr-[80px] md:text-[15px]">
+        <div className="terminal-text md:py-[25px] md:pr-[80px] md:text-[15px]">
           <div className="line">
             <div>1</div>
             <div className="text-white">
