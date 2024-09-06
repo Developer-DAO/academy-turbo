@@ -316,9 +316,9 @@
 }
 
 .footer {
-  @apply flex min-h-[224px] flex-col items-center gap-y-8 border-t sm:flex-row-reverse sm:justify-between;
+  @apply flex  flex-col items-center gap-y-8 sm:flex-row-reverse sm:justify-between;
   @apply border-white text-white;
-  @apply mt-20 px-0 py-8 text-xs font-semibold md:text-sm;
+  @apply mt-[20px] px-0 text-xs font-semibold md:text-sm;
 }
 
 .footer nav {
