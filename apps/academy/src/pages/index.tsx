@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactElement } from "react";
 import { Icons } from "ui";
@@ -19,7 +20,18 @@ const Home: NextPageWithLayout = () => {
             <br />
             <span className=" md:mr-[50px]">with</span>
             <br />
-            <span>friends</span>
+            <span className=" flex items-baseline gap-x-2">
+              friends{" "}
+              <span className=" h-[55px] w-[55px] overflow-hidden rounded-full">
+                <Image
+                  alt="devIcon"
+                  src={"/bg_home.png"}
+                  width={500}
+                  height={500}
+                  className=" h-full w-full"
+                />
+              </span>{" "}
+            </span>
           </h1>
 
           <div className=" flex flex-col items-center justify-center ">
@@ -39,40 +51,6 @@ const Home: NextPageWithLayout = () => {
       <div></div>
     </div>
 
-    // <>
-    //   <section className=" academy-grid d:w-[707px] flex flex-col items-center justify-center md:mt-[310px]">
-    //     <div className=" flex flex-col items-center justify-center">
-    // <div className="hidden justify-center md:flex">
-    //   <div className=" text-bttf-lg">
-    //     <h1>
-    //       Learn
-    //       <br />
-    //       web3__
-    //       <br />
-    //       with
-    //       <br />
-    //       friends
-    //     </h1>
-    //   </div>
-    // </div>
-    // <div className="description max-w-[495px]">
-    //   <p>Become a web3 developer with Developer DAO.</p>
-    // </div>
-    // <div className="hidden w-full items-center justify-center md:flex">
-    //   <Link href="/#learn-web3" className="hover:cursor-pointer">
-    //     <Icons.scroll className="h-16 w-16" />
-    //   </Link>
-    // </div>
-    // </div>
-    //     {/* <div className="flex h-full items-center justify-center md:hidden">
-    //       <div className="text-bttf-lg">
-    //         <h1>learn</h1>
-    //         <h1>web3__</h1>
-    //         <h1>with</h1>
-    //         <h1>friends</h1>
-    //       </div>
-    //     </div> */}
-    //   </section>
     //   <section id="learn-web3" className="main-container lg:pt-16">
     //     <LearnWeb3Banner href="/tracks" />
     //   </section>
