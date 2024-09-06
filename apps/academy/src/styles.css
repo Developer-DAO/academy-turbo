@@ -3,23 +3,21 @@
 /* Apply the background to the entire page */
 body {
   margin: 0; /* Remove default margin */
-  height: 100vh; /* Ensure the body takes the full height of the viewport */
-  width: 100vw; /* Ensure the body takes the full width of the viewport */
-  overflow: hidden; /* Prevent scrollbars caused by overflow */
-  position: relative; /* Position relative for the pseudo-element */
+  height: 200vh; /* Ensure the body takes the full height of the viewport */
+  position: relative; /* Ensure child elements are positioned relative to body */
 }
 
-body::before {
-  content: ""; /* Create a pseudo-element */
-  position: absolute;
+body::after {
+  content: ""; /* Required to generate a pseudo-element */
+  position: absolute; /* Position overlay absolutely within body */
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 200vh;
   background: url("/home_bg.png") no-repeat center center fixed;
   background-size: cover; /* Make the background image cover the entire page */
-  opacity: 0.5; /* Adjust opacity for the overlay effect */
-  z-index: -1; /* Place the pseudo-element behind the content */
+  opacity: 0.5; /* Adjust this value to change the opacity of the background image */
+  z-index: -1; /* Ensure the overlay is behind other content */
 }
 
 .text-bttf {
