@@ -129,7 +129,7 @@ export const Footer = () => {
                         alt={"Developer DAO"}
                         width={200}
                         height={80}
-                        className="mb-4 h-[100px] w-[100px] border-none p-4 md:mb-0"
+                        className="mb-4 h-[100px] w-[100px] border-none p-3 md:mb-0 md:mr-[5px]"
                       />
                     </div>
                   </a>

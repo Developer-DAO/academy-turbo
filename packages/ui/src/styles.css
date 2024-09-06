@@ -229,7 +229,7 @@
 }
 
 .top-nav {
-  @apply h-[62px] w-min max-w-lg rounded-[51px] border-2 border-[var(--academy-dark)] px-4 py-6;
+  @apply h-[62px]  rounded-[51px] border-2 border-[var(--academy-dark)] px-4 py-6;
 }
 
 .top-nav .nav {
