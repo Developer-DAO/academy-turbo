@@ -281,7 +281,7 @@
 }
 
 .banner .title {
-  @apply max-w-[220px] text-center text-4xl font-normal leading-normal tracking-wide text-white md:max-w-md;
+  @apply max-w-[220px] text-center text-[48px] font-normal leading-normal tracking-wide text-white md:max-w-md;
   font-family: var(--font-future);
 }
 
@@ -295,7 +295,7 @@
 }
 
 .terminal-text {
-  @apply mx-4 pt-8 text-left text-xs font-normal leading-5 text-[#e1e4e84a] md:text-sm lg:mx-auto lg:pb-8;
+  @apply mx-4 pt-8 text-left text-xs font-normal leading-5 text-[#e1e4e84a] md:text-[15px] lg:mx-auto lg:pb-8;
   font-family: var(--font-andale-mono);
 }
 

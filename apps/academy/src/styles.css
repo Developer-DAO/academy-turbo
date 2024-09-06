@@ -16,7 +16,7 @@ body::after {
   height: 2387px;
   background: url("/home_bg.png") no-repeat center center;
   background-size: cover; /* Make the background image cover the entire page */
-  opacity: 0.5; /* Adjust this value to change the opacity of the background image */
+  opacity: 0.4; /* Adjust this value to change the opacity of the background image */
   z-index: -1; /* Ensure the overlay is behind other content */
 }
 

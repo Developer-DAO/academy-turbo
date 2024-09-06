@@ -9,19 +9,19 @@ import type { NextPageWithLayout } from "@/pages/_app";
 
 const Home: NextPageWithLayout = () => {
   return (
-    <div className=" flex flex-col items-center justify-center">
+    <div className=" ">
       {/* HeroSection */}
       <div className=" mb-[118px] mt-[310px]">
-        <div className=" text-white">
+        <div className=" flex flex-col items-center justify-center text-white">
           <h1 className=" text-bttf text-center text-5xl tracking-wide  lg:text-[100px]">
-            <span className=" md:ml-[60px]">Learn</span>
+            <span className=" md:ml-[50px]">LEArn</span>
             <br />
-            <span>web3__</span>
+            <span>WEB3__</span>
             <br />
-            <span className=" md:mr-[50px]">with</span>
+            <span className=" md:mr-[50px]">WITH</span>
             <br />
             <span className=" flex items-baseline gap-x-2">
-              friends{" "}
+              FRIENDS{" "}
               <span className=" h-[55px] w-[55px] overflow-hidden rounded-full">
                 <Image
                   alt="devIcon"
@@ -48,9 +48,9 @@ const Home: NextPageWithLayout = () => {
       </div>
 
       {/* Banner Section */}
-      <div>
+      <div className=" flex flex-col items-center justify-center">
         <div>
-          <div id="learn-web3" className="  lg:pt-16">
+          <div id="learn-web3" className="lg:pt-16">
             <LearnWeb3Banner href="/tracks" />{" "}
           </div>
         </div>
