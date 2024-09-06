@@ -58,7 +58,10 @@ export const Footer = () => {
       <div className=" mt-[165px] ">
         <div className="  mx-[110px] mb-[20px] h-[1px] border border-gray-300" />
         <div className="footer ">
-          <nav aria-label="social" className=" flex flex-col items-end justify-end md:mb-[1px]">
+          <nav
+            aria-label="social"
+            className=" flex flex-col items-end justify-end md:mb-[1px] md:mr-[15px]"
+          >
             <div className=" flex items-center justify-center gap-x-5">
               {socials.map((social) => {
                 const Icon = Icons[social.icon];
