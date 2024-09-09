@@ -229,7 +229,7 @@
 }
 
 .top-nav {
-  @apply h-[62px]  rounded-[51px] border-2 border-[var(--academy-dark)] px-4 py-6;
+  @apply h-[62px] rounded-[51px] border border-[var(--academy-dark)] px-4 py-6;
 }
 
 .top-nav .nav {
@@ -277,7 +277,7 @@
 .banner {
   @apply gradient-neutral flex w-full items-start justify-between rounded-[51px];
   @apply max-w-screen-2xl gap-x-6 gap-y-10 border-none border-[var(--gray-white)] p-2 shadow-sm md:p-4 lg:p-7;
-  @apply ring-[2px] ring-inset ring-[#E9E9E920] ring-offset-0;
+  /* @apply ring-[2px] ring-inset ring-red-500 ring-offset-0; */
 }
 
 .banner .title {

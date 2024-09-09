@@ -10,129 +10,130 @@ export interface HomePageBannerProps {
 
 export const LearnWeb3Banner: FC<HomePageBannerProps> = ({ href }) => {
   return (
-    <Card className=" banner flex-col !bg-black !bg-opacity-40 lg:flex-row">
-      {/* <div className="pointer-events-none absolute right-0 top-0 h-[150px] w-[150px] rounded-tr-[55px] border-r-[1px] border-t-[1px] border-gray-600" /> */}
-
-      <div className=" w-[78rem] items-center justify-center md:flex">
-        <div className="terminal-text md:py-[25px] md:pr-[80px] md:text-[15px]">
-          <div className="line">
-            <div>1</div>
-            <div className="text-white">
+    <div className=" banner flex-col !border-none !bg-opacity-20 !bg-gradient-to-tr from-zinc-600 from-10% via-black via-40%  to-zinc-600 to-90% !p-[2px] lg:flex-row">
+      <Card className=" banner flex-col !border-none !bg-black !bg-opacity-90 lg:flex-row">
+        {/* <div className="pointer-events-none absolute right-0 top-0 h-[150px] w-[150px] rounded-tr-[55px] border-r-[1px] border-t-[1px] border-gray-600" /> */}
+        <div className=" z-20 w-[78rem] items-center justify-center md:flex">
+          <div className="terminal-text md:py-[25px] md:pr-[80px] md:text-[15px]">
+            <div className="line">
+              <div>1</div>
+              <div className="text-white">
+                <p>
+                  <span className="text-[#F97583]">function submitVote</span>(
+                </p>
+                <p>
+                  <span className="text-[#FF39F7]">
+                    uint256 <span className="text-[#e65a9e]">proposalIndex</span>{" "}
+                  </span>
+                  ,
+                </p>
+                <p>
+                  <span className="text-[#FF39F7]">
+                    uint8 <span className="text-[#e65a9e]">uintVote</span>
+                  </span>
+                </p>
+              </div>
+            </div>
+            <div className="line">
+              <div>2</div>
+              <div className="text-white">
+                <p>
+                  )
+                  <span className="text-[#F97583]">
+                    public <span className="text-[#BE2D61]">nonReentrant onlyDelegate</span>
+                  </span>
+                  &#123;
+                </p>
+              </div>
+            </div>
+            <div className="line">
+              <div>3</div>
+              <div className="text-white">
+                <p className="pl-6">
+                  <span className="text-[#FF39F7]">address&nbsp;</span>
+                  <span className="text-[#e65a9e]">member Address</span> =
+                </p>
+                <p className="pl-12">
+                  memberAddress[<span className="text-[#79B8FF]">msg</span>.sender];
+                </p>
+              </div>
+            </div>
+            <div className="line">
+              <div>4</div>
+              <div>
+                <p className="pl-6 text-white md:whitespace-nowrap">
+                  <span className="text-[#FF39F7]">Member&nbsp;</span>
+                  <span className="text-[#e65a9e]">storage member</span> = members[memberAddress];
+                </p>
+              </div>
+            </div>
+            <div className="line">
+              <div>5</div>
+              <div className="text-white">
+                <p className="pl-6">
+                  <span className="text-[#F97583]">require</span>
+                  (proposalIndex <span className="text-[#F97583]">&lt;&nbsp;</span>
+                  proposalQueue.length,
+                </p>
+                <p className="pl-12">
+                  <span className="text-[#9ECBFF]">&quot;proposal does not exist&quot;</span>);
+                </p>
+              </div>
+            </div>
+            <div className="line">
+              <div>6</div>
+              <div className="text-white">
+                <p className="pl-6">
+                  <span className="text-[#FF39F7]">Proposal&nbsp;</span>
+                  <span className="text-[#e65a9e]">storage proposal</span> =
+                </p>
+                <p className="pl-12">proposals&#91;proposalQueue&#91; proposalIndex &#93;&#93;;</p>
+              </div>
+            </div>
+            <div className="line">
+              <div>7</div>
+              <div className="text-white md:whitespace-nowrap">
+                <p className="pl-6">
+                  <span className="text-[#F97583]">require</span>
+                  (uintVote&nbsp;<span className="text-[#F97583]">&lt;&nbsp;</span>
+                  <span className="text-[#9ECBFF]">3, &quot;must be less than 3&quot;</span>);
+                </p>
+              </div>
+            </div>
+            <div className="line">
+              <div>8</div>
+              <div>
+                <p className="pl-6 text-white">
+                  <span className="text-[#FF39F7]">Vote&nbsp;</span>
+                  <span className="text-[#e65a9e]">vote</span> =&nbsp;
+                  <span className="text-[#B392F0]">Vote</span>(uintVote);
+                </p>
+                <p className="pl-3 text-white">...</p>
+              </div>
+            </div>
+          </div>
+          <div className="p-10">
+            <CardHeader className="flex-row justify-center">
+              <CardTitle className="title">LEARN WEB3</CardTitle>
+            </CardHeader>
+            <CardContent className=" p-1 pb-12 text-center text-[17px] font-light text-white md:mb-[40px] md:pb-1">
               <p>
-                <span className="text-[#F97583]">function submitVote</span>(
+                Developer DAO offers learning <br /> resources to help you build with web3 <br />
+                technologies.
               </p>
-              <p>
-                <span className="text-[#FF39F7]">
-                  uint256 <span className="text-[#e65a9e]">proposalIndex</span>{" "}
-                </span>
-                ,
-              </p>
-              <p>
-                <span className="text-[#FF39F7]">
-                  uint8 <span className="text-[#e65a9e]">uintVote</span>
-                </span>
-              </p>
-            </div>
-          </div>
-          <div className="line">
-            <div>2</div>
-            <div className="text-white">
-              <p>
-                )
-                <span className="text-[#F97583]">
-                  public <span className="text-[#BE2D61]">nonReentrant onlyDelegate</span>
-                </span>
-                &#123;
-              </p>
-            </div>
-          </div>
-          <div className="line">
-            <div>3</div>
-            <div className="text-white">
-              <p className="pl-6">
-                <span className="text-[#FF39F7]">address&nbsp;</span>
-                <span className="text-[#e65a9e]">member Address</span> =
-              </p>
-              <p className="pl-12">
-                memberAddress[<span className="text-[#79B8FF]">msg</span>.sender];
-              </p>
-            </div>
-          </div>
-          <div className="line">
-            <div>4</div>
-            <div>
-              <p className="pl-6 text-white md:whitespace-nowrap">
-                <span className="text-[#FF39F7]">Member&nbsp;</span>
-                <span className="text-[#e65a9e]">storage member</span> = members[memberAddress];
-              </p>
-            </div>
-          </div>
-          <div className="line">
-            <div>5</div>
-            <div className="text-white">
-              <p className="pl-6">
-                <span className="text-[#F97583]">require</span>
-                (proposalIndex <span className="text-[#F97583]">&lt;&nbsp;</span>
-                proposalQueue.length,
-              </p>
-              <p className="pl-12">
-                <span className="text-[#9ECBFF]">&quot;proposal does not exist&quot;</span>);
-              </p>
-            </div>
-          </div>
-          <div className="line">
-            <div>6</div>
-            <div className="text-white">
-              <p className="pl-6">
-                <span className="text-[#FF39F7]">Proposal&nbsp;</span>
-                <span className="text-[#e65a9e]">storage proposal</span> =
-              </p>
-              <p className="pl-12">proposals&#91;proposalQueue&#91; proposalIndex &#93;&#93;;</p>
-            </div>
-          </div>
-          <div className="line">
-            <div>7</div>
-            <div className="text-white md:whitespace-nowrap">
-              <p className="pl-6">
-                <span className="text-[#F97583]">require</span>
-                (uintVote&nbsp;<span className="text-[#F97583]">&lt;&nbsp;</span>
-                <span className="text-[#9ECBFF]">3, &quot;must be less than 3&quot;</span>);
-              </p>
-            </div>
-          </div>
-          <div className="line">
-            <div>8</div>
-            <div>
-              <p className="pl-6 text-white">
-                <span className="text-[#FF39F7]">Vote&nbsp;</span>
-                <span className="text-[#e65a9e]">vote</span> =&nbsp;
-                <span className="text-[#B392F0]">Vote</span>(uintVote);
-              </p>
-              <p className="pl-3 text-white">...</p>
+            </CardContent>
+            <div className="flex justify-center">
+              <Button
+                asChild
+                className="button-rounded text-black hover:bg-[#721F79] hover:text-white"
+              >
+                <NextLink href={href}>get started!</NextLink>
+              </Button>
             </div>
           </div>
         </div>
-        <div className="p-10">
-          <CardHeader className="flex-row justify-center">
-            <CardTitle className="title">LEARN WEB3</CardTitle>
-          </CardHeader>
-          <CardContent className=" p-1 pb-12 text-center text-[17px] font-light text-white md:mb-[40px] md:pb-1">
-            <p>
-              Developer DAO offers learning <br /> resources to help you build with web3 <br />
-              technologies.
-            </p>
-          </CardContent>
-          <div className="flex justify-center">
-            <Button
-              asChild
-              className="button-rounded text-black hover:bg-[#721F79] hover:text-white"
-            >
-              <NextLink href={href}>get started!</NextLink>
-            </Button>
-          </div>
-        </div>
-      </div>
-    </Card>
+      </Card>
+    </div>
   );
 };
 
