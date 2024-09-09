@@ -10,7 +10,7 @@ export interface HomePageBannerProps {
 
 export const LearnWeb3Banner: FC<HomePageBannerProps> = ({ href }) => {
   return (
-    <div className=" banner flex-col !border-none !bg-opacity-20 !bg-gradient-to-tr from-zinc-600 from-10% via-black via-40%  to-zinc-600 to-90% !p-[2px] lg:flex-row">
+    <div className=" banner via-73% from-17% flex-col !border-none !bg-opacity-20 !bg-gradient-to-tr from-zinc-700 via-black  to-zinc-600 to-90% !p-[2px] lg:flex-row">
       <Card className=" banner flex-col !border-none !bg-black !bg-opacity-90 lg:flex-row">
         {/* <div className="pointer-events-none absolute right-0 top-0 h-[150px] w-[150px] rounded-tr-[55px] border-r-[1px] border-t-[1px] border-gray-600" /> */}
         <div className=" z-20 w-[78rem] items-center justify-center md:flex">
