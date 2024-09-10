@@ -41,7 +41,7 @@ const PageHeader: FunctionComponent = () => {
   const { pathname } = router;
 
   return (
-    <header className=" flex items-center justify-between md:mx-[45px] md:pt-[20px]">
+    <header className=" mx-[30px] flex items-center justify-between pt-[30px] md:mx-[45px] md:pt-[20px] ">
       <div className="hidden  lg:block">
         {pathname === "/" || pathname === "/tracks" || pathname === "/fundamentals" ? (
           <div className="flex justify-between">
@@ -58,11 +58,11 @@ const PageHeader: FunctionComponent = () => {
           </div>
         )}
       </div>
-      <div>
-        <div className="mx-auto">
-          <TopBar menus={topbarNavMenus} />
-        </div>
+
+      <div className="mx-auto hidden md:block">
+        <TopBar menus={topbarNavMenus} />
       </div>
+
       <div>
         {pathname === "/" || pathname === "/tracks" || pathname === "/fundamentals" ? (
           <div className="inline-flex gap-2">
