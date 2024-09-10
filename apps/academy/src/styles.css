@@ -3,7 +3,7 @@
 /* Apply the background to the entire page */
 body {
   margin: 0; /* Remove default margin */
-  height: 200vh;
+  height: 100vh;
   position: relative; /* Ensure child elements are positioned relative to body */
 }
 
@@ -83,4 +83,11 @@ body::after {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+@media (max-width: 768px) {
+  body::after {
+    height: 2700px;
+    background-size: cover;
+  }
 }

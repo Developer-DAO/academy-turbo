@@ -55,8 +55,9 @@ const socials: readonly SocialLinks[] = [
 export const Footer = () => {
   return (
     <footer className=" !mx-[40px]">
-      <div className=" mt-[165px] ">
-        <div className="  mx-[110px] mb-[20px] h-[1px] border border-gray-300" />
+      <div className=" mt-[100px] md:mt-[165px] ">
+        {/* border */}
+        <div className=" mb-[20px] h-[1px] border border-gray-300 md:mx-[110px]" />
         <div className="footer ">
           <nav
             aria-label="social"
@@ -87,24 +88,30 @@ export const Footer = () => {
                 );
               })}
             </div>
-            <div className=" mt-2 hidden lg:block">
-              <Image src={"/vercel_badge.png"} alt={"powered by vercel"} width={100} height={100} />
+            <div className=" mt-2 ">
+              <Image
+                className=" hidden md:block"
+                src={"/vercel_badge.png"}
+                alt={"powered by vercel"}
+                width={100}
+                height={100}
+              />
             </div>
           </nav>
-          <nav aria-label="quick links" className=" md:mb-[25px]">
+          <nav aria-label="quick links" className="  ml-[60px] md:mb-[25px] md:ml-0">
             {links.map((link) => (
-              <>
+              <div key={link.name}>
                 <TooltipProvider delayDuration={30} key={link.href}>
                   <Tooltip>
-                    <TooltipTrigger className="mt-[30px] flex flex-col !border-none text-center">
+                    <TooltipTrigger className="flex flex-col !border-none text-center md:mt-[30px]">
                       <div key={link.name}>
-                        <a href={link.href} className=" mr-10 pb-5" target="_blank">
+                        <a href={link.href} className=" mr-5 md:mr-10 md:pb-5" target="_blank">
                           {link.name}
                         </a>
                         {/* Border */}
                         <div
-                          className={`-mt-[10px] mr-[25px] hidden opacity-30 ${
-                            link.name == "Newsletter" ? "h-0 w-0" : "h-[40px] w-[2px]"
+                          className={`hidden opacity-30 md:-mt-[10px] md:mr-[25px] ${
+                            link.name == "Newsletter" ? "h-0 w-0" : " w-[2px] md:h-[40px]"
                           } border-l`}
                         />
                       </div>
@@ -114,11 +121,11 @@ export const Footer = () => {
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
-              </>
+              </div>
             ))}
           </nav>
 
-          <div className="flex-col gap-y-6 md:flex-row md:items-center md:justify-center">
+          <div className="flex-col items-center justify-center gap-y-0 md:flex-row md:gap-y-6">
             <TooltipProvider delayDuration={30}>
               <Tooltip>
                 <TooltipTrigger>
@@ -129,7 +136,7 @@ export const Footer = () => {
                         alt={"Developer DAO"}
                         width={200}
                         height={80}
-                        className="mb-4 h-[100px] w-[100px] border-none p-3 md:mb-0 md:mr-[5px]"
+                        className="h-[80px] w-[80px] border-none p-3  md:mr-[5px] md:h-[90px] md:w-[90px]"
                       />
                     </div>
                   </a>
@@ -141,8 +148,9 @@ export const Footer = () => {
             </TooltipProvider>
 
             {/* Border */}
-            <div className=" mr-[25px] hidden h-[50px] w-[1px] border-l" />
-            <div className="flex-col justify-center text-start text-[11px] font-light">
+            <div className=" h-0 border-l md:mx-0 md:mr-[25px] md:h-[50px] md:w-[1px]" />
+
+            <div className="mb-3 flex-col items-center justify-center text-center text-[9px] font-light md:mb-0 md:text-start md:text-[11px]">
               <p>Developer DAO Foundation © 2023</p>
               <p>
                 Website content licensed under&nbsp;

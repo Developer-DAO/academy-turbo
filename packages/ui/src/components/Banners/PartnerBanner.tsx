@@ -11,12 +11,12 @@ export interface PartnerBannerProps extends HomePageBannerProps {
 
 export const PartnerBanner: FC<PartnerBannerProps> = ({ href, imgSrc }) => {
   return (
-    <div className=" banner flex-col !border-none !bg-opacity-20 !bg-gradient-to-tr from-stone-700 from-10% via-black via-60%  to-[#727171] to-90% !p-[2px] lg:flex-row">
-      <Card className=" banner !bg-opacity-85 flex-col !border-none !bg-black lg:flex-row">
-        <div className="items-center justify-center md:flex md:w-[78rem]">
-          <div className="md:py-[25px] md:pl-[30px] md:pr-[200px]">
+    <div className=" banner  !border-none !bg-opacity-20 !bg-gradient-to-tr from-stone-700 from-10% via-black via-60% to-[#727171]  to-90% !p-[2px] md:flex-col lg:flex-row">
+      <Card className=" banner !bg-opacity-85 !md:flex-col !border-none !bg-black lg:flex-row">
+        <div className=" flex flex-col-reverse items-center justify-center md:w-[78rem] md:flex-row">
+          <div className="mb-8 md:mb-0 md:py-[25px] md:pl-[30px] md:pr-[200px]">
             <CardHeader className="flex-row justify-center">
-              <CardTitle className="title !md:text-[40px] !text-[36px]">
+              <CardTitle className="title !md:text-[40px] !text-[35.2px]">
                 Partner with D_D Academy
               </CardTitle>
             </CardHeader>
@@ -37,7 +37,7 @@ export const PartnerBanner: FC<PartnerBannerProps> = ({ href, imgSrc }) => {
               </Button>
             </div>
           </div>
-          <div className="felx-col ml-8 mr-4  mt-[80px] flex items-center justify-center md:m-auto md:mt-8">
+          <div className="felx-col my-8 flex items-center justify-center  md:m-auto md:my-0 md:ml-8 md:mr-4 md:mt-8">
             <div className="flex flex-col items-center">
               <Image
                 src={imgSrc}
