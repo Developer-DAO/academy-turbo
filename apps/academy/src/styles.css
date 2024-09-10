@@ -3,7 +3,7 @@
 /* Apply the background to the entire page */
 body {
   margin: 0; /* Remove default margin */
-  height: 200vh; /* Ensure the body takes the full height of the viewport */
+  height: 200vh;
   position: relative; /* Ensure child elements are positioned relative to body */
 }
 

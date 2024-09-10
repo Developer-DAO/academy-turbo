@@ -25,8 +25,8 @@ const topbarNavMenus: NavItem[] = [
   },
   {
     name: "Posts",
-    href: "/posts",
-    icon: "vector",
+    href: "https://blog.developerdao.com/",
+    icon: "states",
   },
   {
     name: "Community",

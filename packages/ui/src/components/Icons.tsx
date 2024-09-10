@@ -37,6 +37,7 @@ interface DDIcons {
   home_icon: (props: LucideProps) => JSX.Element;
   moon_light: (props: LucideProps) => JSX.Element;
   more_horizontal: (props: LucideProps) => JSX.Element;
+  states: (props: LucideProps) => JSX.Element;
 }
 
 export const Icons: DDIcons = {
@@ -44,6 +45,21 @@ export const Icons: DDIcons = {
   moon: (props: LucideProps) => <Moon {...props} />,
   info: (props: LucideProps) => <Info {...props} />,
   twitter: (props: LucideProps) => <Twitter {...props} />,
+  states: (props: LucideProps) => (
+    <svg
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M3 18h7.5v1.5H3V18zm0-4.5h7.5V15H3v-1.5zm16.5-3h-15A1.5 1.5 0 013 9V4.5A1.5 1.5 0 014.5 3h15A1.5 1.5 0 0121 4.5V9a1.5 1.5 0 01-1.5 1.5zm-15-6V9h15V4.5h-15zm15 16.5H15a1.5 1.5 0 01-1.5-1.5V15a1.5 1.5 0 011.5-1.5h4.5A1.5 1.5 0 0121 15v4.5a1.5 1.5 0 01-1.5 1.5zM15 15v4.5h4.5V15H15z"
+        fill="#fff"
+      />
+    </svg>
+  ),
   logo: (props: LucideProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
       <path
