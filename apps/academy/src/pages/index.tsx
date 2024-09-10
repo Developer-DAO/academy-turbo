@@ -11,7 +11,7 @@ const Home: NextPageWithLayout = () => {
   return (
     <div className=" ">
       {/* HeroSection */}
-      <div className=" mb-[118px] mt-[230px]">
+      <div className=" mt-[150px] md:mb-[118px] md:mt-[230px]">
         <div className=" flex flex-col items-center justify-center text-white">
           <h1 className=" text-bttf text-center text-5xl tracking-wide  lg:text-[100px]">
             <span className=" md:ml-[50px]">LEArn</span>
@@ -22,7 +22,7 @@ const Home: NextPageWithLayout = () => {
             <br />
             <span className=" flex items-baseline gap-x-2">
               FRIENDS{" "}
-              <span className=" h-[55px] w-[55px] overflow-hidden rounded-full">
+              <span className=" h-[25px] w-[25px] overflow-hidden rounded-full md:h-[55px] md:w-[55px]">
                 <Image
                   alt="devIcon"
                   src={"/bg_home.png"}
@@ -35,7 +35,7 @@ const Home: NextPageWithLayout = () => {
           </h1>
 
           <div className=" flex flex-col items-center justify-center ">
-            <div className="max-w-[495px] text-center text-xl font-light md:mt-[50px] md:text-2xl">
+            <div className="mt-[10px] max-w-[495px] px-10 text-center text-lg font-light md:mt-[50px] md:px-0 md:text-2xl">
               <p>Become a web3 developer with Developer DAO.</p>
             </div>
             <div className="hidden w-full items-center justify-center md:mt-[20px] md:flex">
