@@ -12,8 +12,8 @@ export const LearnWeb3Banner: FC<HomePageBannerProps> = ({ href }) => {
   return (
     <div className=" banner flex-col !border-none !bg-opacity-20 !bg-gradient-to-tr from-stone-700 from-10% via-black via-60%  to-[#727171] to-90% !p-[2px] lg:flex-row">
       <Card className=" banner !bg-opacity-85 flex-col !border-none !bg-black lg:flex-row">
-        <div className=" z-20 w-[78rem] items-center justify-center md:flex">
-          <div className="terminal-text md:py-[25px] md:pr-[80px] md:text-[15px]">
+        <div className=" z-20 items-center justify-center md:flex md:w-[78rem]">
+          <div className="terminal-text text-[10px] md:py-[25px] md:pr-[80px] md:text-[15px]">
             <div className="line">
               <div>1</div>
               <div className="text-white">
@@ -115,7 +115,7 @@ export const LearnWeb3Banner: FC<HomePageBannerProps> = ({ href }) => {
             <CardHeader className="flex-row justify-center">
               <CardTitle className="title">LEARN WEB3</CardTitle>
             </CardHeader>
-            <CardContent className=" p-1 pb-12 text-center text-[17px] font-light text-white md:mb-[40px] md:pb-1">
+            <CardContent className=" p-1 pb-12 text-center text-sm font-light text-white md:mb-[40px] md:pb-1 md:text-[17px]">
               <p>
                 Developer DAO offers learning <br /> resources to help you build with web3 <br />
                 technologies.

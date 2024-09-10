@@ -13,7 +13,7 @@ const Home: NextPageWithLayout = () => {
       {/* HeroSection */}
       <div className=" mt-[150px] md:mb-[118px] md:mt-[230px]">
         <div className=" flex flex-col items-center justify-center text-white">
-          <h1 className=" text-bttf text-center text-5xl tracking-wide  lg:text-[100px]">
+          <h1 className=" text-bttf text-center text-5xl text-[50px] tracking-wide  lg:text-[100px]">
             <span className=" md:ml-[50px]">LEArn</span>
             <br />
             <span>WEB3__</span>
@@ -34,8 +34,8 @@ const Home: NextPageWithLayout = () => {
             </span>
           </h1>
 
-          <div className=" flex flex-col items-center justify-center ">
-            <div className="mt-[10px] max-w-[495px] px-10 text-center text-lg font-light md:mt-[50px] md:px-0 md:text-2xl">
+          <div className=" mb-[7px] mt-[87px] flex flex-col items-center justify-center md:mb-0 md:mt-[50px] ">
+            <div className="  max-w-[495px] px-10 text-center text-lg font-light   md:px-0 md:text-2xl">
               <p>Become a web3 developer with Developer DAO.</p>
             </div>
             <div className="hidden w-full items-center justify-center md:mt-[20px] md:flex">
@@ -49,12 +49,12 @@ const Home: NextPageWithLayout = () => {
 
       {/* Banner Section */}
       <div className=" flex flex-col items-center justify-center">
-        <div>
+        <div className=" m-2 md:p-0">
           <div id="learn-web3" className="lg:pt-16">
             <LearnWeb3Banner href="/tracks" />{" "}
           </div>
         </div>
-        <div>
+        <div className=" m-2 md:p-0">
           <div id="partners" className="  pb-4 pt-16">
             <PartnerBanner
               href="https://airtable.com/appDMMIARfSeiovpk/shrZExypPetXEx6Ox"
