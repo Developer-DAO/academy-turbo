@@ -12,25 +12,19 @@ const Home: NextPageWithLayout = () => {
     <div className=" ">
       {/* HeroSection */}
       <div className=" mt-[150px] md:mb-[118px] md:mt-[230px]">
-        <div className=" flex flex-col items-center justify-center text-white">
-          <h1 className=" text-bttf text-center text-5xl text-[50px] tracking-wide  lg:text-[100px]">
+        <div className="  flex flex-col items-center justify-center text-white">
+          <h1 className="text-bttf text-center text-5xl text-[50px] tracking-wide  lg:text-[100px]">
             <span className=" md:ml-[50px]">LEArn</span>
             <br />
             <span>WEB3__</span>
             <br />
             <span className=" md:mr-[50px]">WITH</span>
             <br />
-            <span className=" flex items-baseline gap-x-2">
-              FRIENDS{" "}
-              <span className=" h-[25px] w-[25px] overflow-hidden rounded-full md:h-[55px] md:w-[55px]">
-                <Image
-                  alt="devIcon"
-                  src={"/bg_home.png"}
-                  width={500}
-                  height={500}
-                  className=" h-full w-full"
-                />
-              </span>{" "}
+            <span className=" relative flex items-baseline justify-end gap-x-2 md:ml-[20px]">
+              FRIENDS
+              <span className=" -right-20 bottom-0 ml-2 h-[25px] w-[25px] overflow-hidden rounded-full md:absolute md:ml-5 md:h-[50px] md:w-[50px]">
+                <Image alt="devIcon" src={"/dd_nft2.png"} width={500} height={500} />
+              </span>
             </span>
           </h1>
 

@@ -52,7 +52,7 @@ export const PartnerBanner: FC<PartnerBannerProps> = ({ href, imgSrc }) => {
                   "/partners/pokt.png",
                   "/partners/zerion.png",
                   "/partners/api3-logo.png",
-                  "/partners/scroll.png",
+                  // "/partners/scroll.png",
                 ].map((logoPath, i) => (
                   <Image
                     key={i}
@@ -60,9 +60,7 @@ export const PartnerBanner: FC<PartnerBannerProps> = ({ href, imgSrc }) => {
                     width={175}
                     height={25}
                     alt="partner"
-                    className={` ${i === 2 ? "max-h-10" : "max-h-5 md:max-h-7"} w-auto ${
-                      i === 0 ? "mb-4" : ""
-                    }`}
+                    className={` ${i === 2 ? "max-h-10" : "max-h-5 md:max-h-7"} w-auto `}
                   />
                 ))}
               </div>

@@ -150,7 +150,7 @@ export const Footer = () => {
             {/* Border */}
             <div className=" h-0 border-l md:mx-0 md:mr-[25px] md:h-[50px] md:w-[1px]" />
 
-            <div className="mb-3 flex-col items-center justify-center text-center text-[9px] font-light md:mb-0 md:text-start md:text-[11px]">
+            <div className="mb-3 flex-col items-center justify-center text-center text-[9px] font-light md:mb-0 md:items-start md:justify-start  md:text-left md:text-[11px]">
               <p>Developer DAO Foundation © 2023</p>
               <p>
                 Website content licensed under&nbsp;
