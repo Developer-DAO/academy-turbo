@@ -42,7 +42,7 @@ const PageHeader: FunctionComponent = () => {
 
   return (
     <header className=" mx-[30px] flex items-center justify-between pt-[30px] md:mx-[45px] md:pt-[20px] ">
-      <div className="hidden  lg:block">
+      <div className="z-50  hidden lg:block">
         {pathname === "/" || pathname === "/tracks" || pathname === "/fundamentals" ? (
           <div className="flex justify-between">
             <Link href="/">
