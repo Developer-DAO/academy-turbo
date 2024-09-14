@@ -20,10 +20,11 @@ export interface QuizProps {
   nextLessonTitle: string;
   actualLessonTitle: string;
   quizCompleted: boolean;
-  successMessage?: { message: string }[];
+  successMessage?: { message: string }[] | undefined;
   successTitle?: string | undefined;
   currentLessonPath: string;
-  actionButton?: { href: string; text: string } | null;
+  actionButton?: { href: string; text: string } | null | undefined;
+  partnerTwitterHandle?: string | undefined;
 }
 
 export type Answers = Record<string, number[]>;
@@ -38,9 +39,9 @@ const QuizCompletedModals = ({
         "You answered all the quiz questions correctly, great job. Celebrate your learning on Twitter and advance to the next lesson below.",
     },
   ],
-  // successTitle = "Lesson complete",
   currentLessonPath,
   actionButton,
+  partnerTwitterHandle,
 }: QuizProps): JSX.Element => {
   const [showDialog, setShowDialog] = useState(false);
   // const [showKeepGoingModal, setShowKeepGoingModal] = useState(false);
@@ -114,8 +115,9 @@ const QuizCompletedModals = ({
                   <div className="flex flex-col gap-y-6">
                     <a
                       href={createTwitterIntentLink(
-                        `I completed "${actualLessonTitle}" on @developer_dao Academy.
-                          https://academy.developerdao.com${currentLessonPath}`,
+                        partnerTwitterHandle === undefined
+                          ? `I completed "${actualLessonTitle}" on @developer_dao Academy. https://academy.developerdao.com${currentLessonPath}`
+                          : `I completed "${actualLessonTitle}" lesson from ${partnerTwitterHandle} track on @developer_dao Academy. https://academy.developerdao.com${currentLessonPath}`,
                       )}
                       target="_blank"
                     >

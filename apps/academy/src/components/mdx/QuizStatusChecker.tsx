@@ -9,9 +9,10 @@ import Quiz from "./Quiz";
 
 export interface QuizStatusCheckerType {
   quiz: string;
-  successMessage: { message: string }[];
+  successMessage?: { message: string }[];
   successTitle?: string;
-  actionButton: any;
+  actionButton?: { href: string; text: string } | null;
+  partnerTwitterHandle?: string | undefined;
 }
 
 const QuizStatusChecker = ({
@@ -19,6 +20,7 @@ const QuizStatusChecker = ({
   successMessage,
   successTitle,
   actionButton,
+  partnerTwitterHandle,
 }: QuizStatusCheckerType) => {
   const [quizCompleted, setQuizCompleted] = useState<boolean>(false);
   const { address, isDisconnected } = useAccount();
@@ -86,6 +88,7 @@ const QuizStatusChecker = ({
         nextLessonTitle={nextLessonTitle}
         actualLessonTitle={actualLessonTitle}
         currentLessonPath={currentLessonPath}
+        partnerTwitterHandle={partnerTwitterHandle}
       />
       {/* <Badge className="m-auto flex w-fit justify-center bg-green-600">
         <span className="text-2xl">Quiz Completed</span>
