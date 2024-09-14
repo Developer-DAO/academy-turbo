@@ -30,7 +30,7 @@ const Home: NextPageWithLayout = () => {
 
           <div className=" mb-[7px] mt-[87px] flex flex-col items-center justify-center md:mb-0 md:mt-[50px] ">
             <div className="  max-w-[495px] px-10 text-center text-lg font-light   md:px-0 md:text-2xl">
-              <p>Become a web3 developer with Developer DAO.</p>
+              <p>Become a web3 developer with DeveloperDAO.</p>
             </div>
             <div className="hidden w-full items-center justify-center md:mt-[20px] md:flex">
               <Link href="/#learn-web3" className="hover:cursor-pointer">

@@ -22,7 +22,7 @@ export const PartnerBanner: FC<PartnerBannerProps> = ({ href, imgSrc }) => {
             </CardHeader>
             <CardContent className=" p-1 pb-12 text-center text-[13px] font-light text-white md:mb-[40px] md:pb-1 md:text-[17px]">
               <p>
-                Developer DAO is a community of thousands of web3 <br /> builders creating a better
+                DeveloperDAO is a community of thousands of web3 <br /> builders creating a better
                 internet. Join us and help <br /> educate the next generation of developers.
               </p>
             </CardContent>
