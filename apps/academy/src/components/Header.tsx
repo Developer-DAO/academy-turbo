@@ -59,8 +59,8 @@ const PageHeader: FunctionComponent = () => {
         )}
       </div>
 
-      <div className="mx-auto hidden md:block">
-        <TopBar menus={topbarNavMenus} />
+      <div className={`mx-auto   hidden md:block`}>
+        <TopBar menus={topbarNavMenus} pathName={pathname} />
       </div>
 
       <div>
