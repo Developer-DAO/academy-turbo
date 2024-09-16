@@ -21,7 +21,7 @@ const IntroToEthereumTrackPage = () => {
   );
 
   return (
-    <div className="relative m-10 flex lg:mx-auto lg:max-w-screen-lg">
+    <div className="relative flex p-10 lg:mx-auto lg:max-w-screen-lg">
       <TracksLayout
         trackTitle="A Developer's Guide to Ethereum"
         trackDescription="An accessible introduction to Ethereum via web3.py and Python. Grasp blockchain basics, Ethereum's decentralization, and smart contracts with practical insights. Code included for hands-on learning, but no programming expertise required."

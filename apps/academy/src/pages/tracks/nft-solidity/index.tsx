@@ -22,7 +22,7 @@ const NftSolidityTrackPage = () => {
     );
 
   return (
-    <div className="relative m-10 flex lg:mx-auto lg:max-w-screen-lg">
+    <div className="relative flex p-10 lg:mx-auto lg:max-w-screen-lg">
       <TracksLayout
         trackTitle="Build a Tiered NFT"
         trackDescription="This ERC-721 NFT track will take you from complete beginner to building a series of meaningful, real-world, NFT projects. You'll enhance your skills along the way by using test-driven development to gain confidence that your smart contracts are safe to deploy to a live blockchain. And finally you'll be creating a tasteful front-end interface so your users can mint your ERC-721 tokens in their desired tier. All in all, a rewarding coding journey."
