@@ -72,10 +72,11 @@ model Lessons {
   stagingVisible Boolean @default(true)
   visible Boolean @default(true)
   nextLessonPath String?
+  metaImagePath String @default("")
   // twitterShareUrl String?
 }
   
-  model Tags {
+model Tags {
   id String @id @default(cuid())
   tagName String
   tagDescription String
@@ -110,6 +111,7 @@ model Tracks {
   stagingVisible Boolean @default(true)
   visible Boolean @default(true)
   contributors ContributorsOnTracks[]
+  metaImagePath String @default("")
 }
 
 model TagsOnTracks {
