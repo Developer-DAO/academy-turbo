@@ -7,19 +7,6 @@ body {
   position: relative; /* Ensure child elements are positioned relative to body */
 }
 
-body::after {
-  content: ""; /* Required to generate a pseudo-element */
-  position: absolute; /* Position overlay absolutely within body */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("/home_bg.png") no-repeat center center;
-  background-size: cover; /* Make the background image cover the entire page */
-  opacity: 0.4; /* Adjust this value to change the opacity of the background image */
-  z-index: -1; /* Ensure the overlay is behind other content */
-}
-
 .text-bttf {
   @apply leading-[91%] tracking-[1px] transition-colors;
   font-family: var(--font-future);
@@ -83,11 +70,4 @@ body::after {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-
-@media (max-width: 768px) {
-  body::after {
-    height: 100%;
-    background-size: cover;
-  }
 }

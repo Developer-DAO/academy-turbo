@@ -54,7 +54,7 @@ const socials: readonly SocialLinks[] = [
 
 export const Footer = () => {
   return (
-    <footer className=" !mx-[40px]">
+    <footer className=" absolute bottom-0 z-[999] w-full px-[30px] pb-14">
       <div className=" mt-[100px] md:mt-[165px] ">
         {/* border */}
         <div className=" mb-[20px] h-[1px] border border-gray-300 md:mx-[110px]" />
