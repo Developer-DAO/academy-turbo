@@ -1,0 +1,15 @@
+{
+  "question": "Do you have to restart your gateway to block transactions?",
+  "options": [
+    {
+      "answer": "No, you can update the block list via the admin API.",
+      "correct": true
+    },
+    {
+      "answer": "Yes, you have to set them inside your .env file."
+    },
+    {
+      "answer": "Yes, you have to set them inside the data directory."
+    }
+  ]
+}

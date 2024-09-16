@@ -1,0 +1,16 @@
+{
+  "question": "How long is your gateway unavailable during an update?",
+  "options": [
+    {
+      "answer": "It's never unavailable, as there is only one instance updated at a time.",
+      "correct": true
+    },
+    {
+      "answer": "All in all, 30 minutes."
+    },
+    {
+      "answer": "Each instance takes 7 minutes, so the gateway is unavailable for 14 minutes.",
+      "correct": true
+    }
+  ]
+}

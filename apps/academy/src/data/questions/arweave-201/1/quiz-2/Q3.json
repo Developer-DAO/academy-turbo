@@ -1,0 +1,16 @@
+{
+  "question": "Why do you need to set a trusted node?",
+  "options": [
+    {
+      "answer": "The trusted node is your entry to the Arweave network.",
+      "correct": true
+    },
+    {
+      "answer": "The trusted node will resolve all data your gateway hasn't indexed/cached yet.",
+      "correct": true
+    },
+    {
+      "answer": "The trusted node will help you encrypting uploaded data."
+    }
+  ]
+}

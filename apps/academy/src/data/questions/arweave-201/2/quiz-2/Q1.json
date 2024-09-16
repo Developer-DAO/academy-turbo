@@ -1,0 +1,15 @@
+{
+  "question": "Which wallet key will be stored on AWS?",
+  "options": [
+    {
+      "answer": "The gateway key."
+    },
+    {
+      "answer": "The observer key.",
+      "correct": true
+    },
+    {
+      "answer": "The master key."
+    }
+  ]
+}

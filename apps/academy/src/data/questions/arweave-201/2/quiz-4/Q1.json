@@ -1,0 +1,15 @@
+{
+  "question": "How many images will CodeDeploy build on an update?",
+  "options": [
+    {
+      "answer": "Three, one for Envoy, one for the gateway node, and one for the observer."
+    },
+    {
+      "answer": "None, all are pulled from a image registry.",
+      "correct": true
+    },
+    {
+      "answer": "It just builds the ones that have changed."
+    }
+  ]
+}

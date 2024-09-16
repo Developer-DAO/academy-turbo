@@ -1,0 +1,15 @@
+{
+  "question": "Under which route are the admin features located?",
+  "options": [
+    {
+      "answer": "/ar-io/admin/...",
+      "correct": true
+    },
+    {
+      "answer": "/admin"
+    },
+    {
+      "answer": "/gatetway/admin"
+    }
+  ]
+}

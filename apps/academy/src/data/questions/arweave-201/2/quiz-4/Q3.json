@@ -1,0 +1,15 @@
+{
+  "question": "What does CodeDeploy do on a failed update?",
+  "options": [
+    {
+      "answer": "Roll back to the previous version.",
+      "correct": true
+    },
+    {
+      "answer": "Send you a notification."
+    },
+    {
+      "answer": "Bribe observers for a better report."
+    }
+  ]
+}

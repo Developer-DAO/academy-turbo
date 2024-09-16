@@ -1,0 +1,15 @@
+{
+  "question": "Why does the first deplyoment run fail?",
+  "options": [
+    {
+      "answer": "Because AWS can't vaildate the SSL certificates.",
+      "correct": true
+    },
+    {
+      "answer": "Because you didn't assign a cost center."
+    },
+    {
+      "answer": "Because SSL certificate validation always times out."
+    }
+  ]
+}

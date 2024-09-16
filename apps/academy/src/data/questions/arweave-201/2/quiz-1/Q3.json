@@ -1,0 +1,15 @@
+{
+  "question": "What is the job of CodeDeploy in this setup?",
+  "options": [
+    {
+      "answer": "It will update the gateway when a new version is released.",
+      "correct": true
+    },
+    {
+      "answer": "It will deploy the gateway."
+    },
+    {
+      "answer": "It will check the health of the deployment."
+    }
+  ]
+}

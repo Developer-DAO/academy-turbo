@@ -1,0 +1,16 @@
+{
+  "question": "Why does your gateway need a domain?",
+  "options": [
+    {
+      "answer": "To enable sandboxing via dynamic subdomains.",
+      "correct": true
+    },
+    {
+      "answer": "To enable human-friendly ArNS names.",
+      "correct": true
+    },
+    {
+      "answer": "To improve latency and reliability."
+    }
+  ]
+}

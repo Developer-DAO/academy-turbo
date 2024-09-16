@@ -1,0 +1,16 @@
+{
+  "question": "Why does the bundler need a wallet?",
+  "options": [
+    {
+      "answer": "To sign the layer 1 transaction that contains all bundled transactions.",
+      "correct": true
+    },
+    {
+      "answer": "To pay for the layer 1 transaction that contains all bundled transactions.",
+      "correct": true
+    },
+    {
+      "answer": "To receive additional rewards from the AR.IO network."
+    }
+  ]
+}

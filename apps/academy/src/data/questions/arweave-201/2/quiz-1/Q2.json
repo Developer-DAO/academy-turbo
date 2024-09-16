@@ -1,0 +1,17 @@
+{
+  "question": "Why does this setup include a load balancer?",
+  "options": [
+    {
+      "answer": "To distribute the load between two EC2 instances.",
+      "correct": true
+    },
+    {
+      "answer": "To protect the EC2 instances with a web application firewall.",
+      "correct": true
+    },
+    {
+      "answer": "To improve reliability.",
+      "correct": true
+    }
+  ]
+}

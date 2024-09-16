@@ -1,0 +1,15 @@
+{
+  "question": "What's the path of the health check enpoint??",
+  "options": [
+    {
+      "answer": "/ar-io/healthcheck",
+      "correct": true
+    },
+    {
+      "answer": "/health-check"
+    },
+    {
+      "answer": "/ar-io/status"
+    }
+  ]
+}

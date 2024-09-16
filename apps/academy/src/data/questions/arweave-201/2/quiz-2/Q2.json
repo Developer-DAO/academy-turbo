@@ -1,0 +1,15 @@
+{
+  "question": "Do you have to host your gateway on a second-level domain?",
+  "options": [
+    {
+      "answer": "Yes, it has to be a second-level domain."
+    },
+    {
+      "answer": "No, you can use a subdomain.",
+      "correct": true
+    },
+    {
+      "answer": "No, you can use an ENS domain."
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "question": "Why does the gateway use two wallet addresses?",
+  "options": [
+    {
+      "answer": "One key is used to join the AR.IO network.",
+      "correct": true
+    },
+    {
+      "answer": "One is used to submit reports to Arweave.",
+      "correct": true
+    },
+    {
+      "answer": "You can use the same key for joining the network and submit reports.",
+      "correct": true
+    }
+  ]
+}

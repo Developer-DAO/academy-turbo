@@ -1,0 +1,16 @@
+{
+  "question": "Why does the gateway need two DNS records?",
+  "options": [
+    {
+      "answer": "One record is required for the domain root of the gateway.",
+      "correct": true
+    },
+    {
+      "answer": "One record is required for wallet verification."
+    },
+    {
+      "answer": "The wildcard record is required for sandboxing and ArNS name resolution.",
+      "correct": true
+    }
+  ]
+}
