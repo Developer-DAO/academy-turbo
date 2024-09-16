@@ -11,7 +11,7 @@ const Home: NextPageWithLayout = () => {
   return (
     <div className="  ">
       {/* HeroSection */}
-      <div className=" pt-[150px] md:pb-[118px] md:pt-[230px]">
+      <div className=" pt-[150px] md:pb-[118px] md:pt-[330px]">
         <div className="  flex flex-col items-center justify-center text-white">
           <h1 className="text-bttf text-center text-5xl text-[50px] tracking-wide  lg:text-[100px]">
             <span className=" md:ml-[50px]">LEArn</span>
