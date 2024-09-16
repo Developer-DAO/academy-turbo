@@ -9,9 +9,9 @@ import type { NextPageWithLayout } from "@/pages/_app";
 
 const Home: NextPageWithLayout = () => {
   return (
-    <div className=" ">
+    <div className="  ">
       {/* HeroSection */}
-      <div className=" mt-[150px] md:mb-[118px] md:mt-[230px]">
+      <div className=" pt-[150px] md:pb-[118px] md:pt-[230px]">
         <div className="  flex flex-col items-center justify-center text-white">
           <h1 className="text-bttf text-center text-5xl text-[50px] tracking-wide  lg:text-[100px]">
             <span className=" md:ml-[50px]">LEArn</span>

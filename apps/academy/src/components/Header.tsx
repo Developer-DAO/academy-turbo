@@ -41,8 +41,11 @@ const PageHeader: FunctionComponent = () => {
   const { pathname } = router;
 
   return (
-    <header className=" mx-[30px] flex items-center justify-between pt-[30px] md:mx-[45px] md:pt-[20px] ">
-      <div className="z-50  hidden lg:block">
+    <header
+      className="absolute top-2 z-[999] flex w-full items-center justify-between bg-transparent px-[30px] pt-[30px]
+     md:pt-[20px] "
+    >
+      <div className="z-50  hidden lg:flex">
         {pathname === "/" || pathname === "/tracks" || pathname === "/fundamentals" ? (
           <div className="flex justify-between">
             <Link href="/">
@@ -59,7 +62,7 @@ const PageHeader: FunctionComponent = () => {
         )}
       </div>
 
-      <div className={`mx-auto   hidden md:block`}>
+      <div className={` hidden md:block`}>
         <TopBar menus={topbarNavMenus} pathName={pathname} />
       </div>
 
