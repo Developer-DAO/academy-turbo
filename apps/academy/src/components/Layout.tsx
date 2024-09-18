@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 // import { useSession } from "next-auth/react";
 import type { FunctionComponent, PropsWithChildren } from "react";
 import { Footer } from "ui";
@@ -25,8 +25,8 @@ const andale = localFont({
 const fontVars = `${bttf.variable} ${deathstar.variable} ${andale.variable}`;
 
 export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
-  const router = useRouter();
-  const { pathname } = router;
+  // const router = useRouter();
+  // const { pathname } = router;
   // const [requestEmail, setRequestEmail] = useState(false);
   // const [emailAlreadySent, setEmailAlreadySent] = useState(false);
 
@@ -94,7 +94,7 @@ export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
       ) : null} */}
       <Header />
       <main className={fontVars}>{children}</main>
-      {pathname !== "/tracks" && pathname !== "/fundamentals" ? <Footer /> : null}
+      <Footer />
     </>
   );
 };

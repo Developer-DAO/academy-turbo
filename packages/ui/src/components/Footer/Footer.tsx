@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { Icons } from "../Icons";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
@@ -53,8 +55,14 @@ const socials: readonly SocialLinks[] = [
 ];
 
 export const Footer = () => {
+  const router = useRouter();
+  const { pathname } = router;
   return (
-    <footer className=" absolute bottom-0 z-[999] w-full px-[30px] pb-14">
+    <footer
+      className={` ${
+        pathname === "/tracks" || pathname === "/fundamentals" ? "md:hidden" : "md:block"
+      } absolute bottom-0 z-50 w-full px-[30px] pb-14`}
+    >
       <div className=" mt-[100px] md:mt-[165px] ">
         {/* border */}
         <div className=" mb-[20px] h-[1px] border border-gray-300 md:mx-[110px]" />

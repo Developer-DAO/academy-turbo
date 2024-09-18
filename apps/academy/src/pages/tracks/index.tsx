@@ -11,10 +11,10 @@ const TracksPage: NextPage & { getLayout?: (page: ReactElement) => ReactElement 
   const { data: allTracksData } = api.tracks.getAll.useQuery();
 
   return (
-    <div className=" flex h-screen w-full flex-col space-y-10 overflow-hidden bg-black lg:flex-row">
+    <div className="flex h-full w-full flex-col space-y-10 overflow-hidden bg-black lg:h-screen lg:max-h-screen lg:flex-row">
       <div
-        className="z-20 flex h-full  flex-1 flex-col items-center justify-between 
-overflow-hidden bg-[url('/bg_tracks.png')] bg-cover bg-no-repeat object-center  pt-[300px] lg:fixed lg:inset-y-0  lg:w-1/2  "
+        className="flex h-full min-h-screen flex-1 flex-col items-center justify-between overflow-hidden 
+bg-[url('/bg_tracks.png')] bg-cover bg-center bg-no-repeat object-center pt-[300px]  lg:fixed lg:inset-y-0 lg:h-screen lg:w-1/2"
       >
         <div>
           <h2 className="text-bttf text-5xl text-white lg:text-8xl">Tracks</h2>

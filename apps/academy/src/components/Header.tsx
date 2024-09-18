@@ -42,7 +42,7 @@ const PageHeader: FunctionComponent = () => {
 
   return (
     <header
-      className="absolute top-2 z-[999] flex w-full items-center justify-between bg-transparent px-[30px] pt-[30px]
+      className="absolute top-2 z-40 flex w-full items-center justify-between bg-transparent px-[30px] pt-[30px]
      md:pt-[20px] "
     >
       <div className="z-50  hidden lg:flex">
