@@ -256,7 +256,6 @@
 
 .track {
   @apply gradient-blur h-[446px] max-w-[285px] rounded-[51px] border-none shadow-sm hover:bg-zinc-900;
-  @apply ring-[2px] ring-inset ring-[#E9E9E930] ring-offset-0;
   overflow: hidden;
 }
 
