@@ -61,9 +61,11 @@ export const Footer = () => {
     <footer
       className={` ${
         pathname === "/tracks" || pathname === "/fundamentals" ? "md:hidden" : "md:block"
-      } absolute bottom-0 z-50 w-full px-[30px] pb-14`}
+      } absolute ${
+        pathname === "/" ? "bottom-0" : "-bottom-[450px]"
+      }   z-50 w-full px-[30px] pb-14 `}
     >
-      <div className=" mt-[100px] md:mt-[165px] ">
+      <div className=" ">
         {/* border */}
         <div className=" mb-[20px] h-[1px] border border-gray-300 md:mx-[110px]" />
         <div className="footer ">
