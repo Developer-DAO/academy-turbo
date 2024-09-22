@@ -9,11 +9,11 @@ import type { NextPageWithLayout } from "@/pages/_app";
 
 const Home: NextPageWithLayout = () => {
   return (
-    <div>
+    <>
       {/* Background with Overlay */}
-      <div className="relative overflow-hidden bg-[url('/home_bg.png')] bg-cover bg-no-repeat object-center">
+      <div className="relative overflow-hidden">
         {/* Overlay */}
-        <div className="absolute inset-0 z-10 bg-black opacity-30"></div>
+        <div className="absolute inset-0 z-10 w-screen bg-black opacity-50"></div>
 
         {/* Hero Section */}
         <div className="relative z-20 pt-[150px] md:pb-[118px] md:pt-[330px]">
@@ -63,7 +63,7 @@ const Home: NextPageWithLayout = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

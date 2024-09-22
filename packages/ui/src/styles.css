@@ -199,11 +199,11 @@
 }
 
 .main-container {
-  @apply container max-w-7xl;
+  @apply container w-full;
 }
 
 .app-container {
-  @apply mx-auto w-full max-w-[1440px];
+  @apply mx-auto w-full;
 }
 
 .gradient-blur {

@@ -63,7 +63,7 @@ export const Footer = () => {
         pathname === "/tracks" || pathname === "/fundamentals" ? "md:hidden" : "md:block"
       } absolute ${
         pathname === "/" ? "bottom-0" : "-bottom-[450px]"
-      }   z-50 w-full px-[30px] pb-14 `}
+      }   z-50 w-full px-[15px] pb-14 md:px-[30px]`}
     >
       <div className=" ">
         {/* border */}
