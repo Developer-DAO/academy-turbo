@@ -11,7 +11,7 @@ const Home: NextPageWithLayout = () => {
   return (
     <>
       {/* Background with Overlay */}
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden bg-[url('/bg_home.png')] bg-cover bg-center bg-no-repeat">
         {/* Overlay */}
         <div className="absolute inset-0 z-10 w-screen bg-black opacity-50"></div>
 

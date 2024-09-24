@@ -55,7 +55,7 @@ const PageHeader: FunctionComponent = () => {
           </div>
         ) : (
           <div className="flex items-center justify-around gap-36 text-white lg:flex lg:justify-between lg:gap-5 lg:self-stretch">
-            <div className="lg:items-stretch9 lg:ml-8 lg:flex lg:basis-[0%] lg:flex-col">
+            <div className="lg:ml-8 lg:flex lg:basis-[0%] lg:flex-col lg:items-stretch">
               <BackButton />
             </div>
           </div>
