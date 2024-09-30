@@ -1,0 +1,211 @@
+---
+title: Rootstock 101: Lesson 2
+description: What is Rootstock, how is it connected to Bitcoin, and what are the differences between Rootstock and Ethereum?
+icons: ["rootstock", "fundamentals"]
+---
+
+import LessonLayout from "../../../components/LessonLayout";
+import Callout from "../../../components/mdx/Callout";
+import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
+import Question from "../../../components/mdx/Question";
+import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
+import LessonInformationalModal from "../../../components/mdx/LessonInformationalModal";
+
+<LessonLayout
+   lessonTitle="Accessing On-Chain Data on Rootstock via The Graph"
+   lessonImage="/meta-images/rootstock-101/2.png"
+   lessonDescription="What is Rootstock, how is it connected to Bitcoin, and what are the differences between Rootstock and Ethereum?"
+   author="DappaDan"
+   authorImage="/authors/dappadan.jpg"
+   authorPosition="Developer DAO"
+   authorTwitter="DAppaDanDev"
+   createdDate="Sept 26, 2024"
+>
+
+## About This Lesson
+
+Blockchains are constantly producing data. From transactions, contract interactions, and deployment. Making sense of this activity is important for building apps that need to use this data.
+
+In this lesson, we will explore:
+
+- The purpose of The Graph and how it enables developers to use its data.
+- How to setup a Subgraph to read an existing smart contract deployed on Rootstock mainnet.
+- Querying the subgraph using either NextJS or NodeJS to integrated into an application.
+
+## What is The Graph?
+
+The Graph solves the problem of organizing the information produced by blockchains. It does this through the use of **subgraphs** and **indexers**.
+
+Subgraphs are open-source APIs that gather and organize blockchain data. Anyone can create a subgraph on a supported chain and a valid contract address. You can query contract activity and events.
+
+Indexers are nodes that are responsible for serving the subgraphs. These nodes stake GRT, the utility token of the Graph Network, and select which subgraphs to index. These nodes are then rewarded for both indexing and serving queries.
+
+## Setting up a Subgraph
+
+Let's set up a subgraph to read the RIF token contract deployed on the Rootstock mainnet. After we have completed this step, we will be able to see.
+
+- **id** - transaction hash of transactions interacting with the smart contract
+- **from** - the sender address of the RIF tokens.
+- **to** - the receiver address of the RIF token
+- **value** - the amount of RIF tokens transferred
+
+### Creating the Subgraph
+
+We will use the Subgraph Studio provided by The Graph to create this subgraph.
+
+Visit [https://thegraph.com/studio/](https://thegraph.com/studio/) and sign up or connect your wallet if you're new to The Graph.
+
+After you log in, you will see the option to "Create a Subgraph" on the right side of the screen.
+
+![Create Subgraph](https://hackmd.io/_uploads/rJ1SBwJRC.png)
+
+From there you will be able to name your subgraph. For this lesson we will call this "RFI-Token" but you can name this whatever you like.
+
+![Name Subgraph](https://utfs.io/f/2sXGl0kj0PZBFm9YHS2BhtHCJ7vujfIwc6pLqTg2SrNoX4kF)
+
+This will create a "draft" subgraph in the main dashboard of your Subgraph Studio.
+
+The subgraph is in draft mode because we have not set up what we would like to index yet. Let's do this now by clicking on the RFI-Token subgraph.
+
+You should now be seeing a similar screen to this:
+
+![Subgraph Install](https://utfs.io/f/2sXGl0kj0PZBogk1I4V4jrF7Zx3MtqVgczAfWPldU1hyCs0O)
+
+<LessonQuestionsModal buttonText="Quiz 1" title="Comprehension Check">
+  <Question question="rootstock-101/2/quiz-1/Q1" />
+  <Question question="rootstock-101/2/quiz-1/Q2" />
+</LessonQuestionsModal>
+
+### Starting the Subgraph
+
+The first step is to install The Graph CLI. We will use this CLI tool to initialize and authenticate the subgraph.
+
+To install The Graph CLI, type this command in your terminal.
+
+```bash
+npm install -g @graphprotocol/graph-cli
+```
+
+(Note: `yarn global add` is also available if you prefer to use yarn.)
+
+Next, we will initialize the subgraph by using the following command:
+
+```bash
+graph init --studio rfi-token
+```
+
+Inside the terminal you will be asked what **Protocol** to use. In this case, select **Ethereum**.
+
+Then use the following settings:
+
+```txt
+**Subgraph slug**: rfi-token
+**Directory to create the subgraph in**: rfi-token
+**Ethereum network:** Rootstock
+**Contract Address**:
+0x2aCc95758f8b5F583470bA265Eb685a8f45fC9D5
+**Start Block**: Default Value
+**Contract Name**: RIFToken
+**Index contract events as entities**: true
+```
+
+This will now start the initialization process in your terminal and install dependencies.
+
+### Authenticating and Deploying the Subgraph
+
+Before deploying our subgraph, we need to authenticate within the CLI. The quickest way to do this is using the command that is provided in the Subgraph Studio.
+
+It will be in this format:
+
+```bash
+graph auth --studio AUTHKEY
+```
+
+You can do this by running the following command:
+
+![Auth-Key Cropped](https://utfs.io/f/2sXGl0kj0PZB7Kk9ntHSCKpkibIt9YBHFNTX1Q4oneqSfyuJ)
+
+After that, go to the rfi-token directory by typing cd rfi-token in your terminal.
+
+To build the subgraph, use the following commands:
+
+```bash
+graph codegen && graph build
+```
+
+This command will load the RFI token contract's ABI and create types for both the ABI and the GraphQL schema.
+
+If this command is successful, you will see Build completed: build/subgraph.yaml in your terminal. The last step is to deploy the subgraph by running the following command:
+
+```bash
+graph deploy --studio rfi-token
+```
+
+After selecting a version number, you will see your **Subgraph endpoint** in the terminal.
+
+## Testing the Endpoint
+
+To test the endpoint, go back to the Subgraph Studio and select the **Playground** option.
+
+![playground.png](https://utfs.io/f/2sXGl0kj0PZBFPJEEJ2BhtHCJ7vujfIwc6pLqTg2SrNoX4kF)
+
+On this page, you will see a sample query that you can use to query your subgraph:
+
+```graphql
+{
+  transfers(first: 5) {
+    id
+    from
+    to
+    value
+  }
+  ownershipRenounceds(first: 5) {
+    id
+    previousOwner
+    blockNumber
+    blockTimestamp
+  }
+}
+```
+
+By clicking the Play button, you will see the result of the query. If you have just deployed your subgraph, it may take time for it to be be fully synced.
+
+You can find the progress of the synchronization under the subgraph details.
+
+![playbutton.png](https://utfs.io/f/2sXGl0kj0PZBOMze5FCbxO65EI8FBJuyahS4CpisXk1vWAGq)
+
+The results should look like similiar to this:
+
+```json
+"transfers": [
+  {
+    "id": "0x0000f61c00c7a782bfaf1803c31ae2275c919f8be6f0920514410ec2cc7e4d3e01000000",
+    "from": "0x0cfc4f6070819148c82087ec9fc1872f0455d7c2",
+    "to": "0xd9c79ced86ecf49f5e4a973594634c83197c35ab",
+    "value": "5000000000000000000"
+  },
+  ...
+],
+```
+
+Now that we know the subgraph is working, we can query it outside of the playground as well.
+
+## Querying the Subgraph (NextJS or NodeJS)
+
+You can find sample code to query the subgraph using React, Next.js, and Node on the endpoints page of Subgraph Studio.
+
+![code-examples.png](https://utfs.io/f/2sXGl0kj0PZBjlKg9TrCRtTzYlP6pgH5mSALOwioy8NdxBaD)
+
+From there, you can copy the code that fits your application code the best.
+
+Since The Graph uses GraphQL, you can adjust your query to get only the information you need. For example, you can add a blockTimestamp to return the timestamps for the blocks that included the transactions:
+
+## Final Quiz
+
+TODO
+
+## Conclusion
+
+Now that we can read data from the Rootstock blockchain, let's start build and deploy a smart contract! In the next lesson we will use Solidity and Hardhat to create a polling smart contract.
+
+</LessonLayout>

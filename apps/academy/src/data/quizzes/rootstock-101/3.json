@@ -1,0 +1,32 @@
+{
+  "title": "Final Quiz",
+  "questions": [
+    {
+      "question": "What is the purpose of the `voters` mapping in the contract?",
+      "options": [
+        { "answer": "To track the number of votes" },
+        { "answer": "To prevent double voting", "correct": true },
+        { "answer": "To store the addresses of voters" },
+        { "answer": "To count the total options" }
+      ]
+    },
+    {
+      "question": "What type of tokens are needed to deploy the contract on the Rootstock testnet?",
+      "options": [
+        { "answer": "BTC" },
+        { "answer": "tRBTC", "correct": true },
+        { "answer": "ETH" },
+        { "answer": "RBTC" }
+      ]
+    },
+    {
+      "question": "What is the purpose of the 'getOptionsCount' function in the smart contract?",
+      "options": [
+        { "answer": "To add a new option to the poll" },
+        { "answer": "To vote for an option" },
+        { "answer": "To get the count of options", "correct": true },
+        { "answer": "To get a specific option by index" }
+      ]
+    }
+  ]
+}
