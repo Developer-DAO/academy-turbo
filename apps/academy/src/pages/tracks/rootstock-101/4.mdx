@@ -1,0 +1,318 @@
+---
+title: Rootstock 101: Lesson 4
+description: What is Rootstock, how is it connected to Bitcoin, and what are the differences between Rootstock and Ethereum?
+icons: ["rootstock", "fundamentals"]
+---
+
+import LessonLayout from "../../../components/LessonLayout";
+import Callout from "../../../components/mdx/Callout";
+import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
+import Question from "../../../components/mdx/Question";
+import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
+import LessonInformationalModal from "../../../components/mdx/LessonInformationalModal";
+
+<LessonLayout
+   lessonTitle="Building a Rootstock Powered DApp with NextJS and wagmi"
+   lessonImage="/meta-images/rootstock-101/4.png"
+   lessonDescription="What is Rootstock, how is it connected to Bitcoin, and what are the differences between Rootstock and Ethereum?"
+   author="DappaDan"
+   authorImage="/authors/dappadan.jpg"
+   authorPosition="Developer DAO"
+   authorTwitter="DAppaDanDev"
+   createdDate="Sept 26, 2024"
+>
+
+## About this Lesson
+
+Congratulations on making it to the final lesson of this course on Rootstock.
+
+If you have completed the prior lessons then you will now have:
+
+- An understanding of the fundamentals of the Rootstock
+- Hands-on knowledge of using The Graph to query data from Rootstock
+- A deployed smart contract on the Rootstock Testnet
+
+In this lesson, you will use the smart contract that you deployed in the previous lesson to
+
+- Build a frontend application using Rainbowkit and wagmi
+- Show users the poll options created in the smart contract
+- Allow users to sign a transaction after choosing an option
+
+## Prerequisites
+
+- A deployed contract on the Rootstock testnet
+- **Node.js** (v14.x or later)
+- **npm** (v6.x or later)
+- A test wallet account in **MetaMask** or any supported wallet provider.
+
+## Setting up the Project
+
+To start the setup of the project, clone the below repo. This will include all of the packages you need to build the frontend.
+
+```bash
+git clone https://github.com/rsksmart/Demo-FrontendInteractionSmartContract.git
+```
+
+This starter kit includes:
+
+- **NextJS** - A React Library
+- **EtherJS** - A JS Library for contract interaction
+- **wagmi** - A React library with hooks for contract events
+- **viem** - A Typescript library for interacting with smart contracts
+
+To install these dependencies, run the following commands:
+
+```bash
+cd Demo-FrontendInteractionSmartContract
+npm install
+```
+
+Once that is completed, run the development server by running the `npm run dev` command in the terminal.
+
+## Locating and Importing the ABI
+
+Every deployed smart contract has an Application Binary Interface (ABI). ABIs are similar to APIs as they are points where the onchain contract can be interacted with by outside applications.
+
+The ABI gets created when you compile the smart contract using Hardhat.
+
+The easiest way to find your ABI is to:
+
+- Open your project that you created the smart contract
+- Open the `artifacts/contracts/Poll.json` file
+- Copy the ABI that will look like the one below
+
+```json
+"abi": [
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [],
+    "name": "AlreadyVoted",
+    "type": "error"
+  },
+  {
+    ...
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
+```
+
+Make sure that you get the entire ABI between the two square brackets.
+
+## Adding ABI to the Index
+
+Now you will add the ABI to the `index.tsx` file. This will allow your app to interact with parts needed on the frontend.
+
+In this template, there is already an ABI included. Remove this ABI and replace it with the one you just copied.
+
+The ABI in `index.ts` should now look like this, not the removal of the quotes:
+
+```javascript
+const contractABI = [
+  {
+    inputs: [],
+    stateMutability: 'nonpayable',
+    type: 'constructor'
+  },
+  {
+    inputs: [],
+    name: 'AlreadyVoted',
+    type: 'error'
+  },
+  {
+    inputs: [],
+    name: 'InvalidOption',
+    type: 'error'
+  },
+  {
+    ...
+    name: 'voters',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  }
+]
+```
+
+## Replacing the Contract Address
+
+Below the ABI section, there is a definition of the contract address. Locate the address of the Poll contract that you deployed.
+
+If you did not save this information, it can be located in the Hardhat project at `/deployments/Poll.json`
+
+The contract address is located at the top of this file.
+
+`const contractAddress = '0x47C77Da13760F4d063d2103a00D2c7b636131eBD'`
+
+## Creating Functions and States
+
+Now that you have setup the contract, it's time to start creating the code to interact with it.
+
+The first step is using the setState hook in React to setup options and the write contract hook in wagmi. This is done by the following code:
+
+```typescript
+const Home: NextPage = () => {
+
+const [options, setOptions] = useState<Array<{ id: number; name: string; voteCount: number }>>([])
+
+const { writeContract, isPending: isVoting } = useWriteContract()
+```
+
+### Loading the Options and Results
+
+In this app, the user will have the ability to select the option that applies to them in the poll as well as the results of the poll. To do this we need to use the `useReadContract`.
+
+Next, add this code under the previous code:
+
+```typescript
+const { data: optionsCountData, isLoading: isLoadingOptionsCount } = useReadContract({
+  address: contractAddress,
+  abi: contractABI,
+  functionName: "getOptionsCount",
+});
+
+const optionsCount = optionsCountData ? Number(optionsCountData) : 0;
+
+const { data: optionData, isLoading: isLoadingOption } = useReadContract({
+  address: contractAddress,
+  abi: contractABI,
+  functionName: "getOption",
+  args: [BigInt(options.length)],
+}) as { data: { id: bigint; name: string; voteCount: bigint } | undefined; isLoading: boolean };
+```
+
+This code gets the `functionName` from the contract and passes the arguments that the function expects.
+
+### Render the list of Options
+
+Now that the options are loaded, we need to make a condition to show this to the user.
+
+You can use the useEffect hook in React to do this:
+
+```typescript
+useEffect(() => {
+  if (optionData && !isLoadingOption) {
+    setOptions((prevOptions) => [
+      ...prevOptions,
+      {
+        id: Number(optionData.id),
+        name: optionData.name,
+        voteCount: Number(optionData.voteCount),
+      },
+    ]);
+  }
+}, [optionData, isLoadingOption]);
+```
+
+### Handling the Vote
+
+Last but not least, lets create a way for the user to vote. This is done by creating a `handleVote` function that takes in the `id` of the option selected and passes it to the vote function.
+
+Here is the function:
+
+```typescript
+const handleVote = (optionId: number) => {
+  writeContract({
+    address: contractAddress,
+    abi: contractABI,
+    functionName: "vote",
+    args: [BigInt(optionId)],
+  });
+};
+```
+
+## Displaying the UI
+
+Now it is time to create the UI where the user will make their choice on the poll.
+
+First, remove any sample code inside of the `<main />` tag other than the `<ConnectButton />`.
+
+This button uses Rainbow Kit to allow users to connect to their wallet so you must keep it.
+
+Now add this code directly under the `<ConnectButton />` component:
+
+```jsx
+<h1 className={styles.title}>
+  Developer DAO Membership Poll
+</h1>
+
+<section className={styles.card}>
+  <h2>Voting Results</h2>
+  {isLoadingOptionsCount ? (
+      <p>Loading options...</p>
+  ) : (
+    <ul>
+      {options.map((option) => (
+        <li key={option.id}>
+          {`${option.name} (${option.voteCount} votes)`}
+        </li>
+      ))}
+    </ul>
+  )}
+</section>
+
+<section className={styles.card}>
+  <h2>Voting Options</h2>
+  {isLoadingOptionsCount ? (
+    <p>Loading options...</p>
+  ) : (
+    <ul>
+      {options.map((option) => (
+        <li key={option.id}>
+          {`${option.name} (${option.voteCount} votes)`}
+          <button
+          onClick={() => handleVote(option.id)}
+          disabled={isVoting}
+          >
+            {isVoting ? 'Voting...' : 'Vote'}
+          </button>
+        </li>
+      ))}
+    </ul>
+  )}
+</section>
+```
+
+This code creates a list to show the voting results and one to show the voting options.
+
+Since this data lives onchain, each of the components has an `isLoadingOptionsCount`condition to account for the time of the component being rendered before the data is read.
+
+By going back to where your development server is running, typically http://localhost:3000, you should see the below interface:
+
+![CleanShot 2024-09-25 at 17.21.01@2x.png](https://utfs.io/f/2sXGl0kj0PZBRmSDOrUbnXMt42qIxa5O0DPQd98Y7TmZWUVl)
+
+## Testing the App
+
+Now comes the time to see if the app works!
+
+To do this:
+
+- Connect Your Wallet using the Rainbow Wallet button.
+- Make sure you have tRBTC to sign the transaction. If not, head over to the faucet to get some.
+- Click on any of the `Vote`buttons
+- Your wallet should now open up so that you can sign the transaction
+
+After signing the transaction, you should now see that the `Voting Results` has increased by 1.
+
+Also, it's great to test trying to double-vote, you should not be able to.
+
+## Conclusion
+
+Congrats on finishing this lesson and course! This is only the start of your joining of combining the best of Bitcoin and Ethereum with Rootstock.
+
+To keep you going, here are some additional resources that will be helpful:
+
+[Rootstock Developer Portal ](https://dev.rootstock.io/?_gl=1*rhhhf5*_gcl_au*MzA2ODIzMDY5LjE3MjQ2NjM0MjU)
+[Rootstock Collective](https://rootstockcollective.xyz/) - DAO rewarding builders and users of Rootstock
+
+</LessonLayout>

@@ -1,0 +1,12 @@
+{
+  "question": "Which of the following conditions must a Bitcoin sidechain meet?",
+  "options": [
+    { "answer": "The native token should be completely independent from Bitcoin" },
+    {
+      "answer": "The native token of the sidechain should be transferable between the parent and sidechain",
+      "correct": true
+    },
+    { "answer": "The sidechain should have its own independent consensus mechanism" },
+    { "answer": "The sidechain should always use a different gas token" }
+  ]
+}

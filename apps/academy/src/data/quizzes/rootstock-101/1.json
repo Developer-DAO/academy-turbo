@@ -1,0 +1,41 @@
+{
+  "title": "Final Quiz",
+  "questions": [
+    {
+      "question": "How does the 2-Way Peg between Bitcoin and Rootstock work?",
+      "options": [
+        { "answer": "BTC is destroyed to mint new RBTC" },
+        {
+          "answer": "BTC is locked on the Bitcoin network and an equivalent amount of RBTC is released on Rootstock",
+          "correct": true
+        },
+        { "answer": "RBTC and BTC are merged into a single token" },
+        { "answer": "BTC can only be transferred one way to Rootstock" }
+      ]
+    },
+    {
+      "question": "What is the function of the PowHSM devices in Rootstock's 2-Way Peg system?",
+      "options": [
+        { "answer": "They provide additional hashing power for Bitcoin mining" },
+        {
+          "answer": "They automatically sign transactions to ensure security during Bitcoin and RBTC transfers",
+          "correct": true
+        },
+        { "answer": "They manually validate every transaction on the network" },
+        { "answer": "They allow individual users to approve transactions using private keys" }
+      ]
+    },
+    {
+      "question": "What makes Rootstock compatible with Ethereum smart contracts?",
+      "options": [
+        { "answer": "It uses a new version of Bitcoin scripting language" },
+        { "answer": "It is based on a Proof of Stake consensus algorithm" },
+        {
+          "answer": "It is EVM-compatible, allowing Solidity-based contracts to run on Rootstock",
+          "correct": true
+        },
+        { "answer": "It has no compatibility with Ethereum at all" }
+      ]
+    }
+  ]
+}

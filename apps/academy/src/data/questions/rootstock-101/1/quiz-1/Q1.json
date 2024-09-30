@@ -1,0 +1,12 @@
+{
+  "question": "What is the main purpose of a Bitcoin sidechain like Rootstock?",
+  "options": [
+    { "answer": "To replace the Bitcoin network entirely" },
+    { "answer": "To increase Bitcoin’s Proof of Work capabilities" },
+    {
+      "answer": "To extend Bitcoin’s functionality, such as adding smart contract execution",
+      "correct": true
+    },
+    { "answer": "To reduce transaction fees on Bitcoin" }
+  ]
+}

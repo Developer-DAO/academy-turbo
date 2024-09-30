@@ -1,0 +1,9 @@
+{
+  "question": "What is the primary purpose of The Graph?",
+  "options": [
+    { "ansswer": "To mine cryptocurrencies" },
+    { "ansswer": "To secure transactions" },
+    { "ansswer": "To organize blockchain data", "correct": true },
+    { "ansswer": "To replace the blockchain" }
+  ]
+}
