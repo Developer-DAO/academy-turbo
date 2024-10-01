@@ -213,6 +213,12 @@ function addOption(string memory _name) private {
 }
 ```
 
+The next step is adding options for user to vote on by using this `addOption` function. 
+
+As we defined the `Option` struct, each option has an id, name and vote count. 
+
+In this function the id is automatically assigned based on the length of the array, and the name is the parameter we pass in. The vote count is set to 0 by default.
+
 ```solidity
 function vote(uint _optionId) public {
   if (voters[msg.sender]) revert AlreadyVoted();
@@ -222,6 +228,15 @@ function vote(uint _optionId) public {
   emit VotedEvent(_optionId);
 }
 ```
+This function is where the voting "magic" happens.
+
+First it checks if the user has already voted by checking the `voters` mapping. If they have, it reverts the transaction.
+
+Then it checks if the option id is valid. If not, it reverts the transaction.
+
+After that, it sets the `voters` mapping to true for the address that is voting.
+
+Finally, it increments the vote count for the option that the user has voted on and emits the `VotedEvent` event.
 
 ```solidity
 function getOptionsCount() public view returns (uint256) {
@@ -233,6 +248,10 @@ function getOption(uint256 _index) public view returns (Option memory) {
   return options[_index];
 }
 ```
+
+These two functions will be helpful later on when you build the frontend. 
+
+They allow you to get the total count of options with `getOptionsCount` and to get the details of a specific option with `getOption`.
 
 ## Deploying the Contract
 
@@ -261,6 +280,10 @@ export default func;
 
 func.tags = ["poll"];
 ```
+
+This script is used to deploy the `Poll` contract to the Rootstock Testnet. It uses the `hardhat-deploy` library to deploy the contract.
+
+To make it easier when using the Hardhat Shorthand package, it also defines a tag for the contract, `poll`, which you be used when deploying the contract.
 
 ### Compile and Deploy the Poll Contract
 
