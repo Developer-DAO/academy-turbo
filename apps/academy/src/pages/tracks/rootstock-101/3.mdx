@@ -71,15 +71,15 @@ To get the Mainnet and Testnet RPC URLs, you need to create an account on the Ro
 
 Once you are there, create or login into your account. You will then see the API Dashboard. Select `+New API Key` to create your API Key.
 
-![create-apio.png](https://utfs.io/f/2sXGl0kj0PZB7eHIteSCKpkibIt9YBHFNTX1Q4oneqSfyuJ5)
+![create-apio.png](/assets/tracks/rootstock-101/3/1.png)
 
 First, create a Testnet API Key by selecting the Network as `TESTNET`:
 
-![Name API](https://utfs.io/f/2sXGl0kj0PZBF50PjQD2BhtHCJ7vujfIwc6pLqTg2SrNoX4k)
+![Name API](/assets/tracks/rootstock-101/3/2.png)
 
 After creating the API Key, click the API button to get your testnet RPC URL from the Connect API screen below:
 
-![Connect API](https://utfs.io/f/2sXGl0kj0PZBm84Q7FAoEXToI1H7PjULgWwVO5N9ZaAq8GlS)
+![Connect API](/assets/tracks/rootstock-101/3/3.png)
 
 Copy this URL and add it to your `.env` file you have created:
 
@@ -107,7 +107,7 @@ Head over to the Rootstock Faucet [https://faucet.rootstock.io](https://faucet.r
 
 You will need to copy your wallet address from Metamask into the address field.
 
-It should take about 30 seconds for the tRBTC to reach your wallet, and you'll see a confirmation like this with the transaction hash: ![confirmation.png](https://utfs.io/f/2sXGl0kj0PZBu72ENAOvpDGAsLPXcYeVg38ZfqTvOQ0jnW4b)
+It should take about 30 seconds for the tRBTC to reach your wallet, and you'll see a confirmation like this with the transaction hash: ![confirmation.png](/assets/tracks/rootstock-101/3/4.png)
 
 ## Writing the Smart Contract
 
@@ -213,9 +213,9 @@ function addOption(string memory _name) private {
 }
 ```
 
-The next step is adding options for user to vote on by using this `addOption` function. 
+The next step is adding options for user to vote on by using this `addOption` function.
 
-As we defined the `Option` struct, each option has an id, name and vote count. 
+As we defined the `Option` struct, each option has an id, name and vote count.
 
 In this function the id is automatically assigned based on the length of the array, and the name is the parameter we pass in. The vote count is set to 0 by default.
 
@@ -228,6 +228,7 @@ function vote(uint _optionId) public {
   emit VotedEvent(_optionId);
 }
 ```
+
 This function is where the voting "magic" happens.
 
 First it checks if the user has already voted by checking the `voters` mapping. If they have, it reverts the transaction.
@@ -249,7 +250,7 @@ function getOption(uint256 _index) public view returns (Option memory) {
 }
 ```
 
-These two functions will be helpful later on when you build the frontend. 
+These two functions will be helpful later on when you build the frontend.
 
 They allow you to get the total count of options with `getOptionsCount` and to get the details of a specific option with `getOption`.
 
@@ -321,9 +322,15 @@ deploying "Poll" (tx: 0x87309aa6ee40e5f57f767fb82823c7ee0e1726464d48b6dabef647d5
 
 **Save this address somewhere as you will use it to for the next lesson as well!**
 
-## Final Quiz
-
-TODO
+<QuizStatusChecker
+  quiz="rootstock-101/3"
+  successMessage={[
+    {
+      message: "You answered all the quiz questions correctly. Awesome job!",
+    },
+  ]}
+  partnerTwitterHandle="@rootstock_io"
+/>
 
 ## Conclusion
 
