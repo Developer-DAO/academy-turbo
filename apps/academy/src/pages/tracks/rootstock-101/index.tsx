@@ -24,7 +24,7 @@ const Rootstock101TrackPage = () => {
     <div className="relative m-10 flex lg:mx-auto lg:max-w-screen-lg">
       <TracksLayout
         trackTitle="Rootstock 101: Building Apps with Bitcoin"
-        trackDescription="Leverage your Ethereum and Solidity skills to build apps that on Bitcoin."
+        trackDescription="Leverage your Ethereum and Solidity skills to build apps on Bitcoin."
         trackAuthor="DappaDan"
         trackAuthorImage="/authors/dappadan.jpg"
         trackAuthorDescription="Your Protocol's BFF ❤️  | Helping teams build a better developer experience and have fun doing it."
@@ -60,7 +60,7 @@ Rootstock101TrackPage.getLayout = function getLayout(page: ReactElement) {
   return (
     <PageSeoLayout
       title="Rootstock 101: Building Apps with Bitcoin"
-      description="Leverage your Ethereum and Solidity skills to build apps that on Bitcoin."
+      description="Leverage your Ethereum and Solidity skills to build apps on Bitcoin."
       openGraph={{
         images: [
           {
