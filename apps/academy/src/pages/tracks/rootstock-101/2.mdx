@@ -57,11 +57,11 @@ Visit [https://thegraph.com/studio/](https://thegraph.com/studio/) and sign up o
 
 After you log in, you will see the option to "Create a Subgraph" on the right side of the screen.
 
-![Create Subgraph](https://hackmd.io/_uploads/rJ1SBwJRC.png)
+![Create Subgraph](/assets/tracks/rootstock-101/2/1.png)
 
 From there you will be able to name your subgraph. For this lesson we will call this "RFI-Token" but you can name this whatever you like.
 
-![Name Subgraph](https://utfs.io/f/2sXGl0kj0PZBFm9YHS2BhtHCJ7vujfIwc6pLqTg2SrNoX4kF)
+![Name Subgraph](/assets/tracks/rootstock-101/2/2.png)
 
 This will create a "draft" subgraph in the main dashboard of your Subgraph Studio.
 
@@ -69,7 +69,7 @@ The subgraph is in draft mode because we have not set up what we would like to i
 
 You should now be seeing a similar screen to this:
 
-![Subgraph Install](https://utfs.io/f/2sXGl0kj0PZBogk1I4V4jrF7Zx3MtqVgczAfWPldU1hyCs0O)
+![Subgraph Install](/assets/tracks/rootstock-101/2/3.png)
 
 <LessonQuestionsModal buttonText="Quiz 1" title="Comprehension Check">
   <Question question="rootstock-101/2/quiz-1/Q1" />
@@ -123,7 +123,7 @@ graph auth --studio AUTHKEY
 
 You can do this by running the following command:
 
-![Auth-Key Cropped](https://utfs.io/f/2sXGl0kj0PZB7Kk9ntHSCKpkibIt9YBHFNTX1Q4oneqSfyuJ)
+![Auth-Key Cropped](/assets/tracks/rootstock-101/2/4.png)
 
 After that, go to the rfi-token directory by typing cd rfi-token in your terminal.
 
@@ -147,7 +147,7 @@ After selecting a version number, you will see your **Subgraph endpoint** in the
 
 To test the endpoint, go back to the Subgraph Studio and select the **Playground** option.
 
-![playground.png](https://utfs.io/f/2sXGl0kj0PZBFPJEEJ2BhtHCJ7vujfIwc6pLqTg2SrNoX4kF)
+![playground.png](/assets/tracks/rootstock-101/2/5.png)
 
 On this page, you will see a sample query that you can use to query your subgraph:
 
@@ -172,7 +172,7 @@ By clicking the Play button, you will see the result of the query. If you have j
 
 You can find the progress of the synchronization under the subgraph details.
 
-![playbutton.png](https://utfs.io/f/2sXGl0kj0PZBOMze5FCbxO65EI8FBJuyahS4CpisXk1vWAGq)
+![playbutton.png](/assets/tracks/rootstock-101/2/6.png)
 
 The results should look like similiar to this:
 
@@ -194,15 +194,21 @@ Now that we know the subgraph is working, we can query it outside of the playgro
 
 You can find sample code to query the subgraph using React, Next.js, and Node on the endpoints page of Subgraph Studio.
 
-![code-examples.png](https://utfs.io/f/2sXGl0kj0PZBjlKg9TrCRtTzYlP6pgH5mSALOwioy8NdxBaD)
+![code-examples.png](/assets/tracks/rootstock-101/2/7.png)
 
 From there, you can copy the code that fits your application code the best.
 
 Since The Graph uses GraphQL, you can adjust your query to get only the information you need. For example, you can add a blockTimestamp to return the timestamps for the blocks that included the transactions:
 
-## Final Quiz
-
-TODO
+<QuizStatusChecker
+  quiz="rootstock-101/2"
+  successMessage={[
+    {
+      message: "You answered all the quiz questions correctly. Awesome job!",
+    },
+  ]}
+  partnerTwitterHandle="@rootstock_io"
+/>
 
 ## Conclusion
 

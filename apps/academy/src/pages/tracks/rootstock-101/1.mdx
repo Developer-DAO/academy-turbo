@@ -88,7 +88,7 @@ Each Bitcoin block include a reference to a Rootstock block. This reference is i
 - Be submitted by both Bitcoin and Rootstock if it meets Bitcoin's difficulty level
 - Be submitted to only Rootstock if it it does not meet Bitcoin's difficulty level but does meet Rootstock's
 
-![Merged Mining](https://utfs.io/f/2sXGl0kj0PZBY8qt0QTjtldo9bLBN6Xc7DkrHVg5SGzaQyxs)
+![Merged Mining](/assets/tracks/rootstock-101/1/merged-mining.gif)
 
 Merged mining also enables the stored token can be transferred from the mainchain to the sidechain and back. This is where the 2-way peg comes in.
 
@@ -102,7 +102,7 @@ The real value of this peg is the ability to transfer BTC back and forth between
 
 The process of locking Bitcoin securely needs to be tamper-proof to prevent any double spend on either Rootstock or the Bitcoin network. Rootstock uses a group of participating nodes or functionaries to manage private keys for using the Bitcoin multi-signature protocol. This isn't like a traditional multi-sig as it uses hardware devices called PowHSMs.
 
-![Peg In](https://utfs.io/f/2sXGl0kj0PZBst5Jqmu08jkK21rcBJCixEeVXoZGQnm6ahYd)
+![Peg In](/assets/tracks/rootstock-101/1/peg-in.gif)
 
 PowHSMs are tamper-proof that are devices that are connected to a running Rootstock node. The difference between a traditional multi-sig wallet is that PowHSMs perform the signature on transactions automatically and not done by an individual. These signatures occur after a large amount of hashing power or completed blocks are confirmed. This prevents any type of attack or collusion to occur.
 
@@ -110,7 +110,7 @@ PowHSMs are tamper-proof that are devices that are connected to a running Rootst
 
 The other bridging method is to get RBTC out of Rootstock and into BTC. This is using the Bridge Smart Contract address on Rootstock called the exit address. The PowHSMs also require a large amount of confirmed blocks before the peg-out takes place and is final.
 
-![Peg Out](https://utfs.io/f/2sXGl0kj0PZB7sFBJkSCKpkibIt9YBHFNTX1Q4oneqSfyuJ5)
+![Peg Out](/assets/tracks/rootstock-101/1/peg-out.gif)
 
 As we discussed earlier, the main benefit of using Rootstock for developers and users is its ability to add smart contact functionality to the Bitcoin network.
 
@@ -124,9 +124,15 @@ There is also a growing set of open-source tools to make building on Rootstock e
 - RIF Wallet - An open-source Bitcoin wallet that allows users to interact with smart contracts.
 - Flyover - Enables users to transfer BTC between the Bitcoin and Rootstock networks.
 
-## Final Quiz
-
-TODO
+<QuizStatusChecker
+  quiz="rootstock-101/1"
+  successMessage={[
+    {
+      message: "You answered all the quiz questions correctly. Awesome job!",
+    },
+  ]}
+  partnerTwitterHandle="@rootstock_io"
+/>
 
 ## Conclusion
 
