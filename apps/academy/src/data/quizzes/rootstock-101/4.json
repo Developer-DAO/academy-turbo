@@ -1,0 +1,35 @@
+{
+  "title": "Final Quiz",
+  "questions": [
+    {
+      "question": "Where can you find the ABI of your deployed smart contract?",
+      "options": [
+        { "answer": "In the MetaMask wallet" },
+        { "answer": "In the `artifacts/contracts/Poll.json` file", "correct": true },
+        { "answer": "On the Rootstock documentation website" },
+        { "answer": "In the RainbowKit configuration" }
+      ]
+    },
+    {
+      "question": "Which library is NOT mentioned as a part of the starter kit for building the frontend?",
+      "options": [
+        { "answer": "NextJS" },
+        { "answer": "EtherJS" },
+        { "answer": "Wagmi" },
+        { "answer": "React Router", "correct": true }
+      ]
+    },
+    {
+      "question": "What condition is used in the UI to check if the options are still being loaded?",
+      "options": [
+        { "answer": "isLoadingOptionsCount", "correct": true },
+        { "answer": "isVoting" },
+        { "answer": "isLoadingPoll" },
+        { "answer": "isLoadingTransaction" }
+      ]
+    }
+  ]
+}
+
+
+

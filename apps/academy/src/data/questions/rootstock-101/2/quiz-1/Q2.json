@@ -1,0 +1,9 @@
+{
+  "question": "What must be staked by indexers in The Graph network?",
+  "options": [
+    { "answer": "ETH" },
+    { "answer": "BTC" },
+    { "answer": "RIF" },
+    { "answer": "GRT", "correct": true }
+  ]
+}

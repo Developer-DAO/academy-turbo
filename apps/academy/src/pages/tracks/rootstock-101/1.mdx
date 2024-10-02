@@ -1,0 +1,141 @@
+---
+title: Rootstock 101: Lesson 1
+description: What is Rootstock, how is it connected to Bitcoin, and what are the differences between Rootstock and Ethereum?
+icons: ["rootstock", "fundamentals"]
+---
+
+import LessonLayout from "../../../components/LessonLayout";
+import Callout from "../../../components/mdx/Callout";
+import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
+import Question from "../../../components/mdx/Question";
+import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
+import LessonInformationalModal from "../../../components/mdx/LessonInformationalModal";
+
+<LessonLayout
+   lessonTitle="Intro to Rootstock"
+   lessonImage="/meta-images/rootstock-101/1.png"
+   lessonDescription="What is Rootstock, how is it connected to Bitcoin, and what are the differences between Rootstock and Ethereum?"
+   author="DappaDan"
+   authorImage="/authors/dappadan.jpg"
+   authorPosition="Developer DAO"
+   authorTwitter="DAppaDanDev"
+   createdDate="Sept 26, 2024"
+>
+
+## About This Lesson
+
+A rootstock is a root system that is used to increase the growth and performance of fruit trees.
+
+Don't worry this course and lesson is not about growing fruit trees!
+
+However, knowing this concept is helpful when learning about Rootstock, the Bitcoin side chain. As you wil
+
+In this lesson, we will explore:
+
+- What is a Bitcoin Sidechain and how do they improve the performance of the network.
+- How Rootstock bridges Ethereum and Bitcoin to grow to new capabilities.
+- EVM Compatibility and the fruitful benefits that Rootstock brings to developers.
+
+Each lesson also has short quizes to check your knowledge.
+
+So let's get started digging into Rootstock!
+
+## What is a Bitcoin Sidechain?
+
+No blockchain network is perfect. Every blockchain has its strengths and weaknesses.
+
+The Bitcoin network excels at providing security through its Proof of Work consensus network. This makes Bitcoin a tamper-proof store of value. This ability does not extend to all use cases that we blockchains have been used for.
+
+Bitcoin sidechains extend the capability of the Bitcoin network to address different use cases that the original chain was not designed for. This can include features such as privacy and performance.
+
+Rootstock, the first Bitcoin sidechain, is focused on giving the Bitcoin network the ability to execute smart contracts. If you have worked with Ethereum before, smart contract execution is something that is performed by the chain through using the Ethereum Virtual Network (EVM).
+
+The world of Bitcoin sidechains is still an evolving one but a sidechain should meet these conditions:
+
+- The Native Token of the sidechain should be backed by the parent token, Bitcoin (BTC), and be able to be transferred between the parent and sidechain.
+- The sidechain should not require any other token to function. This includes having a token that competes on value with the parent token or a specific gas token.
+- Transaction finality should be reached independently from the parent chain. This means a transaction should not be changed after it is confirmed.
+
+Now that we have this definition, let us look at how Rootstock meets these conditions.
+
+<LessonQuestionsModal buttonText="Quiz 1" title="Comprehension Check">
+  <Question question="rootstock-101/1/quiz-1/Q1" />
+  <Question question="rootstock-101/1/quiz-1/Q2" />
+</LessonQuestionsModal>
+
+## How Rootstock Works
+
+There are 3 main concepts you need to know to understand how Rootstock works:
+
+- Merged Mining
+- The 2 Way Peg
+- EVM Compatibility
+
+### Merged Mining
+
+The security of Bitcoin is provided by its miners and the mining process is needed to add a new block to the chain. This process requires a large amount of computation and time to provide a solution to the mathematical challenge.
+
+Rootstock is merged and mined with the Bitcoin network. This means that the same computation and resources used by a miner can be used to mine a Rootstock block. Mining a Rootstock block is also faster. The process takes around 30 seconds compared to 10 minutes for a Bitcoin block.
+
+This is a positive for Bitcoin miners because it:
+
+- Enables them to reuse the computational resources used for Bitcoin mining.
+- Offers an easier mathematical challenge for providing faster block time.
+- Provides an additional revenue stream in Bitcoin by providing hashing power to the Rootstock network with minimal additional configuration.
+
+Each Bitcoin block include a reference to a Rootstock block. This reference is ignored by the Bitcoin network but allows for the mining solution to:
+
+- Be submitted by both Bitcoin and Rootstock if it meets Bitcoin's difficulty level
+- Be submitted to only Rootstock if it it does not meet Bitcoin's difficulty level but does meet Rootstock's
+
+![Merged Mining](/assets/tracks/rootstock-101/1/merged-mining.gif)
+
+Merged mining also enables the stored token can be transferred from the mainchain to the sidechain and back. This is where the 2-way peg comes in.
+
+### Pow Peg - The 2-Way Peg
+
+The token of Rootstock is RBTC. It is 1 to 1 peg to BTC. 1 RBTC = 1 BTC.
+
+The real value of this peg is the ability to transfer BTC back and forth between the Bitcoin network and Rootstock. To do this, the amount of BTC needs to be locked on Bitcoin and the same amount in RBTC should be released on Rootstock.
+
+#### Peg-In - Locking Bitcoin
+
+The process of locking Bitcoin securely needs to be tamper-proof to prevent any double spend on either Rootstock or the Bitcoin network. Rootstock uses a group of participating nodes or functionaries to manage private keys for using the Bitcoin multi-signature protocol. This isn't like a traditional multi-sig as it uses hardware devices called PowHSMs.
+
+![Peg In](/assets/tracks/rootstock-101/1/peg-in.gif)
+
+PowHSMs are tamper-proof that are devices that are connected to a running Rootstock node. The difference between a traditional multi-sig wallet is that PowHSMs perform the signature on transactions automatically and not done by an individual. These signatures occur after a large amount of hashing power or completed blocks are confirmed. This prevents any type of attack or collusion to occur.
+
+### Peg-Out - Unlocking RBTC
+
+The other bridging method is to get RBTC out of Rootstock and into BTC. This is using the Bridge Smart Contract address on Rootstock called the exit address. The PowHSMs also require a large amount of confirmed blocks before the peg-out takes place and is final.
+
+![Peg Out](/assets/tracks/rootstock-101/1/peg-out.gif)
+
+As we discussed earlier, the main benefit of using Rootstock for developers and users is its ability to add smart contact functionality to the Bitcoin network.
+
+## EVM Compatibility
+
+Rootstock is EVM-compatible. For developers, this means that you can write smart contracts using Solidity and work with familiar tools like Hardhat and libraries like wagmi when interacting with smart contracts. This also allows for protocols deployed on other EVM-compatible networks to be ported to Rootstock as well.
+
+There is also a growing set of open-source tools to make building on Rootstock easier for developers. These tools are included in the set of protocols called the Rootstock Infrastructure Framework (RIF). Here are some of the tools:
+
+- RNS (RIF Name Service) - similar to the Ethereum Name Service (ENS), this replaces the complicated wallet addresses with nicknames to allow users to easily perform transactions.
+- RIF Wallet - An open-source Bitcoin wallet that allows users to interact with smart contracts.
+- Flyover - Enables users to transfer BTC between the Bitcoin and Rootstock networks.
+
+<QuizStatusChecker
+  quiz="rootstock-101/1"
+  successMessage={[
+    {
+      message: "You answered all the quiz questions correctly. Awesome job!",
+    },
+  ]}
+  partnerTwitterHandle="@rootstock_io"
+/>
+
+## Conclusion
+
+Great work finishing the introduction to Rootstock! Now we will put what you have learned to practice in the next lessons. The next lesson will using The Graph to read data from the Rootstock mainnet!
+
+</LessonLayout>

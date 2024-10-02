@@ -1,0 +1,32 @@
+{
+  "title": "Final Quiz",
+  "questions": [
+    {
+      "question": "What language is used to query the subgraph?",
+      "options": [
+        { "answer": "SQL" },
+        { "answer": "REST" },
+        { "answer": "JSON" },
+        { "answer": "GraphQL", "correct": true }
+      ]
+    },
+    {
+      "question": "What is the command to build the subgraph?",
+      "options": [
+        { "answer": "graph init" },
+        { "answer": "graph codegen && graph build", "correct": true },
+        { "answer": "graph auth" },
+        { "answer": "graph deploy" }
+      ]
+    },
+    {
+      "question": "What is the purpose of the `graph codegen` command?",
+      "options": [
+        { "answer": "To initialize the subgraph" },
+        { "answer": "To build the subgraph" },
+        { "answer": "To load the contract's ABI and create types", "correct": true },
+        { "answer": "To deploy the subgraph" }
+      ]
+    }
+  ]
+}

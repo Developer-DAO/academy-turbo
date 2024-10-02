@@ -1,0 +1,339 @@
+---
+title: Rootstock 101: Lesson 3
+description: Creating a simple, smart contract and deploying it to Rootstock.
+icons: ["rootstock", "fundamentals"]
+---
+
+import LessonLayout from "../../../components/LessonLayout";
+import Callout from "../../../components/mdx/Callout";
+import QuizStatusChecker from "../../../components/mdx/QuizStatusChecker";
+import Question from "../../../components/mdx/Question";
+import LessonQuestionsModal from "../../../components/mdx/LessonQuestionsModal";
+import LessonInformationalModal from "../../../components/mdx/LessonInformationalModal";
+
+<LessonLayout
+   lessonTitle="Building Smart Contracts on Rootstock with Hardhat"
+   lessonImage="/meta-images/rootstock-101/3.png"
+   lessonDescription="Creating a simple, smart contract and deploying it to Rootstock."
+   author="DappaDan"
+   authorImage="/authors/dappadan.jpg"
+   authorPosition="Developer DAO"
+   authorTwitter="DAppaDanDev"
+   createdDate="Sept 26, 2024"
+>
+
+## About This Lesson
+
+Rootstock is a Bitcoin sidechain that allows developers to create smart contracts compatible with the Ethereum Virtual Machine (EVM), as discussed in previous lessons.
+
+This means you can develop with Solidity along with familiar tools like Hardhat for your smart contracts.
+
+In this lesson, you will:
+
+- Write a Solidity Smart Contract that allows user to vote on in a public poll.
+- Setup your wallet and receive testnet tokens for the Rootstock testnet.
+- Deploy the smart contract to the Rootstock testnet using Hardhat.
+
+Let's get started building our smart contract!
+
+## Developing the Smart Contract
+
+### Installing the Starter Kit
+
+The first step to get started is to clone the Rootstock Hardhat Starter kit. Using this starter kit will make sure you have all the right dependencies. Run the following command in your terminal:
+
+```bash
+git clone https://github.com/rsksmart/rootstock-hardhat-starterkit.git
+```
+
+After doing this, navigate to the folder and use npm to install the required dependencies:
+
+```bash
+cd rootstock-hardhat-starterkit
+npm install
+```
+
+### Setting Up the Environment Variables
+
+In the main directory of the `Rootstock-Hardhat-Starterkit` file, there is a file called `.env.example`.
+
+Copy this file and rename it to `.env`
+
+In this file you will see 3 environment variables that you will need to set to deploy a smart contract:
+
+```txt
+PRIVATE_KEY: Your private key (e.g., from your Metamask account details).
+RSK_MAINNET_RPC_URL: The RPC URL for the Rootstock mainnet.
+RSK_TESTNET_RPC_URL: The RPC URL for the Rootstock testnet.
+```
+
+To get the Mainnet and Testnet RPC URLs, you need to create an account on the Rootstock RPC API page ([https://rpc.rootstock.io](https://rpc.rootstock.io).)
+
+Once you are there, create or login into your account. You will then see the API Dashboard. Select `+New API Key` to create your API Key.
+
+![create-apio.png](/assets/tracks/rootstock-101/3/1.png)
+
+First, create a Testnet API Key by selecting the Network as `TESTNET`:
+
+![Name API](/assets/tracks/rootstock-101/3/2.png)
+
+After creating the API Key, click the API button to get your testnet RPC URL from the Connect API screen below:
+
+![Connect API](/assets/tracks/rootstock-101/3/3.png)
+
+Copy this URL and add it to your `.env` file you have created:
+
+```txt
+RSK_MAINNET_RPC_URL=''
+RSK_TESTNET_RPC_URL='[https://rpc.testnet.rootstock.io/Fvdu04HN9y4dByGY4qRNXavHu3YWHU-T](https://rpc.testnet.rootstock.io/Fvdu04HN9y4dByGY4qRNXavHu3YWHU-T)'
+PRIVATE_KEY=''
+```
+
+Now repeat the same steps for creating a Mainnet RPC URL.
+
+### Adding Your Private Key - Metamask
+
+The last environment variable to add is the private key of your wallet.
+
+**IMPORTANT:** To avoid any loss of funds, please create a new wallet for this course.
+
+To get your private key on your Metamask wallet, please follow [this guide](https://support.metamask.io/managing-my-wallet/secret-recovery-phrase-and-private-keys/how-to-export-an-accounts-private-key/).
+
+## Getting Testnet Tokens
+
+To deploy the contract and interact with it, you will need tRBTC tokens. These tokens are used on the Rootstock testnet.
+
+Head over to the Rootstock Faucet [https://faucet.rootstock.io](https://faucet.rootstock.io) to get the tokens.
+
+You will need to copy your wallet address from Metamask into the address field.
+
+It should take about 30 seconds for the tRBTC to reach your wallet, and you'll see a confirmation like this with the transaction hash: ![confirmation.png](/assets/tracks/rootstock-101/3/4.png)
+
+## Writing the Smart Contract
+
+Now that you have the environment variables set up and the testnet tokens, it's time to write the smart contract.
+
+This smart contract is a polling smart contract. It will:
+
+- Allow a user to select how long they have been in DeveloperDAO
+- Sign the transaction so it lives onchain
+- See the results of the poll completed by other users
+
+### Creating the Contract
+
+Inside the `contracts` folder of the Hardhat Starterkit you should see 3 sample contracts (ERC20, ERC721, ERC1155).
+
+Create a new file and call it `Poll.sol`. Here is where you will write the poll smart contract.
+
+If you would like the complete Soldity code, here it is:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Poll {
+  struct Option {
+    uint256 id;
+    string name;
+    uint256 voteCount;
+  }
+  Option[] public options;
+  mapping(address => bool) public voters;
+  event VotedEvent(uint256 optionId);
+
+  constructor() {
+    addOption("1-2 Years");
+    addOption("3-4+ Years");
+    addOption("Not in Developer DAO");
+  }
+
+  function addOption(string memory _name) private {
+    options.push(Option(options.length, _name, 0));
+  }
+
+  function vote(uint _optionId) public {
+    if (voters[msg.sender]) revert AlreadyVoted();
+    if (_optionId >= options.length) revert InvalidOption();
+    voters[msg.sender] = true;
+    options[_optionId].voteCount++;
+    emit VotedEvent(_optionId);
+  }
+
+  function getOptionsCount() public view returns (uint256) {
+    return options.length;
+  }
+
+  function getOption(uint256 _index) public view returns (Option memory) {
+    require(_index < options.length, "Invalid index");
+    return options[_index];
+  }
+
+  error AlreadyVoted();
+
+  error InvalidOption();
+}
+```
+
+Here is a breakdown of what this contract code is doing:
+
+```solidity
+struct Option {
+  uint256 id;
+  string name;
+  uint256 voteCount;
+}
+```
+
+This code defines a struct for the options you will add to the poll. Each open needs an id for tracking, a name to show the user and a voteCount to collect all the votes.
+
+```solidity
+Option[] public options;
+mapping(address => bool) public voters;
+```
+
+We then create a public array of options using the struct type Option defined above. We use the `public` keyword so that we can read this array externally later on.
+
+To keep track of the voters who have already vote, we use a public mapping of `voters` to an address. The boolean prevents double voting by changing to true after someone votes.
+
+```solidity
+event VotedEvent(uint256 optionId);
+
+constructor() {
+  addOption("1-2 Years");
+  addOption("3-4+ Years");
+  addOption("Not in Developer DAO");
+}
+```
+
+We then create an event that will get emitted once a user has voted for a specific `optionId`. The constructor creates the options that users will vote on in the poll. Feel free to change these to whatever you like!
+
+```solidity
+function addOption(string memory _name) private {
+  options.push(Option(options.length, _name, 0));
+}
+```
+
+The next step is adding options for user to vote on by using this `addOption` function.
+
+As we defined the `Option` struct, each option has an id, name and vote count.
+
+In this function the id is automatically assigned based on the length of the array, and the name is the parameter we pass in. The vote count is set to 0 by default.
+
+```solidity
+function vote(uint _optionId) public {
+  if (voters[msg.sender]) revert AlreadyVoted();
+  if (_optionId >= options.length) revert InvalidOption();
+  voters[msg.sender] = true;
+  options[_optionId].voteCount++;
+  emit VotedEvent(_optionId);
+}
+```
+
+This function is where the voting "magic" happens.
+
+First it checks if the user has already voted by checking the `voters` mapping. If they have, it reverts the transaction.
+
+Then it checks if the option id is valid. If not, it reverts the transaction.
+
+After that, it sets the `voters` mapping to true for the address that is voting.
+
+Finally, it increments the vote count for the option that the user has voted on and emits the `VotedEvent` event.
+
+```solidity
+function getOptionsCount() public view returns (uint256) {
+  return options.length;
+}
+
+function getOption(uint256 _index) public view returns (Option memory) {
+  require(_index < options.length, "Invalid index");
+  return options[_index];
+}
+```
+
+These two functions will be helpful later on when you build the frontend.
+
+They allow you to get the total count of options with `getOptionsCount` and to get the details of a specific option with `getOption`.
+
+## Deploying the Contract
+
+Now that the code is added, its time to get it onchain.
+
+In the `deploy` folder of the Starterkit is where the deployment scripts are stored. These files are written in Typescript and used by Hardhat for deployment.
+
+Create a file called `DeployPoll.ts` and copy the code below:
+
+```typescript
+import { DeployFunction } from "hardhat-deploy/types";
+
+import { HardhatRuntimeEnvironment } from "hardhat/types";
+
+const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
+  const { deployer, owner } = await hre.getNamedAccounts();
+
+  await hre.deployments.deploy("Poll", {
+    from: deployer,
+
+    log: true,
+  });
+};
+
+export default func;
+
+func.tags = ["poll"];
+```
+
+This script is used to deploy the `Poll` contract to the Rootstock Testnet. It uses the `hardhat-deploy` library to deploy the contract.
+
+To make it easier when using the Hardhat Shorthand package, it also defines a tag for the contract, `poll`, which you be used when deploying the contract.
+
+### Compile and Deploy the Poll Contract
+
+Before compiling the contract, install the Hardhat Shorthand package. This will help you save time typing the Hardhat commands in the terminal.
+
+```bash
+npm i -g hardhat-shorthand
+```
+
+After that, you can run the shorthand command to compile the contract which is:
+
+```bash
+hh compile
+```
+
+You should see a confirmation in your terminal that the contract has been compiled, similar to the example below:
+
+```txt
+Generating typings for: 1 artifacts in dir: typechain-types for target: ethers-v6
+Successfully generated 44 typings!
+Compiled 1 Solidity file successfully (evm target: paris).
+```
+
+Now it is time to deploy the contract to the Rootstock Testnet. You can do this by running the following command:
+
+```bash
+hh deploy --network rskTestnet --tags poll
+```
+
+Once you deploy the contract, you will see the address where it was deployed, similar to this in your terminal:
+
+```txt
+deploying "Poll" (tx: 0x87309aa6ee40e5f57f767fb82823c7ee0e1726464d48b6dabef647d5ba36fca9)...: deployed at 0xa7e25C1782c9e831DDFcE71316Be8808Ec3C41ba with 747599 gas
+```
+
+**Save this address somewhere as you will use it to for the next lesson as well!**
+
+<QuizStatusChecker
+  quiz="rootstock-101/3"
+  successMessage={[
+    {
+      message: "You answered all the quiz questions correctly. Awesome job!",
+    },
+  ]}
+  partnerTwitterHandle="@rootstock_io"
+/>
+
+## Conclusion
+
+Great work, now you have a deployed smart contract on Rootstock. You were able to use Hardhat and write in Solidity just like other EVM compatible chains. So that your smart contract is not just sitting on the testnet lonely, in the next lesson you will build a frontend to interact with it.
+
+</LessonLayout>
