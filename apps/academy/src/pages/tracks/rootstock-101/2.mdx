@@ -202,9 +202,20 @@ Since The Graph uses GraphQL, you can adjust your query to get only the informat
 
 <QuizStatusChecker
   quiz="rootstock-101/2"
+  actionButton={{
+    href: "https://zealy.io/cw/developerdao/questboard",
+    text: "Claim on Zealy",
+  }}
   successMessage={[
     {
       message: "You answered all the quiz questions correctly. Awesome job!",
+    },
+    {
+      message:
+        "To claim your XP tokens with AR.IO: share your success on Twitter and submit along with your secret code on Zealy.",
+    },
+    {
+      message: "Secret code: DUCSLC",
     },
   ]}
   partnerTwitterHandle="@rootstock_io"

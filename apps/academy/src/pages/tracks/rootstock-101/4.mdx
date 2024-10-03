@@ -308,9 +308,20 @@ Also, it's great to test trying to double-vote, you should not be able to.
 
 <QuizStatusChecker
   quiz="rootstock-101/4"
+  actionButton={{
+    href: "https://zealy.io/cw/developerdao/questboard",
+    text: "Claim on Zealy",
+  }}
   successMessage={[
     {
       message: "You answered all the quiz questions correctly. Awesome job!",
+    },
+    {
+      message:
+        "To claim your XP tokens with AR.IO: share your success on Twitter and submit along with your secret code on Zealy.",
+    },
+    {
+      message: "Secret code: K8DKXZ",
     },
   ]}
   partnerTwitterHandle="@rootstock_io"
