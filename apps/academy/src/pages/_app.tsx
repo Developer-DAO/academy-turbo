@@ -130,7 +130,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout<{ session: Session |
                 <AppContextProvider>
                   <Layout>
                     {getLayout(<Component {...pageProps} />)}
-                    <Analytics mode={"production"} />;
+                    <Analytics mode={"production"} />
                   </Layout>
                   <Toaster />
                 </AppContextProvider>

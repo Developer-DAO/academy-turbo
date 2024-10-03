@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { Icons } from "../Icons";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
@@ -53,100 +55,136 @@ const socials: readonly SocialLinks[] = [
 ];
 
 export const Footer = () => {
+  const router = useRouter();
+  const { pathname } = router;
   return (
-    <footer className="main-container">
-      <div className="footer">
-        <nav aria-label="social" className="px-4">
-          {socials.map((social) => {
-            const Icon = Icons[social.icon];
-            return (
-              <TooltipProvider delayDuration={30} key={social.href}>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <a aria-label={social.alt} href={social.href} className="group" target="_blank">
-                      {Icon ? <Icon className="h-16 w-16 md:h-20 md:w-20" /> : null}
-                    </a>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{social.tooltipText}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            );
-          })}
-        </nav>
-        <nav aria-label="quick links" className="h-20 divide-x">
-          {links.map((link) => (
-            <TooltipProvider delayDuration={30} key={link.href}>
+    <footer
+      className={` ${
+        pathname === "/tracks" || pathname === "/fundamentals" ? "md:hidden" : "md:block"
+      } absolute ${
+        pathname === "/" ? "bottom-0" : "-bottom-[450px]"
+      }   z-50 w-full px-[15px] pb-14 md:px-[30px]`}
+    >
+      <div className=" ">
+        {/* border */}
+        <div className=" mb-[20px] h-[1px] border border-gray-300 md:mx-[110px]" />
+        <div className="footer ">
+          <nav
+            aria-label="social"
+            className=" flex flex-col items-end justify-end md:mb-[1px] md:mr-[15px]"
+          >
+            <div className=" flex items-center justify-center gap-x-5">
+              {socials.map((social) => {
+                const Icon = Icons[social.icon];
+                return (
+                  <TooltipProvider delayDuration={30} key={social.href}>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <a
+                          key={social.tooltipText}
+                          aria-label={social.alt}
+                          href={social.href}
+                          className="group"
+                          target="_blank"
+                        >
+                          {Icon ? <Icon className="h-[45px] w-[45px]" /> : null}
+                        </a>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{social.tooltipText}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                );
+              })}
+            </div>
+            <div className=" mt-2 ">
+              <Image
+                className=" hidden md:block"
+                src={"/vercel_badge.png"}
+                alt={"powered by vercel"}
+                width={100}
+                height={100}
+              />
+            </div>
+          </nav>
+          <nav aria-label="quick links" className="  ml-[60px] md:mb-[25px] md:ml-0">
+            {links.map((link) => (
+              <div key={link.name}>
+                <TooltipProvider delayDuration={30} key={link.href}>
+                  <Tooltip>
+                    <TooltipTrigger className="flex flex-col !border-none text-center md:mt-[30px]">
+                      <div key={link.name}>
+                        <a href={link.href} className=" mr-5 md:mr-10 md:pb-5" target="_blank">
+                          {link.name}
+                        </a>
+                        {/* Border */}
+                        <div
+                          className={`hidden opacity-30 md:-mt-[10px] md:mr-[25px] ${
+                            link.name == "Newsletter" ? "h-0 w-0" : " w-[2px] md:h-[40px]"
+                          } border-l`}
+                        />
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{link.tooltipText}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+            ))}
+          </nav>
+
+          <div className="flex-col items-center justify-center gap-y-0 md:flex-row md:gap-y-6">
+            <TooltipProvider delayDuration={30}>
               <Tooltip>
                 <TooltipTrigger>
-                  <a
-                    href={link.href}
-                    className="group inline-flex h-full items-center pl-4 md:pl-6"
-                    target="_blank"
-                  >
-                    {link.name}
+                  <a href="https://www.developerdao.com/" target="_blank" className="flex">
+                    <div className="">
+                      <Image
+                        src={"/D_Dfooter.png"}
+                        alt={"Developer DAO"}
+                        width={200}
+                        height={80}
+                        className="h-[80px] w-[80px] border-none p-3  md:mr-[5px] md:h-[90px] md:w-[90px]"
+                      />
+                    </div>
                   </a>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>{link.tooltipText}</p>
+                  <p>Developer DAO Website</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
-          ))}
-        </nav>
-        <div className="flex-col gap-y-6 md:flex-row">
-          <TooltipProvider delayDuration={30}>
-            <Tooltip>
-              <TooltipTrigger>
-                <a
-                  href="https://www.developerdao.com/"
-                  target="_blank"
-                  className="flex border-b border-r-0 md:border-b-0 md:border-r"
+
+            {/* Border */}
+            <div className=" h-0 border-l md:mx-0 md:mr-[25px] md:h-[50px] md:w-[1px]" />
+
+            <div className="mb-3 flex-col items-center justify-center text-center text-[9px] font-light md:mb-0 md:items-start md:justify-start  md:text-left md:text-[11px]">
+              <p>DeveloperDAO Foundation © 2023</p>
+              <p>
+                Website content licensed under&nbsp;
+                <Link href="https://creativecommons.org/licenses/by-nc/4.0/" className="underline">
+                  CC BY-NC 4.0.
+                </Link>
+              </p>
+              <p>
+                Website code is licensed under&nbsp;
+                <Link
+                  href="https://github.com/Developer-DAO/academy-turbo/blob/main/LICENSE"
+                  className="underline"
                 >
-                  <div className="m-auto">
-                    <Image
-                      src={"/dd_logo_dark.png"}
-                      alt={"Developer DAO"}
-                      width={200}
-                      height={80}
-                      className="mb-4 h-20 w-32 p-4 md:mb-0"
-                    />
-                  </div>
-                </a>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Developer DAO Website</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-          <div className="ml-6 max-w-[346px] flex-col justify-center text-start">
-            <p>Developer DAO Foundation © 2023</p>
-            <p>
-              Website content licensed under&nbsp;
-              <Link href="https://creativecommons.org/licenses/by-nc/4.0/" className="underline">
-                CC BY-NC 4.0.
-              </Link>
-            </p>
-            <p>
-              Website code is licensed under&nbsp;
-              <Link
-                href="https://github.com/Developer-DAO/academy-turbo/blob/main/LICENSE"
-                className="underline"
-              >
-                MIT.
-              </Link>
-            </p>
-            <p>
-              <Link href="https://www.developerdao.com/privacy-policy" className="underline">
-                Privacy Policy
-              </Link>
-            </p>
+                  MIT.
+                </Link>
+              </p>
+              <p>
+                <Link href="https://www.developerdao.com/privacy-policy" className="underline">
+                  Privacy Policy
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="mb-[33px] hidden lg:block">
-        <Image src={"/vercel_badge.png"} alt={"powered by vercel"} width={200} height={80} />
       </div>
     </footer>
   );

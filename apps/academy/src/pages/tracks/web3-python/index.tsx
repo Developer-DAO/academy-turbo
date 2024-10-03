@@ -21,7 +21,7 @@ const Web3PythonTrackPage = () => {
   );
 
   return (
-    <div className="relative m-10 flex lg:mx-auto lg:max-w-screen-lg">
+    <div className="relative flex p-10 lg:mx-auto lg:max-w-screen-lg">
       <TracksLayout
         trackTitle="Python Smart Contract Development for Beginniners"
         trackDescription="Prefer Python? This track offers a deep dive into Vyper contract development and complementary tools, including Ape, and web3.py."

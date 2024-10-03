@@ -1,5 +1,27 @@
 @import "ui/styles.css";
 
+/* Apply the background to the entire page */
+
+html {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+body {
+  margin: 0; /* Remove default margin */
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  /* background-image: url("/bg_home.png"); */
+  /* background-size: cover; Ensure the image covers the entire page */
+  /* background-position: center; Center the image */
+  /* background-repeat: no-repeat; Prevent the image from repeating */
+  position: relative; /* Ensure child elements are positioned relative to body */
+  overflow-x: hidden;
+}
+
 .text-bttf {
   @apply leading-[91%] tracking-[1px] transition-colors;
   font-family: var(--font-future);
@@ -8,6 +30,7 @@
 .academy-grid {
   @apply flex flex-col-reverse text-white md:flex-row;
 }
+
 .academy-grid .academy-grid-col-1 {
   @apply mb-[50px] mt-[50px] flex h-auto max-h-[1024px] w-full flex-col justify-center space-y-8 px-[38px] md:mb-0 md:h-screen md:w-1/2 lg:mt-20;
 }
@@ -34,11 +57,8 @@
 }
 
 .dd-nft {
-  @apply h-screen max-h-[547px] w-full  md:max-h-[1024px] md:w-1/2;
-  background:
-    linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
-    url("/bg_home.png"),
-    var(--academy-bg-dark) -406.375px -146px / 219.132% 181.543% no-repeat;
+  @apply h-screen max-h-[547px] w-full md:max-h-[1024px] md:w-1/2;
+  background: var(--academy-bg-dark) -406.375px -146px / 219.132% 181.543% no-repeat;
   box-shadow: 0px 4px 35px 0px rgba(0, 0, 0, 0.25);
   background-repeat: no-repeat;
   background-size: cover;

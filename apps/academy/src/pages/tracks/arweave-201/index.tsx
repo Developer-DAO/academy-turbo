@@ -21,7 +21,7 @@ const Arweave101TrackPage = () => {
   );
 
   return (
-    <div className="relative m-10 flex lg:mx-auto lg:max-w-screen-lg">
+    <div className="relative flex p-10 lg:mx-auto lg:max-w-screen-lg">
       <TracksLayout
         trackTitle="Gateway Hosting"
         trackDescription="Understanding Gateways on Arweave and how to use them to read and write permanent data. We'll start by deploying a gateway locally for development, then to the cloud for production and finally to a decentralised infrastructure provider"

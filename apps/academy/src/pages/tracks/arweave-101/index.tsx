@@ -21,7 +21,7 @@ const Arweave101TrackPage = () => {
   );
 
   return (
-    <div className="relative m-10 flex lg:mx-auto lg:max-w-screen-lg">
+    <div className="relative  flex p-10 lg:mx-auto lg:max-w-screen-lg">
       <TracksLayout
         trackTitle="Arweave 101: Building Apps on Arweave"
         trackDescription="Go from 0 to building on Arweave. Learn what Arweave is, how to access and store data on Arweave, and how to build permaweb apps and deploy them to Arweave."
