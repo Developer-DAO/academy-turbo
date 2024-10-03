@@ -27,7 +27,7 @@ const Rootstock101TrackPage = () => {
         trackDescription="Leverage your Ethereum and Solidity skills to build apps on Bitcoin."
         trackAuthor="DappaDan"
         trackAuthorImage="/authors/dappadan.jpg"
-        trackAuthorDescription="Your Protocol's BFF ❤️  | Helping teams build a better developer experience and have fun doing it."
+        trackAuthorDescription="DappaDan is a content creator helping teams build better DevEx and Developer Joy through videos, docs and courses. When not competing in a hackathon, he is competing in a hackathon."
         trackAuthorTwitter="DAppaDanDev"
         tags={["Beginner", "Bitcoin", "Rootstock"]}
       >
