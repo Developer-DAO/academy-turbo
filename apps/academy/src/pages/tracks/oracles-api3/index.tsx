@@ -21,7 +21,7 @@ const OraclesApi3TrackPage = () => {
   );
 
   return (
-    <div className="relative m-10 flex lg:mx-auto lg:max-w-screen-lg">
+    <div className="relative flex p-10 lg:mx-auto lg:max-w-screen-lg">
       <TracksLayout
         trackTitle="Learn How API3 Brings Data Onchain in Web3"
         trackDescription="Using API3 technology to solve blockchain problems with oracles."
