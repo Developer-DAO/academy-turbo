@@ -53,7 +53,18 @@ First, you run the following commands to install Vite and Arweave dependencies:
 ```bash
 npm create vite@latest demo-frontend -- --template vanilla
 cd demo-frontend
-npm i && npm i arweave @ardrive/turbo-sdk
+npm i && npm i vite-plugin-node-polyfills@^0.23.0 @ardrive/turbo-sdk@^1.22.1
+```
+
+Then, you need to create a `vite.config.js` to load the Node.js polyfills plugin:
+
+```javascript
+import { defineConfig } from "vite"
+import { nodePolyfills } from "vite-plugin-node-polyfills"
+
+export default defineConfig({
+  plugins: [nodePolyfills()],
+})
 ```
 
 Next, you implement the front-end. The `arweave` package will generate a random wallet address for each upload. Remember, you upload each file alongside a transaction, so it needs to be signed by a private key of an Arweave wallet.
@@ -135,7 +146,7 @@ Run the following commands to initialize a new Node.js project and install the s
 
     ```bash
     mkdir demo-backend && cd demo-backend
-    npm init -y && npm i arweave @ardrive/turbo-sdk
+    npm init -y && npm i @ardrive/turbo-sdk@^1.22.1
     ```
 
 Then, create a new file at `demo-backend/index.mjs` with the following code:
@@ -205,7 +216,7 @@ Let’s start with a web app again. Create a new Vite project and install the de
 ```bash
 npm create vite@latest demo-frontend-big -- --template vanilla
 cd demo-frontend-big
-npm i && npm i @ardrive/turbo-sdk vite-plugin-node-polyfills
+npm i && npm i @ardrive/turbo-sdk@^1.22.1 vite-plugin-node-polyfills@^0.23.0
 ```
 
 As the Turbo SDK uses the Buffer class in the background, you need the Node.js polyfill. To set it up, create a `demo-frontend-big/vite.config.js` file with this code:
@@ -345,7 +356,7 @@ First, create a new Node.js project and install the dependencies.
 
     ```bash
     mkdir demo-backend-big && cd demo-backend-big
-    npm init -y && npm i @ardrive/turbo-sdk
+    npm init -y && npm i @ardrive/turbo-sdk@^1.22.1
     ```
 
 Next, you must export a key file from ArConnect — Figure 4 shows where you can find the settings.
